@@ -1,0 +1,1 @@
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\TheSurvivalists" Z:\DayZ\Modding\TheSurvivalists
