@@ -10,7 +10,6 @@ class CfgPatches
             "DZ_Gear_Consumables",
             "Survivalists_Gaming_Gear_Consumables",
             "Survivalists_MasonryMetallurgy_Gear_Consumables",
-            "Notes_Gear" //WrittenNote from Notes
         };
     };
 };
@@ -85,12 +84,5 @@ class CfgVehicles
     class SRP_Coinage_Platinum : Inventory_Base
     {
         weight = 0.15;
-    };
-
-    // wardog note override
-    class WrittenNote : Inventory_Base
-    {
-        weight = 2;
-        inventorySlot[] = { "Paper" };
     };
 };
