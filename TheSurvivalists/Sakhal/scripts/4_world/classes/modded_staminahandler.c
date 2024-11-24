@@ -22,13 +22,21 @@ modded class StaminaHandler
 			m_TimerMap.Set(modifier,timer);
 		}
 		///////
-		// max delay for stamina regen is 15 seconds
-		float adjustedLoad = Math.Max((GameConstants.STAMINA_MAX - (((m_PlayerLoad - GameConstants.STAMINA_WEIGHT_LIMIT_THRESHOLD)/GameConstants.STAMINA_KG_TO_GRAMS) * GameConstants.STAMINA_KG_TO_STAMINAPERCENT_PENALTY)),GameConstants.STAMINA_MIN_CAP);
-		float x = GameConstants.STAMINA_MAX - m_StaminaCap;
-		Print(string.Format("staminacap: %1 max: %2 delta: %3", m_StaminaCap, GameConstants.STAMINA_MAX, x));
-		// if low weight, reduce timer
-		// if high weight increase timer
+		time = time * GetAdditionalWaitTime();
+
 		timer.Run(time, this, "ResetCooldown",  new Param1<int>( modifier ));
 		//Print(m_TimerMap.Count());
+	}
+
+	float GetAdditionalWaitTime()
+	{
+		// this essentially comes down to regen * loadmodifier * 5 and the number i have set with leave 30ish seconds for half loaded kits
+		// const float STAMINA_REGEN_COOLDOWN_DEPLETION = 3; // in secs (how much time we will spend in cooldown before the stamina will starts with regeneration)
+		// const float STAMINA_REGEN_COOLDOWN_EXHAUSTION = 20;
+		// max stamina is 120 and when unencumbered, staminaCap is 120 which makes best case 1 and worse case large
+		float playerLoadModifier = GameConstants.STAMINA_MAX / m_StaminaCap;
+		// 1.5x is smallest unit of regen
+		playerLoadModifier *= 2.5;
+		return playerLoadModifier;
 	}
 };
