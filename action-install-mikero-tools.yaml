@@ -1,0 +1,32 @@
+name: Mikero Tools
+description: Installs Mikero Tools for Arma and DayZ
+runs:
+  using: composite
+  steps:
+    - name: Install Mikero Tools
+      run: |
+        if ($IsWindows) {
+          Get-ChildItem "${{ github.action_path }}/windows" | ForEach-Object {
+            echo "Installing $_"
+            Start-Process -Wait $_.FullName "/S"
+          }
+
+          echo "Updating environment variables"
+          echo "C:\Program Files (x86)\Mikero\DePboTools\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        } elseif ($IsLinux) {
+          Get-ChildItem "${{ github.action_path }}/linux" | ForEach-Object {
+            mkdir -p /opt/mikero-tools
+            echo "Extracting $_"
+            tar -zxf "$_" --strip-components=1 -C /opt/mikero-tools
+          }
+
+          echo "Installing dependencies"
+          sudo apt-get install -y libvorbisenc2
+
+          echo "Updating environment variables"
+          echo "/opt/mikero-tools/bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "LD_LIBRARY_PATH=${env:LD_LIBRARY_PATH}:/opt/mikero-tools/lib" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        } else {
+            throw "Unsupported OS"
+        }
+      shell: pwsh
