@@ -34,5 +34,5 @@ jobs:
         run: |
           pwd
           dir
-          cd ${{ github.workspace }}\mod
+          cd ${{ github.workspace }}\mods
           dir
