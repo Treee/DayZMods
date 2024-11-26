@@ -15,13 +15,12 @@ jobs:
 
       - name: Make source folders
         run: |
-          echo ${{ github.workspace }}
-          echo ${{ github.event.repository.name }}
+          cd ${{ github.workspace }}
+          cd ..
           mkdir source
-          mkdir Mods
-          pwd
-          cd source
-          pwd
+          mkdir mods
+          echo "SOURCE_DIR=$(echo pwd)/source" >> $GITHUB_ENV
+          echo "MOD_DIR=$(echo pwd)/mods" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,4 +30,4 @@ jobs:
       - name: pboproject
         run: |
           Get-Command pboproject
-          pboProject -P +Z +H +J +Q -E=dayz "P:\${{ github.event.repository.name }}" +M=P:\Mods\@${{ github.event.repository.name }} -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
+          pboProject -P +Z +H +J +Q -E=dayz "${{env.SOURCE_DIR}}\${{ github.event.repository.name }}" +M=${{env.MOD_DIR}}\${{ github.event.repository.name }} -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
