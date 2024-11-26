@@ -19,15 +19,15 @@ jobs:
           cd ..
           mkdir source
           mkdir mods
-          echo "SOURCE_DIR=$(echo pwd)/source" >> "$GITHUB_ENV"
+          echo "SOURCE_DIR=$(pwd)/source" >> "$GITHUB_ENV"
           echo "MOD_DIR=$(echo pwd)/mods" >> "$GITHUB_ENV"
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: ${{ env.SOURCE_DIR }}
+          path: $SOURCE_DIR
 
       - name: pboproject
         run: |
           Get-Command pboproject
-          pboProject -P +Z +H +J +Q -E=dayz "${{env.SOURCE_DIR}}\${{ github.event.repository.name }}" +M=${{env.MOD_DIR}}\${{ github.event.repository.name }} -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
+          pboProject -P +Z +H +J +Q -E=dayz "$SOURCE_DIR\${{ github.event.repository.name }}" +M=$MOD_DIR\${{ github.event.repository.name }} -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
