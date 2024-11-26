@@ -16,12 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Change directory
-        run: cd ${{ github.event.repository.name }}
-
-      - name: Debug
-        run: echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
-
       - name: pboproject
         run: |
           Get-Command pboproject
