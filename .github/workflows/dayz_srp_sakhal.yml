@@ -22,8 +22,17 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           mkdir mods
+          echo ${{ github.workspace }}\source
+          echo ${{ github.workspace }}\mods
 
-      - name: pboproject
+      - name: Pack Project With PboProject
         run: |
           Get-Command pboproject
-          pboProject -P +Z +H +J +Q -E=dayz "${{ github.workspace }}/source" +M=${{ github.workspace }}/mods -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
+          pboProject -P +Z +H +J +Q -E=dayz "${{ github.workspace }}\source" +M=${{ github.workspace }}\mods -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
+
+      - name: Validate Packing
+        run: |
+          pwd
+          dir
+          cd ${{ github.workspace }}\mod
+          dir
