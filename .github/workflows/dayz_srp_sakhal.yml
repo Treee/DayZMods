@@ -14,7 +14,7 @@ jobs:
         uses: CyberAndrii/setup-steamcmd@v1
 
       - name: Update app
-        run: steamcmd +login anonymous +app_update 830640 validate +quit
+        run: steamcmd +login ${{ secrets.STEAM_USERNAME }} ${{ secrets.STEAM_PASSWORD }} +app_update 830640 validate +quit
 
       - name: Install Mikero Tools
         uses: arma-actions/mikero-tools@latest
