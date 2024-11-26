@@ -3,7 +3,7 @@ name: DayZ SRP Sakhal Mods
 on:
   push:
     branches:
-      - release/*
+      - release
 
 jobs:
   dayz_srp_sakhal:
