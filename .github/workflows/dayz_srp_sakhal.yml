@@ -10,28 +10,30 @@ jobs:
     name: Pack release pbos
     runs-on: windows-latest
     steps:
-      - name: Debug
+      - name: Setup SteamCMD
+        id: steamcmd
+        uses: CyberAndrii/setup-steamcmd@v1
+
+      - name: Install DayZ & DayZ Tools
         env:
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
           STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
         run: |
-          echo "$STEAM_USERNAME" |  awk '$1=$1' FS= OFS=" "
-          touch .env
-          echo STEAM_USERNAME = $STEAM_USERNAME >> .env
-          cat .env | awk '$1=$1' FS= OFS=" "
-          echo "$STEAM_PASSWORD" |  awk '$1=$1' FS= OFS=" "
-          touch .env
-          echo STEAM_PASSWORD = $STEAM_PASSWORD >> .env
-          cat .env | awk '$1=$1' FS= OFS=" "
+          steamcmd +login "$env:STEAM_USERNAME" "$env:STEAM_PASSWORD" +app_update 830640 validate +quit
+          steamcmd +login "$env:STEAM_USERNAME" "$env:STEAM_PASSWORD" +app_update 221100 validate +quit
 
-      - name: Setup steam cmd
-        uses: CyberAndrii/setup-steamcmd@v1
+      - name: Debug
+        run: |
+          echo "output ${{steps.steamcmd.outputs.directory}}"
 
-      - name: Update app
-        env:
-          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-        run: steamcmd +login "$env:STEAM_USERNAME" "$env:STEAM_PASSWORD" +app_update 830640 validate +quit
+      - name: Install Wardog DayZ 2 P
+        uses: wrdg/DayZExtract/releases/tag/v1.0.8
+
+      - name: Extract Portable Tools
+        run: |
+          7z x DayZExtract-1.0.8-portable.zip
+          cd DayZExtract-1.0.8-portable
+          DayZExtract.exe P:\ -p 10 -u
 
       - name: Install Mikero Tools
         uses: arma-actions/mikero-tools@latest
