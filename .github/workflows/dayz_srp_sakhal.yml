@@ -3,30 +3,24 @@ name: DayZ SRP Sakhal Mods
 on:
   push:
     branches:
-    - release/*
+      - release/*
 
 jobs:
   dayz_srp_sakhal:
-    name: Pack release pbos    
+    name: Pack release pbos
     runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@release
 
+      - name: Change directory
+        uses: ./build-tools
+
       - name: Install Mikero Tools
+        uses: arma-actions/mikero-tools@latest
+
+      - name: Change directory
         uses: ./
-
-      # - name: makepbo
-      #   run: |
-      #     Get-Command makepbo
-          
-      #     makepbo -P test/addon addon.pbo
-      
-      # - name: extractpbo
-      #   run: |
-      #     Get-Command extractpbo
-
-      #     extractpbo -P addon.pbo c:\extracted
 
       - name: pboproject
         run: |
