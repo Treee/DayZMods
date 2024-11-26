@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Change directory
-        uses: ./
+        run: cd
 
       - name: pboproject
         run: |
