@@ -19,8 +19,9 @@ jobs:
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
           STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
         run: |
-          steamcmd +login "$env:STEAM_USERNAME" "$env:STEAM_PASSWORD" +app_update 830640 validate +quit
-          steamcmd +login "$env:STEAM_USERNAME" "$env:STEAM_PASSWORD" +app_update 221100 validate +quit
+          steamcmd +login "$env:STEAM_USERNAME" "$env:STEAM_PASSWORD"
+          steamcmd app_update 830640 validate +quit
+          steamcmd app_update 221100 validate +quit
 
       - name: Debug
         run: |
