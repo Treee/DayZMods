@@ -27,7 +27,10 @@ jobs:
           echo "output ${{steps.steamcmd.outputs.directory}}"
 
       - name: Install Wardog DayZ 2 P
-        uses: wrdg/DayZExtract/releases/tag/v1.0.8
+        uses: actions/checkout@v4
+        with:
+          type: zip
+          path: wrdg/DayZExtract/releases/tag/v1.0.8
 
       - name: Extract Portable Tools
         run: |
