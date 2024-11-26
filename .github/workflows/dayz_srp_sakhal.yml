@@ -13,21 +13,17 @@ jobs:
       - name: Install Mikero Tools
         uses: arma-actions/mikero-tools@latest
 
-      - name: Make source folders
-        run: |
-          cd ${{ github.workspace }}
-          cd ..
-          mkdir source
-          mkdir mods
-          echo "SOURCE_DIR=$(pwd)/source" >> "$GITHUB_ENV"
-          echo "MOD_DIR=$(echo pwd)/mods" >> "$GITHUB_ENV"
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: $SOURCE_DIR
+          path: source
+
+      - name: Make mod folders
+        run: |
+          cd ${{ github.workspace }}
+          mkdir mods
 
       - name: pboproject
         run: |
           Get-Command pboproject
-          pboProject -P +Z +H +J +Q -E=dayz "$SOURCE_DIR\${{ github.event.repository.name }}" +M=$MOD_DIR\${{ github.event.repository.name }} -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
+          pboProject -P +Z +H +J +Q -E=dayz "${{ github.workspace }}/source" +M=${{ github.workspace }}/mods -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
