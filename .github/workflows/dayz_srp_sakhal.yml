@@ -9,12 +9,17 @@ jobs:
   dayz_srp_sakhal:
     name: Pack release pbos
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: P:\
     steps:
       - name: Install Mikero Tools
         uses: arma-actions/mikero-tools@latest
+
+      - name: Make source folders
+        run: |
+          mkdir source
+          mkdir Mods
+          pwd
+          cd source
+          pwd
 
       - name: Checkout
         uses: actions/checkout@v4
