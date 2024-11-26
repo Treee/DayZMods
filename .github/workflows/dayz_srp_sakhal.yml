@@ -9,14 +9,14 @@ jobs:
   dayz_srp_sakhal:
     name: Pack release pbos
     runs-on: windows-latest
+    env:
+      STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+      STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
     steps:
       - name: Setup steam cmd
         uses: CyberAndrii/setup-steamcmd@v1
 
       - name: Update app
-        env:
-          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
         run: steamcmd +login "$STEAM_USERNAME" "$STEAM_PASSWORD" +app_update 830640 validate +quit
 
       - name: Install Mikero Tools
