@@ -33,6 +33,6 @@ jobs:
       - name: Validate Packing
         run: |
           pwd
-          dir
           cd ${{ github.workspace }}\mods
+          pwd
           dir
