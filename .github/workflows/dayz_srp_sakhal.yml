@@ -10,14 +10,11 @@ jobs:
     name: Pack release pbos
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Change directory
-        uses: ./build-tools
-
       - name: Install Mikero Tools
         uses: arma-actions/mikero-tools@latest
+
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Change directory
         uses: ./
