@@ -15,6 +15,7 @@ jobs:
 
       - name: Make source folders
         run: |
+          echo ${{ github.workspace }}
           echo ${{ github.event.repository.name }}
           mkdir source
           mkdir Mods
