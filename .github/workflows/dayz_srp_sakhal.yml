@@ -28,7 +28,7 @@ jobs:
       - name: Pack Project With PboProject
         run: |
           Get-Command pboproject
-          pboProject +Z +H +J +Q -E=dayz "${{ github.workspace }}\source" +M=${{ github.workspace }}\mods -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
+          pboProject ${{ github.workspace }}\source +M=${{ github.workspace }}\mods
 
       - name: Validate Packing
         run: |
