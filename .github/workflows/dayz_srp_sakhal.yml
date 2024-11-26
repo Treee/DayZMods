@@ -13,6 +13,17 @@ jobs:
       STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
       STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
     steps:
+      - name: Debug
+        run: |
+          echo "$STEAM_USERNAME" |  awk '$1=$1' FS= OFS=" "
+          touch .env
+          echo STEAM_USERNAME = $STEAM_USERNAME >> .env
+          cat .env | awk '$1=$1' FS= OFS=" "
+          echo "$STEAM_PASSWORD" |  awk '$1=$1' FS= OFS=" "
+          touch .env
+          echo STEAM_PASSWORD = $STEAM_PASSWORD >> .env
+          cat .env | awk '$1=$1' FS= OFS=" "
+
       - name: Setup steam cmd
         uses: CyberAndrii/setup-steamcmd@v1
 
