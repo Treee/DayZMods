@@ -9,6 +9,9 @@ jobs:
   dayz_srp_sakhal:
     name: Pack release pbos
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: P:\
     steps:
       - name: Install Mikero Tools
         uses: arma-actions/mikero-tools@latest
@@ -19,4 +22,4 @@ jobs:
       - name: pboproject
         run: |
           Get-Command pboproject
-          pboproject -P
+          pboProject -P +Z +H +J +Q -E=dayz "P:\${{ github.event.repository.name }}" +M=P:\Mods\@${{ github.event.repository.name }} -X="*.h,*.hpp,*.png,*.cpp,*.txt,thumbs.db,*.dep,*.bak,*.log,*.pew,source,*.tga,*.bat,*.psd,*.cmd,*.mcr,*.fbx,*.max"
