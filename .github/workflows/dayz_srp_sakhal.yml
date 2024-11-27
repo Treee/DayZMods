@@ -29,7 +29,7 @@ jobs:
         uses: robinraju/release-downloader@v1
         with:
           repository: wrdg/DayZExtract
-          fileName: DayZExtract-*-portable.zip
+          fileName: "*-portable.zip"
           out-file-path: DayZExtract
           latest: true
           zipBall: true
@@ -38,8 +38,9 @@ jobs:
 
       - name: Extract Portable Tools
         run: |
-          7z x DayZExtract-1.0.8-portable.zip
-          cd DayZExtract-1.0.8-portable
+          cd ${{ github.workspace }}\DayZExtract
+          7z x DayZExtract-*-portable.zip
+          cd DayZExtract-*-portable
           DayZExtract.exe P:\ -p 10 -u
 
       - name: Install Mikero Tools
