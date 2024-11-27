@@ -39,7 +39,7 @@ jobs:
       - name: Extract Portable Tools
         run: |
           cd ${{ github.workspace }}\DayZExtract
-          7z x DayZExtract-*-portable.zip
+          7z x DayZExtract-*-portable.zip -y
           cd DayZExtract-*-portable
           DayZExtract.exe P:\ -p 10 -u
 
