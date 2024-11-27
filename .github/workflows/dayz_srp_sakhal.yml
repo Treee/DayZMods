@@ -21,9 +21,10 @@ jobs:
         run: |
           steamcmd +login "$env:STEAM_USERNAME" "$env:STEAM_PASSWORD" +app_update 830640 +app_update 221100 validate +quit
 
-      - name: Debug
+      - name: Mount P Drive
         run: |
-          echo "output ${{steps.steamcmd.outputs.directory}}"
+          cd "${{steps.steamcmd.outputs.directory}}\steamapps\common\DayZ Tools\Bin\WorkDrive"
+          .\WorkDrive.exe /mount
 
       - name: Install Wardog DayZ 2 P
         uses: robinraju/release-downloader@v1
