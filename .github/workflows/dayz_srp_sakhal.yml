@@ -39,8 +39,7 @@ jobs:
       - name: Extract Portable Tools
         run: |
           cd ${{ github.workspace }}\DayZExtract
-          7z x DayZExtract-*-portable.zip -y
-          cd DayZExtract-*-portable
+          7z x DayZExtract-*-portable.zip -y -o .
           DayZExtract.exe P:\ -p 10 -u
 
       - name: Install Mikero Tools
