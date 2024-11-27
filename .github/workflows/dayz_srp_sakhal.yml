@@ -24,7 +24,7 @@ jobs:
       - name: Mount P Drive
         run: |
           cd "${{steps.steamcmd.outputs.directory}}\steamapps\common\DayZ Tools\Bin\WorkDrive"
-          .\WorkDrive.exe /mount
+          .\WorkDrive.exe /mount P "${{ github.workspace }}"
 
       - name: Install Wardog DayZ 2 P
         uses: robinraju/release-downloader@v1
