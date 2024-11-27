@@ -40,7 +40,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}\DayZExtract
           7z x DayZExtract-*-portable.zip -y -o ./
-          .\DayZExtract.exe P:\ -p 10 -u
+          .\DayZExtract.exe P:\ -p 10 -u -g ${{steps.steamcmd.outputs.directory}}\steamapps\common\DayZ
 
       - name: Install Mikero Tools
         uses: arma-actions/mikero-tools@latest
