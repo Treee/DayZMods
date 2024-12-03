@@ -1,0 +1,14 @@
+name = "iat"
+author = "ItsATreee"
+prefix = "iat"
+mainprefix = "P"
+
+[version]
+major = 0
+minor = 1
+patch = 0
+build = 1
+git_hash = 0
+
+[hemtt.release]
+archive = true
