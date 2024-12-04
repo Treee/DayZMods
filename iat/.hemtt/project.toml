@@ -1,0 +1,11 @@
+name = "iat"
+author = "ItsATreee"
+prefix = "iat"
+mainprefix = "P"
+
+[version]
+path = "release_version.hpp"
+git_hash = 4
+
+[hemtt.release]
+archive = true

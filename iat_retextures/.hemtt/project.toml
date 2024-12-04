@@ -1,0 +1,11 @@
+name = "iat_retextures"
+author = "ItsATreee"
+prefix = "iat_retextures"
+mainprefix = "P"
+
+[version]
+path = "release_version.hpp"
+git_hash = 4
+
+[hemtt.release]
+archive = true
