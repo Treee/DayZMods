@@ -1,15 +1,14 @@
-enum IAT_GeneTypes
-{
-	Gene1 = 0,
-	Gene2
-}
-
 class IAT_GeneBase
 {
-	IAT_GeneTypes m_GeneType = -1;
-	int m_GeneMin = -999999;
-	int m_GeneMax = 999999;
-	int m_CurrentValue = 0;
+	protected IAT_GeneTypes m_GeneType = -1;
+	protected int m_GeneMin = -65536;
+	protected int m_GeneMax = 65536;
+
+	protected int m_CurrentValue = 0;
+	protected int m_NumBytes = 2; // default 2 bytes is sweet spot
+	protected string m_GeneBinary = "0000000000000000";
+	// positive/negative simulates dominant/recessive traits
+	protected bool m_IsNegative = false;
 
 	void IAT_GeneBase(){}
 
@@ -19,15 +18,40 @@ class IAT_GeneBase
 
 	IAT_GeneBase CrossOver(IAT_GeneBase other)
 	{
+		if (m_GeneType != other.GetGeneType())
+		{
+			PrintFormat("Gene Types Are Different. {this}: %1 {other}: %2", m_GeneType, other.GetGeneType());
+			return null;
+		}
+
+		if (m_NumBytes != other.GetNumBytes())
+		{
+			PrintFormat("Gene Bytes Are Different. {this}: %1 {other}: %2", m_NumBytes, other.GetNumBytes());
+			return null;
+		}
 		IAT_GeneBase crossOverGene = new IAT_GeneBase();
 
 		crossOverGene.SetGeneType(GetGeneType());
-		crossOverGene.SetGeneMin(GetGeneType());
-		crossOverGene.SetGeneMax(GetGeneType());
+		crossOverGene.SetGeneMin(GetGeneMin());
+		crossOverGene.SetGeneMax(GetGeneMax());
 
 		string geneBinary = GetValueAsBinary();
 		string otherBinary = other.GetValueAsBinary();
-		
+
+		int geneBinaryLength = geneBinary.Length();
+		int otherBinaryLength = otherBinary.Length();
+		string extraZeros = "";
+		if (geneBinaryLength > otherBinaryLength)
+		{
+			extraZeros = GetNZeros(geneBinaryLength - otherBinaryLength);
+			otherBinary = string.Format("%1%2", extraZeros, otherBinary);
+		}
+		else if (otherBinaryLength > geneBinaryLength)
+		{
+			extraZeros = GetNZeros(otherBinaryLength - geneBinaryLength);
+			geneBinary = string.Format("%1%2", extraZeros, geneBinary);
+		}
+
 		// get second half of this gene
 		string thisHalf = geneBinary.Substring((geneBinary.Length() / 2), (geneBinary.Length() / 2));
 		// get first half of other gene
@@ -36,15 +60,118 @@ class IAT_GeneBase
 		// cross over theirs to ours
 		string newGeneBinary = string.Format("%1%2", otherHalf, thisHalf);
 
+		// punnet square is_negative trait
+		// both parents are negative
+		if (m_IsNegative && other.IsNegative())
+			crossOverGene.SetIsNegative(true);
+		// both parents are positive
+		else if (!(m_IsNegative || other.IsNegative()))
+			crossOverGene.SetIsNegative(false);
+		// 50/50 random
+		else
+			crossOverGene.SetIsNegative(Math.RandomBool());
+
 		// set the new gene
 		int newGeneValue = ConvertToInteger(newGeneBinary);
 		crossOverGene.SetGeneValue(newGeneValue);
-		
+		crossOverGene.InitializeGene();
+
 		return crossOverGene;
+	}
+
+	void InitializeGene()
+	{
+		// take raw data and turn it into genes ie...
+		// calculate max byte size from max value
+		GetMaxBytesFromMaxValue();
+		// convert current value to binary and set it.
+		m_GeneBinary = GetValueAsBinary();
+	}
+
+	private void GetMaxBytesFromMaxValue()
+	{
+		int absMinValue = Math.AbsInt(m_GeneMin);
+		int index = 0;
+		foreach (int byteMaxValue : GameConstants.c_ByteMax)
+		{
+			if (m_GeneMax > byteMaxValue || absMinValue > byteMaxValue)
+			{
+				index++;
+				continue;
+			}
+			m_NumBytes = index;
+			return;
+		}
+	}
+
+	private string GetValueAsBinary()
+	{
+		string binaryString = "";
+		int rawInput = m_CurrentValue;
+
+		if (rawInput < 0)
+		{
+			m_IsNegative = true;
+			rawInput *= -1;
+		}
+
+		while (rawInput > 0)
+		{
+			if ( (rawInput & 1) == 1)
+			{
+				binaryString = string.Format("%1%2", "1", binaryString);
+			}
+			else
+			{
+				binaryString = string.Format("%1%2", "0", binaryString);
+			}
+			rawInput >>= 1;
+		}
+
+		int byteLength = m_NumBytes * 8;
+		int extraZeros = byteLength - binaryString.Length();
+
+		if (extraZeros > 0)
+			binaryString = string.Format("%1%2", GetNZeros(extraZeros), binaryString);
+
+		return binaryString;
 	}
 
 	//---------------------------------------------------------------------------
 	// Helpers
+	//---------------------------------------------------------------------------
+	string GetNZeros(int n)
+	{
+		if (GameConstants.c_Zeros.IsValidIndex(n))
+		{
+			return GameConstants.c_Zeros.Get(n);
+		}
+		return "";
+	}
+	int ConvertToInteger(string binaryString)
+	{
+		int sum = 0;
+		int exponent = 0;
+		string valueAtIndex = "0";
+		for(int i = binaryString.Length() - 1; i > -1; i--)
+		{
+			valueAtIndex = binaryString.Get(i);
+			if (valueAtIndex == "1")
+			{
+				sum += Math.Pow(2, exponent);
+			}
+			exponent += 1;
+		}
+		return sum;
+	}
+
+	string ToPrettyString()
+	{
+		return string.Format("Type: %1, Min: %2, Value: %3, Max: %4", GetGeneType(), GetGeneMin(), GetValue(), GetGeneMax());
+	}
+
+	//---------------------------------------------------------------------------
+	// Setters & Getters
 	//---------------------------------------------------------------------------
 	void SetGeneMin(int newMin)
 	{
@@ -79,66 +206,34 @@ class IAT_GeneBase
 	}
 	int GetValue()
 	{
+		if (m_IsNegative)
+			return m_CurrentValue * -1;
 		return m_CurrentValue;
 	}
-	string GetValueAsBinary()
-	{
-		string binaryString = "";
-		int rawInput = m_CurrentValue;
-		while (rawInput > 0)
-		{
-			if ( (rawInput & 1) == 1)
-			{
-				binaryString = string.Format("%1%2", "1", binaryString);
-			}
-			else
-			{
-				binaryString = string.Format("%1%2", "0", binaryString);
-			}
-			rawInput >>= 1;
-		}
 
-		int stringLength = binaryString.Length();
-		// divide string by 8 bits per byte to find how many leading zeros we lack
-		int byteLength = stringLength % 8;
-		int extraZeros = 0;
-		// if we need to fill out a nibble into a byte
-		if (byteLength > 0)
-		{
-			// PrintFormat("Un-Even division for %1 remainder: %3", binaryString, byteLength);
-			extraZeros = 8 - byteLength;
-			binaryString = string.Format("%1%2", GetNZeros(extraZeros), binaryString);
-		}
-		return binaryString;
+	void SetGeneBinaryString(string s)
+	{
+		m_GeneBinary = s;
+	}
+	string GetBinaryString()
+	{
+		return m_GeneBinary;
 	}
 
-	string GetNZeros(int n)
+	void SetNumBytes(int i)
 	{
-		if (GameConstants.c_Zeros.IsValidIndex(n))
-		{
-			return GameConstants.c_Zeros.Get(n);
-		}
-		return "";
+		m_NumBytes = i;
 	}
-	int ConvertToInteger(string binaryString)
+	int GetNumBytes()
 	{
-		int sum = 0;
-		int exponent = 0;
-		string valueAtIndex = "0";
-		for(int i = binaryString.Length() - 1; i > -1; i--)
-		{
-			valueAtIndex = binaryString.Get(i);
-			if (valueAtIndex == "1")
-			{
-				sum += Math.Pow(2, exponent);
-			}
-			exponent += 1;
-		}
-		return sum;
+		return m_NumBytes;
 	}
-	
-	string ToPrettyString()
+	void SetIsNegative(bool isNegative)
 	{
-		return string.Format("Type: %1, Min: %2, Value: %3, Max: %4", GetGeneType(), GetGeneMin(), GetValue(), GetGeneMax());
+		m_IsNegative = isNegative;
+	}
+	bool IsNegative()
+	{
+		return m_IsNegative;
 	}
 };
