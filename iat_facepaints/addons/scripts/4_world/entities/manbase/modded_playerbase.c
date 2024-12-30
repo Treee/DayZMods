@@ -65,9 +65,16 @@ modded class PlayerBase
 	{
 		// preserve order of call heiarchy
 		super.OnStoreSaveLifespan(ctx);
-		// write my value
-		ctx.Write(m_FacePaintIndex);
-		ctx.Write(m_FacePaintCategoryIndex);
+
+		if (GetDayZGame().GetIATFacePaintConfig())
+		{
+			if (GetDayZGame().GetIATFacePaintConfig().GetSavePlayerPaintsToDatabase())
+			{
+				// write my value
+				ctx.Write(m_FacePaintIndex);
+				ctx.Write(m_FacePaintCategoryIndex);
+			}
+		}
 	}
 	override bool OnStoreLoadLifespan( ParamsReadContext ctx, int version )
 	{
@@ -77,13 +84,20 @@ modded class PlayerBase
 
 		// default face paint state is no paint, -1
 		int facePaintIndex = -1;
-		// read the value serially
-		if(ctx.Read( facePaintIndex ))
-			m_FacePaintIndex = facePaintIndex;
-
 		int facePaintCategoryIndex = -1;
-		if(ctx.Read( facePaintCategoryIndex ))
-			m_FacePaintCategoryIndex = facePaintCategoryIndex;
+
+		if (GetDayZGame().GetIATFacePaintConfig())
+		{
+			if (GetDayZGame().GetIATFacePaintConfig().GetSavePlayerPaintsToDatabase())
+			{
+				// read the value serially
+				if(ctx.Read( facePaintIndex ))
+					m_FacePaintIndex = facePaintIndex;
+
+				if(ctx.Read( facePaintCategoryIndex ))
+					m_FacePaintCategoryIndex = facePaintCategoryIndex;
+			}
+		}
 
 		// who cares if it works, return true lol
 		return true;

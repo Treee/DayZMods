@@ -10,6 +10,7 @@ class IAT_FacePaintsConfig
 	protected ref IAT_FacePaintOptions m_FacePaintOptions;
 
 	protected float m_PaintStickDamagePerUse;
+	protected bool m_SavePlayerPaintsToDatabase;
 
 	IAT_FacePaintsConfig TryGetFacePaintConfig()
 	{
@@ -54,6 +55,16 @@ class IAT_FacePaintsConfig
 	float GetPaintStickDamagerPerUse()
 	{
 		return m_PaintStickDamagePerUse;
+	}
+
+	void SetSavePlayerPaintsToDatabase(bool value)
+	{
+		m_SavePlayerPaintsToDatabase = value;
+	}
+
+	bool GetSavePlayerPaintsToDatabase()
+	{
+		return m_SavePlayerPaintsToDatabase;
 	}
 
 	IAT_FacePaintOptions GetFacePaintOptions()
