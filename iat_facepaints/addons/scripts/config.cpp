@@ -27,6 +27,7 @@ class CfgMods
 		};
 	};
 };
+// comment for publisher
 class CfgPatches
 {
 	class IAT_FacePaints_Scripts
