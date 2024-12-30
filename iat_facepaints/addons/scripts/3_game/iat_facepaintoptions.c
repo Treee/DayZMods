@@ -53,7 +53,6 @@ class IAT_FacePaintOptions
 		category0_options.Insert("slovenia");
 		category0_options.Insert("uk");
 		category0_options.Insert("usa");
-		category0_options.Insert("winter");
 		category0_options.Insert("woodland");
 		category0_options.Insert("woodlandgreen");
 		category0_options.Insert("woodlandm81");
