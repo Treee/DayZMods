@@ -3,3 +3,8 @@
 hemtt
 hemtt.exe
 *.biprivatekey
+
+# Ignore all generated rvmat content
+iat_facepaints/addons/facepaints/**/*.rvmat
+# Include templates
+!iat_facepaints/addons/facepaints/atemplates/*

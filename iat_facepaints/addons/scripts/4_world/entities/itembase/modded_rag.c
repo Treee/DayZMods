@@ -4,7 +4,7 @@ modded class Rag
 	{
 		super.SetActions();
 
-		AddAction(ActionWashFace);
-    	AddAction(ActionWashFaceTarget);
+		AddAction(IAT_ActionWashFace);
+    	AddAction(IAT_ActionWashFaceTarget);
 	}
 };

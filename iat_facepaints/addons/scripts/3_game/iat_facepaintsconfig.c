@@ -1,8 +1,13 @@
 class IAT_FacePaintsConfig
 {
+	[NonSerialized()]
 	protected string m_DayZFolder = "$profile:";
+	[NonSerialized()]
     protected string m_RootConfigFolder = "ItsATreeMods";
+	[NonSerialized()]
     protected string m_JsonFile = "FacePaintsConfig.json";
+	[NonSerialized()]
+	protected ref IAT_FacePaintOptions m_FacePaintOptions;
 
 	protected float m_PaintStickDamagePerUse;
 
@@ -32,10 +37,11 @@ class IAT_FacePaintsConfig
 			// file exists, just load it from disk
 			JsonFileLoader<ref IAT_FacePaintsConfig>.JsonLoadFile(jsonConfig, iat_FPConfig);
 		}
+		// configure paint options (auto generated file. moddable for others)
+		m_FacePaintOptions = new IAT_FacePaintOptions();
 		// return what we found
         return iat_FPConfig;
 	}
-
 
 	// ==================================================================================
 	// Getters & Setters
@@ -48,5 +54,10 @@ class IAT_FacePaintsConfig
 	float GetPaintStickDamagerPerUse()
 	{
 		return m_PaintStickDamagePerUse;
+	}
+
+	IAT_FacePaintOptions GetFacePaintOptions()
+	{
+		return m_FacePaintOptions;
 	}
 };

@@ -1,7 +1,10 @@
 modded class PlayerBase
 {
-	protected int m_FacePaintState;
-	int m_TempFacePaintState;
+	protected int m_FacePaintCategoryIndex;
+	protected int m_FacePaintIndex;
+
+	int m_TempFacePaintIndex;
+	int m_TempFacePaintCategory;
 	//=============================================== VANILLA OVERRIDE
 	override void Init()
 	{
@@ -9,17 +12,19 @@ modded class PlayerBase
 		super.Init();
 
 		// default state is no paints
-		m_FacePaintState = -1;
+		m_FacePaintIndex = -1;
+		m_FacePaintCategoryIndex = -1;
 
 		// register an int for netsyncing which is our face paint state. clamp max value to total face paints
-		RegisterNetSyncVariableInt("m_FacePaintState", -1, m_ModuleLifespan.GetFacePaintCount());
+		RegisterNetSyncVariableInt("m_FacePaintIndex", -1, m_ModuleLifespan.GetFacePaintCount());
+		RegisterNetSyncVariableInt("m_FacePaintCategoryIndex", -1, m_ModuleLifespan.GetFacePaintCategoryCount());
 	}
 	override void OnVariablesSynchronized()
 	{
 		super.OnVariablesSynchronized();
-
+		// PrintFormat("Category: %1 Paint: %2", GetFacePaintCategoryIndex(), GetFacePaintIndex());
 		// if any changes are measured, update visuals
-		if (GetFacePaintIndex() >= -1 && (IsPlayerLoaded() || IsControlledPlayer()))
+		if (GetFacePaintIndex() >= -1 && GetFacePaintCategoryIndex() >= -1 && (IsPlayerLoaded() || IsControlledPlayer()))
 			UpdateFacePaintVisual();
 	}
 	override void OnRPC(PlayerIdentity sender, int rpc_type, ParamsReadContext ctx)
@@ -45,11 +50,12 @@ modded class PlayerBase
 			{
 				if (GetGame().IsDedicatedServer())
 				{
-					int camoId;
 					// read serially the value as an integer
-					if ( !ctx.Read(camoId) )
+					if (!ctx.Read(m_TempFacePaintCategory))
 						return;
-					m_TempFacePaintState = camoId;
+
+					if (!ctx.Read(m_TempFacePaintIndex))
+						return;
 				}
 			}
 			break;
@@ -60,7 +66,8 @@ modded class PlayerBase
 		// preserve order of call heiarchy
 		super.OnStoreSaveLifespan(ctx);
 		// write my value
-		ctx.Write(m_FacePaintState);
+		ctx.Write(m_FacePaintIndex);
+		ctx.Write(m_FacePaintCategoryIndex);
 	}
 	override bool OnStoreLoadLifespan( ParamsReadContext ctx, int version )
 	{
@@ -69,10 +76,14 @@ modded class PlayerBase
 			return false;
 
 		// default face paint state is no paint, -1
-		int facePaintState = -1;
+		int facePaintIndex = -1;
 		// read the value serially
-		if(ctx.Read( facePaintState ))
-			m_FacePaintState = facePaintState;
+		if(ctx.Read( facePaintIndex ))
+			m_FacePaintIndex = facePaintIndex;
+
+		int facePaintCategoryIndex = -1;
+		if(ctx.Read( facePaintCategoryIndex ))
+			m_FacePaintCategoryIndex = facePaintCategoryIndex;
 
 		// who cares if it works, return true lol
 		return true;
@@ -81,43 +92,25 @@ modded class PlayerBase
 	// ===============================================
 	// CUSTOM
 	// ===============================================
-	void SetFacePaint(int index)
+	void SetFacePaint(int categoryIndex, int paintIndex)
 	{
-		m_FacePaintState = index;
+		m_FacePaintCategoryIndex = categoryIndex;
+		m_FacePaintIndex = paintIndex;
 		SetSynchDirty();
 	}
 
 	int GetFacePaintIndex()
 	{
-		return m_FacePaintState;
+		return m_FacePaintIndex;
+	}
+	int GetFacePaintCategoryIndex()
+	{
+		return m_FacePaintCategoryIndex;
 	}
 
 	void ClearPaint()
 	{
-		SetFacePaint(-1);
-	}
-
-	TStringArray GetFacePaintList(int index)
-	{
-		if (m_ModuleLifespan)
-		{
-			switch(index)
-			{
-				case 1:
-					return m_ModuleLifespan.GetFacePaintCamoOptions();
-				break;
-				case 2:
-					return m_ModuleLifespan.GetFacePaintFlagOptions();
-				break;
-				case 3:
-					return m_ModuleLifespan.GetFacePaintMaskOptions();
-				break;
-				case 4:
-					return m_ModuleLifespan.GetFacePaintScarOptions();
-				break;
-			}
-		}
-		return {};
+		SetFacePaint(-1, -1);
 	}
 
 	void UpdateFacePaintVisual()
@@ -126,10 +119,10 @@ modded class PlayerBase
 		if (!IsMale())
 		{
 			string camoMaterial;
-			if (m_FacePaintState == -1)
+			if (m_FacePaintIndex == -1)
 				camoMaterial = m_ModuleLifespan.GetFemaleBaseMaterial(GetType());
 			else
-				camoMaterial = m_ModuleLifespan.GetPaintPathFemale(m_FacePaintState, GetType());
+				camoMaterial = m_ModuleLifespan.GetPaintPathFemale(m_FacePaintCategoryIndex, m_FacePaintIndex, GetType());
 
 			if (camoMaterial)
 				SetFaceMaterial(camoMaterial);

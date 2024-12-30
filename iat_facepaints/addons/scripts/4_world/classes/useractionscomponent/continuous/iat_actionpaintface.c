@@ -77,7 +77,7 @@ class IAT_ActionPaintFace extends ActionContinuousBase
 		IAT_FacePaintStick_ColorBase paintStick;
 		if (Class.CastTo(paintStick, action_data.m_MainItem))
 		{
-			paintStick.SetCamoIndex(action_data.m_Player.m_TempFacePaintState);
+			paintStick.SetCamoIndex(action_data.m_Player.m_TempFacePaintCategory, action_data.m_Player.m_TempFacePaintIndex);
 			paintStick.OnApply(action_data.m_Player);
 		}
 	}
@@ -123,7 +123,7 @@ class IAT_ActionPaintFaceTarget extends IAT_ActionPaintFace
 		if (!Class.CastTo(currentPlayer, action_data.m_Player))
 			return;
 
-		paintStick.SetCamoIndex(currentPlayer.m_TempFacePaintState);
+		paintStick.SetCamoIndex(currentPlayer.m_TempFacePaintCategory, currentPlayer.m_TempFacePaintIndex);
 		paintStick.OnApply(targetPlayer);
 	}
 };

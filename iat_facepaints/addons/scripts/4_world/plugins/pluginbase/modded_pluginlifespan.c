@@ -1,15 +1,46 @@
 modded class PluginLifespan
 {
   	protected int m_TotalCountFacePaints;
+  	protected int m_TotalCountFacePaintCategories;
 	override void LoadFromCfg()
 	{
 		super.LoadFromCfg();
-		m_TotalCountFacePaints = GetFacePaintCamoOptions().Count() + GetFacePaintFlagOptions().Count() + GetFacePaintMaskOptions().Count() + GetFacePaintScarOptions().Count();
+		// m_TotalCountFacePaints = GetFacePaintCamoOptions().Count() + GetFacePaintFlagOptions().Count() + GetFacePaintMaskOptions().Count() + GetFacePaintScarOptions().Count();
+		CalculateFacePaintTotals();
+	}
+
+	protected void CalculateFacePaintTotals()
+	{
+		m_TotalCountFacePaints = 0;
+		IAT_FacePaintsConfig iat_fp_config;
+		if (GetDayZGame())
+		{
+			if (Class.CastTo(iat_fp_config, GetDayZGame().GetIATFacePaintConfig()))
+			{
+				IAT_FacePaintOptions fp_options = iat_fp_config.GetFacePaintOptions();
+				TStringArray categories = fp_options.GetCategories();
+				m_TotalCountFacePaintCategories = categories.Count();
+				foreach (string category : categories)
+				{
+					TStringArray paintArray = fp_options.GetCategoryItems(category);
+					m_TotalCountFacePaints += paintArray.Count();
+				}
+			}
+		}
+	}
+
+	int GetFacePaintCount()
+	{
+		return m_TotalCountFacePaints;
+	}
+	int GetFacePaintCategoryCount()
+	{
+		return m_TotalCountFacePaintCategories;
 	}
 
 	override protected void SetPlayerLifespanLevel( PlayerBase player, LifespanLevel level )
 	{
-		if (player.GetFacePaintIndex() < 0)
+		if (player.GetFacePaintCategoryIndex() == -1)
 			super.SetPlayerLifespanLevel( player, level );
 		else
 			SetPaintedFaceMaterial(player, level);
@@ -20,144 +51,26 @@ modded class PluginLifespan
 			return m_BloodyHands.Get(playerType).GetMaterial(BloodyHands.MATERIAL_TYPE_NORMAL);
 		return "";
 	}
-	int GetFacePaintCount()
+
+	string GetPaintByIndex(int categoryIndex, int paintIndex)
 	{
-		return m_TotalCountFacePaints;
-	}
-	TStringArray GetFacePaintCamoOptions()
-	{
-		return {
-			"Bosnia",
-			"Bulgaria1",
-			"Bulgaria2",
-			"Croatia",
-			"Czech1",
-			"Czech2",
-			"Desert",
-			"Digital",
-			"DigitalBlue",
-			"DragonScale",
-			"DragonScaleRed",
-			"France",
-			"Germany",
-			"Hungary1",
-			"Hungary2",
-			"Macedonia",
-			"Olive",
-			"Poland1",
-			"Poland2",
-			"Romania1",
-			"Romania2",
-			"Slovenia",
-			"UK",
-			"USA",
-			"Winter",
-			"Woodland",
-			"WoodlandGreen",
-			"WoodlandRed",
-			"Yugoslavia",
-		};
-	}
-	TStringArray GetFacePaintFlagOptions()
-	{
-		return {
-			"Brazil",
-			"Germany",
-			"Italy",
-			"Argentina",
-			"France",
-			"England",
-			"Spain",
-			"Netherlands",
-			"Uruguay",
-			"Sweden",
-			"Belgium",
-			"Ukraine",
-			"Russia",
-			"Serbia",
-			"Mexico",
-			"Poland",
-			"Hungary",
-			"Portugal",
-			"Switzerland",
-			"Czechia",
-			"Austria",
-			"Chile",
-			"Croatia",
-			"Denmark",
-			"Paraguay",
-			"Colombia",
-			"USA",
-			"Romania",
-			"SouthKorea",
-			"Nigeria",
-			"Japan",
-			"Scottland",
-		};
-	}
-	TStringArray GetFacePaintMaskOptions()
-	{
-		return {
-			"TearDrop",
-			"SkullFace",
-			"Clown1",
-			"Geisha1",
-			"KissCatman",
-			"KissDemon",
-			"KissSpaceman",
-			"KissStarchild",
-			"Zedmag"
-		};
-	}
-	TStringArray GetFacePaintScarOptions()
-	{
-		return {
-			"LeftCheekBruise",
-			"LeftCheekScar",
-			"LeftEyeBearClaw",
-			"LeftEyeBearClawFaded",
-			"LeftEyeBruise",
-			"RightCheekScar",
-			"RightKeloid",
-			"RightLongScar",
-		};
-	}
-	string GetPaintByIndex(int index)
-	{
-		int array1Count = GetFacePaintCamoOptions().Count();
-		int array2Count = GetFacePaintFlagOptions().Count() + array1Count;
-		int array3Count = GetFacePaintMaskOptions().Count() + array2Count;
-		int array4Count = GetFacePaintScarOptions().Count() + array3Count;
-		// Print(string.Format("arr1: %1 arr2: %2 arr3: %3 arry: %4 index: %5", array1Count, array2Count, array3Count, array4Count, index));
-		int newIndex = index;
-		if (index < array1Count)
+		if (GetDayZGame())
 		{
-			// use camo paints, index is smallest index possible
-			return string.Format("fp_%1", GetFacePaintCamoOptions().Get(newIndex));
-		}
-		else if (index >= array1Count && index < array2Count)
-		{
-			// use flag paints
-			newIndex -= array1Count;
-			return string.Format("fpf_%1", GetFacePaintFlagOptions().Get(newIndex));
-		}
-		else if (index >= array2Count && index < array3Count)
-		{
-			// use mask paints
-			newIndex -= array2Count;
-			return string.Format("fpm_%1", GetFacePaintMaskOptions().Get(newIndex));
-		}
-		else if (index >= array3Count && index < array4Count)
-		{
-			// use scar paints
-			newIndex -= array3Count;
-			return string.Format("fps_%1", GetFacePaintScarOptions().Get(newIndex));
+			IAT_FacePaintsConfig iat_fp_config;
+			if (Class.CastTo(iat_fp_config, GetDayZGame().GetIATFacePaintConfig()))
+			{
+				IAT_FacePaintOptions fp_options = iat_fp_config.GetFacePaintOptions();
+				string category = fp_options.GetCategories().Get(categoryIndex);
+				string paint = fp_options.GetCategoryItems(category).Get(paintIndex);
+				return string.Format("%1\\%2", category, paint);
+			}
 		}
 		return "error";
 	}
-	protected string GetPaintPathMale(int facepaintIndex, string materialName)
+	protected string GetPaintPathMale(int facepaintCategoryIndex, int facepaintIndex, string materialName)
 	{
-		string facepaintCategory = GetPaintByIndex(facepaintIndex);
+		string facepaintCategory = GetPaintByIndex(facepaintCategoryIndex, facepaintIndex);
+
 		TStringArray parts = new TStringArray;
 		materialName.Split("\\", parts);
 		string mat1 = materialName;
@@ -165,21 +78,21 @@ modded class PluginLifespan
 		{
 			string filename = parts.Get(5);
 			filename.Replace("_beard.", "_bearded.");
-			mat1 = string.Format("iat_facepaints\\heads\\%1\\%2", facepaintCategory, filename);
+			mat1 = string.Format("iat_facepaints\\facepaints\\%1\\%2", facepaintCategory, filename);
 			// Print("mat: " + mat1);
 		}
 		return mat1;
 	}
-	string GetPaintPathFemale(int facepaintIndex, string materialName)
+	string GetPaintPathFemale(int facepaintCategoryIndex, int facepaintIndex, string materialName)
 	{
-		string facepaintCategory = GetPaintByIndex(facepaintIndex);
+		string facepaintCategory = GetPaintByIndex(facepaintCategoryIndex, facepaintIndex);
 		TStringArray parts = new TStringArray;
 		materialName.Split("_", parts);
 		string mat1 = materialName;
 		if (parts.Count() == 2)
 		{
 			string filename = parts.Get(1);
-			mat1 = string.Format("iat_facepaints\\heads\\%1\\hhl_f_%2_body.rvmat", facepaintCategory, filename);
+			mat1 = string.Format("iat_facepaints\\facepaints\\%1\\hhl_f_%2_body.rvmat", facepaintCategory, filename);
 			// Print("mat: " + mat1);
 		}
 		return mat1;
@@ -191,7 +104,7 @@ modded class PluginLifespan
 		int slot_id = InventorySlots.GetSlotIdFromString("Head");
 		EntityAI players_head = player.GetInventory().FindPlaceholderForSlot( slot_id );
 
-		string mat1 = GetPaintPathMale(player.GetFacePaintIndex(), level.GetMaterialName());
+		string mat1 = GetPaintPathMale(player.GetFacePaintCategoryIndex(), player.GetFacePaintIndex(), level.GetMaterialName());
 
 		if( players_head && mat1 != "error" )
 		{
@@ -233,7 +146,7 @@ modded class PluginLifespan
 					LifespanLevel prev_level = lifespan_levels.Get(LifeSpanState.BEARD_LARGE);
 
 					player.SetFaceTexture( prev_level.GetTextureName() );
-					mat1 = GetPaintPathMale(player.GetFacePaintIndex(), prev_level.GetMaterialName());
+					mat1 = GetPaintPathMale(player.GetFacePaintCategoryIndex(), player.GetFacePaintIndex(), prev_level.GetMaterialName());
 					player.SetFaceMaterial( mat1 );
 					player.SetLifeSpanStateVisible(LifeSpanState.BEARD_EXTRA);
 					break;

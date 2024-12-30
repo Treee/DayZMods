@@ -189,60 +189,35 @@ class IAT_FP_RadialMenuDisplay extends UIScriptedMenu
 		if (!Class.CastTo(player, GetGame().GetPlayer()))
 			return;
 
-		int array1Count = player.GetFacePaintList(IAT_FP_RadialMenuCategories.CATEGORY_1).Count();
-		int array2Count = player.GetFacePaintList(IAT_FP_RadialMenuCategories.CATEGORY_2).Count() + array1Count;
-		int array3Count = player.GetFacePaintList(IAT_FP_RadialMenuCategories.CATEGORY_3).Count() + array2Count;
-		TStringArray items;
-		int i;
-		//PC PLATFORM
-		//All categories
-		if ( category == IAT_FP_RadialMenuCategories.CATEGORIES )
+		IAT_FacePaintsConfig iat_fp_config;
+		if (GetDayZGame())
 		{
-			gesture_items.Insert( new IAT_FP_RadialMenuItem( IAT_FP_RadialMenuCategories.CATEGORY_1, 		"Camo", 	category ) );
-			gesture_items.Insert( new IAT_FP_RadialMenuItem( IAT_FP_RadialMenuCategories.CATEGORY_2, 		"Flags", 	category ) );
-			gesture_items.Insert( new IAT_FP_RadialMenuItem( IAT_FP_RadialMenuCategories.CATEGORY_3, 		"Tattoo/Mask", 	category ) );
-			gesture_items.Insert( new IAT_FP_RadialMenuItem( IAT_FP_RadialMenuCategories.CATEGORY_4, 		"Scars", 	category ) );
-		}
-		//Category 1 - camo
-		else if ( category == IAT_FP_RadialMenuCategories.CATEGORY_1 )
-		{
-			items = player.GetFacePaintList(IAT_FP_RadialMenuCategories.CATEGORY_1);
-			for(i = 0; i < items.Count(); i++)
+			if (Class.CastTo(iat_fp_config, GetDayZGame().GetIATFacePaintConfig()))
 			{
-				// Print("Adding: " + items.Get(i) + "index: " + i);
-				gesture_items.Insert( new IAT_FP_RadialMenuItem( i, items.Get(i),	category ) );
+				IAT_FacePaintOptions fp_options = iat_fp_config.GetFacePaintOptions();
+				TStringArray categories = fp_options.GetCategories();
+
+				// set up initial root category	(value is -1)
+				if ( category == -1 )
+				{
+					for (int categoryIndex = 0; categoryIndex < categories.Count(); categoryIndex++)
+					{
+						gesture_items.Insert(new IAT_FP_RadialMenuItem( categoryIndex, categories.Get(categoryIndex), category));
+					}
+				}
+				// populate the item list (values starting at 0)
+				else
+				{
+					string categoryName = categories.Get(category);
+					TStringArray paintItems = fp_options.GetCategoryItems(categoryName);
+
+					for (int paintIndex = 0; paintIndex < paintItems.Count(); paintIndex++)
+					{
+						gesture_items.Insert(new IAT_FP_RadialMenuItem( paintIndex, paintItems.Get(paintIndex), category));
+					}
+				}
 			}
 		}
-		//Category 2 - flags
-		else if ( category == IAT_FP_RadialMenuCategories.CATEGORY_2 )
-		{
-			items = player.GetFacePaintList(IAT_FP_RadialMenuCategories.CATEGORY_2);
-			for(i = 0; i < items.Count(); i++)
-			{
-				// Print("Adding: " + items.Get(i) + "index: " + i+array1Count);
-				gesture_items.Insert( new IAT_FP_RadialMenuItem( i+array1Count, items.Get(i),	category ) );
-			}
-		}
-		//Category 3 - tatoos/masks
-		else if ( category == IAT_FP_RadialMenuCategories.CATEGORY_3 )
-		{
-			items = player.GetFacePaintList(IAT_FP_RadialMenuCategories.CATEGORY_3);
-			for(i = 0; i < items.Count(); i++)
-			{
-				// Print("Adding: " + items.Get(i) + "index: " + i+array2Count);
-				gesture_items.Insert( new IAT_FP_RadialMenuItem( i+array2Count, items.Get(i),	category ) );
-			}
-		}
-		//Category 4 - scars
-		else if ( category == IAT_FP_RadialMenuCategories.CATEGORY_4 )
-		{
-			items = player.GetFacePaintList(IAT_FP_RadialMenuCategories.CATEGORY_4);
-			for(i = 0; i < items.Count(); i++)
-			{
-				// Print("Adding: " + items.Get(i) + "index: " + i+array3Count);
-				gesture_items.Insert( new IAT_FP_RadialMenuItem( i+array3Count, items.Get(i),	category ) );
-			}
-    	}
 	}
 
 	protected void CreateGestureContent()
@@ -322,9 +297,7 @@ class IAT_FP_RadialMenuDisplay extends UIScriptedMenu
 	// Radial Menu Events
 	//============================================
 	//Common
-	void OnControlsChanged( RadialMenuControlType type )
-	{
-	}
+	void OnControlsChanged( RadialMenuControlType type ){}
 
 	//Mouse
 	void OnMouseSelect( Widget w )
@@ -337,9 +310,7 @@ class IAT_FP_RadialMenuDisplay extends UIScriptedMenu
 		UnmarkSelected( w );
 	}
 
-	void OnMouseExecute( Widget w )
-	{
-	}
+	void OnMouseExecute( Widget w )	{}
 
 	//! LMB
 	void OnMousePressLeft( Widget w )
@@ -371,9 +342,7 @@ class IAT_FP_RadialMenuDisplay extends UIScriptedMenu
 		UnmarkSelected( w );
 	}
 
-	void OnControllerExecute( Widget w )
-	{
-	}
+	void OnControllerExecute( Widget w ) {}
 
 	void OnControllerPressSelect( Widget w )
 	{
@@ -430,6 +399,7 @@ class IAT_FP_RadialMenuDisplay extends UIScriptedMenu
 				instance.m_IsCategorySelected = true;
 
 				//show selected category gestures
+				//PrintFormat("Client--ExecuteSelectedCategory--Category: %1 ID: %2", iat_radialmenu_item.GetCategory(), iat_radialmenu_item.GetID());
 				GetGestureItems( m_RadialItems, iat_radialmenu_item.GetID() );
 				CreateGestureContent();
 				RefreshRadialOptions( iat_radialmenu_item.GetID() );
@@ -455,6 +425,7 @@ class IAT_FP_RadialMenuDisplay extends UIScriptedMenu
 				if ( iat_radialmenu_item )
 				{
 					ScriptRPC rpc = new ScriptRPC();
+					rpc.Write(iat_radialmenu_item.GetCategory());
 					rpc.Write(iat_radialmenu_item.GetID());
 					rpc.Send(player, IAT_FACEPAINT_RPC.IAT_RPC_FP_RADIAL_MENU, true, player.GetIdentity());
 					CloseMenu();

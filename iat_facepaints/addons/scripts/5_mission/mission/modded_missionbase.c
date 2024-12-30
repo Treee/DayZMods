@@ -4,7 +4,7 @@ modded class MissionBase
 	{
 		UIScriptedMenu menu = NULL;
 		if (id == IAT_MENU_RADIAL_MULTI)
-			menu = new IAT_FP_RadialMenuItem;
+			menu = new IAT_FP_RadialMenuDisplay;
 
 		if (menu)
 		{

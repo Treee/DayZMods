@@ -1,20 +1,21 @@
 class IAT_FacePaintStick_ColorBase extends Inventory_Base
 {
   	protected int m_camoIndex = 0;
+	protected int m_camoCategoryIndex = -1;
 
 	override void SetActions()
 	{
 		super.SetActions();
 
-		AddAction(ActionPaintFace);
-		AddAction(ActionPaintFaceTarget);
+		AddAction(IAT_ActionPaintFace);
+		AddAction(IAT_ActionPaintFaceTarget);
 	}
 
 	// server side call!!
 	override void OnApply(PlayerBase player)
 	{
 		// Print("PaintStick::OnApply() " + m_camoIndex);
-		player.SetFacePaint(m_camoIndex);
+		player.SetFacePaint(m_camoCategoryIndex, m_camoIndex);
 		if (GetDayZGame().GetIATFacePaintConfig())
 		{
 			float dmg = GetDayZGame().GetIATFacePaintConfig().GetPaintStickDamagerPerUse();
@@ -25,8 +26,9 @@ class IAT_FacePaintStick_ColorBase extends Inventory_Base
 	}
 
 	// helper function for radial menu context menu selection
-	void SetCamoIndex(int currentIndex)
+	void SetCamoIndex(int categoryIndex, int currentIndex)
 	{
+		m_camoCategoryIndex = categoryIndex;
 		m_camoIndex = currentIndex;
 	}
 };
