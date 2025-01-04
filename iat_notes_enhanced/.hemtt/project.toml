@@ -1,4 +1,4 @@
-name = "iat"
+name = "iat_notes_enhanced"
 author = "ItsATreee"
 prefix = "iat"
 mainprefix = "P"
@@ -8,7 +8,7 @@ path = "release_version.hpp"
 git_hash = 0
 
 [hemtt.release]
-archive = true
+archive = false
 
 [signing]
 authority = "ItsATreeev2"

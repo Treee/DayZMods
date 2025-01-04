@@ -6,11 +6,11 @@ modded class PlayerBase
 	{
 		InitializeChromosome();
 	}
-	
+
 	void InitializeChromosome()
 	{
 		m_Chromosome = new IAT_Chromosome();
-		
+
 		// percentage of how fast any agents naturally grow within an organism 0 to 2.5x
 		IAT_GeneBase invasibilityGene = new IAT_GeneBase();
 		invasibilityGene.SetGeneType(IAT_GeneTypes.INVASIBILITY);
@@ -18,7 +18,7 @@ modded class PlayerBase
 		invasibilityGene.SetGeneMin(0);
 		invasibilityGene.SetGeneMax(255);
 		invasibilityGene.InitializeGene();
-		
+
 		// percentage chance of just getting infected at random (related to transferibility) 0 to 2.5x
 		IAT_GeneBase autoInfectGene = new IAT_GeneBase();
 		autoInfectGene.SetGeneType(IAT_GeneTypes.AUTOINFECT_PROBABILITY);
@@ -26,7 +26,7 @@ modded class PlayerBase
 		autoInfectGene.SetGeneMin(0);
 		autoInfectGene.SetGeneMax(255);
 		autoInfectGene.InitializeGene();
-		
+
 		// percentage of how susceptible the player is to 'catching' an existing illness
 		IAT_GeneBase transferInGene = new IAT_GeneBase();
 		transferInGene.SetGeneType(IAT_GeneTypes.TRANSFERIBILITY_IN);
@@ -34,7 +34,7 @@ modded class PlayerBase
 		transferInGene.SetGeneMin(0);
 		transferInGene.SetGeneMax(255);
 		transferInGene.InitializeGene();
-		
+
 		// percentage of how susceptible the player is to 'distributing' an existing illness
 		IAT_GeneBase transferOutGene = new IAT_GeneBase();
 		transferOutGene.SetGeneType(IAT_GeneTypes.TRANSFERIBILITY_OUT);
@@ -42,7 +42,7 @@ modded class PlayerBase
 		transferOutGene.SetGeneMin(0);
 		transferOutGene.SetGeneMax(255);
 		transferOutGene.InitializeGene();
-		
+
 		// percentage of how digestible agents naturally are within a stomach
 		IAT_GeneBase digestibilityGene = new IAT_GeneBase();
 		digestibilityGene.SetGeneType(IAT_GeneTypes.DIGESTIBILITY);
@@ -50,7 +50,7 @@ modded class PlayerBase
 		digestibilityGene.SetGeneMin(0);
 		digestibilityGene.SetGeneMax(255);
 		digestibilityGene.InitializeGene();
-		
+
 		// percent usefullness of antibiotics for a player
 		IAT_GeneBase antibioticGene = new IAT_GeneBase();
 		antibioticGene.SetGeneType(IAT_GeneTypes.ANTIBIOTIC_EFFICACY);
@@ -58,7 +58,7 @@ modded class PlayerBase
 		antibioticGene.SetGeneMin(0);
 		antibioticGene.SetGeneMax(255);
 		antibioticGene.InitializeGene();
-		
+
 		// the number of levels below normal illness can grow (1-3)
 		IAT_GeneBase growthPotencyGene = new IAT_GeneBase();
 		growthPotencyGene.SetGeneType(IAT_GeneTypes.GROWTH_POTENCY);
@@ -66,7 +66,7 @@ modded class PlayerBase
 		growthPotencyGene.SetGeneMin(0);
 		growthPotencyGene.SetGeneMax(255);
 		growthPotencyGene.InitializeGene();
-		
+
 		// percentage of how fast any agents naturally die within the player
 		IAT_GeneBase dieOffSpeedGene = new IAT_GeneBase();
 		dieOffSpeedGene.SetGeneType(IAT_GeneTypes.DIE_OFF_SPEED);
@@ -74,16 +74,16 @@ modded class PlayerBase
 		dieOffSpeedGene.SetGeneMin(0);
 		dieOffSpeedGene.SetGeneMax(255);
 		dieOffSpeedGene.InitializeGene();
-				
-		m_Chromosome.Insert(invasibilityGene);
-		m_Chromosome.Insert(autoInfectGene);
-		m_Chromosome.Insert(transferInGene);
-		m_Chromosome.Insert(transferOutGene);
-		m_Chromosome.Insert(digestibilityGene);
-		m_Chromosome.Insert(antibioticGene);
-		m_Chromosome.Insert(growthPotencyGene);
-		m_Chromosome.Insert(dieOffSpeedGene);
-		
+
+		m_Chromosome.InsertGene(invasibilityGene);
+		m_Chromosome.InsertGene(autoInfectGene);
+		m_Chromosome.InsertGene(transferInGene);
+		m_Chromosome.InsertGene(transferOutGene);
+		m_Chromosome.InsertGene(digestibilityGene);
+		m_Chromosome.InsertGene(antibioticGene);
+		m_Chromosome.InsertGene(growthPotencyGene);
+		m_Chromosome.InsertGene(dieOffSpeedGene);
+
 	}
 
 	IAT_Chromosome GetChromosome()
