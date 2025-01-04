@@ -7,6 +7,7 @@ class CfgPatches
 };
 class CfgMods
 {
+	// comment for workshop publish
 	class IAT_NotesEnhanced
 	{
 		type = "mod";

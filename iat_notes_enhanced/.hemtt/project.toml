@@ -8,7 +8,7 @@ path = "release_version.hpp"
 git_hash = 0
 
 [hemtt.release]
-archive = false
+archive = true
 
 [signing]
 authority = "ItsATreeev2"
