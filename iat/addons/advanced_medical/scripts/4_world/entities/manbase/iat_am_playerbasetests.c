@@ -1,7 +1,7 @@
 class IAT_AdvancedMedical_PlayerBaseTests : TestFramework
 {
 	string g_SteamId = "76561197985160398";
-	
+
 	void IAT_AdvancedMedical_PlayerBaseTests()
 	{
 		AddInitTest("PlayersHaveAChromosomeOfGenesBasedOnTheirSteamId");
@@ -12,17 +12,17 @@ class IAT_AdvancedMedical_PlayerBaseTests : TestFramework
 	TFResult PlayersHaveAChromosomeOfGenesBasedOnTheirSteamId()
 	{
 		string s = "";
-		// arrange				
+		// arrange
 		array<Man> players = new array<Man>;
 		GetGame().GetWorld().GetPlayerList(players);
 
 		PlayerBase m_Player = PlayerBase.Cast(players.Get(0));
-		
+
 		// act
 		// player creation (constructor) handles chromosome creation for us
 		Math.Randomize(g_SteamId.ToInt());
-		
-		// assert				
+
+		// assert
 		bool invasibilityCorrect = Assert(m_Player.GetChromosome() != null);
 	//INVASIBILITY, // percentage of how fast any agents naturally grow within an organism
 //	AUTOINFECT_PROBABILITY, // percentage chance of just getting infected at random (related to transferibility)
