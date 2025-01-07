@@ -78,7 +78,7 @@ modded class PluginLifespan
 		{
 			string filename = parts.Get(5);
 			filename.Replace("_beard.", "_bearded.");
-			mat1 = string.Format("iat_facepaints\\facepaints\\%1\\%2", facepaintCategory, filename);
+			mat1 = string.Format("iat_facepaints\\paints\\%1\\%2", facepaintCategory, filename);
 			// Print("mat: " + mat1);
 		}
 		return mat1;
@@ -92,7 +92,7 @@ modded class PluginLifespan
 		if (parts.Count() == 2)
 		{
 			string filename = parts.Get(1);
-			mat1 = string.Format("iat_facepaints\\facepaints\\%1\\hhl_f_%2_body.rvmat", facepaintCategory, filename);
+			mat1 = string.Format("iat_facepaints\\paints\\%1\\hhl_f_%2_body.rvmat", facepaintCategory, filename);
 			// Print("mat: " + mat1);
 		}
 		return mat1;

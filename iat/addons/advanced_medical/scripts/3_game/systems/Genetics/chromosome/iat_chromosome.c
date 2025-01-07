@@ -22,4 +22,9 @@ class IAT_Chromosome
 	{
 		return m_Genes;
 	}
+	
+	IAT_GeneBase GetGene(IAT_GeneTypes geneType)
+	{
+		return m_Genes.Get(geneType);
+	}
 };

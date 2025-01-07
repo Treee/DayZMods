@@ -3,6 +3,7 @@
 hemtt
 hemtt.exe
 *.biprivatekey
+releases
 
 # Ignore all generated rvmat content
 iat_facepaints/addons/facepaints/**/*.rvmat

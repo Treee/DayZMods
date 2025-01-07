@@ -5,7 +5,10 @@ mainprefix = "P"
 
 [version]
 path = "release_version.hpp"
-git_hash = 4
+git_hash = 0
 
 [hemtt.release]
-archive = true
+archive = false
+
+[signing]
+authority = "ItsATreeev2"
