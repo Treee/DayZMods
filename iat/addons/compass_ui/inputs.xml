@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<modded_inputs>
+  <inputs>
+    <actions>
+      <input name="UACompassToggle" loc="Survivalists_settings_compasstoggle" />
+    </actions>
+    <sorting name="Survivalists" loc="Survivalists_settings_menu">
+      <input name="UACompassToggle"/>
+    </sorting>
+  </inputs>
+  <preset>
+    <input name="UACompassToggle">
+      <btn name="kH" />
+    </input>
+  </preset>
+</modded_inputs>
