@@ -7,13 +7,12 @@ class CfgPatches
 };
 class CfgMods
 {
-	// comment for workshop publish
 	class IAT_Enhanced_BioProtection
 	{
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Enhanced BioProtection";
-		dependencies[] = { "World","Mission" };
+		dependencies[] = { "World" };
 		class defs
 		{
 			class worldScriptModule
