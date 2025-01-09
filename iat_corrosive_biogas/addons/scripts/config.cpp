@@ -7,6 +7,7 @@ class CfgPatches
 };
 class CfgMods
 {
+	// workshop meta.cpp commit
 	class IAT_Corrosive_BioGas
 	{
 		type = "mod";
