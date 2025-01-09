@@ -1,9 +1,9 @@
-name = "ItsATreee Mods";
+name = "ItsATreee Enhanced Notes";
 picture = "thumbnail_template_co.paa";
 logoSmall = "thumbnail_template_co.paa";
 logo = "thumbnail_template_co.paa";
 logoOver = "thumbnail_template_co.paa";
-tooltip = "ItsATreee Mods";
+tooltip = "ItsATreee Enhanced Notes";
 overview = "Mods Created by ItsATreee";
 action = "https://github.com/Treee/DayZMods";
 author = "ItsATreee";
