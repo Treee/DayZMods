@@ -1,0 +1,14 @@
+name = "iat_literary_devices"
+author = "ItsATreee"
+prefix = "iat_literary_devices"
+mainprefix = "P"
+
+[version]
+path = "release_version.hpp"
+git_hash = 0
+
+[hemtt.release]
+archive = true
+
+[signing]
+authority = "ItsATreeev2"

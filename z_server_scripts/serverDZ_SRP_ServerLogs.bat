@@ -1,6 +1,6 @@
 @echo off
 Y:
-cd Y:\Steam\steamapps\common\DayZServer\profile_survivalists
+cd Y:\SteamLibrary\steamapps\common\DayZServer\profile_survivalists
 
 dir /o-d /b "script_*.log" >tmp
 <tmp set /p "latest="
