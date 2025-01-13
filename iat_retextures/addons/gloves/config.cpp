@@ -50,6 +50,16 @@ class CfgVehicles
             "\dz\characters\gloves\Data\NBC_Gloves_grey_co.paa"
         };
     };
+    class NBCGlovesYellow : NBCGloves_ColorBase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] =
+        {
+            "iat_retextures\gloves\data\nbc_gloves_yellow_co.paa",
+            "iat_retextures\gloves\data\nbc_gloves_yellow_co.paa",
+            "iat_retextures\gloves\data\nbc_gloves_yellow_co.paa"
+        };
+    };
     class NBCGloves_Yellow : NBCGloves_ColorBase
     {
         scope = 2;
