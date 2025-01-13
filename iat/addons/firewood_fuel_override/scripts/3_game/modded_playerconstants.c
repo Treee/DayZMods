@@ -1,4 +1,0 @@
-modded class GameConstants
-{
-
-};
