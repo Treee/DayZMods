@@ -50,6 +50,7 @@ class CfgVehicles
             "\dz\characters\gloves\Data\NBC_Gloves_grey_co.paa"
         };
     };
+    // actual vanilla retexture since the base texture is not yellow
     class NBCGlovesYellow : NBCGloves_ColorBase
     {
         scope = 2;
