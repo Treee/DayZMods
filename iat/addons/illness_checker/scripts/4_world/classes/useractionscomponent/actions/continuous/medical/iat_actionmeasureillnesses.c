@@ -2,7 +2,7 @@ class IAT_ActionMeasureIllnessTargetCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
-		m_ActionData.m_ActionComponent = new CAContinuousTime(UATimeSpent.MEASURE_TEMP);
+		m_ActionData.m_ActionComponent = new CAContinuousTime(UATimeSpent.DEFAULT);
 	}
 };
 
@@ -29,7 +29,7 @@ class IAT_ActionMeasureIllnessTarget : ActionContinuousBase
 		PlayerBase ntarget;
 		if (Class.CastTo(ntarget, action_data.m_Target.GetObject()) && action_data.m_Player)
 		{
-			Thermometer thermometer;
+			IAT_Admin_Thermometer thermometer;
 			if (Class.CastTo(thermometer, action_data.m_MainItem))
 			{
 				SendMessageToClient( action_data.m_Player, string.Format("CHOLERA: %1", thermometer.GetAgentSeverity(1000, ntarget.GetSingleAgentCount(eAgents.CHOLERA))));
@@ -51,7 +51,7 @@ class IAT_ActionMeasureIllnessSelfCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
-		m_ActionData.m_ActionComponent = new CAContinuousTime(UATimeSpent.MEASURE_TEMP);
+		m_ActionData.m_ActionComponent = new CAContinuousTime(UATimeSpent.DEFAULT);
 	}
 };
 
@@ -84,7 +84,7 @@ class IAT_ActionMeasureIllnessSelf: ActionContinuousBase
 
 	override void OnFinishProgressServer( ActionData action_data )
 	{
-		Thermometer thermometer;
+		IAT_Admin_Thermometer thermometer;
 		if (Class.CastTo(thermometer, action_data.m_MainItem))
 		{
 			SendMessageToClient( action_data.m_Player, string.Format("CHOLERA: %1", thermometer.GetAgentSeverity(1000, action_data.m_Player.GetSingleAgentCount(eAgents.CHOLERA))));

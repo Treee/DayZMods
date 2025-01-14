@@ -1,4 +1,4 @@
-modded class Thermometer
+class IAT_Admin_Thermometer extends ItemBase
 {
 	override void SetActions()
 	{
