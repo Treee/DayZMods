@@ -2,14 +2,7 @@ class CfgPatches
 {
 	class IAT_DZ_ConfigOverrides_Gear_Consumables
 	{
-		units[] = {};
-		weapons[] = {};
-		requiredVersion = 0.1;
-		requiredAddons[] =
-		{
-			"DZ_Data",
-			"DZ_Gear_Consumables"
-		};
+		requiredAddons[] = { "DZ_Data", "DZ_Gear_Consumables" };
 	};
 };
 class CfgVehicles
@@ -27,6 +20,7 @@ class CfgVehicles
 	class GardenLime : Inventory_Base
 	{
 		canBeSplit = 1;
+		itemSize[] = { 2,3 };
 		weight = 1;
 	};
 	class NailBox : Box_Base
@@ -43,5 +37,26 @@ class CfgVehicles
 	{
 		varQuantityMax = 400;
 		weight = 1000;
+	};
+	class WoodenLog : Inventory_Base
+	{
+		varQuantityMax = 400;
+	};
+	class WoodenPlank : Inventory_Base
+	{
+		varStackMax = 20;
+		varQuantityMax = 400;
+	};
+	class MetalPlate : Inventory_Base
+	{
+		varQuantityMax = 800;
+	};
+	class Rag : Inventory_Base
+	{
+		itemSize[] = { 2,1 };
+	};
+	class GasMask_Filter : Inventory_Base
+	{
+		itemSize[] = { 2,1 };
 	};
 };
