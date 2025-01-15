@@ -41,4 +41,26 @@ class CfgVehicles
 		weight = 8;
 		itemSize[] = { 2,2 };
 	};
+	class Heatpack : Inventory_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class Pipe : Inventory_Base
+	{
+		canBeSplit = 1;
+		varQuantityInit = 1;
+		varQuantityMin = 0;
+		varQuantityMax = 50;
+		varQuantityDestroyOnMin = 1;
+		varStackMax = 1;
+	};
+	class Rope : Inventory_Base
+	{
+		canBeSplit = 1;
+		varQuantityInit = 1;
+		varQuantityMin = 0;
+		varQuantityMax = 100;
+		varQuantityDestroyOnMin = 1;
+		varStackMax = 1;
+	};
 };

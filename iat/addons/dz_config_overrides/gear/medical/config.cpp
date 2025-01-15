@@ -15,9 +15,15 @@ class CfgPatches
 class CfgVehicles
 {
 	class Edible_Base;
+	class Inventory_Base;
 
 	// ------------------------------------------ VANILLA OVERRIDE
 	class VitaminBottle : Edible_Base
+	{
+		canBeSplit = 1;
+		weight = 2;
+	};
+	class BandageDressing : Inventory_Base
 	{
 		canBeSplit = 1;
 		weight = 2;
