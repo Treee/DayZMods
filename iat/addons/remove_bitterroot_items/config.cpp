@@ -79,12 +79,6 @@ class CfgVehicles
 	class Remnants_UniversalAmmobox;
 	class Remnants_Ammobox_300WinMag : Remnants_UniversalAmmobox { scope = 0; };
 
-	class MF_Jacket_Police : Clothing { scope = 0; };
-
-	class MF_Plate_SWAT_Olive : PlateCarrierVest { scope = 0; };
-	class MF_Plate_HexTec : PlateCarrierVest { scope = 0; };
-	class MF_Police_Vest : PoliceVest { scope = 0; };
-
 	class MF_Book_Revelations : ItemBook { scope = 0; };
 
 	class MF_Folder_Base;
