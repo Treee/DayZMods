@@ -33,4 +33,36 @@ class CfgVehicles
 		canBeSplit = 1;
 		itemSize[] = { 2,1 };
 	};
+	class BakedBeansCan : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class BakedBeansCan_Opened : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class PeachesCan : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class PeachesCan_Opened : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class TacticalBaconCan : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class TacticalBaconCan_Opened : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class SpaghettiCan : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
+	class SpaghettiCan_Opened : Edible_Base
+	{
+		itemSize[] = { 1,2 };
+	};
 };
