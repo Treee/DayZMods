@@ -12,14 +12,9 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "Seed Yield Changes";
-		dependencies[] = { "Game","World" };
+		dependencies[] = { "World" };
 		class defs
 		{
-			class gameScriptModule
-			{
-				value = "";
-				files[] = { "IAT/seed_yield_change/scripts/3_game" };
-			};
 			class worldScriptModule
 			{
 				value = "";
