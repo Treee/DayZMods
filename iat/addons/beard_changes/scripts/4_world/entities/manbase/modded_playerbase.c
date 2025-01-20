@@ -2,7 +2,7 @@ modded class PlayerBase
 {
 	TStringArray GetFacialHairOptions()
 	{
-		PluginLifespan moduleLifespan = Class.Cast(GetPlugin(PluginLifespan));
+		PluginLifespan moduleLifespan = PluginLifespan.Cast(GetPlugin(PluginLifespan));
 		// if there isa lifespan plugin (client side)
 		if (moduleLifespan)
 		{	// return the list of types available
