@@ -4,13 +4,15 @@ class IAT_OneOfEverythingConfig
     protected int m_NumberObjectsPerRow;
     protected bool m_DebugMode;
     protected bool m_Enabled;
+    protected bool m_Floating;
 
-    void IAT_OneOfEverythingConfig(vector startingPoint, int numObjects, int debugMode, int enabled)
+    void IAT_OneOfEverythingConfig(vector startingPoint, int numObjects, int debugMode, int enabled, int floating)
     {
         m_StartingPoint = startingPoint;
         m_NumberObjectsPerRow = numObjects;
         m_DebugMode = debugMode;
         m_Enabled = enabled;
+        m_Floating = floating;
     }
     vector GetStartingPosition()
     {
@@ -28,6 +30,10 @@ class IAT_OneOfEverythingConfig
     {
         return m_Enabled;
     }
+    bool GetIsFloating()
+    {
+        return m_Floating;
+    }
 };
 
 class IAT_OneOfEverythingHelper
@@ -42,6 +48,7 @@ class IAT_OneOfEverythingHelper
 	protected vector m_ObjectRowPadding = "0 0 0";
 	protected vector m_LastRowStartingPosition = "0 0 0";
 
+    protected bool m_IsFloating = false;
     protected bool m_IsDebugMode = false;
     protected bool m_IsEnabled = false;
 
@@ -60,7 +67,7 @@ class IAT_OneOfEverythingHelper
             // if the actual config file doesnt exist
             if (!FileExist(jsonConfig))
             {
-                iat_OOEConfig = new IAT_OneOfEverythingConfig("4000 500 4000", 100, false, false);
+                iat_OOEConfig = new IAT_OneOfEverythingConfig("100 500 100", 100, false, false, true);
                 JsonFileLoader<ref IAT_OneOfEverythingConfig>.JsonSaveFile(jsonConfig, iat_OOEConfig);
             }
             else
@@ -79,6 +86,7 @@ class IAT_OneOfEverythingHelper
             }
             m_IsDebugMode = iat_OOEConfig.GetDebugMode();
             m_IsEnabled = iat_OOEConfig.GetIsEnabled();
+            m_IsFloating = iat_OOEConfig.GetIsFloating();
         }
         return iat_OOEConfig;
     }
@@ -132,14 +140,21 @@ class IAT_OneOfEverythingHelper
     {
         if (!GetGame())
         {
-            Print("DayZ Game Not Initialized Yet");
+            PrintDebugLog("DayZ Game Not Initialized Yet");
             return "0 0 0";
         }
+
+        if (m_IsFloating)
+        {
+            float height = GetGame().SurfaceY(position[0], position[2]);
+            position[1] = height;
+        }
+
         Object singleObject = GetGame().CreateStaticObjectUsingP3D(objectPath, position, "0 0 0");
 
         if (!singleObject)
         {
-            Print("Unable to create static object: " + objectPath);
+            PrintDebugLog(string.Format("Unable to create static object: %1", objectPath));
             return "0 0 0";
         }
 
@@ -162,8 +177,7 @@ class IAT_OneOfEverythingHelper
 		string absoluteBuffer = string.Format("%1 %2 %3", maxX, maxY, maxZ);
 		UpdateObjectRowPadding(absoluteBuffer.ToVector());
 
-        if (m_IsDebugMode)
-       	    PrintFormat("%1 has min: %2 max: %3 with absoluteBuffer of: %4", objectPath, min, max, absoluteBuffer);
+        PrintDebugLog(string.Format("%1 has min: %2 max: %3 with absoluteBuffer of: %4", objectPath, min, max, absoluteBuffer));
 
         // send out the new position offset by this objects size + some spacer distance
         maxZ = Math.Max(6, maxZ * 2);
@@ -184,5 +198,11 @@ class IAT_OneOfEverythingHelper
 			m_ObjectRowPadding[2] = newBoundaries[2];
 		}
 	}
+
+    void PrintDebugLog(string text)
+    {
+        if (m_IsDebugMode)
+            Print(text);
+    }
 
 };
