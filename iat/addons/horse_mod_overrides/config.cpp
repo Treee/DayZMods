@@ -22,7 +22,7 @@ class CfgVehicles
 	};
 	class Stable_dayz : Inventory_Base
 	{
-		itemsCargoSize[] = { 5,2 };
+		itemsCargoSize[] = { 10,2 };
 	};
 
 	class Horse_Base : AnimalBase
@@ -172,7 +172,7 @@ class CfgSoundShaders
 	};
 	class Horse_Neigh_tailDistant_SoundShader
 	{
-		volume = 0.5;
+		volume = 1;
 		range = 200;
 		rangeCurve[] = { {0,0},{50,0.8},{75,1},{100,0.5},{200,1} };
 	};
