@@ -18,7 +18,7 @@ cd "%serverLocation%"
 echo (%time%) %serverName% started.
 
 @REM start is a special console command to invoke a start process (like an exe)
-start "DayZ Server" /min "DayZServer_x64.exe" -config=serverDZ_Tombstone.cfg -port=2302 -limitfps=120 "-profiles=profile_tombstone" "-mod=P:\Mods\Tombstone;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@CF;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@VPPAdminTools;P:\Mods\@SRP_Tree_Mods;" -scrAllowFileWrite -noBenchmark -scriptDebug=true -filePatching -doLogs -adminlog
+start "DayZ Server" /min "DayZServer_x64.exe" -config=serverDZ_Tombstone.cfg -port=2302 -limitfps=120 "-profiles=profile_tombstone" "-mod=Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@CF;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@VPPAdminTools;P:\Mods\Tombstone;P:\Mods\@IAT_Dev_Release;" -scrAllowFileWrite -noBenchmark -scriptDebug=true -filePatching -doLogs -adminlog
 
 @REM P:\Mods\SRP_Server_Scripts;
 
