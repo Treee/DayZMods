@@ -69,4 +69,13 @@ class IAT_ActionReadPaper: ActionContinuousBase
 			action_data.m_Callback.InternalCommand(DayZPlayerConstants.CMD_ACTIONINT_INTERRUPT);
 		}
 	}
+	override void OnFinishProgressServer(ActionData action_data)
+	{
+		// set written notes to have 1 week lifetime when placed.
+		Paper paper;
+        if (Class.CastTo(paper, action_data.m_MainItem))
+            paper.SetLifetimeMax(604800);
+
+	}
+
 };

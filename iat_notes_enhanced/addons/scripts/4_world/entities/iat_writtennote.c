@@ -6,12 +6,31 @@ modded class Paper
 
 		AddAction(IAT_ActionReadPaper);
 	}
+
+    override string GetDisplayName()
+	{
+        string itemName = super.GetDisplayName();
+        if (GetWrittenNoteData())
+        {
+            itemName = string.Format("%1 with Text", itemName);
+        }
+		return itemName;
+	}
+
     void SetWrittenNoteInitInfo(ItemBase pen = null, ItemBase paper = null)
     {
         // try using "this" for the paper
         GetWrittenNoteData().InitNoteInfo(pen, paper);
         // Print("setting written note info " + pen.GetType() + " " + paper.GetType());
     }
+
+    override void OnVariablesSynchronized()
+	{
+		super.OnVariablesSynchronized();
+
+
+	}
+
 };
 
 modded class Pen_ColorBase
