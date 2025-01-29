@@ -1,5 +1,32 @@
+modded class WrittenNoteData
+{
+    override void SetNoteText(string text)
+	{
+        super.SetNoteText(text);
+        // if paper exists and is not empty
+        Paper paper;
+        if (Class.CastTo(paper, m_Paper) && m_SimpleText != "")
+        {
+            paper.SetHasWrittenText(true);
+        }
+	}
+};
+
 modded class Paper
 {
+    protected bool m_HasWrittenText = false;
+
+    void Paper()
+    {
+        RegisterNetSyncVariableBool("m_HasWrittenText");
+    }
+
+    override void DeferredInit()
+	{
+        super.DeferredInit();
+        UpdateVisualState();
+    }
+
     override void SetActions()
 	{
 		super.SetActions();
@@ -7,30 +34,72 @@ modded class Paper
 		AddAction(IAT_ActionReadPaper);
 	}
 
+    override void OnVariablesSynchronized()
+	{
+		super.OnVariablesSynchronized();
+
+        if (!GetGame().IsDedicatedServer())
+        {
+            // update client side texture
+            UpdateVisualState();
+        }
+	}
+
     override string GetDisplayName()
 	{
         string itemName = super.GetDisplayName();
-        if (GetWrittenNoteData())
+        if (GetHasWrittenText())
         {
             itemName = string.Format("%1 with Text", itemName);
         }
 		return itemName;
 	}
+    override void OnPlacementComplete(Man player, vector position = "0 0 0", vector orientation = "0 0 0")
+    {
+        super.OnPlacementComplete(player, position, orientation);
+        // Set lifetime to 1 week anytime a note is placed
+        SetLifetimeMax(604800);
+    }
+
+    override void AfterStoreLoad()
+	{
+		super.AfterStoreLoad();
+
+        if (GetGame().IsDedicatedServer())
+        {
+            if (GetWrittenNoteData() && GetWrittenNoteData().GetNoteText() != "")
+            {
+                SetHasWrittenText(true);
+                SetSynchDirty();
+            }
+        }
+	}
+
+    void SetHasWrittenText(bool newState)
+    {
+        m_HasWrittenText = newState;
+    }
+    bool GetHasWrittenText()
+    {
+        return m_HasWrittenText;
+    }
 
     void SetWrittenNoteInitInfo(ItemBase pen = null, ItemBase paper = null)
     {
-        // try using "this" for the paper
         GetWrittenNoteData().InitNoteInfo(pen, paper);
-        // Print("setting written note info " + pen.GetType() + " " + paper.GetType());
     }
-
-    override void OnVariablesSynchronized()
-	{
-		super.OnVariablesSynchronized();
-
-
-	}
-
+    void UpdateVisualState()
+    {
+        int selectionIdx = GetHiddenSelectionIndex("zbytek");
+        if (GetHasWrittenText())
+        {
+            SetObjectTexture(selectionIdx, "iat_notes_enhanced\\consumables\\data\\iat_paper_written_co.paa");
+        }
+        else
+        {
+            SetObjectTexture(selectionIdx, "DZ\\gear\\consumables\\data\\loot_paper_co.paa");
+        }
+    }
 };
 
 modded class Pen_ColorBase
