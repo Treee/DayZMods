@@ -5,6 +5,7 @@ modded class ActionConstructor
 		super.RegisterActions(actions);
 
 		actions.Insert(IAT_ActionReadPaper);
+		actions.Insert(IAT_ActionReadPaperTarget);
 		actions.Insert(IAT_ActionWritePaper);
     }
 };

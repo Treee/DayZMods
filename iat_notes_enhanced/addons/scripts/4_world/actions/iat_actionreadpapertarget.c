@@ -1,4 +1,4 @@
-class IAT_ActionReadPaperCB : ActionContinuousBaseCB
+class IAT_ActionReadPaperTargetCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
@@ -18,7 +18,7 @@ class IAT_ActionReadPaperCB : ActionContinuousBaseCB
 		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && (!GetGame().IsMultiplayer() || GetGame().IsServer()))
 		{
 			Paper paper;
-			if (Class.CastTo(paper, m_ActionData.m_MainItem))
+			if (m_ActionData.m_Target && Class.CastTo(paper, m_ActionData.m_Target.GetObject()))
 			{
 				Param1<string> text = new Param1<string>(paper.GetWrittenNoteData().GetNoteText());
 				paper.RPCSingleParam(ERPCs.RPC_READ_NOTE, text, true, m_ActionData.m_Player.GetIdentity());
@@ -27,11 +27,11 @@ class IAT_ActionReadPaperCB : ActionContinuousBaseCB
 	}
 };
 
-class IAT_ActionReadPaper: ActionContinuousBase
+class IAT_ActionReadPaperTarget: ActionContinuousBase
 {
-	void IAT_ActionReadPaper()
+	void IAT_ActionReadPaperTarget()
 	{
-		m_CallbackClass = IAT_ActionReadPaperCB;
+		m_CallbackClass = IAT_ActionReadPaperTargetCB;
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_VIEWNOTE;
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_PRONE;
@@ -39,13 +39,13 @@ class IAT_ActionReadPaper: ActionContinuousBase
 	}
 	override void CreateConditionComponents()
 	{
-		m_ConditionItem = new CCINonRuined;
-    	m_ConditionTarget = new CCTNone;
+		m_ConditionItem = new CCINone;
+    	m_ConditionTarget = new CCTObject(UAMaxDistances.DEFAULT);
 	}
     override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
 	{
         Paper paper;
-        if (Class.CastTo(paper, item))
+        if (Class.CastTo(paper, target.GetObject()))
             return paper.GetHasWrittenText();
 
 		return false;
