@@ -8,8 +8,14 @@ class CfgPatches
 class CfgVehicles
 {
 	class Inventory_Base;
+	class TentBase;
 
 	//==================================================== VANILLA OVERRIDE
+	class ShelterBase : TentBase
+	{
+		itemsCargoSize[] = { 10, 3 };
+	};
+
 	class Fabric : Inventory_Base
 	{
 		varStackMax = 4;
