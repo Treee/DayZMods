@@ -4,8 +4,19 @@ modded class Hologram
 	{
 		// do all the vanilla stuff
 		super.EvaluateCollision(action_item);
-		// turn off collision
-		SetIsColliding(false);
+		// turn on collision for shelter kits
+		if (m_Projection.IsInherited(ShelterKit) && IsClippingRoof())
+		{
+			SetIsColliding(true);
+		}// turn on collision for garden plots
+		else if (m_Projection.IsInherited(GardenPlot) && IsCollidingGPlot())
+		{
+			SetIsColliding(true);
+		}
+		else // everything else can be built everywhere
+		{
+			SetIsColliding(false);
+		}
 	}
 
 	override protected vector GetProjectionEntityPosition(PlayerBase player)
