@@ -53,8 +53,3 @@ start "DayZ Server" /min "DayZServer_x64.exe" -config=serverDZ_SRP.cfg -port=230
 @REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@Survivalists RP Server Modpack;
 @REM P:\Mods\@Survivalists RP Server Modpack;
 @REM P:\Mods\@SRP_Tree_Mods;
-
-
-
-Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@IAT_Weapon_Quickbar_Realism;
-Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@IAT_NotesEnhanced;

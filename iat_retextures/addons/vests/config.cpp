@@ -616,23 +616,6 @@ class CfgVehicles
             "iat_retextures\vests\data\ballisticvest19_co.paa",
         };
     };
-    class PlateCarrierHolster_ThirstyDevil : PlateCarrierHolster
-    {
-        scope = 2;
-        color = "ThirstyDevil";
-        hiddenSelections[] =
-        {
-            "camoGround",
-            "camoMale",
-            "camoFemale"
-        };
-        hiddenSelectionsTextures[] =
-        {
-            "iat_retextures\vests\data\TTD_vest_co.paa",
-            "iat_retextures\vests\data\TTD_vest_co.paa",
-            "iat_retextures\vests\data\TTD_vest_co.paa",
-        };
-    };
     class PlateCarrierHolster_EMP6 : PlateCarrierHolster
     {
         scope = 2;
@@ -957,24 +940,6 @@ class CfgVehicles
             "iat_retextures\vests\data\ballisticvest57_co.paa",
         };
     };
-    class PlateCarrierPouches_ThirstyDevil : PlateCarrierPouches
-    {
-        scope = 2;
-        color = "ThirstyDevil";
-        hiddenSelections[] =
-        {
-            "camoGround",
-            "camoMale",
-            "camoFemale"
-        };
-        hiddenSelectionsTextures[] =
-        {
-            "iat_retextures\vests\data\TTD_vest_co.paa",
-            "iat_retextures\vests\data\TTD_vest_co.paa",
-            "iat_retextures\vests\data\TTD_vest_co.paa",
-        };
-    };
-
     class SmershVest_White : SmershVest
     {
         scope = 2;
