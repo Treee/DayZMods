@@ -2,7 +2,7 @@ class CfgPatches
 {
 	class IAT_DZ_ALV_Gear_ConfigOverrides_Gear_Food
 	{
-		requiredAddons[] = { "ALV_UN_Gear_Food" };
+		requiredAddons[] = { "SRP_ALV_Gear_Food" };
 	};
 };
 class CfgVehicles
