@@ -43,7 +43,7 @@ modded class PlayerBase
 		}
 		else
 		{
-			m_IsAffectedByAreaExposure = false
+			m_IsAffectedByAreaExposure = false;
 		}
 	}
 
