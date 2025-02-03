@@ -644,9 +644,9 @@ class CfgVehicles
         color = "Orange";
         hiddenSelectionsTextures[] =
         {
-            "iat_retextures\tops\data\Janek_hoodie_co.paa",
-            "iat_retextures\tops\data\Janek_hoodie_co.paa",
-            "iat_retextures\tops\data\Janek_hoodie_co.paa"
+            "iat_retextures\tops\data\hoodie_orange_co.paa",
+            "iat_retextures\tops\data\hoodie_orange_co.paa",
+            "iat_retextures\tops\data\hoodie_orange_co.paa"
         };
     };
     class Hoodie_Grey1 : Hoodie_ColorBase
@@ -1918,9 +1918,9 @@ class CfgVehicles
         heatIsolation = 0.80000001;
         hiddenSelectionsTextures[] =
         {
-            "iat_retextures\tops\data\srp_policejacket_co.paa",
-            "iat_retextures\tops\data\srp_policejacket_co.paa",
-            "iat_retextures\tops\data\srp_policejacket_co.paa"
+            "iat_retextures\tops\data\iat_policejacket_co.paa",
+            "iat_retextures\tops\data\iat_policejacket_co.paa",
+            "iat_retextures\tops\data\iat_policejacket_co.paa"
         };
     };
     class PoliceJacket_Sheriff1 : PoliceJacket
@@ -2678,9 +2678,9 @@ class CfgVehicles
         color = "SpringRanger";
         hiddenSelectionsTextures[] =
         {
-            "iat_retextures\tops\data\srp_Hunting_jacket_Spring_Ranger_CO.paa",
-            "iat_retextures\tops\data\srp_Hunting_jacket_Spring_Ranger_CO.paa",
-            "iat_retextures\tops\data\srp_Hunting_jacket_Spring_Ranger_CO.paa"
+            "iat_retextures\tops\data\iat_Hunting_jacket_Spring_Ranger_CO.paa",
+            "iat_retextures\tops\data\iat_Hunting_jacket_Spring_Ranger_CO.paa",
+            "iat_retextures\tops\data\iat_Hunting_jacket_Spring_Ranger_CO.paa"
         };
     };
     class HuntingJacket_Black1 : HuntingJacket_ColorBase
@@ -2689,9 +2689,9 @@ class CfgVehicles
         color = "Black1";
         hiddenSelectionsTextures[] =
         {
-            "iat_retextures\tops\data\srp_hunting_vest_black_co.paa",
-            "iat_retextures\tops\data\srp_hunting_vest_black_co.paa",
-            "iat_retextures\tops\data\srp_hunting_vest_black_co.paa"
+            "iat_retextures\tops\data\iat_hunting_vest_black_co.paa",
+            "iat_retextures\tops\data\iat_hunting_vest_black_co.paa",
+            "iat_retextures\tops\data\iat_hunting_vest_black_co.paa"
         };
     };
     class HuntingJacket_NinjaPurple : HuntingJacket_ColorBase

@@ -146,9 +146,9 @@ class CfgVehicles
         descriptionShort = "Hackcock Sheriffs Department Cap";
         hiddenSelectionsTextures[] =
         {
-            "iat_retextures\headgear\data\srp_policecap_co.paa",
-            "iat_retextures\headgear\data\srp_policecap_co.paa",
-            "iat_retextures\headgear\data\srp_policecap_co.paa"
+            "iat_retextures\headgear\data\iat_policecap_co.paa",
+            "iat_retextures\headgear\data\iat_policecap_co.paa",
+            "iat_retextures\headgear\data\iat_policecap_co.paa"
         };
     };
     class BaseballCap_MTP : BaseballCap_ColorBase
