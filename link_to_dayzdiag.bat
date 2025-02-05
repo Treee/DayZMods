@@ -5,4 +5,5 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_facepaints" Z:\DayZ\Modding
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_literary_devices" Z:\DayZ\Modding\iat_literary_devices\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_simple_territories" Z:\DayZ\Modding\iat_simple_territories\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons
