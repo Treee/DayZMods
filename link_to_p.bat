@@ -6,4 +6,5 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_literary_devices" Z:\DayZ\M
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_simple_territories" Z:\DayZ\Modding\iat_simple_territories\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons
