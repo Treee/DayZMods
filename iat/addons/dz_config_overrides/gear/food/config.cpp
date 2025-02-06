@@ -65,4 +65,90 @@ class CfgVehicles
 	{
 		itemSize[] = { 1,2 };
 	};
+
+
+	class HumanSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class GoatSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class MouflonSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class BoarSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class PigSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class DeerSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class ReindeerSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class WolfSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class BearSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class CowSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class SheepSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
+	class FoxSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
+	};
 };
