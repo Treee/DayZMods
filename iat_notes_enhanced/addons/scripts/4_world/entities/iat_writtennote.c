@@ -8,6 +8,7 @@ modded class WrittenNoteData
         if (Class.CastTo(paper, m_Paper) && m_SimpleText != "")
         {
             paper.SetHasWrittenText(true);
+            paper.SetSynchDirty();
         }
 	}
 };
