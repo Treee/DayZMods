@@ -55,12 +55,6 @@ modded class Paper
         }
 		return itemName;
 	}
-    override void OnPlacementComplete(Man player, vector position = "0 0 0", vector orientation = "0 0 0")
-    {
-        super.OnPlacementComplete(player, position, orientation);
-        // Set lifetime to 1 week anytime a note is placed
-        SetLifetimeMax(604800);
-    }
 
     override void AfterStoreLoad()
 	{
