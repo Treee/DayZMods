@@ -1,0 +1,14 @@
+name = "iat_infinity_gauntlet"
+author = "ItsATreee"
+prefix = "iat_infinity_gauntlet"
+mainprefix = "P"
+
+[version]
+path = "release_version.hpp"
+git_hash = 0
+
+[hemtt.release]
+archive = false
+
+[signing]
+authority = "ItsATreeev2"

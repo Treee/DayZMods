@@ -1,0 +1,1 @@
+class IAT_InfinityStone_ColorBase extends ItemBase {};

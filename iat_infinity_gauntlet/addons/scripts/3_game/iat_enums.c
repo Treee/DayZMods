@@ -1,0 +1,4 @@
+enum IAT_IG_RPC
+{
+	SOUND_GAUNTLET_SNAP = 254667,
+}
