@@ -23,20 +23,75 @@ modded class PluginAdminLog
 
 	void LogEquippedGearContents(EntityAI attachment)
 	{
-		string itemContents = "";
+		string itemContents = string.Format("%1[%2]", attachment.GetType(), IAT_ConvertDamageStateToString(attachment.GetHealthLevel()));
+
+		array<EntityAI> itemsArray = new array<EntityAI>;
+        attachment.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
 
 		ItemBase fullItem;
-		if (Class.CastTo(fullItem, attachment))
+		Edible_Base edibleItem;
+		Magazine magazineItem;
+		// stupid backwards loops for optimization. ignore last index because its just the parent
+		for (int i = itemsArray.Count(); i > 0; i--)
 		{
-			if (fullItem.HasQuantity())
+			if (Class.CastTo(fullItem, itemsArray.Get(i)))
 			{
-				itemContents = string.Format("%1, %2(%3)", itemContents, fullItem.GetType(), fullItem.GetQuantity());
-			}
-			else
-			{
-				itemContents = string.Format("%1, %2", itemContents, fullItem.GetType());
+				// magazines
+				if (Class.CastTo(magazineItem, fullItem))
+				{
+					itemContents = string.Format("%1, %2[%3](%4)", itemContents, magazineItem.GetType(), IAT_ConvertDamageStateToString(magazineItem.GetHealthLevel()), magazineItem.GetAmmoCount());
+				}
+				else if (fullItem.HasQuantity()) // other things with quantity
+				{
+					itemContents = string.Format("%1, %2[%3](%4)", itemContents, fullItem.GetType(), IAT_ConvertDamageStateToString(fullItem.GetHealthLevel()), fullItem.GetQuantity());
+				}
+				else // single items
+				{
+					itemContents = string.Format("%1, %2[%3]", itemContents, fullItem.GetType(), IAT_ConvertDamageStateToString(fullItem.GetHealthLevel()));
+				}
+				// cookable items
+				if (Class.CastTo(edibleItem, fullItem))
+				{
+					if (edibleItem.CanBeCooked())
+					{
+						itemContents = string.Format("%1{%2}", itemContents, IAT_ConvertFoodStageToString(edibleItem));
+					}
+				}
 			}
 		}
-		LogPrint("%1 contents: %2", attachment.GetType(), itemContents);
+		LogPrint(itemContents);
+	}
+
+	string IAT_ConvertDamageStateToString(int damageState)
+	{
+		string text = "unknown";
+		switch(damageState)
+		{
+			case GameConstants.STATE_RUINED:
+				text = "ruined";
+			break;
+
+			case GameConstants.STATE_BADLY_DAMAGED:
+				text = "badly damaged";
+			break;
+
+			case GameConstants.STATE_DAMAGED:
+				text = "damaged";
+			break;
+
+			case GameConstants.STATE_WORN:
+				text = "worn";
+			break;
+
+			case GameConstants.STATE_PRISTINE:
+				text = "pristine";
+			break;
+		}
+		return text;
+	}
+
+	string IAT_ConvertFoodStageToString(Edible_Base edibleItem)
+	{
+		return edibleItem.GetFoodStageName(edibleItem.GetFoodStageType());
 	}
 };
