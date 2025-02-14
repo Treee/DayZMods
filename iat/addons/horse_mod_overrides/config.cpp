@@ -6,11 +6,31 @@ class CfgPatches
 	};
 };
 
+class CfgMods
+{
+	class IAT_HorseMod_Overrides
+	{
+		type = "mod";
+		author = "ItsATreee";
+		name = "Horse Mod Overrides";
+		dependencies[] = { "World" };
+		class defs
+		{
+			class worldScriptModule
+			{
+				value = "";
+				files[] = { "iat\horse_mod_overrides\scripts\4_world" };
+			};
+		};
+	};
+};
+
 class CfgVehicles
 {
 	class HouseNoDestruct;
 	class AnimalBase;
 	class Inventory_Base;
+	class Edible_Base;
 
 	class Land_HorseStable : HouseNoDestruct
 	{
@@ -33,7 +53,7 @@ class CfgVehicles
 			{
 				class Health
 				{
-					hitpoints = 500;
+					hitpoints = 1000;
 					healthLevels[] = { {1,{}},{0.7,{}},{0.5,{}},{0.3,{}},{0,{}} };
 				};
 				class Blood
@@ -152,6 +172,14 @@ class CfgVehicles
 				transferToolDamageCoef = 1;
 			};
 		};
+	};
+
+	class HorseSteakMeat : Edible_Base
+	{
+		displayName = "Meat";
+		descriptionShort = "A cut of meat.";
+		model = "\dz\gear\food\human_meat.p3d";
+		itemSize[] = { 1,2 };
 	};
 };
 
