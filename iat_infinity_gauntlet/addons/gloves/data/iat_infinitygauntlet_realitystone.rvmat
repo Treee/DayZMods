@@ -1,9 +1,9 @@
-ambient[]={1, 1, 1, 1};
-diffuse[]={1, 1, 1, 1};
-forcedDiffuse[]={0, 0, 0, 1};
-emmisive[]={0, 0, 0, 1};
-specular[]={1, 1, 1, 1};
-specularPower=1000;
+ambient[]={0.05,0.05,0.05,1};
+diffuse[]={0.5,0.5,0.5,1};
+forcedDiffuse[]={0,0,0,0};
+emmisive[]={0.85,0.15,0.03,0.8};
+specular[]={1.15,1.15,1.15,1};
+specularPower=500;
 PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
@@ -32,7 +32,7 @@ class Stage2
 };
 class Stage3
 {
-    texture="#(argb,8,8,3)color(1,1,1,0,MC)";
+    texture="#(argb,8,8,3)color(0,0,0,0,MC)";
     uvSource="tex";
     class uvTransform
     {
@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-    texture="#(argb,8,8,3)color(1,1,1,1,AS)";
+    texture="iat_infinity_gauntlet\gloves\data\iat_infinitygauntlet_as.paa";
     uvSource="tex";
     class uvTransform
     {
@@ -68,25 +68,25 @@ class Stage5
 };
 class Stage6
 {
-    texture="#(ai,64,64,1)fresnel(1.82,0.71)";
-    uvSource="tex";
-    class uvTransform
-    {
-        aside[]={1, 0, 0};
-        up[]={0, 1, 0};
-        dir[]={0, 0, 1};
-        pos[]={0, 0, 0};
-    };
+	texture = "#(ai,32,128,1)fresnel(1.2887,2.4191)";
+	uvSource="tex";
+	class uvTransform
+	{
+		aside[]={1,0,0};
+		up[]={0,1,0};
+		dir[]={0,0,1};
+		pos[]={0,0,0};
+	};
 };
 class Stage7
 {
-    texture="dz\data\data\env_land_co.paa";
-    uvSource="tex";
-    class uvTransform
-    {
-        aside[]={1, 0, 0};
-        up[]={0, 1, 0};
-        dir[]={0, 0, 1};
-        pos[]={0, 0, 0};
-    };
+	texture="iat_infinity_gauntlet\gloves\data\realitystone_env_co.paa";
+	uvSource="tex";
+	class uvTransform
+	{
+		aside[]={1,0,0};
+		up[]={0,1,0};
+		dir[]={0,0,0};
+		pos[]={0,0,0};
+	};
 };

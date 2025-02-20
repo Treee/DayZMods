@@ -25,7 +25,8 @@ class CfgVehicles
         varWetMax = 0;
         varWetMin = 0;
         heatIsolation = 1;
-        attachments[] = {
+        attachments[] =
+        {
             "IAT_InfinityStone_Mind",
             "IAT_InfinityStone_Power",
             "IAT_InfinityStone_Reality",
@@ -33,15 +34,19 @@ class CfgVehicles
             "IAT_InfinityStone_Space",
             "IAT_InfinityStone_Time"
         };
-        hiddenSelections[] = { "camoGround", "camoMale", "camoFemale", "personality" };
+        hiddenSelections[] = { "camo", "personality" };
+        hiddenSelectionsMaterials[] =
+        {
+            "iat_infinity_gauntlet\gloves\data\iat_infinitygauntlet_AJgold.rvmat"
+        };
         class DamageSystem
         {
             class GlobalHealth
             {
                 class Health
                 {
-                    hitpoints = 165;
-                    healthLevels[] = { {1, {"DZ\Characters\gloves\data\TacticalGloves.rvmat"}}, {0.7, {"DZ\Characters\gloves\data\TacticalGloves.rvmat"}}, {0.5, {"DZ\Characters\gloves\data\TacticalGloves_damage.rvmat"}}, {0.3, {"DZ\Characters\gloves\data\TacticalGloves_damage.rvmat"}}, {0, {"DZ\Characters\gloves\data\TacticalGloves_destruct.rvmat"}} };
+                    hitpoints = 16500;
+                    healthLevels[] = { {1, {""}}, {0.7, {""}}, {0.5, {""}}, {0.3, {""}}, {0, {""}} };
                 };
             };
             class GlobalArmor
@@ -66,8 +71,9 @@ class CfgVehicles
         class ClothingTypes
         {
             male = "iat_infinity_gauntlet\gloves\iat_infinitygauntlet_m.p3d";
-            female = "iat_infinity_gauntlet\gloves\iat_infinitygauntlet_m.p3d";
+            female = "iat_infinity_gauntlet\gloves\iat_infinitygauntlet_f.p3d";
         };
+        soundImpactType = "metal";
         class AnimEvents
         {
             class SoundWeapon
@@ -86,10 +92,13 @@ class CfgVehicles
         };
     };
 
-    class IAT_InfinityGauntlet_Default : IAT_InfinityGauntlet_ColorBase
+    class IAT_InfinityGauntlet : IAT_InfinityGauntlet_ColorBase
     {
         scope = 2;
         visibilityModifier = 0.7;
-        hiddenSelectionsTextures[] = { "DZ\characters\gloves\data\TacticalGloves_beige_co.paa", "DZ\characters\gloves\data\TacticalGloves_beige_co.paa", "DZ\characters\gloves\data\TacticalGloves_beige_co.paa" };
+        hiddenSelectionsTextures[] =
+        {
+            "iat_infinity_gauntlet\gloves\data\iat_infinitygauntlet_2_co.paa"
+        };
     };
 };
