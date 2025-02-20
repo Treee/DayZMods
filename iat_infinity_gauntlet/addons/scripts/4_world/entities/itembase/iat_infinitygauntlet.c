@@ -21,7 +21,7 @@ class IAT_InfinityGauntlet_ColorBase extends Gloves_Base
 		players.ShuffleArray();
 
 		int numPlayersHalf = players.Count() / 2;
-		PrintFormat("BalanceTheUniverse================================================== %1", numPlayersHalf);
+		// PrintFormat("BalanceTheUniverse================================================== %1", numPlayersHalf);
 		PlayerBase player;
 		foreach (int index, Man p : players)
 		{
@@ -29,7 +29,7 @@ class IAT_InfinityGauntlet_ColorBase extends Gloves_Base
 			if (index >= numPlayersHalf)
 				return;
 
-			PrintFormat("index: %1", index);
+			// PrintFormat("index: %1", index);
 			// cast to a playerbase for rpc fun
 			if (Class.CastTo(player, p))
 			{
@@ -85,7 +85,12 @@ class IAT_InfinityGauntlet_ColorBase extends Gloves_Base
 	}
 	vector GetSnapParticlePosition()
 	{
-		return "0 0 0";
+		vector particlePosition = "0 0 0";
+		if (MemoryPointExists("snap_particle"))
+		{
+			particlePosition = GetMemoryPointPos("snap_particle");
+		}
+		return particlePosition;
 	}
 
     override void OnRPC(PlayerIdentity sender, int rpc_type, ParamsReadContext ctx)
