@@ -4,6 +4,11 @@ modded class PlayerBase
 
 	override protected void OnContaminatedAreaEnterServer()
 	{
+		// try to add corrosion to all slots, needs to happen before a fully protected player is short circuited
+		// because they could have an exposed backpack or belt.
+		TryAddCorrosiveAgents();
+
+
 		// check if the player is affected by area exposure
 		if (!m_IsAffectedByAreaExposure)
 			return;
@@ -47,9 +52,22 @@ modded class PlayerBase
 		}
 	}
 
+	override protected void OnContaminatedAreaExitServer()
+	{
+		super.OnContaminatedAreaExitServer();
+
+		// try to add corrosion to all slots
+		TryAddCorrosiveAgents();
+	}
+
 	TStringArray GetProtectiveClothingSlotList()
 	{
 		return {"Headgear", "Body", "Gloves", "Legs", "Feet", "Back"};
+	}
+
+	TStringArray GetCorrisionApplicableSlotsList()
+	{
+		return {"Headgear", "Mask", "Eyewear", "Shoulder", "Melee", "Vest", "Body", "Hips", "Legs", "Back", "Gloves", "Hands", "Armband", "Feet", "Coat", "Scarf"};
 	}
 
 	void DamageWornClothing()
@@ -102,5 +120,50 @@ modded class PlayerBase
 	{
 		if (m_IsAffectedByAreaExposure && !HasEnoughChemicalProtection())
 			GetModifiersManager().ActivateModifier( eModifiers.MDF_AREAEXPOSURE );
+	}
+
+	void TryAddCorrosiveAgents()
+	{
+		// if the player inventory exists
+		if (GetInventory())
+		{
+			array<EntityAI> itemsArray = new array<EntityAI>;
+			TStringArray attachedClothing = GetCorrisionApplicableSlotsList();
+			ItemBase clothingPiece;
+			ItemBase clothingItem;
+			float agentsToAdd = 1;
+			// foreach normal bioprotection slot
+			foreach(string slot_name: attachedClothing)
+			{
+				if (Class.CastTo(clothingPiece, GetItemOnSlot(slot_name)))
+				{
+					itemsArray.Clear();
+					clothingPiece.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
+					// get any protection on the item
+					float protectiveArmor = clothingPiece.GetProtectionLevel(DEF_CHEMICAL);
+
+					foreach (EntityAI cargoItem : itemsArray)
+					{
+						agentsToAdd = 1;
+						if (Class.CastTo(clothingItem, cargoItem))
+						{
+							clothingItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
+							clothingItem.SetCorrosiveAgents(true);
+							clothingItem.SetSynchDirty();
+						}
+						// if (protectiveArmor > 0)
+						// {
+						// 	agentsToAdd = Math.Max(0, (agentsToAdd - protectiveArmor));
+						// 	cargoItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
+						// 	// add agents relative to the protection
+						// 	// technically vanilal doesnt have a concept of an agent pool for items so this is useless for now
+						// }
+						// else
+						// {
+						// }
+					}
+				}
+			}
+		}
 	}
 };
