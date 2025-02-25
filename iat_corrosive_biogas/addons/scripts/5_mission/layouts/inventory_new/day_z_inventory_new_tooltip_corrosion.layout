@@ -6,6 +6,7 @@ ImageWidgetClass ItemCorrosionWidgetBackground {
     color 1 1 1 0
     position 0 0
     size 160 20
+    halign center_ref
     hexactpos 1
     vexactpos 1
     hexactsize 1
@@ -18,7 +19,7 @@ ImageWidgetClass ItemCorrosionWidgetBackground {
         TextWidgetClass ItemCorrosionWidget {
             clipchildren 0
             ignorepointer 1
-            position 1.01974 -0.02696
+            position 0 0
             size 1 1
             halign center_ref
             valign center_ref
@@ -26,11 +27,11 @@ ImageWidgetClass ItemCorrosionWidgetBackground {
             vexactpos 0
             hexactsize 0
             vexactsize 0
+            priority 1
             style Normal
             text "Corrosion"
             font "gui/fonts/sdf_MetronLight24"
             "text color" 1 1 1 1
-            "text spacing" 2 0
             "exact text" 0
             text_proportion 0.75
             "size to text h" 0

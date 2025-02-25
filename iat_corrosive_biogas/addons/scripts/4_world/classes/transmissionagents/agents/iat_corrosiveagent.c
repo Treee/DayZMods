@@ -12,7 +12,7 @@ class IAT_CorrosiveAgent extends AgentBase
 		m_TransferabilityIn		= 1;
 		m_TransferabilityOut	= 1;
 		m_AntibioticsResistance = 1;
-		m_MaxCount 				= 5000;
+		m_MaxCount 				= 10;
 		m_Potency 				= EStatLevels.CRITICAL;
 		m_DieOffSpeed 			= 0;
 	}

@@ -1,22 +1,39 @@
 modded class InspectMenuNew
 {
+	override Widget Init()
+	{
+		layoutRoot = super.Init();
+
+		Widget element = Widget.Cast( GetGame().GetWorkspace().CreateWidgets( "iat_corrosive_biogas/scripts/5_mission/layouts/inventory_new/day_z_inventory_new_inspect_corrosion.layout", layoutRoot ) );
+		Widget mainInfoPanelWidget = layoutRoot.FindAnyWidget("InventoryInfoPanelWidget");
+		mainInfoPanelWidget.AddChild(element);
+
+		return layoutRoot;
+	}
+
+	override void SetItem(EntityAI item)
+	{
+		super.SetItem(item);
+		if (item)
+		{
+			InspectMenuNew.UpdateItemInfoCorrosion(layoutRoot, item);
+		}
+	}
+
 	static void UpdateItemInfoCorrosion(Widget root_widget, EntityAI item)
 	{
 		if ( item.IsInherited( ZombieBase ) || item.IsInherited( Car ) ) return;
 
-		float temperature;
-		ObjectTemperatureState temperatureState;
-		ItemBase item_base = ItemBase.Cast(item);
-
-		if (item_base && item.CanHaveTemperature())
+		ItemBase item_base;
+		if (Class.CastTo(item_base, item) && item_base.HasCorrosiveAgents())
 		{
-			temperature = item_base.GetTemperature();
-			temperatureState = ObjectTemperatureState.GetStateData(temperature);
+			// agents, show green
+			WidgetTrySetText(root_widget, "ItemCorrosionWidget", "Corrosion", Colors.COLOR_LIVONIA_EMERALD_GREEN);
 		}
-
-		if (!temperatureState || temperatureState.m_State == EObjectTemperatureState.NEUTRAL)
-			WidgetTrySetText(root_widget, "ItemTemperatureWidget", "");
 		else
-			WidgetTrySetText(root_widget, "ItemTemperatureWidget", temperatureState.m_LocalizedName, temperatureState.m_Color);
+		{
+			// no agents
+			WidgetTrySetText(root_widget, "ItemCorrosionWidget", "");
+		}
 	}
 };

@@ -1,10 +1,10 @@
-ImageWidgetClass ItemDamageWidgetBackground {
+ImageWidgetClass ItemCorrosionWidgetBackground {
     visible 1
     clipchildren 0
     inheritalpha 0
     ignorepointer 1
     color 1 1 1 0
-    position -0.4 -0.45
+    position -0.24 -0.37
     size 0.15 0.03
     halign center_ref
     valign center_ref
@@ -18,11 +18,9 @@ ImageWidgetClass ItemDamageWidgetBackground {
     "src alpha" 0
     filter 1
     {
-        TextWidgetClass ItemDamageWidget {
-            visible 1
-            inheritalpha 0
-            position 0.53496 -1.1098
-            size 1 0.64616
+        TextWidgetClass ItemCorrosionWidget {
+            position 0 0
+            size 1 1
             halign center_ref
             valign center_ref
             hexactpos 0

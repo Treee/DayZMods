@@ -4,6 +4,11 @@ modded class PlayerBase
 
 	override protected void OnContaminatedAreaEnterServer()
 	{
+		// try to add corrosion to all slots, needs to happen before a fully protected player is short circuited
+		// because they could have an exposed backpack or belt.
+		TryAddCorrosiveAgents();
+
+
 		// check if the player is affected by area exposure
 		if (!m_IsAffectedByAreaExposure)
 			return;
@@ -40,12 +45,19 @@ modded class PlayerBase
 					m_EffectAreaTimeToTick.Set(IAT_EffectAreaType.CORROSIVE_BIOGAS, timeSpent);
 				}
 			}
-			TryAddCorrosiveAgents();
 		}
 		else
 		{
 			m_IsAffectedByAreaExposure = false;
 		}
+	}
+
+	override protected void OnContaminatedAreaExitServer()
+	{
+		super.OnContaminatedAreaExitServer();
+
+		// try to add corrosion to all slots
+		TryAddCorrosiveAgents();
 	}
 
 	TStringArray GetProtectiveClothingSlotList()
@@ -118,6 +130,7 @@ modded class PlayerBase
 			array<EntityAI> itemsArray = new array<EntityAI>;
 			TStringArray attachedClothing = GetCorrisionApplicableSlotsList();
 			ItemBase clothingPiece;
+			ItemBase clothingItem;
 			float agentsToAdd = 1;
 			// foreach normal bioprotection slot
 			foreach(string slot_name: attachedClothing)
@@ -132,16 +145,22 @@ modded class PlayerBase
 					foreach (EntityAI cargoItem : itemsArray)
 					{
 						agentsToAdd = 1;
-						if (protectiveArmor > 0)
+						if (Class.CastTo(clothingItem, cargoItem))
 						{
-							agentsToAdd = Math.Max(0, (agentsToAdd - protectiveArmor));
-							cargoItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
-							// add agents relative to the protection
+							clothingItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
+							clothingItem.SetCorrosiveAgents(true);
+							clothingItem.SetSynchDirty();
 						}
-						else
-						{
-							cargoItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
-						}
+						// if (protectiveArmor > 0)
+						// {
+						// 	agentsToAdd = Math.Max(0, (agentsToAdd - protectiveArmor));
+						// 	cargoItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
+						// 	// add agents relative to the protection
+						// 	// technically vanilal doesnt have a concept of an agent pool for items so this is useless for now
+						// }
+						// else
+						// {
+						// }
 					}
 				}
 			}
