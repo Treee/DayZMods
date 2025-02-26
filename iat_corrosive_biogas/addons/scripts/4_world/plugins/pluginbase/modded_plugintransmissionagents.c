@@ -7,8 +7,7 @@ modded class PluginTransmissionAgents
 
 	override float TransmitAgentsEx(EntityAI source, EntityAI target, int pathway, int dose_size = 1000, int agents = 0)
 	{
-		super.TransmitAgentsEx(source, target, pathway, dose_size, agents);
-
+		float count = super.TransmitAgentsEx(source, target, pathway, dose_size, agents);
 		// item entering inventory
 		if (pathway == AGT_INV_IN)
 		{
@@ -29,17 +28,17 @@ modded class PluginTransmissionAgents
 					}
 				}
 			}
-			else
+			// transfer it to the target as well
+			if (Class.CastTo(invItem, target))
 			{
-				if (Class.CastTo(invItem, target))
+				if (!invItem.HasCorrosiveAgents())
 				{
-					if (!invItem.HasCorrosiveAgents())
-					{
-						invItem.SetCorrosiveAgents(true);
-						invItem.SetSynchDirty();
-					}
+					invItem.SetCorrosiveAgents(true);
+					invItem.SetSynchDirty();
 				}
 			}
+			count = 1;
 		}
+		return count;
 	}
 };

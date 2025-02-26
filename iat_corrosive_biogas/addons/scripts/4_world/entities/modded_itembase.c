@@ -32,45 +32,22 @@ modded class ItemBase
 		super.OnItemLocationChanged(old_owner, new_owner);
 		if (GetGame().IsDedicatedServer())
 		{
-			if (HasCorrosiveAgents())
+			if (new_owner && HasCorrosiveAgents())
 			{
-				PlayerBase player;
-				if (Class.CastTo())
-				PlayerBase pb_Player = PlayerBase.Cast(player);
-				TransmitCorrosionAgents(pb_Player)
+				TransmitCorrosionAgents(new_owner);
 			}
 		}
 	}
 
-	// override void OnInventoryEnter(Man player)
-	// {
-	// 	super.OnInventoryEnter(player);
-	// 	if (GetGame().IsDedicatedServer())
-	// 	{
-	// 		if (HasCorrosiveAgents())
-	// 		{
-	// 			PlayerBase pb_Player = PlayerBase.Cast(player);
-	// 			TransmitCorrosionAgents(pb_Player)
-	// 		}
-	// 	}
-	// }
-
-	void TransmitCorrosionAgents(PlayerBase player)
+	void TransmitCorrosionAgents(EntityAI target)
 	{
 		PluginTransmissionAgents plugin = PluginTransmissionAgents.Cast(GetPlugin(PluginTransmissionAgents));
-		return plugin.TransmitAgentsEx(this, player, AGT_INV_IN, 1, IAT_CB_Agents.CORROSION);
+		plugin.TransmitAgentsEx(this, target, AGT_INV_IN, 1, IAT_CB_Agents.CORROSION);
 	}
 
 	bool HasCorrosiveAgents()
 	{
-		if (GetGame().IsDedicatedServer())
-		{
-			return ContainsAgent(IAT_CB_Agents.CORROSION);
-		}
-		else
-		{
-			return m_HasCorrosiveAgent;
-		}
+		return m_HasCorrosiveAgent;
 	}
 
 	// used by the server to flag the client it has agents. bandaid for now until a more advanced agent system is available
