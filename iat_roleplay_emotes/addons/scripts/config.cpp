@@ -12,13 +12,23 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Roleplay Emotes";
-		dependencies[] = { "World" };
+		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{
+			class gameScriptModule
+			{
+				value = "";
+				files[] = { "iat_roleplay_emotes/scripts/3_game" };
+			};
 			class worldScriptModule
 			{
 				value = "";
 				files[] = { "iat_roleplay_emotes/scripts/4_world" };
+			};
+			class missionScriptModule
+			{
+				value = "";
+				files[] = { "iat_roleplay_emotes/scripts/5_mission" };
 			};
 		};
 	};
