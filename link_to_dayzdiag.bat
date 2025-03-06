@@ -6,6 +6,7 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_infinity_gauntlet" Z:\DayZ\
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_literary_devices" Z:\DayZ\Modding\iat_literary_devices\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_map_border_teleport" Z:\DayZ\Modding\iat_map_border_teleport\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_radio_volume_control" Z:\DayZ\Modding\iat_radio_volume_control\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_roleplay_emotes" Z:\DayZ\Modding\iat_roleplay_emotes\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_simple_territories" Z:\DayZ\Modding\iat_simple_territories\addons
