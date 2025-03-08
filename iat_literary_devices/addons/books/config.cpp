@@ -148,6 +148,111 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "dz\gear\books\data\book_kniga_co.paa" };
     };
 
+    class IAT_LiteraryDevices_Notebook_ColorBase : ItemBook
+    {
+        scope = 0; // dont spawn this in
+        displayName = "Base class do not spawn in";
+        descriptionShort = "Base class do not spawn in";
+        model = "DZ\gear\books\Book_kniga.p3d";
+        hiddenSelections[] = { "camoGround" };
+        hiddenSelectionsTextures[] = { "DZ\gear\books\data\book_kniga_co.paa" };
+        attachments[] = { "IAT_Pen" };
+        inventorySlot[] =
+        {
+            "IAT_Book_0",
+                "IAT_Book_1",
+                "IAT_Book_2",
+                "IAT_Book_3",
+                "IAT_Book_4",
+                "IAT_Book_5",
+                "IAT_Book_6",
+                "IAT_Book_7",
+                "IAT_Book_8",
+                "IAT_Book_9",
+                "IAT_Book_10",
+                "IAT_Book_11",
+                "IAT_Book_12",
+                "IAT_Book_13",
+                "IAT_Book_14",
+                "IAT_Book_15",
+                "IAT_Book_16",
+                "IAT_Book_17",
+                "IAT_Book_18",
+                "IAT_Book_19",
+                "IAT_Book_20",
+                "IAT_Book_21",
+                "IAT_Book_22",
+                "IAT_Book_23",
+                "IAT_Book_24",
+                "IAT_Book_25",
+                "IAT_Book_26",
+                "IAT_Book_27",
+                "IAT_Book_28",
+                "IAT_Book_29",
+                "IAT_Book_30",
+                "IAT_Book_31",
+                "IAT_Book_32",
+                "IAT_Book_33",
+                "IAT_Book_34",
+                "IAT_Book_35",
+                "IAT_Book_36",
+                "IAT_Book_37",
+                "IAT_Book_38",
+                "IAT_Book_39",
+                "IAT_Book_40",
+                "IAT_Book_41",
+                "IAT_Book_42",
+                "IAT_Book_43",
+                "IAT_Book_44",
+                "IAT_Book_45",
+                "IAT_Book_46",
+                "IAT_Book_47",
+                "IAT_Book_48",
+                "IAT_Book_49",
+                "IAT_Book_50"
+        };
+        rotationFlags = 1;
+        weight = 140;
+        itemSize[] = { 2,2 };
+        itemsCargoSize[] = { 10,2 };
+        canBeDigged = 1;
+        allowOwnedCargoManipulation = 1;
+        isMeleeWeapon = 1;
+        class GUIInventoryAttachmentsProps
+        {
+            class IAT_Pen
+            {
+                name = "Pen Slot";
+                attachmentSlots[] = { "IAT_Pen" };
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 50;
+                    healthLevels[] =
+                    {
+                        {1.0,{"DZ\gear\books\Data\book.rvmat"}},
+                        {0.69999999,{"DZ\gear\books\Data\book.rvmat"}},
+                        {0.5,{"DZ\gear\books\Data\book_damage.rvmat"}},
+                        {0.30000001,{"DZ\gear\books\Data\book_damage.rvmat"}},
+                        {0.1,{"DZ\gear\books\Data\book_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+    };
+
+    class IAT_LiteraryDevices_Notebook_Basic : IAT_LiteraryDevices_Notebook_ColorBase
+    {
+        scope = 2;
+        displayName = "Notebook";
+        descriptionShort = "A notebook that can be used to carry paper, notes and a pen";
+    };
+
     //===================== MultiBooks
     class IAT_LiteraryDevices_MultiBook_Encyclopedia : IAT_LiteraryDevices_MultiBook_Colorbase
     {

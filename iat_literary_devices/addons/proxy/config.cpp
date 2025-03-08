@@ -7,6 +7,12 @@ class CfgPatches
 };
 class CfgSlots
 {
+    class Slot_IAT_Pen
+    {
+        name = "IAT_Pen";
+        displayName = "Pen";
+        ghostIcon = "set:dayz_inventory image:missing";
+    };
     class Slot_IAT_Book_0
     {
         name = "IAT_Book_0";

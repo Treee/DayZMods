@@ -124,6 +124,46 @@ class IAT_LiteraryDevices_MultiBook_Colorbase extends ItemBook
     }
 };
 
+//=============================== NOTEBOOK THAT HOLDS ONLY PAPER
+class IAT_LiteraryDevices_Notebook_ColorBase extends ItemBook
+{
+    override bool CanReceiveItemIntoCargo (EntityAI item)
+	{
+        if (item.IsInherited(Paper))
+            return true;
+        return false;
+
+        // in case people want other things inside
+        // ItemBase notebookItem;
+        // if (Class.CastTo(notebookItem, item))
+        // {
+        //     return notebookItem.CanBeStoredInNotebook();
+        // }
+        return false;
+	}
+    override bool CanLoadItemIntoCargo( EntityAI item )
+    {
+        if (item.IsInherited(Paper))
+            return true;
+        return false;
+
+        // ItemBase notebookItem;
+        // if (Class.CastTo(notebookItem, item))
+        // {
+        //     return notebookItem.CanBeStoredInNotebook();
+        // }
+        // return false;
+    }
+    bool IsFullNotebook()
+    {
+        if (GetInventory())
+        {
+            return GetInventory().GetCargo().GetItemCount() == 20;
+        }
+        return false;
+    }
+};
+
 //=============================== PREDEFINED BOOK LISTS
 class IAT_LiteraryDevices_MultiBookTablet_Colorbase extends IAT_LiteraryDevices_MultiBook_Colorbase
 {
@@ -140,7 +180,7 @@ class IAT_LiteraryDevices_MultiBookTablet_Colorbase extends IAT_LiteraryDevices_
 	{
 		return false;
 	}
-	override void OnIgnitedTarget( EntityAI ignited_item ){}
+	override void OnIgnitedTarget( EntityAI target_item ){}
 	override void OnIgnitedThis( EntityAI fire_source ){}
 	override bool IsThisIgnitionSuccessful( EntityAI item_source = NULL )
 	{
