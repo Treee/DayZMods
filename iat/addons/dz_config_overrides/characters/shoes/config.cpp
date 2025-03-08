@@ -20,6 +20,7 @@ class CfgVehicles
 	};
 	class HikingBoots_ColorBase : Clothing
 	{
+		soundAttType = "Boots";
 		itemSize[] = { 2,2 };
 	};
 	class HikingBootsLow_ColorBase : Clothing
@@ -65,5 +66,13 @@ class CfgVehicles
 	class Ballerinas_ColorBase : Clothing
 	{
 		itemSize[] = { 2,2 };
+	};
+	class NBCBootsBase : Clothing
+	{
+		soundAttType = "Sneakers";
+	};
+	class TTSKOBoots : Clothing
+	{
+		soundAttType = "Boots";
 	};
 };
