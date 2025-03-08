@@ -6,5 +6,6 @@ modded class PluginRecipesManager
 
         RegisterRecipe(new IAT_DecraftBook_Paper);
         RegisterRecipe(new IAT_CraftNoteBook);
+        RegisterRecipe(new IAT_CraftNoteBookFromPaper);
 	}
 };
