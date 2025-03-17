@@ -17,4 +17,24 @@ modded class DayZGame
 		}
 		return m_iatTeleportLinkConfig;
 	}
+
+	void IAT_AddNewTeleportAnchor(string objectName, vector objectPosition)
+	{
+		m_iatTeleportLinkConfig.AddNewTeleportAnchor(objectName, objectPosition);
+	}
+
+	void IAT_AddNewTeleportDestination(string objectName, vector objectPosition, vector objectDestination)
+	{
+		m_iatTeleportLinkConfig.AddNewTeleportDestination(objectName, objectPosition, objectDestination);
+	}
+
+	void IAT_ClearTeleporterDestinations(string objectName, vector objectPosition)
+	{
+		m_iatTeleportLinkConfig.ClearTeleporterDestinations(objectName, objectPosition);
+	}
+
+	IAT_TeleportLinkData IAT_IsValidTeleporter(string objectName, vector objectPosition)
+	{
+		return m_iatTeleportLinkConfig.IsValidTeleporter(objectName, objectPosition);
+	}
 };

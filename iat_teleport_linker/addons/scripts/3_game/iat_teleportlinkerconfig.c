@@ -7,7 +7,7 @@ class IAT_TeleportLinkConfig
 	[NonSerialized()]
     protected string m_JsonFile = "TeleportLinkerConfig.json";
 
-	protected ref array<IAT_TeleportLinkData> m_TeleportLinks;
+	protected ref array<ref IAT_TeleportLinkData> m_TeleportLinks;
 
 	IAT_TeleportLinkConfig TryGetTeleportLinkConfig()
 	{
@@ -19,22 +19,22 @@ class IAT_TeleportLinkConfig
 			MakeDirectory(rootFilePath);
 		}
 
-		IAT_TeleportLinkConfig iat_TLConfig;
+		// new config object
+		IAT_TeleportLinkConfig iat_TLConfig = new IAT_TeleportLinkConfig();
+
 		string jsonConfig = string.Format("%1\\%2", rootFilePath, m_JsonFile);
 		// if the actual config file doesnt exist
 		if (!FileExist(jsonConfig))
 		{
 			PrintFormat("[IAT_Teleport_Linker] Create new json file: %1", jsonConfig);
-			// new config object
-			iat_TLConfig = new IAT_TeleportLinkConfig();
 			// set some default values
-			m_TeleportLinks = new array<IAT_TeleportLinkData>;
+			m_TeleportLinks = new array<ref IAT_TeleportLinkData>;
 			// write the file to "create it"
 			JsonFileLoader<ref IAT_TeleportLinkConfig>.JsonSaveFile(jsonConfig, iat_TLConfig);
 		}
 		else
 		{
-			Print("[IAT_Teleport_Linker] Load config from: %1", rootFilePath);
+			PrintFormat("[IAT_Teleport_Linker] Load config from: %1", jsonConfig);
 			// file exists, just load it from disk
 			JsonFileLoader<ref IAT_TeleportLinkConfig>.JsonLoadFile(jsonConfig, iat_TLConfig);
 		}
@@ -46,7 +46,7 @@ class IAT_TeleportLinkConfig
 	{
 		foreach(IAT_TeleportLinkData teleportLink : m_TeleportLinks)
 		{
-			if (teleportLink.Exists(teleportClassName, teleportPosition))
+			if (teleportLink.TeleportExists(teleportClassName, teleportPosition))
 			{
 				// found an existing record here, cannot add duplicates
 				PrintFormat("[IAT_Teleport_Linker] Unable to Add New Teleport Anchor since it already exists: %1 %2", teleportClassName, teleportPosition);
@@ -63,7 +63,7 @@ class IAT_TeleportLinkConfig
 	{
 		foreach(IAT_TeleportLinkData teleportLink : m_TeleportLinks)
 		{
-			if (teleportLink.Exists(teleportClassName, teleportPosition))
+			if (teleportLink.TeleportExists(teleportClassName, teleportPosition))
 			{
 				// found an existing record here, add to the array
 				teleportLink.AddDestination(teleportDestination);
@@ -81,7 +81,7 @@ class IAT_TeleportLinkConfig
 	{
 		foreach(IAT_TeleportLinkData teleportLink : m_TeleportLinks)
 		{
-			if (teleportLink.Exists(teleportClassName, teleportPosition))
+			if (teleportLink.TeleportExists(teleportClassName, teleportPosition))
 			{
 				// found an existing record here, add to the array
 				teleportLink.ClearDestinations();
@@ -95,11 +95,24 @@ class IAT_TeleportLinkConfig
 		return false;
 	}
 
+	IAT_TeleportLinkData IsValidTeleporter(string teleportClassName, vector teleportPosition)
+	{
+		foreach(IAT_TeleportLinkData teleportLink : m_TeleportLinks)
+		{
+			if (teleportLink.TeleportExists(teleportClassName, teleportPosition))
+			{
+				return teleportLink;
+			}
+		}
+		return null;
+	}
+
 	void SaveConfig()
 	{
+		// non serialized values are empty here because a loaded config isnt a 'new config'
 		string rootFilePath = string.Format("%1\\%2\\%3", m_DayZFolder, m_RootConfigFolder, m_JsonFile);
-		JsonFileLoader<ref IAT_TeleportLinkConfig>.JsonSaveFile(rootFilePath, this);
-		Print("[IAT_Teleport_Linker] Config Saved");
+		JsonFileLoader<IAT_TeleportLinkConfig>.JsonSaveFile(rootFilePath, this);
+		PrintFormat("[IAT_Teleport_Linker] Config Saved: %1", rootFilePath);
 	}
 
 
@@ -107,7 +120,7 @@ class IAT_TeleportLinkConfig
 	// Getters & Setters
 	// ==================================================================================
 
-	array<IAT_TeleportLinkData> GetTeleportLinkData()
+	array<ref IAT_TeleportLinkData> GetTeleportLinkData()
 	{
 		return m_TeleportLinks;
 	}

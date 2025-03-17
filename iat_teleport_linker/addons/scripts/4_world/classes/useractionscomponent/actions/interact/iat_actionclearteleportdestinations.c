@@ -1,15 +1,15 @@
-class IAT_ActionClearTeleportDestination: ActionInteractBase
+class IAT_ActionClearTeleportDestination: ActionSingleUseBase
 {
 	void IAT_ActionClearTeleportDestination()
 	{
 		m_CommandUID 	= DayZPlayerConstants.CMD_ACTIONMOD_OPENDOORFW;
-		m_StanceMask 	= DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT;
+		m_CommandUIDProne = DayZPlayerConstants.CMD_ACTIONFB_OPENITEM_ONCE;
 		m_Text 			= "Clear Teleport Destinations";
 	}
 
 	override void CreateConditionComponents()
 	{
-		m_ConditionItem 	= new CCINone();
+		m_ConditionItem = new CCINonRuined;
 		m_ConditionTarget 	= new CCTCursor();
 	}
 
@@ -19,7 +19,7 @@ class IAT_ActionClearTeleportDestination: ActionInteractBase
 		// target exists
 		if (target && target.GetObject())
 		{
-			IAT_Teleport_Linker linker;
+			IAT_TeleportLinker_Basic linker;
 			if (Class.CastTo(linker, item))
 			{
 				// target is the same object as our anchor teleporter
@@ -36,7 +36,7 @@ class IAT_ActionClearTeleportDestination: ActionInteractBase
 		if (!target)
 			return false;
 
-		IAT_Teleport_Linker linker;
+		IAT_TeleportLinker_Basic linker;
 		if (Class.CastTo(linker, item))
 		{
 			// target is the same object as our anchor teleporter
@@ -48,11 +48,11 @@ class IAT_ActionClearTeleportDestination: ActionInteractBase
 		return false;
 	}
 
-	override void OnEndServer(ActionData action_data)
+	override void OnExecuteServer(ActionData action_data)
 	{
-		super.OnEndServer(action_data);
+		super.OnExecuteServer(action_data);
 
-		IAT_Teleport_Linker linker;
+		IAT_TeleportLinker_Basic linker;
 		if (Class.CastTo(linker, action_data.m_MainItem))
 		{
 			// have the server side memory config update itself

@@ -6,5 +6,7 @@ modded class ActionConstructor
 
 		actions.Insert(IAT_ActionSetAnchorTeleporter);
 		actions.Insert(IAT_ActionSetTeleportDestination);
+		actions.Insert(IAT_ActionClearTeleportDestination);
+		actions.Insert(IAT_ActionTeleportToDestination);
 	}
 };

@@ -12,7 +12,7 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Teleport Linker";
-		dependencies[] = { "Game", "World" };
+		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{
 			class gameScriptModule
@@ -24,6 +24,11 @@ class CfgMods
 			{
 				value = "";
 				files[] = { "iat_teleport_linker/scripts/4_world" };
+			};
+			class missionScriptModule
+			{
+				value = "";
+				files[] = { "iat_teleport_linker/scripts/5_mission" };
 			};
 		};
 	};

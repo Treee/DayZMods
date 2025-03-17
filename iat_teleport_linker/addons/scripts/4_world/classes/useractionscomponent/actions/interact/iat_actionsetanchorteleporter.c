@@ -1,15 +1,15 @@
-class IAT_ActionSetAnchorTeleporter: ActionInteractBase
+class IAT_ActionSetAnchorTeleporter: ActionSingleUseBase
 {
 	void IAT_ActionSetAnchorTeleporter()
 	{
 		m_CommandUID 	= DayZPlayerConstants.CMD_ACTIONMOD_OPENDOORFW;
-		m_StanceMask 	= DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT;
+		m_CommandUIDProne = DayZPlayerConstants.CMD_ACTIONFB_OPENITEM_ONCE;
 		m_Text 			= "Set Anchor Teleporter";
 	}
 
 	override void CreateConditionComponents()
 	{
-		m_ConditionItem 	= new CCINone();
+		m_ConditionItem = new CCINonRuined;
 		m_ConditionTarget 	= new CCTCursor();
 	}
 
@@ -28,17 +28,17 @@ class IAT_ActionSetAnchorTeleporter: ActionInteractBase
 			return false;
 
 		// let any object pass
-		if (target && target.GetObject())
+		if (target.GetObject())
 			return true;
 
 		return false;
 	}
 
-	override void OnEndServer(ActionData action_data)
+	override void OnExecuteServer(ActionData action_data)
 	{
-		super.OnEndServer(action_data);
+		super.OnExecuteServer(action_data);
 
-		IAT_Teleport_Linker linker;
+		IAT_TeleportLinker_Basic linker;
 		if (Class.CastTo(linker, action_data.m_MainItem))
 		{
 			// set the main anchor object on the hammer

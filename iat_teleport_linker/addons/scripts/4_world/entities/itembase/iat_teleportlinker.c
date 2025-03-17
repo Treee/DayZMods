@@ -1,6 +1,6 @@
 class IAT_TeleportLinker_Basic extends ItemBase
 {
-	protected ref Object m_BaseTeleportAnchor;
+	protected Object m_BaseTeleportAnchor;
 
 	void IAT_TeleportLinker_Basic()
 	{
@@ -18,24 +18,23 @@ class IAT_TeleportLinker_Basic extends ItemBase
 		super.SetActions();
 
 		AddAction(IAT_ActionSetAnchorTeleporter);
+		AddAction(IAT_ActionSetTeleportDestination);
+		AddAction(IAT_ActionClearTeleportDestination);
 	}
 
 	void UpdateAnchorTeleporter()
 	{
-		IAT_TeleportLinkConfig config = GetDayZGame().GetIATTeleportLinkConfig();
-		config.AddNewTeleportAnchor(GetBaseTeleporterTypeName(), GetBaseTeleporterAnchorPosition());
+		GetDayZGame().IAT_AddNewTeleportAnchor(GetBaseTeleporterTypeName(), GetBaseTeleporterAnchorPosition());
 	}
 
 	void UpdateTeleporterDestination(vector teleportDestination)
 	{
-		IAT_TeleportLinkConfig config = GetDayZGame().GetIATTeleportLinkConfig();
-		config.AddNewTeleportDestination(GetBaseTeleporterTypeName(), GetBaseTeleporterAnchorPosition(), teleportDestination);
+		GetDayZGame().IAT_AddNewTeleportDestination(GetBaseTeleporterTypeName(), GetBaseTeleporterAnchorPosition(), teleportDestination);
 	}
 
 	void ClearTeleporterDestinations()
 	{
-		IAT_TeleportLinkConfig config = GetDayZGame().GetIATTeleportLinkConfig();
-		config.ClearTeleporterDestinations(GetBaseTeleporterTypeName(), GetBaseTeleporterAnchorPosition());
+		GetDayZGame().IAT_ClearTeleporterDestinations(GetBaseTeleporterTypeName(), GetBaseTeleporterAnchorPosition());
 	}
 
 	bool HasAnchorTeleport()
