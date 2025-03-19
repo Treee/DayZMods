@@ -5,6 +5,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_facepaints" Z:\DayZ\Modding
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_infinity_gauntlet" Z:\DayZ\Modding\iat_infinity_gauntlet\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_literary_devices" Z:\DayZ\Modding\iat_literary_devices\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_map_border_teleport" Z:\DayZ\Modding\iat_map_border_teleport\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_molotov_firegrenades" Z:\DayZ\Modding\iat_molotov_firegrenades\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_radio_mute" Z:\DayZ\Modding\iat_radio_mute\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
