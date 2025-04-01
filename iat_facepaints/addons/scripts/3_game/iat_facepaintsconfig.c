@@ -71,4 +71,15 @@ class IAT_FacePaintsConfig
 	{
 		return m_FacePaintOptions;
 	}
+
+	// ==================================================================================
+	// Helpers
+	// ==================================================================================
+	void PrettyPrint()
+	{
+		Print("--[BEGIN]");
+		PrintFormat("--m_PaintStickDamagePerUse: %1", GetPaintStickDamagerPerUse());
+		PrintFormat("--m_SavePlayerPaintsToDatabase: %1", GetSavePlayerPaintsToDatabase());
+		Print("--[END]");
+	}
 };

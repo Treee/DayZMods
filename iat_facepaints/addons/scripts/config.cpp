@@ -7,6 +7,7 @@ class CfgMods
 		name = "IAT FacePaints";
 		dir = "iat_facepaints";
 		dependencies[] = { "Game", "World", "Mission" };
+		storageVersion = 1;
 		class defs
 		{
 			class gameScriptModule

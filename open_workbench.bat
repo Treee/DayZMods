@@ -1,4 +1,4 @@
-start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod=P:\Mods\@IAT_TeleportLinker_Dev;"
+start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod=P:\Mods\@IAT_MolotovGrenades_Dev;"
 
 
 
