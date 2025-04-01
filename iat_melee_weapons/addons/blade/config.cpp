@@ -10,7 +10,7 @@ class CfgAmmo
 {
     class MeleeSlash;
 
-    class SRP_MeleeSlash_1HSword : MeleeSlash
+    class IAT_MeleeSlash_1HSword : MeleeSlash
     {
         class DamageApplied
         {
@@ -29,8 +29,8 @@ class CfgAmmo
             };
         };
     };
-    class SRP_MeleeSlash_1HSwordHeavy : SRP_MeleeSlash_1HSword {};
-    class SRP_MeleeSlash_2HSword : MeleeSlash
+    class IAT_MeleeSlash_1HSwordHeavy : IAT_MeleeSlash_1HSword {};
+    class IAT_MeleeSlash_2HSword : MeleeSlash
     {
         class DamageApplied
         {
@@ -49,9 +49,9 @@ class CfgAmmo
             };
         };
     };
-    class SRP_MeleeSlash_2HSwordHeavy : SRP_MeleeSlash_2HSword {};
+    class IAT_MeleeSlash_2HSwordHeavy : IAT_MeleeSlash_2HSword {};
 
-    class SRP_MeleeSlash_2HSword_OneHitKill : MeleeSlash
+    class IAT_MeleeSlash_2HSword_OneHitKill : MeleeSlash
     {
         class DamageApplied
         {
@@ -70,9 +70,9 @@ class CfgAmmo
             };
         };
     };
-    class SRP_MeleeSlash_2HSword_OneHitKillHeavy : SRP_MeleeSlash_2HSword_OneHitKill {};
+    class IAT_MeleeSlash_2HSword_OneHitKillHeavy : IAT_MeleeSlash_2HSword_OneHitKill {};
 
-    class SRP_MeleeSlash_2HSword_Stun : MeleeSlash
+    class IAT_MeleeSlash_2HSword_Stun : MeleeSlash
     {
         class DamageApplied
         {
@@ -91,7 +91,7 @@ class CfgAmmo
             };
         };
     };
-    class SRP_MeleeSlash_2HSword_StunHeavy : SRP_MeleeSlash_2HSword_Stun
+    class IAT_MeleeSlash_2HSword_StunHeavy : IAT_MeleeSlash_2HSword_Stun
     {
         class DamageApplied
         {
@@ -161,9 +161,9 @@ class CfgVehicles
                     {
                         {1.0, { "iat_melee_weapons\blade\data\iat_berserksword.rvmat"}},
                         {0.69999999, { "iat_melee_weapons\blade\data\iat_berserksword.rvmat"}},
-                        {0.5, { "iat_melee_weapons\blade\data\srp_berserksword_damage.rvmat"}},
-                        {0.30000001, { "iat_melee_weapons\blade\data\srp_berserksword_damage.rvmat"}},
-                        {0.0, { "iat_melee_weapons\blade\data\srp_berserksword_destruct.rvmat"}}
+                        {0.5, { "iat_melee_weapons\blade\data\iat_berserksword_damage.rvmat"}},
+                        {0.30000001, { "iat_melee_weapons\blade\data\iat_berserksword_damage.rvmat"}},
+                        {0.0, { "iat_melee_weapons\blade\data\iat_berserksword_destruct.rvmat"}}
                     };
                 };
             };
@@ -172,17 +172,17 @@ class CfgVehicles
         {
             class Default
             {
-                ammo = "SRP_MeleeSlash_2HSword";
+                ammo = "IAT_MeleeSlash_2HSword";
                 range = 1.8;
             };
             class Heavy
             {
-                ammo = "SRP_MeleeSlash_2HSwordHeavy";
+                ammo = "IAT_MeleeSlash_2HSwordHeavy";
                 range = 1.8;
             };
             class Sprint
             {
-                ammo = "SRP_MeleeSlash_2HSwordHeavy";
+                ammo = "IAT_MeleeSlash_2HSwordHeavy";
                 range = 3.9;
             };
         };
@@ -212,6 +212,8 @@ class CfgVehicles
     class IAT_Melee_BerserkSword_Basic : IAT_Melee_BerserkSword_ColorBase
     {
         scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_berserksword_co.paa" };
     };
 
     class IAT_Melee_BerserkSword_Illusive : IAT_Melee_BerserkSword_ColorBase
@@ -224,17 +226,17 @@ class CfgVehicles
         {
             class Default
             {
-                ammo = "SRP_MeleeSlash_2HSword_Stun";
+                ammo = "IAT_MeleeSlash_2HSword_Stun";
                 range = 1.8;
             };
             class Heavy
             {
-                ammo = "SRP_MeleeSlash_2HSword_StunHeavy";
+                ammo = "IAT_MeleeSlash_2HSword_StunHeavy";
                 range = 1.8;
             };
             class Sprint
             {
-                ammo = "SRP_MeleeSlash_2HSword_StunHeavy";
+                ammo = "IAT_MeleeSlash_2HSword_StunHeavy";
                 range = 3.9;
             };
         };
