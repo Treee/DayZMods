@@ -1,0 +1,52 @@
+EffectDef {
+ MinFPS 30
+ Emitors {
+  EmitorDef Clouds {
+   ShapeType Ellipse
+   ShapeSize 100 0.1 100
+   ConeAngle 0 0 0
+   MaxNum 10
+   BirthRate 1
+   BirthRateRND 1
+   BirthRateVel 1
+   Offset 0 0 0
+   Angles 0 0 0
+   LocalTransform 0
+   Material "graphics/Particles/materials/smoke/smoke_dust_01_em2.emat"
+   ScaleY 0.33
+   SizeMultiplier 65
+   SizeRND 25
+   RandomRotDir 0
+   RotMultiplier 1
+   VelAngle 0
+   RandomAngle 0
+   Sort 1
+   BillboardingType Full
+   Velocity 0.2
+   VelocityRND 0.2
+   VelAffect 0
+   AirResistance 1
+   AirResistanceRND 0
+   GravityMultiply 0
+   Wind 0
+   AnimFPS 30
+   RandomFrame 1
+   LifeTime 10
+   LifeTimeRND 5
+   Color {
+    0 0.6392 0.4177 0 0.1719 0.8165 0.3165 0 0.3352 0.8228 0.5633 0.0063 0.5455 0.8291 0.3101 0 0.7415 0.8797 0.4367 0 0.8764 0.8228 0.4367 0 1 0.7152 0.4114 0
+   }
+   Alpha {
+    0 0 0.0625 0 0.5 0.51266 0.9375 0 1 0
+   }
+   RotationSpeed {
+    0 0.50633 0.50223 1 1 0.50633
+   }
+   Size {
+    0 1 0.49926 1 1 1
+   }
+   EffectTime 1
+   Repeat 1
+  }
+ }
+}

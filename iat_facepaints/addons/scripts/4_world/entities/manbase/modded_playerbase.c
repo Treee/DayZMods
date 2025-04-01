@@ -61,6 +61,10 @@ modded class PlayerBase
 			break;
 		}
 	}
+
+
+	//=============================================== CF MOD STORAGE "FIX"
+	#ifndef CF_MODSTORAGE
 	override void OnStoreSaveLifespan( ParamsWriteContext ctx )
 	{
 		// preserve order of call heiarchy
@@ -102,6 +106,51 @@ modded class PlayerBase
 		// who cares if it works, return true lol
 		return true;
 	}
+	#endif
+	#ifdef CF_MODSTORAGE
+	override void CF_OnStoreSave(CF_ModStorageMap storage)
+	{
+		super.CF_OnStoreSave(storage);
+
+		auto ctx = storage[IAT_FacePaints_Scripts];
+		if (!ctx) return;
+
+		if (GetDayZGame().GetIATFacePaintConfig())
+		{
+			if (GetDayZGame().GetIATFacePaintConfig().GetSavePlayerPaintsToDatabase())
+			{
+				// write my value
+				ctx.Write(m_FacePaintIndex);
+				ctx.Write(m_FacePaintCategoryIndex);
+			}
+		}
+	}
+	override bool CF_OnStoreLoad(CF_ModStorageMap storage)
+	{
+		if (!super.CF_OnStoreLoad(storage)) return false;
+
+		auto ctx = storage[IAT_FacePaints_Scripts];
+		if (!ctx) return true;
+
+		int facePaintIndex = -1;
+		int facePaintCategoryIndex = -1;
+
+		if (GetDayZGame().GetIATFacePaintConfig())
+		{
+			if (GetDayZGame().GetIATFacePaintConfig().GetSavePlayerPaintsToDatabase())
+			{
+				// read the value serially
+				if(ctx.Read( facePaintIndex ))
+					m_FacePaintIndex = facePaintIndex;
+
+				if(ctx.Read( facePaintCategoryIndex ))
+					m_FacePaintCategoryIndex = facePaintCategoryIndex;
+			}
+		}
+		return true;
+	}
+	#endif
+	//=============================================== CF MOD STORAGE "FIX"
 
 	// ===============================================
 	// CUSTOM

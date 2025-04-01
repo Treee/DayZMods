@@ -4,7 +4,8 @@ modded class DayZGame
 
 	void SetIATFacePaintConfig(IAT_FacePaintsConfig config)
 	{
-		Print("IAT_FacePaintsConfig Settings Received From Server");
+		Print("IAT_FacePaintsConfig Settings Initialized On Server");
+		config.PrettyPrint();
 		m_iatFacePaintConfig = config;
 	}
 
@@ -18,3 +19,8 @@ modded class DayZGame
 		return m_iatFacePaintConfig;
 	}
 };
+
+
+#ifdef CF_MODSTORAGE
+class IAT_FacePaints_Scripts extends ModStructure{};
+#endif

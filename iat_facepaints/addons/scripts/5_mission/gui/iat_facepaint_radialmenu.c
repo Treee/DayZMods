@@ -181,7 +181,7 @@ class IAT_FP_RadialMenuDisplay extends UIScriptedMenu
 		UpdateControlsElements();
 	}
 
-	protected void GetGestureItems( out ref array<ref IAT_FP_RadialMenuItem> gesture_items, IAT_FP_RadialMenuCategories category)
+	protected void GetGestureItems( out array<ref IAT_FP_RadialMenuItem> gesture_items, IAT_FP_RadialMenuCategories category)
 	{
 		gesture_items.Clear();
 
