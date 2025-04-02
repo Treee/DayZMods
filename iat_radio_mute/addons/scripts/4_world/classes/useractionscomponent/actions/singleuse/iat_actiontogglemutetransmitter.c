@@ -42,6 +42,11 @@ class IAT_ActionToggleMuteTransmitter: ActionSingleUseBase
 		{
 			if (transmitter.HasEnergyManager() && transmitter.GetCompEM().IsWorking())
 			{
+				// dont let the action show when world radio is active
+				#ifdef AdmiralsWorldRadioModMod
+				if (transmitter.IsRadioMode())
+					return false;
+				#endif
 				return true;
 			}
 		}

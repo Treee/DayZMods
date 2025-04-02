@@ -2,7 +2,7 @@ class CfgPatches
 {
 	class IAT_Radio_Mute_Scripts
 	{
-		requiredAddons[] = { "DZ_Data", "DZ_Scripts", };
+		requiredAddons[] = { "DZ_Data", "DZ_Scripts" };
 	};
 };
 class CfgMods
