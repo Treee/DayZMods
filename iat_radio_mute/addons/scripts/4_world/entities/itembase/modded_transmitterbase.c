@@ -75,8 +75,13 @@ modded class TransmitterBase
 	{
 		if (GetGame().IsDedicatedServer())
 		{
+			// mute helper
 			IAT_SetMuted(true);
+			// 60% battery reduction when only receiving
+			GetCompEM().SetEnergyUsage(GetCompEM().GetEnergyUsage() * 0.4);
+			// update the actual state of the radio
 			UpdateMuteRadioState();
+			// netsync with client
 			SetSynchDirty();
 		}
 	}
@@ -85,8 +90,13 @@ modded class TransmitterBase
 	{
 		if (GetGame().IsDedicatedServer())
 		{
+			// mute helper
 			IAT_SetMuted(false);
+			// reset the energy consumption when transmiting
+			GetCompEM().ResetEnergyUsage();
+			// update the actual state of the radio
 			UpdateMuteRadioState();
+			// sync with client
 			SetSynchDirty();
 		}
 	}
