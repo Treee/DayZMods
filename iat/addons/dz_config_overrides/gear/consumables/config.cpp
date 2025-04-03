@@ -59,4 +59,12 @@ class CfgVehicles
 	{
 		itemSize[] = { 2,1 };
 	};
+	class Chemlight_ColorBase : Inventory_Base
+	{
+		inventorySlot[] += { "VestGrenadeA", "VestGrenadeB", "VestGrenadeC", "VestGrenadeD" };
+	};
+	class Roadflare : Inventory_Base
+	{
+		inventorySlot[] += { "VestGrenadeA", "VestGrenadeB", "VestGrenadeC", "VestGrenadeD" };
+	};
 };
