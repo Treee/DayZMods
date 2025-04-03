@@ -22,6 +22,7 @@ class CfgVehicles
 	{
 		soundAttType = "Boots";
 		itemSize[] = { 2,2 };
+		attachments[] += { "IAT_Weapon_Derringer" };
 	};
 	class HikingBootsLow_ColorBase : Clothing
 	{
@@ -30,6 +31,7 @@ class CfgVehicles
 	class Wellies_ColorBase : Clothing
 	{
 		itemSize[] = { 2,2 };
+		attachments[] += { "IAT_Weapon_Derringer" };
 	};
 	class WorkingBoots_ColorBase : Clothing
 	{
@@ -38,6 +40,7 @@ class CfgVehicles
 	class JungleBoots_ColorBase : Clothing
 	{
 		itemSize[] = { 2,2 };
+		attachments[] += { "IAT_Weapon_Derringer" };
 	};
 	class DressShoes_ColorBase : Clothing
 	{
@@ -46,6 +49,7 @@ class CfgVehicles
 	class MilitaryBoots_ColorBase : Clothing
 	{
 		itemSize[] = { 2,2 };
+		attachments[] += { "IAT_Weapon_Derringer" };
 	};
 	class CombatBoots_ColorBase : Clothing
 	{
@@ -74,5 +78,6 @@ class CfgVehicles
 	class TTSKOBoots : Clothing
 	{
 		soundAttType = "Boots";
+		attachments[] += { "IAT_Weapon_Derringer" };
 	};
 };
