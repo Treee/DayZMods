@@ -12,6 +12,7 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_radio_mute" Z:\DayZ\Modding
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_roleplay_emotes" Z:\DayZ\Modding\iat_roleplay_emotes\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_simple_territories" Z:\DayZ\Modding\iat_simple_territories\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons

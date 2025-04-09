@@ -12,6 +12,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_radio_mute" Z:\DayZ\Modding
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_roleplay_emotes" Z:\DayZ\Modding\iat_roleplay_emotes\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_simple_territories" Z:\DayZ\Modding\iat_simple_territories\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons
