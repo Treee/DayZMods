@@ -19,6 +19,7 @@ class IAT_TeleportLinkConfig
 			MakeDirectory(rootFilePath);
 		}
 
+		string errorMessage;
 		// new config object
 		IAT_TeleportLinkConfig iat_TLConfig = new IAT_TeleportLinkConfig();
 
@@ -30,13 +31,15 @@ class IAT_TeleportLinkConfig
 			// set some default values
 			m_TeleportLinks = new array<ref IAT_TeleportLinkData>;
 			// write the file to "create it"
-			JsonFileLoader<ref IAT_TeleportLinkConfig>.JsonSaveFile(jsonConfig, iat_TLConfig);
+			if (!JsonFileLoader<ref IAT_TeleportLinkConfig>.SaveFile(jsonConfig, iat_TLConfig, errorMessage))
+				ErrorEx(errorMessage);
 		}
 		else
 		{
 			PrintFormat("[IAT_Teleport_Linker] Load config from: %1", jsonConfig);
 			// file exists, just load it from disk
-			JsonFileLoader<ref IAT_TeleportLinkConfig>.JsonLoadFile(jsonConfig, iat_TLConfig);
+			if (!JsonFileLoader<ref IAT_TeleportLinkConfig>.LoadFile(jsonConfig, iat_TLConfig, errorMessage))
+				ErrorEx(errorMessage);
 		}
 		// return what we found
         return iat_TLConfig;
@@ -109,9 +112,11 @@ class IAT_TeleportLinkConfig
 
 	void SaveConfig()
 	{
+		string errorMessage;
 		// non serialized values are empty here because a loaded config isnt a 'new config'
 		string rootFilePath = string.Format("%1\\%2\\%3", m_DayZFolder, m_RootConfigFolder, m_JsonFile);
-		JsonFileLoader<IAT_TeleportLinkConfig>.JsonSaveFile(rootFilePath, this);
+		if (!JsonFileLoader<IAT_TeleportLinkConfig>.SaveFile(rootFilePath, this, errorMessage))
+			ErrorEx(errorMessage);
 		PrintFormat("[IAT_Teleport_Linker] Config Saved: %1", rootFilePath);
 	}
 

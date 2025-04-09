@@ -66,6 +66,7 @@ class IAT_FacePaintOptions
 		category1_options.Insert("austria");
 		category1_options.Insert("belgium");
 		category1_options.Insert("brazil");
+		category1_options.Insert("canada");
 		category1_options.Insert("chile");
 		category1_options.Insert("colombia");
 		category1_options.Insert("croatia");
