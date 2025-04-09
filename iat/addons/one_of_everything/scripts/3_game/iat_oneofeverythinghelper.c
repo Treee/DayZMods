@@ -63,16 +63,19 @@ class IAT_OneOfEverythingHelper
             {
                 MakeDirectory(rootFilePath);
             }
+            string errorMessage;
             string jsonConfig = string.Format("%1\\%2", rootFilePath, m_JsonFile);
             // if the actual config file doesnt exist
             if (!FileExist(jsonConfig))
             {
                 iat_OOEConfig = new IAT_OneOfEverythingConfig("100 500 100", 100, false, false, true);
-                JsonFileLoader<ref IAT_OneOfEverythingConfig>.JsonSaveFile(jsonConfig, iat_OOEConfig);
+                if (!JsonFileLoader<ref IAT_OneOfEverythingConfig>.SaveFile(jsonConfig, iat_OOEConfig, errorMessage))
+                    ErrorEx(errorMessage);
             }
             else
             {
-                JsonFileLoader<ref IAT_OneOfEverythingConfig>.JsonLoadFile(jsonConfig, iat_OOEConfig);
+                if (!JsonFileLoader<ref IAT_OneOfEverythingConfig>.LoadFile(jsonConfig, iat_OOEConfig, errorMessage))
+                    ErrorEx(errorMessage);
             }
 
             string p3dText = string.Format("%1\\%2", rootFilePath, m_P3dTextFile);
