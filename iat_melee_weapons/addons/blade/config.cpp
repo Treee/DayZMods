@@ -112,7 +112,6 @@ class CfgAmmo
     };
 };
 
-
 class CfgVehicles
 {
     class Inventory_Base;
@@ -137,6 +136,9 @@ class CfgVehicles
         repairableWithKits[] = { 4 };
         repairCosts[] = { 50 };
         isMeleeWeapon = 1;
+        hiddenSelections[] = { "zbytek", "handle" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_berserksword_co.paa" };
+        hiddenSelectionsMaterials[] = { "iat_melee_weapons\blade\data\iat_berserksword.rvmat" };
         class InventorySlotsOffsets
         {
             class Shoulder
@@ -222,6 +224,25 @@ class CfgVehicles
         displayName = "The Dragon Slayer";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_berserksword_illusive_co.paa" };
+        hiddenSelectionsMaterials[] = { "iat_melee_weapons\blade\data\iat_berserksword_illusive.rvmat" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 750;
+                    healthLevels[] =
+                    {
+                        {1.0, { "iat_melee_weapons\blade\data\iat_berserksword_illusive.rvmat"}},
+                        {0.69999999, { "iat_melee_weapons\blade\data\iat_berserksword_illusive.rvmat"}},
+                        {0.5, { "iat_melee_weapons\blade\data\iat_berserksword_illusive_damage.rvmat"}},
+                        {0.30000001, { "iat_melee_weapons\blade\data\iat_berserksword_illusive_damage.rvmat"}},
+                        {0.0, { "iat_melee_weapons\blade\data\iat_berserksword_illusive_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
         class MeleeModes
         {
             class Default
