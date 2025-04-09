@@ -36,7 +36,6 @@ class IAT_IncendiaryArea_Static extends IncendiaryArea_Base
 	override void SetupZoneData(  EffectAreaParams params )
 	{
 		super.SetupZoneData( params );
-		Print("")
 	}
 
 	override void EEInit()
