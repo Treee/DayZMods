@@ -11,7 +11,7 @@ for (paintCategory, index) in paintCategories {
 
 	// skip the template folder
 	if (formattedPaintCategory == "atemplates")	{ continue; }
-
+	if (formattedPaintCategory == "atemplates_emmissive")	{ continue; }
 	// only consider directories
 	if (HEMTT_VFS.join("addons").join("paints").join(formattedPaintCategory).is_dir())
 	{

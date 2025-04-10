@@ -5,7 +5,6 @@ modded class PluginLifespan
 	override void LoadFromCfg()
 	{
 		super.LoadFromCfg();
-		// m_TotalCountFacePaints = GetFacePaintCamoOptions().Count() + GetFacePaintFlagOptions().Count() + GetFacePaintMaskOptions().Count() + GetFacePaintScarOptions().Count();
 		CalculateFacePaintTotals();
 	}
 
