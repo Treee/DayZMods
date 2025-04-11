@@ -102,11 +102,16 @@ class IAT_FacePaintOptions
 		category2_options.Insert("clown1");
 		category2_options.Insert("demon");
 		category2_options.Insert("geisha1");
+		category2_options.Insert("glowstick_blue");
+		category2_options.Insert("glowstick_green");
+		category2_options.Insert("glowstick_red");
+		category2_options.Insert("glowstick_white");
+		category2_options.Insert("glowstick_yellow");
 		category2_options.Insert("skullface");
 		category2_options.Insert("spaceman");
 		category2_options.Insert("starchild");
-		category2_options.Insert("tatoo_teardrop");
-		s_FacePaintOptionsMap.Insert("masks_&_tatoos", category2_options);
+		category2_options.Insert("tattoo_teardrop");
+		s_FacePaintOptionsMap.Insert("masks_&_tattoos", category2_options);
 
 		array<string> category3_options = new ref array<string>;
 		category3_options.Insert("left_cheek_bruise");
