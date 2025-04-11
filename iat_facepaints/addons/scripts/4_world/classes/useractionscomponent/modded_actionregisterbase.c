@@ -9,5 +9,7 @@ modded class ActionConstructor
 
     	actions.Insert(IAT_ActionWashFace);
 		actions.Insert(IAT_ActionWashFaceTarget);
+
+		actions.Insert(IAT_ActionEatGlowStick);
 	}
 };

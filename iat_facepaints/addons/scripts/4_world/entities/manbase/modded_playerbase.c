@@ -62,6 +62,27 @@ modded class PlayerBase
 		}
 	}
 
+	override bool Consume(PlayerConsumeData data)
+	{
+		// if the existing code returns false
+		if (!super.Consume(data))
+		{
+			// try to consume the chemlight
+			Chemlight_ColorBase chemlight;
+			// null check cast to chemlight
+			if (Class.CastTo(chemlight, data.m_Source))
+			{
+				// if it cannot be consumed; short circuit
+				if (!chemlight.CanBeConsumed())
+					return false;
+				if (data.m_Type == EConsumeType.ITEM_SINGLE_TIME || data.m_Type == EConsumeType.ITEM_CONTINUOUS)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	//=============================================== CF MOD STORAGE "FIX"
 	#ifndef CF_MODSTORAGE
