@@ -39,6 +39,22 @@ modded class ItemBase
 		}
 	}
 
+	// when an item gets drenched, remove corrosion
+	override void OnWetLevelChanged(EWetnessLevel newLevel, EWetnessLevel oldLevel)
+	{
+		super.OnWetLevelChanged(newLevel, oldLevel);
+
+		if (GetGame().IsDedicatedServer())
+		{
+			if (HasCorrosiveAgents() && newLevel >= EWetnessLevel.WET || oldLevel >= EWetnessLevel.WET)
+			{
+				RemoveAgent(IAT_CB_Agents.CORROSION);
+				SetCorrosiveAgents(false);
+				SetSynchDirty();
+			}
+		}
+	}
+
 	void TransmitCorrosionAgents(EntityAI target)
 	{
 		PluginTransmissionAgents plugin = PluginTransmissionAgents.Cast(GetPlugin(PluginTransmissionAgents));
