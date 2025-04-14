@@ -1,11 +1,14 @@
+#ifdef AdmiralsMutantMod
 enum IAT_CB_Agents : eAgents
 {
-	#ifdef AdmiralsMutantMod
 	CORROSION = 4096;
-	#elseif
-	CORROSION = 2048;
-	#endif
 };
+#elseif
+enum IAT_CB_Agents : eAgents
+{
+	CORROSION = 2048;
+};
+#endif
 
 class IAT_CorrosiveAgent extends AgentBase
 {

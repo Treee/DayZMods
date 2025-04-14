@@ -6,8 +6,9 @@ modded class PlayerBase
 	{
 		// try to add corrosion to all slots, needs to happen before a fully protected player is short circuited
 		// because they could have an exposed backpack or belt.
-		TryAddCorrosiveAgents();
+		TryAddCorrosiveAgentsToWornSlots();
 
+		TryAddCorrosiveAgentsToInHandsItem(GetItemInHands());
 
 		// check if the player is affected by area exposure
 		if (!m_IsAffectedByAreaExposure)
@@ -57,7 +58,21 @@ modded class PlayerBase
 		super.OnContaminatedAreaExitServer();
 
 		// try to add corrosion to all slots
-		TryAddCorrosiveAgents();
+		TryAddCorrosiveAgentsToWornSlots();
+	}
+
+	override void EEItemIntoHands(EntityAI item)
+	{
+		super.EEItemIntoHands(item);
+		if (IsInEffectArea(IAT_EffectAreaType.CORROSIVE_BIOGAS))
+			TryAddCorrosiveAgentsToInHandsItem(item);
+	}
+
+	override void EEItemOutOfHands(EntityAI item)
+	{
+		super.EEItemOutOfHands(item);
+		if (IsInEffectArea(IAT_EffectAreaType.CORROSIVE_BIOGAS))
+			TryAddCorrosiveAgentsToInHandsItem(item);
 	}
 
 	TStringArray GetProtectiveClothingSlotList()
@@ -122,7 +137,7 @@ modded class PlayerBase
 			GetModifiersManager().ActivateModifier( eModifiers.MDF_AREAEXPOSURE );
 	}
 
-	void TryAddCorrosiveAgents()
+	void TryAddCorrosiveAgentsToWornSlots()
 	{
 		// if the player inventory exists
 		if (GetInventory())
@@ -141,6 +156,9 @@ modded class PlayerBase
 					clothingPiece.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
 					// get any protection on the item
 					float protectiveArmor = clothingPiece.GetProtectionLevel(DEF_CHEMICAL);
+					// short circuit protected clothing
+					if (protectiveArmor >= 1)
+						continue;
 
 					foreach (EntityAI cargoItem : itemsArray)
 					{
@@ -162,6 +180,32 @@ modded class PlayerBase
 						// {
 						// }
 					}
+				}
+			}
+		}
+	}
+	void TryAddCorrosiveAgentsToInHandsItem(ItemBase inHandsItem)
+	{
+		int agentsToAdd = 1;
+		if (Class.CastTo(inHandsItem, GetItemInHands()))
+		{
+			array<EntityAI> itemsArray = new array<EntityAI>;
+			inHandsItem.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
+
+			// get any protection on the item
+			float protectiveArmor = inHandsItem.GetProtectionLevel(DEF_CHEMICAL);
+			// short circuit protected items
+			if (protectiveArmor >= 1)
+				return;
+
+			ItemBase attachedItem;
+			foreach (EntityAI cargoItem : itemsArray)
+			{
+				if (Class.CastTo(attachedItem, cargoItem))
+				{
+					attachedItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
+					attachedItem.SetCorrosiveAgents(true);
+					attachedItem.SetSynchDirty();
 				}
 			}
 		}
