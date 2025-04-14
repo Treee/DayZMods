@@ -4,10 +4,11 @@ class IAT_TeleportLinkData
 	protected vector m_TeleportAnchorPosition;
 	protected ref TVectorArray m_TeleportDestinations;
 
-	// protected int m_TeleportKeyCardRequirement;
-	// item damage per use
-	// teleport radius size (send group of players)
+	protected string m_TeleportItemInHandsRequirement;
+	protected float m_TeleportItemDamagePerUse;
+	protected float m_TeleportRadius;
 
+	// CONSTRUCTOR
 	void IAT_TeleportLinkData(string teleportName, vector position)
 	{
 		m_TeleportClassName = teleportName;
@@ -55,6 +56,60 @@ class IAT_TeleportLinkData
 	vector GetTeleporterDestination()
 	{
 		return m_TeleportDestinations.GetRandomElement();
+	}
+
+	bool HasTeleportItemRequirement()
+	{
+		if (GetTeleportItemInHandsRequirementName() == "")
+			return false;
+
+		return true;
+	}
+
+	bool IsHoldingCorrectTeleportItemRequirement(string itemName)
+	{
+		// copy variable for tolower formatting
+		string itemRequirement = m_TeleportItemInHandsRequirement;
+		itemRequirement.ToLower();
+		// get item in hands class name and tolower formatting
+		itemName.ToLower();
+
+		// if item in hands is an exact match; short circuit
+		if (itemRequirement == itemName)
+			return true;
+
+		return false;
+	}
+
+	bool HasRequiredHealth(int itemHealthLevel)
+	{
+		return itemHealthLevel < GameConstants.STATE_RUINED;
+	}
+
+	string GetTeleportItemInHandsRequirementName()
+	{
+		if (m_TeleportItemInHandsRequirement)
+			return m_TeleportItemInHandsRequirement;
+		return "";
+	}
+
+	float GetTeleportItemDamagePerUse()
+	{
+		return m_TeleportItemDamagePerUse;
+	}
+
+	bool HasTeleportRadius()
+	{
+		if (GetTeleportRadius() == 0)
+			return false;
+		return true;
+	}
+
+	float GetTeleportRadius()
+	{
+		if (m_TeleportRadius)
+			return m_TeleportRadius;
+		return 0;
 	}
 
 };

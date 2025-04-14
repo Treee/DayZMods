@@ -25,9 +25,37 @@ class IAT_ActionTeleportToDestination: ActionInteractBase
 			// this ensures anchor teleport doesnt move
 			if (Class.CastTo(linkData, GetDayZGame().IAT_IsValidTeleporter(targetObject.GetType(), targetObject.GetPosition())))
 			{
-				// does the palyer have the correct key card in hand
+				// does the teleporter require a special item in hands to use?
+				if (linkData.HasTeleportItemRequirement())
+				{
+					ItemBase inHandsItem;
+					// if no item in hands; short circuit
+					if (!Class.CastTo(inHandsItem, player.GetItemInHands()))
+						return false;
 
-				return true;
+					// if item in hand is destroyed by damage
+					if (inHandsItem.IsDamageDestroyed())
+						return false;
+
+					// get the type of required item
+					typename itemType = linkData.GetTeleportItemInHandsRequirementName().ToType();
+
+					bool itemIsExactlyCorrect = linkData.IsHoldingCorrectTeleportItemRequirement(inHandsItem.GetType());
+					bool itemIsInherited = (itemType && inHandsItem.IsInherited(itemType));
+					// if item in hand is incorrect and not inheritted
+					if (!itemIsExactlyCorrect && !itemIsInherited)
+						return false;
+					// if item in hand does not have enough hp to teleport
+					if (!linkData.HasRequiredHealth(inHandsItem.GetHealthLevel()))
+						return false;
+					// player has all the right things
+					return true;
+				}
+				else
+				{
+					// no item required, use the teleporter
+					return true;
+				}
 			}
 		}
 
@@ -42,11 +70,46 @@ class IAT_ActionTeleportToDestination: ActionInteractBase
 		if (Class.CastTo(targetObject, action_data.m_Target.GetObject()))
 		{
 			IAT_TeleportLinkData linkData;
+			// link data is true
 			if (Class.CastTo(linkData, GetDayZGame().IAT_IsValidTeleporter(targetObject.GetType(), targetObject.GetPosition())))
 			{
-				// link data is true
+				// does the teleporter require a special item in hands to use?
+				if (linkData.HasTeleportItemRequirement())
+				{
+					ItemBase inHandsItem;
+					// if no item in hands; short circuit
+					if (Class.CastTo(inHandsItem, action_data.m_Player.GetItemInHands()))
+					{
+						// damage the required item
+						inHandsItem.AddHealth(-linkData.GetTeleportItemDamagePerUse());
+					}
+				}
 				vector newPosition = linkData.GetTeleporterDestination();
-				action_data.m_Player.SetPosition(newPosition);
+
+				// if the teleport is an area thing
+				if (linkData.HasTeleportRadius())
+				{
+					// get the players in a radius around the teleporter
+					PlayerBase nearbyPlayer;
+					array<Man> nearbyMans = new array<Man>;
+					GetGame().GetPlayers(nearbyMans);
+					foreach (Man nearbyMan : nearbyMans)
+					{
+						if (Class.CastTo(nearbyPlayer, nearbyMan))
+						{
+							// if the player is close enough
+							if (linkData.GetTeleportRadius() > vector.Distance(newPosition, nearbyPlayer.GetPosition()))
+							{
+								// set all their positions to new position
+								nearbyPlayer.SetPosition(newPosition);
+							}
+						}
+					}
+				}
+				else
+				{
+					action_data.m_Player.SetPosition(newPosition);
+				}
 			}
 		}
 	}

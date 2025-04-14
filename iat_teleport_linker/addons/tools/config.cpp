@@ -2,7 +2,7 @@ class CfgPatches
 {
 	class IAT_Teleport_Linker_Tools
 	{
-		requiredAddons[] = { "DZ_Data", "DZ_Gear_Tools", };
+		requiredAddons[] = { "DZ_Data", "DZ_Gear_Tools" };
 	};
 };
 class CfgVehicles
