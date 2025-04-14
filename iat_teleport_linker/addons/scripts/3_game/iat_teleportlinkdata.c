@@ -7,6 +7,8 @@ class IAT_TeleportLinkData
 	protected string m_TeleportItemInHandsRequirement;
 	protected float m_TeleportItemDamagePerUse;
 	protected float m_TeleportRadius;
+	protected int m_TimeToStayOpen;
+	protected bool m_IsActive;
 
 	// CONSTRUCTOR
 	void IAT_TeleportLinkData(string teleportName, vector position)
@@ -110,6 +112,39 @@ class IAT_TeleportLinkData
 		if (m_TeleportRadius)
 			return m_TeleportRadius;
 		return 0;
+	}
+
+	bool HasTimerToStayOpen()
+	{
+		if (GetTeleportTimerToStayOpen() == 0)
+			return false;
+		return true;
+	}
+
+	int GetTeleportTimerToStayOpen()
+	{
+		if (m_TimeToStayOpen)
+			return m_TimeToStayOpen;
+		return 0;
+	}
+
+	bool IsTeleportActive()
+	{
+		return m_IsActive;
+	}
+
+	void SetTeleportActive()
+	{
+		m_IsActive = true;
+		if (HasTimerToStayOpen())
+		{
+			int miliseconds = GetTeleportTimerToStayOpen() * 1000;
+			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SetTeleportInActive, miliseconds, true);
+		}
+	}
+	void SetTeleportInActive()
+	{
+		m_IsActive = false;
 	}
 
 };
