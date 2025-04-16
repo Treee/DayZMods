@@ -1,4 +1,4 @@
-start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod=P:\Mods\@Survivalists RP Server Modpack;P:\Mods\@IAT_MolotovGrenades_Dev;P:\Mods\@IAT_MeleeWeapons_Dev;P:\Mods\@IAT_RadioMute_Dev;P:\Mods\@IAT_Dev;P:\Mods\@IAT_SoftSurrender_Dev;P:\Mods\@IAT_Retextures_Dev;P:\Mods\@IAT_CorrosiveBioGas_Dev;P:\Mods\@IAT_TeleportLinker_Dev;P:\Mods\@IAT_FacePaints_Dev"
+start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod=P:\Mods\@Survivalists RP Server Modpack;P:\Mods\@IAT_MolotovGrenades_Dev;P:\Mods\@IAT_MeleeWeapons_Dev;P:\Mods\@IAT_RadioMute_Dev;P:\Mods\@IAT_Dev;P:\Mods\@IAT_SoftSurrender_Dev;P:\Mods\@IAT_Retextures_Dev;P:\Mods\@IAT_CorrosiveBioGas_Dev;P:\Mods\@IAT_TeleportLinker_Dev;P:\Mods\@IAT_FacePaints_Dev;P:\Mods\@IAT_DynamicRadioRange_Dev;"
 
 
 

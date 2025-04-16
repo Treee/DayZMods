@@ -1,5 +1,6 @@
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat" Z:\DayZ\Modding\iat\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_enhanced_bioprotection" Z:\DayZ\Modding\iat_enhanced_bioprotection\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_facepaints" Z:\DayZ\Modding\iat_facepaints\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_infinity_gauntlet" Z:\DayZ\Modding\iat_infinity_gauntlet\addons
