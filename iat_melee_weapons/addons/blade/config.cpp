@@ -243,23 +243,5 @@ class CfgVehicles
                 };
             };
         };
-        class MeleeModes
-        {
-            class Default
-            {
-                ammo = "IAT_MeleeSlash_2HSword_Stun";
-                range = 1.8;
-            };
-            class Heavy
-            {
-                ammo = "IAT_MeleeSlash_2HSword_StunHeavy";
-                range = 1.8;
-            };
-            class Sprint
-            {
-                ammo = "IAT_MeleeSlash_2HSword_StunHeavy";
-                range = 3.9;
-            };
-        };
     };
 };
