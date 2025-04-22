@@ -184,10 +184,11 @@ modded class PlayerBase
 			}
 		}
 	}
-	void TryAddCorrosiveAgentsToInHandsItem(ItemBase inHandsItem)
+	void TryAddCorrosiveAgentsToInHandsItem(EntityAI inHandsEntity)
 	{
 		int agentsToAdd = 1;
-		if (Class.CastTo(inHandsItem, GetItemInHands()))
+		ItemBase inHandsItem;
+		if (Class.CastTo(inHandsItem, inHandsEntity))
 		{
 			array<EntityAI> itemsArray = new array<EntityAI>;
 			inHandsItem.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
