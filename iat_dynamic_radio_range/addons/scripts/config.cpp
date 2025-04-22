@@ -12,9 +12,14 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Dynamic Radio Range";
-		dependencies[] = { "World","Mission" };
+		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{
+			class gameScriptModule
+			{
+				value = "";
+				files[] = { "iat_dynamic_radio_range/scripts/3_game" };
+			};
 			class worldScriptModule
 			{
 				value = "";
