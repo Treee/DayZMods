@@ -80,7 +80,7 @@ class IAT_FacePaintsConfig
 	// ==================================================================================
 	void PrettyPrint()
 	{
-		Print("--[BEGIN]");
+		Print("--[FACE PAIINT CONFIG BEGIN]");
 		PrintFormat("--m_PaintStickDamagePerUse: %1", GetPaintStickDamagerPerUse());
 		PrintFormat("--m_SavePlayerPaintsToDatabase: %1", GetSavePlayerPaintsToDatabase());
 		Print("--[END]");
