@@ -42,6 +42,10 @@ class IAT_ActionPaintFace extends ActionContinuousBase
 	{
 		return true;
 	}
+	override bool HasTarget()
+	{
+		return false;
+	}
   	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
 	{
 		PlayerBase man;
@@ -94,6 +98,10 @@ class IAT_ActionPaintFaceTarget extends IAT_ActionPaintFace
 	{
 		m_ConditionItem = new CCINonRuined;
 		m_ConditionTarget = new CCTMan(UAMaxDistances.DEFAULT);
+	}
+	override bool HasTarget()
+	{
+		return true;
 	}
   	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
 	{

@@ -13,7 +13,7 @@ cd "%serverLocation%"
 echo (%time%) %serverName% started.
 
 
-start "DayZ Server" /min "DayZServer_x64.exe" -config=serverDZ_Cherno.cfg -port=2302 "-profiles=profile_cherno" -limitFPS=120 "-mod=Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@CF;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@VPPAdminTools;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@VanillaPlusPlusMap;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@IAT_Crafting_Plus_Enums;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@IAT_Crafting_Plus;" -scrAllowFileWrite -noBenchmark -scriptDebug=true -filePatching -doLogs
+start "DayZ Server" /min "DayZServer_x64.exe" -config=serverDZ_Cherno.cfg -port=2302 "-profiles=profile_cherno" -limitFPS=120 "-mod=Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@CF;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@VPPAdminTools;Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@VanillaPlusPlusMap;P:\Mods\@IAT_Dev;" -scrAllowFileWrite -noBenchmark -scriptDebug=true -filePatching -doLogs
 
 @REM P:\Mods\@SRP_Tree_Mods;
 @REM P:\Mods\IAT_FacePaints;
