@@ -15,6 +15,7 @@ modded class ItemBase
 		{
 			if (ContainsAgent(IAT_CB_Agents.CORROSION))
 			{
+				// PrintFormat("Item: %1 has corrosion.", GetType());
 				SetCorrosiveAgents(true);
 				SetSynchDirty();
 			}
@@ -27,14 +28,55 @@ modded class ItemBase
 		super.OnVariablesSynchronized();
 	}
 
-	override void OnItemLocationChanged(EntityAI old_owner, EntityAI new_owner)
+	// ============================================ CUSTOM
+
+	override void OnMovedInsideCargo(EntityAI container)
 	{
-		super.OnItemLocationChanged(old_owner, new_owner);
+		super.OnMovedInsideCargo(container);
 		if (GetGame().IsDedicatedServer())
 		{
-			if (new_owner && HasCorrosiveAgents())
+			if (HasCorrosiveAgents())
 			{
-				TransmitCorrosionAgents(new_owner);
+				// PrintFormat("Item: %1 Moved Inside: %2", GetType(), container.GetType());
+				TransmitCorrosionAgents(container);
+			}
+			else
+			{
+				ItemBase itemContainer;
+				if (Class.CastTo(itemContainer, container))
+				{
+					if (itemContainer.HasCorrosiveAgents())
+					{
+						// PrintFormat("Item: %1 Moved Inside: %2", GetType(), container.GetType());
+						TransmitParentCorrosionAgents(container, this);
+					}
+				}
+			}
+		}
+	}
+
+	//! Called when this item exits cargo of some container
+	override void OnRemovedFromCargo(EntityAI container)
+	{
+		super.OnRemovedFromCargo(container);
+		if (GetGame().IsDedicatedServer())
+		{
+			if (HasCorrosiveAgents())
+			{
+				// PrintFormat("Item: %1 Removed From: %2", GetType(), container.GetType());
+				TransmitCorrosionAgents(container);
+			}
+			else
+			{
+				ItemBase itemContainer;
+				if (Class.CastTo(itemContainer, container))
+				{
+					if (itemContainer.HasCorrosiveAgents())
+					{
+						// PrintFormat("Item: %1 Moved From: %2", GetType(), container.GetType());
+						TransmitParentCorrosionAgents(container, this);
+					}
+				}
 			}
 		}
 	}
@@ -59,6 +101,11 @@ modded class ItemBase
 	{
 		PluginTransmissionAgents plugin = PluginTransmissionAgents.Cast(GetPlugin(PluginTransmissionAgents));
 		plugin.TransmitAgentsEx(this, target, AGT_INV_IN, 1, IAT_CB_Agents.CORROSION);
+	}
+	void TransmitParentCorrosionAgents(EntityAI source, EntityAI target)
+	{
+		PluginTransmissionAgents plugin = PluginTransmissionAgents.Cast(GetPlugin(PluginTransmissionAgents));
+		plugin.TransmitAgentsEx(source, target, AGT_INV_IN, 1, IAT_CB_Agents.CORROSION);
 	}
 
 	bool HasCorrosiveAgents()

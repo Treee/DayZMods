@@ -25,15 +25,18 @@ modded class InspectMenuNew
 		if ( item.IsInherited( ZombieBase ) || item.IsInherited( Car ) ) return;
 
 		ItemBase item_base;
-		if (Class.CastTo(item_base, item) && item_base.HasCorrosiveAgents())
+		if (Class.CastTo(item_base, item))
 		{
-			// agents, show green
-			WidgetTrySetText(root_widget, "ItemCorrosionWidget", "Corrosion", Colors.COLOR_LIVONIA_EMERALD_GREEN);
-		}
-		else
-		{
-			// no agents
-			WidgetTrySetText(root_widget, "ItemCorrosionWidget", "");
+			if (item_base.HasCorrosiveAgents())
+			{
+				// agents, show green
+				WidgetTrySetText(root_widget, "ItemCorrosionWidget", "Corrosion", Colors.COLOR_LIVONIA_EMERALD_GREEN);
+			}
+			else
+			{
+				// no agents
+				WidgetTrySetText(root_widget, "ItemCorrosionWidget", "");
+			}
 		}
 	}
 };
