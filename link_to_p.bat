@@ -9,6 +9,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_map_border_teleport" Z:\Day
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_melee_weapons" Z:\DayZ\Modding\iat_melee_weapons\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_molotov_firegrenades" Z:\DayZ\Modding\iat_molotov_firegrenades\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_powered_radio_towers" Z:\DayZ\Modding\iat_powered_radio_towers\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_radio_mute" Z:\DayZ\Modding\iat_radio_mute\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_roleplay_emotes" Z:\DayZ\Modding\iat_roleplay_emotes\addons
