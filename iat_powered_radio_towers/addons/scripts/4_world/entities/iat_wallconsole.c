@@ -87,7 +87,11 @@ class StaticObj_iat_wallconsole extends House
 		if (!GetGame().IsDedicatedServer())
 		{
 			ScriptRPC rpc = new ScriptRPC();
-			rpc.Send(this, RPC_HARD_SYNC_DATA, true, GetGame().GetPlayer().GetIdentity());
+			PlayerBase player;
+			if (Class.CastTo(player, GetGame().GetPlayer()))
+			{
+				rpc.Send(this, RPC_HARD_SYNC_DATA, true, player.GetIdentity());
+			}
 		}
 	}
 
