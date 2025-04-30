@@ -6,7 +6,7 @@ class IAT_ActionCleanCorrosionItemCB : ActionContinuousBaseCB
 		float EmptiedQuantity;
 		Bottle_Base bottle = Bottle_Base.Cast(m_ActionData.m_MainItem);
 		if (bottle)
-			EmptiedQuantity = (bottle.GetLiquidEmptyRate() * bottle.GetLiquidThroughputCoef()) / 4;
+			EmptiedQuantity = (bottle.GetLiquidEmptyRate() * bottle.GetLiquidThroughputCoef()) / 16;
 		m_ActionData.m_ActionComponent = new CAContinuousEmpty(EmptiedQuantity);
 	}
 
