@@ -11,7 +11,7 @@ class CfgMods
 	{
 		type = "mod";
 		author = "ItsATreee";
-		name = "ItsATreee Dynamic Radio Range";
+		name = "ItsATreee Powered Radio Towers";
 		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{

@@ -7,23 +7,7 @@ class IAT_PoweredRadioTowerConfig
 	[NonSerialized()]
     protected string m_JsonFile = "PoweredRadioTowerConfig.json";
 
-	protected int m_RangeDefault; // Default: 5000meters (vanilla)
-	protected int m_RangeMin; // Default: 50 meters (shortest config defined radio range in this mod)
-	protected int m_RangeMax; // Default: 17000 meters (longest config defined radio range in this mod)
-	protected int m_ExponentialScale; // Default: 200; Arbitrary number for smoothing the multiplicative growth
-	// The number represents the shortest time period the energy can last at full consumption
-	protected int m_EnergyConsumptionTimeMin; // Default: 3 minutes 3 * 60 = 180 seconds
-	// The number represents the longest time period the energy can last at lowest consumption
-	protected int m_EnergyConsumptionTimeMax; // Default: 8hours 8 * 60 * 60 = 28800 seconds
-
-	protected float m_DefaultEnergyUsage; // Default: 0.01 energy consumption per second (vanilla)
-	protected float m_DefaultTotalEnergy; // Default: 50 units (vanilla)
-
-	// These four values are precalculated based on the above
-	protected float m_EnergyMin; // Energy use at 50m; lowest range
-	protected float m_EnergyMax; // Energy use at 17000m; max  range
-	protected float m_LinearDecreaseRate; // linear decrease rate below m_RangeDefault meters
-	protected float m_MultiplicativeGrowthConstant; // multiplicative growth rate above m_RangeDefault meters
+	protected ref array<ref IAT_PoweredTowerConsoleData> m_TowerConsoleData;
 
 	IAT_PoweredRadioTowerConfig TryGetPoweredRadioTowerConfig()
 	{
@@ -35,174 +19,176 @@ class IAT_PoweredRadioTowerConfig
 		}
 
 		string errorMessage;
-		IAT_PoweredRadioTowerConfig iat_DRConfig;
+		// new object so the non serialzied values are created
+		IAT_PoweredRadioTowerConfig iat_PRTConfig = new IAT_PoweredRadioTowerConfig();
 		string jsonConfig = string.Format("%1\\%2", rootFilePath, m_JsonFile);
 		// if the actual config file doesnt exist
 		if (!FileExist(jsonConfig))
 		{
 			// new config object
-			iat_DRConfig = new IAT_PoweredRadioTowerConfig();
+			// iat_PRTConfig = new IAT_PoweredRadioTowerConfig();
+
 			// set some default values
-			iat_DRConfig.SetDefaultRange(5000);
-			iat_DRConfig.SetMinRange(50);
-			iat_DRConfig.SetMaxRange(17000);
-			iat_DRConfig.SetExponentialScale(200);
-			iat_DRConfig.SetMinConsumptionTime(180);
-			iat_DRConfig.SetMaxConsumptionTime(28800);
-			iat_DRConfig.SetDefaultEnergyUsage(0.01);
-			iat_DRConfig.SetDefaultTotalEnergy(50);
+			iat_PRTConfig.m_TowerConsoleData = new array<ref IAT_PoweredTowerConsoleData>;
+
+			// <group name="Land_Tower_TC2_Top" pos="6405.446777 1291.985107 8920.974609" rpy="-0.000000 0.000000 -61.363876" a="151.364"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(0, false, false, false, false, 0, 4, "6407.319824 1192.000000 8926.440430", "-155.999893 0 0"));
+			// <group name="Land_Tower_TC3_Grey" pos="11271.684570 449.513306 5890.544922" rpy="-0.000000 0.000000 11.602386" a="78.3976"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(1, false, false, false, false, 0, 2, "11272.099609 488.100006 5892.560059", "10.999234 0 0"));
+			// <group name="Land_Tower_TC3_Red" pos="426.468842 404.959412 11660.050781" rpy="-0.000000 0.000000 0.125122" a="89.8749"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(2, false, false, false, false, 0, 9, "425.549988 443.600006 11658.05", "180 0 0"));
+			// <group name="Land_Tower_TC3_Red" pos="560.563782 774.395508 601.031372" rpy="-0.000000 0.000000 0.000000" a="90"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(3, false, false, false, false, 0, 1, "552.632019 776.015015 622.414978", "-90 0 0"));
+			// <group name="Land_Tower_TC3_Red" pos="1235.441650 490.399445 11815.665039" rpy="-0.000000 0.000000 0.125122" a="89.8749"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(4, false, false, false, false, 0, 3, "1234.390015 529 11817.700195", "0 0 0"));
+			// <group name="Land_Tower_TC3_Red" pos="1917.546265 202.355194 9203.582031" rpy="-0.000000 0.000000 0.126669" a="89.8733"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(5, false, false, false, false, 0, 5, "1917.550049 241 9201.549805", "180 0 0"));
+			// <group name="Land_Tower_TC3_Red" pos="1453.878418 215.979416 9579.574219" rpy="-0.000000 0.000000 178.030182" a="-88.0302"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(6, false, false, false, false, 0, 6, "1453.849976 254.600006 9581.599609", "-2.998346 0 0"));
+			// <group name="Land_Tower_TC3_Red" pos="2835.284424 369.939575 9850.475586" rpy="-0.000000 0.000000 90.238609" a="-0.238609"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(7, false, false, false, false, 0, 3, "2835.250000 408.500000 9852.549805", "0 0 0"));
+			// <group name="Land_Tower_TC3_Red" pos="3023.887939 369.949402 10344.426758" rpy="-0.000000 0.000000 0.703323" a="89.2967"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(8, false, false, false, false, 0, 1, "3023.860107 408.500000 10342.400391", "180 0 0"));
+			// <group name="Land_Tower_TC4_Top" pos="6892.339355 1221.804077 8751.302734" rpy="-0.000000 0.000000 16.887920" a="73.1121"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(9, false, false, false, false, 0, 5, "6892.810059 1219 8753.019531", "-164.000137 0 0"));
+			// <group name="Land_Tower_TC4_Top" pos="2938.620605 1398.418823 2484.343750" rpy="-0.000000 0.000000 0.000000" a="90"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(10, false, false, false, false, 0, 2, "2938.600098 1395.699951 2482.570068", "0 0 0"));
+			// <group name="Land_Tower_TC4_Top" pos="564.042664 535.561096 6843.620117" rpy="-0.000000 0.000000 0.000000" a="90"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(11, false, false, false, false, 0, 4, "564 532.700012 6845.390137", "180 0 0"));
+			// <group name="Land_Tower_TC4_Top" pos="753.799988 636.359375 8695.880859" rpy="-0.000000 0.000000 0.000000" a="90"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(12, false, false, false, false, 0, 5, "750.099976 633.500000 8695.940430", "-90 0 0"));
+			// <group name="Land_Tower_TC4_Top" pos="978.074219 409.112732 10479.344727" rpy="-0.000000 0.000000 0.000000" a="90"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(13, false, false, false, false, 0, 6, "978.049988 406.299988 10481.099609", "180 0 0"));
+			// <group name="Land_Tower_TC5" pos="7487.177734 233.291046 4711.526855" rpy="-0.000000 0.000000 -7.451208" a="97.4512"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(14, false, false, false, false, 0, 2, "7486.799805 237 4714.410156", "-7.999250 0 0"));
+			// <group name="Land_Tower_TC5" pos="10336.049805 308.025360 3210.564453" rpy="-0.000000 0.000000 0.000000" a="90"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(15, false, false, false, false, 0, 5, "10336.099609 311.799988 3213.459961", "0 0 0"));
+			// <group name="Land_Tower_TC5" pos="11247.409180 494.151489 8061.978027" rpy="-0.000000 0.000000 128.296692" a="-38.2967"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(16, false, false, false, false, 0, 4, "11250.299805 498 8061", "128 0 0"));
+			// <group name="Land_Tower_TC6" pos="6824.490234 1139.825684 8756.519531" rpy="-0.000000 0.000000 -69.794823" a="159.795"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(17, false, false, false, false, 0, 2, "6824.500000 1142 8756.679688", "-161 0 0"));
+			// <group name="Land_Tower_TC6" pos="1001.607178 326.739014 10536.270508" rpy="-0.000000 0.000000 0.000000" a="90"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(18, false, false, false, false, 0, 7, "1001.770020 329 10536.299805", "-90 0 0"));
+			// <group name="Land_Tower_TC6" pos="6835.483398 1139.816406 8785.262695" rpy="-0.000000 0.000000 13.046253" a="76.9538"/>
+			iat_PRTConfig.m_TowerConsoleData.Insert(new IAT_PoweredTowerConsoleData(19, false, false, false, false, 0, 5, "6835.649902 1142 8785.259766", "-78 0 0"));
+
 			// write the file to "create it"
-			if (!JsonFileLoader<ref IAT_PoweredRadioTowerConfig>.SaveFile(jsonConfig, iat_DRConfig, errorMessage))
+			if (!JsonFileLoader<ref IAT_PoweredRadioTowerConfig>.SaveFile(jsonConfig, iat_PRTConfig, errorMessage))
 				ErrorEx(errorMessage);
 		}
 		else
 		{
 			// file exists, just load it from disk
-			if (!JsonFileLoader<ref IAT_PoweredRadioTowerConfig>.LoadFile(jsonConfig, iat_DRConfig, errorMessage))
+			if (!JsonFileLoader<ref IAT_PoweredRadioTowerConfig>.LoadFile(jsonConfig, iat_PRTConfig, errorMessage))
 				ErrorEx(errorMessage);
 		}
-		iat_DRConfig.InitPreComputedValues();
 		// return what we found
-        return iat_DRConfig;
+        return iat_PRTConfig;
 	}
 
-	// Solves for the exponential growth constant k2 given:
-	// - max energy use at max range (E_max)
-	// - baseline energy use at 5000m (E0)
-	// - maximum range (rangeMax)
-	// - scale factor (s)
-	// dayz doesnt have Math.Log (non base 2 log functions) so we precalculated k2 on paper
-
-	// float SolveK2(float E_max, float E0, float rangeMax, float s)
-	// {
-	// 	float rangeDelta = rangeMax - 5000.0;
-	// 	if (rangeDelta <= 0 || E_max <= E0)
-	// 		return 0.0;  // Invalid inputs or no growth needed
-
-	// 	float exponent = Math.Log(E_max / E0);
-	// 	float k2 = Math.Exp(exponent / (rangeDelta / s)) - 1.0;
-	// 	return k2;
-	// }
-
-	void InitPreComputedValues()
+	void SaveConfig()
 	{
-		// energy use at lowest range for the longest time duraton
-		m_EnergyMin = m_DefaultTotalEnergy / m_EnergyConsumptionTimeMax;
-		// energy use at max range for the longest time duraton
-		m_EnergyMax = m_DefaultTotalEnergy / m_EnergyConsumptionTimeMin;
-		m_LinearDecreaseRate = (m_DefaultEnergyUsage - m_EnergyMin) / (m_RangeDefault - m_RangeMin);
-		// solved on paper.
-		m_MultiplicativeGrowthConstant = 0.064085;
+		string errorMessage;
+		// non serialized values are empty here because a loaded config isnt a 'new config'
+		string rootFilePath = string.Format("%1\\%2\\%3", m_DayZFolder, m_RootConfigFolder, m_JsonFile);
+		if (!JsonFileLoader<IAT_PoweredRadioTowerConfig>.SaveFile(rootFilePath, this, errorMessage))
+			ErrorEx(errorMessage);
+		PrintFormat("[IAT_PoweredRadioTowerConfig] Config Saved: %1", rootFilePath);
 	}
 
+	void UpdateConsole(int id, bool newPower, bool newRelay, bool newServer, bool newCpu, int newDial)
+	{
+		foreach(IAT_PoweredTowerConsoleData data : m_TowerConsoleData)
+		{
+			if (data.GetConsoleId() == id)
+			{
+				data.SetIsPoweredOn(newPower);
+				data.SetIsRelayConnected(newRelay);
+				data.SetIsServerConnected(newServer);
+				data.SetIsCPUOn(newCpu);
+				data.SetDialSetting(newDial);
+				data.SetNumRestartsLeft(newDial);
+				PrintFormat("Saving ID: %1 Power: %2 CPU: %3 Server: %4 Relay: %5 Dial: %6", data.GetConsoleId(), data.IsPoweredOn(), data.IsCPUOn(), data.IsServerConnected(), data.IsRelayConnected(), data.GetDialSetting());
+				SaveConfig();
+				// short circuit when value is found
+				return;
+			}
+		}
+	}
+
+	// this is set up to require more terminals for more towers to be on.
+	float GetRequiredTowerPower()
+	{
+		float normalized = GetNumRadioTowersPowerOn() / m_TowerConsoleData.Count();
+		float k = 2.0; //curve steepness scale
+		return Math.Pow(normalized, k);
+	}
+	// is the radio tower powered on
+	int GetNumRadioTowersPowerOn()
+	{
+		int numActiveTowers = 0;
+		foreach(IAT_PoweredTowerConsoleData data : m_TowerConsoleData)
+		{
+			if (data.IsPoweredOn())
+			{
+				numActiveTowers++;
+			}
+		}
+		return numActiveTowers;
+	}
+	// is the relay connected (connected to ic radio)
+	int GetNumRadioTowersRelayOn()
+	{
+		int numActiveTowers = 0;
+		foreach(IAT_PoweredTowerConsoleData data : m_TowerConsoleData)
+		{
+			if (data.IsRelayConnected())
+			{
+				numActiveTowers++;
+			}
+		}
+		return numActiveTowers;
+	}
+	// is the server connected (read messages for pda)
+	int GetNumRadioTowersServerOn()
+	{
+		int numActiveTowers = 0;
+		foreach(IAT_PoweredTowerConsoleData data : m_TowerConsoleData)
+		{
+			if (data.IsServerConnected())
+			{
+				numActiveTowers++;
+			}
+		}
+		return numActiveTowers;
+	}
+	// is the cpu on (encryption/ciphered hacking)
+	int GetNumRadioTowersCPUOn()
+	{
+		int numActiveTowers = 0;
+		foreach(IAT_PoweredTowerConsoleData data : m_TowerConsoleData)
+		{
+			if (data.IsCPUOn())
+			{
+				numActiveTowers++;
+			}
+		}
+		return numActiveTowers;
+	}
 	// ==================================================================================
-	// Getters & Setters
+	// GETTERS & SETTERS
 	// ==================================================================================
-	void SetDefaultRange(int value)
+	array<ref IAT_PoweredTowerConsoleData> GetTowerConsoleData()
 	{
-		m_RangeDefault = value;
+		return m_TowerConsoleData;
 	}
-	int GetDefaultRange()
-	{
-		return m_RangeDefault;
-	}
-	void SetMinRange(int value)
-	{
-		m_RangeMin = value;
-	}
-	int GetMinRange()
-	{
-		return m_RangeMin;
-	}
-	void SetMaxRange(int value)
-	{
-		m_RangeMax = value;
-	}
-	int GetMaxRange()
-	{
-		return m_RangeMax;
-	}
-	void SetExponentialScale(int value)
-	{
-		m_ExponentialScale = value;
-	}
-	int GetExponentialScale()
-	{
-		return m_ExponentialScale;
-	}
-	void SetMinConsumptionTime(int value)
-	{
-		m_EnergyConsumptionTimeMin = value;
-	}
-	int GetMinConsumptionTime()
-	{
-		return m_EnergyConsumptionTimeMin;
-	}
-	void SetMaxConsumptionTime(int value)
-	{
-		m_EnergyConsumptionTimeMax = value;
-	}
-	int GetMaxConsumptionTime()
-	{
-		return m_EnergyConsumptionTimeMax;
-	}
-	void SetDefaultEnergyUsage(float value)
-	{
-		m_DefaultEnergyUsage = value;
-	}
-	float GetDefaultEnergyUsage()
-	{
-		return m_DefaultEnergyUsage;
-	}
-	void SetDefaultTotalEnergy(float value)
-	{
-		m_DefaultTotalEnergy = value;
-	}
-	float GetDefaultTotalEnergy()
-	{
-		return m_DefaultTotalEnergy;
-	}
-
 	// ==================================================================================
 	// Helpers
 	// ==================================================================================
-	// returns an energy consumption value relative to the broadcast range of a given radio
-	// the linear decrease is an incentive to run radios at lower range to get more battery life
-	// the exponential decrease is a disincentive to run radios at longer ranges by draining battery faster
-	/*
-	* since we cannot modify the amount of consumed energy per `OnWork`, this function returns the delta
-	* that needs to be appended to the energy source of the radio. since t he linear decrease effectively
-	* elongates the energy source from the default range (5000) we need to ADD this value back to the energy
-	* source. The opposite is true for greater than 5000 where we remove MORE energy from the source than the default.
-	*/
-	float GetEnergyDelta(float radioRange)
-	{
-		float energyDelta = 0.0;
-		// linear consumption below default range
-		if (radioRange <= GetDefaultRange())
-		{
-			energyDelta = -m_LinearDecreaseRate * (GetDefaultRange() - radioRange);
-		}
-		else// multiplicative consumption above default range
-		{
-			float number = 1.0 + m_MultiplicativeGrowthConstant;
-			float exponent = (radioRange - GetDefaultRange()) / GetExponentialScale();
-			energyDelta = GetDefaultEnergyUsage() * (Math.Pow(number, exponent) - 1.0);
-		}
-		return energyDelta;
-	}
-
 	void PrettyPrint()
 	{
 		Print("--[POWERED RADIO TOWER CONFIG BEGIN]");
-		PrintFormat("--m_RangeDefault: %1", GetDefaultRange());
-		PrintFormat("--m_RangeMin: %1", GetMinRange());
-		PrintFormat("--m_RangeMax: %1", GetMaxRange());
-		PrintFormat("--m_ExponentialScale: %1", GetExponentialScale());
-		PrintFormat("--m_EnergyConsumptionTimeMin: %1", GetMinConsumptionTime());
-		PrintFormat("--m_EnergyConsumptionTimeMax: %1", GetMaxConsumptionTime());
-		PrintFormat("--m_DefaultEnergyUsage: %1", GetDefaultEnergyUsage());
-		PrintFormat("--m_DefaultTotalEnergy: %1", GetDefaultTotalEnergy());
+		// PrintFormat("--m_RangeDefault: %1", GetDefaultRange());
 		Print("--[END]");
 	}
 };
