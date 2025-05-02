@@ -1,5 +1,6 @@
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat" Z:\DayZ\Modding\iat\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_crafting_plus" Z:\DayZ\Modding\iat_crafting_plus\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_enhanced_bioprotection" Z:\DayZ\Modding\iat_enhanced_bioprotection\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_facepaints" Z:\DayZ\Modding\iat_facepaints\addons
