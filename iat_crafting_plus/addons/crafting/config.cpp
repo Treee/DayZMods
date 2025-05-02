@@ -24,7 +24,9 @@ class CfgVehicles
             "Material_MetalSheets",
             "MetalWire",
             "Material_Shelter_Fabric",
-            "Rags"
+            "Rags",
+            "Chemlight",
+            "WalkieTalkie"
         };
         destroyOnEmpty = 0;
         carveNavmesh = 0;
@@ -70,6 +72,17 @@ class CfgVehicles
                     "Rags"
                 };
                 icon = "set:dayz_inventory image:tarp";
+            };
+            class Chemical
+            {
+                name = "Chemical Ingredients";
+                description = "Glowsticks, radios, etc.";
+                attachmentSlots[] =
+                {
+                    "Chemlight",
+                    "WalkieTalkie"
+                };
+                icon = "set:dayz_inventory image:chemlight";
             };
         };
         class DamageSystem

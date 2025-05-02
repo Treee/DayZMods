@@ -1,13 +1,21 @@
 modded class DayZGame
 {
-  protected ref IAT_TestWorkbenchRecipes m_TestWorkbenchRecipes;
+	protected ref IAT_CraftingPlusConfig m_IAT_CraftingPlusConfig;
 
-  void DayZGame()
-  {
-    m_TestWorkbenchRecipes = new IAT_TestWorkbenchRecipes();
-  }
-  IAT_TestWorkbenchRecipes GetIATTestWorkbenchRecipes()
-  {
-    return m_TestWorkbenchRecipes;
-  }
+	void SetIATCraftingPlusConfig(IAT_CraftingPlusConfig config)
+	{
+		Print("IAT_CraftingPlusConfig Settings Initialized");
+		config.PrettyPrint();
+		m_IAT_CraftingPlusConfig = config;
+	}
+
+	IAT_CraftingPlusConfig GetIATCraftingPlusConfig()
+	{
+		if (!m_IAT_CraftingPlusConfig)
+		{
+			IAT_CraftingPlusConfig tempConfig = new IAT_CraftingPlusConfig();
+			m_IAT_CraftingPlusConfig = tempConfig.TryGetCraftingPlusConfig();
+		}
+		return m_IAT_CraftingPlusConfig;
+	}
 };
