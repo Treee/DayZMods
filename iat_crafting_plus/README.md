@@ -4,262 +4,88 @@ Crafting Plus is a _simple_ framework that allows advanced recipes with multiple
 
 # How To Use
 
-## 3_Game
+## JSON Config
 
-### Crafting Variant Enums
-
-As crafting evolved with this mod it became obvious that certain parent items serve as a base and children items are considered variants that follow the `ColorBase` pattern. In order to provide a solution that removes typos, I use enums to handle the variants of items. An example of why this is necessary, take for example farming system that allows a player to gather many types of herbs with different colors. Without the enum system you would be unable to define the ingredient requirement of a specific color in a specific slot. `IAT_CraftingPlusEnums` mod is meant to be modified and repacked with your specific color variants for use in the `IAT_RecipeManager` class.
-
-`ModRoot\scripts\3_game\your_enums.c`
-
-```c++
-enum IAT_COLOR
-{
-  NONE=-1, // base case
-  COPPER, //metals
-  TIN,
-  BRONZE,
-  //.....
-  SOME,
-  CUSTOM,
-  VALUES,
-  GO,
-  HERE,
-  ALWAYS,
-  ADD,
-  AT,
-  THE,
-  END,
-};
-```
+The recipes of this mod are controlled by a server side json that is sent to the clients when they connect. This allows for dynamic recipes on each server restart AND uncrackable recipes from curious or knowledgable players. You will find the json in your server profile folder after first mod start. `$profile:\ItsATreeMods\CraftingPlusConfig.json`
 
 ### Creating A New Recipe
 
-To create a new recipe take the template provided below or in the mod and follow the below format. A description of the class `new IAT_ItemRequirement(ATTACHMENT_SLOT_NAME, COLOR ENUM, QUANTITY)`
+To create a new recipe take the template provided below or in the json and apply the required properties of the recipe. The first run of the mod will generate a template json with 5 example recipes if the below is not sufficient.
 
-`ITEM_CLASS_NAME` - The class name of the result. Copy/Paste the type name from config.cpp.
-
-`ITEM_DISPLAY_NAME` - The name of the item displayed in the crafting action prompt.
-
-`ATTACHMENT_SLOT_NAME` - The slot name of required ingredient.
-
-`ENUM` - The color variant of ingredient. For ingredients with no variant use `IAT_COLOR.NONE`.
-
-`QUANTITY` - The quantity of ingredient needed. Relative to the quantity type (percentage, count). Items with no "quantity" should use the value 1; ie. metal wire/rope.
-
-`ModRoot\scripts\3_game\crafting\your_crafting_recipes_workbench1.c`
-
-```c++
-class Your_Crafting_Recipes_Workbench1 extends IAT_RecipeManager
-{
-  //...
-
-  IAT_CraftableItem Register_X_Recipe()
-  {
-    IAT_CraftableItem craftableItem = new IAT_CraftableItem("ITEM_CLASS_NAME", "ITEM_DISPLAY_NAME");
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 1));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 1));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 2));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 4));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 4));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 4));
-    return craftableItem;
-  }
-};
+```json
+[
+    {
+        // The unique identifier for your workbenches recipes. This is how you make different recipe sets for multiple benches
+        "m_ManagerName": "TestManager",
+        // The array/list of recipes associated with the bench
+        "m_CraftingRecipes": [
+            {
+                // The unique display name for a given recipe. This is shown as "Craft - Display Name".
+                "m_DisplayName": "Single Item Result",
+                // The tool required to craft the recipe. Empty string "" for any item in hands to work.
+                "m_RequiredTool": "Hammer",
+                // The damage to apply to the tool in hands per craft. 0 for no damage
+                "m_ToolDamagePerCraft": 2,
+                // The quantity to remove from the tool per craft. 0 for no quantity
+                "m_ToolQuantityPerCraft": 0,
+                // The array/list of required attached ingredients for the craft prompt to show.
+                "m_RequiredIngredients": [
+                    {
+                        // The slot name of the bench required
+                        "m_AttachmentSlotName": "Material_WoodenLogs",
+                        // The color="xxx" requirement if desired
+                        "m_RequiredColor": "",
+                        // The expected quantity to be attached.
+                        "m_RequiredQuantity": 1,
+                        // This bool toggles whether the craft does quantity or hp dmg on result. Some items are hp only with no quantity.
+                        "m_ReduceHP": 0,
+                        // This bool toggles whether the ingredient is "protected" and not consumed or damaged on craft. Some attachments are "augments" not meant to be destroyed
+                        "m_IsProtectedItem": 0
+                    }
+                    //.... More required ingredients defined
+                ],
+                // This is the array/list of results to spawn when the craft is successful
+                "m_RecipeResults": [
+                    {
+                        // The config.cpp classname name of the item to spawn
+                        "m_ItemClassName": "SewingKit",
+                        // The quantity to spawn the item with. -1 for max
+                        "m_ItemQuantity": 50.0,
+                        // The hp to spawn the item with. -1 for max
+                        "m_ItemHP": 75.0
+                    }
+                    //.... More results defined
+                ]
+            }
+            //..... More recipes defined
+        ]
+    }
+]
 ```
 
-Here is an example of me using vanilla slots and items to make a random crafting recipe.
+## Making a Workbench
+
+The amount of code needed to make your own bench is very small. You just need to inherit from `IAT_CraftingPlus_CraftingBench_Base` and override 2 methods.
+
+1. `GetWorkbenchManagerName`
+2. `GetCraftingDamage`
 
 ```c++
-class Your_Crafting_Recipes_Workbench1 extends IAT_RecipeManager
+class Your_Workbench_Classname extends IAT_CraftingPlus_CraftingBench_Base
 {
-  //...
-
-  IAT_CraftableItem Register_TestBenchRecipe_Recipe()
-  {
-    IAT_CraftableItem craftableItem = new IAT_CraftableItem("WoodenLog", "Wooden Log");
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("Material_WoodenLogs", IAT_COLOR.NONE, 1));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("Material_L1_WoodenPlanks", IAT_COLOR.NONE, 1));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("Material_MetalSheets", IAT_COLOR.NONE, 1));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("Material_Shelter_Fabric", IAT_COLOR.NONE, 1));
-    craftableItem.RegisterIngredient(new IAT_ItemRequirement("MetalWire", IAT_COLOR.NONE, 1));
-    return craftableItem;
-  }
-};
-```
-
-### Registering Recipes
-
-I wanted to keep registering recipes as close to the vanilla workflow as possible. The `IAT_RecipeManager` has an `init` function where you place recipes to be registered to the manager. To register a new recipe, add it to the list by `creatableItems.Insert(Recipe_Method_Invoke());`
-
-`ModRoot\scripts\3_game\crafting\your_crafting_recipes_workbench1.c`
-
-```c++
-class Your_Crafting_Recipes_Workbench1 extends IAT_RecipeManager
-{
-  override void Init()
-  {
-    super.Init();
-    // Register my new recipes
-    craftableItems.Insert(Register_TestBenchRecipe_Recipe());
-    craftableItems.Insert(Register_TestBenchRecipe1_Recipe());
-    craftableItems.Insert(Register_TestBenchRecipe2_Recipe());
-  }
-
-  //... recipes defined below
-};
-```
-
-### (Optional) Adding Multiple Workbench Recipe Lists
-
-For most users a single workbench will satisfy their need, hwoever, in some cases advanced users will want to use this crafting system for many workbenches (such as myself). The connection between 3_game and 4_world is held within `class DayZGame` with a strong reference held by the class `m_TestWorkbenchRecipes`. This object will load the recipes on server start and expose it to the default workbench provided by this mod. If you want to add multiple lists you can copy/paste/follow the template here or create your own recipe manager class that handles recipe list logic by workbenche. There are many ways to do the above and I purposfully left it out to allow other users to define what works best for them.
-
-`ModRoot\scripts\3_game\modded_dayzgame.c`
-
-```c++
-modded class DayZGame
-{
-  // Reference to the recipes loaded on game start.
-  // Protected on purpose to enforce getter/setter
-  protected ref IAT_TestWorkbenchRecipes m_TestWorkbenchRecipes;
-
-  void DayZGame()
-  {
-    // Initialize recipes and store into variable
-    m_TestWorkbenchRecipes = new IAT_TestWorkbenchRecipes();
-  }
-  // This method is called in the workbench. Connects 3_game to 4_world in the action
-  IAT_TestWorkbenchRecipes GetIATTestWorkbenchRecipes()
-  {
-    return m_TestWorkbenchRecipes;
-  }
-};
-```
-
-## 4_world
-
-Once the recipes are registered you need a few things to enable crafting for the player.
-
-- A workbench that which a player can attach ingredients.
-- A tool that will interact with the workbench.
-
-### Workbench
-
-I provide a `test` class workbench in this mod you can use to serve as the foundation of your first bench. It contains the smallest amount of code to make the bench work with pliers **AND** hammer using the recipe list included in this pbo.
-
-`ModRoot\scripts\4_world\entities\your_craftingbench_test.c`
-
-```c++
-// Classname of your workbench.           make sure it extends the crafting bench base
-class IAT_CraftingPlus_CraftingBench_Test extends IAT_CraftingPlus_CraftingBench_Base
-{
-  // (optional) this function returns which recipe list should be searched on crafting action
-  override IAT_RecipeManager GetRecipeManager()
-  {
-    return GetDayZGame().GetIATTestWorkbenchRecipes();
-  }
-  // (optional) values greater than 0 will cause damage to the workbench per craft.
-  override int GetCraftingDamage()
-  {
-    return 0;
-  }
-  // this function controls what item can be accepted with the bench.
-  // somewhat redundant when crafting action is not on ItemBase but I leave that decision to you.
-  override bool CanAcceptTool(ItemBase item)
-  {
-    if (item.IsDamageDestroyed())
-      return false;
-    if (item.GetType() == "Hammer")
-      return true;
-    if (item.IsInherited(Pliers))
-      return true;
-    return super.CanAcceptTool(item);
-  }
-};
-```
-
-### Tool
-
-There can be many tools registered to a workbench or multiple benches. In order to connect the crafting action from tool to bench you will need to add `the following action to all tools`.
-
-`AddAction(IAT_ActionCraftOnWorkbench);`
-
-An example of me adding the crafting action to a hammer is seen below. I have omitted the pliers action to showcase the need for both workbench and tool action to be connected.
-
-`ModRoot\scripts\4_world\entities\tools\modded_hammer.c`
-
-```c++
-modded class Hammer
-{
-	override void SetActions()
+  // The method that connects the json recipe list to your workbench. Note the names should match exactly as shown in the json.
+	override string GetWorkbenchManagerName()
 	{
-		super.SetActions();
-		AddAction(IAT_ActionCraftOnWorkbench);
+		return "TheNameOfYourRecipeManager_ProbablySomethingCloseToYourWorkbenchNameOrRecipes";
+	}
+  // The amount of damage to apply to the bench per craft. Some benches need to degenerate over time and this allows that to happen.
+	override int GetCraftingDamage()
+	{
+		return 0;
 	}
 };
 ```
 
-# Wrapup
+## Wrapup
 
-If you didn't pay attention to anything until now. To use this crafting framework you need the following in order to create recipes and add them to the list of craftables.
-
-## Enums (3_game)
-
-```c++
-enum IAT_COLOR
-{
-  NONE=-1, // base case
-  COPPER, //metals
-  //.....
-};
-```
-
-## Recipes (3_game)
-
-```c++
-IAT_CraftableItem Register_X_Recipe()
-{
-  IAT_CraftableItem craftableItem = new IAT_CraftableItem("ITEM_CLASS_NAME", "ITEM_DISPLAY_NAME");
-  craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 1));
-  craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 1));
-
-  craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 2));
-  craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 4));
-  craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 4));
-  craftableItem.RegisterIngredient(new IAT_ItemRequirement("ATTACHMENT_SLOT_NAME", IAT_COLOR.NONE, 4));
-  return craftableItem;
-}
-```
-
-## Recipe Registration (3_game)
-
-```c++
-override void Init()
-{
-  super.Init();
-  // Register my new recipes
-  craftableItems.Insert(Register_TestBenchRecipe_Recipe());
-  craftableItems.Insert(Register_TestBenchRecipe1_Recipe());
-  craftableItems.Insert(Register_TestBenchRecipe2_Recipe());
-}
-```
-
-## Workbench (4_world)
-
-```c++
-class Your_Workbench_Classname extends IAT_CraftingPlus_CraftingBench_Base{};
-```
-
-## Tool Action (4_world)
-
-```c++
-// Modded only required if overriding an existing class.
-modded class Some_Tool
-{
-	override void SetActions()
-	{
-		super.SetActions();
-		AddAction(IAT_ActionCraftOnWorkbench);
-	}
-};
-```
+That is it! Compared to the first version of this mod the setup is FAR simpler and can be mostly done in a text editor. Feel free to send feedback on areas that are unclear.
