@@ -1,8 +1,19 @@
 class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 {
+	static ref ScriptInvoker SyncEvent_IAT_OnCraftingManagerChange = new ScriptInvoker;
+
 	const int RPC_IAT_UPDATE_RECIPE_INFO = 2863649;
 	ref array<IAT_CraftingRecipe> m_CraftingRecipes = new array<IAT_CraftingRecipe>;
 	protected bool m_HasCraftableMatches = false;
+
+	void IAT_CraftingPlus_CraftingBench_Base()
+	{
+		SyncEvent_IAT_OnCraftingManagerChange.Insert(TryCheckRecipes);
+	}
+	void ~IAT_CraftingPlus_CraftingBench_Base()
+	{
+		SyncEvent_IAT_OnCraftingManagerChange.Remove(TryCheckRecipes);
+	}
 
 	//================================================== EVENTS
 	override bool CanPutInCargo( EntityAI parent )
@@ -95,6 +106,9 @@ class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 				craftableItem.InsertCraftingRequirement(new IAT_CraftingItemRequirement(slotName, colorName, quantity));
 			}
 		}
+		// null checking
+		if (!GetRecipeManager())
+			return false;
 		// craftableItem.PrintIngredients();
 		// check if this benches contents can match an actual recipe
 		return GetRecipeManager().IsRecipeMatch(craftableItem, craftableRecipes);
@@ -165,25 +179,55 @@ class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 		return "TestManager";
 	}
 	// Get recipe by index
-	IAT_CraftingRecipe GetCraftableItemByIndex(int index)
+	IAT_CraftingRecipe GetCraftableItemByIndex(ItemBase item, int index)
 	{
-		if (m_CraftingRecipes && m_CraftingRecipes.IsValidIndex(index));
-			return m_CraftingRecipes.Get(index);
+		array<IAT_CraftingRecipe> actualRecipes = new array<IAT_CraftingRecipe>;
+		foreach(IAT_CraftingRecipe recipe : m_CraftingRecipes)
+		{
+			if (CanToolCraftRecipe(item, recipe))
+			{
+				actualRecipes.Insert(recipe);
+			}
+		}
+
+		if (actualRecipes && actualRecipes.IsValidIndex(index));
+			return actualRecipes.Get(index);
 		return NULL;
 	}
 	// Get recipe display name by index
-	string GetCraftableItemDisplayNameByIndex(int index)
+	string GetCraftableItemDisplayNameByIndex(ItemBase item, int index)
 	{
-		if (m_CraftingRecipes && m_CraftingRecipes.IsValidIndex(index));
-			return m_CraftingRecipes.Get(index).GetDisplayName();
+		array<IAT_CraftingRecipe> actualRecipes = new array<IAT_CraftingRecipe>;
+		foreach(IAT_CraftingRecipe recipe : m_CraftingRecipes)
+		{
+			if (CanToolCraftRecipe(item, recipe))
+			{
+				actualRecipes.Insert(recipe);
+			}
+		}
+
+		if (actualRecipes && actualRecipes.IsValidIndex(index));
+			return actualRecipes.Get(index).GetDisplayName();
 		return "No Item Found";
 	}
 	// get recipe count
-	int GetPotentialCraftableItemCount()
+	// int GetPotentialCraftableItemCount()
+	// {
+	// 	if (!m_CraftingRecipes)
+	// 		return 0;
+	// 	return m_CraftingRecipes.Count();
+	// }
+	int GetPotentialCraftableItemCount(ItemBase item)
 	{
-		if (!m_CraftingRecipes)
-			return 0;
-		return m_CraftingRecipes.Count();
+		int countOfCraftableRecipes = 0;
+		foreach(IAT_CraftingRecipe recipe : m_CraftingRecipes)
+		{
+			if (CanToolCraftRecipe(item, recipe))
+			{
+				countOfCraftableRecipes++;
+			}
+		}
+		return countOfCraftableRecipes;
 	}
 	// get list of crafting recipe display names
 	void GetPotentialRecipeMatchesDisplayName(out TStringArray recipeDisplayNames)
@@ -209,16 +253,46 @@ class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 		m_HasCraftableMatches = hasMatches;
 	}
 	// is the tool in hand a tool that can complete a recipe?
-	bool CanAcceptTool(string toolName, int toolQuantity)
+	bool CanAcceptTool(ItemBase tool)
 	{
+		// pre optimization by only casting energy source once instead of inside the foreach loop
+		float toolQuantity = 0;
+		if (tool.HasEnergyManager())
+		{
+			// Print("Has energy manager.");
+			if (tool.GetInventory().AttachmentCount() != 0)
+			{
+				EntityAI energySource;
+				if (Class.CastTo(energySource, tool.GetInventory().GetAttachmentFromIndex(0)))
+				{
+					toolQuantity = energySource.GetCompEM().GetEnergy();
+				}
+			}
+		}
+		else
+		{
+			toolQuantity = tool.GetQuantity();
+		}
+		// PrintFormat("Tool quantity: %1", toolQuantity);
+
 		bool isCorrectTool = false;
+		string toolName = tool.GetType();
+		toolName.ToLower();
+		string requiredTool;
 		// PrintFormat("checking tool %1")
 		foreach(IAT_CraftingRecipe recipe : m_CraftingRecipes)
 		{
+			requiredTool = recipe.GetRequiredTool();
+			requiredTool.ToLower();
 			// PrintFormat("CanAcceptTool: Required Tool: %1 Actual Tool: %2", recipe.GetRequiredTool(), toolName);
-			if (recipe.GetRequiredTool() == "" || recipe.GetRequiredTool() == toolName)
+			if (requiredTool == "" || requiredTool == toolName)
 			{
 				if (toolQuantity >= recipe.GetToolQuantityPerCraft())
+				{
+					isCorrectTool = true;
+					break;
+				}
+				if (tool.HasEnergyManager() && toolQuantity >= recipe.GetToolQuantityPerCraft())
 				{
 					isCorrectTool = true;
 					break;
@@ -230,12 +304,26 @@ class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 	bool CanToolCraftRecipe(ItemBase tool, IAT_CraftingRecipe recipe)
 	{
 		string recipeTool = recipe.GetRequiredTool();
+		recipeTool.ToLower();
+		string toolType = tool.GetType();
+		toolType.ToLower();
 		// PrintFormat("CanToolCraftRecipe: Required Tool: %1 Actual Tool: %2", recipeTool, tool.GetType());
-		if (recipeTool == "" || recipeTool == tool.GetType())
+		if (recipeTool == "" || recipeTool == toolType)
 		{
 			if (tool.GetQuantity() >= recipe.GetToolQuantityPerCraft())
 			{
 				return true;
+			}
+			if (tool.HasEnergyManager())
+			{
+				if (tool.GetInventory().AttachmentCount() == 0)
+					return false;
+
+				EntityAI energySource;
+				if (Class.CastTo(energySource, tool.GetInventory().GetAttachmentFromIndex(0)))
+				{
+					return energySource.GetCompEM().GetEnergy() >= recipe.GetToolQuantityPerCraft();
+				}
 			}
 		}
 		return false;
