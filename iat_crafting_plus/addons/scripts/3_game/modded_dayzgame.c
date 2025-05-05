@@ -5,7 +5,7 @@ modded class DayZGame
 	void SetIATCraftingPlusConfig(IAT_CraftingPlusConfig config)
 	{
 		Print("IAT_CraftingPlusConfig Settings Initialized");
-		config.PrettyPrint();
+		// config.PrettyPrint();
 		m_IAT_CraftingPlusConfig = config;
 	}
 

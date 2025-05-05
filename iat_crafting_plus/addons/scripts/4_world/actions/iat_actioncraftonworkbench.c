@@ -44,7 +44,7 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 			// (client side)
 			// if the bench has any crafts available, show its option using the variant id
 			if (craftingWorkbench.HasCraftableMatches())
-				m_Text = "Craft " + craftingWorkbench.GetCraftableItemDisplayNameByIndex(m_VariantID);
+				m_Text = "Craft " + craftingWorkbench.GetCraftableItemDisplayNameByIndex(item, m_VariantID);
 		}
 	}
 	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
@@ -60,7 +60,7 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 			if (craftingWorkbench.HasCraftableMatches())
 			{
 				// check to see if the tool in hand can craft any of the recipes
-				return craftingWorkbench.CanAcceptTool(item.GetType(), item.GetQuantity());
+				return craftingWorkbench.CanAcceptTool(item);
 			}
 
 		}
@@ -74,7 +74,7 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 			// pull the client selected variantid from action dddata
 			int variantId = IAT_CP_VariantIdActionData.Cast(action_data).m_IATVariantId;
 			// get the cratable item based on client selection
-			IAT_CraftingRecipe selectedRecipe = craftingWorkbench.GetCraftableItemByIndex(variantId);
+			IAT_CraftingRecipe selectedRecipe = craftingWorkbench.GetCraftableItemByIndex(action_data.m_MainItem, variantId);
 
 			// if the tool in hand can complete the craft
 			if (craftingWorkbench.CanToolCraftRecipe(action_data.m_MainItem, selectedRecipe))
@@ -92,7 +92,22 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 				}
 				else if (selectedRecipe.GetToolQuantityPerCraft() > 0)
 				{
-					action_data.m_MainItem.AddQuantity(-selectedRecipe.GetToolQuantityPerCraft());
+					if (action_data.m_MainItem.HasEnergyManager())
+					{
+						if (action_data.m_MainItem.GetInventory().AttachmentCount() > 0)
+						{
+							EntityAI energySource;
+							if (Class.CastTo(energySource, action_data.m_MainItem.GetInventory().GetAttachmentFromIndex(0)))
+							{
+								// PrintFormat("expected: %1 actual: %2", selectedRecipe.GetToolQuantityPerCraft(), energySource.GetCompEM().GetEnergy());
+								energySource.GetCompEM().ConsumeEnergy(selectedRecipe.GetToolQuantityPerCraft());
+							}
+						}
+					}
+					else
+					{
+						action_data.m_MainItem.AddQuantity(-selectedRecipe.GetToolQuantityPerCraft());
+					}
 				}
 			}
 			else
@@ -216,9 +231,13 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 		IAT_CraftingPlus_CraftingBench_Base craftingWorkbench;
 		if (Class.CastTo(craftingWorkbench, target))
 		{
-			// sets the count because all we really need is an ordinal index to loop through the array
-			if (craftingWorkbench.HasCraftableMatches())
-				GetVariantManager().SetActionVariantCount(craftingWorkbench.GetPotentialCraftableItemCount());
+			ItemBase itemInHands;
+			if (Class.CastTo(itemInHands, item))
+			{
+				// sets the count because all we really need is an ordinal index to loop through the array
+				if (craftingWorkbench.HasCraftableMatches())
+					GetVariantManager().SetActionVariantCount(craftingWorkbench.GetPotentialCraftableItemCount(itemInHands));
+			}
 		}
 		else
 			GetVariantManager().Clear();
