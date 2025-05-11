@@ -102,6 +102,7 @@ class IAT_FacePaintOptions
 		category2_options.Insert("clown1");
 		category2_options.Insert("demon");
 		category2_options.Insert("geisha1");
+		category2_options.Insert("geisha_traditional");
 		category2_options.Insert("glowstick_blue");
 		category2_options.Insert("glowstick_green");
 		category2_options.Insert("glowstick_red");
@@ -118,6 +119,7 @@ class IAT_FacePaintOptions
 		category3_options.Insert("left_cheek_scar");
 		category3_options.Insert("left_eye_bearclaw");
 		category3_options.Insert("left_eye_bearclaw_faded");
+		category3_options.Insert("left_eye_bearclaw_recent");
 		category3_options.Insert("left_eyeb_ruise");
 		category3_options.Insert("right_cheek_scar");
 		category3_options.Insert("right_keloid");
