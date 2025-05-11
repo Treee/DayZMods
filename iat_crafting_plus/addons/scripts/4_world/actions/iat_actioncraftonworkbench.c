@@ -90,7 +90,7 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 				{
 					action_data.m_MainItem.DecreaseHealth(selectedRecipe.GetToolDamagePerCraft());
 				}
-				else if (selectedRecipe.GetToolQuantityPerCraft() > 0)
+				if (selectedRecipe.GetToolQuantityPerCraft() > 0)
 				{
 					if (action_data.m_MainItem.HasEnergyManager())
 					{

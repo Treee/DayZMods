@@ -28,7 +28,6 @@ start "DayZ Server" /min "DayZServer_x64.exe" -config=serverDZ_SRP.cfg -port=230
 @REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@ViewInventoryAnimation;
 @REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@DayZ Horse;
 @REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@Crocodile;
-@REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@InventorySlotsHotfix;
 @REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@Admirals Dark Sight Mod;
 @REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@Admirals NVG Mod;
 @REM Y:\SteamLibrary\steamapps\common\DayZ\!Workshop\@Admirals World Radio Mod;
