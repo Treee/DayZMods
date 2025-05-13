@@ -6,6 +6,18 @@ modded class PlayerBase
 		// if there isa lifespan plugin (client side)
 		if (moduleLifespan)
 		{	// return the list of types available
+			return moduleLifespan.GetBeardNames();
+		}
+		// empty list
+		return {};
+	}
+
+	TStringArray GetFacialHairClassNames()
+	{
+		PluginLifespan moduleLifespan = PluginLifespan.Cast(GetPlugin(PluginLifespan));
+		// if there isa lifespan plugin (client side)
+		if (moduleLifespan)
+		{	// return the list of types available
 			return moduleLifespan.GetBeards();
 		}
 		// empty list

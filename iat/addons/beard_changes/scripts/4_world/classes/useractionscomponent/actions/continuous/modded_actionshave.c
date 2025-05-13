@@ -49,6 +49,17 @@ modded class ActionShave
 		}
 	}
 
+	// disallow mutants from shaving
+	#ifdef AdmiralsMutantMod
+	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
+	{
+		if (player.IsMutant())
+			return false;
+		else
+			return super.ActionCondition(player, target, item);
+	}
+	#endif
+
 	override void OnFinishProgressServer( ActionData action_data )
 	{
 		super.OnFinishProgressServer(action_data);
@@ -72,7 +83,7 @@ modded class ActionShave
 		{
 			if ( !GetGame().IsDedicatedServer() )
 			{
-				TStringArray  m_BeardTypes = player.GetFacialHairOptions();
+				TStringArray  m_BeardTypes = player.GetFacialHairClassNames();
 				string itemName = m_BeardTypes.Get(m_VariantID);
 				IAT_BeardVariantActionData.Cast(action_data).m_IATBeardVariant = itemName;
 			}
@@ -156,6 +167,19 @@ modded class ActionShaveTarget
 			}
 		}
 	}
+	// disallow mutants from shaving
+	#ifdef AdmiralsMutantMod
+	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
+	{
+		PlayerBase man;
+		Class.CastTo(man,  target.GetObject() );
+
+		if (man.IsMutant())
+			return false;
+		else
+			return super.ActionCondition(player, target, item);
+	}
+	#endif
 
 	override void OnFinishProgressServer( ActionData action_data )
 	{
@@ -183,7 +207,7 @@ modded class ActionShaveTarget
 			{
 				if ( !GetGame().IsDedicatedServer() )
 				{
-					TStringArray  m_BeardTypes = targetPlayer.GetFacialHairOptions();
+					TStringArray  m_BeardTypes = targetPlayer.GetFacialHairClassNames();
 					string itemName = m_BeardTypes.Get(m_VariantID);
 					IAT_BeardVariantActionData.Cast(action_data).m_IATBeardVariant = itemName;
 				}
