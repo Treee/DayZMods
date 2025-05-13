@@ -1,6 +1,7 @@
 modded class PluginLifespan
 {
 	ref protected TStringArray m_BeardTypes = {};
+	ref protected TStringArray m_BeardNames = {};
   	protected static const int LIFESPAN_MAX = 2880; // 240; // default value in minutes when player achieved maximum age in order to have full beard
 
 	override protected void SetPlayerLifespanLevel( PlayerBase player, LifespanLevel level )
@@ -13,10 +14,54 @@ modded class PluginLifespan
 	{
 		return m_BeardTypes;
 	}
+	TStringArray GetBeardNames()
+	{
+		return m_BeardNames;
+	}
+
+	string TranslateBeardClassToDisplayName(string className, string color)
+	{
+		string displayName = "";
+		switch(className)
+		{
+			case "ALV_Moustache1":
+				displayName = "Imperial";
+			break;
+			case "ALV_Moustache2":
+				displayName = "Chevron";
+			break;
+			case "ALV_Moustache3":
+				displayName = "Horseshoe";
+			break;
+			case "ALV_Goatee1":
+				displayName = "Van Dyke";
+			break;
+			case "ALV_Goatee2":
+				displayName = "Anchor";
+			break;
+			case "ALV_Beard1":
+				displayName = "Ducktail";
+			break;
+			case "ALV_Beard2":
+				displayName = "Ned Kelly";
+			break;
+			case "ALV_Beard3":
+				displayName = "Chin Curtain";
+			break;
+			case "ALV_Beard4":
+				displayName = "Hollywoodian";
+			break;
+			case "ALV_Beard6":
+				displayName = "Friendly Muttonchops";
+			break;
+		}
+		return string.Format("%1 - %2", displayName, color);
+	}
 
 	void PopulateBeardsInList(float beardLifeTime)
 	{
 		m_BeardTypes.Clear();
+		m_BeardNames.Clear();
 		TStringArray m_OrderedBeards = GetOrderedBeardList();
 		TStringArray m_BeardColors = GetBeardColorsAvailable();
 		int m_TotalBeardTypes = m_OrderedBeards.Count();
@@ -36,6 +81,7 @@ modded class PluginLifespan
 				foreach(string beardColor : m_BeardColors)
 				{	// add that beard to the list
 					m_BeardTypes.Insert(string.Format("%1_%2", beardType, beardColor));
+					m_BeardNames.Insert(TranslateBeardClassToDisplayName(beardType, beardColor));
 				}
 			}
 			else // else short circuit and break from the loop

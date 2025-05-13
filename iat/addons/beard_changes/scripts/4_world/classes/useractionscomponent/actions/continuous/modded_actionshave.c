@@ -72,7 +72,7 @@ modded class ActionShave
 		{
 			if ( !GetGame().IsDedicatedServer() )
 			{
-				TStringArray  m_BeardTypes = player.GetFacialHairOptions();
+				TStringArray  m_BeardTypes = player.GetFacialHairClassNames();
 				string itemName = m_BeardTypes.Get(m_VariantID);
 				IAT_BeardVariantActionData.Cast(action_data).m_IATBeardVariant = itemName;
 			}
@@ -183,7 +183,7 @@ modded class ActionShaveTarget
 			{
 				if ( !GetGame().IsDedicatedServer() )
 				{
-					TStringArray  m_BeardTypes = targetPlayer.GetFacialHairOptions();
+					TStringArray  m_BeardTypes = targetPlayer.GetFacialHairClassNames();
 					string itemName = m_BeardTypes.Get(m_VariantID);
 					IAT_BeardVariantActionData.Cast(action_data).m_IATBeardVariant = itemName;
 				}
