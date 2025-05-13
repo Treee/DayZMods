@@ -49,6 +49,17 @@ modded class ActionShave
 		}
 	}
 
+	// disallow mutants from shaving
+	#ifdef AdmiralsMutantMod
+	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
+	{
+		if (player.IsMutant())
+			return false;
+		else
+			return super.ActionCondition(player, target, item);
+	}
+	#endif
+
 	override void OnFinishProgressServer( ActionData action_data )
 	{
 		super.OnFinishProgressServer(action_data);
@@ -156,6 +167,19 @@ modded class ActionShaveTarget
 			}
 		}
 	}
+	// disallow mutants from shaving
+	#ifdef AdmiralsMutantMod
+	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
+	{
+		PlayerBase man;
+		Class.CastTo(man,  target.GetObject() );
+
+		if (man.IsMutant())
+			return false;
+		else
+			return super.ActionCondition(player, target, item);
+	}
+	#endif
 
 	override void OnFinishProgressServer( ActionData action_data )
 	{
