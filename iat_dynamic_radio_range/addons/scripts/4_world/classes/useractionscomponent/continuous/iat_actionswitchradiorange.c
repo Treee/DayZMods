@@ -27,22 +27,32 @@ class IAT_ActionSwitchRadioRange extends ActionContinuousBase
   	void IAT_ActionSwitchRadioRange()
 	{
 		m_CallbackClass = IAT_ActionSwitchRadioRangeCB;
-		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_ITEM_TUNE;
 		m_CommandUIDProne = DayZPlayerConstants.CMD_ACTIONFB_ITEM_TUNE;
-		m_FullBody = false;
-		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
+		// m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
+		// m_FullBody = false;
+		// m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
     	m_Text = "Change Radio Range";
 	}
 	override void CreateConditionComponents()
 	{
-		m_ConditionItem = new CCINonRuined;
 		m_ConditionTarget = new CCTNone;
+		m_ConditionItem = new CCINonRuined;
 	}
-  	override bool CanBeUsedLeaning()
+  	// override bool CanBeUsedLeaning()
+	// {
+	// 	return true;
+	// }
+	override bool HasProneException()
 	{
 		return true;
 	}
+
+	override bool HasTarget()
+	{
+		return false;
+	}
+
   	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
 	{
 		// check to see if the radio is on and working.
