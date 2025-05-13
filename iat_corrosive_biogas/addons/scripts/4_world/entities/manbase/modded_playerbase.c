@@ -84,6 +84,19 @@ modded class PlayerBase
 	{
 		return {"Headgear", "Mask", "Eyewear", "Shoulder", "Melee", "Vest", "Body", "Hips", "Legs", "Back", "Gloves", "Hands", "Armband", "Feet", "Coat", "Scarf"};
 	}
+	override void InsertAgent(int agent, float count = 1)
+	{
+		// keep corrosion from being given to the player
+		if (agent == IAT_CB_Agents.CORROSION)
+			return;
+
+		#ifdef AdmiralsMutantMod
+		if (agent == ADM_MutantAgent.MUTANT_AGENT)
+			return;
+		#endif
+
+		super.InsertAgent(agent, count);
+	}
 
 	void DamageWornClothing()
 	{
