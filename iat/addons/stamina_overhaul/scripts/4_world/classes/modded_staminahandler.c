@@ -2,6 +2,9 @@ modded class StaminaHandler
 {
 	protected ref Timer m_IAT_DepletionTimer;
 
+	protected int m_IAT_LastMovementIndex;
+	protected int m_IAT_LastStanceIndex;
+
 	override protected void SetCooldown(float time, int modifier = -1)
 	{
 		// hijack the vanilla reset cooldown logic
@@ -31,6 +34,26 @@ modded class StaminaHandler
 			m_IAT_DepletionTimer.Stop();
 			m_IAT_DepletionTimer = null;
 		}
+	}
+
+	override protected void StaminaProcessor_Move(HumanMovementState pHumanMovementState)
+	{
+		super.StaminaProcessor_Move(pHumanMovementState);
+
+		// if we are sprinting
+		if (pHumanMovementState.m_iMovement == DayZPlayerConstants.MOVEMENTIDX_SPRINT)
+		{
+			// if our stance has changed
+			if (pHumanMovementState.m_iStanceIdx != m_IAT_LastStanceIndex)
+			{
+				// consume some stamina
+				m_StaminaDepletion += Math.RandomFloatInclusive(0.5, 2.7);
+			}
+		}
+
+		// set last states after all said and done
+		m_IAT_LastMovementIndex = pHumanMovementState.m_iMovement;
+		m_IAT_LastStanceIndex = pHumanMovementState.m_iStanceIdx;
 	}
 
 	float GetAdditionalWaitTime()
