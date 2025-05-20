@@ -82,17 +82,20 @@ modded class ItemBase
 	}
 
 	// when an item gets drenched, remove corrosion
-	override void OnWetLevelChanged(EWetnessLevel newLevel, EWetnessLevel oldLevel)
+	override void OnWetChanged(float newVal, float oldVal)
 	{
-		super.OnWetLevelChanged(newLevel, oldLevel);
+		super.OnWetChanged(newVal, oldVal);
 
-		if (GetGame().IsDedicatedServer())
+		if (newVal >= GameConstants.STATE_WET)
 		{
-			if (HasCorrosiveAgents() && newLevel >= EWetnessLevel.WET || oldLevel >= EWetnessLevel.WET)
+			if (GetGame().IsDedicatedServer())
 			{
-				RemoveAgent(IAT_CB_Agents.CORROSION);
-				SetCorrosiveAgents(false);
-				SetSynchDirty();
+				if (HasCorrosiveAgents())
+				{
+					RemoveAgent(IAT_CB_Agents.CORROSION);
+					SetCorrosiveAgents(false);
+					SetSynchDirty();
+				}
 			}
 		}
 	}
