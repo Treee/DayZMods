@@ -21,14 +21,12 @@ modded class ItemBase
 			}
 		}
 	}
-
+	// ============================================ EVENTS
 	// ensure it still happens
 	override void OnVariablesSynchronized()
 	{
 		super.OnVariablesSynchronized();
 	}
-
-	// ============================================ CUSTOM
 
 	override void OnMovedInsideCargo(EntityAI container)
 	{
@@ -80,7 +78,6 @@ modded class ItemBase
 			}
 		}
 	}
-
 	// when an item gets drenched, remove corrosion
 	override void OnWetChanged(float newVal, float oldVal)
 	{
@@ -99,7 +96,40 @@ modded class ItemBase
 			}
 		}
 	}
+	// when containers empty and are not deleted, re-add agents
+	override bool SetQuantity(float value, bool destroy_config = true, bool destroy_forced = false, bool allow_client = false, bool clamp_to_stack_max = true)
+	{
+		// get if this item has corrosion
+		int existingAgents = GetAgents();
+		// run vanilla logic and store the result for later use
+		bool superBool = super.SetQuantity(value, destroy_config, destroy_forced, allow_client, clamp_to_stack_max);
+		// short circuit items that do not have agents
+		if (existingAgents < 1)
+			return superBool;
 
+		// only touch agents on the server
+		if (GetGame().IsDedicatedServer())
+		{
+			// get the min quantity for this item
+			float min = GetQuantityMin();
+			if (value <= (min + 0.001))
+				value = min;
+
+			// if the item is really at 0
+			if (value == min)
+			{
+				TransferAgents(existingAgents);
+				if (ContainsAgent(IAT_CB_Agents.CORROSION))
+				{
+					// sync client stuff
+					SetCorrosiveAgents(true);
+					SetSynchDirty();
+				}
+			}
+		}
+		return superBool;
+	}
+	// ============================================ CUSTOM
 	void TransmitCorrosionAgents(EntityAI target)
 	{
 		PluginTransmissionAgents plugin = PluginTransmissionAgents.Cast(GetPlugin(PluginTransmissionAgents));
