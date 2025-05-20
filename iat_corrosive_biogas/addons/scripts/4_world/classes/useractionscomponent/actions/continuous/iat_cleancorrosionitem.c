@@ -94,7 +94,12 @@ class IAT_ActionCleanCorrosionItem: ActionContinuousBase
 			targetItem.SetSynchDirty();
 		}
 		// decrement bottle contents
-		action_data.m_MainItem.AddQuantity( -action_data.m_MainItem.GetDisinfectQuantity(), false );
+		Bottle_Base waterContainer;
+		if (Class.CastTo(waterContainer, action_data.m_MainItem))
+		{
+			float consumption = (waterContainer.GetLiquidEmptyRate() * waterContainer.GetLiquidThroughputCoef()) / 16;
+			waterContainer.AddQuantity( -consumption, false );
+		}
 	}
 
 	override void OnEndServer( ActionData action_data )
@@ -108,15 +113,18 @@ class IAT_ActionCleanCorrosionItem: ActionContinuousBase
 	{
 		if ( !GetGame().IsMultiplayer() || GetGame().IsServer() )
 		{
-			ActionEmptyBottleBaseCB comp = ActionEmptyBottleBaseCB.Cast(actionData.m_Callback);
-			if (comp.m_RPCStopAlreadySent)
-				return;
+			ActionEmptyBottleBaseCB comp;
+			if (Class.CastTo(comp, actionData.m_Callback))
+			{
+				if (comp.m_RPCStopAlreadySent)
+					return;
 
-			Bottle_Base target_vessel = Bottle_Base.Cast( actionData.m_MainItem );
-			Param1<bool> play = new Param1<bool>( enable );
-			GetGame().RPCSingleParam( target_vessel, SoundTypeBottle.EMPTYING, play, true );
-			if (!enable)
-				comp.m_RPCStopAlreadySent = true;
+				Bottle_Base target_vessel = Bottle_Base.Cast( actionData.m_MainItem );
+				Param1<bool> play = new Param1<bool>( enable );
+				GetGame().RPCSingleParam( target_vessel, SoundTypeBottle.EMPTYING, play, true );
+				if (!enable)
+					comp.m_RPCStopAlreadySent = true;
+			}
 		}
 	}
 };
