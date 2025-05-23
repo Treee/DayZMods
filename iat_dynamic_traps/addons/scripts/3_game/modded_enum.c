@@ -1,0 +1,4 @@
+// enum IAT_DYNAMICTRAPS_RPC
+// {
+//     CHECK_DYNAMICTRAPS_CONFIG = -3545354
+// };
