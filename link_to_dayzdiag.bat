@@ -12,6 +12,7 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_melee_weapons" Z:\DayZ\Modd
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_molotov_firegrenades" Z:\DayZ\Modding\iat_molotov_firegrenades\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_powered_radio_towers" Z:\DayZ\Modding\iat_powered_radio_towers\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_prop_items" Z:\DayZ\Modding\iat_prop_items\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_radio_mute" Z:\DayZ\Modding\iat_radio_mute\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_roleplay_emotes" Z:\DayZ\Modding\iat_roleplay_emotes\addons
