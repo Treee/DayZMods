@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-	texture="iat_melee_weapons\blade\data\srp_berserksword_as.paa";
+	texture="iat_melee_weapons\blade\data\iat_berserksword_as.paa";
     uvSource="tex1";
     class uvTransform
     {
@@ -56,7 +56,7 @@ class Stage4
 };
 class Stage5
 {
-	texture="iat_melee_weapons\blade\data\srp_berserksword_smdi.paa";
+	texture="iat_melee_weapons\blade\data\iat_berserksword_smdi.paa";
     uvSource="tex";
     class uvTransform
     {

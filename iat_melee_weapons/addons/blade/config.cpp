@@ -210,14 +210,12 @@ class CfgVehicles
             };
         };
     };
-
     class IAT_Melee_BerserkSword_Basic : IAT_Melee_BerserkSword_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_berserksword_co.paa" };
     };
-
     class IAT_Melee_BerserkSword_Illusive : IAT_Melee_BerserkSword_ColorBase
     {
         scope = 2;
@@ -243,5 +241,112 @@ class CfgVehicles
                 };
             };
         };
+    };
+
+    class IAT_Melee_FriedesScythe_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Serana's Scythe";
+        descriptionShort = "A Scythe designed long ago by a Priestess, for dispatching the plague-addled as a mercy.";
+        model = "iat_melee_weapons\blade\iat_serenascythe.p3d";
+        rotationFlags = 12;
+        inventorySlot[] =
+        {
+            "Shoulder",
+            "Melee"
+        };
+        weight = 600;
+        itemSize[] = { 1,7 };
+        itemBehaviour = 2;
+        fragility = 0.02;
+        openItemSpillRange[] = { 40,70 };
+        repairableWithKits[] = { 4 };
+        repairCosts[] = { 50 };
+        isMeleeWeapon = 1;
+        hiddenSelections[] = { "zbytek", "handle" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_scythe_co.paa", "iat_melee_weapons\blade\data\iat_scythe_pole_co.paa" };
+        hiddenSelectionsMaterials[] = { "iat_melee_weapons\blade\data\iat_scythe.rvmat", "iat_melee_weapons\blade\data\iat_scythe_pole.rvmat" };
+        class InventorySlotsOffsets
+        {
+            class Shoulder
+            {
+                position[] = { 0.05,-0.2,0 };//FB,UD,LR
+                orientation[] = { 0,20,0 };//x,y,z
+            };
+            class Melee
+            {
+                position[] = { 0.01,-0.2,0 };//FB,UD,LR
+                orientation[] = { -0,-20,0 };//x,y,z
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 750;
+                    healthLevels[] =
+                    {
+                        {1.0, { "iat_melee_weapons\blade\data\iat_scythe.rvmat", "iat_melee_weapons\blade\data\iat_scythe_pole.rvmat"}},
+                        {0.69999999, { "iat_melee_weapons\blade\data\iat_scythe.rvmat", "iat_melee_weapons\blade\data\iat_scythe_pole.rvmat"}},
+                        {0.5, { "iat_melee_weapons\blade\data\iat_scythe_damage.rvmat", "iat_melee_weapons\blade\data\iat_scythe_pole_damage.rvmat"}},
+                        {0.30000001, { "iat_melee_weapons\blade\data\iat_scythe_damage.rvmat", "iat_melee_weapons\blade\data\iat_scythe_pole_damage.rvmat"}},
+                        {0.0, { "iat_melee_weapons\blade\data\iat_scythe_destruct.rvmat", "iat_melee_weapons\blade\data\iat_scythe_pole_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class MeleeModes
+        {
+            class Default
+            {
+                ammo = "IAT_MeleeSlash_2HSword";
+                range = 1.8;
+            };
+            class Heavy
+            {
+                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                range = 1.8;
+            };
+            class Sprint
+            {
+                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                range = 3.9;
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUp_Light
+                {
+                    soundSet = "hatchet_pickup_light_SoundSet";
+                    id = 796;
+                };
+                class pickup
+                {
+                    soundSet = "hatchet_pickup_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "baseballbat_drop_SoundSet";
+                    id = 898;
+                };
+            };
+        };
+    };
+    class IAT_Melee_FriedesScythe_Basic : IAT_Melee_FriedesScythe_ColorBase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek","handle" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_scythe_co.paa", "iat_melee_weapons\blade\data\iat_scythe_pole_co.paa" };
+    };
+    class IAT_Melee_FriedesScythe_theamontiladoraven : IAT_Melee_FriedesScythe_ColorBase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek","handle" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_scythe_co.paa", "iat_melee_weapons\blade\data\iat_scythe_pole_co.paa" };
     };
 };
