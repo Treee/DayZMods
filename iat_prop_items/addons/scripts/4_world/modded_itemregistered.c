@@ -7,13 +7,14 @@ modded class ModItemRegisterCallbacks
         pType.AddItemInHandsProfileIK("IAT_Bear_ColorBase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/TeddyBear.anm");
         pType.AddItemInHandsProfileIK("IAT_FieldShovel_Colorbase", "dz/anims/workspaces/player/player_main/props/player_main_1h_handshovel.asi", pBehavior, "dz/anims/anm/player/ik/gear/CSLA_Field_Shovel.anm");
     }
-    // override void RegisterTwoHanded(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
-    // {
-    //     super.RegisterTwoHanded( pType, pBehavior );
 
-    //     //====================================================
-    //     // pType.AddItemInHandsProfileIK("", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_shovel.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/Shovel.anm");
-    // }
+    override void RegisterTwoHanded(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
+    {
+        super.RegisterTwoHanded( pType, pBehavior );
+
+        //====================================================
+        pType.AddItemInHandsProfileIK("IAT_IronHammer_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_sledgehammer.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/sledge_hammer.anm");
+    }
 
     override void RegisterHeavy(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
     {
