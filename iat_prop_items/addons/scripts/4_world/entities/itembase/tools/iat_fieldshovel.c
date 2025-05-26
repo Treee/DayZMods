@@ -1,4 +1,4 @@
-class IAT_Shovel_Colorbase extends ItemBase
+class IAT_FieldShovel_Colorbase extends ItemBase
 {
 	override bool CanMakeGardenplot()
 	{
@@ -17,16 +17,11 @@ class IAT_Shovel_Colorbase extends ItemBase
 		AddAction(ActionBuildPart);
 		AddAction(ActionBuryBody);
 		AddAction(ActionBuryAshes);
-		AddAction(ActionDigOutStash);
 		AddAction(ActionDigInStash);
+		AddAction(ActionDigOutStash);
 		AddAction(ActionFillObject);
 		AddAction(ActionDigWorms);
 		AddAction(ActionCreateGreenhouseGardenPlot);
-	}
-
-	override void SetActionAnimOverrides()
-	{
-		OverrideActionAnimation(ActionDigWorms, DayZPlayerConstants.CMD_ACTIONFB_DIGGIN_WORMS, DayZPlayerConstants.STANCEMASK_ERECT);
 	}
 
 	override int GetOnDigWormsAmount()
@@ -35,5 +30,5 @@ class IAT_Shovel_Colorbase extends ItemBase
 	}
 };
 
-class IAT_Shovel_Basic extends IAT_Shovel_Colorbase{};
-class IAT_Shovel_snaliensarereal extends IAT_Shovel_Colorbase{};
+class IAT_FieldShovel_Basic extends IAT_FieldShovel_Colorbase{};
+class IAT_FieldShovel_snaliensarereal extends IAT_FieldShovel_Colorbase{};
