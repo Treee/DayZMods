@@ -9,21 +9,18 @@ class CfgVehicles
 {
     class Inventory_Base;
 
-
-    class IAT_Shovel_Colorbase : Inventory_Base
+    class IAT_FieldShovel_Colorbase : Inventory_Base
     {
         scope = 0;
-        displayName = "$STR_CfgVehicles_Shovel0";
-        descriptionShort = "$STR_CfgVehicles_Shovel1";
+        displayName = "$STR_CfgVehicles_FieldShovel0";
+        descriptionShort = "$STR_CfgVehicles_FieldShovel1";
         model = "iat_prop_items\tools\iat_shovel.p3d";
         debug_ItemCategory = 2;
         rotationFlags = 17;
-        weight = 3000;
+        inventorySlot[] = { "Backpack_1" };
+        suicideAnim = "woodaxe";
+        weight = 1800;
         itemSize[] = { 2, 5 };
-        fragility = 0.008;
-        itemBehaviour = 2;
-        inventorySlot[] = { "Shoulder", "Melee" };
-        suicideAnim = "pitchfork";
         build_action_type = 4;
         dismantle_action_type = 4;
         openItemSpillRange[] = { 30, 60 };
@@ -53,24 +50,24 @@ class CfgVehicles
         {
             class Default
             {
-                ammo = "MeleeBluntLight_3";
-                range = 1.8;
+                ammo = "MeleeSharpLight_3";
+                range = 1.4;
             };
             class Heavy
             {
-                ammo = "MeleeBluntHeavy_3";
-                range = 1.8;
+                ammo = "MeleeSharpHeavy_3";
+                range = 1.4;
             };
             class Sprint
             {
-                ammo = "MeleeBluntHeavy_3";
-                range = 3.7;
+                ammo = "MeleeSharpHeavy_3";
+                range = 3.3;
             };
         };
         class Horticulture
         {
             ToolAnim = "DIGGINGSHOVEL";
-            DiggingTimeToComplete = 4.5;
+            DiggingTimeToComplete = 5;
         };
         class AnimEvents
         {
@@ -127,28 +124,17 @@ class CfgVehicles
                 };
             };
         };
-        class InventorySlotsOffsets
-        {
-            class Shoulder
-            {
-                position[] = { 0, -0.03, 0.04 };
-                orientation[] = { 55, 0, 0 };
-            };
-            class Melee
-            {
-                position[] = { 0, -0.05, 0 };
-                orientation[] = { 110, 0, 0 };
-            };
-        };
     };
 
-    class IAT_Shovel_Basic : IAT_Shovel_Colorbase
+    class IAT_FieldShovel_Basic : IAT_FieldShovel_Colorbase
     {
         scope = 2;
     };
-    class IAT_Shovel_snaliensarereal : IAT_Shovel_Colorbase
+    class IAT_FieldShovel_snaliensarereal : IAT_FieldShovel_Colorbase
     {
         scope = 2;
+        displayName = "PJ’s Shovel";
+        descriptionShort = "Ain’t nothin’ ordinary about it. This here tool’s dug ditches, planted dreams, and cracked a few heads clean open.";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\tools\data\iat_shovel_co.paa" };
     };
