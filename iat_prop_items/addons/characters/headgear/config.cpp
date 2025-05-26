@@ -1,18 +1,13 @@
 class CfgPatches
 {
-    class Survivalists_Characters_Headgear
+    class IAT_Prop_Items_Characters_Headgear
     {
         requiredAddons[] = { "DZ_Data", "DZ_Characters", "DZ_Characters_Headgear" };
     };
 };
 class CfgVehicles
 {
-    // class Headgear_Base;
     class Clothing;
-    class Switchable_Base;
-    class Inventory_Base;
-    class Container_Base;
-
     class IAT_NailCrown_Colorbase : Clothing
     {
         scope = 0;
@@ -136,5 +131,16 @@ class CfgVehicles
             };
         };
     };
-
+    class IAT_NailCrown_Basic : IAT_NailCrown_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_nailcrown_co.paa" };
+    };
+    class IAT_NailCrown_realsweetkid27 : IAT_NailCrown_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_nailcrown_co.paa" };
+    };
 };
