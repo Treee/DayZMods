@@ -7,8 +7,12 @@ class CfgPatches
 };
 class CfgVehicles
 {
-    class Inventory_Base;
+    class HouseNoDestruct;
 
-
-
+    class IAT_PowerpoleAmp_wadethemechanic : HouseNoDestruct
+    {
+        scope = 1;
+        displayName = "$STR_CfgVehicles_Land_Power_Pole_Conc1_Amp0";
+        model = "\dz\structures\industrial\power\power_pole_conc1_amp.p3d";
+    };
 };
