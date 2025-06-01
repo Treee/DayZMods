@@ -128,7 +128,7 @@ class CfgVehicles
             "Shoulder",
             "Melee"
         };
-        weight = 600;
+        weight = 3600;
         itemSize[] = { 1,7 };
         itemBehaviour = 2;
         fragility = 0.02;
@@ -255,7 +255,7 @@ class CfgVehicles
             "Shoulder",
             "Melee"
         };
-        weight = 600;
+        weight = 3600;
         itemSize[] = { 1,7 };
         itemBehaviour = 2;
         fragility = 0.02;
@@ -364,7 +364,7 @@ class CfgVehicles
         inventorySlot[] = { "Backpack_1" };
         rotationFlags = 17;
         canSkinBodies = 1;
-        weight = 500;
+        weight = 1500;
         itemSize[] = { 1, 4 };
         lootTag[] = { "Work", "Forester", "Hunting", "Farm" };
         lootCategory = "Tools";
@@ -477,5 +477,108 @@ class CfgVehicles
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_grinningblade_itsb14nk_co.paa" };
+    };
+
+    class IAT_Melee_ReaperScythe_Colorbase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Reaper Scythe";
+        descriptionShort = "A scythe designed for harvesting tall grains.";
+        model = "iat_melee_weapons\blade\iat_reaperscythe.p3d";
+        rotationFlags = 12;
+        inventorySlot[] = { "Shoulder", "Melee" };
+        weight = 3600;
+        itemSize[] = { 1,7 };
+        itemBehaviour = 2;
+        fragility = 0.02;
+        openItemSpillRange[] = { 40,70 };
+        repairableWithKits[] = { 4 };
+        repairCosts[] = { 50 };
+        isMeleeWeapon = 1;
+        hiddenSelections[] = { "zbytek", "handle" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_reaperscythe_co.paa", "iat_melee_weapons\blade\data\iat_reaperscythe_co.paa" };
+        hiddenSelectionsMaterials[] = { "iat_melee_weapons\blade\data\iat_reaperscythe.rvmat", "iat_melee_weapons\blade\data\iat_reaperscythepole.rvmat" };
+        class InventorySlotsOffsets
+        {
+            class Shoulder
+            {
+                position[] = { 0.05,-0.2,0 };//FB,UD,LR
+                orientation[] = { 0,20,0 };//x,y,z
+            };
+            class Melee
+            {
+                position[] = { 0.01,-0.2,0 };//FB,UD,LR
+                orientation[] = { -0,-20,0 };//x,y,z
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 750;
+                    healthLevels[] =
+                    {
+                        {1.0, { "iat_melee_weapons\blade\data\iat_reaperscythe.rvmat", "iat_melee_weapons\blade\data\iat_reaperscythepole.rvmat"}},
+                        {0.69999999, { "iat_melee_weapons\blade\data\iat_reaperscythe.rvmat", "iat_melee_weapons\blade\data\iat_reaperscythepole.rvmat"}},
+                        {0.5, { "iat_melee_weapons\blade\data\iat_reaperscythe_damage.rvmat", "iat_melee_weapons\blade\data\iat_reaperscythepole_damage.rvmat"}},
+                        {0.30000001, { "iat_melee_weapons\blade\data\iat_reaperscythe_damage.rvmat", "iat_melee_weapons\blade\data\iat_reaperscythepole_damage.rvmat"}},
+                        {0.0, { "iat_melee_weapons\blade\data\iat_reaperscythe_destruct.rvmat", "iat_melee_weapons\blade\data\iat_reaperscythepole_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class MeleeModes
+        {
+            class Default
+            {
+                ammo = "IAT_MeleeSlash_2HSword";
+                range = 1.8;
+            };
+            class Heavy
+            {
+                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                range = 1.8;
+            };
+            class Sprint
+            {
+                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                range = 3.9;
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUp_Light
+                {
+                    soundSet = "hatchet_pickup_light_SoundSet";
+                    id = 796;
+                };
+                class pickup
+                {
+                    soundSet = "hatchet_pickup_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "baseballbat_drop_SoundSet";
+                    id = 898;
+                };
+            };
+        };
+    };
+    class IAT_Melee_ReaperScythe_Basic : IAT_Melee_ReaperScythe_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek","handle" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_reaperscythe_co.paa", "iat_melee_weapons\blade\data\iat_reaperscythe_co.paa" };
+    };
+    class IAT_Melee_ReaperScythe_legacylives : IAT_Melee_ReaperScythe_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "handle" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_reaperscythe_legacylives_co.paa" };
     };
 };
