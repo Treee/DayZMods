@@ -1,6 +1,6 @@
 class CfgPatches
 {
-    class IAT_Prop_Items_Structures
+    class IAT_Prop_Items_Structures_Industrial
     {
         requiredAddons[] = { "DZ_Data", "DZ_Scripts", "DZ_Structures_Industrial" };
     };
