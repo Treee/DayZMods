@@ -116,7 +116,7 @@ class CfgVehicles
 {
     class Inventory_Base;
 
-    class IAT_Melee_BerserkSword_ColorBase : Inventory_Base
+    class IAT_Melee_BerserkSword_Colorbase : Inventory_Base
     {
         scope = 0;
         displayName = "Antique Replica Berserk Sword";
@@ -210,13 +210,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_BerserkSword_Basic : IAT_Melee_BerserkSword_ColorBase
+    class IAT_Melee_BerserkSword_Basic : IAT_Melee_BerserkSword_Colorbase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_berserksword_co.paa" };
     };
-    class IAT_Melee_BerserkSword_Illusive : IAT_Melee_BerserkSword_ColorBase
+    class IAT_Melee_BerserkSword_Illusive : IAT_Melee_BerserkSword_Colorbase
     {
         scope = 2;
         displayName = "The Dragon Slayer";
@@ -243,7 +243,7 @@ class CfgVehicles
         };
     };
 
-    class IAT_Melee_FriedesScythe_ColorBase : Inventory_Base
+    class IAT_Melee_FriedesScythe_Colorbase : Inventory_Base
     {
         scope = 0;
         displayName = "Serana's Scythe";
@@ -337,16 +337,145 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_FriedesScythe_Basic : IAT_Melee_FriedesScythe_ColorBase
+    class IAT_Melee_FriedesScythe_Basic : IAT_Melee_FriedesScythe_Colorbase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek","handle" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_scythe_co.paa", "iat_melee_weapons\blade\data\iat_scythe_pole_co.paa" };
     };
-    class IAT_Melee_FriedesScythe_theamontiladoraven : IAT_Melee_FriedesScythe_ColorBase
+    class IAT_Melee_FriedesScythe_theamontiladoraven : IAT_Melee_FriedesScythe_Colorbase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek","handle" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_scythe_co.paa", "iat_melee_weapons\blade\data\iat_scythe_pole_co.paa" };
+    };
+
+    class IAT_Melee_GrinningBlade_Colorbase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Grining Sword";
+        descriptionShort = "A sword with many serrated edges almost as if grinning at its target.";
+        model = "iat_melee_weapons\blade\iat_grinningblade.p3d";
+        debug_ItemCategory = 2;
+        animClass = "Knife";
+        RestrainUnlockType = 1;
+        repairableWithKits[] = { 4 };
+        repairCosts[] = { 12 };
+        inventorySlot[] = { "Backpack_1" };
+        rotationFlags = 17;
+        canSkinBodies = 1;
+        weight = 500;
+        itemSize[] = { 1, 4 };
+        lootTag[] = { "Work", "Forester", "Hunting", "Farm" };
+        lootCategory = "Tools";
+        itemInfo[] = { "Knife" };
+        openItemSpillRange[] = { 10, 20 };
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_grinningblade_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 200;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_melee_weapons\blade\data\iat_grinningblade.rvmat"}},
+                        {0.7, {"iat_melee_weapons\blade\data\iat_grinningblade.rvmat"}},
+                        {0.5, {"iat_melee_weapons\blade\data\iat_grinningblade_damage.rvmat"}},
+                        {0.3, {"iat_melee_weapons\blade\data\iat_grinningblade_damage.rvmat"}},
+                        {0, {"iat_melee_weapons\blade\data\iat_grinningblade_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        isMeleeWeapon = 1;
+        suicideAnim = "onehanded";
+        class MeleeModes
+        {
+            class Default
+            {
+                ammo = "MeleeSharpLight_3";
+                range = 1.4;
+            };
+            class Heavy
+            {
+                ammo = "MeleeSharpHeavy_3";
+                range = 1.4;
+            };
+            class Sprint
+            {
+                ammo = "MeleeSharpHeavy_3";
+                range = 3.3;
+            };
+        };
+        soundImpactType = "metal";
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class animalSkinning_in
+                {
+                    soundSet = "animalSkinning_in_SoundSet";
+                    id = 516;
+                };
+                class animalSkinning
+                {
+                    soundSet = "animalSkinning_SoundSet";
+                    id = 517;
+                };
+                class animalSkinning_out
+                {
+                    soundSet = "animalSkinning_out_SoundSet";
+                    id = 518;
+                };
+                class CutTies_end
+                {
+                    soundSet = "CutTies_end_SoundSet";
+                    id = 519;
+                };
+                class CutTies_loop
+                {
+                    soundSet = "CutTies_loop_SoundSet";
+                    id = 520;
+                };
+                class pickup
+                {
+                    soundSet = "hatchet_pickup_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "woodaxe_drop_SoundSet";
+                    id = 898;
+                };
+            };
+            class Sound
+            {
+                class SurfaceDig
+                {
+                    class DigPrimary
+                    {
+                        default = 907;
+                        sakhal_snow = 907;
+                        sakhal_snow_forest = 907;
+                        sakhal_grass_brown = 907;
+                    };
+                };
+            };
+        };
+    };
+    class IAT_Melee_GrinningBlade_Basic : IAT_Melee_GrinningBlade_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_grinningblade_co.paa" };
+    };
+    class IAT_Melee_GrinningBlade_itsb14nk : IAT_Melee_GrinningBlade_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_grinningblade_itsb14nk_co.paa" };
     };
 };
