@@ -1,0 +1,4 @@
+class IAT_PredatorSkullMask_Colorbase extends Mask_Base{};
+
+class IAT_PredatorSkullMask_Basic extends IAT_PredatorSkullMask_Colorbase{};
+class IAT_PredatorSkullMask_rogueknight1995 extends IAT_PredatorSkullMask_Colorbase{};
