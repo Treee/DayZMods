@@ -24,7 +24,7 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 	//============================================
 	void IAT_DR_RadialMenuDisplay()
 	{
-		m_RadialItems = new ref array<ref IAT_DR_RadialMenuItem>;
+		m_RadialItems = new array<ref IAT_DR_RadialMenuItem>;
 		if ( !instance )
 			instance = this;
 	}

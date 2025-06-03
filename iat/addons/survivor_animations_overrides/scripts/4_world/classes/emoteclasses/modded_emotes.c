@@ -1,3 +1,4 @@
+#ifdef SurvivorAnims
 modded class EmoteSurAnmScratchBalls
 {
 	override bool EmoteCondition(int stancemask)
@@ -29,3 +30,4 @@ modded class EmoteSurAnmPsouk
 		return false;
 	}
 };
+#endif

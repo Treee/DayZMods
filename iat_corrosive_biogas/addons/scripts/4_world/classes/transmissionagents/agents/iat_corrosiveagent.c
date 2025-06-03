@@ -1,12 +1,12 @@
 #ifdef AdmiralsMutantMod
 enum IAT_CB_Agents : eAgents
 {
-	CORROSION = 4096;
+	CORROSION = 4096
 };
 #elseif
 enum IAT_CB_Agents : eAgents
 {
-	CORROSION = 2048;
+	CORROSION = 2048
 };
 #endif
 

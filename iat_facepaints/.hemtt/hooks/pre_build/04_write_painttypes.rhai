@@ -37,7 +37,7 @@ let categories = paintMap.keys();
 categories.sort();
 for (category, index) in categories {
 	let categoryString = `category${index}`;
-	replacementString += "\t\tarray<string> " + categoryString + "_options = new ref array<string>;\n";
+	replacementString += "\t\tarray<string> " + categoryString + "_options = new array<string>;\n";
 
 	let paints = paintMap[category];
 	paints.sort();

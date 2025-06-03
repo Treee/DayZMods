@@ -190,7 +190,7 @@ class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 			}
 		}
 
-		if (actualRecipes && actualRecipes.IsValidIndex(index));
+		if (actualRecipes && actualRecipes.IsValidIndex(index))
 			return actualRecipes.Get(index);
 		return NULL;
 	}
@@ -206,7 +206,7 @@ class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 			}
 		}
 
-		if (actualRecipes && actualRecipes.IsValidIndex(index));
+		if (actualRecipes && actualRecipes.IsValidIndex(index))
 			return actualRecipes.Get(index).GetDisplayName();
 		return "No Item Found";
 	}
