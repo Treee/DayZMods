@@ -1,3 +1,4 @@
+#ifdef Dayz_Horse
 modded class Horse_Base
 {
 	override void EEKilled(Object killer)
@@ -28,3 +29,4 @@ modded class Horse_Base
 		}
 	}
 };
+#endif

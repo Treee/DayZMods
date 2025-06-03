@@ -1,5 +1,6 @@
 modded class PluginAdminLog
 {
+	#ifdef Dayz_Horse
 	void HorseKilled( Horse_Base horse, Object source )  // PlayerBase.c
 	{
 		if (!horse || !source)
@@ -128,7 +129,7 @@ modded class PluginAdminLog
 	}
 
 
-	protected PlayerBase IAT_GetPlayerByEntityID(int entityID) //bylo protected static
+	protected PlayerBase IAT_GetPlayerByEntityID(int entityID)
 	{
 		array<Man> players = new array<Man>;
 		GetGame().GetPlayers(players);
@@ -141,4 +142,5 @@ modded class PluginAdminLog
 		}
 		return null;
 	}
+	#endif
 };
