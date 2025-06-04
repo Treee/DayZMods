@@ -20,5 +20,6 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_simple_territories" Z:\DayZ
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_universal_codelock" Z:\DayZ\Modding\iat_universal_codelock\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons

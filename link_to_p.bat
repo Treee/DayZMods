@@ -20,5 +20,6 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_simple_territories" Z:\DayZ
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_codelock" Z:\DayZ\Modding\iat_universal_codelock\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons
