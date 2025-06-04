@@ -9,6 +9,8 @@ class CfgWeapons
 {
     class Pistol_Base;
     class Magnum_Base;
+    class Flaregun_Base;
+
     class Derringer_Base : Pistol_Base
     {
         inventorySlot[] += { "IAT_Weapon_Derringer" };
@@ -18,7 +20,7 @@ class CfgWeapons
     {
         inventorySlot[] += { "IAT_Weapon_Derringer" };
     };
-    class Flaregun_Base : Pistol_Base
+    class Flaregun : Flaregun_Base
     {
         inventorySlot[] += { "IAT_Weapon_Derringer" };
     };
