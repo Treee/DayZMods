@@ -1,4 +1,4 @@
-start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod=P:\Mods\@IAT_UniversalCodelock_Dev;"
+start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod=P:\Mods\@IAT_Codelock_Dev;"
 
 
 

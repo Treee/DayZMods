@@ -90,48 +90,48 @@ class CfgNonAIVehicles
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard1" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card1.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card1.p3d";
     };
     class Proxyiat_occulttable_card2 : ProxyAttachment
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard2" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card2.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card2.p3d";
     };
     class Proxyiat_occulttable_card3 : ProxyAttachment
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard3" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card3.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card3.p3d";
     };
     class Proxyiat_occulttable_card4 : ProxyAttachment
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard4" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card4.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card4.p3d";
     };
     class Proxyiat_occulttable_card5 : ProxyAttachment
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard5" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card5.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card5.p3d";
     };
     class Proxyiat_occulttable_card6 : ProxyAttachment
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard6" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card6.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card6.p3d";
     };
     class Proxyiat_occulttable_card7 : ProxyAttachment
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard7" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card7.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card7.p3d";
     };
     class Proxyiat_occulttable_card8 : ProxyAttachment
     {
         scope = 2;
         inventorySlot[] = { "IAT_OccultCard8" };
-        model = "iat_prop_items\structures\proxy\iat_occulttable_card8.p3d";
+        model = "iat_prop_items\structures\furniture\proxy\iat_occulttable_card8.p3d";
     };
 };

@@ -609,6 +609,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 	}
 };
 class IAT_Codelock_Basic extends IAT_Codelock_Colorbase{};
+class IAT_Codelock_Painted extends IAT_Codelock_Colorbase{};
 class IAT_Codelock_DebugNoOwner extends IAT_Codelock_Colorbase
 {
 	override void AssignLockTo(string playerIdentity)

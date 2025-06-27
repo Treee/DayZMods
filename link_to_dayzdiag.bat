@@ -1,4 +1,5 @@
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat" Z:\DayZ\Modding\iat\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_codelock" Z:\DayZ\Modding\iat_codelock\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_crafting_plus" Z:\DayZ\Modding\iat_crafting_plus\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
@@ -20,6 +21,5 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_simple_territories" Z:\DayZ
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
-mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_universal_codelock" Z:\DayZ\Modding\iat_universal_codelock\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons

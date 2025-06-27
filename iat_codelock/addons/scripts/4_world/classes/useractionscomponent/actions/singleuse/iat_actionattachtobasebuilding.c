@@ -12,45 +12,41 @@ class IAT_ActionAttachToBaseBuilding extends ActionAttach
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		// do vanilla call,
-		if (super.ActionCondition(player, target, item))
+		EntityAI targetEntity;
+		if (Class.CastTo(targetEntity, target.GetObject()))
 		{
-			EntityAI targetEntity;
-			if (Class.CastTo(targetEntity, target.GetObject()))
+			// does it have an inventory?
+			if (targetEntity.GetInventory())
 			{
-				// does it have an inventory?
-				if (targetEntity.GetInventory())
+				IAT_Codelock_Colorbase iat_codelock;
+				// is our codelock in hand?
+				if (Class.CastTo(iat_codelock, item))
 				{
-					IAT_Codelock_Colorbase iat_codelock;
-					// is our codelock in hand?
-					if (Class.CastTo(iat_codelock, item))
+					InventoryLocation loc = new InventoryLocation;
+					// if the inventory of what we are looking at can find a free location for our codelock
+					if (targetEntity.GetInventory().FindFreeLocationFor(iat_codelock, FindInventoryLocationType.ATTACHMENT, loc))
 					{
-						InventoryLocation loc = new InventoryLocation;
-						// if the inventory of what we are looking at can find a free location for our codelock
-						if (targetEntity.GetInventory().FindFreeLocationFor(iat_codelock, FindInventoryLocationType.ATTACHMENT, loc))
+						// if we have a config
+						if (GetDayZGame().GetIATCodelockConfig())
 						{
-							// if we have a config
-							if (GetDayZGame().GetIATCodelockConfig())
+							// if we can attach codelocks to tents
+							if (GetDayZGame().GetIATCodelockConfig().CanAttachCodelockToBaseBuilding())
 							{
-								// if we can attach codelocks to tents
-								if (GetDayZGame().GetIATCodelockConfig().CanAttachCodelockToBaseBuilding())
+								// if the target is a fence
+								if (targetEntity.IsInherited(Fence))
 								{
-									// if the target is a fence
-									if (targetEntity.IsInherited(Fence))
+									Fence targetFence;
+									// check if it has hinges
+									if (Class.CastTo(targetFence, targetEntity))
 									{
-										Fence targetFence;
-										// check if it has hinges
-										if (Class.CastTo(targetFence, targetEntity))
-										{
-											return targetFence.HasHinges();
-										}
-									}
-									// other building bases are fine? watchtower?
-									if (targetEntity.IsInherited(BaseBuildingBase))
-									{
-										return true;
+										return targetFence.HasHinges();
 									}
 								}
+								// other building bases are fine? watchtower?
+								// if (targetEntity.IsInherited(BaseBuildingBase))
+								// {
+								// 	return true;
+								// }
 							}
 						}
 					}

@@ -12,34 +12,30 @@ class IAT_ActionAttachToTent extends ActionAttach
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		// do vanilla call, save output for later use
-		if (super.ActionCondition(player, target, item))
+		EntityAI targetEntity;
+		if (Class.CastTo(targetEntity, target.GetParent()))
 		{
-			EntityAI targetEntity;
-			if (Class.CastTo(targetEntity, target.GetParent()))
+			if (targetEntity.IsItemTent())
 			{
-				if (targetEntity.IsItemTent())
+				// does it have an inventory?
+				if (targetEntity.GetInventory())
 				{
-					// does it have an inventory?
-					if (targetEntity.GetInventory())
+					IAT_Codelock_Colorbase iat_codelock;
+					// is our codelock in hand?
+					if (Class.CastTo(iat_codelock, item))
 					{
-						IAT_Codelock_Colorbase iat_codelock;
-						// is our codelock in hand?
-						if (Class.CastTo(iat_codelock, item))
+						InventoryLocation loc = new InventoryLocation;
+						// if the inventory of what we are looking at can find a free location for our codelock
+						if (targetEntity.GetInventory().FindFreeLocationFor(iat_codelock, FindInventoryLocationType.ATTACHMENT, loc))
 						{
-							InventoryLocation loc = new InventoryLocation;
-							// if the inventory of what we are looking at can find a free location for our codelock
-							if (targetEntity.GetInventory().FindFreeLocationFor(iat_codelock, FindInventoryLocationType.ATTACHMENT, loc))
+							// if we have a config
+							if (GetDayZGame().GetIATCodelockConfig())
 							{
-								// if we have a config
-								if (GetDayZGame().GetIATCodelockConfig())
+								// if we can attach codelocks to tents
+								if (GetDayZGame().GetIATCodelockConfig().CanAttachCodelockToTents())
 								{
-									// if we can attach codelocks to tents
-									if (GetDayZGame().GetIATCodelockConfig().CanAttachCodelockToTents())
-									{
-										// tents/ lockers/ anything else with the slot really
-										return true;
-									}
+									// tents/ lockers/ anything else with the slot really
+									return true;
 								}
 							}
 						}

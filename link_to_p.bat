@@ -1,4 +1,5 @@
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat" Z:\DayZ\Modding\iat\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_codelock" Z:\DayZ\Modding\iat_codelock\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_crafting_plus" Z:\DayZ\Modding\iat_crafting_plus\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
@@ -20,6 +21,5 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_simple_territories" Z:\DayZ
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_codelock" Z:\DayZ\Modding\iat_universal_codelock\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons
