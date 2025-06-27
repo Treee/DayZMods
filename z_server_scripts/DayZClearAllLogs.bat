@@ -12,7 +12,7 @@ for /f %%x in ('dir /o-d /b "*.rpt"') do del "*%%x*"
 echo "Deleting Client Memory Dumps"
 for /f %%x in ('dir /o-d /b "*.mdmp"') do del "*%%x*"
 
-echo "Change to D Drive"
+echo "Change to Y Drive"
 Y:
 echo "Change to Diag Sakhal Server"
 cd Y:\SteamLibrary\steamapps\common\DayZ\profile_sakhaldiag
