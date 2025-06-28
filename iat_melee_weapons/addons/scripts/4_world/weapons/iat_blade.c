@@ -3,6 +3,9 @@ class IAT_Melee_BerserkSword_Colorbase extends Sword{};
 class IAT_Melee_BerserkSword_Basic extends IAT_Melee_BerserkSword_Colorbase{};
 class IAT_Melee_BerserkSword_Illusive extends IAT_Melee_BerserkSword_Colorbase{};
 
+class IAT_Melee_JawBladeSword_Colorbase extends Sword{};
+class IAT_Melee_JawBladeSword_Basic extends Sword{};
+class IAT_Melee_JawBladeSword_Obamamama2580 extends Sword{};
 //================================ SCYTHE
 class IAT_Melee_FriedesScythe_Colorbase extends Sword{};
 class IAT_Melee_FriedesScythe_Basic extends IAT_Melee_FriedesScythe_Colorbase{};
