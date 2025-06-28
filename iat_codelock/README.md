@@ -83,6 +83,7 @@ If you own the codelock on the container, you will always see its cargo and have
 4. The cargo is now visible to you.
 
 `Note - Failed attempts are treated the same as fences and if configured, will harm the player.`
+
 `Note - If you do not own the lock you will be unable to take the cargo container.`
 
 ## Configuration
