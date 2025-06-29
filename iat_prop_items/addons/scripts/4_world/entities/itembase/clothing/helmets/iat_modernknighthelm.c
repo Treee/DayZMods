@@ -1,0 +1,4 @@
+class IAT_ModernKnightHelm_Colorbase extends HelmetBase{};
+
+class IAT_ModernKnightHelm_Basic extends IAT_ModernKnightHelm_Colorbase{};
+class IAT_ModernKnightHelm_GuyBiggsley extends IAT_ModernKnightHelm_Colorbase{};
