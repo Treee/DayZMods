@@ -8,11 +8,7 @@ class CfgPatches
 class CfgVehicles
 {
     class Clothing_Base;
-<<<<<<< HEAD
-    // reset clothing since this has custom stuff
-=======
     // reset clothing since this has custom stufff
->>>>>>> 291a81741ae05cf2c007821f06b50dedfcc01af8
     class Clothing : Clothing_Base
     {
     };
