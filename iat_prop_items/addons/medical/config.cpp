@@ -127,6 +127,20 @@ class CfgVehicles
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\medical\data\iat_legcast_co.paa" };
     };
+    class IAT_LegCast_Permanent : IAT_LegCast_Colorbase
+    {
+        scope = 2;
+        color = "Permanent";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\medical\data\iat_legcast_co.paa" };
+    };
+    class IAT_LegCastApplied_Permanent : IAT_LegCastApplied_Colorbase
+    {
+        scope = 2;
+        color = "Permanent";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\medical\data\iat_legcast_co.paa" };
+    };
     class IAT_LegCast_DotsNotsStripes : IAT_LegCast_Colorbase
     {
         scope = 2;

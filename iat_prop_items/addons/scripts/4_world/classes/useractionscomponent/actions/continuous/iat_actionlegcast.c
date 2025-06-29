@@ -16,7 +16,6 @@ class IAT_ActionLegCastTarget: ActionContinuousBase
 		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
 		m_Text = "Apply Leg Cast";
 	}
-
 	override void CreateConditionComponents()
 	{
 		m_ConditionItem = new CCINonRuined;
@@ -59,7 +58,6 @@ class IAT_ActionLegCastTarget: ActionContinuousBase
 			}
 		}
 	}
-
 	bool IsWearingSplint( PlayerBase player )
 	{
 		if ( player.GetItemOnSlot("Splint_Right") )
@@ -69,11 +67,6 @@ class IAT_ActionLegCastTarget: ActionContinuousBase
 		return false;
 	}
 };
-
-
-
-
-
 
 class IAT_ActionLegCastSelfCB : ActionContinuousBaseCB
 {

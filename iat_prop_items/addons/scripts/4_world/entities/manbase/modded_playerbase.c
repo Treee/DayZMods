@@ -1,16 +1,14 @@
 modded class PlayerBase
 {
-	// handle our leg cast "splint"
-	override bool IsWearingSplint()
+	// helpful for bifurcating code paths for vanilla and my stuff
+	bool IAT_IsWearingSplint()
 	{
-		// if we are wearing our leg cast
 		IAT_LegCastApplied_Colorbase attachment;
 		if (Class.CastTo(attachment, GetItemOnSlot("Splint_Right")))
 		{
 			return true;
 		}
-		// otherwise return whatever would have been called
-		return super.IsWearingSplint();
+		return false;
 	}
 
 	// handle the broken leg forced prone for our leg cast.
@@ -32,6 +30,7 @@ modded class PlayerBase
 		super.BrokenLegForceProne(forceOverride);
 	}
 
+	// stop leg healing if a permanenet cast is applied
 	override void UpdateBrokenLegs(int stateId)
 	{
 		// if a permanent cast is applied, short circuit leg healing
