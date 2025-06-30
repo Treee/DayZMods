@@ -2,6 +2,7 @@ class IAT_Incendiary_Base extends Grenade_Base
 {
 	protected bool 					m_IAT_Exploded;
 	protected EffectSound 			m_IAT_ExplosionSound;
+	protected EffectSound 			m_IAT_ExplosionSound1;
 
 	void IAT_Incendiary_Base()
 	{
@@ -54,11 +55,6 @@ class IAT_Incendiary_Base extends Grenade_Base
 		if (GetGame().IsServer() || !GetGame().IsMultiplayer())
 		{
 			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(Delete, 1000);
-			// play big boom sound
-			Param3<vector, vector, float> pos = new Param3<vector, vector, float>( GetPosition(), GetPosition(), 1000 );
-			array<ref Param> params = new array<ref Param>;
-			params.Insert(pos);
-			GetGame().RPC( null, ERPCs.RPC_SOUND_ARTILLERY_SINGLE, params, true );
 		}
 
 		// why not else here? to fully remove code on server? preference?
@@ -66,6 +62,7 @@ class IAT_Incendiary_Base extends Grenade_Base
 
 		ClearFlags(EntityFlags.VISIBLE, false);
 		PlaySoundSet( m_IAT_ExplosionSound, GetExplosionSoundSet(), 0, 0 );
+		PlaySoundSet( m_IAT_ExplosionSound1, "GasStation_Explosion_SoundSet", 0, 0 );
 		#endif
 	}
 

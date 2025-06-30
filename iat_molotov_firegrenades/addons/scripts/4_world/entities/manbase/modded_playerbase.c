@@ -22,12 +22,12 @@ modded class PlayerBase
 	protected void OnIncendiaryAreaEnterServer()
 	{
 		GetModifiersManager().ActivateModifier( eModifiers.MDF_BURNING );
-		//Print("Contaminated ENTERED <------------------------------------------------------------- FINAL");
+		Print("INCENDIARY ENTERED <------------------------------------------------------------- FINAL");
 	}
 
 	protected void OnIncendiaryAreaExitServer()
 	{
 		GetModifiersManager().DeactivateModifier( eModifiers.MDF_BURNING );
-		//Print("Contaminated LEFT <------------------------------------------------------------- FINAL");
+		Print("INCENDIARY LEFT <------------------------------------------------------------- FINAL");
 	}
 };
