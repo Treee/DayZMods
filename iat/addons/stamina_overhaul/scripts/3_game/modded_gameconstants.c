@@ -30,9 +30,9 @@ modded class GameConstants
 
 	const float STAMINA_MELEE_HEAVY_THRESHOLD = STAMINA_DRAIN_MELEE_HEAVY; // in units (how many units we need to make a heavy hit in melee)
 	const float STAMINA_MELEE_EVADE_THRESHOLD = 5; // in units
-	const float STAMINA_REGEN_COOLDOWN_DEPLETION = 3; // in secs (how much time we will spend in cooldown before the stamina will starts with regeneration)
-	const float STAMINA_REGEN_COOLDOWN_EXHAUSTION = 27;
-	const float STAMINA_WEIGHT_LIMIT_THRESHOLD = 18000; //! in grams (weight where the player is not penalized by stamina)
+	const float STAMINA_REGEN_COOLDOWN_DEPLETION = 1; // in secs (how much time we will spend in cooldown before the stamina will starts with regeneration)
+	const float STAMINA_REGEN_COOLDOWN_EXHAUSTION = 3;
+	const float STAMINA_WEIGHT_LIMIT_THRESHOLD = 12000; //! in grams (weight where the player is not penalized by stamina)
 	const float STAMINA_KG_TO_GRAMS = 1000; //for kg to g conversion
 	const float STAMINA_SYNC_RATE = 0.5; //in secs
 	const float STAMINA_MAX = 150;

@@ -46,7 +46,7 @@ modded class StaminaHandler
 			// if our stance has changed
 			if (pHumanMovementState.m_iStanceIdx != m_IAT_LastStanceIndex)
 			{
-				// consume some stamina
+				// consume some stamina (stops players from infinite stamina stance swapping)
 				m_StaminaDepletion += Math.RandomFloatInclusive(0.5, 2.7);
 			}
 		}
@@ -64,8 +64,8 @@ modded class StaminaHandler
 		// max stamina is 120 and when unencumbered, staminaCap is 120 which makes best case 1 and worse case large
 		float normalizedStaminaCap = GameConstants.STAMINA_MAX / m_StaminaCap;
 		// give some randomness between players
-		float minStamina = normalizedStaminaCap * 1.8;
-		float maxStamina = normalizedStaminaCap * 3.2;
+		float minStamina = normalizedStaminaCap * 1.1;
+		float maxStamina = normalizedStaminaCap * 1.9;
 		// 1.5x is smallest unit of regen
 		float playerLoadModifier = Math.RandomFloatInclusive(minStamina, maxStamina);
 		return playerLoadModifier;
