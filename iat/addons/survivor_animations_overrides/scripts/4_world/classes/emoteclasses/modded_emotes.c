@@ -30,4 +30,12 @@ modded class EmoteSurAnmPsouk
 		return false;
 	}
 };
+
+modded class EmoteSurAnmMAKEITRAIN
+{
+	override bool EmoteCondition(int stancemask)
+	{
+		return false;
+	}
+};
 #endif
