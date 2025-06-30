@@ -4,5 +4,6 @@ modded class PluginRecipesManager
 	{
 		super.RegisterRecipies();
 		RegisterRecipe(new IAT_CraftLegCast);
+		RegisterRecipe(new IAT_CraftLegCast_Permanent);
 	}
 };
