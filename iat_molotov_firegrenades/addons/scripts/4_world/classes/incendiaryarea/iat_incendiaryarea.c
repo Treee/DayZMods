@@ -33,10 +33,10 @@ class IAT_IncendiaryArea_Static extends IncendiaryArea_Base
 	// ----------------------------------------------
 	// 				INITIAL SETUP
 	// ----------------------------------------------
-	override void SetupZoneData(  EffectAreaParams params )
-	{
-		super.SetupZoneData( params );
-	}
+	// override void SetupZoneData(  EffectAreaParams params )
+	// {
+	// 	super.SetupZoneData( params );
+	// }
 
 	override void EEInit()
 	{
@@ -46,20 +46,14 @@ class IAT_IncendiaryArea_Static extends IncendiaryArea_Base
 
 		SetSynchDirty();
 
-		#ifdef DEVELOPER
-		// Debugs when placing entity by hand using internal tools
-		if ( GetGame().IsServer() && !GetGame().IsMultiplayer() )
-		{
-			Debug.Log("YOU CAN IGNORE THE FOLLOWING DUMP");
-			InitZone();
-			Debug.Log("YOU CAN USE FOLLOWING DATA PROPERLY");
-		}
-		#endif
-
-		if ( GetGame().IsClient() && GetGame().IsMultiplayer() )
-			InitZone();
-
 		super.EEInit();
+	}
+
+	override void DeferredInit()
+	{
+		super.DeferredInit();
+
+		InitZone();
 	}
 
 
@@ -78,5 +72,12 @@ class IAT_IncendiaryArea_Static extends IncendiaryArea_Base
 
 		// We spawn VFX on client
 		PlaceParticles( GetWorldPosition(), m_Radius, m_InnerRings, m_InnerSpacing, m_OuterRingToggle, m_OuterSpacing, m_OuterRingOffset, m_ParticleID );
+	}
+
+	override void OnDebugSpawn()
+	{
+		super.OnDebugSpawn();
+
+		InitZone();
 	}
 };
