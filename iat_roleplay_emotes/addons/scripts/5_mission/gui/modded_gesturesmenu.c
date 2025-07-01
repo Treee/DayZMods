@@ -1,6 +1,6 @@
 enum IAT_GestureCategories : GestureCategories
 {
-	IAT_RP_CATEGORY = 50;
+	IAT_RP_CATEGORY = 50
 };
 
 modded class GesturesMenu
