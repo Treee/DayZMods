@@ -1,6 +1,15 @@
 modded class PlayerBase
 {
+	protected bool m_IAT_IsSoftSurrendered = false;
+
 	// ====================================================== VANILLA OVERRIDE
+	override void Init()
+    {
+        super.Init();
+        IAT_SetSoftSurrendered(false);
+        RegisterNetSyncVariableBool("m_IAT_IsSoftSurrendered");
+    }
+
 	override bool CanManipulateInventory()
     {
 		// if soft surrendered, allow the inventory to be "seen"
@@ -25,6 +34,10 @@ modded class PlayerBase
         return super.CanReleaseCargo(cargo);
     }
 
+	// override bool IsRestrained()
+    // {
+    //     return m_IsRestrained || IAT_IsSoftSurrendered();
+    // }
 	// FOR AI TESTING
 	// override bool CanBeRestrained()
 	// {
@@ -32,16 +45,24 @@ modded class PlayerBase
 	// }
 
 	// ====================================================== HELPERS
+	void IAT_SetSoftSurrendered(bool state)
+	{
+		// PrintFormat("player is soft surrendered: %1", state);
+		m_IAT_IsSoftSurrendered = state;
+	}
 	// nice wrapper for our class JUST in case
 	bool IAT_IsSoftSurrendered()
 	{
-		// FOR AI testing
-		// if (IsRestrained())
-		// {
-		// 	return true;
-		// }
+		// vanilla pass through for surrendered players since some reason emotes are wonky to print
+		// i think a mod conflict is happening here.
+		if (IsSurrendered())
+			return true;
 
 		// prod version
-		return IsSurrendered();
+		return m_IAT_IsSoftSurrendered;
 	}
+	void AutoCloseSoftSurrender()
+    {
+        GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(IAT_SetSoftSurrendered, 15000, false, false);
+    }
 };

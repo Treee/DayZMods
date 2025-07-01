@@ -32,6 +32,20 @@ modded class ActionSearchPlayerAtWall
 
 		return false;
 	}
+	override void OnFinishProgressServer( ActionData action_data )
+	{
+		PlayerBase target;
+		if (Class.CastTo(target, action_data.m_Target.GetObject()))
+		{
+			if (target.IsSurrendered())
+			{
+				target.IAT_SetSoftSurrendered(true);
+				target.SetSynchDirty();
+				target.AutoCloseSoftSurrender();
+			}
+		}
+    	super.OnFinishProgressServer(action_data);
+	}
 };
 
 #endif
