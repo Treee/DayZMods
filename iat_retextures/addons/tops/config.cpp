@@ -637,6 +637,17 @@ class CfgVehicles
           "iat_retextures\tops\data\tshirt_goldchampionship2023_co.paa"
         };
     };
+    class TShirt_HarryCoia : TShirt_ColorBase
+    {
+        scope = 2;
+        color = "HarryCoia";
+        hiddenSelectionsTextures[] =
+        {
+          "iat_retextures\tops\data\tshirt_harrycoia_co.paa",
+          "iat_retextures\tops\data\tshirt_harrycoia_co.paa",
+          "iat_retextures\tops\data\tshirt_harrycoia_co.paa"
+        };
+    };
 
     class Hoodie_Orange : Hoodie_ColorBase
     {
