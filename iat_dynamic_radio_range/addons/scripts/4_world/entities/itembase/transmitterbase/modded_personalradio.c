@@ -28,6 +28,18 @@ modded class PersonalRadio
 	{
 		super.OnWork(consumed_energy);
 
+		// track how much we need to modify our math given other mods
+		float iat_UsageModifier = 0;
+
+		#ifdef AdmiralsWorldRadioModMod
+		// when in radio mode, act like normal
+		if (IsRadioMode())
+		{
+			// 90% battery reduction
+			iat_UsageModifier = 0.1;
+		}
+		#endif
+
 		ItemBase energySource;
 		if (Class.CastTo(energySource, GetCompEM().GetEnergySource()))
 		{
@@ -36,6 +48,14 @@ modded class PersonalRadio
 			{
 				float extraEnergyDelta = iat_dr_config.GetEnergyDelta(IAT_GetRadioRange());
 				extraEnergyDelta *= 7.5; // default update interval is 15 so scale our consumption by that
+
+				// if other mods are reducing energy usage
+				if (iat_UsageModifier > 0)
+				{
+					// we are adding to the delta because muted and world radios are consuming less power by default
+					// this keeps players from gaming the system to recharge batteries here.
+					extraEnergyDelta = (extraEnergyDelta * iat_UsageModifier);
+				}
 				// values less than 0 represent ranges less than default (5000)
 				if (extraEnergyDelta < 0)
 				{
@@ -48,6 +68,7 @@ modded class PersonalRadio
 				}
 			}
 		}
+
 	};
 
 	// ============================================== Custom OVERRIDE

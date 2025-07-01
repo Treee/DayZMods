@@ -1,8 +1,19 @@
-class IAT_ActionToggleMuteTransmitter: ActionSingleUseBase
+class IAT_ActionToggleMuteTransmitterCB : ActionContinuousBaseCB
+{
+	override void CreateActionComponent()
+	{
+		m_ActionData.m_ActionComponent = new CAContinuousTime(1.0);
+	}
+}
+
+
+class IAT_ActionToggleMuteTransmitter: ActionContinuousBase
 {
 	void IAT_ActionToggleMuteTransmitter()
 	{
-		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_ITEM_ON;
+		m_CallbackClass = IAT_ActionToggleMuteTransmitterCB;
+		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_ITEM_TUNE;
+		m_CommandUIDProne = DayZPlayerConstants.CMD_ACTIONFB_ITEM_TUNE;
 		m_Text = "Toggle Mute Transmitter";
 	}
 
@@ -28,7 +39,10 @@ class IAT_ActionToggleMuteTransmitter: ActionSingleUseBase
 			}
 		}
 	}
-
+	override bool HasProneException()
+	{
+		return true;
+	}
   	override bool HasTarget()
 	{
 		return false;
