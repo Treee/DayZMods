@@ -4,12 +4,6 @@ modded class PlayerBase
 
 	override protected void OnContaminatedAreaEnterServer()
 	{
-		// try to add corrosion to all slots, needs to happen before a fully protected player is short circuited
-		// because they could have an exposed backpack or belt.
-		TryAddCorrosiveAgentsToWornSlots();
-
-		TryAddCorrosiveAgentsToInHandsItem(GetItemInHands());
-
 		// check if the player is affected by area exposure
 		if (!m_IsAffectedByAreaExposure)
 			return;
@@ -53,37 +47,11 @@ modded class PlayerBase
 		}
 	}
 
-	override protected void OnContaminatedAreaExitServer()
-	{
-		super.OnContaminatedAreaExitServer();
 
-		// try to add corrosion to all slots
-		TryAddCorrosiveAgentsToWornSlots();
-	}
-
-	override void EEItemIntoHands(EntityAI item)
-	{
-		super.EEItemIntoHands(item);
-		if (IsInEffectArea(IAT_EffectAreaType.CORROSIVE_BIOGAS))
-			TryAddCorrosiveAgentsToInHandsItem(item);
-	}
 
 	TStringArray GetProtectiveClothingSlotList()
 	{
 		return {"Headgear", "Body", "Gloves", "Legs", "Feet", "Back"};
-	}
-
-	TStringArray GetCorrisionApplicableSlotsList()
-	{
-		return {"Headgear", "Mask", "Eyewear", "Shoulder", "Melee", "Vest", "Body", "Hips", "Legs", "Back", "Gloves", "Hands", "Armband", "Feet", "Coat", "Scarf"};
-	}
-	override void InsertAgent(int agent, float count = 1)
-	{
-		// keep corrosion from being given to the player
-		if (agent == IAT_CB_Agents.CORROSION)
-			return;
-
-		super.InsertAgent(agent, count);
 	}
 
 	void DamageWornClothing()
@@ -102,7 +70,7 @@ modded class PlayerBase
 					// get any protection on the item
 					float protectiveArmor = clothingPiece.GetProtectionLevel(DEF_CHEMICAL);
 
-					float damageToDealPerInterval = clothingPiece.GetMaxHealth() / 6;
+					float damageToDealPerInterval = clothingPiece.GetMaxHealth() * 0.25;
 					// get the percent value of protection armor
 					float mitigatedDamageFromProtection = protectiveArmor * damageToDealPerInterval;
 
@@ -136,76 +104,5 @@ modded class PlayerBase
 	{
 		if (m_IsAffectedByAreaExposure && !HasEnoughChemicalProtection())
 			GetModifiersManager().ActivateModifier( eModifiers.MDF_AREAEXPOSURE );
-	}
-
-	void TryAddCorrosiveAgentsToWornSlots()
-	{
-		// if the player inventory exists
-		if (GetInventory())
-		{
-			array<EntityAI> itemsArray = new array<EntityAI>;
-			TStringArray attachedClothing = GetCorrisionApplicableSlotsList();
-			ItemBase clothingPiece;
-			ItemBase clothingItem;
-			float agentsToAdd = 1;
-			// foreach normal bioprotection slot
-			foreach(string slot_name: attachedClothing)
-			{
-				if (Class.CastTo(clothingPiece, GetItemOnSlot(slot_name)))
-				{
-					itemsArray.Clear();
-					clothingPiece.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
-					// get any protection on the item
-					float protectiveArmor = clothingPiece.GetProtectionLevel(DEF_CHEMICAL);
-					bool hasCorrosionprotection = clothingPiece.HasCorrosionCargoProtection();
-					// PrintFormat("Worn Item: %1 Protective Armor: %2 CorrosionProtection: %3", clothingPiece.GetType(), protectiveArmor, hasCorrosionprotection);
-					// short circuit protected clothing
-					if (protectiveArmor < 1 && !hasCorrosionprotection)
-					{
-						foreach (EntityAI cargoItem : itemsArray)
-						{
-							agentsToAdd = 1;
-							if (Class.CastTo(clothingItem, cargoItem))
-							{
-								// PrintFormat("corroding %1", clothingItem.GetType());
-								clothingItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
-								clothingItem.SetCorrosiveAgents(true);
-								clothingItem.SetSynchDirty();
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	void TryAddCorrosiveAgentsToInHandsItem(EntityAI inHandsEntity)
-	{
-		int agentsToAdd = 1;
-		ItemBase inHandsItem;
-		if (Class.CastTo(inHandsItem, inHandsEntity))
-		{
-			array<EntityAI> itemsArray = new array<EntityAI>;
-			inHandsItem.GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
-
-			// get any protection on the item
-			float protectiveArmor = inHandsItem.GetProtectionLevel(DEF_CHEMICAL);
-			bool hasCorrosionprotection = inHandsItem.HasCorrosionCargoProtection();
-			PrintFormat("Worn Item: %1 Protective Armor: %2 CorrosionProtection: %3", inHandsItem.GetType(), protectiveArmor, hasCorrosionprotection);
-			// if there is no protective armor
-			if (protectiveArmor < 1 && !hasCorrosionprotection)
-			{
-				ItemBase attachedItem;
-				foreach (EntityAI cargoItem : itemsArray)
-				{
-					if (Class.CastTo(attachedItem, cargoItem))
-					{
-						PrintFormat("corroding %1", attachedItem.GetType());
-						attachedItem.InsertAgent(IAT_CB_Agents.CORROSION, agentsToAdd);
-						attachedItem.SetCorrosiveAgents(true);
-						attachedItem.SetSynchDirty();
-					}
-				}
-			}
-		}
 	}
 };

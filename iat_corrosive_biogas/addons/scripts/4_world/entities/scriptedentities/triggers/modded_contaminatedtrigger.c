@@ -1,6 +1,6 @@
 modded class ContaminatedTrigger
 {
-	static const float EXPOSURE_DAMAGE_TICK_TIME = 60;
+	static const float EXPOSURE_DAMAGE_TICK_TIME = 10;
 
 	protected ParticleSource m_VaporParticle;
 
@@ -69,7 +69,7 @@ modded class ContaminatedTrigger
 		{
 			m_VaporParticle = ParticleManager.GetInstance().PlayOnObject(ParticleList.COOKING_BOILING_DONE, playerInsider, "0 1.6 0");
 
-			int randSize = Math.RandomIntInclusive(0.5,1.5);
+			int randSize = Math.RandomIntInclusive(2.5,4.5);
 			int randRate = Math.RandomIntInclusive(0.5,2);
 
 			m_VaporParticle.IncrementParticleParam(EmitorParam.SIZE, randSize);
