@@ -6,9 +6,4 @@ modded class Chemlight_ColorBase
 
 		AddAction(IAT_ActionEatGlowStick);
 	}
-
-	override bool CanBeConsumed(ConsumeConditionData data = null)
-	{
-		return GetQuantity() > 24;
-	}
 };

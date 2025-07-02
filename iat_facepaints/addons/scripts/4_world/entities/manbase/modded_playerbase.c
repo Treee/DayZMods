@@ -1,7 +1,8 @@
 modded class PlayerBase
 {
-	protected int m_FacePaintCategoryIndex;
-	protected int m_FacePaintIndex;
+	// default state is no paints
+	protected int m_FacePaintCategoryIndex = -1;
+	protected int m_FacePaintIndex = -1;
 
 	int m_TempFacePaintIndex;
 	int m_TempFacePaintCategory;
@@ -10,19 +11,14 @@ modded class PlayerBase
 	{
 		// preserve call chain
 		super.Init();
-
-		// default state is no paints
-		m_FacePaintIndex = -1;
-		m_FacePaintCategoryIndex = -1;
-
-		// register an int for netsyncing which is our face paint state. clamp max value to total face paints
-		RegisterNetSyncVariableInt("m_FacePaintIndex", -1, m_ModuleLifespan.GetFacePaintCount());
-		RegisterNetSyncVariableInt("m_FacePaintCategoryIndex", -1, m_ModuleLifespan.GetFacePaintCategoryCount());
+		// register an int for netsyncing which is our face paint state. clamp to 256 paints (more than enough)
+		RegisterNetSyncVariableInt("m_FacePaintIndex", -1, 256);
+		RegisterNetSyncVariableInt("m_FacePaintCategoryIndex", -1, 256);
 	}
 	override void OnVariablesSynchronized()
 	{
 		super.OnVariablesSynchronized();
-		// PrintFormat("Category: %1 Paint: %2", GetFacePaintCategoryIndex(), GetFacePaintIndex());
+		// PrintFormat("Category: %1 Paint: %2 IsPlayerLoaded: %3 IsControlledPlayer: %4", GetFacePaintCategoryIndex(), GetFacePaintIndex(), IsPlayerLoaded(), IsControlledPlayer());
 		// if any changes are measured, update visuals
 		if (GetFacePaintIndex() >= -1 && GetFacePaintCategoryIndex() >= -1 && (IsPlayerLoaded() || IsControlledPlayer()))
 			UpdateFacePaintVisual();
@@ -60,28 +56,6 @@ modded class PlayerBase
 			}
 			break;
 		}
-	}
-
-	override bool Consume(PlayerConsumeData data)
-	{
-		// if the existing code returns false
-		if (!super.Consume(data))
-		{
-			// try to consume the chemlight
-			Chemlight_ColorBase chemlight;
-			// null check cast to chemlight
-			if (Class.CastTo(chemlight, data.m_Source))
-			{
-				// if it cannot be consumed; short circuit
-				if (!chemlight.CanBeConsumed())
-					return false;
-				if (data.m_Type == EConsumeType.ITEM_SINGLE_TIME || data.m_Type == EConsumeType.ITEM_CONTINUOUS)
-				{
-					return true;
-				}
-			}
-		}
-		return false;
 	}
 
 	//=============================================== CF MOD STORAGE "FIX"
