@@ -11,6 +11,7 @@ class IAT_FacePaintsConfig
 
 	protected float m_PaintStickDamagePerUse;
 	protected bool m_SavePlayerPaintsToDatabase;
+	protected bool m_EnableEatGlowStickAction;
 
 	IAT_FacePaintsConfig TryGetFacePaintConfig()
 	{
@@ -22,15 +23,15 @@ class IAT_FacePaintsConfig
 		}
 
 		string errorMessage;
-		IAT_FacePaintsConfig iat_FPConfig;
+		// new config object
+		IAT_FacePaintsConfig iat_FPConfig = new IAT_FacePaintsConfig();
 		string jsonConfig = string.Format("%1\\%2", rootFilePath, m_JsonFile);
 		// if the actual config file doesnt exist
 		if (!FileExist(jsonConfig))
 		{
-			// new config object
-			iat_FPConfig = new IAT_FacePaintsConfig();
 			// set some default values
 			iat_FPConfig.SetPaintStickDamagePerUse(2.0);
+			iat_FPConfig.SetEnableEatGlowStickAction(false);
 			// write the file to "create it"
 			if (!JsonFileLoader<ref IAT_FacePaintsConfig>.SaveFile(jsonConfig, iat_FPConfig, errorMessage))
 				ErrorEx(errorMessage);
@@ -42,7 +43,9 @@ class IAT_FacePaintsConfig
 				ErrorEx(errorMessage);
 		}
 		// configure paint options (auto generated file. moddable for others)
-		m_FacePaintOptions = new IAT_FacePaintOptions();
+		IAT_FacePaintOptions fpOptions = new IAT_FacePaintOptions();
+		iat_FPConfig.SetFacePaintOptions(fpOptions);
+
 		// return what we found
         return iat_FPConfig;
 	}
@@ -69,10 +72,22 @@ class IAT_FacePaintsConfig
 	{
 		return m_SavePlayerPaintsToDatabase;
 	}
+	void SetEnableEatGlowStickAction(bool value)
+	{
+		m_EnableEatGlowStickAction = value;
+	}
+	bool IsEnableEatGlowStickAction()
+	{
+		return m_EnableEatGlowStickAction;
+	}
 
 	IAT_FacePaintOptions GetFacePaintOptions()
 	{
 		return m_FacePaintOptions;
+	}
+	void SetFacePaintOptions(IAT_FacePaintOptions paintOptions)
+	{
+		m_FacePaintOptions = paintOptions;
 	}
 
 	// ==================================================================================
@@ -80,9 +95,11 @@ class IAT_FacePaintsConfig
 	// ==================================================================================
 	void PrettyPrint()
 	{
-		Print("--[FACE PAIINT CONFIG BEGIN]");
+		Print("--[FACE PAINT CONFIG BEGIN]");
 		PrintFormat("--m_PaintStickDamagePerUse: %1", GetPaintStickDamagerPerUse());
 		PrintFormat("--m_SavePlayerPaintsToDatabase: %1", GetSavePlayerPaintsToDatabase());
+		PrintFormat("--m_EnableEatGlowStickAction: %1", IsEnableEatGlowStickAction());
+		GetFacePaintOptions().PrettyPrint();
 		Print("--[END]");
 	}
 };

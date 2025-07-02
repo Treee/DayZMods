@@ -30,43 +30,6 @@ modded class PluginLifespan
 {
 	// protected static const int LIFESPAN_MAX = 5; //debug
 
-  	protected int m_TotalCountFacePaints;
-  	protected int m_TotalCountFacePaintCategories;
-	override void LoadFromCfg()
-	{
-		super.LoadFromCfg();
-		CalculateFacePaintTotals();
-	}
-
-	protected void CalculateFacePaintTotals()
-	{
-		m_TotalCountFacePaints = 0;
-		IAT_FacePaintsConfig iat_fp_config;
-		if (GetDayZGame())
-		{
-			if (Class.CastTo(iat_fp_config, GetDayZGame().GetIATFacePaintConfig()))
-			{
-				IAT_FacePaintOptions fp_options = iat_fp_config.GetFacePaintOptions();
-				TStringArray categories = fp_options.GetCategories();
-				m_TotalCountFacePaintCategories = categories.Count();
-				foreach (string category : categories)
-				{
-					TStringArray paintArray = fp_options.GetCategoryItems(category);
-					m_TotalCountFacePaints += paintArray.Count();
-				}
-			}
-		}
-	}
-
-	int GetFacePaintCount()
-	{
-		return m_TotalCountFacePaints;
-	}
-	int GetFacePaintCategoryCount()
-	{
-		return m_TotalCountFacePaintCategories;
-	}
-
 	override protected void SetPlayerLifespanLevel( PlayerBase player, LifespanLevel level )
 	{
 		if (player.GetFacePaintCategoryIndex() == -1)
@@ -97,7 +60,7 @@ modded class PluginLifespan
 				IAT_FacePaintOptions fp_options = iat_fp_config.GetFacePaintOptions();
 				string category = fp_options.GetCategories().Get(categoryIndex);
 				string paint = fp_options.GetCategoryItems(category).Get(paintIndex);
-				// PrintFormat("GetPaintByINdex: category: %1 paint: %2", category, paint);
+				// PrintFormat("GetPaintByIndex: category: %1 paint: %2", category, paint);
 				return string.Format("%1\\%2", category, paint);
 			}
 		}
