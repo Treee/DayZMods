@@ -13,18 +13,13 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Corrosive BioGas";
-		dependencies[] = { "World", "Mission" };
+		dependencies[] = { "World" };
 		class defs
 		{
 			class worldScriptModule
 			{
 				value = "";
 				files[] = { "iat_corrosive_biogas/scripts/4_world" };
-			};
-			class missionScriptModule
-			{
-				value = "";
-				files[] = { "iat_corrosive_biogas/scripts/5_mission" };
 			};
 		};
 	};
