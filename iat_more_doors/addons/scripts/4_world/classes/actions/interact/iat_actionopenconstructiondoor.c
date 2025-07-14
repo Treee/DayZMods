@@ -39,9 +39,11 @@ class IAT_ActionOpenConstructionDoor extends ActionInteractBase
 				string componentName = iat_door.GetActionComponentName(target.GetComponentIndex());
 				// lowecase it
 				componentName.ToLower();
+				PrintFormat("looking at iat_door ocmponent: %1", componentName);
 				// if the player can open the door (identity is for IAT_Codelock)
 				if (iat_door.CanOpenDoor(player.GetIdentity(), componentName))
 				{
+					PrintFormat("componentname: %1", componentName);
 					// if we are looking at a door1/door2
 					if (componentName == SELECTION_INTERACT_DOOR1)
 					{
