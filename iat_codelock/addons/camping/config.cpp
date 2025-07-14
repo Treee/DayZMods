@@ -10,6 +10,7 @@ class CfgVehicles
 	class Inventory_Base;
 	class TentBase;
 	class SeaChest;
+	class BaseBuildingBase;
 
 	class IAT_Codelock_Colorbase : Inventory_Base
 	{
@@ -18,19 +19,12 @@ class CfgVehicles
 		descriptionShort = "A lock that normally attaches to a fence gate, tent, and sometimes a cargo container. Default password is 1234. Make sure you change it after attaching to an object. Unlock to detach from object.";
 		model = "iat_codelock\camping\iat_codelock.p3d";
 		inventorySlot[] = { "Att_CombinationLock" };
-		rotationFlags = 34;
+		rotationFlags = 16;
 		itemSize[] = { 3, 3 };
 		weight = 350;
 		soundImpactType = "metal";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_codelock\camping\data\iat_codelock_co.paa" };
-		class InventorySlotsOffsets
-		{
-			class Att_CombinationLock
-			{
-				position[] = { -0.04, 0, -0.085 };
-			};
-		};
 		class DamageSystem
 		{
 			class GlobalHealth
@@ -179,4 +173,13 @@ class CfgVehicles
 		};
 	};
 
+};
+
+class CfgNonAIVehicles
+{
+	class ProxyCombinationLock;
+	class Proxyiat_codelock : ProxyCombinationLock
+	{
+		model = "iat_codelock\camping\iat_codelock.p3d";
+	};
 };

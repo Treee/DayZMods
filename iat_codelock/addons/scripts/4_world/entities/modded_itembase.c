@@ -139,6 +139,15 @@ modded class ItemBase
 		}
 		return null;
 	}
+	/*
+	* This function is intended for modders to signal the AttachCodelock action
+	* that this object is allowed to receive a codelock. Special cases like RAG cabins
+	* or IAT_MoreDoors since these are not Fences but rather BuildingBase and ItemBase
+	*/
+	bool CanAttachCodelockToObject()
+	{
+		return false;
+	}
 
 	// ==================================================== SETTERS & GETTERS
 	bool IAT_IsRaidItem()

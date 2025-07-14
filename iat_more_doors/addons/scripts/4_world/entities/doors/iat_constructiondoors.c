@@ -223,7 +223,11 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 				}
 			}
 		}
-		return !IsLocked(invokingPlayer); // check if it is locked
+		if (IsLocked(invokingPlayer))
+		{
+			return false;
+		}
+		return true;
 	}
 	bool CanCloseDoor(string componentName)
 	{
@@ -260,13 +264,18 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		IAT_Codelock_Colorbase iatCodelock;
 		if (Class.CastTo(iatCodelock, GetCombinationLock_IAT()))
 		{
-			if (iatCodelock.HasAccess(invokingPlayer))
+			// if the codelock is actually locked
+			if (iatCodelock.IAT_IsLocked())
 			{
+				// if the player performing the action has access
+				if (iatCodelock.HasAccess(invokingPlayer))
+				{
+					return false;
+				}
 				return true;
 			}
 		}
 		#endif
-
 		CombinationLock combination_lock;
 		if (Class.CastTo(combination_lock, GetCombinationLock_Vanilla()))
 		{
@@ -279,11 +288,19 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		return false;
 	}
 
+	#ifdef IAT_Codelock
+	// special override for our codelock
+	override bool CanAttachCodelockToObject()
+	{
+		return true;
+	}
+	#endif
+
 	//======================================================= SETTERS & GETTERS
 	CombinationLock GetCombinationLock_Vanilla()
 	{
 		CombinationLock combination_lock;
-		if (FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK))
+		if (Class.CastTo(combination_lock, FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK)))
 		{
 			return combination_lock;
 		}
@@ -293,7 +310,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	IAT_Codelock_Colorbase GetCombinationLock_IAT()
 	{
 		IAT_Codelock_Colorbase combination_lock;
-		if (FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK))
+		if (Class.CastTo(combination_lock, FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK)))
 		{
 			return combination_lock;
 		}

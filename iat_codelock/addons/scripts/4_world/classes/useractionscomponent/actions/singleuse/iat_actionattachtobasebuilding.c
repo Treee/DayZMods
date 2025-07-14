@@ -42,11 +42,18 @@ class IAT_ActionAttachToBaseBuilding extends ActionAttach
 										return targetFence.HasHinges();
 									}
 								}
-								// other building bases are fine? watchtower?
-								// if (targetEntity.IsInherited(BaseBuildingBase))
-								// {
-								// 	return true;
-								// }
+								if (targetEntity.IsInherited(ItemBase))
+								{
+									ItemBase targetItem;
+									// check if we have a attachable target
+									if (Class.CastTo(targetItem, targetEntity))
+									{
+										if (targetItem.CanAttachCodelockToObject())
+										{
+											return true;
+										}
+									}
+								}
 							}
 						}
 					}
