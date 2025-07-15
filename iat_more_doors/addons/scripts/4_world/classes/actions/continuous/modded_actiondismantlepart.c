@@ -48,7 +48,7 @@ modded class ActionDismantlePart
 		super.OnFinishProgressServer(action_data);
 	}
 
-	protected bool DismantleCondition(PlayerBase player, ActionTarget target, ItemBase item, bool camera_check)
+	override protected bool DismantleCondition(PlayerBase player, ActionTarget target, ItemBase item, bool camera_check)
 	{
 		// let vanilla pass through without checking. our conditions are outside of this
 		if (super.DismantleCondition(player, target, item, camera_check))
