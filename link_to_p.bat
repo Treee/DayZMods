@@ -10,6 +10,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_infinity_gauntlet" Z:\DayZ\
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_literary_devices" Z:\DayZ\Modding\iat_literary_devices\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_map_border_teleport" Z:\DayZ\Modding\iat_map_border_teleport\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_melee_weapons" Z:\DayZ\Modding\iat_melee_weapons\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_mining_enhanced" Z:\DayZ\Modding\iat_mining_enhanced\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_molotov_firegrenades" Z:\DayZ\Modding\iat_molotov_firegrenades\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_more_doors" Z:\DayZ\Modding\iat_more_doors\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
