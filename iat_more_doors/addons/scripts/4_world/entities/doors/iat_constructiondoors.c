@@ -296,6 +296,23 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	}
 	#endif
 
+	bool CanDismantleDoor()
+	{
+		// if anything is attached to the door, cannot dismantle
+		if (GetCombinationLock_Vanilla())
+		{
+			return false;
+		}
+		#ifdef IAT_Codelock
+		if (GetCombinationLock_IAT())
+		{
+			return false;
+		}
+		#endif
+
+		return true;
+	}
+
 	//======================================================= SETTERS & GETTERS
 	CombinationLock GetCombinationLock_Vanilla()
 	{
