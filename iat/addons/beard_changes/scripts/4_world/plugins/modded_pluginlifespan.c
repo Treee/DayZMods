@@ -2,7 +2,7 @@ modded class PluginLifespan
 {
 	ref protected TStringArray m_BeardTypes = {};
 	ref protected TStringArray m_BeardNames = {};
-  	protected static const int LIFESPAN_MAX = 15;//2880; // 240; // default value in minutes when player achieved maximum age in order to have full beard
+  	protected static const int LIFESPAN_MAX = 2880; // 240; // default value in minutes when player achieved maximum age in order to have full beard
 
 	void PluginLifespan()
 	{
