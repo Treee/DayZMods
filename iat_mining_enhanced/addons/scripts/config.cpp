@@ -12,9 +12,14 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Mining Enhanced";
-		dependencies[] = { "World","Mission" };
+		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{
+			class gameScriptModule
+			{
+				value = "";
+				files[] = { "iat_mining_enhanced/scripts/3_game" };
+			};
 			class worldScriptModule
 			{
 				value = "";
