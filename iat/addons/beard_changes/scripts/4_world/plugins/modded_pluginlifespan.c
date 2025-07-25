@@ -2,12 +2,11 @@ modded class PluginLifespan
 {
 	ref protected TStringArray m_BeardTypes = {};
 	ref protected TStringArray m_BeardNames = {};
-  	protected static const int LIFESPAN_MAX = 2880; // 240; // default value in minutes when player achieved maximum age in order to have full beard
+  	protected static const int LIFESPAN_MAX = 15;//2880; // 240; // default value in minutes when player achieved maximum age in order to have full beard
 
-	override protected void SetPlayerLifespanLevel( PlayerBase player, LifespanLevel level )
+	void PluginLifespan()
 	{
-		super.SetPlayerLifespanLevel(player, level);
-		PopulateBeardsInList(level.GetLevel());
+		PopulateBeardsInList();
 	}
 
 	TStringArray GetBeards()
@@ -58,34 +57,21 @@ modded class PluginLifespan
 		return string.Format("%1 - %2", displayName, color);
 	}
 
-	void PopulateBeardsInList(float beardLifeTime)
+	void PopulateBeardsInList()
 	{
 		m_BeardTypes.Clear();
 		m_BeardNames.Clear();
 		TStringArray m_OrderedBeards = GetOrderedBeardList();
 		TStringArray m_BeardColors = GetBeardColorsAvailable();
 		int m_TotalBeardTypes = m_OrderedBeards.Count();
-		int indexOffset;
-		string beardType;
-		// check all the beards if they can be added
-		for (int i = 0; i < m_TotalBeardTypes; i++;)
+		foreach (string beardType : m_OrderedBeards)
 		{
-			// we want interval to "start" above 0 so we need to modify the index by 1
-			indexOffset = i / 3;
-			// if the player beard is above this category, add the beard type
-			if (beardLifeTime > (indexOffset))
-			{
-				// get the beard type template
-				beardType = m_OrderedBeards.Get(i);
-				// foreach color of the beard
-				foreach(string beardColor : m_BeardColors)
-				{	// add that beard to the list
-					m_BeardTypes.Insert(string.Format("%1_%2", beardType, beardColor));
-					m_BeardNames.Insert(TranslateBeardClassToDisplayName(beardType, beardColor));
-				}
+			// foreach color of the beard
+			foreach(string beardColor : m_BeardColors)
+			{	// add that beard to the list
+				m_BeardTypes.Insert(string.Format("%1_%2", beardType, beardColor));
+				m_BeardNames.Insert(TranslateBeardClassToDisplayName(beardType, beardColor));
 			}
-			else // else short circuit and break from the loop
-				break;
 		}
 	}
 
