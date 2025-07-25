@@ -24,6 +24,7 @@ class CfgVehicles
     class OfficerHat;
     class PoliceCap;
     class HeadCover_Improvised;
+    class CowboyHat_ColorBase;
 
     //=============================================== Vanilla Override
     class BallisticHelmet_MTP : BallisticHelmet_ColorBase
@@ -1308,6 +1309,26 @@ class CfgVehicles
             "iat_retextures\headgear\data\santashatelf_co.paa",
             "iat_retextures\headgear\data\santashatelf_co.paa",
             "iat_retextures\headgear\data\santashatelf_co.paa"
+        };
+    };
+
+    class CowboyHat_Mawboss : CowboyHat_ColorBase
+    {
+        scope = 2;
+        visibilityModifier = 0.85;
+        hiddenSelections[] = { "camoGround", "camoMale", "camoFemale" };
+        hiddenSelectionsTextures[] = { "iat_retextures\headgear\data\iat_CowboyHat_mawboss_co.paa", "iat_retextures\headgear\data\iat_CowboyHat_mawboss_co.paa", "iat_retextures\headgear\data\iat_CowboyHat_mawboss_co.paa" };
+        hiddenSelectionsMaterials[] = { "iat_retextures\headgear\data\iat_cowboyhat.rvmat", "iat_retextures\headgear\data\iat_cowboyhat.rvmat", "iat_retextures\headgear\data\iat_cowboyhat.rvmat" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] = { {1, {"iat_retextures\headgear\data\iat_cowboyhat.rvmat"}}, {0.7, {"iat_retextures\headgear\data\iat_cowboyhat.rvmat"}}, {0.5, {"iat_retextures\headgear\data\iat_cowboyhat_damage.rvmat"}}, {0.3, {"iat_retextures\headgear\data\iat_cowboyhat_damage.rvmat"}}, {0, {"iat_retextures\headgear\data\iat_cowboyhat_destruct.rvmat"}} };
+                };
+            };
         };
     };
 };
