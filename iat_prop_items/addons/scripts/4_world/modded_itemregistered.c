@@ -13,8 +13,8 @@ modded class ModItemRegisterCallbacks
         pType.AddItemInHandsProfileIK("IAT_LegCast_Colorbase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/sewing_kit.anm");
 
         pType.AddItemInHandsProfileIK("IAT_ModernKnightHelm_Colorbase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/ballistic_helmet.anm");
-
-
+        pType.AddItemInHandsProfileIK("IAT_AltynHelmet_Colorbase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/gorka_helmet.anm");
+        pType.AddItemInHandsProfileIK("IAT_AltynHelmetVisor_Colorbase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/Maska_glass_g.anm");
     }
 
     override void RegisterTwoHanded(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
