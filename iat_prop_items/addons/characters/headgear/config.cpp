@@ -420,7 +420,7 @@ class CfgVehicles
     class IAT_AltynHelmet_moon_x : IAT_AltynHelmet_Colorbase
     {
         scope = 2;
-        TradeClassName = "IAT_AltynHelmet_Colorbase";
+        TradeClassName = "GorkaHelmet";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_moon_x_co.paa" };
     };
@@ -469,7 +469,7 @@ class CfgVehicles
     class IAT_AltynHelmetVisor_moon_x : IAT_AltynHelmetVisor_Colorbase
     {
         scope = 2;
-        TradeClassName = "IAT_AltynHelmetVisor_Colorbase";
+        TradeClassName = "GorkaHelmetVisor";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_moon_x_co.paa" };
     };
