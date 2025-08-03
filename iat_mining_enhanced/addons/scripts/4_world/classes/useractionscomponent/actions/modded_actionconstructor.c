@@ -6,6 +6,5 @@ modded class ActionConstructor
 
 		actions.Insert(IAT_ActionCreateMineShaft);
 		actions.Insert(IAT_ActionDescendIntoMine);
-		actions.Insert(IAT_ActionMineShaft);
     }
 };

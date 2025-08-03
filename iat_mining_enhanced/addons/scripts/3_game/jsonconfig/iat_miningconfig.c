@@ -57,18 +57,87 @@ class IAT_MiningConfig
 		}
 		return null;
 	}
+	void CreateSegmentEntranceNode(string id, vector segmentPosition, vector teleportPosition, int maxNumHits = -1)
+	{
+		bool isEntrance = true; // no magic numbers
+		InsertMinintSegment(new IAT_MiningSegmentConfig(id, isEntrance, !isEntrance, maxNumHits, segmentPosition, teleportPosition));
+	}
+	void CreateSegmentJunctionNode(string id, vector segmentPosition, vector teleportPosition, int maxNumHits = -1, bool isExit = false)
+	{
+		bool isEntrance = false; // no magic numbers
+		InsertMinintSegment(new IAT_MiningSegmentConfig(id, isEntrance, isExit, maxNumHits, segmentPosition, teleportPosition));
+	}
+	void IncrementSegmentComponentHitCounter(string id, string componentName)
+	{
+		// enforce lowercase
+		componentName.ToLower();
+
+		IAT_MiningSegmentConfig segmentConfig;
+		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
+		{
+			segmentConfig.IncrementSegmentComponentHitCounter(componentName);
+		}
+	}
+	void GetSegmentTeleportDestination(string id)
+	{
+		IAT_MiningSegmentConfig segmentConfig;
+		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
+		{
+			segmentConfig.GetSegmentTeleportDestination();
+		}
+	}
+
+	bool CanMineSegmentComponent(string id, string componentName)
+	{
+		// enforce lowercase
+		componentName.ToLower();
+
+		IAT_MiningSegmentConfig segmentConfig;
+		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
+		{
+			if (segmentConfig.CanMineSegmentComponent(componentName))
+			{
+				return true;
+			}
+		}
+		// if none of the components can be mined or the config doesnt exist. return false
+		return false;
+	}
+	bool IsSegmentEntrance(string id)
+	{
+		IAT_MiningSegmentConfig segmentConfig;
+		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
+		{
+			return segmentConfig.IsEntrance();
+		}
+		return false;
+	}
+	bool IsSegmentExit(string id)
+	{
+		IAT_MiningSegmentConfig segmentConfig;
+		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
+		{
+			return segmentConfig.IsExit();
+		}
+		return false;
+	}
+
+
+
+
 	void InsertMiningSegment(IAT_MiningSegmentConfig segment)
 	{
+		// initialize the array if it doesnt exist. this should only really happen when no entrances exist
+		if (!m_IAT_MiningSegmentConfigs)
+			m_IAT_MiningSegmentConfigs = new array<ref IAT_MiningSegmentConfig>();
 
+		m_IAT_MiningSegmentConfigs.Insert(segment);
 	}
 	bool RemoveMiningSegment(IAT_MiningSegmentConfig segment)
 	{
 		return true;
 	}
-	void UpdateMiningSegment(IAT_MiningSegmentConfig segment)
-	{
 
-	}
 	array<ref IAT_MiningSegmentConfig> GetMiningSegments()
 	{
 		return m_IAT_MiningSegmentConfigs;
