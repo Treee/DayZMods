@@ -424,6 +424,12 @@ class CfgVehicles
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_moon_x_co.paa" };
     };
+    class IAT_AltynHelmet_STAG : IAT_AltynHelmet_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_doomer2045_co.paa" };
+    };
 
     class IAT_AltynHelmetVisor_Colorbase : Inventory_Base
     {
@@ -472,6 +478,12 @@ class CfgVehicles
         TradeClassName = "GorkaHelmetVisor";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_moon_x_co.paa" };
+    };
+    class IAT_AltynHelmetVisor_STAG : IAT_AltynHelmetVisor_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_doomer2045_co.paa" };
     };
 };
 
