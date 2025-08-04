@@ -6,6 +6,7 @@ modded class ModItemRegisterCallbacks
 
         //==================================================== BLADE WEAPONS
         pType.AddItemInHandsProfileIK("IAT_Melee_GrinningBlade_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_pipe.asi", pBehavior, "dz/anims/anm/player/ik/gear/machete.anm");
+        pType.AddItemInHandsProfileIK("IAT_Narsil_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_knife.asi", pBehavior, "dz/anims/anm/player/ik/gear/fangeknife.anm");
     }
 
     override void RegisterTwoHanded(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
