@@ -427,7 +427,6 @@ class CfgVehicles
     class IAT_AltynHelmet_STAG : IAT_AltynHelmet_Colorbase
     {
         scope = 2;
-        TradeClassName = "GorkaHelmet";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_doomer2045_co.paa" };
     };
@@ -483,7 +482,6 @@ class CfgVehicles
     class IAT_AltynHelmetVisor_STAG : IAT_AltynHelmetVisor_Colorbase
     {
         scope = 2;
-        TradeClassName = "GorkaHelmetVisor";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\characters\headgear\data\iat_altyn_doomer2045_co.paa" };
     };
