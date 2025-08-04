@@ -22,6 +22,14 @@ class IAT_Melee_GrinningBlade_Colorbase extends Sword{};
 class IAT_Melee_GrinningBlade_Basic extends IAT_Melee_GrinningBlade_Colorbase{};
 class IAT_Melee_GrinningBlade_itsb14nk extends IAT_Melee_GrinningBlade_Colorbase{};
 
+class IAT_Katana_ColorBase extends Sword{};
+class IAT_Katana_Basic extends IAT_Katana_ColorBase{};
+class IAT_Katana_delaineyrp extends IAT_Katana_ColorBase{};
+
+class IAT_KatanaSheathe_ColorBase: Belt_Base {};
+class IAT_KatanaSheathe_Basic: IAT_KatanaSheathe_ColorBase {};
+class IAT_KatanaSheathe_delaineyrp: IAT_KatanaSheathe_ColorBase {};
+
 //================================ GLAIVE
 class IAT_Melee_Glaive_Colorbase extends Sword{};
 class IAT_Melee_Glaive_Basic extends IAT_Melee_Glaive_Colorbase{};
