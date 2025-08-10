@@ -1,20 +1,20 @@
-ambient[]={1, 1, 1, 1};
+ambient[]={0.6249985, 0.6249993, 0.6249993, 1};
 diffuse[]={1, 1, 1, 1};
 forcedDiffuse[]={0, 0, 0, 0};
 emmisive[]={0, 0, 0, 1};
-specular[]={1, 0.8280001, 0.8280001, 1};
-specularPower=80;
+specular[]={0.5419995, 0.5, 0.5, 1};
+specularPower=150;
 PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
 {
-    texture="iat_melee_weapons\blade\data\iat_narsilbladeleather_nohq.paa";
+    texture="iat_melee_weapons\blade\data\iat_narsilbladesteel_nohq.paa";
     uvSource="tex";
     class uvTransform
     {
         aside[]={1, 0, 0};
         up[]={0, 1, 0};
-        dir[]={0, 0, 0};
+        dir[]={0, 0, 1};
         pos[]={0, 0, 0};
     };
 };
@@ -26,7 +26,7 @@ class Stage2
     {
         aside[]={1, 0, 0};
         up[]={0, 1, 0};
-        dir[]={0, 0, 0};
+        dir[]={0, 0, 1};
         pos[]={0, 0, 0};
     };
 };
@@ -38,19 +38,19 @@ class Stage3
     {
         aside[]={1, 0, 0};
         up[]={0, 1, 0};
-        dir[]={0, 0, 0};
+        dir[]={0, 0, 1};
         pos[]={0, 0, 0};
     };
 };
 class Stage4
 {
-    texture="iat_melee_weapons\blade\data\iat_narsilbladeleather_as.paa";
+    texture="iat_melee_weapons\blade\data\iat_narsilbladesteel_as.paa";
     uvSource="tex";
     class uvTransform
     {
         aside[]={1, 0, 0};
         up[]={0, 1, 0};
-        dir[]={0, 0, 0};
+        dir[]={0, 0, 1};
         pos[]={0, 0, 0};
     };
 };
@@ -62,31 +62,24 @@ class Stage5
     {
         aside[]={1, 0, 0};
         up[]={0, 1, 0};
-        dir[]={0, 0, 0};
+        dir[]={0, 0, 1};
         pos[]={0, 0, 0};
     };
 };
 class Stage6
 {
-    texture="#(ai,64,64,1)fresnel(1,0.43)";
-    uvSource="tex";
-    class uvTransform
-    {
-        aside[]={1, 0, 0};
-        up[]={0, 1, 0};
-        dir[]={0, 0, 0};
-        pos[]={0, 0, 0};
-    };
+    texture="#(ai,64,64,1)fresnel(2.9996,2.9304)";
+    uvSource="none";
 };
 class Stage7
 {
-    texture="#(argb,8,8,3)color(0,0,0,1,CO)";
+    texture="dz\data\data\env_land_co.paa";
     uvSource="tex";
     class uvTransform
     {
         aside[]={1, 0, 0};
         up[]={0, 1, 0};
-        dir[]={0, 0, 0};
+        dir[]={0, 0, 1};
         pos[]={0, 0, 0};
     };
 };
