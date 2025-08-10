@@ -1,10 +1,26 @@
 // these are land_ based objects meant for map baking
 class IAT_MiningSegment_Colorbase extends House
 {
-	string m_FormattedPersistentID;
+	protected string m_FormattedPersistentID;
 
-	bool m_IsEntrace;
-	bool m_IsExit;
+	protected bool m_PlaySmokeParticles;
+	protected bool m_IsExit;
+
+	void IAT_MiningSegment_Colorbase()
+	{
+		RegisterNetSyncVariableBoolSignal("m_PlaySmokeParticles");
+		RegisterNetSyncVariableBool("m_IsExit");
+	}
+
+	override void OnVariablesSynchronized()
+	{
+		super.OnVariablesSynchronized();
+		if (m_PlaySmokeParticles)
+		{
+			PlaySmokeParticles();
+		}
+	}
+
 	//=============================================== VANILLA OVERRIDES
 	override bool IsInventoryVisible()
 	{
@@ -35,57 +51,15 @@ class IAT_MiningSegment_Colorbase extends House
 	{
 		return false;
 	}
-	bool IsEntrance()
-	{
-		IAT_MiningConfig miningConfig;
-		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
-		{
-			miningConfig.IsSegmentEntrance(GetFormattedPersistentID());
-		}
-		return false;
-	}
-	bool IsExit()
-	{
-		IAT_MiningConfig miningConfig;
-		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
-		{
-			miningConfig.IsSegmentExit(GetFormattedPersistentID());
-		}
-		return false;
-	}
-	bool CanMineComponent(string componentName)
-	{
-		return false;
-	}
-	string GetFormattedPersistentID()
-	{
-		if (!m_FormattedPersistentID)
-		{
-			int uuid[4];
-			GetPersistentID(uuid[0], uuid[1], uuid[2], uuid[3]);
-			m_FormattedPersistentID = UUIDApi.FormatString(uuid);
-			PrintFormat("formatted persistent id for %1 - %2", GetType(), m_FormattedPersistentID);
-		}
-		return m_FormattedPersistentID;
-	}
-	string GetMiningYield(ItemBase itemInHands)
-	{
-		return "";
-	}
-	int GetMiningYieldQuantity(ItemBase itemInHands)
-	{
-		return Math.RandomIntInclusive(1, 5);
-	}
+	string GetMiningYield(ItemBase itemInHands)	{ return ""; }
 
-	float GetDamageToMiningItemEachYield(ItemBase item)
-	{
-		return 0;
-	}
+	void PlaySmokeParticles() {}
 
-	/* Defines the yield of the action*/
-	void GetMaterialAndQuantityYieldMap(ItemBase item, out map<string,int> output_map) {}
+	void SpawnMaterialAndQuantityYield() {}
 
-	void IncrementComponentHitCounter(string componentName) {}
+	float GetDamageToMiningItemEachYield(ItemBase item)	{ return 0; }
+
+	float GetDamageToMineWallEachYield(ItemBase item) { return 0; }
 
 	vector GetTeleportDestination()
 	{
@@ -97,7 +71,56 @@ class IAT_MiningSegment_Colorbase extends House
 			return miningConfig.GetSegmentTeleportDestination(GetFormattedPersistentID());
 		}
 		// otherwise return the matural position of this object
-		return GetPosition();
+		return vector.Zero;
+	}
+
+	//=============================================== GETTERS & SETTERS
+	string GetFormattedPersistentID()
+	{
+		if (!m_FormattedPersistentID)
+		{
+			int b1 = 0;
+			int b2 = 0;
+			int b3 = 0;
+			int b4 = 0;
+			GetPersistentID(b1, b2, b3, b4);
+			int uuid[4];
+			uuid[0] = b1;
+			uuid[1] = b2;
+			uuid[2] = b3;
+			uuid[3] = b4;
+			m_FormattedPersistentID = UUIDApi.FormatString(uuid);
+			// PrintFormat("formatted persistent id for %1 - %2", GetType(), m_FormattedPersistentID);
+		}
+		return m_FormattedPersistentID;
+	}
+	void SetFormattedPersistentID(string id) { m_FormattedPersistentID = id; }
+
+	void SetPlaySmokeParticles(bool value)
+	{
+		// PrintFormat("setting play particles to: %1", value);
+		m_PlaySmokeParticles = value;
+		GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( ResetSmokeParticles, GetResetTimerMS(), false);
+	}
+	bool GetPlaySmokeParticles()
+	{
+		return m_PlaySmokeParticles;
+	}
+	int GetResetTimerMS()
+	{
+		return 2000;
+	}
+	void ResetSmokeParticles()
+	{
+		SetSynchDirty();
+	}
+	bool IsExit()
+	{
+		return m_IsExit;
+	}
+	void SetIsExit(bool value)
+	{
+		m_IsExit = value;
 	}
 };
 
@@ -105,37 +128,45 @@ class land_iat_miningsegment_entrance extends IAT_MiningSegment_Colorbase
 {
 	void CreateMiningExit(vector returnPosition, vector surfacePosition)
 	{
-		vector underground = surfacePosition + "0 100 0";
-
-		land_iat_miningsegment_junction m_LinkedExit;
-		// create a junction at the location underneath the action target
-		if (Class.CastTo(m_LinkedExit, GetGame().CreateObjectEx("land_iat_miningsegment_junction", underground, ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
+		// get the mining config
+		IAT_MiningConfig miningConfig;
+		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
 		{
-			// get the position we should spawn the player.
-			// if the memory point in the p3d doesnt exist, use a default
-			vector teleportPosition;
-			if (MemoryPointExists(GetPlayerSpawnMemoryPoint()))
-			{
-				teleportPosition = GetMemoryPointPos(GetPlayerSpawnMemoryPoint());
-				teleportPosition = ModelToWorld(teleportPosition);
-			}
-			else
-			{
-				teleportPosition = underground;
-			}
+			// calculate where to place the first junction for this entrance
+			vector underground = miningConfig.GetExitJunctionSpawnPosition(surfacePosition);
 
-			// create entry in the mining config
-			IAT_MiningConfig miningConfig;
-			if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
+			// short circuit when a junction in the air exists
+			if(vector.Distance(underground, "0 0 0") == 0)
+				return;
+
+			land_iat_miningsegment_junction m_LinkedExit;
+			// create a junction at the location underneath the action target
+			if (Class.CastTo(m_LinkedExit, GetGame().CreateObjectEx("land_iat_miningsegment_junction", underground, ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
 			{
+				// get the position we should spawn the player.
+				// if the memory point in the p3d doesnt exist, use a default
+				vector teleportPosition;
+				if (MemoryPointExists(GetPlayerSpawnMemoryPoint()))
+				{
+					teleportPosition = GetMemoryPointPos(GetPlayerSpawnMemoryPoint());
+					teleportPosition = ModelToWorld(teleportPosition);
+				}
+				else
+				{
+					teleportPosition = underground;
+				}
+
+				// create entry in the mining config
 				// entry for the entrance
-				miningConfig.CreateSegmentEntranceNode(GetFormattedPersistentID(), returnPosition, teleportPosition);
+				string id = miningConfig.CreateSegmentEntranceNode(returnPosition, teleportPosition);
+				SetFormattedPersistentID(id);
 
-				// no magic numbers
-				int maxHits = 5
 				bool isExit = true;
 				// entry for the first junction
-				miningConfig.CreateSegmentJunctionNode(m_LinkedExit.GetFormattedPersistentID(), teleportPosition, returnPosition, maxHits, isExit);
+				id = miningConfig.CreateSegmentJunctionNode(teleportPosition, returnPosition, isExit);
+				m_LinkedExit.SetFormattedPersistentID(id);
+				m_LinkedExit.SetIsExit(isExit);
+				m_LinkedExit.SetSynchDirty();
 			}
 		}
 	}
@@ -151,42 +182,56 @@ class land_iat_miningsegment_entrance extends IAT_MiningSegment_Colorbase
 
 class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 {
+	protected ParticleSource m_WallDestructParticle;
+	protected ParticleSource m_WallCloudParticles;
+
+	void ~land_iat_miningsegment_junction()
+	{
+		StopParticles();
+	}
+	override bool EEOnDamageCalculated(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
+	{
+		super.EEOnDamageCalculated(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
+		PrintFormat("DamageType: %1, Component: %2 DamageZone: %3 Ammo: %4", damageType, component, dmgZone, ammo);
+		return true;
+	}
 	//=============================================== VANILLA OVERRIDE (AND SIMILAR)
 	override bool IsRock()
 	{
 		return true;
 	}
-		// this is only used for the action prompt name
+	// this is only used for the action prompt name
 	override string GetMiningYield(ItemBase itemInHands)
 	{
 		return "Various Ores";
 	}
 	// this is used in the action to spawn items
-	override void GetMaterialAndQuantityYieldMap(ItemBase item, out map<string,int> output_map)
-	{
-		if (item == null)
-		{
-			return;
-		}
+	// override void GetMaterialAndQuantityYieldMap(ItemBase item, out map<string,int> output_map)
+	// {
+	// 	if (item == null)
+	// 	{
+	// 		return;
+	// 	}
 
-		switch (item.GetType())
-		{
-			case "Pickaxe":
-			case "SledgeHammer":
-			case "Hammer":
-			case "Mace":
-				output_map.Insert("Stone",1);
-			break;
-			case "PipeWrench":
-			case "Wrench":
-			case "Screwdriver":
-			case "Crowbar":
-			case "MeatTenderizer":
-			case "Iceaxe":
-				output_map.Insert("SmallStone",1);
-			break;
-		}
-	}
+	// 	switch (item.GetType())
+	// 	{
+	// 		case "IAT_AdminPickaxe":
+	// 		case "Pickaxe":
+	// 		case "SledgeHammer":
+	// 		case "Hammer":
+	// 		case "Mace":
+	// 			output_map.Insert("Stone",1);
+	// 		break;
+	// 		case "PipeWrench":
+	// 		case "Wrench":
+	// 		case "Screwdriver":
+	// 		case "Crowbar":
+	// 		case "MeatTenderizer":
+	// 		case "Iceaxe":
+	// 			output_map.Insert("SmallStone",1);
+	// 		break;
+	// 	}
+	// }
 	override float GetDamageToMiningItemEachYield(ItemBase item)
 	{
 		if (item)
@@ -196,17 +241,19 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 			case "SledgeHammer":
 			case "Pickaxe":
 			case "Iceaxe":
-				return 20;
+				return 5;
 			case "Wrench":
 			case "Screwdriver":
 			case "MeatTenderizer":
-				return 25;
+				return 7;
 			case "PipeWrench":
 			case "Crowbar":
-				return 50;
+				return 10;
 			case "Hammer":
 			case "Mace":
-				return 40;
+				return 8;
+			case "IAT_AdminPickaxe":
+				return 0;
 			}
 		}
 
@@ -214,37 +261,81 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 	}
 
 	//=============================================== CUSTOM CODE
+	// lets new items be mining tools if wanted
+	override float GetDamageToMineWallEachYield(ItemBase item)
+	{
+		if (item)
+		{
+			switch (item.GetType())
+			{
+			case "SledgeHammer":
+			case "Pickaxe":
+			case "Iceaxe":
+				return 10;
+			case "Wrench":
+			case "Screwdriver":
+			case "MeatTenderizer":
+				return 2;
+			case "PipeWrench":
+			case "Crowbar":
+				return 3;
+			case "Hammer":
+			case "Mace":
+				return 5;
+			case "IAT_AdminPickaxe":
+				return 5000;
+			}
+		}
+
+		return 25;
+	}
 	// controls of this object can trigger the mining action
 	override bool IsMineable()
 	{
 		// Print("target is minable");
 		return true;
 	}
-	// controls which components inside the p3d that can be mined
-	override bool CanMineComponent(string componentName)
+
+	override void PlaySmokeParticles()
 	{
-		// get the mining config if exists
-		IAT_MiningConfig miningConfig;
-		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
+		if (!GetGame().IsDedicatedServer())
 		{
-			// if we can actually mine this specific segment
-			if (miningConfig.CanMineSegmentComponent(GetFormattedPersistentID(), componentName))
-			{
-				return true;
-			}
+			StopParticles();
+			m_WallDestructParticle = ParticleManager.GetInstance().PlayOnObject(ParticleList.PLASTIC_EXPLOSION, this, GetWallDestructParticlePosition());
+			m_WallDestructParticle.ScaleParticleParam(EmitorParam.SIZE, Math.RandomFloatInclusive(1.8, 2.5));
+
+			m_WallCloudParticles = ParticleManager.GetInstance().PlayOnObject(ParticleList.CLAYMORE_EXPLOSION, this, GetWallCloudParticlePosition());
 		}
-		// no mining config means false result
-		return false;
 	}
-	// increments the wall hit counter for a given wall
-	override void IncrementComponentHitCounter(string componentName)
+	vector GetWallDestructParticlePosition()
 	{
-		// get the mining config if exists
-		IAT_MiningConfig miningConfig;
-		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
+		PlayerBase player;
+		if (Class.CastTo(player, GetGame().GetPlayer()))
 		{
-			// increment our counters;
-			miningConfig.IncrementSegmentComponentHitCounter(GetFormattedPersistentID(), componentName)
+			vector headingDirection = MiscGameplayFunctions.GetHeadingVector(player);
+			PrintFormat("wall particle position: %1", headingDirection);
+			return headingDirection;
 		}
+		return "0 0 0";
+	}
+	vector GetWallCloudParticlePosition()
+	{
+		PlayerBase player;
+		if (Class.CastTo(player, GetGame().GetPlayer()))
+		{
+			vector headingDirection = MiscGameplayFunctions.GetHeadingVector(player);
+			PrintFormat("cloud particle position: %1", headingDirection);
+			return headingDirection;
+		}
+		return "0 0 0";
+	}
+
+	void StopParticles()
+	{
+		if (m_WallDestructParticle)
+			m_WallDestructParticle.StopParticle();
+
+		if (m_WallCloudParticles)
+			m_WallCloudParticles.StopParticle();
 	}
 };

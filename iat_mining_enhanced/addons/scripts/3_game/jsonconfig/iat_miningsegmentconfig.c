@@ -32,10 +32,6 @@ class IAT_MiningSegmentConfig
 			return true;
 		return false;
 	}
-	bool IsSegmentExit(string id)
-	{
-
-	}
 	bool CanMineSegmentComponent(string componentName)
 	{
 		// enforce lowercase
