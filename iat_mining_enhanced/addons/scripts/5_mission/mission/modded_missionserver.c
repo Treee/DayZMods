@@ -15,6 +15,11 @@ modded class MissionServer
 			// create object
 		}
 	}
+	override void OnMissionFinish()
+	{
+		GetDayZGame().GetIATMiningConfig().SaveConfig();
+		super.OnMissionFinish();
+	}
 
 	// no current need to send to client atm
 	// override void OnClientReadyEvent(PlayerIdentity identity, PlayerBase player)

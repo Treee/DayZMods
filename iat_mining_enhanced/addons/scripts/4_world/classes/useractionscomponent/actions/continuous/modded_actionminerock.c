@@ -6,8 +6,8 @@ modded class CAContinuousMineRock
 		// check our custom walls
 		if (Class.CastTo(iat_Junction, action_data.m_Target.GetObject()))
 		{
-			m_AmountOfDrops = iat_Junction.GetMiningYieldQuantity(action_data.m_MainItem);
-			iat_Junction.GetMaterialAndQuantityYieldMap(action_data.m_MainItem, m_MaterialAndQuantityMap);
+			iat_Junction.SpawnMaterialAndQuantityYield();
+
 			m_DamageToMiningItemEachDrop = iat_Junction.GetDamageToMiningItemEachYield(action_data.m_MainItem);
 			m_AdjustedDamageToMiningItemEachDrop = m_DamageToMiningItemEachDrop;
 			return true;
@@ -30,19 +30,25 @@ modded class ActionMineRock
 			{
 				if (iat_Junction.IsMineable())
 				{
-					// get the component name of the thing we are looking at
-					string componentName = iat_Junction.GetActionComponentName(target.GetComponentIndex());
-					if (iat_Junction.CanMineComponent(componentName))
+					int doorIndex = iat_Junction.GetDoorIndex(target.GetComponentIndex());
+					// PrintFormat("door index: %1", doorIndex);
+					if (doorIndex != -1)
 					{
-						return true;
+						// Print("has door, check is in reach");
+						if (!IsInReach(player, target, UAMaxDistances.REPAIR))
+							return false;
+
+						return iat_Junction.CanDoorBeOpened(doorIndex, true);
 					}
 				}
+				// our custom conditions failed, action failed
+				return false;
 			}
-			// our custom conditions failed, action failed
-			return false;
+			// pass through vanilla true
+			return true;
 		}
-		//super returns true, pass it through
-		return true;
+		// pass through vanilla false
+		return false;
 	}
 
 	override string GetYieldName(PlayerBase player, ActionTarget target, ItemBase item)
@@ -51,22 +57,42 @@ modded class ActionMineRock
 		// check our custom walls
 		if (Class.CastTo(iat_Junction, target.GetObject()))
 		{
-			return iat_Junction.GetMiningYield(item);
+			if (iat_Junction.IsMineable())
+			{
+				return iat_Junction.GetMiningYield(item);
+			}
 		}
 		return super.GetYieldName(player, target, item);
 	}
 
-	override void OnExecuteServer(ActionData action_data)
+	// happens approximately eight seconds
+	override void OnFinishProgressServer(ActionData action_data)
 	{
-		super.OnExecuteServer(action_data);
+		super.OnFinishProgressServer(action_data);
 		IAT_MiningSegment_Colorbase iat_Junction;
 		// check our custom walls
 		if (Class.CastTo(iat_Junction, action_data.m_Target.GetObject()))
 		{
-			// get the component name of the thing we are looking at
-			string componentName = iat_Junction.GetActionComponentName(action_data.m_Target.GetComponentIndex());
-			iat_Junction.IncrementComponentHitCounter(componentName);
-			// PrintFormat("mining complete %1", componentName);
+			// get the index of the door we are looking at
+			int doorIndex = iat_Junction.GetDoorIndex(action_data.m_Target.GetComponentIndex());
+			// if we are looking at a door
+			if (doorIndex != -1)
+			{
+				int modifiedDoorIndex = doorIndex + 1;
+				string componentName = string.Format("door%1", modifiedDoorIndex);
+				// damage the walls so that they will open eventually
+				iat_Junction.DecreaseHealth(componentName, "Health", iat_Junction.GetDamageToMineWallEachYield(action_data.m_MainItem));
+				// if the door hp is less than 0
+				if (iat_Junction.GetHealth(componentName, "Health") <= 0)
+				{
+					// Print("open door");
+					// open the door
+					iat_Junction.OpenDoor(doorIndex);
+
+					iat_Junction.SetPlaySmokeParticles(true);
+					iat_Junction.SetSynchDirty();
+				}
+			}
 		}
 	}
 };
