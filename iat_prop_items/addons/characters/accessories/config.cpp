@@ -141,7 +141,7 @@ class CfgVehicles
     class IAT_IronPauldron_autumn2187 : IAT_IronPauldron_Colorbase
     {
         scope = 2;
-        TradeClassName = "";
+        TradeClassName = "MetalPlate";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\characters\accessories\data\iat_metalpauldron_autumn2187_co.paa" };
     };
