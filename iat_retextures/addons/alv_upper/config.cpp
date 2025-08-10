@@ -13,6 +13,7 @@ class CfgVehicles
     class ALV_FlannelShirt_Nekomain_chan : ALV_FlannelShirt_Colorbase
     {
         scope = 2;
+        TradeClassName = "ALV_FlannelShirt_Colorbase";
         hiddenSelectionsTextures[] =
         {
             "iat_retextures\alv_upper\data\FlannelShirt_nekomaid_chan_co.paa"
