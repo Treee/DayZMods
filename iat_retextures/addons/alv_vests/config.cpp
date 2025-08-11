@@ -7,20 +7,12 @@ class CfgPatches
 };
 class CfgVehicles
 {
-    class ALV_SkullMask_Colorbase;
-    class ALV_AssaultHelmet_Colorbase;
+    class ALV_6B25Vest_Colorbase;
 
     //==================================================== VANILLA RETEXTURES
-    class ALV_6B25Vest_Black : ALV_6B25Vest_Colorbase
+    class ALV_6B25Vest_nekomaid_chan : ALV_6B25Vest_Colorbase
     {
         scope = 2;
-        hiddenSelectionsTextures[] =
-        {
-            "ACO_Upper\Characters\Vests\Data\StagVest_CO.paa"
-        };
-        hiddenSelectionsMaterials[] =
-        {
-            "ACO_Upper\Characters\Vests\Data\StagVest.rvmat"
-        };
+        hiddenSelectionsTextures[] = { "iat_retextures\alv_vests\data\StagVest_nekomain_chan_CO.paa" };
     };
 };
