@@ -8,6 +8,7 @@ class CfgPatches
 class CfgVehicles
 {
     class ALV_SkullMask_Colorbase;
+    class ALV_AssaultHelmet_Colorbase;
 
     //==================================================== VANILLA RETEXTURES
     class ALV_SkullMask_Kalli : ALV_SkullMask_Colorbase
@@ -16,5 +17,12 @@ class CfgVehicles
         // color = "Kalli";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_retextures\alv_headgear\data\skullMask_kalli_CO.paa" };
+    };
+
+    class ALV_AssaultHelmet_nekomaid_chan : ALV_AssaultHelmet_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_retextures\alv_headgear\data\AssaultHelmet_nekomaid_chan_CO.paa" };
     };
 };
