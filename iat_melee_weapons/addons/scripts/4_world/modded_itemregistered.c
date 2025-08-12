@@ -16,6 +16,7 @@ modded class ModItemRegisterCallbacks
         super.RegisterTwoHanded( pType, pBehavior );
 
         //==================================================== BLADE WEAPONS
+        pType.AddItemInHandsProfileIK("IAT_Melee_Aerondight_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_sword.asi", pBehavior,	"dz/anims/anm/player/ik/two_handed/medieval_sword.anm");
         pType.AddItemInHandsProfileIK("IAT_Melee_BerserkSword_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_sword.asi", pBehavior,	"dz/anims/anm/player/ik/two_handed/medieval_sword.anm");
         pType.AddItemInHandsProfileIK("IAT_Melee_JawBladeSword_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_sword.asi", pBehavior,	"dz/anims/anm/player/ik/two_handed/medieval_sword.anm");
         pType.AddItemInHandsProfileIK("IAT_Katana_ColorBase", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_sword.asi", pBehavior,	"dz/anims/anm/player/ik/two_handed/medieval_sword.anm");
