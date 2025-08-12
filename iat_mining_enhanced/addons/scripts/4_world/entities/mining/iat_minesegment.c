@@ -19,6 +19,7 @@ class IAT_MiningSegment_Colorbase extends House
 		{
 			PlaySmokeParticles();
 		}
+
 	}
 
 	//=============================================== VANILLA OVERRIDES
@@ -79,17 +80,18 @@ class IAT_MiningSegment_Colorbase extends House
 	{
 		if (!m_FormattedPersistentID)
 		{
-			int b1 = 0;
-			int b2 = 0;
-			int b3 = 0;
-			int b4 = 0;
-			GetPersistentID(b1, b2, b3, b4);
-			int uuid[4];
-			uuid[0] = b1;
-			uuid[1] = b2;
-			uuid[2] = b3;
-			uuid[3] = b4;
-			m_FormattedPersistentID = UUIDApi.FormatString(uuid);
+			Print("GetFormattedPersistentID::This should never be null, server handles creation of junctions.");
+			// int b1 = 0;
+			// int b2 = 0;
+			// int b3 = 0;
+			// int b4 = 0;
+			// GetPersistentID(b1, b2, b3, b4);
+			// int uuid[4];
+			// uuid[0] = b1;
+			// uuid[1] = b2;
+			// uuid[2] = b3;
+			// uuid[3] = b4;
+			// m_FormattedPersistentID = UUIDApi.FormatString(uuid);
 			// PrintFormat("formatted persistent id for %1 - %2", GetType(), m_FormattedPersistentID);
 		}
 		return m_FormattedPersistentID;
@@ -121,6 +123,10 @@ class IAT_MiningSegment_Colorbase extends House
 	void SetIsExit(bool value)
 	{
 		m_IsExit = value;
+	}
+	bool IsEntrance()
+	{
+		return false;
 	}
 };
 
@@ -175,6 +181,10 @@ class land_iat_miningsegment_entrance extends IAT_MiningSegment_Colorbase
 		return "player_spawn";
 	}
 	bool CanEnterMine()
+	{
+		return true;
+	}
+	override bool IsEntrance()
 	{
 		return true;
 	}

@@ -9,7 +9,6 @@ class IAT_MiningConfig
 
 	protected int m_MiningDepthMin = 200; // top of the mining area (since we are up in the air this is larger than max)
 	protected int m_MiningDepthMax = 100; // bottom of the mining area
-	protected int m_MaxHitsPerWall = 5; // max hits per wall for randomization
 
 	protected ref array<ref IAT_MiningSegmentConfig> m_IAT_MiningSegmentConfigs;
 
@@ -75,7 +74,7 @@ class IAT_MiningConfig
 		UUIDApi.Generate(uuid);
 		string id = UUIDApi.FormatString(uuid);
 
-		InsertMiningSegment(new IAT_MiningSegmentConfig(id, isEntrance, !isEntrance, m_MaxHitsPerWall, segmentPosition, teleportPosition));
+		InsertMiningSegment(new IAT_MiningSegmentConfig(id, isEntrance, !isEntrance, segmentPosition, teleportPosition));
 		return id;
 	}
 	string CreateSegmentJunctionNode(vector segmentPosition, vector teleportPosition, bool isExit = false)
@@ -85,7 +84,7 @@ class IAT_MiningConfig
 		int uuid[4];
 		UUIDApi.Generate(uuid);
 		string id = UUIDApi.FormatString(uuid);
-		IAT_MiningSegmentConfig junctionConfig = new IAT_MiningSegmentConfig(id, isEntrance, isExit, m_MaxHitsPerWall, segmentPosition, teleportPosition);
+		IAT_MiningSegmentConfig junctionConfig = new IAT_MiningSegmentConfig(id, isEntrance, isExit, segmentPosition, teleportPosition);
 		// defaults (find a better way?)
 
 		junctionConfig.SetMineableComponentOreChances({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1});
@@ -93,17 +92,7 @@ class IAT_MiningConfig
 		InsertMiningSegment(junctionConfig);
 		return id;
 	}
-	void IncrementSegmentComponentHitCounter(string id, string componentName)
-	{
-		// enforce lowercase
-		componentName.ToLower();
 
-		IAT_MiningSegmentConfig segmentConfig;
-		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
-		{
-			segmentConfig.IncrementSegmentComponentHitCounter(componentName);
-		}
-	}
 	vector GetSegmentTeleportDestination(string id)
 	{
 		IAT_MiningSegmentConfig segmentConfig;
@@ -111,7 +100,7 @@ class IAT_MiningConfig
 		{
 			return segmentConfig.GetSegmentTeleportDestination();
 		}
-		return "0 0 0";
+		return vector.Zero;
 	}
 	vector GetExitJunctionSpawnPosition(vector surfacePosition)
 	{
@@ -124,7 +113,7 @@ class IAT_MiningConfig
 			if(vector.Distance(miningSegment.GetSegmentPosition(), newPosition) <= 1)
 			{
 				Print("an existing junction is here. dont make a new one")
-				return "0 0 0";
+				return vector.Zero;
 			}
 		}
 		PrintFormat("new position: %1", newPosition);
@@ -136,43 +125,6 @@ class IAT_MiningConfig
 		// TODO
 		return false;
 	}
-	bool CanMineSegmentComponent(string id, string componentName)
-	{
-		// enforce lowercase
-		componentName.ToLower();
-
-		IAT_MiningSegmentConfig segmentConfig;
-		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
-		{
-			if (segmentConfig.CanMineSegmentComponent(componentName))
-			{
-				return true;
-			}
-		}
-		// if none of the components can be mined or the config doesnt exist. return false
-		return false;
-	}
-	bool IsSegmentEntrance(string id)
-	{
-		IAT_MiningSegmentConfig segmentConfig;
-		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
-		{
-			return segmentConfig.IsEntrance();
-		}
-		return false;
-	}
-	bool IsSegmentExit(string id)
-	{
-		IAT_MiningSegmentConfig segmentConfig;
-		if (Class.CastTo(segmentConfig, GetMiningSegmentById(id)))
-		{
-			return segmentConfig.IsExit();
-		}
-		return false;
-	}
-
-
-
 
 	void InsertMiningSegment(IAT_MiningSegmentConfig segment)
 	{

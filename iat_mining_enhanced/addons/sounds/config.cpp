@@ -21,9 +21,9 @@ class CfgSoundShaders
 	{
 		samples[] =
 		{
-			{"iat_mining_enhanced\sounds\data\fallingrock1.ogg", 0.3},
-			{"iat_mining_enhanced\sounds\data\fallingrock2.ogg", 0.3},
-			{"iat_mining_enhanced\sounds\data\fallingrock3.ogg", 0.3},
+			{"iat_mining_enhanced\sounds\data\fallingrock1.ogg", 0.5},
+			{"iat_mining_enhanced\sounds\data\fallingrock2.ogg", 0.5},
+			{"iat_mining_enhanced\sounds\data\fallingrock3.ogg", 0.5},
 		};
 	};
 };
