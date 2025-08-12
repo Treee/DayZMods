@@ -9,10 +9,29 @@ modded class MissionServer
 
 	void InitializeMiningTunnelSystem(IAT_MiningConfig miningConfig)
 	{
+		IAT_MiningSegment_Colorbase m_MiningSegment;
+		string segmentClassName = "";
+		vector teleportDestination = vector.Zero;
+
 		array<ref IAT_MiningSegmentConfig> miningSegments = miningConfig.GetMiningSegments();
-		foreach(IAT_MiningSegmentConfig miningSegment : miningSegments)
+		foreach(IAT_MiningSegmentConfig miningSegmentConfig : miningSegments)
 		{
-			// create object
+			if (miningSegmentConfig.IsEntrance())
+				segmentClassName = "land_iat_miningsegment_entrance";
+			else
+				segmentClassName = "land_iat_miningsegment_junction";
+
+			// create a junction at the location underneath the action target
+			if (Class.CastTo(m_MiningSegment, GetGame().CreateObjectEx(segmentClassName, miningSegmentConfig.GetSegmentPosition(), ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
+			{
+				// set the id so the object can find itself in the config json
+				m_MiningSegment.SetFormattedPersistentID(miningSegmentConfig.GetID());
+				// set the exit junctions (entrances are always enterable)
+				m_MiningSegment.SetIsExit(miningSegmentConfig.IsExit());
+				// sync the exits to the client side
+				m_MiningSegment.SetSynchDirty();
+			}
+
 		}
 	}
 	override void OnMissionFinish()
