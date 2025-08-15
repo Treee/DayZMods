@@ -41,11 +41,9 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 				vector destination = mineJunction.GetTeleportDestination();
 				if (destination != vector.Zero)
 				{
-					if (MiscGameplayFunctions.TeleportPlayerToSafeLocation3D(action_data.m_Player, destination))
-					{
-						// teleported
-						// Print("teleported");
-					}
+					MiscGameplayFunctions.IAT_Mining_TeleportCheck(action_data.m_Player, destination);
+					// teleported
+					// Print("teleported");
 				}
 			}
 		}
@@ -65,16 +63,6 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 				handler.IAT_ExitUndergroundMines();
 			}
 		}
-	}
-
-	override string GetAdminLogMessage(ActionData action_data)
-	{
-		land_iat_miningsegment_entrance mineJunction;
-		if (Class.CastTo(mineJunction, action_data.m_Target.GetObject()))
-		{
-			return string.Format(" teleported using a mine junction exit: %1", action_data.m_Target.GetObject().GetPosition());
-		}
-		return "";
 	}
 
 	override bool IsLockTargetOnUse()

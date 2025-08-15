@@ -7,8 +7,10 @@ class IAT_MiningConfig
 	[NonSerialized()]
     protected string m_JsonFile = "MiningConfig.json";
 
-	protected int m_MiningDepthMin = 200; // top of the mining area (since we are up in the air this is larger than max)
-	protected int m_MiningDepthMax = 100; // bottom of the mining area
+	protected int m_SkySurfaceY = 2500; // the highest the mining system can be. simulates the surface level
+	protected int m_MaxDepth = 100; // the depth of the mining area in meters (default junctions are 4m cubed so 1 level is 4m)
+	protected int m_EdgeBuffer = 20; // the buffer around the edge of the map
+	protected int m_MinimumDistanceBetweenEntrances = 100; // the minimum distance between entrances so they are not spammed.
 
 	protected ref array<ref IAT_MiningSegmentConfig> m_IAT_MiningSegmentConfigs;
 
@@ -104,26 +106,78 @@ class IAT_MiningConfig
 	}
 	vector GetExitJunctionSpawnPosition(vector surfacePosition)
 	{
-		string junctionTargetPosition = string.Format("0 %1 0", m_MiningDepthMin);
-		vector newPosition = surfacePosition + junctionTargetPosition.ToVector();
+		vector newPosition = string.Format("%1 %2 %3", surfacePosition[0], m_SkySurfaceY, surfacePosition[2]).ToVector();
 
 		// check if anything occupys this space already
 		foreach(IAT_MiningSegmentConfig miningSegment : m_IAT_MiningSegmentConfigs)
 		{
-			if(vector.Distance(miningSegment.GetSegmentPosition(), newPosition) <= 1)
+			if(vector.Distance(miningSegment.GetSegmentPosition(), newPosition) <= 4)
 			{
-				Print("an existing junction is here. dont make a new one")
+				PrintFormat("GetExitJunctionSpawnPosition::An existing entrance is here. Do not make a new one. %1", newPosition);
+				// TODO: link the existing junction to the entrance
 				return vector.Zero;
 			}
 		}
-		PrintFormat("new position: %1", newPosition);
 		return newPosition;
 	}
 
-	bool IsExistingSegmentPresent(vector position)
+	vector GetNextJunctionSpawnPosition(vector currentJunctionPosition, int doorIndex, int bufferSize = 8)
 	{
-		// TODO
-		return false;
+		vector newPosition = GetOffsetJunctionPosition(currentJunctionPosition, doorIndex, bufferSize);
+
+		foreach(IAT_MiningSegmentConfig miningSegment : m_IAT_MiningSegmentConfigs)
+		{
+			if(vector.Distance(miningSegment.GetSegmentPosition(), newPosition) <= 1)
+			{
+				PrintFormat("GetNextJunctionSpawnPosition::An existing entrance is here. Do not make a new one. %1", newPosition);
+				return vector.Zero;
+			}
+		}
+		return newPosition;
+	}
+
+	// this is used for when inner walls are destroyed by a mining action so the next junction is created
+	// segments are 4m cubed so all we need to do is add 4 to each sides
+	// up 1 - Component36
+	// down 2 - Component34
+	// left (west) 3 - Component32
+	// right (east) 4 - Component28
+	// forward (south) 5 - Component26
+	// back (north) 6 - Component30
+	vector GetOffsetJunctionPosition(vector currentJunctionPosition, int doorIndex, int bufferSize = 8)
+	{
+		vector newSegmentPosition = vector.Zero;
+
+		vector up = string.Format("0 %1 0", bufferSize).ToVector();
+		vector right = string.Format("%1 0 0", bufferSize).ToVector();
+		vector forward = string.Format("0 0 %1", bufferSize).ToVector();
+
+		if (doorIndex == 0) // up
+		{
+			newSegmentPosition = currentJunctionPosition + up;
+		}
+		else if (doorIndex == 1) // down
+		{
+			newSegmentPosition = currentJunctionPosition - up;
+		}
+		else if (doorIndex == 2) // left
+		{
+			newSegmentPosition = currentJunctionPosition - right;
+		}
+		else if (doorIndex == 3) // right
+		{
+			newSegmentPosition = currentJunctionPosition + right;
+		}
+		else if (doorIndex == 4) // forward
+		{
+			newSegmentPosition = currentJunctionPosition - forward;
+		}
+		else if (doorIndex == 5) // back
+		{
+			newSegmentPosition = currentJunctionPosition + forward;
+		}
+		// PrintFormat("=======================================Current Junction: %1 New Junction: %2", currentJunctionPosition, newSegmentPosition);
+		return newSegmentPosition;
 	}
 
 	void InsertMiningSegment(IAT_MiningSegmentConfig segment)
@@ -136,6 +190,23 @@ class IAT_MiningConfig
 	}
 	bool RemoveMiningSegment(IAT_MiningSegmentConfig segment)
 	{
+		// TODO
+		return false;
+	}
+	bool CanPlaceEntrance(vector position)
+	{
+		// check if anything occupys this space already
+		foreach(IAT_MiningSegmentConfig miningSegment : m_IAT_MiningSegmentConfigs)
+		{
+			if (miningSegment.IsEntrance())
+			{
+				if(vector.Distance(miningSegment.GetSegmentPosition(), position) <= m_MinimumDistanceBetweenEntrances)
+				{
+					PrintFormat("CanPlaceEntrance::There is an existing entrance with 100m of %1", position);
+					return false;
+				}
+			}
+		}
 		return true;
 	}
 
@@ -148,6 +219,22 @@ class IAT_MiningConfig
 		m_IAT_MiningSegmentConfigs = segments;
 	}
 
+	int GetSkySurfaceY()
+	{
+		return m_SkySurfaceY;
+	}
+	int GetMaxDepth()
+	{
+		return m_MaxDepth;
+	}
+	int GetMinDistanceBetweenEntrances()
+	{
+		return m_MinimumDistanceBetweenEntrances;
+	}
+	int GetMapEdgeBuffer()
+	{
+		return m_EdgeBuffer;
+	}
 
 	void PrettyPrint()
 	{

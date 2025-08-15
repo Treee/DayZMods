@@ -18,6 +18,10 @@ class IAT_ActionDescendIntoMine extends ActionInteractBase
 		if (!target)
 			return false;
 
+		if (item.IsHologram())
+			return false;
+
+
 		land_iat_miningsegment_entrance mineEntrance;
 		if (Class.CastTo(mineEntrance, target.GetObject()))
 		{
@@ -41,11 +45,9 @@ class IAT_ActionDescendIntoMine extends ActionInteractBase
 				vector destination = mineEntrance.GetTeleportDestination();
 				if (destination != vector.Zero)
 				{
-					if (MiscGameplayFunctions.TeleportPlayerToSafeLocation3D(action_data.m_Player, destination))
-					{
-						// teleported
-						// Print("teleported");
-					}
+					MiscGameplayFunctions.IAT_Mining_TeleportCheck(action_data.m_Player, destination);
+					// teleported
+					// Print("teleported");
 				}
 			}
 		}
@@ -65,16 +67,6 @@ class IAT_ActionDescendIntoMine extends ActionInteractBase
 				handler.IAT_EnterUndergroundMines();
 			}
 		}
-	}
-
-	override string GetAdminLogMessage(ActionData action_data)
-	{
-		land_iat_miningsegment_entrance mineEntrance;
-		if (Class.CastTo(mineEntrance, action_data.m_Target.GetObject()))
-		{
-			return string.Format(" teleported using a mine entrance: %1 ", action_data.m_Target.GetObject().GetPosition());
-		}
-		return "";
 	}
 
 	override bool IsLockTargetOnUse()

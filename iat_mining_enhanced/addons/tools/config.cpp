@@ -8,6 +8,7 @@ class CfgPatches
 class CfgVehicles
 {
 	class Inventory_Base;
+	class Shovel;
 
 	//==================================================================== ORE
 	class IAT_AdminPickaxe : Inventory_Base
@@ -141,5 +142,14 @@ class CfgVehicles
 				};
 			};
 		};
+	};
+
+	// explicitly used to make mining entrances. work around because garden plots are hard coded in holograms atm
+	class IAT_MiningEntranceShovel : Shovel
+	{
+		scope = 2;
+		displayName = "Mining Shovel";
+		descriptionShort = "A shovel expressly for digging a mine shaft entrance.";
+		projectionTypename = "land_iat_miningsegment_entrance";
 	};
 };

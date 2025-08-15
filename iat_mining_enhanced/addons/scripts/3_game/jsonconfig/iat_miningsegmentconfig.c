@@ -8,6 +8,7 @@ class IAT_MiningSegmentConfig
 	protected vector m_SegmentPosition;
 	protected vector m_SegmentTeleportDestination;
 
+	protected ref TIntArray m_MineableComponentDoorStates; // the states of the doors for this object. 0 for closed, 1 for opened, 2 for locked
 	protected ref TFloatArray m_MineableComponentOreChances; // the probabilities of getting ore on hit in this segment for all the walls
 
 	protected int m_MaxYieldQuantity = 3; // max yield for ore when a complete mining animation is finished

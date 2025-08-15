@@ -24,6 +24,10 @@ modded class MissionServer
 			// create a junction at the location underneath the action target
 			if (Class.CastTo(m_MiningSegment, GetGame().CreateObjectEx(segmentClassName, miningSegmentConfig.GetSegmentPosition(), ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
 			{
+				// foreach door
+				// open/close/lock based on saved state
+
+
 				// set the id so the object can find itself in the config json
 				m_MiningSegment.SetFormattedPersistentID(miningSegmentConfig.GetID());
 				// set the exit junctions (entrances are always enterable)

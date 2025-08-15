@@ -8,7 +8,7 @@ modded class CAContinuousMineRock
 		{
 			iat_Junction.SpawnMaterialAndQuantityYield();
 
-			m_DamageToMiningItemEachDrop = iat_Junction.GetDamageToMiningItemEachYield(action_data.m_MainItem);
+			m_DamageToMiningItemEachDrop = iat_Junction.GetDamageToMiningItemEachYield(action_data.m_MainItem.GetType());
 			m_AdjustedDamageToMiningItemEachDrop = m_DamageToMiningItemEachDrop;
 			return true;
 		}
@@ -59,7 +59,7 @@ modded class ActionMineRock
 		{
 			if (iat_Junction.IsMineable())
 			{
-				return iat_Junction.GetMiningYield(item);
+				return iat_Junction.GetMiningYield(item.GetType());
 			}
 		}
 		return super.GetYieldName(player, target, item);
@@ -78,20 +78,7 @@ modded class ActionMineRock
 			// if we are looking at a door
 			if (doorIndex != -1)
 			{
-				int modifiedDoorIndex = doorIndex + 1;
-				string componentName = string.Format("door%1", modifiedDoorIndex);
-				// damage the walls so that they will open eventually
-				iat_Junction.DecreaseHealth(componentName, "Health", iat_Junction.GetDamageToMineWallEachYield(action_data.m_MainItem));
-				// if the door hp is less than 0
-				if (iat_Junction.GetHealth(componentName, "Health") <= 0)
-				{
-					// Print("open door");
-					// open the door
-					iat_Junction.OpenDoor(doorIndex);
-
-					iat_Junction.SetPlaySmokeParticles(true);
-					iat_Junction.SetSynchDirty();
-				}
+				iat_Junction.OnServerWallMined(doorIndex, action_data.m_MainItem.GetType());
 			}
 		}
 	}
