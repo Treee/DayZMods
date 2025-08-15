@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-	texture="#(argb,8,8,3)color(1,1,1,1,AS)";
+	texture="iat_melee_weapons\blade\data\iat_damascusbowie_as.paa";
     uvSource="tex";
     class uvTransform
     {
