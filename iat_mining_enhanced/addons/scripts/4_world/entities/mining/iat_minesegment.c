@@ -70,7 +70,7 @@ class IAT_MiningSegment_Colorbase extends House
 	{
 		if (position == vector.Zero)
 		{
-			Print("Zero Vector, junction already exists or is out of bounds");
+			// Print("Zero Vector, junction already exists or is out of bounds");
 			return -1;
 		}
 		// check if this junction gets near the boundaries of the map
@@ -86,36 +86,57 @@ class IAT_MiningSegment_Colorbase extends House
 
 			if (position[1] > surfaceY)
 			{
-				Print("===================================Cannot spawn a junction higher than surface level");
+				// Print("===================================Cannot spawn a junction higher than surface level");
 				return 6;
 			}
 			else if (position[1] < surfaceYMin)
 			{
-				Print("===================================Cannot spawn a junction lower than bedrock level");
+				// Print("===================================Cannot spawn a junction lower than bedrock level");
 				return 7;
 			}
 			else if (position[0] < absoluteMin)
 			{
-				Print("===================================Cannot spawn a junction further than the minimum map edge");
+				// Print("===================================Cannot spawn a junction further than the minimum map edge");
 				return 8;
 			}
 			else if (position[0] > absoluteMax)
 			{
-				Print("===================================Cannot spawn a junction further than the maximum map edge");
+				// Print("===================================Cannot spawn a junction further than the maximum map edge");
 				return 9;
 			}
 			else if (position[2] < absoluteMin)
 			{
-				Print("===================================Cannot spawn a junction further than the minimum map edge");
+				// Print("===================================Cannot spawn a junction further than the minimum map edge");
 				return 10;
 			}
 			else if (position[2] > absoluteMax)
 			{
-				Print("===================================Cannot spawn a junction further than the maximum map edge");
+				// Print("===================================Cannot spawn a junction further than the maximum map edge");
 				return 11;
 			}
 		}
 		return -1;
+	}
+	// server side only method to sync a junction to be an exit for client actions
+	void UpdateNearbyJunction(vector entranceTeleportPosition, float radius = 0.25)
+	{
+		// update the in game object
+		array<Object> nearest_objects = new array<Object>;
+		array<CargoBase> proxy_cargos = new array<CargoBase>;
+		GetGame().GetObjectsAtPosition3D(entranceTeleportPosition, radius, nearest_objects, proxy_cargos);
+
+		// there should only be 1 object
+		IAT_MiningSegment_Colorbase nearbyJunction;
+		foreach (Object nearbyObject : nearest_objects)
+		{
+			// if the nearby object is a junction
+			if (Class.CastTo(nearbyJunction, nearbyObject))
+			{
+				// set it to be an exit
+				nearbyJunction.SetIsExit(true);
+				nearbyJunction.SetSynchDirty();
+			}
+		}
 	}
 	// used to change the display name in the mining action
 	string GetMiningYield(string itemName)	{ return ""; }
@@ -254,9 +275,6 @@ class land_iat_miningsegment_entrance extends IAT_MiningSegment_Colorbase
 		IAT_MiningConfig miningConfig;
 		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
 		{
-			// calculate where to place the first junction for this entrance
-			vector segmentPosition = miningConfig.GetExitJunctionSpawnPosition(entrancePosition);
-
 			// look in the entrance p3d and try to get where the player should teleport back to on an exit
 			vector exitTeleportPosition = GetPlayerSpawnPosition();
 			if (exitTeleportPosition == vector.Zero)
@@ -265,24 +283,39 @@ class land_iat_miningsegment_entrance extends IAT_MiningSegment_Colorbase
 				exitTeleportPosition = entrancePosition;
 			}
 
-			// create a new junction at the indicated position
-			IAT_MiningSegment_Colorbase iat_ExitJunction;
-			if (Class.CastTo(iat_ExitJunction, CreateJunctionSegment(segmentPosition, exitTeleportPosition, true)))
+			// calculate where to place the first junction for this entrance
+			vector segmentPosition = miningConfig.GetExitJunctionSpawnPosition(entrancePosition);
+			// the teleport destination of the entrance
+			vector entranceTeleportPosition;
+			// check to see if there is a nexisting junction present
+			IAT_MiningSegmentConfig segmentConfig;
+			if (Class.CastTo(segmentConfig, miningConfig.IsExistingJunctionPresent(segmentPosition)))
 			{
-				// get the position we should spawn the player.
-				// if the memory point in the p3d doesnt exist, use a default
-				vector entranceTeleportPosition = iat_ExitJunction.GetPlayerSpawnPosition();
-				if (entranceTeleportPosition == vector.Zero)
-				{
-					entranceTeleportPosition = segmentPosition;
-				}
-
-				// since the junction creation was successful
-				// save the entrance in the json config
-				string id = miningConfig.CreateSegmentEntranceNode(entrancePosition, entranceTeleportPosition);
-				// set the persistent id
-				SetFormattedPersistentID(id);
+				// junction exists, link the entrance to the junction in the config
+				entranceTeleportPosition = segmentConfig.GetSegmentPosition();
+				// link the junction to the entrance in the config
+				miningConfig.UpdateJunctionToExit(segmentConfig.GetID(), entrancePosition);
+				// update the in game object
+				UpdateNearbyJunction(entranceTeleportPosition);
 			}
+			else // create a new junction at the indicated position
+			{
+				IAT_MiningSegment_Colorbase iat_ExitJunction;
+				if (Class.CastTo(iat_ExitJunction, CreateJunctionSegment(segmentPosition, exitTeleportPosition, true)))
+				{
+					// get the position we should spawn the player.
+					// if the memory point in the p3d doesnt exist, use a default
+					entranceTeleportPosition = iat_ExitJunction.GetPlayerSpawnPosition();
+					if (entranceTeleportPosition == vector.Zero)
+					{
+						entranceTeleportPosition = segmentPosition;
+					}
+				}
+			}
+			// save the entrance in the json config
+			string id = miningConfig.CreateSegmentEntranceNode(entrancePosition, entranceTeleportPosition);
+			// set the persistent id
+			SetFormattedPersistentID(id);
 		}
 	}
 	override bool CanEnterMine()
@@ -303,12 +336,6 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 	void ~land_iat_miningsegment_junction()
 	{
 		StopParticles();
-	}
-	override bool EEOnDamageCalculated(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
-	{
-		super.EEOnDamageCalculated(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
-		PrintFormat("DamageType: %1, Component: %2 DamageZone: %3 Ammo: %4", damageType, component, dmgZone, ammo);
-		return true;
 	}
 	//=============================================== VANILLA OVERRIDE (AND SIMILAR)
 	override bool IsRock()
@@ -389,7 +416,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 						if (Class.CastTo(iat_ExitJunction, CreateJunctionSegment(newSegmentPosition)))
 						{
 							// maybe randomize locked doors so it forces a twisty path?
-							Print("new junction created successfully");
+							// Print("new junction created successfully");
 						}
 					}
 				}

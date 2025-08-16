@@ -95,6 +95,16 @@ class IAT_MiningConfig
 		return id;
 	}
 
+	void UpdateJunctionToExit(string id, vector teleportPosition)
+	{
+		IAT_MiningSegmentConfig junctionToUpdate;
+		if (Class.CastTo(junctionToUpdate, GetMiningSegmentById(id)))
+		{
+			junctionToUpdate.SetIsExit(true);
+			junctionToUpdate.SetSegmentTeleportDestination(teleportPosition);
+		}
+	}
+
 	vector GetSegmentTeleportDestination(string id)
 	{
 		IAT_MiningSegmentConfig segmentConfig;
@@ -104,21 +114,32 @@ class IAT_MiningConfig
 		}
 		return vector.Zero;
 	}
+	// format the vector using sky surface
 	vector GetExitJunctionSpawnPosition(vector surfacePosition)
 	{
 		vector newPosition = string.Format("%1 %2 %3", surfacePosition[0], m_SkySurfaceY, surfacePosition[2]).ToVector();
-
+		return newPosition;
+	}
+	// format the entrance vector so it is predictable
+	vector GetEntranceSpawnPosition(vector cursorPosition)
+	{
+		vector newPosition = string.Format("%1 %2 %3", Math.Round(cursorPosition[0]), cursorPosition[1], Math.Round(cursorPosition[2])).ToVector();
+		return newPosition;
+	}
+	// check to see if there is an existing junction present at the supplied vector
+	IAT_MiningSegmentConfig IsExistingJunctionPresent(vector potentialJunctionPosition)
+	{
 		// check if anything occupys this space already
 		foreach(IAT_MiningSegmentConfig miningSegment : m_IAT_MiningSegmentConfigs)
 		{
-			if(vector.Distance(miningSegment.GetSegmentPosition(), newPosition) <= 4)
+			if(vector.Distance(miningSegment.GetSegmentPosition(), potentialJunctionPosition) <= 4)
 			{
-				PrintFormat("GetExitJunctionSpawnPosition::An existing entrance is here. Do not make a new one. %1", newPosition);
+				PrintFormat("IsExistingJunctionPresent::An existing entrance is here. Do not make a new one. %1", potentialJunctionPosition);
 				// TODO: link the existing junction to the entrance
-				return vector.Zero;
+				return miningSegment;
 			}
 		}
-		return newPosition;
+		return null;
 	}
 
 	vector GetNextJunctionSpawnPosition(vector currentJunctionPosition, int doorIndex, int bufferSize = 8)
@@ -202,7 +223,7 @@ class IAT_MiningConfig
 			{
 				if(vector.Distance(miningSegment.GetSegmentPosition(), position) <= m_MinimumDistanceBetweenEntrances)
 				{
-					PrintFormat("CanPlaceEntrance::There is an existing entrance with 100m of %1", position);
+					PrintFormat("CanPlaceEntrance::There is an existing entrance with %1 of %2", m_MinimumDistanceBetweenEntrances, position);
 					return false;
 				}
 			}

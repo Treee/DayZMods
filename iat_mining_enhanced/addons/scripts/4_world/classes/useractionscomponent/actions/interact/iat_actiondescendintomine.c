@@ -18,9 +18,6 @@ class IAT_ActionDescendIntoMine extends ActionInteractBase
 		if (!target)
 			return false;
 
-		if (item.IsHologram())
-			return false;
-
 
 		land_iat_miningsegment_entrance mineEntrance;
 		if (Class.CastTo(mineEntrance, target.GetObject()))
