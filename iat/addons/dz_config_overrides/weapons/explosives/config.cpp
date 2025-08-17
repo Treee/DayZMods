@@ -13,6 +13,7 @@ class CfgWeapons
     class Grenade_Base;
     class M18SmokeGrenade_ColorBase : Grenade_Base
     {
+        absorbency = 0.01;
         weightPerQuantityUnit = 5.56;
     };
 };
