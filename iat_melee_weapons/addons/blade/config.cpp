@@ -754,18 +754,18 @@ class CfgVehicles
         {
             class Default
             {
-                ammo = "IAT_MeleeSlash_2HSword";
+                ammo = "MeleeSharpLight_4";
                 range = 1.8;
             };
             class Heavy
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                ammo = "MeleeSharpHeavy_4";
                 range = 1.8;
             };
             class Sprint
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
-                range = 3.9;
+                ammo = "MeleeSharpHeavy_4";
+                range = 3.7;
             };
         };
         class AnimEvents
@@ -1146,18 +1146,18 @@ class CfgVehicles
         {
             class Default
             {
-                ammo = "IAT_MeleeSlash_2HSword";
+                ammo = "MeleeSharpLight_4";
                 range = 1.8;
             };
             class Heavy
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                ammo = "MeleeSharpHeavy_4";
                 range = 1.8;
             };
             class Sprint
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
-                range = 3.9;
+                ammo = "MeleeSharpHeavy_4";
+                range = 3.7;
             };
         };
         class AnimEvents
@@ -1386,7 +1386,6 @@ class CfgVehicles
                 orientation[] = { -0,-20,0 };//x,y,z
             };
         };
-
         class DamageSystem
         {
             class GlobalHealth
@@ -1409,18 +1408,18 @@ class CfgVehicles
         {
             class Default
             {
-                ammo = "IAT_MeleeSlash_2HSword";
+                ammo = "MeleeSharpLight_4";
                 range = 1.8;
             };
             class Heavy
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                ammo = "MeleeSharpHeavy_4";
                 range = 1.8;
             };
             class Sprint
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
-                range = 3.9;
+                ammo = "MeleeSharpHeavy_4";
+                range = 3.7;
             };
         };
         class AnimEvents
@@ -2529,18 +2528,18 @@ class CfgVehicles
         {
             class Default
             {
-                ammo = "IAT_MeleeSlash_2HSword";
+                ammo = "MeleeSharpLight_4";
                 range = 1.8;
             };
             class Heavy
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
+                ammo = "MeleeSharpHeavy_4";
                 range = 1.8;
             };
             class Sprint
             {
-                ammo = "IAT_MeleeSlash_2HSwordHeavy";
-                range = 3.9;
+                ammo = "MeleeSharpHeavy_4";
+                range = 3.7;
             };
         };
         class AnimEvents
