@@ -32,7 +32,7 @@ class Stage2
 };
 class Stage3
 {
-    texture="#(argb,8,8,3)color(0,0,0,0,MC)";
+	texture="dz\characters\data\generic_destruct_mc.paa";
     uvSource="tex";
     class uvTransform
     {
@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-    texture="#(argb,8,8,3)color(1,1,1,1,AS)";
+    texture="iat_melee_weapons\blade\data\iat_aerondight_as.paa";
     uvSource="tex";
     class uvTransform
     {

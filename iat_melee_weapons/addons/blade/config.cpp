@@ -2492,8 +2492,8 @@ class CfgVehicles
         repairCosts[] = { 50 };
         isMeleeWeapon = 1;
         hiddenSelections[] = { "zbytek", "handle" };
-        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_aerondight_co.paa" };
-        hiddenSelectionsMaterials[] = { "iat_melee_weapons\blade\data\iat_aerondight.rvmat" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_aerondight_co.paa", "iat_melee_weapons\blade\data\iat_aerondight_co.paa" };
+        hiddenSelectionsMaterials[] = { "iat_melee_weapons\blade\data\iat_aerondight.rvmat", "iat_melee_weapons\blade\data\iat_aerondightleather.rvmat" };
         class InventorySlotsOffsets
         {
             class Shoulder
@@ -2735,6 +2735,25 @@ class CfgVehicles
         TradeClassName = "Sword";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347_co.paa" };
+        hiddenSelectionsMaterials[] = { "iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347.rvmat" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 750;
+                    healthLevels[] =
+                    {
+                        {1.0, { "iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347.rvmat"}},
+                        {0.69999999, { "iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347.rvmat"}},
+                        {0.5, { "iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347_damage.rvmat"}},
+                        {0.30000001, { "iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347_damage.rvmat"}},
+                        {0.0, { "iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
     };
 
 };

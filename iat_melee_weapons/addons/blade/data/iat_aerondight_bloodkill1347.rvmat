@@ -8,7 +8,7 @@ PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
 {
-    texture="iat_melee_weapons\blade\data\iat_aerondight_nohq.paa";
+    texture="iat_melee_weapons\blade\data\iat_aerondight_bloodkill1347_nohq.paa";
     uvSource="tex";
     class uvTransform
     {

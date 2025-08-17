@@ -1,9 +1,9 @@
-ambient[]={1, 1, 1, 1};
-diffuse[]={1, 1, 1, 1};
-forcedDiffuse[]={0, 0, 0, 0};
-emmisive[]={0, 0, 0, 1};
-specular[]={1, 0.8280001, 0.8280001, 1};
-specularPower=80;
+ambient[]={1,1,1,1};
+diffuse[]={1,1,1,1};
+forcedDiffuse[]={0,0,0,1};
+emmisive[]={0,0,0,1};
+specular[]={0.5,0.5,0.5,1};
+specularPower=40;
 PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-    texture="iat_melee_weapons\blade\data\iat_aerondight_as.paa";
+    texture="#(argb,8,8,3)color(1,1,1,1,AS)";
     uvSource="tex";
     class uvTransform
     {
@@ -56,7 +56,7 @@ class Stage4
 };
 class Stage5
 {
-    texture = "iat_melee_weapons\blade\data\iat_aerondight_smdi.paa";
+    texture="#(argb,8,8,3)color(0,0.05,0.2,1,SMDI)";
     uvSource="tex";
     class uvTransform
     {
