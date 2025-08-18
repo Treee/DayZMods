@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-    texture="iat_melee_weapons\blade\data\iat_aerondight_as.paa";
+    texture="#(argb,8,8,3)color(1,1,1,1,AS)";
     uvSource="tex";
     class uvTransform
     {
