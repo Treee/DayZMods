@@ -11,6 +11,7 @@ class IAT_MiningConfig
 	protected int m_MaxDepth = 100; // the depth of the mining area in meters (default junctions are 4m cubed so 1 level is 4m)
 	protected int m_EdgeBuffer = 20; // the buffer around the edge of the map
 	protected int m_MinimumDistanceBetweenEntrances = 100; // the minimum distance between entrances so they are not spammed.
+	protected int m_MaxWallSupportCount = 10; // the number of wooden logs needed to fortify a junction
 
 	protected ref array<ref IAT_MiningSegmentConfig> m_IAT_MiningSegmentConfigs;
 
@@ -87,14 +88,33 @@ class IAT_MiningConfig
 		UUIDApi.Generate(uuid);
 		string id = UUIDApi.FormatString(uuid);
 		IAT_MiningSegmentConfig junctionConfig = new IAT_MiningSegmentConfig(id, isEntrance, isExit, segmentPosition, teleportPosition);
-		// defaults (find a better way?)
 
+		// TODO defaults (find a better way?) maybe randomize door states? supports start "opened"
+
+		// if this is an exit junction, spawn the supports on
+		if (isExit)
+		{
+			// exit junctions have their supports already set for convenience
+			junctionConfig.SetMineableComponentDoorStates({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1});
+		}
+		else
+		{
+			junctionConfig.SetMineableComponentDoorStates({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+		}
 		junctionConfig.SetMineableComponentOreChances({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1});
 
 		InsertMiningSegment(junctionConfig);
 		return id;
 	}
 
+	void UpdateJunctionDoorState(string id, int doorIndex, int doorState = 0)
+	{
+		IAT_MiningSegmentConfig junctionToUpdate;
+		if (Class.CastTo(junctionToUpdate, GetMiningSegmentById(id)))
+		{
+			junctionToUpdate.UpdateDoorState(doorIndex, doorState);
+		}
+	}
 	void UpdateJunctionToExit(string id, vector teleportPosition)
 	{
 		IAT_MiningSegmentConfig junctionToUpdate;
@@ -239,7 +259,6 @@ class IAT_MiningConfig
 	{
 		m_IAT_MiningSegmentConfigs = segments;
 	}
-
 	int GetSkySurfaceY()
 	{
 		return m_SkySurfaceY;
@@ -256,7 +275,10 @@ class IAT_MiningConfig
 	{
 		return m_EdgeBuffer;
 	}
-
+	int GetMaxWallSupportCount()
+	{
+		return m_MaxWallSupportCount;
+	}
 	void PrettyPrint()
 	{
 		Print("--[IAT MINING CONFIG BEGIN]");

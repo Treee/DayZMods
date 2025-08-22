@@ -73,7 +73,7 @@ class IAT_ActionCreateMineShaft extends ActionContinuousBase
 
 	override void OnFinishProgressServer(ActionData action_data)
 	{
-
+		super.OnFinishProgressServer(action_data);
 		// check to see if we have anything nearby
 		IAT_MiningConfig miningConfig;
 		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))

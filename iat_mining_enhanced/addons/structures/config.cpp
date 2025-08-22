@@ -21,8 +21,8 @@ class CfgVehicles
 		weight = 100000;
 		itemSize[] = { 50, 50 };
 		itemsCargoSize[] = { 0 , 0 };
-		// hiddenSelections[] = { "zbytek"};
-		// hiddenSelectionsTextures[] = { "DZ\gear\consumables\data\pile_of_planks_co.paa" };
+		hiddenSelections[] = { "zbytek" };
+		hiddenSelectionsTextures[] = { "iat_mining_enhanced\structures\data\iat_cavestone_co.paa" };
 	};
 
 	class land_iat_miningsegment_entrance : IAT_MiningSegment_Colorbase
@@ -194,44 +194,60 @@ class CfgVehicles
 				soundLocked = "IAT_Mining_Enhanced_FallingRock";
 				soundOpenABit = "IAT_Mining_Enhanced_FallingRock";
 			};
-		};
-		class AnimationSources
-		{
-			class support_d
+			// supports
+			class Door13 // down
 			{
-				source = "user";
-				animPeriod = 0.01;
-				initPhase = 1;
+				displayName = "Door 13";
+				component = "Door13";
+				soundPos = "door13_action";
+				animPeriod = 0.1;
+				initPhase = 0;
+				initOpened = 0.5;
 			};
-			class support_e
+			class Door14 // up
 			{
-				source = "user";
-				animPeriod = 0.01;
-				initPhase = 1;
+				displayName = "Door 14";
+				component = "Door14";
+				soundPos = "door14_action";
+				animPeriod = 0.1;
+				initPhase = 0;
+				initOpened = 0.5;
 			};
-			class support_n
+			class Door15 // east
 			{
-				source = "user";
-				animPeriod = 0.01;
-				initPhase = 1;
+				displayName = "Door 15";
+				component = "Door15";
+				soundPos = "door15_action";
+				animPeriod = 0.1;
+				initPhase = 0;
+				initOpened = 0.5;
 			};
-			class support_s
+			class Door16 // west
 			{
-				source = "user";
-				animPeriod = 0.01;
-				initPhase = 1;
+				displayName = "Door 16";
+				component = "Door16";
+				soundPos = "door16_action";
+				animPeriod = 0.1;
+				initPhase = 0;
+				initOpened = 0.5;
 			};
-			class support_u
+			class Door17 // north
 			{
-				source = "user";
-				animPeriod = 0.01;
-				initPhase = 1;
+				displayName = "Door 17";
+				component = "Door17";
+				soundPos = "door17_action";
+				animPeriod = 0.1;
+				initPhase = 0;
+				initOpened = 0.5;
 			};
-			class support_w
+			class Door18 // south
 			{
-				source = "user";
-				animPeriod = 0.01;
-				initPhase = 1;
+				displayName = "Door 18";
+				component = "Door18";
+				soundPos = "door18_action";
+				animPeriod = 0.1;
+				initPhase = 0;
+				initOpened = 0.5;
 			};
 		};
 		class DamageSystem

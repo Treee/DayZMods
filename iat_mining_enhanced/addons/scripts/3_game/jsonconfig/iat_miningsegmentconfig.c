@@ -30,6 +30,14 @@ class IAT_MiningSegmentConfig
 		return false;
 	}
 
+	// 0 for closed, 1 for opened, 2 for locked
+	void UpdateDoorState(int doorIndex, int doorState = 0)
+	{
+		if (m_MineableComponentDoorStates.IsValidIndex(doorIndex))
+		{
+			m_MineableComponentDoorStates.Set(doorIndex, doorState);
+		}
+	}
 	//========================================================= GETTERS & SETTERS
 	string GetID()
 	{
@@ -86,5 +94,13 @@ class IAT_MiningSegmentConfig
 	void SetSegmentMaxOreYield(int newValue)
 	{
 		m_MaxYieldQuantity = newValue;
+	}
+	TIntArray GetMineableComponentDoorStates()
+	{
+		return m_MineableComponentDoorStates;
+	}
+	void SetMineableComponentDoorStates(TIntArray componentDoorStates)
+	{
+		m_MineableComponentDoorStates = componentDoorStates;
 	}
 };

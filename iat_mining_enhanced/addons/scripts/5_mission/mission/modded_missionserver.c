@@ -24,10 +24,27 @@ modded class MissionServer
 			// create a junction at the location underneath the action target
 			if (Class.CastTo(m_MiningSegment, GetGame().CreateObjectEx(segmentClassName, miningSegmentConfig.GetSegmentPosition(), ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
 			{
-				// foreach door
-				// open/close/lock based on saved state
-
-
+				string selectionName = "";
+				TIntArray doorStates = miningSegmentConfig.GetMineableComponentDoorStates();
+				// foreach door (includes wall supports)
+				foreach (int doorIndex, int doorState : doorStates)
+				{
+					// open
+					if (doorState == 1)
+					{
+						m_MiningSegment.OpenDoor(doorIndex);
+					}
+					// locked
+					else if (doorState == 2)
+					{
+						m_MiningSegment.LockDoor(doorIndex, true);
+					}
+					else
+					{
+						// by default close the door
+						m_MiningSegment.CloseDoor(doorIndex);
+					}
+				}
 				// set the id so the object can find itself in the config json
 				m_MiningSegment.SetFormattedPersistentID(miningSegmentConfig.GetID());
 				// set the exit junctions (entrances are always enterable)

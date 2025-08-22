@@ -1,6 +1,11 @@
 // these are land_ based objects meant for map baking
 class IAT_MiningSegment_Colorbase extends House
 {
+	/*
+	* an array for holding how many logs are attached to a support
+	* we do not save this information as a shortcut. not really needed since number of logs is 10
+	*/
+	protected ref TIntArray m_SupportLogCounts;
 	// id to link to the json config on the server
 	protected string m_FormattedPersistentID;
 
@@ -12,11 +17,15 @@ class IAT_MiningSegment_Colorbase extends House
 	{
 		RegisterNetSyncVariableBoolSignal("m_PlaySmokeParticles");
 		RegisterNetSyncVariableBool("m_IsExit");
+
+		// down, up, east, west, north, south
+		m_SupportLogCounts = {0, 0, 0, 0, 0, 0};
 	}
 
 	override void OnVariablesSynchronized()
 	{
 		super.OnVariablesSynchronized();
+
 		if (m_PlaySmokeParticles)
 		{
 			PlaySmokeParticles();
@@ -138,6 +147,68 @@ class IAT_MiningSegment_Colorbase extends House
 			}
 		}
 	}
+
+	void IncrementSupportCounter(string componentName)
+	{
+		IAT_MiningConfig miningConfig;
+		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
+		{
+			// increment the config count for the junction and component
+			int doorIndex = GetRawWallSupportIndexFromSelectionName(componentName);
+			if (doorIndex > -1)
+			{
+				int supportCount = IncrementSupportCount(doorIndex);
+				// PrintFormat("support count: %1", supportCount);
+				// if we are above the support max
+				if (supportCount >= miningConfig.GetMaxWallSupportCount())
+				{
+					// add the number of cave doors that exist prior to this door (12, up/down/left/right/forward/back for inner and outer)
+					doorIndex = doorIndex + 12;
+					// open the "door" for this wall support to show its visuals
+					OpenDoor(doorIndex);
+					// PrintFormat("close door: %1", doorIndex);
+					// update the config
+					miningConfig.UpdateJunctionDoorState(GetFormattedPersistentID(), doorIndex, 1);
+					SetSynchDirty();
+				}
+			}
+		}
+	}
+
+	// function for adding some number of supports to the array of support counters
+	int IncrementSupportCount(int supportIndex, int numSupports = 1)
+	{
+		// if the index is valid
+		if (m_SupportLogCounts.IsValidIndex(supportIndex))
+		{
+			// increment by 1
+			m_SupportLogCounts[supportIndex] = m_SupportLogCounts[supportIndex] + numSupports;
+			// return the updated count
+			return m_SupportLogCounts[supportIndex];
+		}
+		// invalid index have -1 results
+		return -1;
+	}
+
+	/*
+	* down, up, east, west, north, south
+	* door13, 14, 15, 16, 17, 18
+	* subtract 13 and it gives us a nice index
+	*/
+	int GetRawWallSupportIndexFromSelectionName(string componentName)
+	{
+		PrintFormat("component being checked: %1", componentName);
+		// rip out any non number text
+		componentName.Replace("door", "");
+		// convert to an int
+		int index = componentName.ToInt();
+		// subtract to 0 out the index
+		index = index - 13;
+		// return the index
+		return index;
+	}
+
+
 	// used to change the display name in the mining action
 	string GetMiningYield(string itemName)	{ return ""; }
 
@@ -287,7 +358,7 @@ class land_iat_miningsegment_entrance extends IAT_MiningSegment_Colorbase
 			vector segmentPosition = miningConfig.GetExitJunctionSpawnPosition(entrancePosition);
 			// the teleport destination of the entrance
 			vector entranceTeleportPosition;
-			// check to see if there is a nexisting junction present
+			// check to see if there is an existing junction present
 			IAT_MiningSegmentConfig segmentConfig;
 			if (Class.CastTo(segmentConfig, miningConfig.IsExistingJunctionPresent(segmentPosition)))
 			{
@@ -310,6 +381,13 @@ class land_iat_miningsegment_entrance extends IAT_MiningSegment_Colorbase
 					{
 						entranceTeleportPosition = segmentPosition;
 					}
+					// ensure the first junction has some supports
+					iat_ExitJunction.OpenDoor(12);
+					iat_ExitJunction.OpenDoor(13);
+					iat_ExitJunction.OpenDoor(14);
+					iat_ExitJunction.OpenDoor(15);
+					iat_ExitJunction.OpenDoor(16);
+					iat_ExitJunction.OpenDoor(17);
 				}
 			}
 			// save the entrance in the json config
@@ -381,20 +459,19 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 		// do damage to the target door based on whatever item is in hands
 		string componentName = DamageMineWallDoor(doorIndex, itemName);
 
-		// if the damage is sufficient to open the door
-		if (GetHealth(componentName, "Health") <= 0)
+		// get the mining config if exists
+		IAT_MiningConfig miningConfig;
+		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
 		{
-			// open it
-			OpenDoor(doorIndex);
-
-			// spawn the next junction if this wall was an inner wall
-			// up down, left right, forward back is 6, 0 ordinal makes 5. door index less than 6 is an inner door. yay shortcuts
-			if (doorIndex < 6)
+			// if the damage is sufficient to open the door
+			if (GetHealth(componentName, "Health") <= 0)
 			{
-				// check to see if we should make a new junction
-				// get the mining config if exists
-				IAT_MiningConfig miningConfig;
-				if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
+				// open it
+				OpenDoor(doorIndex);
+				miningConfig.UpdateJunctionDoorState(GetFormattedPersistentID(), doorIndex, 1);
+				// spawn the next junction if this wall was an inner wall
+				// up down, left right, forward back is 6, 0 ordinal makes 5. door index less than 6 is an inner door. yay shortcuts
+				if (doorIndex < 6)
 				{
 					// create a new junction at the indicated position
 					vector newSegmentPosition = miningConfig.GetNextJunctionSpawnPosition(GetPosition(), doorIndex);
@@ -405,6 +482,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 					{
 						// lock the outter door of this junction in the specific direction
 						LockDoor(doorToLock, true);
+						miningConfig.UpdateJunctionDoorState(GetFormattedPersistentID(), doorToLock, 2);
 					}
 					else
 					{
@@ -415,18 +493,16 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 						IAT_MiningSegment_Colorbase iat_ExitJunction;
 						if (Class.CastTo(iat_ExitJunction, CreateJunctionSegment(newSegmentPosition)))
 						{
-							// maybe randomize locked doors so it forces a twisty path?
 							// Print("new junction created successfully");
 						}
 					}
 				}
+				// play client side smoke particles
+				SetPlaySmokeParticles(true);
+				// sync with the server
+				SetSynchDirty();
 			}
 		}
-
-		// play client side smoke particles
-		SetPlaySmokeParticles(true);
-		// sync with the server
-		SetSynchDirty();
 	}
 	string DamageMineWallDoor(int doorIndex, string itemName)
 	{
