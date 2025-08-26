@@ -4,7 +4,7 @@ modded class Environment
 	{
 		if (IsInMiningTunnels())
 		{
-			return 1;
+			return -5;
 		}
 		return super.GetEnvironmentTemperature();
 	}
@@ -13,6 +13,6 @@ modded class Environment
 	{
 		vector playerPosition = m_Player.GetPosition();
 
-		return playerPosition[1] > 2450;
+		return playerPosition[1] > 2000;
 	}
 };;

@@ -197,7 +197,7 @@ class IAT_MiningSegment_Colorbase extends House
 	*/
 	int GetRawWallSupportIndexFromSelectionName(string componentName)
 	{
-		PrintFormat("component being checked: %1", componentName);
+		// PrintFormat("component being checked: %1", componentName);
 		// rip out any non number text
 		componentName.Replace("door", "");
 		// convert to an int
@@ -211,12 +211,47 @@ class IAT_MiningSegment_Colorbase extends House
 
 	// used to change the display name in the mining action
 	string GetMiningYield(string itemName)	{ return ""; }
+	/*
+	* used for spawning ore yields. allows other mods to add here instead of being forced into my names
+	* ore type is present so modders can change the name based on the ores they are adding/registering
+	*/
+	string GetOrePrefixName(string oreType)
+	{
+		oreType.ToLower();
+		switch(oreType)
+		{
+			case "iron":
+			case "copper":
+			case "aluminium":
+			case "lead":
+			case "zinc":
+			case "tin":
+			case "silver":
+			case "gold":
+			case "coal":
+			case "saltpeter":
+			case "sulfur":
+			case "saltcrystals":
+			case "clay":
+				return "IAT_MiningOre";
+			break;
+			case "quartz":
+			case "amethyst":
+			case "topaz":
+			case "ruby":
+			case "sapphire":
+			case "diamond":
+				return "IAT_MiningGem";
+			break;
+		}
+		return "";
+	}
 
 	// used to play smoke particles when a wall opens
 	void PlaySmokeParticles() {}
 
 	// the items to spawn then a full animation cycle is complete
-	void SpawnMaterialAndQuantityYield() {}
+	void SpawnMaterialAndQuantityYield(vector playerPosition) {}
 
 	// the damage to apply to an item each full animation action
 	float GetDamageToMiningItemEachYield(string itemName)	{ return 0; }
@@ -452,6 +487,60 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 
 		return 25;
 	}
+
+	// the items to spawn then a full animation cycle is complete
+	override void SpawnMaterialAndQuantityYield(vector playerPosition)
+	{
+		super.SpawnMaterialAndQuantityYield(playerPosition);
+		// get the mining config if exists
+		IAT_MiningConfig miningConfig;
+		if (GetDayZGame() && Class.CastTo(miningConfig, GetDayZGame().GetIATMiningConfig()))
+		{
+			TFloatArray oreChances = miningConfig.GetMiningSegmentOreChances(GetFormattedPersistentID());
+			if (oreChances && oreChances.Count() > 0)
+			{
+				float oreChanceRoll;
+				bool shouldSpawnOre;
+				foreach (int index, float chance : oreChances)
+				{
+					shouldSpawnOre = false;
+					// ore chance is above 100% (high intensity)
+					if (chance > 1)
+					{
+						// spawn ore here on playerPosition
+						shouldSpawnOre = true;
+					}
+					else
+					{
+						oreChanceRoll = Math.RandomFloatInclusive(0, 1);
+						/*
+						* i dont want to 1 - chance to get the probability so
+						* we are just going to do it this way because its easier atm
+						*/
+						// if the roll is less than the chance
+						if (oreChanceRoll < chance)
+						{
+							// spawn ore here on playerPosition
+							shouldSpawnOre = true;
+						}
+					}
+
+					if (shouldSpawnOre)
+					{
+						string oreType = miningConfig.GetOreTypeByChanceIndex(index); // get ore type by index
+						string oreClassName = string.Format("%1_%2", GetOrePrefixName(oreType), oreType);
+						if (oreType == "")
+						{
+							oreClassName = "Stone";
+						}
+						// create the ore object
+						GetGame().CreateObjectEx(oreClassName, playerPosition, ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+					}
+				}
+			}
+		}
+	}
+
 
 	//=============================================== CUSTOM CODE
 	override void OnServerWallMined(int doorIndex, string itemName)

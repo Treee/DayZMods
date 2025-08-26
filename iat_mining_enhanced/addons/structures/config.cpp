@@ -28,6 +28,8 @@ class CfgVehicles
 	class land_iat_miningsegment_entrance : IAT_MiningSegment_Colorbase
 	{
 		scope = 1;
+		hiddenSelections[] = { "zbytek", "support" };
+		hiddenSelectionsTextures[] = { "iat_mining_enhanced\structures\data\iat_cavestone_co.paa", "dz\gear\consumables\data\pile_of_planks_co.paa" };
 		model = "iat_mining_enhanced\structures\iat_miningsegment_entrance.p3d";
 	};
 	class land_iat_miningsegment_junction : IAT_MiningSegment_Colorbase

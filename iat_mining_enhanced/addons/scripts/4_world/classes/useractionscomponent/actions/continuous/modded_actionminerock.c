@@ -6,7 +6,7 @@ modded class CAContinuousMineRock
 		// check our custom walls
 		if (Class.CastTo(iat_Junction, action_data.m_Target.GetObject()))
 		{
-			iat_Junction.SpawnMaterialAndQuantityYield();
+			iat_Junction.SpawnMaterialAndQuantityYield(action_data.m_Player.GetPosition());
 
 			m_DamageToMiningItemEachDrop = iat_Junction.GetDamageToMiningItemEachYield(action_data.m_MainItem.GetType());
 			m_AdjustedDamageToMiningItemEachDrop = m_DamageToMiningItemEachDrop;
