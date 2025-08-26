@@ -8,11 +8,12 @@ class IAT_MiningConfig
     protected string m_JsonFile = "MiningConfig.json";
 
 	protected int m_SkySurfaceY = 2500; // the highest the mining system can be. simulates the surface level
-	protected int m_MaxDepth = 100; // the depth of the mining area in meters (default junctions are 4m cubed so 1 level is 4m)
+	protected int m_MaxDepth = 500; // the depth of the mining area in meters (default junctions are 4m cubed so 1 level is 4m)
 	protected int m_EdgeBuffer = 20; // the buffer around the edge of the map
 	protected int m_MinimumDistanceBetweenEntrances = 100; // the minimum distance between entrances so they are not spammed.
 	protected int m_MaxWallSupportCount = 10; // the number of wooden logs needed to fortify a junction
-
+	protected float m_MinimumOreYieldChance = 0.03; // out of 100%, what is the lowest chance for ANY spawn by default
+	protected ref IAT_OreYieldManager m_IAT_OreYieldManager;
 	protected ref array<ref IAT_MiningSegmentConfig> m_IAT_MiningSegmentConfigs;
 
 	IAT_MiningConfig TryGetMiningConfig()
@@ -32,6 +33,8 @@ class IAT_MiningConfig
 		{
 			// set some default values
 			iat_MIConfig.SetMiningSegments(new array<ref IAT_MiningSegmentConfig>());
+			iat_MIConfig.SetDefaultOreManager();
+			// iat_MIConfig.SetDebugOreManager();
 			// write the file to "create it"
 			if (!JsonFileLoader<ref IAT_MiningConfig>.SaveFile(jsonConfig, iat_MIConfig, errorMessage))
 				ErrorEx(errorMessage);
@@ -101,7 +104,10 @@ class IAT_MiningConfig
 		{
 			junctionConfig.SetMineableComponentDoorStates({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 		}
-		junctionConfig.SetMineableComponentOreChances({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1});
+
+		TFloatArray oreChances = m_IAT_OreYieldManager.GetJunctionOreChancesByPosition(segmentPosition, m_MinimumOreYieldChance);
+
+		junctionConfig.SetMineableComponentOreChances(oreChances);
 
 		InsertMiningSegment(junctionConfig);
 		return id;
@@ -251,6 +257,121 @@ class IAT_MiningConfig
 		return true;
 	}
 
+	void SetDefaultOreManager()
+	{
+		if (!m_IAT_OreYieldManager)
+			m_IAT_OreYieldManager = new IAT_OreYieldManager();
+
+		/*
+		* Mineable depth represents how much height can be used to distribute ore and its radius
+		*/
+		int mineableDepth = GetSkySurfaceY() - GetMaxDepth();
+
+		// Metal ores (top to bottom, more plentiful at top)
+		AddNewOreRecord("iron", 2400, 2500, 250, 750, 10, 1.5); // surface, large radius, high intensity
+		AddNewOreRecord("copper", 2200, 2500, 250, 750, 10, 1.2); // upper 60%
+		AddNewOreRecord("tin", 2200, 2500, 250, 750, 10, 1.1);
+		AddNewOreRecord("lead", 2200, 2500, 250, 750, 10, 1.0);
+		AddNewOreRecord("zinc", 2200, 2500, 250, 750, 10, 1.0);
+		AddNewOreRecord("aluminium", 2200, 2500, 250, 750, 10, 0.9);
+
+		// Precious metals (below 50% mineable depth)
+		AddNewOreRecord("silver", 2000, 2250, 150, 500, 10, 0.8);
+		AddNewOreRecord("gold", 2000, 2250, 150, 500, 10, 0.7);
+
+		// Earth minerals
+		AddNewOreRecord("clay", 2250, 2500, 500, 1500, 10, 1.3); // above 50%
+		AddNewOreRecord("coal", 2250, 2500, 500, 1500, 10, 1.2);
+		AddNewOreRecord("saltcrystals", 2250, 2500, 500, 1500, 10, 1.1);
+		AddNewOreRecord("saltpeter", 2000, 2250, 300, 750, 10, 0.9); // below 50%
+		AddNewOreRecord("sulfur", 2000, 2250, 300, 750, 10, 0.8);
+
+		// Gemstones (tiered by depth)
+		AddNewOreRecord("quartz", 2420, 2500, 400, 2000, 10, 1.0); // top 0-0.16
+		AddNewOreRecord("amethyst", 2340, 2420, 400, 2000, 10, 0.9); // 0.16-0.32
+		AddNewOreRecord("topaz", 2260, 2340, 400, 2000, 10, 0.8); // 0.32-0.48
+		AddNewOreRecord("sapphire", 2180, 2260, 400, 2000, 10, 0.7); // 0.48-0.64
+		AddNewOreRecord("ruby", 2100, 2180, 400, 2000, 10, 0.6); // 0.64-0.80
+		AddNewOreRecord("diamond", 2000, 2100, 400, 2000, 10, 0.5); // bottom only
+	}
+
+	void SetDebugOreManager()
+	{
+		if (!m_IAT_OreYieldManager)
+			m_IAT_OreYieldManager = new IAT_OreYieldManager();
+
+		AddDebugOreRecords("iron");
+		AddDebugOreRecords("copper");
+		AddDebugOreRecords("tin");
+		AddDebugOreRecords("lead");
+		AddDebugOreRecords("zinc");
+		AddDebugOreRecords("aluminium");
+		AddDebugOreRecords("silver");
+		AddDebugOreRecords("gold");
+		AddDebugOreRecords("clay");
+		AddDebugOreRecords("coal");
+		AddDebugOreRecords("saltcrystals");
+		AddDebugOreRecords("saltpeter");
+		AddDebugOreRecords("sulfur");
+		AddDebugOreRecords("quartz");
+		AddDebugOreRecords("amethyst");
+		AddDebugOreRecords("topaz");
+		AddDebugOreRecords("sapphire");
+		AddDebugOreRecords("ruby");
+		AddDebugOreRecords("diamond");
+	}
+
+	void AddNewOreRecord(string oreType, int minHeight, int maxHeight, int minRadius, int maxRadius, int numPoints = 10, float intensity = 1.0, int mapSize = 11500)
+	{
+		m_IAT_OreYieldManager.InsertOreType(oreType);
+		IAT_OreYieldAreaList oreArea = new IAT_OreYieldAreaList(oreType);
+		float circleBuffer = maxRadius - minRadius;
+		float mapBuffer = mapSize - circleBuffer;
+		float x;
+		float y;
+		float z;
+		float radius;
+		vector circleCenter = vector.Zero;
+		for (int i = 0; i < numPoints; i++)
+		{
+			// get random circle center that accounts for radius so it never goes outside the map
+			x = Math.RandomFloat(circleBuffer, mapBuffer);
+			z = Math.RandomFloat(circleBuffer, mapBuffer);
+			// adjust the height within the range we want
+			y = Math.RandomFloat(minHeight, maxHeight);
+			circleCenter = string.Format("%1 %2 %3", x, y, z).ToVector();
+			radius = Math.RandomFloat(minRadius, maxRadius);
+			oreArea.AddOreYieldPoint(circleCenter, radius, intensity);
+		}
+		m_IAT_OreYieldManager.InsertOreYieldList(oreArea);
+
+	}
+
+	void AddDebugOreRecords(string oreType)
+	{
+		m_IAT_OreYieldManager.InsertOreType(oreType);
+		IAT_OreYieldAreaList oreArea = new IAT_OreYieldAreaList(oreType);
+		vector mapCenter = string.Format("%1 %2 %3", 6000, 2500, 6000).ToVector();
+		oreArea.AddOreYieldPoint(mapCenter, 10000, 100);
+		m_IAT_OreYieldManager.InsertOreYieldList(oreArea);
+	}
+
+	TFloatArray GetMiningSegmentOreChances(string id)
+	{
+		IAT_MiningSegmentConfig junctionSegments;
+		if (Class.CastTo(junctionSegments, GetMiningSegmentById(id)))
+		{
+			return junctionSegments.GetMineableComponentOreChances();
+		}
+		return null;
+	}
+
+	// from the chance array, given an index, which oretype is associated?
+	string GetOreTypeByChanceIndex(int index)
+	{
+		return m_IAT_OreYieldManager.GetOreTypeByIndex(index);
+	}
+
 	array<ref IAT_MiningSegmentConfig> GetMiningSegments()
 	{
 		return m_IAT_MiningSegmentConfigs;
@@ -282,7 +403,15 @@ class IAT_MiningConfig
 	void PrettyPrint()
 	{
 		Print("--[IAT MINING CONFIG BEGIN]");
-
+		PrintFormat("----m_SkySurfaceY: %1", GetSkySurfaceY());
+		PrintFormat("----m_MaxDepth: %1", GetMaxDepth());
+		PrintFormat("----m_EdgeBuffer: %1", GetMapEdgeBuffer());
+		PrintFormat("----m_MinimumDistanceBetweenEntrances: %1", GetMinDistanceBetweenEntrances());
+		PrintFormat("----m_MaxWallSupportCount: %1", GetMaxWallSupportCount());
+		m_IAT_OreYieldManager.PrettyPrint();
 		Print("--[END]");
 	}
 };
+
+
+	protected ref IAT_OreYieldManager m_IAT_OreYieldManager;
