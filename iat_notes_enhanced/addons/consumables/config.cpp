@@ -12,6 +12,16 @@ class CfgVehicles
 	class Paper : Inventory_Base
 	{
 		hiddenSelections[] = { "zbytek" };
+		inventorySlot[] += { "IAT_NoteLabel" };
 		hiddenSelectionsTextures[] = { "DZ\gear\consumables\data\loot_paper_co.paa" };
+	};
+};
+class CfgSlots
+{
+	class Slot_IAT_NoteLabel
+	{
+		name = "IAT_NoteLabel";
+		displayName = "Note Label";
+		ghostIcon = "set:dayz_inventory image:paper";
 	};
 };

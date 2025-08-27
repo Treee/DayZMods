@@ -95,6 +95,15 @@ modded class Paper
             SetObjectTexture(selectionIdx, "DZ\\gear\\consumables\\data\\loot_paper_co.paa");
         }
     }
+
+    string IAT_GetWrittenNoteText()
+    {
+        if (GetWrittenNoteData() && GetWrittenNoteData().GetNoteText() != "")
+        {
+            return GetWrittenNoteData().GetNoteText();
+        }
+        return "";
+    }
 };
 
 modded class Pen_ColorBase
