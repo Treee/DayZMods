@@ -100,6 +100,32 @@ modded class ItemBase
 		return superBool;
 	}
 
+	override bool CanDisplayAttachmentSlot( int slot_id )
+	{
+		// if the slot can be seen
+		if (super.CanDisplayAttachmentSlot(slot_id))
+		{
+			// check to see if its a codelock slot
+			string slot_name = InventorySlots.GetSlotName(slot_id);
+			if (slot_name == "Att_CombinationLock")
+			{
+				// if there is a lock attached to this slot
+				if (HasAnyCodelockAttached())
+				{
+					// then show the slot
+					return true;
+				}
+				else
+				{   // hide the slot otherwise
+					return false;
+				}
+			}
+			// not the slot we care about so pass through the super true
+			return true;
+		}
+		return false;
+	}
+
 	// ==================================================== CUSTOM CODE
 	void InitializeRaidItem()
 	{
@@ -138,6 +164,19 @@ modded class ItemBase
 			}
 		}
 		return null;
+	}
+	bool HasAnyCodelockAttached()
+	{
+		if (GetInventory())
+		{
+			// if the item has a codelock attached
+			ItemBase codelock;
+			if (Class.CastTo(codelock, GetInventory().FindAttachmentByName("Att_CombinationLock")))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	/*
 	* This function is intended for modders to signal the AttachCodelock action
