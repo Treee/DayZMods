@@ -19,7 +19,7 @@ class CfgVehicles
 		scope = 0;
 		displayName = "Base Door";
 		descriptionShort = "Base Door";
-		model = "iat_more_doors\camping\iat_singledoor_left_wooden.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_wooden.p3d";
 		carveNavmesh = 1;
 		weight = 1500;
 		itemSize[] = { 15,10 };	// too big for cargo ever!
@@ -179,7 +179,7 @@ class CfgVehicles
 	class land_iat_singledoor_left_wooden : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_singledoor_left_wooden.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_wooden.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
@@ -211,7 +211,7 @@ class CfgVehicles
 	class land_iat_singledoor_right_wooden : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_singledoor_right_wooden.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_wooden.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
@@ -244,7 +244,7 @@ class CfgVehicles
 	class land_iat_singledoor_left_metal : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_singledoor_left_metal.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_metal.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
@@ -283,7 +283,7 @@ class CfgVehicles
 	class land_iat_singledoor_right_metal : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_singledoor_right_metal.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_metal.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
@@ -323,7 +323,7 @@ class CfgVehicles
 	class land_iat_singledoor_left_iron : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_singledoor_left_iron.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_iron.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
@@ -355,7 +355,7 @@ class CfgVehicles
 	class land_iat_singledoor_right_iron : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_singledoor_right_iron.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_iron.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
@@ -388,7 +388,7 @@ class CfgVehicles
 	class land_iat_doubledoor_wooden : IAT_LandDoor_Double_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_doubledoor_wooden.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_doubledoor_wooden.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
@@ -433,7 +433,7 @@ class CfgVehicles
 	class land_iat_doubledoor_metal : IAT_LandDoor_Double_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_doubledoor_metal.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_doubledoor_metal.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
@@ -485,7 +485,7 @@ class CfgVehicles
 	class land_iat_doubledoor_iron : IAT_LandDoor_Double_Colorbase
 	{
 		scope = 1;
-		model = "iat_more_doors\camping\iat_doubledoor_iron.p3d";
+		model = "iat_more_doors\camping\land\smallshed\iat_doubledoor_iron.p3d";
 		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
@@ -545,15 +545,15 @@ class CfgVehicles
 		soundImpactType = "wood";
 		iat_KitOptionDisplayNames[] =
 		{
-			"Single - Left Door - Wood - Small",
-			"Single - Right Door - Wood - Small",
-			"Single - Left Door - Metal - Small",
-			"Single - Right Door - Metal - Small",
-			"Single - Left Door - Iron - Small",
-			"Single - Right Door - Iron - Small",
-			"Double Doors - Wood - Small",
-			"Double Doors - Metal - Small",
-			"Double Doors - Iron - Small",
+			"Single - Left - Wood - Small",
+			"Single - Right - Wood - Small",
+			"Single - Left - Metal - Small",
+			"Single - Right - Metal - Small",
+			"Single - Left - Iron - Small",
+			"Single - Right - Iron - Small",
+			"Double - Wood - Small",
+			"Double - Metal - Small",
+			"Double - Iron - Small",
 		};
 		iat_KitOptionClassNames[] =
 		{
@@ -664,7 +664,7 @@ class CfgVehicles
 		scope = 0;
 		displayName = "Door";
 		descriptionShort = "A sturdy door";
-		model = "iat_more_doors\camping\iat_singledoor_left_wooden_c.p3d";
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_wooden_c.p3d";
 		bounding = "BSphere";
 		overrideDrawArea = "3.0";
 		forceFarBubble = "true";
@@ -848,8 +848,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Single_Left_Wooden : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_singledoor_left_wooden_c.p3d";
-		iat_RecipeDisplayName = "Single - Left Door - Wood - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_wooden_c.p3d";
+		iat_RecipeDisplayName = "Single - Left Door - Wood - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
@@ -865,8 +865,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Single_Right_Wooden : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_singledoor_right_wooden_c.p3d";
-		iat_RecipeDisplayName = "Single - Right Door - Wood - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_wooden_c.p3d";
+		iat_RecipeDisplayName = "Single - Right Door - Wood - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
@@ -883,8 +883,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Single_Left_Metal : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_singledoor_left_metal_c.p3d";
-		iat_RecipeDisplayName = "Single - Left Door - Metal - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_metal_c.p3d";
+		iat_RecipeDisplayName = "Single - Left Door - Metal - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
@@ -907,8 +907,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Single_Right_Metal : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_singledoor_right_metal_c.p3d";
-		iat_RecipeDisplayName = "Single - Right Door - Metal - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_metal_c.p3d";
+		iat_RecipeDisplayName = "Single - Right Door - Metal - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
@@ -932,8 +932,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Single_Left_Iron : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_singledoor_left_iron_c.p3d";
-		iat_RecipeDisplayName = "Single - Left Door - Iron - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_iron_c.p3d";
+		iat_RecipeDisplayName = "Single - Left Door - Iron - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
@@ -949,8 +949,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Single_Right_Iron : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_singledoor_right_iron_c.p3d";
-		iat_RecipeDisplayName = "Single - Right Door - Iron - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_iron_c.p3d";
+		iat_RecipeDisplayName = "Single - Right Door - Iron - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
@@ -967,8 +967,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Double_Wooden : IAT_ConstructionDoor_Double_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_doubledoor_wooden_c.p3d";
-		iat_RecipeDisplayName = "Double Doors - Wood - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_doubledoor_wooden_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Wood - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
@@ -984,8 +984,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Double_Metal : IAT_ConstructionDoor_Double_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_doubledoor_metal_c.p3d";
-		iat_RecipeDisplayName = "Double Doors - Metal - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_doubledoor_metal_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Metal - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
@@ -1008,8 +1008,8 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Double_Iron : IAT_ConstructionDoor_Double_Colorbase
 	{
 		scope = 2;
-		model = "iat_more_doors\camping\iat_doubledoor_iron_c.p3d";
-		iat_RecipeDisplayName = "Double Doors - Iron - Small";
+		model = "iat_more_doors\camping\construction\smallshed\iat_doubledoor_iron_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Iron - Small Shed";
 		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
