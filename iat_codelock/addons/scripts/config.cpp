@@ -19,17 +19,28 @@ class CfgMods
 			class gameScriptModule
 			{
 				value = "";
-				files[] = { "iat_codelock/scripts/3_game" };
+				files[] =
+				{
+					"iat_codelock/scripts/3_game"
+				};
 			};
 			class worldScriptModule
 			{
 				value = "";
-				files[] = { "iat_codelock/scripts/4_world" };
+				files[] =
+				{
+					"JM/COT/Scripts/Common",
+					"VPPAdminTools/Definitions",
+					"iat_codelock/scripts/4_world"
+				};
 			};
 			class missionScriptModule
 			{
 				value = "";
-				files[] = { "iat_codelock/scripts/5_mission" };
+				files[] =
+				{
+					"iat_codelock/scripts/5_mission"
+				};
 			};
 		};
 	};

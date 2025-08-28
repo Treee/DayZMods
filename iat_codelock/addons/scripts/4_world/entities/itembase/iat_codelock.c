@@ -437,6 +437,10 @@ class IAT_Codelock_Colorbase extends ItemBase
 		{
 			return true;
 		}
+		else if (IsCodelockAdmin(steamId))
+		{
+			return true;
+		}
 		return false;
 	}
 	bool IsOwner(string steamId)
@@ -457,6 +461,50 @@ class IAT_Codelock_Colorbase extends ItemBase
 	bool IsTempOpen()
 	{
 		// TODO: add ability to open the codelock publicly for some time
+		return false;
+	}
+	bool IsCodelockAdmin(string steamId)
+	{
+		#ifdef VPPADMINTOOLS
+		// client side check (for the action server check is the real check)
+		if (!GetGame().IsDedicatedServer())
+		{
+			MissionBaseWorld mission;
+			if (Class.CastTo(mission, GetGame().GetMission()))
+			{
+				// if the vpp tools are toggled
+				if (mission.VPPAT_AdminToolsToggled())
+				{
+					return true;
+				}
+			}
+		}
+		else
+		{
+			// this is to check on the server for "actual" permissions whehn client side is just looking for open tools
+			PermissionManager permissionManager;
+			if (Class.CastTo(permissionManager, GetPermissionManager()))
+			{
+				if (permissionManager.IsSuperAdmin(steamId))
+				{
+					return true;
+				}
+				UserGroup userGroup;
+				if (Class.CastTo(userGroup, permissionManager.GetUserGroup(steamId)))
+				{
+					if (userGroup.GetGroupName() == "Admins")
+					{
+						return true;
+					}
+				}
+			}
+		}
+		#endif
+
+		#ifdef JM_COT
+		return GetCommunityOnlineToolsBase().IsActive();
+		#endif
+
 		return false;
 	}
 	void ToggleLock()
