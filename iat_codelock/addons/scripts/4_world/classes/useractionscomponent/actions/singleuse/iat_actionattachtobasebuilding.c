@@ -7,7 +7,17 @@ class IAT_ActionAttachToBaseBuilding extends ActionAttach
 		m_ConditionTarget 	= new CCTCursor(UAMaxDistances.DEFAULT);
 		m_CommandUID 		= DayZPlayerConstants.CMD_ACTIONMOD_ATTACHITEM;
 		m_StanceMask 		= DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
-		m_Text = "Attach To Base Building";
+		m_Text = "Attach";
+	}
+
+	override void OnActionInfoUpdate( PlayerBase player, ActionTarget target, ItemBase item )
+	{
+		EntityAI targetEntity;
+		if (Class.CastTo(targetEntity, target.GetObject()))
+		{
+			// (client side)
+			m_Text = string.Format("Attach To %1", targetEntity.GetDisplayName());
+		}
 	}
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
