@@ -25,13 +25,12 @@ class CfgVehicles
 		rotationFlags = 17;
 		hiddenSelections[] = { "camo" };
 		hiddenSelectionsTextures[] = { "dz\gear\consumables\data\chemlight_ca.paa" };
+		hiddenSelectionsMaterials[] = { "iat_universal_dye\consumables\data\iat_dyevial.rvmat" };
 		soundImpactType = "plastic";
 	};
 
 	class IAT_DyeVial_Basic : IAT_DyeVial_ColorBase
 	{
 		scope = 2;
-		hiddenSelections[] = { "camo" };
-		hiddenSelectionsTextures[] = { "dz\gear\consumables\data\chemlight_ca.paa" };
 	};
 };
