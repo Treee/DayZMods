@@ -21,28 +21,5 @@ class CfgVehicles
 	{
 		repairableWithKits[] = { 3,5,7,8 };
 		repairCosts[] = { 45.0,35.0,35.0,35.0 };
-		rootClassName = "PlateCarrierPouches";
-		colorVariants[] =
-		{
-		  "White",
-		  "Pseudo",
-		  "Tan",
-		  "Green",
-		  "Camo",
-		  "Black",
-		  "Lavender",
-		  "Petal",
-		  "Stone",
-		  "Storm",
-		  "Sunny",
-		  "MTP",
-		  "ATAC",
-		  "ATACSFG",
-		  "USNAOR2",
-		  "USNAOR1",
-		  "SURPAT",
-		  "MARPATWinter",
-		  "EMP6",
-		};
 	};
 };

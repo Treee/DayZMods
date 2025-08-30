@@ -59,18 +59,6 @@ class CfgVehicles
 	class EyeMask_ColorBase : Clothing
 	{
 		inventorySlot[] += {"Extra"};
-		rootClassName = "EyeMask";
-		colorVariants[] =
-		{
-			"Valentines",
-			"NewYears",
-			"Christmas",
-			"Dead",
-			"Black",
-			"Blue",
-			"Red",
-			"Yellow",
-		};
 		repairableWithKits[] = { 2,3 };
 		repairCosts[] = { 30,30 };
 	};
@@ -79,12 +67,5 @@ class CfgVehicles
 		inventorySlot[] += {"Extra"};
 		repairableWithKits[] = { 8 };
 		repairCosts[] = { 30 };
-		rootClassName = "SkiGoggles";
-		colorVariants[] =
-		{
-			"WhiteClear",
-			"WhiteDark",
-			"WhiteBlackYellow",
-		};
 	};
 };
