@@ -8,5 +8,6 @@ modded class DeCraftGhillieSuit
 		// multi tool is like can opener
 		InsertIngredient(1,"IAT_Narsil_Colorbase");
 		InsertIngredient(1,"IAT_DamascusBowieKnife_Colorbase");
+		InsertIngredient(1,"IAT_TrenchKnife_ColorBase");
 	}
 };

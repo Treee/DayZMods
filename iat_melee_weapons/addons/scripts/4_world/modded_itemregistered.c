@@ -7,6 +7,8 @@ modded class ModItemRegisterCallbacks
         //==================================================== BLADE WEAPONS
         pType.AddItemInHandsProfileIK("IAT_Melee_GrinningBlade_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_pipe.asi", pBehavior, "dz/anims/anm/player/ik/gear/machete.anm");
         pType.AddItemInHandsProfileIK("IAT_DamascusBowieKnife_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_knife.asi", pBehavior, "dz/anims/anm/player/ik/gear/fangeknife.anm");
+        // pType.AddItemInHandsProfileIK("IAT_TrenchKnife_ColorBase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_knife.asi", pBehavior, "dz/anims/anm/player/ik/gear/fangeknife.anm");
+        pType.AddItemInHandsProfileIK("IAT_TrenchKnife_ColorBase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/brassknuckles.anm");
         pType.AddItemInHandsProfileIK("IAT_Narsil_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_knife.asi", pBehavior, "dz/anims/anm/player/ik/gear/fangeknife.anm");
         pType.AddItemInHandsProfileIK("IAT_Katana_ColorBase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_pipe.asi", pBehavior, "dz/anims/anm/player/ik/gear/machete.anm");
         pType.AddItemInHandsProfileIK("IAT_KatanaSheathe_ColorBase", "dz/anims/workspaces/player/player_main/weapons/player_main_1h_pipe.asi", pBehavior, "dz/anims/anm/player/ik/gear/crowbar.anm");
