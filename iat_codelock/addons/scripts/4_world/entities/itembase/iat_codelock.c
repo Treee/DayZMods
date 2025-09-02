@@ -479,26 +479,28 @@ class IAT_Codelock_Colorbase extends ItemBase
 				}
 			}
 		}
-		else
-		{
-			// this is to check on the server for "actual" permissions whehn client side is just looking for open tools
-			PermissionManager permissionManager;
-			if (Class.CastTo(permissionManager, GetPermissionManager()))
-			{
-				if (permissionManager.IsSuperAdmin(steamId))
-				{
-					return true;
-				}
-				UserGroup userGroup;
-				if (Class.CastTo(userGroup, permissionManager.GetUserGroup(steamId)))
-				{
-					if (userGroup.GetGroupName() == "Admins")
-					{
-						return true;
-					}
-				}
-			}
-		}
+		// there is no real "easy" way to check on the server if the tools have been toggled on by an admin
+		// because its all RPCs for some reason
+		// else
+		// {
+		// 	// this is to check on the server for "actual" permissions whehn client side is just looking for open tools
+		// 	PermissionManager permissionManager;
+		// 	if (Class.CastTo(permissionManager, GetPermissionManager()))
+		// 	{
+		// 		if (permissionManager.IsSuperAdmin(steamId))
+		// 		{
+		// 			return true;
+		// 		}
+		// 		UserGroup userGroup;
+		// 		if (Class.CastTo(userGroup, permissionManager.GetUserGroup(steamId)))
+		// 		{
+		// 			if (userGroup.GetGroupName() == "Admins")
+		// 			{
+		// 				return true;
+		// 			}
+		// 		}
+		// 	}
+		// }
 		#endif
 
 		#ifdef JM_COT
