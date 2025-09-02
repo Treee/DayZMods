@@ -16,6 +16,7 @@ class CfgPatches
 class CfgVehicles
 {
 	class Clothing;
+	class MimeMask_Male;
 	//------------------------------------- BASE GAME OVERRIDE
 	class GasMask : Clothing
 	{

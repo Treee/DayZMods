@@ -427,7 +427,7 @@ class CfgVehicles
 	};
 	class NBCHoodBase : Clothing
 	{
-		rootClassName = "NBCHood";
+		rootClassName = "NBCHoodBase";
 		colorVariants[] =
 		{
 		  "Gray",
