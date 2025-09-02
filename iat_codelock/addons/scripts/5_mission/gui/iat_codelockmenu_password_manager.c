@@ -39,7 +39,6 @@ class IAT_CodelockPasswordDialogMenu extends IAT_CodelockPassword_BaseMenu
         m_ButtonShowPassword.Show(false);
         return layoutRoot;
     }
-
     override bool OnClick(Widget w, int x, int y, int button)
     {
         if (w == m_ButtonCancel)
