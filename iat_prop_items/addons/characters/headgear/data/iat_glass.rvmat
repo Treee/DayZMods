@@ -56,7 +56,7 @@ class Stage4
 };
 class Stage5
 {
-	texture="ACO_Core\Characters\Shared_Data\Glass_SMDI.paa";
+	texture="#(argb,8,8,3)color(1,0,1,0,SMDI)";
 	uvSource="tex";
 	class uvTransform
 	{
