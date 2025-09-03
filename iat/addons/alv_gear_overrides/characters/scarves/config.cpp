@@ -13,8 +13,10 @@ class CfgPatches
 class CfgVehicles
 {
 	class Clothing;
+	class ALV_Shemagh_Base;
+	class ALV_Scarf_Base;
 	//------------------------------------- BASE GAME OVERRIDE
-	class ALV_ShemaghScarf_Colorbase : Clothing
+	class ALV_ShemaghScarf_Colorbase : ALV_Shemagh_Base
 	{
 		rootClassName = "ALV_ShemaghScarf";
 		colorVariants[] =
@@ -76,7 +78,7 @@ class CfgVehicles
 			"Snow",
 		};
 	};
-	class ALV_Scarf01_Colorbase : Clothing
+	class ALV_Scarf01_Colorbase : ALV_Scarf_Base
 	{
 		rootClassName = "ALV_Scarf01";
 		colorVariants[] =
@@ -87,7 +89,7 @@ class CfgVehicles
 			"Cream",
 		};
 	};
-	class ALV_Scarf02_Colorbase : Clothing
+	class ALV_Scarf02_Colorbase : ALV_Scarf_Base
 	{
 		rootClassName = "ALV_Scarf02";
 		colorVariants[] =
@@ -98,7 +100,7 @@ class CfgVehicles
 			"Cream",
 		};
 	};
-	class ALV_Scarf03_Colorbase : Clothing
+	class ALV_Scarf03_Colorbase : ALV_Scarf_Base
 	{
 		rootClassName = "ALV_Scarf03";
 		colorVariants[] =
@@ -109,7 +111,7 @@ class CfgVehicles
 			"Cream",
 		};
 	};
-	class ALV_HoodedShawl_Colorbase : Clothing
+	class ALV_HoodedShawl_Colorbase : ALV_Shemagh_Base
 	{
 		rootClassName = "ALV_HoodedShawl";
 		colorVariants[] =

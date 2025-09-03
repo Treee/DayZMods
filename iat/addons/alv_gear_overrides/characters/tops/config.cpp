@@ -13,8 +13,10 @@ class CfgPatches
 class CfgVehicles
 {
 	class Clothing;
+	class ALV_Top_Base;
+	class ALV_Outfit_Base;
 	//------------------------------------- BASE GAME OVERRIDE
-	class ALV_CottonTop_Colorbase : Clothing
+	class ALV_CottonTop_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_CottonTop";
 		colorVariants[] =
@@ -27,7 +29,7 @@ class CfgVehicles
 			"BlackWhite",
 		};
 	};
-	class ALV_RaglanTshirt_Colorbase : Clothing
+	class ALV_RaglanTshirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_RaglanTshirt";
 		colorVariants[] =
@@ -41,7 +43,7 @@ class CfgVehicles
 			"Blue",
 		};
 	};
-	class ALV_TacticalHoodie_Colorbase : Clothing
+	class ALV_TacticalHoodie_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_TacticalHoodie";
 		colorVariants[] =
@@ -55,7 +57,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_FlannelShirt_Colorbase : Clothing
+	class ALV_FlannelShirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_FlannelShirt";
 		colorVariants[] =
@@ -67,7 +69,7 @@ class CfgVehicles
 			"Blue",
 		};
 	};
-	class ALV_SheriffShirt_Colorbase : Clothing
+	class ALV_SheriffShirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_SheriffShirt";
 		colorVariants[] =
@@ -76,7 +78,7 @@ class CfgVehicles
 			"Tan",
 		};
 	};
-	class ALV_Tshirt_Colorbase : Clothing
+	class ALV_Tshirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_Tshirt";
 		colorVariants[] =
@@ -89,7 +91,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_FleeceTop_Colorbase : Clothing
+	class ALV_FleeceTop_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_FleeceTop";
 		colorVariants[] =
@@ -103,7 +105,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_PulloverHoodie_Colorbase : Clothing
+	class ALV_PulloverHoodie_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_PulloverHoodie";
 		colorVariants[] =
@@ -117,7 +119,7 @@ class CfgVehicles
 			"Green",
 		};
 	};
-	class ALV_DressShirt_Colorbase : Clothing
+	class ALV_DressShirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_DressShirt";
 		colorVariants[] =
@@ -129,7 +131,7 @@ class CfgVehicles
 			"Brown",
 		};
 	};
-	class ALV_LongSleeve_Tshirt_Colorbase : Clothing
+	class ALV_LongSleeve_Tshirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_LongSleeve_Tshirt";
 		colorVariants[] =
@@ -139,7 +141,7 @@ class CfgVehicles
 			"Shanka",
 		};
 	};
-	class ALV_Sweater_Colorbase : Clothing
+	class ALV_Sweater_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_Sweater";
 		colorVariants[] =
@@ -163,7 +165,7 @@ class CfgVehicles
 			"TanGry",
 		};
 	};
-	class ALV_WorkersShirt_Colorbase : Clothing
+	class ALV_WorkersShirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_WorkersShirt";
 		colorVariants[] =
@@ -175,7 +177,7 @@ class CfgVehicles
 			"Blue",
 		};
 	};
-	class ALV_OpenShirt_Colorbase : Clothing
+	class ALV_OpenShirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_OpenShirt";
 		colorVariants[] =
@@ -186,7 +188,7 @@ class CfgVehicles
 			"Pink",
 		};
 	};
-	class ALV_PoliceShirt_Colorbase : Clothing
+	class ALV_PoliceShirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_PoliceShirt";
 		colorVariants[] =
@@ -198,7 +200,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_TurtleNeck_Colorbase : Clothing
+	class ALV_TurtleNeck_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_TurtleNeck";
 		colorVariants[] =
@@ -209,7 +211,7 @@ class CfgVehicles
 			"Orange",
 		};
 	};
-	class ALV_HawaiianShirt_Colorbase : Clothing
+	class ALV_HawaiianShirt_Colorbase : ALV_Top_Base
 	{
 		rootClassName = "ALV_HawaiianShirt";
 		colorVariants[] =
@@ -219,7 +221,7 @@ class CfgVehicles
 			"Red",
 		};
 	};
-	class ALV_HazMat_Colorbase : Clothing
+	class ALV_HazMat_Colorbase : ALV_Outfit_Base
 	{
 		rootClassName = "ALV_HazMat";
 		colorVariants[] =
@@ -230,7 +232,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_Frag_Colorbase : Clothing
+	class ALV_Frag_Colorbase : ALV_Outfit_Base
 	{
 		rootClassName = "ALV_Frag";
 		colorVariants[] =
@@ -239,7 +241,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_Monkrobes_Colorbase : Clothing
+	class ALV_Monkrobes_Colorbase : ALV_Outfit_Base
 	{
 		rootClassName = "ALV_Monkrobes";
 		colorVariants[] =

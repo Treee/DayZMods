@@ -13,6 +13,7 @@ class CfgPatches
 class CfgVehicles
 {
 	class Clothing;
+	class ALV_Hat_Base;
 	//------------------------------------- BASE GAME OVERRIDE
 	class ALV_Comtacs_Colorbase : Clothing
 	{
@@ -26,7 +27,7 @@ class CfgVehicles
 		};
 	};
 
-	class ALV_Beret_Colorbase : Clothing
+	class ALV_Beret_Colorbase : ALV_Hat_Base
 	{
 		rootClassName = "ALV_Beret";
 		colorVariants[] =
@@ -36,7 +37,7 @@ class CfgVehicles
 		};
 	};
 
-	class ALV_Boonie_Colorbase : Clothing
+	class ALV_Boonie_Colorbase : ALV_Hat_Base
 	{
 		rootClassName = "ALV_Boonie";
 		colorVariants[] =
