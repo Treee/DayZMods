@@ -97,3 +97,32 @@ class IAT_DamascusBowieKnife_Colorbase extends ToolBase
 };
 class IAT_DamascusBowieKnife_Basic extends IAT_DamascusBowieKnife_Colorbase {};
 class IAT_DamascusBowieKnife_sir_bman extends IAT_DamascusBowieKnife_Colorbase {};
+
+class IAT_TrenchKnife_ColorBase extends ToolBase
+{
+	override bool IsMeleeFinisher()
+	{
+		return true;
+	}
+
+	override array<int> GetValidFinishers()
+	{
+		return {EMeleeHitType.FINISHER_LIVERSTAB,EMeleeHitType.FINISHER_NECKSTAB};
+	}
+
+	override void SetActions()
+	{
+		super.SetActions();
+
+		AddAction(ActionUnrestrainTarget);
+		AddAction(ActionSkinning);
+		AddAction(ActionMineBush);
+		AddAction(ActionMineTreeBark);
+		AddAction(ActionDigWorms);
+		AddAction(ActionShaveTarget);
+		AddAction(ActionShave);
+		AddAction(ActionCraftBolts);
+	}
+};
+class IAT_TrenchKnife_Basic extends IAT_TrenchKnife_ColorBase {};
+class IAT_TrenchKnife_weebyboi extends IAT_TrenchKnife_ColorBase {};
