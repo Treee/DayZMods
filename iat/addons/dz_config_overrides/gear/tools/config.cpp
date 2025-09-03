@@ -63,4 +63,8 @@ class CfgVehicles
 		varQuantityDestroyOnMin = 1;
 		varStackMax = 1;
 	};
+	class Mace : Inventory_Base
+	{
+		inventorySlot[] += { "Backpack_1" };
+	};
 };
