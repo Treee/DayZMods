@@ -122,7 +122,8 @@ class IAT_DyeObject: ActionContinuousBase
 				// Print("newItemName: " + newItemName);
 				IAT_ReplaceItemWithNewLambda_Dye lambda = new IAT_ReplaceItemWithNewLambda_Dye(target_clothing, newItemName);
 				MiscGameplayFunctions.TurnItemIntoItemEx(action_data.m_Player, lambda);
-				dye.DeleteSafe();
+				// consume the item
+				dye.AddQuantity(-100);
 			}
 		}
 	}

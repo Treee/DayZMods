@@ -12,9 +12,9 @@ class CfgPatches
 };
 class CfgVehicles
 {
-	class Clothing;
+	class ALV_Coat_Base;
 	//------------------------------------- BASE GAME OVERRIDE
-	class ALV_Parka_Colorbase : Clothing
+	class ALV_Parka_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_Parka";
 		colorVariants[] =
@@ -26,7 +26,7 @@ class CfgVehicles
 			"Beige",
 		};
 	};
-	class ALV_WinterJacket_Colorbase : Clothing
+	class ALV_WinterJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_WinterJacket";
 		colorVariants[] =
@@ -39,7 +39,7 @@ class CfgVehicles
 			"Purple",
 		};
 	};
-	class ALV_NauticJacket_Colorbase : Clothing
+	class ALV_NauticJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_NauticJacket";
 		colorVariants[] =
@@ -52,7 +52,7 @@ class CfgVehicles
 			"BlueWhite",
 		};
 	};
-	class ALV_PlaidJacket_Colorbase : Clothing
+	class ALV_PlaidJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_PlaidJacket";
 		colorVariants[] =
@@ -62,7 +62,7 @@ class CfgVehicles
 			"Brown",
 		};
 	};
-	class ALV_MilitaryJacket_Colorbase : Clothing
+	class ALV_MilitaryJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_MilitaryJacket";
 		colorVariants[] =
@@ -73,7 +73,7 @@ class CfgVehicles
 			"Blue",
 		};
 	};
-	class ALV_DenimJacket_Colorbase : Clothing
+	class ALV_DenimJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_DenimJacket";
 		colorVariants[] =
@@ -83,7 +83,7 @@ class CfgVehicles
 			"Black_Wool",
 		};
 	};
-	class ALV_PCUL5Coat_Colorbase : Clothing
+	class ALV_PCUL5Coat_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_PCUL5Coat";
 		colorVariants[] =
@@ -95,7 +95,7 @@ class CfgVehicles
 			"Snow",
 		};
 	};
-	class ALV_PatrolJacket_Colorbase : Clothing
+	class ALV_PatrolJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_PatrolJacket";
 		colorVariants[] =
@@ -104,7 +104,7 @@ class CfgVehicles
 			"Snow",
 		};
 	};
-	class ALV_HuntingCoat_Colorbase : Clothing
+	class ALV_HuntingCoat_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_HuntingCoat";
 		colorVariants[] =
@@ -115,7 +115,7 @@ class CfgVehicles
 			"WinterCamo",
 		};
 	};
-	class ALV_TweedJacket_Colorbase : Clothing
+	class ALV_TweedJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_TweedJacket";
 		colorVariants[] =
@@ -124,7 +124,7 @@ class CfgVehicles
 			"Brown",
 		};
 	};
-	class ALV_HikingJacket_Colorbase : Clothing
+	class ALV_HikingJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_HikingJacket";
 		colorVariants[] =
@@ -136,7 +136,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_LightweightJacket_Colorbase : Clothing
+	class ALV_LightweightJacket_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_LightweightJacket";
 		colorVariants[] =
@@ -147,7 +147,7 @@ class CfgVehicles
 			"WinterCamo",
 		};
 	};
-	class ALV_Duster_Colorbase : Clothing
+	class ALV_Duster_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_Duster";
 		colorVariants[] =
@@ -157,7 +157,7 @@ class CfgVehicles
 			"Red",
 		};
 	};
-	class ALV_Overcoat_Colorbase : Clothing
+	class ALV_Overcoat_Colorbase : ALV_Coat_Base
 	{
 		rootClassName = "ALV_Overcoat";
 		colorVariants[] =

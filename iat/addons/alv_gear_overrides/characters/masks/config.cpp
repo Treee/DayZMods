@@ -12,9 +12,9 @@ class CfgPatches
 };
 class CfgVehicles
 {
-	class Clothing;
+	class ALV_Mask_Base;
 	//------------------------------------- BASE GAME OVERRIDE
-	class ALV_SkullMask_Colorbase : Clothing
+	class ALV_SkullMask_Colorbase : ALV_Mask_Base
 	{
 		rootClassName = "ALV_SkullMask";
 		colorVariants[] =

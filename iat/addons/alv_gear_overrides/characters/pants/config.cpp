@@ -12,9 +12,9 @@ class CfgPatches
 };
 class CfgVehicles
 {
-	class Clothing;
+	class ALV_Pants_Base;
 	//------------------------------------- BASE GAME OVERRIDE
-	class ALV_Jeans_ColorBase : Clothing
+	class ALV_Jeans_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_Jeans";
 		colorVariants[] =
@@ -25,7 +25,7 @@ class CfgVehicles
 			"Brown",
 		};
 	};
-	class ALV_Sheriffpants_ColorBase : Clothing
+	class ALV_Sheriffpants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_Sheriffpants";
 		colorVariants[] =
@@ -34,7 +34,7 @@ class CfgVehicles
 			"Olive",
 		};
 	};
-	class ALV_Cargopants_ColorBase : Clothing
+	class ALV_Cargopants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_Cargopants";
 		colorVariants[] =
@@ -43,7 +43,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_FirefighterPants_ColorBase : Clothing
+	class ALV_FirefighterPants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_FirefighterPants";
 		colorVariants[] =
@@ -52,7 +52,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_PatrolPants_ColorBase : Clothing
+	class ALV_PatrolPants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_PatrolPants";
 		colorVariants[] =
@@ -62,7 +62,7 @@ class CfgVehicles
 			"STG_Red",
 		};
 	};
-	class ALV_G3Pants_ColorBase : Clothing
+	class ALV_G3Pants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_G3Pants";
 		colorVariants[] =
@@ -73,7 +73,7 @@ class CfgVehicles
 			"Snow",
 		};
 	};
-	class ALV_HunterPants_ColorBase : Clothing
+	class ALV_HunterPants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_HunterPants";
 		colorVariants[] =
@@ -84,7 +84,7 @@ class CfgVehicles
 			"WinterCamo",
 		};
 	};
-	class ALV_CargoShorts_ColorBase : Clothing
+	class ALV_CargoShorts_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_CargoShorts";
 		colorVariants[] =
@@ -93,7 +93,7 @@ class CfgVehicles
 			"Olive",
 		};
 	};
-	class ALV_SmartPants_ColorBase : Clothing
+	class ALV_SmartPants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_SmartPants";
 		colorVariants[] =
@@ -102,7 +102,7 @@ class CfgVehicles
 			"Brown",
 		};
 	};
-	class ALV_HunterPants_Kneepads_ColorBase : Clothing
+	class ALV_HunterPants_Kneepads_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_HunterPants_Kneepads";
 		colorVariants[] =
@@ -113,7 +113,7 @@ class CfgVehicles
 			"WinterCamo",
 		};
 	};
-	class ALV_PolicePants_ColorBase : Clothing
+	class ALV_PolicePants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_PolicePants";
 		colorVariants[] =
@@ -125,7 +125,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_NBCPants_ColorBase : Clothing
+	class ALV_NBCPants_ColorBase : ALV_Pants_Base
 	{
 		rootClassName = "ALV_NBCPants";
 		colorVariants[] =

@@ -12,9 +12,9 @@ class CfgPatches
 };
 class CfgVehicles
 {
-	class Clothing;
+	class ALV_BeltBase;
 	//------------------------------------- BASE GAME OVERRIDE
-	class ALV_BisonBelt_Colorbase : Clothing
+	class ALV_BisonBelt_Colorbase : ALV_BeltBase
 	{
 		rootClassName = "ALV_BisonBelt";
 		colorVariants[] =
@@ -23,7 +23,7 @@ class CfgVehicles
 			"Tan",
 		};
 	};
-	class ALV_UtilityBelt_Colorbase : Clothing
+	class ALV_UtilityBelt_Colorbase : ALV_BeltBase
 	{
 		rootClassName = "ALV_UtilityBelt";
 		colorVariants[] =
@@ -32,7 +32,7 @@ class CfgVehicles
 			"Tan",
 		};
 	};
-	class ALV_LeatherBelt_Colorbase : Clothing
+	class ALV_LeatherBelt_Colorbase : ALV_BeltBase
 	{
 		rootClassName = "ALV_LeatherBelt";
 		colorVariants[] =
@@ -41,7 +41,7 @@ class CfgVehicles
 			"Tan",
 		};
 	};
-	class ALV_MolleBelt_Colorbase : Clothing
+	class ALV_MolleBelt_Colorbase : ALV_BeltBase
 	{
 		rootClassName = "ALV_MolleBelt";
 		colorVariants[] =
@@ -50,7 +50,7 @@ class CfgVehicles
 			"Tan",
 		};
 	};
-	class ALV_Smersh_Colorbase : Clothing
+	class ALV_Smersh_Colorbase : ALV_BeltBase
 	{
 		rootClassName = "ALV_Smersh";
 		colorVariants[] =
@@ -59,7 +59,7 @@ class CfgVehicles
 			"Tan",
 		};
 	};
-	class ALV_FannyPack_Colorbase : Clothing
+	class ALV_FannyPack_Colorbase : ALV_BeltBase
 	{
 		rootClassName = "ALV_FannyPack";
 		colorVariants[] =

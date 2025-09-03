@@ -12,9 +12,11 @@ class CfgPatches
 };
 class CfgVehicles
 {
-	class Clothing;
+	class ALV_Vest_Base;
+	class ALV_Large_Vest_Base;
+	class ALV_UAVest_Base;
 	//------------------------------------- BASE GAME OVERRIDE
-	class ALV_ModularVest_Colorbase : Clothing
+	class ALV_ModularVest_Colorbase : ALV_Vest_Base
 	{
 		rootClassName = "ALV_ModularVest";
 		colorVariants[] =
@@ -24,7 +26,7 @@ class CfgVehicles
 			"Snow",
 		};
 	};
-	class ALV_JPCVest_Colorbase : Clothing
+	class ALV_JPCVest_Colorbase : ALV_Vest_Base
 	{
 		rootClassName = "ALV_JPCVest";
 		colorVariants[] =
@@ -34,7 +36,7 @@ class CfgVehicles
 			"Snow",
 		};
 	};
-	class ALV_6B25Vest_Colorbase : Clothing
+	class ALV_6B25Vest_Colorbase : ALV_Large_Vest_Base
 	{
 		rootClassName = "ALV_6B25Vest";
 		colorVariants[] =
@@ -44,7 +46,7 @@ class CfgVehicles
 			"Snow",
 		};
 	};
-	class ALV_BikerVest_Colorbase : Clothing
+	class ALV_BikerVest_Colorbase : ALV_UAVest_Base
 	{
 		rootClassName = "ALV_BikerVest";
 		colorVariants[] =
@@ -53,7 +55,7 @@ class CfgVehicles
 			"Black_Angel",
 		};
 	};
-	class ALV_AssaultVest_Colorbase : Clothing
+	class ALV_AssaultVest_Colorbase : ALV_Vest_Base
 	{
 		rootClassName = "ALV_AssaultVest";
 		colorVariants[] =
@@ -62,7 +64,7 @@ class CfgVehicles
 			"Black",
 		};
 	};
-	class ALV_ChestRig_Colorbase : Clothing
+	class ALV_ChestRig_Colorbase : ALV_Vest_Base
 	{
 		rootClassName = "ALV_ChestRig";
 		colorVariants[] =
