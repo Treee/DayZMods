@@ -8,7 +8,7 @@ class CfgPatches
 class CfgVehicles
 {
     class Inventory_Base;
-
+    //=================================== BEARS
     class IAT_Bear_ColorBase : Inventory_Base
     {
         displayName = "$STR_CfgVehicles_Bear_ColorBase0";
@@ -76,6 +76,83 @@ class CfgVehicles
     {
         scope = 2;
         hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_buzzingghosts_co.paa" };
+    };
+
+    //=================================== Flags (for the belt)
+    class Flag_Base : Inventory_Base // slot overrides
+    {
+        inventorySlot[] += { "IAT_VanillaFlag", "IAT_BeltFlag" };
+    };
+    class IAT_BeltFlag_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Belt Flag";
+        descriptionShort = "This small flag attaches to the leather flag belt.";
+        model = "iat_prop_items\camping\iat_beltflag.p3d";
+        itemSize[] = { 2,2 };
+        absorbency = 0.89999998;
+        ragQuantity = 6;
+        rotationFlags = 16;
+        inventorySlot[] = { "IAT_VanillaFlag", "IAT_BeltFlag" };
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_beltflag_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1,{""}},
+                        {0.69999999,{""}},
+                        {0.5,{""}},
+                        {0.30000001,{""}},
+                        {0,{""}}
+                    };
+                };
+                class GlobalArmor
+                {
+                    class Projectile
+                    {
+                        class Health
+                        {
+                            damage = 0;
+                        };
+                        class Blood
+                        {
+                            damage = 0;
+                        };
+                        class Shock
+                        {
+                            damage = 0;
+                        };
+                    };
+                    class FragGrenade
+                    {
+                        class Health
+                        {
+                            damage = 0;
+                        };
+                        class Blood
+                        {
+                            damage = 0;
+                        };
+                        class Shock
+                        {
+                            damage = 0;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    class IAT_BeltFlag_Basic : IAT_BeltFlag_ColorBase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_beltflag_co.paa" };
     };
 
     //=================================== PLAYING CARDS
@@ -1158,6 +1235,18 @@ class CfgVehicles
 };
 class CfgSlots
 {
+    class Slot_IAT_VanillaFlag
+    {
+        name = "IAT_VanillaFlag";
+        displayName = "Flag";
+        ghostIcon = "set:dayz_inventory image:tf_flag";
+    };
+    class Slot_IAT_BeltFlag
+    {
+        name = "IAT_BeltFlag";
+        displayName = "Belt Flag";
+        ghostIcon = "set:dayz_inventory image:tf_flag";
+    };
     // hearts
     class Slot_IAT_Card1
     {
@@ -1967,4 +2056,21 @@ class CfgSlots
         ghostIcon = "set:dayz_inventory image:paper";
     };
 
+};
+
+class CfgNonAIVehicles
+{
+    class ProxyAttachment;
+    class Proxyiat_vanillaflag_proxy : ProxyAttachment
+    {
+        scope = 2;
+        inventorySlot[] = { "IAT_VanillaFlag" };
+        model = "iat_prop_items\camping\proxy\iat_vanillaflag_proxy.p3d";
+    };
+    class Proxyiat_beltflag_proxy : ProxyAttachment
+    {
+        scope = 2;
+        inventorySlot[] = { "IAT_BeltFlag" };
+        model = "iat_prop_items\camping\proxy\iat_beltflag_proxy.p3d";
+    };
 };
