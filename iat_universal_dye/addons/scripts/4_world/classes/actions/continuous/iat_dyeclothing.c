@@ -117,13 +117,20 @@ class IAT_DyeObject: ActionContinuousBase
 
 				if (target_clothing.HasDyableOptions())
 				{
+					// make it so players cant just dye things to full hp
+					float old_hp = target_clothing.GetHealth();
+					// construct the new item name
 					newItemName = string.Format("%1_%2", newItemName, target_clothing.GetDyeOption(variantId));
+					// spawn it
+					ItemBase newItemSpawn;
+					if (Class.CastTo(newItemSpawn, GetGame().CreateObjectEx(newItemName, target_clothing.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+					{
+						// set the hp
+						newItemSpawn.SetHealth(old_hp);
+						// consume the item
+						dye.AddQuantity(-100);
+					}
 				}
-				// Print("newItemName: " + newItemName);
-				IAT_ReplaceItemWithNewLambda_Dye lambda = new IAT_ReplaceItemWithNewLambda_Dye(target_clothing, newItemName);
-				MiscGameplayFunctions.TurnItemIntoItemEx(action_data.m_Player, lambda);
-				// consume the item
-				dye.AddQuantity(-100);
 			}
 		}
 	}
