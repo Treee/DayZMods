@@ -9,5 +9,6 @@ modded class DeCraftSpear
 		InsertIngredient(1,"IAT_Narsil_Colorbase");
 		InsertIngredient(1,"IAT_DamascusBowieKnife_Colorbase");
 		InsertIngredient(1,"IAT_TrenchKnife_ColorBase");
+		InsertIngredient(1,"IAT_MorgulBlade_Colorbase");
 	}
 };
