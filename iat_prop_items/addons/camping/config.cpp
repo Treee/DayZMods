@@ -155,6 +155,119 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_beltflag_co.paa" };
     };
 
+    //=================================== STEPLADDER
+    class IAT_Ladder_Closed_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Closed Ladder";
+        descriptionShort = "A ladder that can be used to vault over tall walls or reach high places.";
+        model = "iat_prop_items\camping\iat_ladder_closed.p3d";
+        itemBehaviour = 1;
+        rotationFlags = 16;
+        weight = 27000;
+        slopeTolerance = 0.4;
+        yawPitchRollLimit[] = { 45, 45, 45 };
+        itemSize[] = { 12, 12 };
+        carveNavmesh = 1;
+        soundImpactType = "wood";
+        projectionTypename = "IAT_Ladder_Opened_Basic";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_ladder_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1.0, { "iat_prop_items\camping\data\iat_ladder.rvmat"}},
+                        {0.69999999, { "iat_prop_items\camping\data\iat_ladder.rvmat"}},
+                        {0.5, { "iat_prop_items\camping\data\iat_ladder_damage.rvmat"}},
+                        {0.30000001, { "iat_prop_items\camping\data\iat_ladder_damage.rvmat"}},
+                        {0.0, { "iat_prop_items\camping\data\iat_ladder_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class movement
+                {
+                    soundSet = "seachest_movement_SoundSet";
+                    id = 1;
+                };
+                class pickUpItem_Light
+                {
+                    soundSet = "pickUpSeaChest_SoundSet";
+                    id = 796;
+                };
+                class pickUpItem
+                {
+                    soundSet = "pickUpSeaChest_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "seachest_drop_SoundSet";
+                    id = 898;
+                };
+            };
+        };
+    };
+
+    class IAT_Ladder_Closed_Basic : IAT_Ladder_Closed_ColorBase
+    {
+        scope = 2;
+        color = "basic";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_ladder_co.paa" };
+    };
+
+    class IAT_Ladder_Opened_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "deployed Ladder";
+        descriptionShort = "A ladder that can be used to vault over tall walls or reach high places.";
+        model = "iat_prop_items\camping\iat_ladder_opened.p3d";
+        itemBehaviour = 2;
+        rotationFlags = 64;
+        weight = 17000;
+        carveNavmesh = 1;
+        itemSize[] = { 12, 12 };
+        soundImpactType = "wood";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_ladder_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1.0, { "iat_prop_items\camping\data\iat_ladder.rvmat"}},
+                        {0.69999999, { "iat_prop_items\camping\data\iat_ladder.rvmat"}},
+                        {0.5, { "iat_prop_items\camping\data\iat_ladder_damage.rvmat"}},
+                        {0.30000001, { "iat_prop_items\camping\data\iat_ladder_damage.rvmat"}},
+                        {0.0, { "iat_prop_items\camping\data\iat_ladder_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+    };
+    class IAT_Ladder_Opened_Basic : IAT_Ladder_Opened_ColorBase
+    {
+        scope = 2;
+        color = "basic";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_ladder_co.paa" };
+    };
+
     //=================================== PLAYING CARDS
     class IAT_CardDeck_Colorbase : Inventory_Base
     {
