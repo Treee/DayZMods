@@ -77,6 +77,21 @@ class CfgVehicles
         scope = 2;
         hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_buzzingghosts_co.paa" };
     };
+    class IAT_Bear_MidnightCollective : IAT_Bear_ColorBase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_midnightcollective_co.paa" };
+    };
+    class IAT_Bear_Rainbow : IAT_Bear_ColorBase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_rainbow_co.paa" };
+    };
+    class IAT_Bear_TigerCamo : IAT_Bear_ColorBase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_woodhouse_co.paa" };
+    };
 
     //=================================== Flags (for the belt)
     class Flag_Base : Inventory_Base // slot overrides
