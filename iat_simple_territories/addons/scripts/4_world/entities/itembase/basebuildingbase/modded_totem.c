@@ -16,6 +16,13 @@ modded class TerritoryFlag
         }
         return super.CanReceiveAttachment(attachment, slotId);
     }
+
+    /*
+    * We need to override these 2 functions because vanilla resets the animation
+    * when an item is detached from the totem (because in vanilla only a flag can be attached)
+    * this intercepts those calls and checks to see if a flag is still attached
+    * if so, it ignores any resetting
+    */
     override void AnimateFlagEx(float delta, PlayerBase player = null)
     {
         // get the last state this flag was at
@@ -30,6 +37,15 @@ modded class TerritoryFlag
         }
         // preserve the call chain
         super.AnimateFlagEx(delta, player);
+    }
+
+    override void SetRefreshTimer01(float fraction)
+	{
+        // if there is a flag attached, ignore any resetting
+        if (HasFlagAttached())
+            return;
+        // otherwise, preserve the call chain
+        super.SetRefreshTimer01(fraction);
     }
 
     // =========================================================== CUSTOM
