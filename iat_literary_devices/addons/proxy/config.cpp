@@ -370,6 +370,42 @@ class CfgSlots
         ghostIcon = "set:dayz_inventory image:book";
         stackMax = 1;
     };
+
+    class Slot_IAT_Paper_1
+    {
+        name = "IAT_Paper_1";
+        displayName = "Note";
+        ghostIcon = "set:dayz_inventory image:paper";
+        stackMax = 1;
+    };
+    class Slot_IAT_Paper_2
+    {
+        name = "IAT_Paper_2";
+        displayName = "Note";
+        ghostIcon = "set:dayz_inventory image:paper";
+        stackMax = 1;
+    };
+    class Slot_IAT_Paper_3
+    {
+        name = "IAT_Paper_3";
+        displayName = "Note";
+        ghostIcon = "set:dayz_inventory image:paper";
+        stackMax = 1;
+    };
+    class Slot_IAT_Paper_4
+    {
+        name = "IAT_Paper_4";
+        displayName = "Note";
+        ghostIcon = "set:dayz_inventory image:paper";
+        stackMax = 1;
+    };
+    class Slot_IAT_Paper_5
+    {
+        name = "IAT_Paper_5";
+        displayName = "Note";
+        ghostIcon = "set:dayz_inventory image:paper";
+        stackMax = 1;
+    };
 };
 
 class CfgNonAIVehicles

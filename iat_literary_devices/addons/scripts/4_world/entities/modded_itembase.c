@@ -54,4 +54,9 @@ modded class ItemBase
     {
         m_BookFilePath = path;
     }
+
+    bool IAT_CanBeStoredInNotebook()
+    {
+        return false;
+    }
 };
