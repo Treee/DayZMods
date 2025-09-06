@@ -156,7 +156,15 @@ class CfgVehicles
         model = "DZ\gear\books\Book_kniga.p3d";
         hiddenSelections[] = { "camoGround" };
         hiddenSelectionsTextures[] = { "DZ\gear\books\data\book_kniga_co.paa" };
-        attachments[] = { "IAT_Pen" };
+        attachments[] =
+        {
+            "IAT_Pen",
+            "IAT_Paper_1",
+            "IAT_Paper_2",
+            "IAT_Paper_3",
+            "IAT_Paper_4",
+            "IAT_Paper_5",
+        };
         inventorySlot[] =
         {
             "IAT_Book_0",
@@ -224,6 +232,11 @@ class CfgVehicles
             {
                 name = "Pen Slot";
                 attachmentSlots[] = { "IAT_Pen" };
+            };
+            class IAT_Notes
+            {
+                name = "Notes";
+                attachmentSlots[] = { "IAT_Paper_1", "IAT_Paper_2", "IAT_Paper_3", "IAT_Paper_4", "IAT_Paper_5" };
             };
         };
         class DamageSystem

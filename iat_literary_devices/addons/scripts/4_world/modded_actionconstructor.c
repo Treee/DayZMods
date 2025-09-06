@@ -7,5 +7,6 @@ modded class ActionConstructor
 		actions.Insert(IAT_ActionReadBook);
 		actions.Insert(IAT_ActionSelectReadBook);
 		actions.Insert(IAT_ActionCraftBookOptions);
+		actions.Insert(IAT_ActionSelectReadNote);
     }
 };

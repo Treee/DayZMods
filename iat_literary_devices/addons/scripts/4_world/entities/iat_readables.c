@@ -127,32 +127,41 @@ class IAT_LiteraryDevices_MultiBook_Colorbase extends ItemBook
 //=============================== NOTEBOOK THAT HOLDS ONLY PAPER
 class IAT_LiteraryDevices_Notebook_ColorBase extends ItemBook
 {
+//========================================= EVENTS
     override bool CanReceiveItemIntoCargo (EntityAI item)
 	{
-        if (item.IsInherited(Paper))
-            return true;
-        return false;
-
         // in case people want other things inside
-        // ItemBase notebookItem;
-        // if (Class.CastTo(notebookItem, item))
-        // {
-        //     return notebookItem.CanBeStoredInNotebook();
-        // }
+        ItemBase notebookItem;
+        if (Class.CastTo(notebookItem, item))
+        {
+            return notebookItem.IAT_CanBeStoredInNotebook();
+        }
         return false;
 	}
     override bool CanLoadItemIntoCargo( EntityAI item )
     {
-        if (item.IsInherited(Paper))
-            return true;
+        ItemBase notebookItem;
+        if (Class.CastTo(notebookItem, item))
+        {
+            return notebookItem.IAT_CanBeStoredInNotebook();
+        }
         return false;
+    }
+    override void SetActions()
+	{
+		super.SetActions();
 
-        // ItemBase notebookItem;
-        // if (Class.CastTo(notebookItem, item))
-        // {
-        //     return notebookItem.CanBeStoredInNotebook();
-        // }
-        // return false;
+		AddAction(IAT_ActionSelectReadNote);
+	}
+//========================================= CUSTOM STUFF
+    int GetReadableNotesCount()
+    {
+        if (GetInventory())
+        {
+            // account for the pen slot
+            return GetInventory().GetAttachmentSlotsCount() - 1;
+        }
+        return 0;
     }
     bool IsFullNotebook()
     {
@@ -161,6 +170,57 @@ class IAT_LiteraryDevices_Notebook_ColorBase extends ItemBook
             return GetInventory().GetCargo().GetItemCount() == 20;
         }
         return false;
+    }
+    bool HasSelectableNotes()
+    {
+        if (GetInventory())
+        {
+            int numAttachments = GetInventory().AttachmentCount();
+            if (HasPenAttached())
+            {
+                numAttachments -= 1; // remove 1 for the pen slot
+            }
+            return numAttachments > 0;
+        }
+        return false;
+    }
+    bool HasSelectableNote(int index)
+    {
+        // first slot is the pen slot
+        index += 1;
+        if (GetInventory())
+        {
+            EntityAI attachedNote;
+            if (Class.CastTo(attachedNote, GetInventory().GetAttachmentFromIndex(index)))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    bool HasPenAttached()
+    {
+        ItemBase flag;
+        if (Class.CastTo(flag, FindAttachmentBySlotName("IAT_Pen")))
+        {
+            return true
+        }
+        return false;
+    }
+    Paper GetAttachedPaper(int index)
+    {
+        // first slot is the pen slot
+        index += 1;
+
+        Paper paper = null;
+        if (GetInventory())
+        {
+            if (Class.CastTo(paper, GetInventory().GetAttachmentFromIndex(index)))
+            {
+                return paper;
+            }
+        }
+        return paper;
     }
 };
 
