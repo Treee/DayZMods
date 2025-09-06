@@ -63,7 +63,7 @@ modded class TerritoryFlag
         ItemBase flag;
         if (Class.CastTo(flag, FindAttachmentBySlotName("Material_FPole_Flag")))
         {
-            return true
+            return true;
         }
         return false;
     }

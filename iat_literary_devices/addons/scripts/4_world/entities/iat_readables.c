@@ -203,7 +203,7 @@ class IAT_LiteraryDevices_Notebook_ColorBase extends ItemBook
         ItemBase flag;
         if (Class.CastTo(flag, FindAttachmentBySlotName("IAT_Pen")))
         {
-            return true
+            return true;
         }
         return false;
     }
