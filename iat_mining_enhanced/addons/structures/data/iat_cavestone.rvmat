@@ -44,7 +44,7 @@ class Stage3
 };
 class Stage4
 {
-    texture="iat_mining_enhanced\structures\data\iat_cavestone_as.paa";
+    texture="iat_mining_enhanced\structures\data\iat_cavestone_as.paa"; 
     uvSource="tex";
     class uvTransform
     {

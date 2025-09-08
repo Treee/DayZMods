@@ -63,11 +63,7 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 		PlayerBase player;
 		if (Class.CastTo(player, action_data.m_Player))
 		{
-			UndergroundHandlerClient handler;
-			if (Class.CastTo(handler, player.GetUndergroundHandler()))
-			{
-				handler.IAT_ExitUndergroundMines();
-			}
+			player.UpdateUndergroundVisualEffects(false);
 		}
 	}
 
