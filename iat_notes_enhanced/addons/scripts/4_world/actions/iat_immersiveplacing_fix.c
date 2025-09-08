@@ -13,6 +13,14 @@ modded class ActionQuickPlaceItem
 		{
 			// Set lifetime to 1 week anytime a note is placed
 			paper.SetLifetimeMax(604800);
+
+			// note placement
+			if (m_AdminLog)
+			{
+				m_AdminLog.OnPlacementComplete(action_data.m_Player, paper);
+				string noteNext = string.Format("Note Text: %1", paper.GetWrittenNoteData().GetNoteText());
+				m_AdminLog.DirectAdminLogPrint(noteNext);
+			}
 		}
 	}
 }

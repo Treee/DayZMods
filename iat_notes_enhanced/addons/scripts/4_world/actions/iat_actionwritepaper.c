@@ -28,6 +28,12 @@ class IAT_ActionWritePaperCB : ActionContinuousBaseCB
 			}
 			Param1<string> text = new Param1<string>(paper_item.GetWrittenNoteData().GetNoteText());
 			paper_item.RPCSingleParam(ERPCs.RPC_WRITE_NOTE, text, true,m_ActionData.m_Player.GetIdentity());
+
+			PluginAdminLog m_AdminLog = PluginAdminLog.Cast( GetPlugin(PluginAdminLog) );
+			if (m_AdminLog)
+			{
+				m_AdminLog.OnPlacementComplete(m_ActionData.m_Player, paper_item);
+			}
 		}
 	}
 };

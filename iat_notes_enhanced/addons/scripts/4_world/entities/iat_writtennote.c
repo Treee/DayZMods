@@ -10,6 +10,16 @@ modded class WrittenNoteData
             paper.SetHasWrittenText(true);
             paper.SetSynchDirty();
         }
+
+        if (GetGame().IsDedicatedServer())
+        {
+            PluginAdminLog m_AdminLog = PluginAdminLog.Cast( GetPlugin(PluginAdminLog) );
+			if (m_AdminLog)
+			{
+				string noteNext = string.Format("Note Created: %1", text);
+				m_AdminLog.DirectAdminLogPrint(noteNext);
+			}
+        }
 	}
 };
 
