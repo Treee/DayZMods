@@ -92,6 +92,16 @@ class CfgVehicles
         scope = 2;
         hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_woodhouse_co.paa" };
     };
+    class IAT_Bear_Liam : IAT_Bear_ColorBase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_liam_co.paa" };
+    };
+    class IAT_Bear_Deadpool : IAT_Bear_ColorBase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\teddybear_deadpool_co.paa" };
+    };
 
     //=================================== Flags (for the belt)
     class Flag_Base : Inventory_Base // slot overrides
