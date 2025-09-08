@@ -18,6 +18,9 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 		if (!target)
 			return false;
 
+		if (!player.IAT_CanInteractWithMineExit())
+			return false;
+
 		land_iat_miningsegment_junction mineJunction;
 		if (Class.CastTo(mineJunction, target.GetObject()))
 		{
@@ -41,7 +44,10 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 				vector destination = mineJunction.GetTeleportDestination();
 				if (destination != vector.Zero)
 				{
+					// teleport the player
 					MiscGameplayFunctions.IAT_Mining_TeleportCheck(action_data.m_Player, destination);
+					// set the timer to allow teleporting back
+					action_data.m_Player.SetInteractMineFalse();
 					// teleported
 					// Print("teleported");
 				}

@@ -42,7 +42,10 @@ class IAT_ActionDescendIntoMine extends ActionInteractBase
 				vector destination = mineEntrance.GetTeleportDestination();
 				if (destination != vector.Zero)
 				{
+					// teleport player
 					MiscGameplayFunctions.IAT_Mining_TeleportCheck(action_data.m_Player, destination);
+					// set the timer to allow teleporting back
+					action_data.m_Player.AllowPlayerToInteractWithExit();
 					// teleported
 					// Print("teleported");
 				}

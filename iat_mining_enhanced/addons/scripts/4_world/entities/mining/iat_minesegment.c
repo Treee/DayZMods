@@ -17,7 +17,6 @@ class IAT_MiningSegment_Colorbase extends House
 	{
 		RegisterNetSyncVariableBoolSignal("m_PlaySmokeParticles");
 		RegisterNetSyncVariableBool("m_IsExit");
-
 		// down, up, east, west, north, south
 		m_SupportLogCounts = {0, 0, 0, 0, 0, 0};
 	}
