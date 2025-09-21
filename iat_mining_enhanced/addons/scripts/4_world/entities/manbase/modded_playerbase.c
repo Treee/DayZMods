@@ -7,7 +7,7 @@ modded class PlayerBase
 	{
 		RegisterNetSyncVariableBool("m_CanInteractWithExit");
 	}
-	void OnPlayerLoaded()
+	override void OnPlayerLoaded()
 	{
 		super.OnPlayerLoaded();
 		if (GetGame().IsDedicatedServer())

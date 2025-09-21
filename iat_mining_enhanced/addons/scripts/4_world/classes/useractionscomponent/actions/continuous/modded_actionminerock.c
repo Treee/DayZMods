@@ -6,8 +6,7 @@ modded class CAContinuousMineRock
 		// check our custom walls
 		if (Class.CastTo(iat_Junction, action_data.m_Target.GetObject()))
 		{
-			iat_Junction.SpawnMaterialAndQuantityYield(action_data.m_Player.GetPosition());
-
+			// pass through the dmg if ppl want to "game it"
 			m_DamageToMiningItemEachDrop = iat_Junction.GetDamageToMiningItemEachYield(action_data.m_MainItem.GetType());
 			m_AdjustedDamageToMiningItemEachDrop = m_DamageToMiningItemEachDrop;
 			return true;
@@ -79,6 +78,7 @@ modded class ActionMineRock
 			if (doorIndex != -1)
 			{
 				iat_Junction.OnServerWallMined(doorIndex, action_data.m_MainItem.GetType());
+				iat_Junction.SpawnMaterialAndQuantityYield(action_data.m_Player.GetPosition());
 			}
 		}
 	}
