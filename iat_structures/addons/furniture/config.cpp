@@ -276,4 +276,39 @@ class CfgVehicles
             };
         };
     };
+
+    class StaticObj_Furniture_UniqueItem_Portal_Steampunk_Default : HouseNoDestruct
+    {
+        scope = 1;
+        displayName = "Steampunk Portal";
+        descriptionShort = "A large device that looks like it might blow up or teleport.";
+        model = "iat_structures\furniture\iat_portal_steampunk.p3d";
+        carveNavmesh = 1;
+        weight = 500;
+        itemSize[] = { 10,10 };
+        itemsCargoSize[] = { 0,0 };
+        physLayer = "item_large";
+        minPlacingDist = 5;
+        slopeTolerance = 0.2;
+        alignHologramToTerain = 1;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_structures\furniture\data\iat_portal_steampunk_co.paa" };
+    };
+    class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog : HouseNoDestruct
+    {
+        scope = 1;
+        displayName = "Steampunk Portal";
+        descriptionShort = "A large device that looks like it might blow up or teleport.";
+        model = "iat_structures\furniture\iat_portal_steampunk.p3d";
+        carveNavmesh = 1;
+        weight = 500;
+        itemSize[] = { 10,10 };
+        itemsCargoSize[] = { 0,0 };
+        physLayer = "item_large";
+        minPlacingDist = 5;
+        slopeTolerance = 0.2;
+        alignHologramToTerain = 1;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_structures\furniture\data\iat_portal_steampunk_chunkyhedgehog_co.paa" };
+    };
 };
