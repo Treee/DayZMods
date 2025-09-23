@@ -308,7 +308,32 @@ class CfgVehicles
         minPlacingDist = 5;
         slopeTolerance = 0.2;
         alignHologramToTerain = 1;
+        useEntityHierarchy = "true";
+        attachments[] = { "GlowPlug", "LargeBattery" };
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_structures\furniture\data\iat_portal_steampunk_chunkyhedgehog_co.paa" };
+        class EnergyManager
+        {
+            hasIcon = 1;
+            autoSwitchOff = 1;
+            energyUsagePerSecond = 2;
+            updateInterval = 1;
+            attachmentAction = 1;
+        };
+        class AnimationSources
+        {
+            class clock_rotate
+            {
+                source = "user";
+                animPeriod = 2;
+                initPhase = 0;
+            };
+            class platform_rotate
+            {
+                source = "user";
+                animPeriod = 2;
+                initPhase = 0;
+            };
+        };
     };
 };
