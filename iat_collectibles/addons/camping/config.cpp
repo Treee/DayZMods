@@ -159,6 +159,7 @@ class CfgVehicles
         weight = 2;
         absorbency = 1;
         rotationFlags = 1;
+        itemBehaviour = 1;
         itemSize[] = { 1, 1 };
         itemsCargoSize[] = { 0,0 };
         inventorySlot[] = { "IAT_Card1","IAT_Card2","IAT_Card3","IAT_Card4","IAT_Card5","IAT_Card6","IAT_Card7","IAT_Card8","IAT_Card9","IAT_Card10","IAT_Card11","IAT_Card12","IAT_Card13","IAT_Card14","IAT_Card15","IAT_Card16","IAT_Card17","IAT_Card18","IAT_Card19","IAT_Card20","IAT_Card21","IAT_Card22","IAT_Card23","IAT_Card24","IAT_Card25","IAT_Card26","IAT_Card27","IAT_Card28","IAT_Card29","IAT_Card30","IAT_Card31","IAT_Card32","IAT_Card33","IAT_Card34","IAT_Card35","IAT_Card36","IAT_Card37","IAT_Card38","IAT_Card39","IAT_Card40","IAT_Card41","IAT_Card42","IAT_Card43","IAT_Card44","IAT_Card45","IAT_Card46","IAT_Card47","IAT_Card48","IAT_Card49","IAT_Card50","IAT_Card51","IAT_Card52","IAT_Card53","IAT_Card54" };
@@ -362,6 +363,7 @@ class CfgVehicles
         weight = 2;
         absorbency = 1;
         rotationFlags = 1;
+        itemBehaviour = 1;
         itemSize[] = { 1, 1 };
         itemsCargoSize[] = { 0,0 };
         inventorySlot[] = { "IAT_OccultCard1", "IAT_OccultCard2", "IAT_OccultCard3", "IAT_OccultCard4", "IAT_OccultCard5", "IAT_OccultCard6", "IAT_OccultCard7", "IAT_OccultCard8","IAT_TCard1","IAT_TCard2","IAT_TCard3","IAT_TCard4","IAT_TCard5","IAT_TCard6","IAT_TCard7","IAT_TCard8","IAT_TCard9","IAT_TCard10","IAT_TCard11","IAT_TCard12","IAT_TCard13","IAT_TCard14","IAT_TCard15","IAT_TCard16","IAT_TCard17","IAT_TCard18","IAT_TCard19","IAT_TCard20","IAT_TCard21","IAT_TCard22","IAT_TCard23","IAT_TCard24","IAT_TCard25","IAT_TCard26","IAT_TCard27","IAT_TCard28","IAT_TCard29","IAT_TCard30","IAT_TCard31","IAT_TCard32","IAT_TCard33","IAT_TCard34","IAT_TCard35","IAT_TCard36","IAT_TCard37","IAT_TCard38","IAT_TCard39","IAT_TCard40","IAT_TCard41","IAT_TCard42","IAT_TCard43","IAT_TCard44","IAT_TCard45","IAT_TCard46","IAT_TCard47","IAT_TCard48","IAT_TCard49","IAT_TCard50","IAT_TCard51","IAT_TCard52","IAT_TCard53","IAT_TCard54","IAT_TCard55","IAT_TCard56","IAT_TCard57","IAT_TCard58","IAT_TCard59","IAT_TCard60","IAT_TCard61","IAT_TCard62","IAT_TCard63","IAT_TCard64","IAT_TCard65","IAT_TCard66","IAT_TCard67","IAT_TCard68","IAT_TCard69","IAT_TCard70","IAT_TCard71","IAT_TCard72","IAT_TCard73","IAT_TCard74","IAT_TCard75","IAT_TCard76","IAT_TCard77","IAT_TCard78" };
@@ -542,6 +544,7 @@ class CfgVehicles
         weight = 2;
         absorbency = 1;
         rotationFlags = 1;
+        itemBehaviour = 1;
         itemSize[] = { 1, 1 };
         itemsCargoSize[] = { 0,0 };
         inventorySlot[] = { };
@@ -750,6 +753,64 @@ class CfgVehicles
     class IAT_CollectibleCard_SRP_PL_16 : IAT_CollectibleCard_Colorbase { scope = 2; hiddenSelections[] = { "front" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\cards\srp_players\srp_pl_16_co.paa" }; };
     class IAT_CollectibleCard_SRP_PL_17 : IAT_CollectibleCard_Colorbase { scope = 2; hiddenSelections[] = { "front" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\cards\srp_players\srp_pl_17_co.paa" }; };
     class IAT_CollectibleCard_SRP_PL_18 : IAT_CollectibleCard_Colorbase { scope = 2; hiddenSelections[] = { "front" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\cards\srp_players\srp_pl_18_co.paa" }; };
+
+    //=================================== BOOSTER PACKS
+    class IAT_BoosterPack_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Booster Pack";
+        descriptionShort = "A booster pack of cards. Roll the dice!";
+        model = "\dz\gear\cultivation\tomato_seeds_pack.p3d";
+        rotationFlags = 17;
+        quantityBar = 1;
+        itemSize[] = { 2, 2 };
+        weight = 30;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\boosterpacks\iat_boosterpack_collectibles_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 5;
+                    healthLevels[] = { {1, {"iat_collectibles\camping\data\boosterpacks\iat_boosterpack.rvmat"}}, {0.7, {"iat_collectibles\camping\data\boosterpacks\iat_boosterpack.rvmat"}}, {0.5, {"iat_collectibles\camping\data\boosterpacks\iat_boosterpack_damage.rvmat"}}, {0.3, {"iat_collectibles\camping\data\boosterpacks\iat_boosterpack_damage.rvmat"}}, {0, {"iat_collectibles\camping\data\boosterpacks\iat_boosterpack_destruct.rvmat"}} };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickup
+                {
+                    soundSet = "seedpack_pickup_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+    class IAT_BoosterPack_Collectibles_SRP_BR : IAT_BoosterPack_ColorBase
+    {
+        scope = 2;
+        color = "collectibles";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\boosterpacks\iat_boosterpack_collectibles_co.paa" };
+    };
+    class IAT_BoosterPack_PlayingCards : IAT_BoosterPack_ColorBase
+    {
+        scope = 2;
+        color = "playingcards";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\boosterpacks\iat_boosterpack_playingcards_co.paa" };
+    };
+    class IAT_BoosterPack_TarotCards : IAT_BoosterPack_ColorBase
+    {
+        scope = 2;
+        color = "tarotcards";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\boosterpacks\iat_boosterpack_tarot_co.paa" };
+    };
 };
 class CfgSlots
 {

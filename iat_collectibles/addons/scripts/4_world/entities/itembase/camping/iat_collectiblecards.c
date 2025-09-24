@@ -1,4 +1,4 @@
-class IAT_CollectibleCard_ColorBase extends ItemBase{};
+class IAT_CollectibleCard_ColorBase extends IAT_CardBase{};
 // SRP BITTERROOT
 class IAT_CollectibleCard_SRP_BR_1 extends IAT_CollectibleCard_ColorBase{};
 class IAT_CollectibleCard_SRP_BR_2 extends IAT_CollectibleCard_ColorBase{};

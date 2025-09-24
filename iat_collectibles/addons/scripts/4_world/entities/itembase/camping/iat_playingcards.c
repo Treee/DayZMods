@@ -1,5 +1,4 @@
-class IAT_PlayingCard_Colorbase extends ItemBase{};
-
+class IAT_PlayingCard_Colorbase extends IAT_CardBase{};
 class IAT_PlayingCard_A_H extends IAT_PlayingCard_Colorbase{};
 class IAT_PlayingCard_2_H extends IAT_PlayingCard_Colorbase{};
 class IAT_PlayingCard_3_H extends IAT_PlayingCard_Colorbase{};
