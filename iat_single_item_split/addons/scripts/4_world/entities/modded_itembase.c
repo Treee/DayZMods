@@ -1,0 +1,4 @@
+modded class ItemBase
+{
+
+};
