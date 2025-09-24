@@ -19,6 +19,15 @@ class IAT_CodelockPassword_BaseMenu extends UIScriptedMenu
         super.OnHide();
         GetGame().GetMission().RemoveActiveInputExcludes({"menu"},true);
     }
+    // cheap hook to let ESC close the widgets
+    override void Update(float timeslice)
+	{
+        super.Update(timeslice);
+        if (GetUApi().GetInputByID(UAUIBack).LocalPress())
+		{
+			Close();
+		}
+    }
 	// =========================================================== CUSTOM CODE
 	void ClearCodelock()
 	{
