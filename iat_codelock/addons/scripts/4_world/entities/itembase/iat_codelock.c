@@ -4,13 +4,20 @@ class IAT_Codelock_Colorbase extends ItemBase
 
 	protected IAT_MenuType m_MenuType = -1; // the current menu type that is open for this codelock
 
+	protected EffectSound m_ShockSound;
+	static protected const string ELECTRICITY_SOUND = "IAT_Codelock_Ambience_ElectricalSounds_SoundSet";
+
+	protected Particle m_ShockParticle;
+
 	protected string m_Owner_SteamId; // steam id of the lock owner
 	protected string m_Combination = "1234"; // default passcode for starters
 
-	protected bool m_IsItemLocked; // is the code lock locked? this allows for temporary open/clos
+	protected bool m_IsItemLocked; // is the code lock locked? this controls if the slot is locked
 	protected bool m_LastIsItemLocked; // tracks when the above value changes so we can sync to client only when necessary
 	protected bool m_HasFetchedId = false; // relay switch to clamp rpcs to only 1 per codelock
 	protected bool m_NeedsResyncPermissions = false; // used to trigger client to refetch codelock permissions
+	protected bool m_PlayDamageParticles = false; // used to trigger visual and audio effects on a failed attempt
+	protected bool m_LastPlayDamageParticles = false; // client side debouncer
 
 	protected float m_CodelockHealth; // hp of codelock for the UI display. hp is not normally synced to client so we have to provide that feature
 
@@ -19,6 +26,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 	void IAT_Codelock_Colorbase()
 	{
 		RegisterNetSyncVariableBool("m_IsItemLocked");
+		RegisterNetSyncVariableBool("m_PlayDamageParticles");
 		// auto toggle's back to false once signals to clients
 		RegisterNetSyncVariableBoolSignal("m_NeedsResyncPermissions");
 		RegisterNetSyncVariableFloat("m_CodelockHealth");
@@ -41,6 +49,21 @@ class IAT_Codelock_Colorbase extends ItemBase
 			SyncEvent_OnClientCodelockInfoUpdate.Invoke(this);
 			m_LastIsItemLocked = m_IsItemLocked;
 		}
+		// if this is the first time we can play particles
+		if (m_PlayDamageParticles)
+		{
+			// only play particles when there is a change
+			if (m_LastPlayDamageParticles != m_PlayDamageParticles)
+			{
+				// play audio zap
+				PlayShockSound();
+
+				// play particle zap
+				PlayShockParticle();
+			}
+		}
+		// sync the particle variables each time
+		m_LastPlayDamageParticles = m_PlayDamageParticles;
 	}
 
 	// can only grab the codelock if it is unlocked
@@ -607,6 +630,16 @@ class IAT_Codelock_Colorbase extends ItemBase
 					PlayerBase player;
 					if (Class.CastTo(player, playerIdentity.GetPlayer()))
 					{
+						// tell the client it needs to play particles
+						m_PlayDamageParticles = true;
+						SetSynchDirty();
+
+						float time = 2 * 1000; // 2 second refresher
+						GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ResetParticlesAndSounds, time, false);
+
+						// send notification to player
+						NotificationSystem.SendNotificationToPlayerIdentityExtended(playerIdentity, NotificationSystem.DEFAULT_TIME_DISPLAYED, "Incorrect Passcode", "The code entered is not correct. Make sure caps lock is not on.", "set:ccgui_enforce image:Icon40Emergency");
+
 						// get the damage amount from the config
 						int playerDamage = GetDayZGame().GetIATCodelockConfig().GetDamagePerFailedPasscodeEntry();
 						// apply it to the character
@@ -619,6 +652,40 @@ class IAT_Codelock_Colorbase extends ItemBase
 				}
 			}
 		}
+	}
+	void ResetParticlesAndSounds()
+	{
+		m_PlayDamageParticles = false;
+		SetSynchDirty();
+	}
+	void PlayShockSound()
+	{
+		if (!GetGame().IsDedicatedServer())
+		{
+			PlaySoundSet(m_ShockSound, ELECTRICITY_SOUND, 0, 1);
+		}
+	}
+	void PlayShockParticle()
+	{
+		if (!GetGame().IsDedicatedServer())
+		{
+			if (m_ShockParticle)
+			{
+				m_ShockParticle.StopParticle();
+			}
+			m_ShockParticle = ParticleManager.GetInstance().PlayOnObject(GetRandomParticleType(), this, "0 0 0");
+			m_ShockParticle.ScaleParticleParam(EmitorParam.SIZE, Math.RandomFloatInclusive(0.2, 0.5));
+			m_ShockParticle.ScaleParticleParam(EmitorParam.LIFETIME, Math.RandomFloatInclusive(1, 3));
+			m_ShockParticle.ScaleParticleParam(EmitorParam.VELOCITY, Math.RandomFloatInclusive(0.2, 0.5));
+		}
+	}
+	int GetRandomParticleType()
+	{
+		TIntArray particleTypes = new TIntArray();
+		particleTypes.Insert(ParticleList.FIREWORKS_EXPLOSION_YELLOW);
+		particleTypes.Insert(ParticleList.FIREWORKS_EXPLOSION_BLUE);
+		particleTypes.Insert(ParticleList.EASTER_EGG_ACTIVATE);
+		return particleTypes.GetRandomElement();
 	}
 	void ClearCodelock()
 	{
@@ -666,5 +733,9 @@ class IAT_Codelock_DebugNoOwner extends IAT_Codelock_Colorbase
 	{
 		// debug code for testing as a solo player
 		super.AssignLockTo("TEST_STEAMID");
+
+		// unlock the codelock
+		// m_IsItemLocked = false;
+		// SetSynchDirty();
 	}
 };
