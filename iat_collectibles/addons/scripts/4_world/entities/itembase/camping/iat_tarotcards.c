@@ -1,4 +1,4 @@
-class IAT_TarotCard_Colorbase extends ItemBase{};
+class IAT_TarotCard_Colorbase extends IAT_CardBase{};
 
 class IAT_TarotCard_C_1 extends IAT_TarotCard_Colorbase{};
 class IAT_TarotCard_C_2 extends IAT_TarotCard_Colorbase{};
