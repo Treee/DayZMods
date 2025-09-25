@@ -50,6 +50,11 @@ class CfgSoundShaders
 	{
 		samples[] = { {"iat_structures\sounds\portal\portal_maxpower.ogg",1} };
 	};
+
+	class IAT_Mods_Ambience_BellSounds_SoundShader : IAT_Mods_Ambience_SoundShader_Base
+	{
+		samples[] = { {"iat_structures\sounds\belltower\belltower.ogg",1} };
+	};
 };
 class CfgSoundSets
 {
@@ -69,5 +74,10 @@ class CfgSoundSets
 	class IAT_Mods_Ambience_PortalSounds_Steampunk_PowerMax_SoundSet
 	{
 		soundShaders[] = { "IAT_Mods_Ambience_PortalSounds_Steampunk_PowerMax_SoundShader" };
+	};
+
+	class IAT_Mods_Ambience_BellSounds_SoundShader_SoundSet
+	{
+		soundShaders[] = { "IAT_Mods_Ambience_BellSounds_SoundShader" };
 	};
 };

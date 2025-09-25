@@ -5,5 +5,6 @@ modded class ActionConstructor
 		super.RegisterActions(actions);
 
 		actions.Insert(IAT_ActionTurnOnPortalSteampunk);
+		actions.Insert(IAT_ActionRingBellTower);
 	}
 };
