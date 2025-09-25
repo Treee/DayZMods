@@ -12,9 +12,14 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Single Item Split";
-		dependencies[] = { "World","Mission" };
+		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{
+			class gameScriptModule
+			{
+				value = "";
+				files[] = { "iat_single_item_split/scripts/3_game" };
+			};
 			class worldScriptModule
 			{
 				value = "";
