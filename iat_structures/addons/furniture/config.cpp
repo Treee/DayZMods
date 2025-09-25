@@ -336,4 +336,13 @@ class CfgVehicles
             };
         };
     };
+
+    class StaticObj_Furniture_TownBell_Default : HouseNoDestruct
+    {
+        scope = 1;
+        displayName = "Town Bell";
+        model = "iat_structures\furniture\iat_townbell.p3d";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_structures\furniture\data\iat_townbell_co.paa" };
+    };
 };

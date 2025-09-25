@@ -1,8 +1,8 @@
-class IAT_ActionTurnOnPortalSteampunk extends ActionInteractBase
+class IAT_ActionRingBellTower extends ActionInteractBase
 {
-	void IAT_ActionTurnOnPortalSteampunk()
+	void IAT_ActionRingBellTower()
 	{
-		m_Text = "#switch_on";
+		m_Text = "Ring Bell Tower";
 	}
 
 	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
@@ -15,12 +15,12 @@ class IAT_ActionTurnOnPortalSteampunk extends ActionInteractBase
 		Object targetObject;
 		if (Class.CastTo(targetObject, target.GetObject()))
 		{
-			// get the portal
-			StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog portal;
-			if (Class.CastTo(portal, targetObject))
+			// get the belltower
+			IAT_BellTower_ColorBase bellTower;
+			if (Class.CastTo(bellTower, targetObject))
 			{
 				// if we have an energy manager AND can switch on
-				if (portal.CanSwitchOn())
+				if (bellTower.CanRingTower())
 				{
 					return true;
 				}
@@ -34,8 +34,11 @@ class IAT_ActionTurnOnPortalSteampunk extends ActionInteractBase
 		Object targetObject = action_data.m_Target.GetObject();
 		if (targetObject)
 		{
-			EntityAI target_EAI = EntityAI.Cast( targetObject );
-			target_EAI.GetCompEM().SwitchOn();
+			IAT_BellTower_ColorBase bellTower;
+			if (Class.CastTo(bellTower, targetObject))
+			{
+      			bellTower.RingBellTower();
+			}
 		}
 	}
 };
