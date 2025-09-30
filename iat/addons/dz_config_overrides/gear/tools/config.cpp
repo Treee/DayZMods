@@ -67,4 +67,9 @@ class CfgVehicles
 	{
 		inventorySlot[] += { "Backpack_1" };
 	};
+	class ElectronicRepairKit : Inventory_Base
+	{
+		canBeSplit = 1;
+		weight = 10;
+	};
 };
