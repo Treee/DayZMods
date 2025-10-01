@@ -43,7 +43,6 @@ class IAT_ActionSetAnchorTeleporter: ActionSingleUseBase
 		{
 			// set the main anchor object on the hammer
 			linker.SetBaseTeleporterAnchor(action_data.m_Target.GetObject());
-			linker.SetSynchDirty();
 			// have the server side memory config update itself
 			linker.UpdateAnchorTeleporter();
 		}
