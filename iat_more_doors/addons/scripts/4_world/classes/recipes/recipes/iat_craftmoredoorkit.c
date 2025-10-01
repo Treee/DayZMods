@@ -24,16 +24,16 @@ class IAT_CraftMoreDoorKit extends RecipeBase
 
 		m_IngredientAddHealth[0]			= 0;				// 0 = do nothing
 		m_IngredientSetHealth[0]			= -1;				// -1 = do nothing
-		m_IngredientAddQuantity[0]			= -1;				// 0 = do nothing
-		m_IngredientDestroy[0]				= true;				// true = destroy, false = do nothing
+		m_IngredientAddQuantity[0]			= -70;				// 0 = do nothing
+		m_IngredientDestroy[0]				= false;				// true = destroy, false = do nothing
 
 		//ingredient 2
 		InsertIngredient(1,"WoodenPlank");
 
 		m_IngredientAddHealth[1]			= 0;
 		m_IngredientSetHealth[1]			= -1;
-		m_IngredientAddQuantity[1]			= -20;
-		m_IngredientDestroy[1]				= true;
+		m_IngredientAddQuantity[1]			= -10;
+		m_IngredientDestroy[1]				= false;
 
 		//----------------------------------------------------------------------------------------------------------------------
 		//RESULTS
