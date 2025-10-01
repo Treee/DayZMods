@@ -1,11 +1,13 @@
 class IAT_TeleportLinker_Basic extends ItemBase
 {
-	protected Object m_BaseTeleportAnchor;
+	protected bool m_HasAnchor = false;
+
+	protected string m_AnchorTypeName = "";
+	protected vector m_AnchorPosition = vector.Zero;
 
 	void IAT_TeleportLinker_Basic()
 	{
-		// this way other clients can interact with the hammer too if needed
-		RegisterNetSyncVariableObject("m_BaseTeleportAnchor");
+		RegisterNetSyncVariableBool("m_HasAnchor");
 	}
 
 	override void OnVariablesSynchronized()
@@ -35,40 +37,36 @@ class IAT_TeleportLinker_Basic extends ItemBase
 	void ClearTeleporterDestinations()
 	{
 		GetDayZGame().IAT_ClearTeleporterDestinations(GetBaseTeleporterTypeName(), GetBaseTeleporterAnchorPosition());
+		m_HasAnchor = false;
+		SetSynchDirty();
 	}
 
 	bool HasAnchorTeleport()
 	{
-		return m_BaseTeleportAnchor != null;
+		return m_HasAnchor;
 	}
 
 	bool IsSameObject(Object other)
 	{
-		return m_BaseTeleportAnchor == other;
+		return m_AnchorTypeName == other.GetType();
 	}
 	// ======================================= SETTERS & GETTERS
-
-	Object GetBaseTeleporterAnchor()
-	{
-		return m_BaseTeleportAnchor;
-	}
-
 	void SetBaseTeleporterAnchor(Object anchor)
 	{
-		m_BaseTeleportAnchor = anchor;
+		if (GetGame().IsDedicatedServer())
+		{
+			m_HasAnchor = true;
+			m_AnchorTypeName = anchor.GetType();
+			m_AnchorPosition = anchor.GetPosition();
+			SetSynchDirty();
+		}
 	}
-
 	string GetBaseTeleporterTypeName()
 	{
-		if (m_BaseTeleportAnchor)
-			return m_BaseTeleportAnchor.GetType();
-		return "null";
+		return m_AnchorTypeName;
 	}
-
 	vector GetBaseTeleporterAnchorPosition()
 	{
-		if (m_BaseTeleportAnchor)
-			return m_BaseTeleportAnchor.GetPosition();
-		return "0 0 0";
+		return m_AnchorPosition;
 	}
 }
