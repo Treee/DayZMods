@@ -468,7 +468,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 			case "SledgeHammer":
 			case "Pickaxe":
 			case "Iceaxe":
-				return 5;
+				return 2;
 			case "Wrench":
 			case "Screwdriver":
 			case "MeatTenderizer":
@@ -506,6 +506,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 					// ore chance is above 100% (high intensity)
 					if (chance > 1)
 					{
+						// Print("super ore, spawn it with no chance");
 						// spawn ore here on playerPosition
 						shouldSpawnOre = true;
 					}
@@ -517,6 +518,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 						* we are just going to do it this way because its easier atm
 						*/
 						// if the roll is less than the chance
+						// PrintFormat("Random Roll: %1 OreChance: %2", oreChanceRoll, chance);
 						if (oreChanceRoll < chance)
 						{
 							// spawn ore here on playerPosition
@@ -616,22 +618,21 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 			case "SledgeHammer":
 			case "Pickaxe":
 			case "Iceaxe":
-				return 10;
+				return 20;
 			case "Wrench":
 			case "Screwdriver":
 			case "MeatTenderizer":
-				return 2;
+				return 4;
 			case "PipeWrench":
 			case "Crowbar":
-				return 3;
+				return 6;
 			case "Hammer":
 			case "Mace":
-				return 5;
+				return 10;
 			case "IAT_AdminPickaxe":
 				return 5000;
 			}
 		}
-
 		return 25;
 	}
 	// controls of this object can trigger the mining action

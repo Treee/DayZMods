@@ -83,6 +83,60 @@ modded class PlayerBase
 			}
 		}
 	}
+	void StartTeleportTransitionEffects()
+	{
+        if(!GetGame().IsDedicatedServer())
+		{
+            if(IsControlledPlayer())
+		    {
+                PPERequester_IAT_MiningTunnels ppeRequester;
+				if (Class.CastTo(ppeRequester, PPERequesterBank.GetRequester(PPERequester_IAT_MiningTunnels)))
+				{
+                    ppeRequester.Start();
+				}
+            }
+            GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(StopTeleportTransitionEffects,15000,false);
+        }
+	}
+	void StopTeleportTransitionEffects()
+	{
+		if(!GetGame().IsDedicatedServer())
+		{
+            if(IsControlledPlayer())
+		    {
+                PPERequester_IAT_MiningTunnels ppeRequester;
+				if (Class.CastTo(ppeRequester, PPERequesterBank.GetRequester(PPERequester_IAT_MiningTunnels)))
+				{
+                    if (ppeRequester.IsRequesterRunning())
+					{
+						ppeRequester.Stop();
+					}
+				}
+            }
+        }
+	}
+	// need to freeze the players after a teleport to ensure everything is loaded in
+	void IAT_FreezePlayerAfterTeleport(int delay)
+	{
+		if (delay > 0)
+		{
+			bool repeat = false;
+			// freeze the player after a bit of time after they teleport so stuff can load in
+			GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(FreezePlayerOnDescend, 2000, repeat);
+
+			// unfreeze the player after load
+			int time = delay * 1000;
+			GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(UnFreezePlayerOnDescend, time, repeat);
+		}
+	}
+	void FreezePlayerOnDescend()
+	{
+		DisableSimulation(true);
+	}
+	void UnFreezePlayerOnDescend()
+	{
+		DisableSimulation(false);
+	}
 	void AllowPlayerToInteractWithExit()
 	{
 		int time = 1000 * 10; // 1000ms x 10 seconds
