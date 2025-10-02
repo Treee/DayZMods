@@ -616,22 +616,21 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 			case "SledgeHammer":
 			case "Pickaxe":
 			case "Iceaxe":
-				return 10;
+				return 20;
 			case "Wrench":
 			case "Screwdriver":
 			case "MeatTenderizer":
-				return 2;
+				return 4;
 			case "PipeWrench":
 			case "Crowbar":
-				return 3;
+				return 6;
 			case "Hammer":
 			case "Mace":
-				return 5;
+				return 10;
 			case "IAT_AdminPickaxe":
 				return 5000;
 			}
 		}
-
 		return 25;
 	}
 	// controls of this object can trigger the mining action
