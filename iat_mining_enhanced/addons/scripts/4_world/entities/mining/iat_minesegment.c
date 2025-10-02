@@ -468,7 +468,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 			case "SledgeHammer":
 			case "Pickaxe":
 			case "Iceaxe":
-				return 5;
+				return 2;
 			case "Wrench":
 			case "Screwdriver":
 			case "MeatTenderizer":

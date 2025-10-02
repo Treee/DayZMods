@@ -15,7 +15,7 @@ class PPERequester_IAT_MiningTunnels extends PPERequester_GameplayBase
 
 		if(!m_DeltaSwap)
 		{
-			m_Value -= delta * 5;
+			m_Value -= delta * 7.5;
 			if(m_Value <= -10)
 			{
 				m_DeltaSwap = true;

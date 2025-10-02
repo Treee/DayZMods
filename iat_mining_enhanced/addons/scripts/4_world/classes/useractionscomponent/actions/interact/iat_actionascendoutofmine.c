@@ -50,6 +50,7 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 					action_data.m_Player.SetInteractMineFalse();
 					// teleported
 					// Print("teleported");
+					NotificationSystem.SendNotificationToPlayerIdentityExtended(action_data.m_Player.GetIdentity(), NotificationSystem.DEFAULT_TIME_DISPLAYED, "Player Teleported", "You are crawling out of the mining tunnels and your eyes are adjusting to the light.", "set:ccgui_enforce image:Icon40Emergency");
 				}
 			}
 		}
