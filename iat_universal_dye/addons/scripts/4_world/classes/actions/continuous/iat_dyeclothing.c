@@ -129,6 +129,8 @@ class IAT_DyeObject: ActionContinuousBase
 						newItemSpawn.SetHealth(old_hp);
 						// consume the item
 						dye.AddQuantity(-100);
+						// delete old item
+						target_clothing.DeleteSafe();
 					}
 				}
 			}
