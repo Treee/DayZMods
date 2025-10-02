@@ -506,6 +506,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 					// ore chance is above 100% (high intensity)
 					if (chance > 1)
 					{
+						// Print("super ore, spawn it with no chance");
 						// spawn ore here on playerPosition
 						shouldSpawnOre = true;
 					}
@@ -517,6 +518,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 						* we are just going to do it this way because its easier atm
 						*/
 						// if the roll is less than the chance
+						// PrintFormat("Random Roll: %1 OreChance: %2", oreChanceRoll, chance);
 						if (oreChanceRoll < chance)
 						{
 							// spawn ore here on playerPosition

@@ -32,9 +32,9 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 		return false;
 	}
 
-	override void OnStartServer(ActionData action_data)
+	override void OnEndServer(ActionData action_data)
 	{
-		super.OnStartServer(action_data);
+		super.OnEndServer(action_data);
 
 		land_iat_miningsegment_junction mineJunction;
 		if (Class.CastTo(mineJunction, action_data.m_Target.GetObject()))
@@ -45,7 +45,7 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 				if (destination != vector.Zero)
 				{
 					// teleport the player
-					MiscGameplayFunctions.IAT_Mining_TeleportCheck(action_data.m_Player, destination);
+					MiscGameplayFunctions.IAT_Mining_TeleportCheck(action_data.m_Player, destination, 15);
 					// set the timer to allow teleporting back
 					action_data.m_Player.SetInteractMineFalse();
 					// teleported
@@ -55,14 +55,15 @@ class IAT_ActionAscendOutOfMine extends ActionInteractBase
 		}
 	}
 
-	override void OnEndClient(ActionData action_data)
+	override void OnStartClient(ActionData action_data)
 	{
-		super.OnEndClient(action_data);
+		super.OnStartClient(action_data);
 
 		// start underground ambient music loop
 		PlayerBase player;
 		if (Class.CastTo(player, action_data.m_Player))
 		{
+			player.StartTeleportTransitionEffects();
 			player.UpdateUndergroundVisualEffects(false);
 		}
 	}
