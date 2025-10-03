@@ -1,6 +1,6 @@
 modded class TerritoryFlag
 {
-    protected float m_IAT_LastPhase = -1;
+    protected bool m_IgnoreDetached = false;
 
     // =========================================================== VANILLA OVERRIDE
     override bool CanReceiveAttachment( EntityAI attachment, int slotId )
@@ -17,6 +17,20 @@ modded class TerritoryFlag
         return super.CanReceiveAttachment(attachment, slotId);
     }
 
+    override void EEItemDetached( EntityAI item, string slot_name )
+	{
+        ItemBase attachedItem;
+        if (Class.CastTo(attachedItem, item))
+        {
+            // is this item something that can satisfy the flag tax
+            if (attachedItem.IAT_IsFlagTaxItem())
+            {
+                m_IgnoreDetached = true;
+            }
+        }
+        super.EEItemDetached(item, slot_name);
+    }
+
     /*
     * We need to override these 2 functions because vanilla resets the animation
     * when an item is detached from the totem (because in vanilla only a flag can be attached)
@@ -25,16 +39,13 @@ modded class TerritoryFlag
     */
     override void AnimateFlagEx(float delta, PlayerBase player = null)
     {
-        // get the last state this flag was at
-        m_IAT_LastPhase = GetAnimationPhase("flag_mast");
-
-        // if we are being forced into the fully lowered state
-        if (delta == 1 && m_IAT_LastPhase <= 0.2)
+        // ignore stone tax detached animations
+        if (m_IgnoreDetached)
         {
-            // if there is a flag attached, ignore the animation call
-            if (HasFlagAttached())
-                return;
+            m_IgnoreDetached = false;
+            return;
         }
+
         // preserve the call chain
         super.AnimateFlagEx(delta, player);
     }
