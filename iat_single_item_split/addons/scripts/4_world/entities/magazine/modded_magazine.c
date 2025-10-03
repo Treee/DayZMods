@@ -24,8 +24,7 @@ modded class Ammunition_Base
 		}
 	}
 
-
-	void SplitSingleItemToInventoryLocation( notnull InventoryLocation dst )
+	override void SplitSingleItemToInventoryLocation( notnull InventoryLocation dst )
 	{
 		if ( !CanBeSplit() )
 			return;
