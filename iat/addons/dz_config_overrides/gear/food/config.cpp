@@ -151,4 +151,25 @@ class CfgVehicles
 		model = "\dz\gear\food\human_meat.p3d";
 		itemSize[] = { 1,2 };
 	};
+
+	class Banana : Edible_Base
+	{
+		displayName = "Banana";
+		descriptionShort = "A banana.";
+	};
+	class Orange : Edible_Base
+	{
+		displayName = "Orange";
+		descriptionShort = "An orange.";
+	};
+	class Kiwi : Edible_Base
+	{
+		displayName = "Kiwi";
+		descriptionShort = "A kiwi.";
+	};
+	class Cannabis : Edible_Base
+	{
+		displayName = "Cannabis";
+		descriptionShort = "A bud of cannabis.";
+	};
 };
