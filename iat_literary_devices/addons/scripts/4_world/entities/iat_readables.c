@@ -147,12 +147,12 @@ class IAT_LiteraryDevices_Notebook_ColorBase extends ItemBook
         }
         return false;
     }
-    override void SetActions()
-	{
-		super.SetActions();
+    // override void SetActions()
+	// {
+	// 	super.SetActions();
 
-		AddAction(IAT_ActionSelectReadNote);
-	}
+	// 	AddAction(IAT_ActionSelectReadNote);
+	// }
 //========================================= CUSTOM STUFF
     int GetReadableNotesCount()
     {
