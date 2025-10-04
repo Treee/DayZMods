@@ -1,5 +1,5 @@
 // ========================================================== PLAYING CARDDECK
-class IAT_CardDeck_Colorbase extends ItemBase
+class IAT_CardDeck_ColorBase extends ItemBase
 {
 	//Debug menu Spawn Ground Special
 	override void OnDebugSpawn()
@@ -7,10 +7,10 @@ class IAT_CardDeck_Colorbase extends ItemBase
 		GameInventory inventory = GetInventory();
 	}
 };
-class IAT_CardDeck_Basic extends IAT_CardDeck_Colorbase{};
+class IAT_CardDeck_Basic extends IAT_CardDeck_ColorBase{};
 
 // ========================================================== TAROT CARDDECK
-class IAT_TarotCardDeck_Colorbase extends ItemBase
+class IAT_TarotCardDeck_ColorBase extends ItemBase
 {
 	//Debug menu Spawn Ground Special
 	override void OnDebugSpawn()
@@ -19,11 +19,11 @@ class IAT_TarotCardDeck_Colorbase extends ItemBase
 		// inventory.CreateAttachment("IAT_TarotCard_1w");
 	}
 };
-class IAT_TarotCardDeck_Basic extends IAT_TarotCardDeck_Colorbase{};
-class IAT_TarotCardDeck_essesentiendum extends IAT_TarotCardDeck_Colorbase{};
+class IAT_TarotCardDeck_Basic extends IAT_TarotCardDeck_ColorBase{};
+class IAT_TarotCardDeck_essesentiendum extends IAT_TarotCardDeck_ColorBase{};
 
 // ========================================================== COLLECTIBLE CARDDECK
-class IAT_CollectibleDeck_Colorbase extends Container_Base
+class IAT_CollectibleDeck_ColorBase extends Container_Base
 {
 	//Debug menu Spawn Ground Special
 	override void OnDebugSpawn()
@@ -54,4 +54,4 @@ class IAT_CollectibleDeck_Colorbase extends Container_Base
 		return false;
 	}
 };
-class IAT_CollectibleDeck_Basic extends IAT_CollectibleDeck_Colorbase{};
+class IAT_CollectibleDeck_Basic extends IAT_CollectibleDeck_ColorBase{};

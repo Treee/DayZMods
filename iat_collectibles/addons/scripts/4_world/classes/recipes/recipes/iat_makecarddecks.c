@@ -57,7 +57,7 @@ class IAT_CreateDeck_PlayingCards extends IAT_CreateDeck_Base
 		super.Init();
 		m_Name = "Create Playing Card Deck";
 
-		InsertIngredient(0,"IAT_PlayingCard_Colorbase");		// you can insert multiple ingredients this way
+		InsertIngredient(0,"IAT_PlayingCard_ColorBase");		// you can insert multiple ingredients this way
 
 		AddResult("IAT_CardDeck_Basic");									// add results here
 	}
@@ -69,7 +69,7 @@ class IAT_CreateDeck_TarotCards extends IAT_CreateDeck_Base
 		super.Init();
 		m_Name = "Create Tarot Card Deck";
 
-		InsertIngredient(0,"IAT_TarotCard_Colorbase");		// you can insert multiple ingredients this way
+		InsertIngredient(0,"IAT_TarotCard_ColorBase");		// you can insert multiple ingredients this way
 
 		AddResult("IAT_TarotCardDeck_Basic");									// add results here
 	}
