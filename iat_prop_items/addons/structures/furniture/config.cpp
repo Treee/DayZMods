@@ -28,8 +28,13 @@ class CfgVehicles
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_prop_items\structures\furniture\data\iat_occulttable_essesentiendum_co.paa" };
     };
-};
 
+    class IAT_NeonSign_TheStash : HouseNoDestruct
+    {
+        scope = 1;
+        model = "iat_prop_items\structures\furniture\iat_neonsign_thestash.p3d";
+    };
+};
 
 class CfgSlots
 {
