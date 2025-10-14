@@ -63,6 +63,7 @@ class CfgVehicles
     class IAT_Bear_TigerCamo : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_woodhouse_co.paa" }; };
     class IAT_Bear_Liam : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_liam_co.paa" }; };
     class IAT_Bear_Deadpool : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_deadpool_co.paa" }; };
+    class IAT_Bear_BlueBeary : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_bluebeary_co.paa" }; };
 
     //=================================== PLAYING CARDS
     class IAT_CardDeck_ColorBase : Inventory_Base

@@ -10,3 +10,4 @@ class IAT_Bear_Rainbow extends IAT_Bear_ColorBase{};
 class IAT_Bear_TigerCamo extends IAT_Bear_ColorBase{};
 class IAT_Bear_Liam extends IAT_Bear_ColorBase{};
 class IAT_Bear_Deadpool extends IAT_Bear_ColorBase{};
+class IAT_Bear_BlueBeary extends IAT_Bear_ColorBase{};
