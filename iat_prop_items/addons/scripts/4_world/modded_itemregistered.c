@@ -29,5 +29,6 @@ modded class ModItemRegisterCallbacks
 
         //====================================================
         pType.AddItemInHandsProfileIK("IAT_Gramaphone_Colorbase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/sea_chest.anm");
+        pType.AddItemInHandsProfileIK("IAT_Pot_ColorBase","dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/55galDrum.anm");
     }
 };
