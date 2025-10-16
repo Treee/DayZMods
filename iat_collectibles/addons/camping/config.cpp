@@ -812,6 +812,745 @@ class CfgVehicles
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\boosterpacks\iat_boosterpack_tarot_co.paa" };
     };
+
+    class IAT_BoosterPack_VinylCover : IAT_BoosterPack_ColorBase
+    {
+        scope = 2;
+        model = "iat_collectibles\camping\iat_vinylcover.p3d";
+        displayName = "Vinyl Covers";
+        color = "vinylcover";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinylcardboard_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 5;
+                    healthLevels[] = { {1, {"iat_collectibles\camping\data\vinyls\iat_vinylcover.rvmat"}}, {0.7, {"iat_collectibles\camping\data\vinyls\iat_vinylcover.rvmat"}}, {0.5, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_damage.rvmat"}}, {0.3, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_damage.rvmat"}}, {0, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_destruct.rvmat"}} };
+                };
+            };
+        };
+    };
+    class IAT_BoosterPack_VinylRecordArt : IAT_BoosterPack_ColorBase
+    {
+        scope = 2;
+        model = "iat_collectibles\camping\iat_vinylcover.p3d";
+        displayName = "Vinyl Record Artwork";
+        color = "vinylrecordart";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinylcardboard_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 5;
+                    healthLevels[] = { {1, {"iat_collectibles\camping\data\vinyls\iat_vinylcover.rvmat"}}, {0.7, {"iat_collectibles\camping\data\vinyls\iat_vinylcover.rvmat"}}, {0.5, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_damage.rvmat"}}, {0.3, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_damage.rvmat"}}, {0, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_destruct.rvmat"}} };
+                };
+            };
+        };
+    };
+
+    //=================================== VINYL COVERS
+    class IAT_VinylCover_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Vinyl Cover";
+        descriptionShort = "A cardboard cover for a vinyl record.";
+        model = "iat_collectibles\camping\iat_vinylcover.p3d";
+        weight = 2;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 1, 1 };
+        itemsCargoSize[] = { 0,0 };
+        inventorySlot[] = { };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_01_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 50;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\vinyls\iat_vinylcover.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\vinyls\iat_vinylcover.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\vinyls\iat_vinylcover_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+    class IAT_VinylRecord_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Vinyl Record";
+        descriptionShort = "A vinyl record.";
+        model = "iat_collectibles\camping\iat_vinyl_normal.p3d";
+        weight = 2;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 1, 1 };
+        itemsCargoSize[] = { 0,0 };
+        inventorySlot[] = { };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinylcenter_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 50;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\vinyls\iat_vinyl.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\vinyls\iat_vinyl.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\vinyls\iat_vinyl_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\vinyls\iat_vinyl_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\vinyls\iat_vinyl_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+    class IAT_VinylRecordArt_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Artistic Vinyl Record";
+        descriptionShort = "A vinyl record with the artwork overlayed on the vinyl.";
+        model = "iat_collectibles\camping\iat_vinyl_art.p3d";
+        weight = 2;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 1, 1 };
+        itemsCargoSize[] = { 0,0 };
+        inventorySlot[] = { };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_01_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 50;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\vinyls\iat_vinyl.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\vinyls\iat_vinyl.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\vinyls\iat_vinyl_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\vinyls\iat_vinyl_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\vinyls\iat_vinyl_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+
+    class IAT_VinylRecord_Default : IAT_VinylRecord_ColorBase { scope = 2; };
+
+    // SET 1
+    class IAT_VinylCover_01 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_01_co.paa" }; };
+    class IAT_VinylRecordArt_01 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_01_co.paa" }; };
+    class IAT_VinylCover_02 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_02_co.paa" }; };
+    class IAT_VinylRecordArt_02 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_02_co.paa" }; };
+    class IAT_VinylCover_03 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_03_co.paa" }; };
+    class IAT_VinylRecordArt_03 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_03_co.paa" }; };
+    class IAT_VinylCover_04 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_04_co.paa" }; };
+    class IAT_VinylRecordArt_04 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_04_co.paa" }; };
+    class IAT_VinylCover_05 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_05_co.paa" }; };
+    class IAT_VinylRecordArt_05 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_05_co.paa" }; };
+    class IAT_VinylCover_06 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_06_co.paa" }; };
+    class IAT_VinylRecordArt_06 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_06_co.paa" }; };
+    class IAT_VinylCover_07 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_07_co.paa" }; };
+    class IAT_VinylRecordArt_07 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_07_co.paa" }; };
+    class IAT_VinylCover_08 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_08_co.paa" }; };
+    class IAT_VinylRecordArt_08 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_08_co.paa" }; };
+    class IAT_VinylCover_09 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_09_co.paa" }; };
+    class IAT_VinylRecordArt_09 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_09_co.paa" }; };
+    class IAT_VinylCover_10 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_10_co.paa" }; };
+    class IAT_VinylRecordArt_10 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_10_co.paa" }; };
+    class IAT_VinylCover_11 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_11_co.paa" }; };
+    class IAT_VinylRecordArt_11 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_11_co.paa" }; };
+    class IAT_VinylCover_12 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_12_co.paa" }; };
+    class IAT_VinylRecordArt_12 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_12_co.paa" }; };
+    class IAT_VinylCover_13 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_13_co.paa" }; };
+    class IAT_VinylRecordArt_13 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_13_co.paa" }; };
+    class IAT_VinylCover_14 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_14_co.paa" }; };
+    class IAT_VinylRecordArt_14 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_14_co.paa" }; };
+    class IAT_VinylCover_15 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_15_co.paa" }; };
+    class IAT_VinylRecordArt_15 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_15_co.paa" }; };
+    class IAT_VinylCover_16 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_16_co.paa" }; };
+    class IAT_VinylRecordArt_16 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_16_co.paa" }; };
+    class IAT_VinylCover_17 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_17_co.paa" }; };
+    class IAT_VinylRecordArt_17 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_17_co.paa" }; };
+    class IAT_VinylCover_18 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_18_co.paa" }; };
+    class IAT_VinylRecordArt_18 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_18_co.paa" }; };
+    class IAT_VinylCover_19 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_19_co.paa" }; };
+    class IAT_VinylRecordArt_19 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_19_co.paa" }; };
+    class IAT_VinylCover_20 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_20_co.paa" }; };
+    class IAT_VinylRecordArt_20 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_20_co.paa" }; };
+    class IAT_VinylCover_21 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_21_co.paa" }; };
+    class IAT_VinylRecordArt_21 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_21_co.paa" }; };
+    class IAT_VinylCover_22 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_22_co.paa" }; };
+    class IAT_VinylRecordArt_22 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_22_co.paa" }; };
+    class IAT_VinylCover_23 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_23_co.paa" }; };
+    class IAT_VinylRecordArt_23 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_23_co.paa" }; };
+    class IAT_VinylCover_24 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_24_co.paa" }; };
+    class IAT_VinylRecordArt_24 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_24_co.paa" }; };
+    class IAT_VinylCover_25 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_25_co.paa" }; };
+    class IAT_VinylRecordArt_25 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_25_co.paa" }; };
+    class IAT_VinylCover_26 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_26_co.paa" }; };
+    class IAT_VinylRecordArt_26 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_26_co.paa" }; };
+    class IAT_VinylCover_27 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_27_co.paa" }; };
+    class IAT_VinylRecordArt_27 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_27_co.paa" }; };
+    class IAT_VinylCover_28 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_28_co.paa" }; };
+    class IAT_VinylRecordArt_28 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_28_co.paa" }; };
+    class IAT_VinylCover_29 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_29_co.paa" }; };
+    class IAT_VinylRecordArt_29 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_29_co.paa" }; };
+    class IAT_VinylCover_30 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_30_co.paa" }; };
+    class IAT_VinylRecordArt_30 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_30_co.paa" }; };
+    class IAT_VinylCover_31 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_31_co.paa" }; };
+    class IAT_VinylRecordArt_31 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_31_co.paa" }; };
+    class IAT_VinylCover_32 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_32_co.paa" }; };
+    class IAT_VinylRecordArt_32 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_32_co.paa" }; };
+    class IAT_VinylCover_33 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_33_co.paa" }; };
+    class IAT_VinylRecordArt_33 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_33_co.paa" }; };
+    class IAT_VinylCover_34 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_34_co.paa" }; };
+    class IAT_VinylRecordArt_34 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_34_co.paa" }; };
+    class IAT_VinylCover_35 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_35_co.paa" }; };
+    class IAT_VinylRecordArt_35 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_35_co.paa" }; };
+    class IAT_VinylCover_36 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_36_co.paa" }; };
+    class IAT_VinylRecordArt_36 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_36_co.paa" }; };
+    class IAT_VinylCover_37 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_37_co.paa" }; };
+    class IAT_VinylRecordArt_37 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_37_co.paa" }; };
+    class IAT_VinylCover_38 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_38_co.paa" }; };
+    class IAT_VinylRecordArt_38 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_38_co.paa" }; };
+    class IAT_VinylCover_39 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_39_co.paa" }; };
+    class IAT_VinylRecordArt_39 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_39_co.paa" }; };
+    class IAT_VinylCover_40 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_40_co.paa" }; };
+    class IAT_VinylRecordArt_40 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_40_co.paa" }; };
+    class IAT_VinylCover_41 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_41_co.paa" }; };
+    class IAT_VinylRecordArt_41 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_41_co.paa" }; };
+    class IAT_VinylCover_42 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_42_co.paa" }; };
+    class IAT_VinylRecordArt_42 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_42_co.paa" }; };
+    class IAT_VinylCover_43 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_43_co.paa" }; };
+    class IAT_VinylRecordArt_43 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_43_co.paa" }; };
+    class IAT_VinylCover_44 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_44_co.paa" }; };
+    class IAT_VinylRecordArt_44 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_44_co.paa" }; };
+    class IAT_VinylCover_45 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_45_co.paa" }; };
+    class IAT_VinylRecordArt_45 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_45_co.paa" }; };
+    class IAT_VinylCover_46 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_46_co.paa" }; };
+    class IAT_VinylRecordArt_46 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_46_co.paa" }; };
+    class IAT_VinylCover_47 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_47_co.paa" }; };
+    class IAT_VinylRecordArt_47 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_47_co.paa" }; };
+    class IAT_VinylCover_48 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_48_co.paa" }; };
+    class IAT_VinylRecordArt_48 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_48_co.paa" }; };
+    class IAT_VinylCover_49 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_49_co.paa" }; };
+    class IAT_VinylRecordArt_49 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_49_co.paa" }; };
+    class IAT_VinylCover_50 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 1 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_50_co.paa" }; };
+    class IAT_VinylRecordArt_50 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 1 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_50_co.paa" }; };
+
+    // SET 2
+    class IAT_VinylCover_51 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_51_co.paa" }; };
+    class IAT_VinylRecordArt_51 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_51_co.paa" }; };
+    class IAT_VinylCover_52 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_52_co.paa" }; };
+    class IAT_VinylRecordArt_52 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_52_co.paa" }; };
+    class IAT_VinylCover_53 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_53_co.paa" }; };
+    class IAT_VinylRecordArt_53 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_53_co.paa" }; };
+    class IAT_VinylCover_54 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_54_co.paa" }; };
+    class IAT_VinylRecordArt_54 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_54_co.paa" }; };
+    class IAT_VinylCover_55 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_55_co.paa" }; };
+    class IAT_VinylRecordArt_55 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_55_co.paa" }; };
+    class IAT_VinylCover_56 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_56_co.paa" }; };
+    class IAT_VinylRecordArt_56 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_56_co.paa" }; };
+    class IAT_VinylCover_57 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_57_co.paa" }; };
+    class IAT_VinylRecordArt_57 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_57_co.paa" }; };
+    class IAT_VinylCover_58 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_58_co.paa" }; };
+    class IAT_VinylRecordArt_58 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_58_co.paa" }; };
+    class IAT_VinylCover_59 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_59_co.paa" }; };
+    class IAT_VinylRecordArt_59 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_59_co.paa" }; };
+    class IAT_VinylCover_60 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_60_co.paa" }; };
+    class IAT_VinylRecordArt_60 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_60_co.paa" }; };
+    class IAT_VinylCover_61 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_61_co.paa" }; };
+    class IAT_VinylRecordArt_61 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_61_co.paa" }; };
+    class IAT_VinylCover_62 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_62_co.paa" }; };
+    class IAT_VinylRecordArt_62 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_62_co.paa" }; };
+    class IAT_VinylCover_63 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_63_co.paa" }; };
+    class IAT_VinylRecordArt_63 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_63_co.paa" }; };
+    class IAT_VinylCover_64 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_64_co.paa" }; };
+    class IAT_VinylRecordArt_64 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_64_co.paa" }; };
+    class IAT_VinylCover_65 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_65_co.paa" }; };
+    class IAT_VinylRecordArt_65 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_65_co.paa" }; };
+    class IAT_VinylCover_66 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_66_co.paa" }; };
+    class IAT_VinylRecordArt_66 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_66_co.paa" }; };
+    class IAT_VinylCover_67 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_67_co.paa" }; };
+    class IAT_VinylRecordArt_67 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_67_co.paa" }; };
+    class IAT_VinylCover_68 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_68_co.paa" }; };
+    class IAT_VinylRecordArt_68 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_68_co.paa" }; };
+    class IAT_VinylCover_69 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_69_co.paa" }; };
+    class IAT_VinylRecordArt_69 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_69_co.paa" }; };
+    class IAT_VinylCover_70 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_70_co.paa" }; };
+    class IAT_VinylRecordArt_70 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_70_co.paa" }; };
+    class IAT_VinylCover_71 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_71_co.paa" }; };
+    class IAT_VinylRecordArt_71 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_71_co.paa" }; };
+    class IAT_VinylCover_72 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_72_co.paa" }; };
+    class IAT_VinylRecordArt_72 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_72_co.paa" }; };
+    class IAT_VinylCover_73 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_73_co.paa" }; };
+    class IAT_VinylRecordArt_73 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_73_co.paa" }; };
+    class IAT_VinylCover_74 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_74_co.paa" }; };
+    class IAT_VinylRecordArt_74 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_74_co.paa" }; };
+    class IAT_VinylCover_75 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_75_co.paa" }; };
+    class IAT_VinylRecordArt_75 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_75_co.paa" }; };
+    class IAT_VinylCover_76 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_76_co.paa" }; };
+    class IAT_VinylRecordArt_76 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_76_co.paa" }; };
+    class IAT_VinylCover_77 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_77_co.paa" }; };
+    class IAT_VinylRecordArt_77 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_77_co.paa" }; };
+    class IAT_VinylCover_78 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_78_co.paa" }; };
+    class IAT_VinylRecordArt_78 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_78_co.paa" }; };
+    class IAT_VinylCover_79 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_79_co.paa" }; };
+    class IAT_VinylRecordArt_79 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_79_co.paa" }; };
+    class IAT_VinylCover_80 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_80_co.paa" }; };
+    class IAT_VinylRecordArt_80 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_80_co.paa" }; };
+    class IAT_VinylCover_81 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_81_co.paa" }; };
+    class IAT_VinylRecordArt_81 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_81_co.paa" }; };
+    class IAT_VinylCover_82 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_82_co.paa" }; };
+    class IAT_VinylRecordArt_82 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_82_co.paa" }; };
+    class IAT_VinylCover_83 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_83_co.paa" }; };
+    class IAT_VinylRecordArt_83 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_83_co.paa" }; };
+    class IAT_VinylCover_84 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_84_co.paa" }; };
+    class IAT_VinylRecordArt_84 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_84_co.paa" }; };
+    class IAT_VinylCover_85 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_85_co.paa" }; };
+    class IAT_VinylRecordArt_85 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_85_co.paa" }; };
+    class IAT_VinylCover_86 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_86_co.paa" }; };
+    class IAT_VinylRecordArt_86 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_86_co.paa" }; };
+    class IAT_VinylCover_87 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_87_co.paa" }; };
+    class IAT_VinylRecordArt_87 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_87_co.paa" }; };
+    class IAT_VinylCover_88 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_88_co.paa" }; };
+    class IAT_VinylRecordArt_88 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_88_co.paa" }; };
+    class IAT_VinylCover_89 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_89_co.paa" }; };
+    class IAT_VinylRecordArt_89 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_89_co.paa" }; };
+    class IAT_VinylCover_90 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_90_co.paa" }; };
+    class IAT_VinylRecordArt_90 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_90_co.paa" }; };
+    class IAT_VinylCover_91 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_91_co.paa" }; };
+    class IAT_VinylRecordArt_91 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_91_co.paa" }; };
+    class IAT_VinylCover_92 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_92_co.paa" }; };
+    class IAT_VinylRecordArt_92 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_92_co.paa" }; };
+    class IAT_VinylCover_93 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_93_co.paa" }; };
+    class IAT_VinylRecordArt_93 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_93_co.paa" }; };
+    class IAT_VinylCover_94 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_94_co.paa" }; };
+    class IAT_VinylRecordArt_94 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_94_co.paa" }; };
+    class IAT_VinylCover_95 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_95_co.paa" }; };
+    class IAT_VinylRecordArt_95 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_95_co.paa" }; };
+    class IAT_VinylCover_96 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_96_co.paa" }; };
+    class IAT_VinylRecordArt_96 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_96_co.paa" }; };
+    class IAT_VinylCover_97 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_97_co.paa" }; };
+    class IAT_VinylRecordArt_97 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_97_co.paa" }; };
+    class IAT_VinylCover_98 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_98_co.paa" }; };
+    class IAT_VinylRecordArt_98 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_98_co.paa" }; };
+    class IAT_VinylCover_99 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_99_co.paa" }; };
+    class IAT_VinylRecordArt_99 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_99_co.paa" }; };
+    class IAT_VinylCover_100 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 2 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_100_co.paa" }; };
+    class IAT_VinylRecordArt_100 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 2 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_100_co.paa" }; };
+
+    // SET 3
+    class IAT_VinylCover_101 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_101_co.paa" }; };
+    class IAT_VinylRecordArt_101 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_101_co.paa" }; };
+    class IAT_VinylCover_102 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_102_co.paa" }; };
+    class IAT_VinylRecordArt_102 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_102_co.paa" }; };
+    class IAT_VinylCover_103 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_103_co.paa" }; };
+    class IAT_VinylRecordArt_103 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_103_co.paa" }; };
+    class IAT_VinylCover_104 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_104_co.paa" }; };
+    class IAT_VinylRecordArt_104 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_104_co.paa" }; };
+    class IAT_VinylCover_105 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_105_co.paa" }; };
+    class IAT_VinylRecordArt_105 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_105_co.paa" }; };
+    class IAT_VinylCover_106 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_106_co.paa" }; };
+    class IAT_VinylRecordArt_106 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_106_co.paa" }; };
+    class IAT_VinylCover_107 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_107_co.paa" }; };
+    class IAT_VinylRecordArt_107 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_107_co.paa" }; };
+    class IAT_VinylCover_108 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_108_co.paa" }; };
+    class IAT_VinylRecordArt_108 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_108_co.paa" }; };
+    class IAT_VinylCover_109 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_109_co.paa" }; };
+    class IAT_VinylRecordArt_109 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_109_co.paa" }; };
+    class IAT_VinylCover_110 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_110_co.paa" }; };
+    class IAT_VinylRecordArt_110 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_110_co.paa" }; };
+    class IAT_VinylCover_111 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_111_co.paa" }; };
+    class IAT_VinylRecordArt_111 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_111_co.paa" }; };
+    class IAT_VinylCover_112 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_112_co.paa" }; };
+    class IAT_VinylRecordArt_112 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_112_co.paa" }; };
+    class IAT_VinylCover_113 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_113_co.paa" }; };
+    class IAT_VinylRecordArt_113 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_113_co.paa" }; };
+    class IAT_VinylCover_114 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_114_co.paa" }; };
+    class IAT_VinylRecordArt_114 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_114_co.paa" }; };
+    class IAT_VinylCover_115 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_115_co.paa" }; };
+    class IAT_VinylRecordArt_115 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_115_co.paa" }; };
+    class IAT_VinylCover_116 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_116_co.paa" }; };
+    class IAT_VinylRecordArt_116 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_116_co.paa" }; };
+    class IAT_VinylCover_117 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_117_co.paa" }; };
+    class IAT_VinylRecordArt_117 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_117_co.paa" }; };
+    class IAT_VinylCover_118 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_118_co.paa" }; };
+    class IAT_VinylRecordArt_118 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_118_co.paa" }; };
+    class IAT_VinylCover_119 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_119_co.paa" }; };
+    class IAT_VinylRecordArt_119 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_119_co.paa" }; };
+    class IAT_VinylCover_120 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_120_co.paa" }; };
+    class IAT_VinylRecordArt_120 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_120_co.paa" }; };
+    class IAT_VinylCover_121 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_121_co.paa" }; };
+    class IAT_VinylRecordArt_121 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_121_co.paa" }; };
+    class IAT_VinylCover_122 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_122_co.paa" }; };
+    class IAT_VinylRecordArt_122 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_122_co.paa" }; };
+    class IAT_VinylCover_123 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_123_co.paa" }; };
+    class IAT_VinylRecordArt_123 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_123_co.paa" }; };
+    class IAT_VinylCover_124 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_124_co.paa" }; };
+    class IAT_VinylRecordArt_124 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_124_co.paa" }; };
+    class IAT_VinylCover_125 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_125_co.paa" }; };
+    class IAT_VinylRecordArt_125 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_125_co.paa" }; };
+    class IAT_VinylCover_126 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_126_co.paa" }; };
+    class IAT_VinylRecordArt_126 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_126_co.paa" }; };
+    class IAT_VinylCover_127 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_127_co.paa" }; };
+    class IAT_VinylRecordArt_127 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_127_co.paa" }; };
+    class IAT_VinylCover_128 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_128_co.paa" }; };
+    class IAT_VinylRecordArt_128 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_128_co.paa" }; };
+    class IAT_VinylCover_129 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_129_co.paa" }; };
+    class IAT_VinylRecordArt_129 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_129_co.paa" }; };
+    class IAT_VinylCover_130 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_130_co.paa" }; };
+    class IAT_VinylRecordArt_130 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_130_co.paa" }; };
+    class IAT_VinylCover_131 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_131_co.paa" }; };
+    class IAT_VinylRecordArt_131 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_131_co.paa" }; };
+    class IAT_VinylCover_132 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_132_co.paa" }; };
+    class IAT_VinylRecordArt_132 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_132_co.paa" }; };
+    class IAT_VinylCover_133 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_133_co.paa" }; };
+    class IAT_VinylRecordArt_133 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_133_co.paa" }; };
+    class IAT_VinylCover_134 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_134_co.paa" }; };
+    class IAT_VinylRecordArt_134 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_134_co.paa" }; };
+    class IAT_VinylCover_135 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_135_co.paa" }; };
+    class IAT_VinylRecordArt_135 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_135_co.paa" }; };
+    class IAT_VinylCover_136 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_136_co.paa" }; };
+    class IAT_VinylRecordArt_136 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_136_co.paa" }; };
+    class IAT_VinylCover_137 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_137_co.paa" }; };
+    class IAT_VinylRecordArt_137 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_137_co.paa" }; };
+    class IAT_VinylCover_138 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_138_co.paa" }; };
+    class IAT_VinylRecordArt_138 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_138_co.paa" }; };
+    class IAT_VinylCover_139 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_139_co.paa" }; };
+    class IAT_VinylRecordArt_139 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_139_co.paa" }; };
+    class IAT_VinylCover_140 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_140_co.paa" }; };
+    class IAT_VinylRecordArt_140 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_140_co.paa" }; };
+    class IAT_VinylCover_141 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_141_co.paa" }; };
+    class IAT_VinylRecordArt_141 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_141_co.paa" }; };
+    class IAT_VinylCover_142 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_142_co.paa" }; };
+    class IAT_VinylRecordArt_142 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_142_co.paa" }; };
+    class IAT_VinylCover_143 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_143_co.paa" }; };
+    class IAT_VinylRecordArt_143 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_143_co.paa" }; };
+    class IAT_VinylCover_144 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_144_co.paa" }; };
+    class IAT_VinylRecordArt_144 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_144_co.paa" }; };
+    class IAT_VinylCover_145 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_145_co.paa" }; };
+    class IAT_VinylRecordArt_145 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_145_co.paa" }; };
+    class IAT_VinylCover_146 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_146_co.paa" }; };
+    class IAT_VinylRecordArt_146 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_146_co.paa" }; };
+    class IAT_VinylCover_147 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_147_co.paa" }; };
+    class IAT_VinylRecordArt_147 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_147_co.paa" }; };
+    class IAT_VinylCover_148 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_148_co.paa" }; };
+    class IAT_VinylRecordArt_148 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_148_co.paa" }; };
+    class IAT_VinylCover_149 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_149_co.paa" }; };
+    class IAT_VinylRecordArt_149 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_149_co.paa" }; };
+    class IAT_VinylCover_150 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 3 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_150_co.paa" }; };
+    class IAT_VinylRecordArt_150 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 3 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_150_co.paa" }; };
+
+    // SET 4
+    class IAT_VinylCover_151 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_151_co.paa" }; };
+    class IAT_VinylRecordArt_151 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_151_co.paa" }; };
+    class IAT_VinylCover_152 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_152_co.paa" }; };
+    class IAT_VinylRecordArt_152 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_152_co.paa" }; };
+    class IAT_VinylCover_153 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_153_co.paa" }; };
+    class IAT_VinylRecordArt_153 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_153_co.paa" }; };
+    class IAT_VinylCover_154 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_154_co.paa" }; };
+    class IAT_VinylRecordArt_154 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_154_co.paa" }; };
+    class IAT_VinylCover_155 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_155_co.paa" }; };
+    class IAT_VinylRecordArt_155 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_155_co.paa" }; };
+    class IAT_VinylCover_156 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_156_co.paa" }; };
+    class IAT_VinylRecordArt_156 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_156_co.paa" }; };
+    class IAT_VinylCover_157 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_157_co.paa" }; };
+    class IAT_VinylRecordArt_157 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_157_co.paa" }; };
+    class IAT_VinylCover_158 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_158_co.paa" }; };
+    class IAT_VinylRecordArt_158 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_158_co.paa" }; };
+    class IAT_VinylCover_159 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_159_co.paa" }; };
+    class IAT_VinylRecordArt_159 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_159_co.paa" }; };
+    class IAT_VinylCover_160 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_160_co.paa" }; };
+    class IAT_VinylRecordArt_160 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_160_co.paa" }; };
+    class IAT_VinylCover_161 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_161_co.paa" }; };
+    class IAT_VinylRecordArt_161 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_161_co.paa" }; };
+    class IAT_VinylCover_162 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_162_co.paa" }; };
+    class IAT_VinylRecordArt_162 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_162_co.paa" }; };
+    class IAT_VinylCover_163 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_163_co.paa" }; };
+    class IAT_VinylRecordArt_163 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_163_co.paa" }; };
+    class IAT_VinylCover_164 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_164_co.paa" }; };
+    class IAT_VinylRecordArt_164 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_164_co.paa" }; };
+    class IAT_VinylCover_165 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_165_co.paa" }; };
+    class IAT_VinylRecordArt_165 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_165_co.paa" }; };
+    class IAT_VinylCover_166 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_166_co.paa" }; };
+    class IAT_VinylRecordArt_166 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_166_co.paa" }; };
+    class IAT_VinylCover_167 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_167_co.paa" }; };
+    class IAT_VinylRecordArt_167 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_167_co.paa" }; };
+    class IAT_VinylCover_168 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_168_co.paa" }; };
+    class IAT_VinylRecordArt_168 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_168_co.paa" }; };
+    class IAT_VinylCover_169 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_169_co.paa" }; };
+    class IAT_VinylRecordArt_169 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_169_co.paa" }; };
+    class IAT_VinylCover_170 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_170_co.paa" }; };
+    class IAT_VinylRecordArt_170 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_170_co.paa" }; };
+    class IAT_VinylCover_171 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_171_co.paa" }; };
+    class IAT_VinylRecordArt_171 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_171_co.paa" }; };
+    class IAT_VinylCover_172 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_172_co.paa" }; };
+    class IAT_VinylRecordArt_172 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_172_co.paa" }; };
+    class IAT_VinylCover_173 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_173_co.paa" }; };
+    class IAT_VinylRecordArt_173 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_173_co.paa" }; };
+    class IAT_VinylCover_174 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_174_co.paa" }; };
+    class IAT_VinylRecordArt_174 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_174_co.paa" }; };
+    class IAT_VinylCover_175 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_175_co.paa" }; };
+    class IAT_VinylRecordArt_175 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_175_co.paa" }; };
+    class IAT_VinylCover_176 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_176_co.paa" }; };
+    class IAT_VinylRecordArt_176 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_176_co.paa" }; };
+    class IAT_VinylCover_177 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_177_co.paa" }; };
+    class IAT_VinylRecordArt_177 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_177_co.paa" }; };
+    class IAT_VinylCover_178 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_178_co.paa" }; };
+    class IAT_VinylRecordArt_178 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_178_co.paa" }; };
+    class IAT_VinylCover_179 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_179_co.paa" }; };
+    class IAT_VinylRecordArt_179 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_179_co.paa" }; };
+    class IAT_VinylCover_180 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_180_co.paa" }; };
+    class IAT_VinylRecordArt_180 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_180_co.paa" }; };
+    class IAT_VinylCover_181 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_181_co.paa" }; };
+    class IAT_VinylRecordArt_181 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_181_co.paa" }; };
+    class IAT_VinylCover_182 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_182_co.paa" }; };
+    class IAT_VinylRecordArt_182 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_182_co.paa" }; };
+    class IAT_VinylCover_183 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_183_co.paa" }; };
+    class IAT_VinylRecordArt_183 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_183_co.paa" }; };
+    class IAT_VinylCover_184 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_184_co.paa" }; };
+    class IAT_VinylRecordArt_184 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_184_co.paa" }; };
+    class IAT_VinylCover_185 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_185_co.paa" }; };
+    class IAT_VinylRecordArt_185 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_185_co.paa" }; };
+    class IAT_VinylCover_186 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_186_co.paa" }; };
+    class IAT_VinylRecordArt_186 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_186_co.paa" }; };
+    class IAT_VinylCover_187 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_187_co.paa" }; };
+    class IAT_VinylRecordArt_187 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_187_co.paa" }; };
+    class IAT_VinylCover_188 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_188_co.paa" }; };
+    class IAT_VinylRecordArt_188 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_188_co.paa" }; };
+    class IAT_VinylCover_189 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_189_co.paa" }; };
+    class IAT_VinylRecordArt_189 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_189_co.paa" }; };
+    class IAT_VinylCover_190 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_190_co.paa" }; };
+    class IAT_VinylRecordArt_190 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_190_co.paa" }; };
+    class IAT_VinylCover_191 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_191_co.paa" }; };
+    class IAT_VinylRecordArt_191 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_191_co.paa" }; };
+    class IAT_VinylCover_192 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_192_co.paa" }; };
+    class IAT_VinylRecordArt_192 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_192_co.paa" }; };
+    class IAT_VinylCover_193 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_193_co.paa" }; };
+    class IAT_VinylRecordArt_193 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_193_co.paa" }; };
+    class IAT_VinylCover_194 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_194_co.paa" }; };
+    class IAT_VinylRecordArt_194 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_194_co.paa" }; };
+    class IAT_VinylCover_195 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_195_co.paa" }; };
+    class IAT_VinylRecordArt_195 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_195_co.paa" }; };
+    class IAT_VinylCover_196 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_196_co.paa" }; };
+    class IAT_VinylRecordArt_196 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_196_co.paa" }; };
+    class IAT_VinylCover_197 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_197_co.paa" }; };
+    class IAT_VinylRecordArt_197 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_197_co.paa" }; };
+    class IAT_VinylCover_198 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_198_co.paa" }; };
+    class IAT_VinylRecordArt_198 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_198_co.paa" }; };
+    class IAT_VinylCover_199 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_199_co.paa" }; };
+    class IAT_VinylRecordArt_199 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_199_co.paa" }; };
+    class IAT_VinylCover_200 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 4 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_200_co.paa" }; };
+    class IAT_VinylRecordArt_200 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 4 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_200_co.paa" }; };
+
+    // SET 5
+    class IAT_VinylCover_201 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_201_co.paa" }; };
+    class IAT_VinylRecordArt_201 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_201_co.paa" }; };
+    class IAT_VinylCover_202 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_202_co.paa" }; };
+    class IAT_VinylRecordArt_202 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_202_co.paa" }; };
+    class IAT_VinylCover_203 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_203_co.paa" }; };
+    class IAT_VinylRecordArt_203 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_203_co.paa" }; };
+    class IAT_VinylCover_204 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_204_co.paa" }; };
+    class IAT_VinylRecordArt_204 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_204_co.paa" }; };
+    class IAT_VinylCover_205 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_205_co.paa" }; };
+    class IAT_VinylRecordArt_205 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_205_co.paa" }; };
+    class IAT_VinylCover_206 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_206_co.paa" }; };
+    class IAT_VinylRecordArt_206 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_206_co.paa" }; };
+    class IAT_VinylCover_207 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_207_co.paa" }; };
+    class IAT_VinylRecordArt_207 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_207_co.paa" }; };
+    class IAT_VinylCover_208 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_208_co.paa" }; };
+    class IAT_VinylRecordArt_208 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_208_co.paa" }; };
+    class IAT_VinylCover_209 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_209_co.paa" }; };
+    class IAT_VinylRecordArt_209 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_209_co.paa" }; };
+    class IAT_VinylCover_210 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_210_co.paa" }; };
+    class IAT_VinylRecordArt_210 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_210_co.paa" }; };
+    class IAT_VinylCover_211 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_211_co.paa" }; };
+    class IAT_VinylRecordArt_211 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_211_co.paa" }; };
+    class IAT_VinylCover_212 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_212_co.paa" }; };
+    class IAT_VinylRecordArt_212 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_212_co.paa" }; };
+    class IAT_VinylCover_213 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_213_co.paa" }; };
+    class IAT_VinylRecordArt_213 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_213_co.paa" }; };
+    class IAT_VinylCover_214 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_214_co.paa" }; };
+    class IAT_VinylRecordArt_214 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_214_co.paa" }; };
+    class IAT_VinylCover_215 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_215_co.paa" }; };
+    class IAT_VinylRecordArt_215 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_215_co.paa" }; };
+    class IAT_VinylCover_216 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_216_co.paa" }; };
+    class IAT_VinylRecordArt_216 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_216_co.paa" }; };
+    class IAT_VinylCover_217 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_217_co.paa" }; };
+    class IAT_VinylRecordArt_217 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_217_co.paa" }; };
+    class IAT_VinylCover_218 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_218_co.paa" }; };
+    class IAT_VinylRecordArt_218 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_218_co.paa" }; };
+    class IAT_VinylCover_219 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_219_co.paa" }; };
+    class IAT_VinylRecordArt_219 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_219_co.paa" }; };
+    class IAT_VinylCover_220 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_220_co.paa" }; };
+    class IAT_VinylRecordArt_220 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_220_co.paa" }; };
+    class IAT_VinylCover_221 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_221_co.paa" }; };
+    class IAT_VinylRecordArt_221 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_221_co.paa" }; };
+    class IAT_VinylCover_222 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_222_co.paa" }; };
+    class IAT_VinylRecordArt_222 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_222_co.paa" }; };
+    class IAT_VinylCover_223 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_223_co.paa" }; };
+    class IAT_VinylRecordArt_223 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 23 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_223_co.paa" }; };
+    class IAT_VinylCover_224 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_224_co.paa" }; };
+    class IAT_VinylRecordArt_224 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 24 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_224_co.paa" }; };
+    class IAT_VinylCover_225 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_225_co.paa" }; };
+    class IAT_VinylRecordArt_225 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 25 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_225_co.paa" }; };
+    class IAT_VinylCover_226 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_226_co.paa" }; };
+    class IAT_VinylRecordArt_226 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 26 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_226_co.paa" }; };
+    class IAT_VinylCover_227 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_227_co.paa" }; };
+    class IAT_VinylRecordArt_227 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 27 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_227_co.paa" }; };
+    class IAT_VinylCover_228 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_228_co.paa" }; };
+    class IAT_VinylRecordArt_228 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 28 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_228_co.paa" }; };
+    class IAT_VinylCover_229 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_229_co.paa" }; };
+    class IAT_VinylRecordArt_229 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 29 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_229_co.paa" }; };
+    class IAT_VinylCover_230 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_230_co.paa" }; };
+    class IAT_VinylRecordArt_230 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 30 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_230_co.paa" }; };
+    class IAT_VinylCover_231 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_231_co.paa" }; };
+    class IAT_VinylRecordArt_231 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 31 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_231_co.paa" }; };
+    class IAT_VinylCover_232 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_232_co.paa" }; };
+    class IAT_VinylRecordArt_232 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 32 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_232_co.paa" }; };
+    class IAT_VinylCover_233 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_233_co.paa" }; };
+    class IAT_VinylRecordArt_233 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 33 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_233_co.paa" }; };
+    class IAT_VinylCover_234 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_234_co.paa" }; };
+    class IAT_VinylRecordArt_234 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 34 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_234_co.paa" }; };
+    class IAT_VinylCover_235 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_235_co.paa" }; };
+    class IAT_VinylRecordArt_235 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 35 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_235_co.paa" }; };
+    class IAT_VinylCover_236 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_236_co.paa" }; };
+    class IAT_VinylRecordArt_236 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 36 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_236_co.paa" }; };
+    class IAT_VinylCover_237 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_237_co.paa" }; };
+    class IAT_VinylRecordArt_237 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 37 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_237_co.paa" }; };
+    class IAT_VinylCover_238 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_238_co.paa" }; };
+    class IAT_VinylRecordArt_238 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 38 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_238_co.paa" }; };
+    class IAT_VinylCover_239 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_239_co.paa" }; };
+    class IAT_VinylRecordArt_239 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 39 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_239_co.paa" }; };
+    class IAT_VinylCover_240 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_240_co.paa" }; };
+    class IAT_VinylRecordArt_240 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 40 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_240_co.paa" }; };
+    class IAT_VinylCover_241 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_241_co.paa" }; };
+    class IAT_VinylRecordArt_241 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 41 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_241_co.paa" }; };
+    class IAT_VinylCover_242 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_242_co.paa" }; };
+    class IAT_VinylRecordArt_242 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 42 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_242_co.paa" }; };
+    class IAT_VinylCover_243 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_243_co.paa" }; };
+    class IAT_VinylRecordArt_243 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 43 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_243_co.paa" }; };
+    class IAT_VinylCover_244 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_244_co.paa" }; };
+    class IAT_VinylRecordArt_244 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 44 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_244_co.paa" }; };
+    class IAT_VinylCover_245 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_245_co.paa" }; };
+    class IAT_VinylRecordArt_245 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 45 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_245_co.paa" }; };
+    class IAT_VinylCover_246 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_246_co.paa" }; };
+    class IAT_VinylRecordArt_246 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 46 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_246_co.paa" }; };
+    class IAT_VinylCover_247 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_247_co.paa" }; };
+    class IAT_VinylRecordArt_247 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 47 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_247_co.paa" }; };
+    class IAT_VinylCover_248 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_248_co.paa" }; };
+    class IAT_VinylRecordArt_248 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 48 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_248_co.paa" }; };
+    class IAT_VinylCover_249 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_249_co.paa" }; };
+    class IAT_VinylRecordArt_249 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 49 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_249_co.paa" }; };
+    class IAT_VinylCover_250 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 5 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_250_co.paa" }; };
+    class IAT_VinylRecordArt_250 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 5 - 50 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_250_co.paa" }; };
+
+    // SET 6
+    class IAT_VinylCover_251 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_251_co.paa" }; };
+    class IAT_VinylRecordArt_251 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 1 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_251_co.paa" }; };
+    class IAT_VinylCover_252 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_252_co.paa" }; };
+    class IAT_VinylRecordArt_252 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 2 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_252_co.paa" }; };
+    class IAT_VinylCover_253 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_253_co.paa" }; };
+    class IAT_VinylRecordArt_253 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 3 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_253_co.paa" }; };
+    class IAT_VinylCover_254 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_254_co.paa" }; };
+    class IAT_VinylRecordArt_254 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 4 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_254_co.paa" }; };
+    class IAT_VinylCover_255 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_255_co.paa" }; };
+    class IAT_VinylRecordArt_255 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 5 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_255_co.paa" }; };
+    class IAT_VinylCover_256 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_256_co.paa" }; };
+    class IAT_VinylRecordArt_256 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 6 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_256_co.paa" }; };
+    class IAT_VinylCover_257 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_257_co.paa" }; };
+    class IAT_VinylRecordArt_257 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 7 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_257_co.paa" }; };
+    class IAT_VinylCover_258 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_258_co.paa" }; };
+    class IAT_VinylRecordArt_258 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 8 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_258_co.paa" }; };
+    class IAT_VinylCover_259 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_259_co.paa" }; };
+    class IAT_VinylRecordArt_259 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 9 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_259_co.paa" }; };
+    class IAT_VinylCover_260 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_260_co.paa" }; };
+    class IAT_VinylRecordArt_260 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 10 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_260_co.paa" }; };
+    class IAT_VinylCover_261 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_261_co.paa" }; };
+    class IAT_VinylRecordArt_261 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 11 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_261_co.paa" }; };
+    class IAT_VinylCover_262 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_262_co.paa" }; };
+    class IAT_VinylRecordArt_262 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 12 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_262_co.paa" }; };
+    class IAT_VinylCover_263 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_263_co.paa" }; };
+    class IAT_VinylRecordArt_263 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 13 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_263_co.paa" }; };
+    class IAT_VinylCover_264 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_264_co.paa" }; };
+    class IAT_VinylRecordArt_264 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 14 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_264_co.paa" }; };
+    class IAT_VinylCover_265 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_265_co.paa" }; };
+    class IAT_VinylRecordArt_265 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 15 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_265_co.paa" }; };
+    class IAT_VinylCover_266 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_266_co.paa" }; };
+    class IAT_VinylRecordArt_266 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 16 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_266_co.paa" }; };
+    class IAT_VinylCover_267 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_267_co.paa" }; };
+    class IAT_VinylRecordArt_267 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 17 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_267_co.paa" }; };
+    class IAT_VinylCover_268 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_268_co.paa" }; };
+    class IAT_VinylRecordArt_268 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 18 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_268_co.paa" }; };
+    class IAT_VinylCover_269 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_269_co.paa" }; };
+    class IAT_VinylRecordArt_269 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 19 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_269_co.paa" }; };
+    class IAT_VinylCover_270 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_270_co.paa" }; };
+    class IAT_VinylRecordArt_270 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 20 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_270_co.paa" }; };
+    class IAT_VinylCover_271 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_271_co.paa" }; };
+    class IAT_VinylRecordArt_271 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 21 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_271_co.paa" }; };
+    class IAT_VinylCover_272 : IAT_VinylCover_ColorBase { scope = 2; displayName = "Vinyl Cover Set 6 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_272_co.paa" }; };
+    class IAT_VinylRecordArt_272 : IAT_VinylRecordArt_ColorBase { scope = 2; displayName = "Vinyl Art Set 6 - 22 of 50"; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\vinyls\iat_vinyl_272_co.paa" }; };
 };
 class CfgSlots
 {
