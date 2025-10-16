@@ -1,0 +1,17 @@
+class IAT_PlayableVinylCover_ColorBase extends ItemBase{};
+class IAT_PlayableVinylCover_ABetterDay extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_ChantsOfTheWild extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_ForgedInTheFire extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_HerosFight extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_HerosRest extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_IntoTheMaw extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_RustAndReverie extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_SlowRoll extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_Subterfuge extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_VelvetNights extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_VictoryDance extends IAT_PlayableVinylCover_ColorBase{};
+class IAT_PlayableVinylCover_VortexOfTheDamned extends IAT_PlayableVinylCover_ColorBase{};
+
+// not really used
+class IAT_PlayableVinylRecord_ColorBase extends ItemBase{};
+class IAT_PlayableVinylRecord_Default extends IAT_PlayableVinylRecord_ColorBase{};

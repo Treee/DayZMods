@@ -21,6 +21,8 @@ modded class ModItemRegisterCallbacks
 
         //====================================================
         pType.AddItemInHandsProfileIK("IAT_IronHammer_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_sledgehammer.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/sledge_hammer.anm");
+        pType.AddItemInHandsProfileIK("IAT_PlayableVinylCover_ColorBase", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/beartrap_g.anm");
+        pType.AddItemInHandsProfileIK("IAT_PlayableVinylRecord_ColorBase", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/beartrap_g.anm");
     }
 
     override void RegisterHeavy(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
