@@ -34,6 +34,10 @@ class IAT_KatanaSheathe_ColorBase: Belt_Base {};
 class IAT_KatanaSheathe_Basic: IAT_KatanaSheathe_ColorBase {};
 class IAT_KatanaSheathe_delaineyrp: IAT_KatanaSheathe_ColorBase {};
 
+class IAT_KatanaFlower_ColorBase extends Sword{};
+class IAT_KatanaFlower_Basic extends IAT_KatanaFlower_ColorBase{};
+class IAT_KatanaFlower_zero_hurts extends IAT_KatanaFlower_ColorBase{};
+
 //================================ GLAIVE
 class IAT_Melee_Glaive_Colorbase extends Sword{};
 class IAT_Melee_Glaive_Basic extends IAT_Melee_Glaive_Colorbase{};
