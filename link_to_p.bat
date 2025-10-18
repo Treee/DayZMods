@@ -3,6 +3,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_codelock" Z:\DayZ\Modding\i
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_collectibles" Z:\DayZ\Modding\iat_collectibles\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_crafting_plus" Z:\DayZ\Modding\iat_crafting_plus\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_double_armbands" Z:\DayZ\Modding\iat_double_armbands\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_traps" Z:\DayZ\Modding\iat_dynamic_traps\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_enhanced_bioprotection" Z:\DayZ\Modding\iat_enhanced_bioprotection\addons
