@@ -6,9 +6,9 @@ modded class CutOutZucchiniSeeds
 		super.Init();
 
 		// multi tool is like can opener
-		InsertIngredient(1,"IAT_Narsil_Colorbase");
-		InsertIngredient(1,"IAT_DamascusBowieKnife_Colorbase");
+		InsertIngredient(1,"IAT_Narsil_ColorBase");
+		InsertIngredient(1,"IAT_DamascusBowieKnife_ColorBase");
 		InsertIngredient(1,"IAT_TrenchKnife_ColorBase");
-		InsertIngredient(1,"IAT_MorgulBlade_Colorbase");
+		InsertIngredient(1,"IAT_MorgulBlade_ColorBase");
 	}
 };
