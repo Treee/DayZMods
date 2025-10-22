@@ -117,7 +117,7 @@ class CfgVehicles
     class Inventory_Base;
     class Clothing;
 
-    class IAT_Melee_BerserkSword_Colorbase : Inventory_Base
+    class IAT_Melee_BerserkSword_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Antique Replica Berserk Sword";
@@ -369,13 +369,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_BerserkSword_Basic : IAT_Melee_BerserkSword_Colorbase
+    class IAT_Melee_BerserkSword_Basic : IAT_Melee_BerserkSword_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_berserksword_co.paa" };
     };
-    class IAT_Melee_BerserkSword_Illusive : IAT_Melee_BerserkSword_Colorbase
+    class IAT_Melee_BerserkSword_Illusive : IAT_Melee_BerserkSword_ColorBase
     {
         scope = 2;
         displayName = "The Dragon Slayer";
@@ -402,7 +402,7 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_BerserkSword_theiliusiveman : IAT_Melee_BerserkSword_Colorbase
+    class IAT_Melee_BerserkSword_theiliusiveman : IAT_Melee_BerserkSword_ColorBase
     {
         scope = 2;
         displayName = "The Dragon Slayer";
@@ -430,7 +430,7 @@ class CfgVehicles
         };
     };
 
-    class IAT_Melee_JawBladeSword_Colorbase : Inventory_Base
+    class IAT_Melee_JawBladeSword_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Jawblade Greatsword";
@@ -682,13 +682,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_JawBladeSword_Basic : IAT_Melee_JawBladeSword_Colorbase
+    class IAT_Melee_JawBladeSword_Basic : IAT_Melee_JawBladeSword_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_jawblade_co.paa" };
     };
-    class IAT_Melee_JawBladeSword_Obamamama2580 : IAT_Melee_JawBladeSword_Colorbase
+    class IAT_Melee_JawBladeSword_Obamamama2580 : IAT_Melee_JawBladeSword_ColorBase
     {
         scope = 2;
         TradeClassName = "Sword";
@@ -696,7 +696,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_jawblade_obamamama2580_co.paa" };
     };
 
-    class IAT_Melee_FriedesScythe_Colorbase : Inventory_Base
+    class IAT_Melee_FriedesScythe_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Serana's Scythe";
@@ -948,13 +948,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_FriedesScythe_Basic : IAT_Melee_FriedesScythe_Colorbase
+    class IAT_Melee_FriedesScythe_Basic : IAT_Melee_FriedesScythe_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek","handle" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_scythe_co.paa", "iat_melee_weapons\blade\data\iat_scythe_pole_co.paa" };
     };
-    class IAT_Melee_FriedesScythe_theamontiladoraven : IAT_Melee_FriedesScythe_Colorbase
+    class IAT_Melee_FriedesScythe_theamontiladoraven : IAT_Melee_FriedesScythe_ColorBase
     {
         scope = 2;
         TradeClassName = "Sword";
@@ -962,7 +962,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_scythe_co.paa", "iat_melee_weapons\blade\data\iat_scythe_pole_co.paa" };
     };
 
-    class IAT_Melee_GrinningBlade_Colorbase : Inventory_Base
+    class IAT_Melee_GrinningBlade_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Grining Sword";
@@ -1078,13 +1078,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_GrinningBlade_Basic : IAT_Melee_GrinningBlade_Colorbase
+    class IAT_Melee_GrinningBlade_Basic : IAT_Melee_GrinningBlade_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_grinningblade_co.paa" };
     };
-    class IAT_Melee_GrinningBlade_itsb14nk : IAT_Melee_GrinningBlade_Colorbase
+    class IAT_Melee_GrinningBlade_itsb14nk : IAT_Melee_GrinningBlade_ColorBase
     {
         scope = 2;
         TradeClassName = "Sword";
@@ -1092,7 +1092,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_grinningblade_itsb14nk_co.paa" };
     };
 
-    class IAT_Melee_ReaperScythe_Colorbase : Inventory_Base
+    class IAT_Melee_ReaperScythe_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Reaper Scythe";
@@ -1340,13 +1340,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_ReaperScythe_Basic : IAT_Melee_ReaperScythe_Colorbase
+    class IAT_Melee_ReaperScythe_Basic : IAT_Melee_ReaperScythe_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek","handle" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_reaperscythe_co.paa", "iat_melee_weapons\blade\data\iat_reaperscythe_co.paa" };
     };
-    class IAT_Melee_ReaperScythe_legacylives : IAT_Melee_ReaperScythe_Colorbase
+    class IAT_Melee_ReaperScythe_legacylives : IAT_Melee_ReaperScythe_ColorBase
     {
         scope = 2;
         TradeClassName = "Sword";
@@ -1354,7 +1354,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_reaperscythe_legacylives_co.paa" };
     };
 
-    class IAT_Melee_Glaive_Colorbase : Inventory_Base
+    class IAT_Melee_Glaive_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Glaive";
@@ -1602,13 +1602,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_Glaive_Basic : IAT_Melee_Glaive_Colorbase
+    class IAT_Melee_Glaive_Basic : IAT_Melee_Glaive_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek","handle" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_glaive_co.paa", "iat_melee_weapons\blade\data\iat_glaive_co.paa" };
     };
-    class IAT_Melee_Glaive_autumn2187 : IAT_Melee_Glaive_Colorbase
+    class IAT_Melee_Glaive_autumn2187 : IAT_Melee_Glaive_ColorBase
     {
         scope = 2;
         TradeClassName = "Sword";
@@ -1616,7 +1616,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_glaive_autumn2187_co.paa", "iat_melee_weapons\blade\data\iat_glaive_autumn2187_co.paa" };
     };
 
-    class IAT_Narsil_Colorbase : Inventory_Base
+    class IAT_Narsil_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Narsil Replica";
@@ -1865,13 +1865,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Narsil_Basic : IAT_Narsil_Colorbase
+    class IAT_Narsil_Basic : IAT_Narsil_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_narsilblade_co.paa" };
     };
-    class IAT_Narsil_Obamamama2580 : IAT_Narsil_Colorbase
+    class IAT_Narsil_Obamamama2580 : IAT_Narsil_ColorBase
     {
         scope = 2;
         TradeClassName = "HuntingKnife";
@@ -1879,7 +1879,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_narsilblade_obamamama2580_co.paa" };
     };
 
-    class IAT_DamascusBowieKnife_Colorbase : Inventory_Base
+    class IAT_DamascusBowieKnife_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Damascus Bowie Knife";
@@ -2126,13 +2126,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_DamascusBowieKnife_Basic : IAT_DamascusBowieKnife_Colorbase
+    class IAT_DamascusBowieKnife_Basic : IAT_DamascusBowieKnife_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_damascusbowie_co.paa" };
     };
-    class IAT_DamascusBowieKnife_sir_bman : IAT_DamascusBowieKnife_Colorbase
+    class IAT_DamascusBowieKnife_sir_bman : IAT_DamascusBowieKnife_ColorBase
     {
         scope = 2;
         TradeClassName = "HuntingKnife";
@@ -2399,7 +2399,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_trenchknife_weebyboi_co.paa" };
     };
 
-    class IAT_MorgulBlade_Colorbase : Inventory_Base
+    class IAT_MorgulBlade_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Morgul Blade Replica";
@@ -2637,13 +2637,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_MorgulBlade_Basic : IAT_MorgulBlade_Colorbase
+    class IAT_MorgulBlade_Basic : IAT_MorgulBlade_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_morgulblade_co.paa" };
     };
-    class IAT_MorgulBlade_comradeg : IAT_MorgulBlade_Colorbase
+    class IAT_MorgulBlade_comradeg : IAT_MorgulBlade_ColorBase
     {
         scope = 2;
         TradeClassName = "HuntingKnife";
@@ -2981,7 +2981,7 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_katanasheathe_delaineyrp_co.paa" };
     };
 
-    class IAT_Melee_Aerondight_Colorbase : Inventory_Base
+    class IAT_Melee_Aerondight_ColorBase : Inventory_Base
     {
         scope = 0;
         displayName = "Antique Replica Witcher Sword";
@@ -3233,13 +3233,13 @@ class CfgVehicles
             };
         };
     };
-    class IAT_Melee_Aerondight_Basic : IAT_Melee_Aerondight_Colorbase
+    class IAT_Melee_Aerondight_Basic : IAT_Melee_Aerondight_ColorBase
     {
         scope = 2;
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_aerondight_co.paa" };
     };
-    class IAT_Melee_Aerondight_bloodkill1347 : IAT_Melee_Aerondight_Colorbase
+    class IAT_Melee_Aerondight_bloodkill1347 : IAT_Melee_Aerondight_ColorBase
     {
         scope = 2;
         TradeClassName = "Sword";
@@ -3523,6 +3523,338 @@ class CfgVehicles
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_flowerkatana_zero_hurt_co.paa" };
     };
+
+    class IAT_Melee_ClaymoreSword_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Claymore Sword";
+        descriptionShort = "A large sword with a sharp edge.";
+        model = "iat_melee_weapons\blade\iat_claymoresword.p3d";
+        debug_ItemCategory = 2;
+        repairableWithKits[] = { 4 };
+        repairCosts[] = { 25 };
+        inventorySlot[] = { "Shoulder", "Melee", "IAT_Claymore" };
+        RestrainUnlockType = 1;
+        rotationFlags = 12;
+        itemSize[] = { 2, 7 };
+        weight = 1500;
+        itemBehaviour = 2;
+        itemInfo[] = { "Axe" };
+        openItemSpillRange[] = { 40, 60 };
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_claymore_co.paa" };
+        class InventorySlotsOffsets
+        {
+            class Shoulder
+            {
+                position[] = { 0.05,-0.2,0 };//FB,UD,LR
+                orientation[] = { 0,20,0 };//x,y,z
+            };
+            class Melee
+            {
+                position[] = { 0.01,-0.2,0 };//FB,UD,LR
+                orientation[] = { -0,-20,0 };//x,y,z
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 200;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_melee_weapons\blade\data\iat_claymoresword.rvmat"}},
+                        {0.7, {"iat_melee_weapons\blade\data\iat_claymoresword.rvmat"}},
+                        {0.5, {"iat_melee_weapons\blade\data\iat_claymoresword_damage.rvmat"}},
+                        {0.3, {"iat_melee_weapons\blade\data\iat_claymoresword_damage.rvmat"}},
+                        {0, {"iat_melee_weapons\blade\data\iat_claymoresword_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        isMeleeWeapon = 1;
+        suicideAnim = "sword";
+        class MeleeModes
+        {
+            class Default
+            {
+                ammo = "MeleeSharpLight_4";
+                range = 1.8;
+            };
+            class Heavy
+            {
+                ammo = "MeleeSharpHeavy_4";
+                range = 1.8;
+            };
+            class Sprint
+            {
+                ammo = "MeleeSharpHeavy_4";
+                range = 3.7;
+            };
+        };
+        soundImpactType = "metal";
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class animalSkinning_in
+                {
+                    soundSet = "animalSkinning_in_SoundSet";
+                    id = 516;
+                };
+                class animalSkinning
+                {
+                    soundSet = "animalSkinning_SoundSet";
+                    id = 517;
+                };
+                class animalSkinning_out
+                {
+                    soundSet = "animalSkinning_out_SoundSet";
+                    id = 518;
+                };
+                class CutTies_end
+                {
+                    soundSet = "CutTies_end_SoundSet";
+                    id = 519;
+                };
+                class CutTies_loop
+                {
+                    soundSet = "CutTies_loop_SoundSet";
+                    id = 520;
+                };
+                class shaving_knife_clean
+                {
+                    soundSet = "shaving_knife_clean_SoundSet";
+                    id = 600;
+                };
+                class shaving_knife1
+                {
+                    soundSet = "shaving_knife1_SoundSet";
+                    id = 601;
+                };
+                class shaving_knife2
+                {
+                    soundSet = "shaving_knife2_SoundSet";
+                    id = 602;
+                };
+                class shaving_knife3
+                {
+                    soundSet = "shaving_knife3_SoundSet";
+                    id = 603;
+                };
+                class shaving_knife4
+                {
+                    soundSet = "shaving_knife4_SoundSet";
+                    id = 604;
+                };
+                class shaving_knife5
+                {
+                    soundSet = "shaving_knife5_SoundSet";
+                    id = 605;
+                };
+                class shaving_knife6
+                {
+                    soundSet = "shaving_knife6_SoundSet";
+                    id = 606;
+                };
+                class shaving_knife7
+                {
+                    soundSet = "shaving_knife7_SoundSet";
+                    id = 607;
+                };
+                class shaving_knife8
+                {
+                    soundSet = "shaving_knife8_SoundSet";
+                    id = 608;
+                };
+                class shaving_knife9
+                {
+                    soundSet = "shaving_knife9_SoundSet";
+                    id = 609;
+                };
+                class shaving_knife10
+                {
+                    soundSet = "shaving_knife10_SoundSet";
+                    id = 610;
+                };
+                class shaving_knife11
+                {
+                    soundSet = "shaving_knife11_SoundSet";
+                    id = 611;
+                };
+                class shaving_knife12
+                {
+                    soundSet = "shaving_knife12_SoundSet";
+                    id = 612;
+                };
+                class shaving_knife13
+                {
+                    soundSet = "shaving_knife13_SoundSet";
+                    id = 613;
+                };
+                class shaving_knife14
+                {
+                    soundSet = "shaving_knife14_SoundSet";
+                    id = 614;
+                };
+                class shaving_knife15
+                {
+                    soundSet = "shaving_knife15_SoundSet";
+                    id = 615;
+                };
+                class shaving_knife16
+                {
+                    soundSet = "shaving_knife16_SoundSet";
+                    id = 616;
+                };
+                class shaving_knife17
+                {
+                    soundSet = "shaving_knife17_SoundSet";
+                    id = 617;
+                };
+                class shaving_knife18
+                {
+                    soundSet = "shaving_knife18_SoundSet";
+                    id = 618;
+                };
+                class shaving_knife19
+                {
+                    soundSet = "shaving_knife19_SoundSet";
+                    id = 619;
+                };
+                class shaving_knife20
+                {
+                    soundSet = "shaving_knife20_SoundSet";
+                    id = 620;
+                };
+                class shaving_knife21
+                {
+                    soundSet = "shaving_knife21_SoundSet";
+                    id = 621;
+                };
+                class pickup_light
+                {
+                    soundSet = "hatchet_pickup_light_SoundSet";
+                    id = 796;
+                };
+                class pickup
+                {
+                    soundSet = "hatchet_pickup_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "woodaxe_drop_SoundSet";
+                    id = 898;
+                };
+                class FirefighterAxe_loop_SoundSet
+                {
+                    soundSet = "FirefighterAxe_loop_SoundSet";
+                    id = 1121;
+                };
+                class FirefighterAxe_end_SoundSet
+                {
+                    soundSet = "FirefighterAxe_end_SoundSet";
+                    id = 1122;
+                };
+            };
+            class Sound
+            {
+                class SurfaceDig
+                {
+                    class DigPrimary
+                    {
+                        default = 906;
+                        sakhal_snow = 906;
+                        sakhal_snow_forest = 906;
+                        sakhal_grass_brown = 906;
+                    };
+                };
+            };
+        };
+    };
+    class IAT_Melee_ClaymoreSword_Basic : IAT_Melee_ClaymoreSword_ColorBase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_claymore_co.paa" };
+    };
+    class IAT_Melee_ClaymoreSword_autumn2187 : IAT_Melee_ClaymoreSword_ColorBase
+    {
+        scope = 2;
+        TradeClassName = "Sword";
+        hiddenSelections[] = { "zbytek", "leather", "bone" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_claymore_autumn2187_co.paa", "iat_melee_weapons\blade\data\iat_claymore_autumn2187_co.paa", "iat_melee_weapons\blade\data\iat_claymore_autumn2187_co.paa" };
+    };
+
+    class IAT_Melee_ClaymoreSwordSheathe_ColorBase : Clothing
+    {
+        scope = 0;
+        displayName = "Claymore Scabbard";
+        descriptionShort = "A scabbard for a large sword.";
+        model = "iat_melee_weapons\blade\iat_claymoreswordscabbard.p3d";
+        inventorySlot[] = { "Shoulder", "Melee" };
+        vehicleClass = "Clothing";
+        itemInfo[] = { "Clothing", "Belt" };
+        weight = 110;
+        itemSize[] = { 2, 7 };
+        attachments[] = { "IAT_Claymore" };
+        absorbency = 0.1;
+        heatIsolation = 0;
+        rotationFlags = 12;
+        repairableWithKits[] = { 3 };
+        repairCosts[] = { 25 };
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_claymorescabbard_co.paa" };
+        class InventorySlotsOffsets
+        {
+            class Melee
+            {
+                position[] = { -0.1,0.7,-0.05 };
+                orientation[] = { 90,155,0 };
+            };
+            class Shoulder
+            {
+                position[] = { 0.1,0.25,-0.2 };//FB,UD,LR
+                orientation[] = { 0,150,0 };//x,y,z
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] = { {1, {"iat_melee_weapons\blade\data\iat_claymorescabbard.rvmat"}}, {0.7, {"iat_melee_weapons\blade\data\iat_claymorescabbard.rvmat"}}, {0.5, {"iat_melee_weapons\blade\data\iat_claymorescabbard_damage.rvmat"}}, {0.3, {"iat_melee_weapons\blade\data\iat_claymorescabbard_damage.rvmat"}}, {0, {"iat_melee_weapons\blade\data\iat_claymorescabbard_destruct.rvmat"}} };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "WorkingGloves_pickup_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "WorkingGloves_drop_SoundSet";
+                    id = 898;
+                };
+            };
+        };
+    };
+    class IAT_Melee_ClaymoreSwordSheathe_Basic : IAT_Melee_ClaymoreSwordSheathe_ColorBase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_melee_weapons\blade\data\iat_claymorescabbard_co.paa" };
+    };
 };
 class CfgSlots
 {
@@ -3530,6 +3862,12 @@ class CfgSlots
     {
         name = "IAT_Katana";
         displayName = "Katana";
+        ghostIcon = "set:dayz_inventory image:shoulder";
+    };
+    class Slot_IAT_Claymore
+    {
+        name = "IAT_Claymore";
+        displayName = "Claymore Sword";
         ghostIcon = "set:dayz_inventory image:shoulder";
     };
 };
@@ -3541,5 +3879,11 @@ class CfgNonAIVehicles
         scope = 2;
         inventorySlot[] = { "IAT_Katana" };
         model = "iat_melee_weapons\blade\proxy\iat_katana_proxy.p3d";
+    };
+    class Proxyiat_claymore_proxy : ProxyAttachment
+    {
+        scope = 2;
+        inventorySlot[] = { "IAT_Claymore" };
+        model = "iat_melee_weapons\blade\proxy\iat_claymore_proxy.p3d";
     };
 };
