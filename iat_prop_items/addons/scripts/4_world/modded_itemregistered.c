@@ -23,6 +23,11 @@ modded class ModItemRegisterCallbacks
         pType.AddItemInHandsProfileIK("IAT_IronHammer_Colorbase", "dz/anims/workspaces/player/player_main/weapons/player_main_2h_sledgehammer.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/sledge_hammer.anm");
         pType.AddItemInHandsProfileIK("IAT_PlayableVinylCover_ColorBase", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/beartrap_g.anm");
         pType.AddItemInHandsProfileIK("IAT_PlayableVinylRecord_ColorBase", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/beartrap_g.anm");
+        pType.AddItemInHandsProfileIK("IAT_PumpkinCarved_Medium_Orange", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/vehicles/BatteryTruck.anm"); //TODO - placeholder, make a proper IK
+        pType.AddItemInHandsProfileIK("IAT_PumpkinCarved_Small_Orange", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/vehicles/BatteryTruck.anm"); //TODO - placeholder, make a proper IK
+        pType.AddItemInHandsProfileIK("IAT_Pumpkin_Tall_Small_ColorBase", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/vehicles/BatteryTruck.anm"); //TODO - placeholder, make a proper IK
+        pType.AddItemInHandsProfileIK("IAT_Pumpkin_Tall_Large_ColorBase", "dz/anims/workspaces/player/player_main/player_main_2h.asi", pBehavior, "dz/anims/anm/player/ik/vehicles/BatteryTruck.anm"); //TODO - placeholder, make a proper IK
+        pType.AddItemInHandsProfileIK("IAT_Pumpkin_ColorBase", "dz/anims/workspaces/player/player_main/props/player_main_2h_pot.asi", pBehavior, "dz/anims/anm/player/ik/two_handed/CookingPot.anm");
     }
 
     override void RegisterHeavy(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
@@ -32,5 +37,7 @@ modded class ModItemRegisterCallbacks
         //====================================================
         pType.AddItemInHandsProfileIK("IAT_Gramaphone_Colorbase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/sea_chest.anm");
         pType.AddItemInHandsProfileIK("IAT_Pot_ColorBase","dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/55galDrum.anm");
+        pType.AddItemInHandsProfileIK("IAT_Pumpkin_Wide_Large_ColorBase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/sea_chest.anm");
+        pType.AddItemInHandsProfileIK("IAT_PumpkinCarved_Large_ColorBase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/sea_chest.anm");
     }
 };
