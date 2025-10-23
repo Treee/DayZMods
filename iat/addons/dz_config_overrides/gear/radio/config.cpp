@@ -21,5 +21,9 @@ class CfgVehicles
 	{
 		range = 100; // settlement size
 		gain = 1; // default
+		class EnergyManager
+		{
+			energyUsagePerSecond = 0.01;
+		};
 	};
 };
