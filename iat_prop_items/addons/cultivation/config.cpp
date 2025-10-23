@@ -5153,6 +5153,233 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pot_co.paa" };
     };
 
+    //==================================== PUMPKINS
+    class IAT_Pumpkin_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Pumpkin";
+        descriptionShort = "A plump pumpkin with a solid color.";
+        model = "iat_prop_items\cultivation\iat_pumpkin_all.p3d";
+        itemBehaviour = 0;
+        weight = 2500;
+        itemSize[] = { 2, 2 };
+        itemsCargoSize[] = { 0,0 };
+        physLayer = "item_large";
+        carveNavmesh = 1;
+        minPlacingDist = 10;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1,{"iat_prop_items\cultivation\data\iat_pumpkin.rvmat"}},
+                        {0.69999999,{"iat_prop_items\cultivation\data\iat_pumpkin.rvmat"}},
+                        {0.5,{"iat_prop_items\cultivation\data\iat_pumpkin_damage.rvmat"}},
+                        {0.30000001,{"iat_prop_items\cultivation\data\iat_pumpkin_damage.rvmat"}},
+                        {0,{"iat_prop_items\cultivation\data\iat_pumpkin_destruct.rvmat"}}
+                    };
+                };
+                class GlobalArmor
+                {
+                    class Projectile
+                    {
+                        class Health { damage = 0; };
+                        class Blood { damage = 0; };
+                        class Shock { damage = 0; };
+                    };
+                    class FragGrenade
+                    {
+                        class Health { damage = 0; };
+                        class Blood { damage = 0; };
+                        class Shock { damage = 0; };
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class movement
+                {
+                    soundSet = "seachest_movement_SoundSet";
+                    id = 1;
+                };
+                class pickUpItem_Light
+                {
+                    soundSet = "pickUpSeaChest_SoundSet";
+                    id = 796;
+                };
+                class pickUpItem
+                {
+                    soundSet = "pickUpSeaChest_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "seachest_drop_SoundSet";
+                    id = 898;
+                };
+            };
+        };
+    };
+    class IAT_Pumpkin_Wide_Small_ColorBase : IAT_Pumpkin_ColorBase
+    {
+        scope = 0;
+        model = "iat_prop_items\cultivation\iat_pumpkin_wide_small.p3d";
+    };
+    class IAT_Pumpkin_Wide_Medium_ColorBase : IAT_Pumpkin_ColorBase
+    {
+        scope = 0;
+        itemSize[] = { 3, 3 };
+        model = "iat_prop_items\cultivation\iat_pumpkin_wide_medium.p3d";
+    };
+    class IAT_Pumpkin_Wide_Large_ColorBase : IAT_Pumpkin_ColorBase
+    {
+        scope = 0;
+        itemSize[] = { 4, 4 };
+        model = "iat_prop_items\cultivation\iat_pumpkin_wide_large.p3d";
+    };
+    class IAT_Pumpkin_Tall_Small_ColorBase : IAT_Pumpkin_ColorBase
+    {
+        scope = 0;
+        model = "iat_prop_items\cultivation\iat_pumpkin_tall_small.p3d";
+    };
+    class IAT_Pumpkin_Tall_Large_ColorBase : IAT_Pumpkin_ColorBase
+    {
+        scope = 0;
+        itemSize[] = { 3, 4 };
+        model = "iat_prop_items\cultivation\iat_pumpkin_tall_large.p3d";
+    };
+
+    class IAT_Pumpkin_Wide_Small_Orange : IAT_Pumpkin_Wide_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_co.paa" }; };
+    class IAT_Pumpkin_Wide_Small_Ivory : IAT_Pumpkin_Wide_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_ivory_co.paa" }; };
+    class IAT_Pumpkin_Wide_Small_Purple : IAT_Pumpkin_Wide_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_purple_co.paa" }; };
+    class IAT_Pumpkin_Wide_Small_Yellow : IAT_Pumpkin_Wide_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_yellow_co.paa" }; };
+
+    class IAT_Pumpkin_Wide_Medium_Orange : IAT_Pumpkin_Wide_Medium_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_co.paa" }; };
+    class IAT_Pumpkin_Wide_Medium_Ivory : IAT_Pumpkin_Wide_Medium_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_ivory_co.paa" }; };
+    class IAT_Pumpkin_Wide_Medium_Purple : IAT_Pumpkin_Wide_Medium_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_purple_co.paa" }; };
+    class IAT_Pumpkin_Wide_Medium_Yellow : IAT_Pumpkin_Wide_Medium_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_yellow_co.paa" }; };
+
+    class IAT_Pumpkin_Wide_Large_Orange : IAT_Pumpkin_Wide_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_co.paa" }; };
+    class IAT_Pumpkin_Wide_Large_Ivory : IAT_Pumpkin_Wide_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_ivory_co.paa" }; };
+    class IAT_Pumpkin_Wide_Large_Purple : IAT_Pumpkin_Wide_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_purple_co.paa" }; };
+    class IAT_Pumpkin_Wide_Large_Yellow : IAT_Pumpkin_Wide_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_yellow_co.paa" }; };
+
+    class IAT_Pumpkin_Tall_Small_Orange : IAT_Pumpkin_Tall_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_co.paa" }; };
+    class IAT_Pumpkin_Tall_Small_Ivory : IAT_Pumpkin_Tall_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_ivory_co.paa" }; };
+    class IAT_Pumpkin_Tall_Small_Purple : IAT_Pumpkin_Tall_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_purple_co.paa" }; };
+    class IAT_Pumpkin_Tall_Small_Yellow : IAT_Pumpkin_Tall_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_yellow_co.paa" }; };
+
+    class IAT_Pumpkin_Tall_Large_Orange : IAT_Pumpkin_Tall_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_co.paa" }; };
+    class IAT_Pumpkin_Tall_Large_Ivory : IAT_Pumpkin_Tall_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_ivory_co.paa" }; };
+    class IAT_Pumpkin_Tall_Large_Purple : IAT_Pumpkin_Tall_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_purple_co.paa" }; };
+    class IAT_Pumpkin_Tall_Large_Yellow : IAT_Pumpkin_Tall_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkin_yellow_co.paa" }; };
+
+    class IAT_PumpkinCarved_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Carved Pumpkin";
+        descriptionShort = "A plump pumpkin with a solid color. A face has been carved into the front.";
+        model = "iat_prop_items\cultivation\iat_carvedpumpkin_large.p3d";
+        itemBehaviour = 0;
+        weight = 2500;
+        itemSize[] = { 2, 2 };
+        itemsCargoSize[] = { 0,0 };
+        physLayer = "item_large";
+        carveNavmesh = 1;
+        minPlacingDist = 10;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkincarved_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1,{"iat_prop_items\cultivation\data\iat_pumpkincarved.rvmat"}},
+                        {0.69999999,{"iat_prop_items\cultivation\data\iat_pumpkincarved.rvmat"}},
+                        {0.5,{"iat_prop_items\cultivation\data\iat_pumpkincarved_damage.rvmat"}},
+                        {0.30000001,{"iat_prop_items\cultivation\data\iat_pumpkincarved_damage.rvmat"}},
+                        {0,{"iat_prop_items\cultivation\data\iat_pumpkincarved_destruct.rvmat"}}
+                    };
+                };
+                class GlobalArmor
+                {
+                    class Projectile
+                    {
+                        class Health { damage = 0; };
+                        class Blood { damage = 0; };
+                        class Shock { damage = 0; };
+                    };
+                    class FragGrenade
+                    {
+                        class Health { damage = 0; };
+                        class Blood { damage = 0; };
+                        class Shock { damage = 0; };
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class movement
+                {
+                    soundSet = "seachest_movement_SoundSet";
+                    id = 1;
+                };
+                class pickUpItem_Light
+                {
+                    soundSet = "pickUpSeaChest_SoundSet";
+                    id = 796;
+                };
+                class pickUpItem
+                {
+                    soundSet = "pickUpSeaChest_SoundSet";
+                    id = 797;
+                };
+                class drop
+                {
+                    soundset = "seachest_drop_SoundSet";
+                    id = 898;
+                };
+            };
+        };
+    };
+    class IAT_PumpkinCarved_Large_ColorBase : IAT_PumpkinCarved_ColorBase
+    {
+        scope = 0;
+        itemSize[] = { 4, 4 };
+        model = "iat_prop_items\cultivation\iat_carvedpumpkin_large.p3d";
+    };
+    class IAT_PumpkinCarved_Medium_ColorBase : IAT_PumpkinCarved_ColorBase
+    {
+        scope = 0;
+        itemSize[] = { 3, 3 };
+        model = "iat_prop_items\cultivation\iat_carvedpumpkin_medium.p3d";
+    };
+    class IAT_PumpkinCarved_Small_ColorBase : IAT_PumpkinCarved_ColorBase
+    {
+        scope = 0;
+        model = "iat_prop_items\cultivation\iat_carvedpumpkin_small.p3d";
+    };
+
+    class IAT_PumpkinCarved_Small_Orange : IAT_PumpkinCarved_Small_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkincarved_co.paa" }; };
+    class IAT_PumpkinCarved_Medium_Orange : IAT_PumpkinCarved_Medium_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkincarved_co.paa" }; };
+    class IAT_PumpkinCarved_Large_Orange : IAT_PumpkinCarved_Large_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_prop_items\cultivation\data\iat_pumpkincarved_co.paa" }; };
+
 };
 class CfgSlots
 {
