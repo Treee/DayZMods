@@ -5159,7 +5159,7 @@ class CfgVehicles
         scope = 0;
         displayName = "Pumpkin";
         descriptionShort = "A plump pumpkin with a solid color.";
-        model = "iat_prop_items\cultivation\iat_pumpkin_all.p3d";
+        model = "iat_prop_items\cultivation\iat_pumpkin_wide_small.p3d";
         itemBehaviour = 0;
         weight = 2500;
         itemSize[] = { 2, 2 };
