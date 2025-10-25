@@ -360,4 +360,12 @@ class CfgVehicles
         color = "Zagorky";
         hiddenSelectionsTextures[] = { "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa", "\dz\gear\camping\data\Flag_Zagorky_co.paa" };
     };
+
+    // ==================================================== SPECIAL ARMBANDS
+    class IAT_DoubleArmband_Event : IAT_DoubleArmband_ColorBase
+    {
+        scope = 2;
+        visibilityModifier = 0.95;
+        hiddenSelectionsTextures[] = { "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa", "iat_double_armbands\armbands\data\iat_armband_event_co.paa" };
+    };
 };

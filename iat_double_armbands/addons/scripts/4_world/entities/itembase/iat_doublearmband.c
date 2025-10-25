@@ -1,4 +1,49 @@
-class IAT_DoubleArmband_ColorBase extends Armband_ColorBase{};
+class IAT_DoubleArmband_ColorBase extends Armband_ColorBase
+{
+	bool IAT_IsEventArmband()
+	{
+		return false;
+	}
+};
+
+class IAT_DoubleArmband_Event extends IAT_DoubleArmband_ColorBase
+{
+	// cant remove the armband manually
+	override bool CanDetachAttachment (EntityAI parent)
+	{
+		return false;
+	}
+	// if cut up, or somehow detached, delete this item
+	override void OnWasDetached( EntityAI parent, int slot_id )
+    {
+		super.OnWasDetached(parent, slot_id);
+        DeleteSafe();
+    }
+	// epi effect
+	override void OnWasAttached( EntityAI parent, int slot_id )
+	{
+		super.OnWasAttached( parent, slot_id );
+		if (GetGame().IsDedicatedServer())
+		{
+			PlayerBase player;
+			if (Class.CastTo(player, parent.GetHierarchyRootPlayer()))
+			{
+				if( player.GetModifiersManager().IsModifierActive(eModifiers.MDF_EPINEPHRINE))//effectively resets the timer
+				{
+					player.GetModifiersManager().DeactivateModifier(eModifiers.MDF_EPINEPHRINE);
+				}
+				player.GetModifiersManager().ActivateModifier(eModifiers.MDF_EPINEPHRINE);
+				player.GetStatWater().Set(player.GetStatWater().GetMax());
+				player.GetStatEnergy().Set(player.GetStatEnergy().GetMax());
+			}
+		}
+	}
+	// signal to the playerbase that this armband is and event one so ruin gear on death
+	override bool IAT_IsEventArmband()
+	{
+		return true;
+	}
+};
 
 class IAT_DoubleArmband_White extends IAT_DoubleArmband_ColorBase{};
 class IAT_DoubleArmband_Yellow extends IAT_DoubleArmband_ColorBase{};
