@@ -11,13 +11,28 @@ class IAT_DoubleArmband_Event extends IAT_DoubleArmband_ColorBase
 	// cant remove the armband manually
 	override bool CanDetachAttachment (EntityAI parent)
 	{
+		#ifdef Gearstand
+		if (parent.IsInherited(GS_Gearstand))
+		{
+			return true;
+		}
+		#endif
 		return false;
 	}
 	// if cut up, or somehow detached, delete this item
 	override void OnWasDetached( EntityAI parent, int slot_id )
     {
 		super.OnWasDetached(parent, slot_id);
-        DeleteSafe();
+		// server side call
+		if (GetGame().IsDedicatedServer())
+		{
+			// only delete from the player
+			PlayerBase player;
+			if (Class.CastTo(player, parent.GetHierarchyRootPlayer()))
+			{
+        		DeleteSafe();
+			}
+		}
     }
 	// epi effect
 	override void OnWasAttached( EntityAI parent, int slot_id )
