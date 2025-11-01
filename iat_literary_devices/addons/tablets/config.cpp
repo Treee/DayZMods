@@ -16,7 +16,9 @@ class CfgVehicles
         displayName = "Tablet";
         descriptionShort = "An electronic tablet.";
         itemSize[] = { 2,2 };
-        rotationFlags = 8;
+        rotationFlags = 16;
+        repairableWithKits[] = { 7 };
+        repairCosts[] = { 25 };
         booksInArchive[] = {};
         hiddenSelections[] = { "zbytek", "screen" };
         hiddenSelectionsTextures[] =
