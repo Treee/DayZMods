@@ -38,7 +38,7 @@ class IAT_Pot_ColorBase extends ItemBase
 			else // other slots are growth seeds
 			{
 				// construct the new item name for the replacement
-				string newItemName = seed.IAT_GetSeedToChangeInto();
+				string newItemName = "";
 				if (seed.ConfigIsExisting("IAT_SeedToReplace"))
 				{
 					newItemName = seed.ConfigGetString("IAT_SeedToReplace");
