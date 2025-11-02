@@ -16,7 +16,7 @@ class CfgVehicles
 	{
 		scope = 0;
 		displayName = "Codelock";
-		descriptionShort = "A lock that normally attaches to a fence gate, tent, and sometimes a cargo container. Default password is 1234. Make sure you change it after attaching to an object. Unlock to detach from object.";
+		descriptionShort = "A lock that normally attaches to a fence gate, tent, and sometimes a cargo container. Default password is 1234. Make sure you change it after attaching to an object. Unlock to detach from object. Use the attach action, do not click and drag it onto the slot.";
 		model = "iat_codelock\camping\iat_codelock.p3d";
 		inventorySlot[] = { "Att_CombinationLock" };
 		rotationFlags = 16;

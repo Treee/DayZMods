@@ -48,4 +48,15 @@ class IAT_ConvertLegacyCodelock extends RecipeBase
 		m_ResultToInventory[0]				= -2;				// (value) == -2 spawn result on the ground;(value) == -1 place anywhere in the players inventory, (value) >= 0 means switch position with ingredient number(value)
 		m_ResultReplacesIngredient[0]		= -1;				// (value) == -1 means do nothing; a value >= 0 means this result will transfer item propertiesvariables, attachments etc.. from an ingredient value
 	}
+
+	override bool CanDo(ItemBase ingredients[], PlayerBase player)//final check for recipe's validity
+	{
+		// only allow if this is not attached to anything
+		ItemBase ingredient2;
+		if (Class.CastTo(ingredient2, ingredients[1]))
+		{
+			return ingredient2.GetHierarchyParent() == null;
+		}
+		return false;
+	}
 };
