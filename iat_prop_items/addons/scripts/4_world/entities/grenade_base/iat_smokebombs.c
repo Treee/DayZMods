@@ -38,21 +38,21 @@ class IAT_SmokeBomb_ColorBase extends Grenade_Base
 	{
 		super.EEKilled(killer);
 	}
-override void OnDamageDestroyed(int oldLevel)
-{
-	if (GetGame().IsDedicatedServer())
+	override void OnDamageDestroyed(int oldLevel)
 	{
-		GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(DeleteSafe, 5000);
+		if (GetGame().IsDedicatedServer())
+		{
+			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(DeleteSafe, 5000);
+		}
+		#ifndef SERVER
+		ClearFlags(EntityFlags.VISIBLE, false);
+		m_ParticleSmoke = ParticleManager.GetInstance().PlayInWorld(m_ParticleIDToPlay, GetPosition());
+		m_ParticleSmoke.ScaleParticleParam(EmitorParam.SIZE, Math.RandomFloatInclusive(4.5, 6.3));
+		// m_ParticleSmoke.ScaleParticleParam(EmitorParam.LIFETIME, Math.RandomFloatInclusive(3, 5));
+		m_ParticleSmoke.ScaleParticleParam(EmitorParam.VELOCITY, Math.RandomFloatInclusive(2.3, 3.7));
+		PlaySoundSet( m_ExplosionSound, GetExplosionSoundSet(), 0, 0 );
+		#endif
 	}
-	#ifndef SERVER
-	ClearFlags(EntityFlags.VISIBLE, false);
-	m_ParticleSmoke = ParticleManager.GetInstance().PlayInWorld(m_ParticleIDToPlay, GetPosition());
-	m_ParticleSmoke.ScaleParticleParam(EmitorParam.SIZE, Math.RandomFloatInclusive(4.5, 6.3));
-	// m_ParticleSmoke.ScaleParticleParam(EmitorParam.LIFETIME, Math.RandomFloatInclusive(3, 5));
-	m_ParticleSmoke.ScaleParticleParam(EmitorParam.VELOCITY, Math.RandomFloatInclusive(2.3, 3.7));
-	PlaySoundSet( m_ExplosionSound, GetExplosionSoundSet(), 0, 0 );
-	#endif
-}
 
 	override protected void Activate()
 	{

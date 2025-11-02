@@ -8,36 +8,33 @@ class CfgPatches
 class CfgVehicles
 {
     class Inventory_Base;
-    class SeedBase;
+    class SeedBase : Inventory_Base
+    {
+        inventorySlot[] += { "IAT_PottedSeed1", "IAT_PottedSeed2", "IAT_PottedSeed3", "IAT_PottedSeed4", "IAT_PottedSeed5", "IAT_PottedSeed6", "IAT_PottedSeed7", "IAT_PottedSeed8" };
+    };
     //=================================== VANILLA OVERRIDE
     class TomatoSeeds : SeedBase
     {
-        inventorySlot[] += { "IAT_PottedSeed1", "IAT_PottedSeed2", "IAT_PottedSeed3", "IAT_PottedSeed4", "IAT_PottedSeed5", "IAT_PottedSeed6", "IAT_PottedSeed7", "IAT_PottedSeed8" };
         IAT_SeedToReplace = "IAT_SeedPlant_TomatoSeeds";
     };
     class PepperSeeds : SeedBase
     {
-        inventorySlot[] += { "IAT_PottedSeed1", "IAT_PottedSeed2", "IAT_PottedSeed3", "IAT_PottedSeed4", "IAT_PottedSeed5", "IAT_PottedSeed6", "IAT_PottedSeed7", "IAT_PottedSeed8" };
         IAT_SeedToReplace = "IAT_SeedPlant_PepperSeeds";
     };
     class PumpkinSeeds : SeedBase
     {
-        inventorySlot[] += { "IAT_PottedSeed1", "IAT_PottedSeed2", "IAT_PottedSeed3", "IAT_PottedSeed4", "IAT_PottedSeed5", "IAT_PottedSeed6", "IAT_PottedSeed7", "IAT_PottedSeed8" };
         IAT_SeedToReplace = "IAT_SeedPlant_PumpkinSeeds";
     };
     class ZucchiniSeeds : SeedBase
     {
-        inventorySlot[] += { "IAT_PottedSeed1", "IAT_PottedSeed2", "IAT_PottedSeed3", "IAT_PottedSeed4", "IAT_PottedSeed5", "IAT_PottedSeed6", "IAT_PottedSeed7", "IAT_PottedSeed8" };
         IAT_SeedToReplace = "IAT_SeedPlant_ZucchiniSeeds";
     };
     class PotatoSeed : SeedBase
     {
-        inventorySlot[] += { "IAT_PottedSeed1", "IAT_PottedSeed2", "IAT_PottedSeed3", "IAT_PottedSeed4", "IAT_PottedSeed5", "IAT_PottedSeed6", "IAT_PottedSeed7", "IAT_PottedSeed8" };
         IAT_SeedToReplace = "IAT_SeedPlant_PotatoSeed";
     };
     class CannabisSeeds : SeedBase
     {
-        inventorySlot[] += { "IAT_PottedSeed1", "IAT_PottedSeed2", "IAT_PottedSeed3", "IAT_PottedSeed4", "IAT_PottedSeed5", "IAT_PottedSeed6", "IAT_PottedSeed7", "IAT_PottedSeed8" };
         IAT_SeedToReplace = "IAT_SeedPlant_CannabisSeeds";
     };
 
