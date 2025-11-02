@@ -100,31 +100,31 @@ modded class ItemBase
 		return superBool;
 	}
 
-	override bool CanDisplayAttachmentSlot( int slot_id )
-	{
-		// if the slot can be seen
-		if (super.CanDisplayAttachmentSlot(slot_id))
-		{
-			// check to see if its a codelock slot
-			string slot_name = InventorySlots.GetSlotName(slot_id);
-			if (slot_name == "Att_CombinationLock")
-			{
-				// if there is a lock attached to this slot
-				if (HasAnyCodelockAttached())
-				{
-					// then show the slot
-					return true;
-				}
-				else
-				{   // hide the slot otherwise
-					return false;
-				}
-			}
-			// not the slot we care about so pass through the super true
-			return true;
-		}
-		return false;
-	}
+	// override bool CanDisplayAttachmentSlot( int slot_id )
+	// {
+	// 	// if the slot can be seen
+	// 	if (super.CanDisplayAttachmentSlot(slot_id))
+	// 	{
+	// 		// check to see if its a codelock slot
+	// 		string slot_name = InventorySlots.GetSlotName(slot_id);
+	// 		if (slot_name == "Att_CombinationLock")
+	// 		{
+	// 			// if there is a lock attached to this slot
+	// 			if (HasAnyCodelockAttached())
+	// 			{
+	// 				// then show the slot
+	// 				return true;
+	// 			}
+	// 			else
+	// 			{   // hide the slot otherwise
+	// 				return false;
+	// 			}
+	// 		}
+	// 		// not the slot we care about so pass through the super true
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
 
 	// ==================================================== CUSTOM CODE
 	void InitializeRaidItem()
