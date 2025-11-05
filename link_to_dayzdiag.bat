@@ -24,6 +24,7 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_roleplay_emotes" Z:\DayZ\Mo
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_roll_tables" Z:\DayZ\Modding\iat_roll_tables\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_simple_territories" Z:\DayZ\Modding\iat_simple_territories\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_single_item_split" Z:\DayZ\Modding\iat_single_item_split\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_smelting_metallurgy" Z:\DayZ\Modding\iat_smelting_metallurgy\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
