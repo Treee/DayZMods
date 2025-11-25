@@ -322,6 +322,16 @@ class CfgVehicles
         descriptionShort = "A classic tale.";
         hiddenSelectionsTextures[] = { "iat_literary_devices\books\data\book_Zombie_Guide_co.paa" };
     };
+    class IAT_LiteraryDevices_Book_FieldMedicineGuide : IAT_LiteraryDevices_Book_Colorbase
+    {
+        scope = 2;
+        title = "Field Medicine Guide";
+        author = "Unknown";
+        file = "iat_literary_devices\books\data\book_tccc_medicalguide.html";
+        displayName = "Field Medicine Guide";
+        descriptionShort = "A guide to administering CPR.";
+        hiddenSelectionsTextures[] = { "iat_literary_devices\books\data\book_tccc_medicalguide_co.paa" };
+    };
 
     //===================== VANILLA OVERRIDE
     class IAT_LiteraryDevices_Book_Bible : IAT_LiteraryDevices_Book_Colorbase
