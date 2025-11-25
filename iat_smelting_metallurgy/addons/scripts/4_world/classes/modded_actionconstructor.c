@@ -6,5 +6,6 @@ modded class ActionConstructor
     	actions.Insert(IAT_ActionTurnFurnaceValve);
     	actions.Insert(IAT_ActionOpenSmeltingMenu);
     	actions.Insert(IAT_ActionToggleFurnaceLock);
+    	actions.Insert(IAT_ActionSearchForCharcoal);
 	}
 };
