@@ -336,6 +336,107 @@ class CfgVehicles
         };
     };
 
+    // ===================================== RUBY's VINYLS
+    class IAT_PlayableVinylCover_BlackLagoonLove : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Black Lagoon Love";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_blacklagoonlove_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_BlackLagoonLove";
+        };
+    };
+    class IAT_PlayableVinylCover_DaggerInTheDark : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Dagger In The Dark";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_daggerinthedark_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_DaggerInTheDark";
+        };
+    };
+    class IAT_PlayableVinylCover_DownByTheGraveyardRiver : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Down By The Graveyard River";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_downbythegraveyardriver_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_DownByTheGraveyardRiver";
+        };
+    };
+    class IAT_PlayableVinylCover_GraveyardStrut : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Graveyard Strut";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_graveyardstrut_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_GraveyardStrut";
+        };
+    };
+    class IAT_PlayableVinylCover_GraveyardTwist : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Graveyard Twist";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_graveyardtwist_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_GraveyardTwist";
+        };
+    };
+    class IAT_PlayableVinylCover_LeatherDollsAndSwitchBlades : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Leather Dolls And Switch Blades";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_leatherdollsandswitchblades_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_LeatherDollsAndSwitchBlades";
+        };
+    };
+    class IAT_PlayableVinylCover_MidnightHowl : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Midnight Howl";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_midnighthowl_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_MidnightHowl";
+        };
+    };
+    class IAT_PlayableVinylCover_BlackTopVoodooQueen : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Black Top Voodoo Queen";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_blacktopvoodooqueen_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_BlackTopVoodooQueen";
+        };
+    };
+    class IAT_PlayableVinylCover_MySwampThingBaby : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "My Swamp Thing Baby";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_myswampthingbaby_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_MySwampThingBaby";
+        };
+    };
+    class IAT_PlayableVinylCover_ShesMyPoison : IAT_PlayableVinylCover_ColorBase
+    {
+        scope = 2;
+        displayName = "Shes My Poison";
+        hiddenSelectionsTextures[] = { "iat_prop_items\radio\data\rubyvinyls\iat_vinylcover_shesmypoison_co.paa" };
+        class CfgCassette
+        {
+            soundSet = "IAT_PI_Vinyl_SoundSet_ShesMyPoison";
+        };
+    };
 };
 
 class CfgSlots
