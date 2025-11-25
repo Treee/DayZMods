@@ -14,6 +14,9 @@ class IAT_MiningOre_Sulfur extends IAT_MiningOre_ColorBase{};
 class IAT_MiningOre_SaltCrystals extends IAT_MiningOre_ColorBase{};
 class IAT_MiningOre_Clay extends IAT_MiningOre_ColorBase{};
 
+class IAT_MiningOre_Charcoal extends IAT_MiningOre_ColorBase{};
+class IAT_MiningOre_Coke extends IAT_MiningOre_ColorBase{};
+
 class IAT_MiningGem_ColorBase extends ItemBase{};
 
 class IAT_MiningGem_Quartz extends IAT_MiningGem_ColorBase{};

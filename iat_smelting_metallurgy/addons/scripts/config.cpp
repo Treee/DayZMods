@@ -12,9 +12,14 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Smelting Metallurgy";
-		dependencies[] = { "World","Mission" };
+		dependencies[] = { "Game","World","Mission" };
 		class defs
 		{
+			class gameScriptModule
+			{
+				value = "";
+				files[] = { "iat_smelting_metallurgy/scripts/3_game" };
+			};
 			class worldScriptModule
 			{
 				value = "";

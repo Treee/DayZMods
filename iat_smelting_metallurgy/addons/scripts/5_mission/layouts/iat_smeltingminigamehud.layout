@@ -1,0 +1,533 @@
+PanelWidgetClass MainSmeltingPanel {
+ clipchildren 0
+ ignorepointer 1
+ color 0.1176 0.1176 0.1176 0.9804
+ position 0 0
+ size 0.85 0.75
+ halign center_ref
+ valign center_ref
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ priority 1
+ style UIDefaultPanel
+ {
+  PanelWidgetClass PanelHeader {
+   ignorepointer 1
+   size 1 0.1
+   halign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style UIDefaultPanel
+   {
+    TextWidgetClass LabelHeader {
+     disabled 0
+     ignorepointer 1
+     position 0 0
+     size 1 1
+     halign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Bold
+     text "SMELTING MINI GAME"
+     font "gui/fonts/sdf_MetronBook72"
+     "exact text" 0
+     text_proportion 0.8
+     "size to text h" 0
+     "size to text v" 0
+     "text halign" center
+     "text valign" center
+    }
+    ButtonWidgetClass ButtonCancel {
+     visible 1
+     color 1 0 0 1
+     position 0 0
+     size 0.075 1
+     halign right_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     userID 2
+     style EmptyHighlight
+     "next left" ""
+     "next right" ""
+     "next up" ""
+     "next down" ""
+     text "X"
+     font "gui/fonts/sdf_MetronBook24"
+     "disabled text color" 0.3412 0.3412 0.3412 1
+    }
+    PanelWidgetClass SeparatorPanel {
+     ignorepointer 1
+     color 0.7569 0.0941 0.0941 0.7843
+     size 0.96 0.05
+     halign center_ref
+     valign bottom_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     scaled 1
+     priority 10
+     style rover_sim_colorable
+    }
+   }
+  }
+  PanelWidgetClass PanelUI {
+   ignorepointer 1
+   position 0 0.02
+   size 0.96 0.85
+   halign center_ref
+   valign bottom_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   {
+    PanelWidgetClass PanelUserControlsLeft {
+     ignorepointer 1
+     size 0.25 1
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      WrapSpacerWidgetClass ControlsSpacer {
+       ignorepointer 1
+       position 0 0
+       size 1 1
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        PanelWidgetClass PanelAccelerant {
+         ignorepointer 1
+         size 1 0.2
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          TextWidgetClass TextAccelerantHP {
+           ignorepointer 1
+           size 0.8 0.5
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "Accelerant HP"
+           font "gui/fonts/MetronBlack22"
+           "exact text" 0
+           "size to text h" 0
+           "size to text v" 1
+           "text halign" center
+           "text valign" center
+          }
+          PanelWidgetClass PanelAccelerantControls {
+           ignorepointer 1
+           position 0 0.5
+           size 1 0.5
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            SliderWidgetClass SliderAccelerantHP {
+             size 0.75 1
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             current 2
+             "draw marker" 1
+            }
+            EditBoxWidgetClass EditBoxAccelerantHP {
+             position 0 0
+             size 0.25 1
+             halign right_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "2"
+             "text halign" center
+            }
+           }
+          }
+         }
+        }
+        PanelWidgetClass PanelOreGroup1 {
+         ignorepointer 1
+         size 1 0.2
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          TextWidgetClass TextOreGroup1 {
+           ignorepointer 1
+           size 0.8 0.5
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "Ore Group 1"
+           font "gui/fonts/MetronBlack22"
+           "size to text h" 0
+           "size to text v" 1
+           "text halign" center
+           "text valign" center
+          }
+          PanelWidgetClass PanelOreGroup1Controls {
+           ignorepointer 1
+           position 0 0.5
+           size 1 0.5
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            SliderWidgetClass SliderOreGroup1 {
+             size 0.75 1
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             current 1
+             "draw marker" 1
+            }
+            EditBoxWidgetClass EditBoxOreGroup1 {
+             position 0 0
+             size 0.25 1
+             halign right_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "1"
+             "text halign" center
+            }
+           }
+          }
+         }
+        }
+        PanelWidgetClass PanelOreGroup2 {
+         ignorepointer 1
+         size 1 0.2
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          TextWidgetClass TextOreGroup2 {
+           ignorepointer 1
+           size 0.8 0.5
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "Ore Group 2"
+           font "gui/fonts/MetronBlack22"
+           "size to text h" 0
+           "size to text v" 1
+           "text halign" center
+           "text valign" center
+          }
+          PanelWidgetClass PanelOreGroup2Controls {
+           ignorepointer 1
+           position 0 0.5
+           size 1 0.5
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            SliderWidgetClass SliderOreGroup2 {
+             size 0.75 1
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             current 1
+             "draw marker" 1
+            }
+            EditBoxWidgetClass EditBoxOreGroup2 {
+             position 0 0
+             size 0.25 1
+             halign right_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "1"
+             "text halign" center
+            }
+           }
+          }
+         }
+        }
+        PanelWidgetClass PanelStreak {
+         ignorepointer 1
+         size 1 0.15
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          GridSpacerWidgetClass GridStreak {
+           ignorepointer 1
+           position 0 0
+           size 1 1
+           halign center_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           content_halign center
+           content_valign center
+           Columns 2
+           Rows 2
+           {
+            TextWidgetClass TextStreak {
+             ignorepointer 1
+             size 1 1
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "STREAK: 0"
+             font "gui/fonts/MetronBlack22"
+             "size to text h" 0
+             "size to text v" 1
+             "text halign" center
+             "text valign" center
+            }
+            TextWidgetClass TextWnL {
+             ignorepointer 1
+             size 1 1
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "W/L: 0%"
+             font "gui/fonts/MetronBlack22"
+             "size to text h" 0
+             "size to text v" 1
+             "text halign" center
+             "text valign" center
+            }
+            TextWidgetClass TestWins {
+             ignorepointer 1
+             position 0.2 0
+             size 0.2 1
+             halign right_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "W: 0"
+             font "gui/fonts/MetronBlack22"
+             "size to text h" 0
+             "size to text v" 1
+             "text halign" center
+             "text valign" center
+            }
+            TextWidgetClass TextLoss {
+             ignorepointer 1
+             size 0.2 1
+             halign right_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "L: 0"
+             font "gui/fonts/MetronBlack22"
+             "size to text h" 0
+             "size to text v" 1
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      ButtonWidgetClass ButtonOver {
+       visible 1
+       color 1 0 0 1
+       position 0.05 0.05
+       size 0.4 0.15
+       valign bottom_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scaled 1
+       userID 1
+       style DayZInventoryButtonLeft
+       "next left" ""
+       "next right" ""
+       "next up" ""
+       "next down" ""
+       text "OVER"
+       text_proportion 0.3
+       font "gui/fonts/sdf_MetronBook24"
+       "disabled text color" 0.3412 0.3412 0.3412 1
+       switch normal
+      }
+      ButtonWidgetClass ButtonUnder {
+       visible 1
+       color 1 0 0 1
+       position 0.05 0.05
+       size 0.4 0.15
+       halign right_ref
+       valign bottom_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       scaled 1
+       userID 1
+       style DayZInventoryButtonRight
+       "next left" ""
+       "next right" ""
+       "next up" ""
+       "next down" ""
+       text "UNDER"
+       text_proportion 0.3
+       font "gui/fonts/sdf_MetronBook24"
+       "disabled text color" 0.3412 0.3412 0.3412 1
+       switch normal
+      }
+     }
+    }
+    PanelWidgetClass PanelGraphRight {
+     ignorepointer 1
+     size 0.7 1
+     halign right_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Outline
+     {
+      CanvasWidgetClass CanvasTemperatureGraph {
+       ignorepointer 1
+       position 0 0
+       size 1 1
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+      }
+      TextWidgetClass TextWagerCountDown {
+       ignorepointer 1
+       size 0.35 0.25
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "WAGER PLACED - Results In: "
+       font "gui/fonts/Metron28"
+       "exact text" 0
+       "size to text h" 1
+       "size to text v" 1
+       "text halign" center
+       "text valign" center
+      }
+      TextWidgetClass AbovePerfect {
+       ignorepointer 1
+       position 0.02 0
+       size 0.4 0.1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "OVER PERFECT TEMP"
+       font "gui/fonts/Metron28"
+       "text color" 0.0706 0.5608 0.1922 1
+       "exact text" 0
+       "size to text h" 1
+       "size to text v" 1
+       "text halign" center
+       "text valign" center
+      }
+      TextWidgetClass BelowPerfect {
+       ignorepointer 1
+       position 0.02 0
+       size 0.4 0.1
+       valign bottom_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "UNDER PERFECT TEMP"
+       font "gui/fonts/Metron28"
+       "text color" 0.5608 0.0706 0.0706 1
+       "exact text" 0
+       "size to text h" 1
+       "size to text v" 1
+       "text halign" center
+       "text valign" center
+      }
+      TextWidgetClass Perfect {
+       ignorepointer 1
+       position 0.02 0
+       size 0.4 0.1
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style None
+       text "PERFECT TEMP"
+       font "gui/fonts/Metron28"
+       "text color" 0.1569 0.2745 0.6235 1
+       "exact text" 0
+       "size to text h" 1
+       "size to text v" 1
+       "text halign" center
+       "text valign" center
+      }
+     }
+    }
+   }
+  }
+ }
+}
