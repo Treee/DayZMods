@@ -68,7 +68,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Aluminium Ore";
-		color = "Aluminium";
+		color = "aluminium";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_aluminium_co.paa" };
 	};
@@ -76,7 +76,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Lead Ore";
-		color = "Lead";
+		color = "lead";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_lead_co.paa" };
 	};
@@ -84,7 +84,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Zinc Ore";
-		color = "Zinc";
+		color = "zinc";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_zinc_co.paa" };
 	};
@@ -92,7 +92,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Tin Ore";
-		color = "Tin";
+		color = "tin";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_tin_co.paa" };
 	};
@@ -101,8 +101,8 @@ class CfgVehicles
 	class IAT_MiningOre_Silver : IAT_MiningOre_ColorBase
 	{
 		scope = 2;
-		displayName = "Silve Ore";
-		color = "Silver";
+		displayName = "Silver Ore";
+		color = "silver";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_silver_co.paa" };
 	};
@@ -110,7 +110,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Gold Ore";
-		color = "Gold";
+		color = "gold";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_gold_co.paa" };
 	};
@@ -119,9 +119,9 @@ class CfgVehicles
 	class IAT_MiningOre_Coal : IAT_MiningOre_ColorBase
 	{
 		scope = 2;
-		displayName = "Coal Chunk";
-		descriptionShort = "Raw material mined from the ground.";
-		color = "Coal";
+		displayName = "Bituminous Coal Chunk";
+		descriptionShort = "Raw material mined from the ground. Easy to light and produces temperatures inside a controlled forge up to 1700 degrees Celsius";
+		color = "coal";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_coal_co.paa" };
 	};
@@ -130,7 +130,7 @@ class CfgVehicles
 		scope = 2;
 		displayName = "Salt Peter";
 		descriptionShort = "Raw material mined from the ground.";
-		color = "SaltPeter";
+		color = "saltpeter";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_saltpeter_co.paa" };
 	};
@@ -139,7 +139,7 @@ class CfgVehicles
 		scope = 2;
 		displayName = "Sulfur";
 		descriptionShort = "Raw material mined from the ground.";
-		color = "Sulfur";
+		color = "sulfur";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_sulfur_co.paa" };
 	};
@@ -148,7 +148,7 @@ class CfgVehicles
 		scope = 2;
 		displayName = "Salt Crystals";
 		descriptionShort = "Raw material mined from the ground.";
-		color = "SaltCrystals";
+		color = "saltcrystals";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_saltcrystals_co.paa" };
 	};
@@ -157,11 +157,32 @@ class CfgVehicles
 		scope = 2;
 		displayName = "Clay";
 		descriptionShort = "Raw material mined from the ground.";
-		color = "Clay";
+		color = "clay";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_clay_co.paa" };
 	};
 
+	//==================================================================== ARTIFICIAL MINERALS
+	class IAT_MiningOre_Charcoal : IAT_MiningOre_ColorBase
+	{
+		scope = 2;
+		displayName = "Charcoal Chunk";
+		descriptionShort = "Created from burning wood in low oxygen environment. Easy to light and produces temperatures inside a controlled forge up to 1500 degrees Celsius.";
+		color = "charcoal";
+		IAT_Accelerant = 1;
+		hiddenSelections[] = { "zbytek" };
+		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_coal_co.paa" };
+	};
+	class IAT_MiningOre_Coke : IAT_MiningOre_ColorBase
+	{
+		scope = 2;
+		displayName = "Coke Chunk";
+		descriptionShort = "Created from burning coal in low oxygen environment. Easy to light and produces temperatures inside a controlled furnace up to 2000 degrees Celsius.";
+		color = "coke";
+		IAT_Accelerant = 1;
+		hiddenSelections[] = { "zbytek" };
+		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_coal_co.paa" };
+	};
 	//==================================================================== GEMSTONES
 	class IAT_MiningGem_ColorBase : Inventory_Base
 	{
@@ -197,7 +218,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Quartz";
-		color = "Quartz";
+		color = "quartz";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_quartz_co.paa" };
 	};
@@ -205,7 +226,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Amethyst";
-		color = "Amethyst";
+		color = "amethyst";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_amethyst_co.paa" };
 	};
@@ -213,7 +234,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Topaz";
-		color = "Topaz";
+		color = "topaz";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_topaz_co.paa" };
 	};
@@ -221,7 +242,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Ruby";
-		color = "Ruby";
+		color = "ruby";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_ruby_co.paa" };
 	};
@@ -229,7 +250,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Sapphire";
-		color = "Sapphire";
+		color = "sapphire";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_sapphire_co.paa" };
 	};
@@ -237,7 +258,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Diamond";
-		color = "Diamond";
+		color = "diamond";
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_mining_enhanced\consumables\data\iat_stone_diamond_co.paa" };
 	};

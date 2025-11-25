@@ -1,0 +1,1 @@
+const int IAT_MENU_SMELTING_MINIGAME = 612;
