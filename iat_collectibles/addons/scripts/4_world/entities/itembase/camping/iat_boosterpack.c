@@ -1019,3 +1019,30 @@ class IAT_BoosterPack_VinylCover extends IAT_BoosterPack_ColorBase
 		};
 	}
 };
+
+class IAT_BoosterPack_PictureFrames extends IAT_BoosterPack_ColorBase
+{
+	void IAT_BoosterPack_PictureFrames()
+	{
+		m_TotalCardsToCreate = 1;
+	}
+	// just randomly pick one of the 54 cards (jokers included)
+	override TStringArray GetSetCards()
+	{
+		return {
+			// LANDSCAPE
+			"IAT_PictureFrame_Landscape_SaltWoodCastle",
+			// PORTRAIT
+			"IAT_PictureFrame_Portrait_AliensAttack",
+			"IAT_PictureFrame_Portrait_BGroup",
+			"IAT_PictureFrame_Portrait_BitterRose",
+			"IAT_PictureFrame_Portrait_MilitaryMen",
+			"IAT_PictureFrame_Portrait_SettlerWarning",
+			"IAT_PictureFrame_Portrait_TheCenturion",
+			"IAT_PictureFrame_Portrait_UniverseFighters",
+			"IAT_PictureFrame_Portrait_Unsinkable",
+			// SQUARE
+			"IAT_PictureFrame_Square_RomeSunset"
+		};
+	}
+};

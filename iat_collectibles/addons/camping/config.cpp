@@ -68,6 +68,259 @@ class CfgVehicles
     class IAT_Bear_MinervaLegion : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_minervalegion_co.paa" }; };
     class IAT_Bear_Survivalists : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_survivalists_co.paa" }; };
 
+    //=================================== GUN FRAMES
+    class IAT_GunFrame_Rifle_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Gun Frame - Rifle";
+        descriptionShort = "A frame that holds a rifle.";
+        model = "iat_collectibles\camping\iat_gunframe_rifle.p3d";
+        weight = 130;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 3, 2 };
+        itemsCargoSize[] = { 0,0 };
+        attachments[] = { "IAT_GunWall_Rifle1" };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek", "frame" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_gunwall_co.paa", "DZ\gear\consumables\data\pile_of_planks_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+    class IAT_GunFrame_Pistol_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Gun Frame - Pistol";
+        descriptionShort = "A frame that holds three pistols.";
+        model = "iat_collectibles\camping\iat_gunframe_pistol.p3d";
+        weight = 130;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 2, 3 };
+        itemsCargoSize[] = { 0,0 };
+        attachments[] = { "IAT_GunWall_Pistol1", "IAT_GunWall_Pistol2", "IAT_GunWall_Pistol3" };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek", "frame" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_gunwall_co.paa", "DZ\gear\consumables\data\pile_of_planks_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+
+    class IAT_GunFrame_Rifle_Basic : IAT_GunFrame_Rifle_ColorBase { scope = 2; };
+    class IAT_GunFrame_Pistol_Basic : IAT_GunFrame_Pistol_ColorBase { scope = 2; };
+
+    //=================================== PICTURE FRAMES
+    class IAT_PictureFrame_Landscape_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Picture Frame - Landscape";
+        descriptionShort = "A picture frame for an image in landscape dimensions.";
+        model = "iat_collectibles\camping\iat_pictureframe_landscape.p3d";
+        weight = 130;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 3, 2 };
+        itemsCargoSize[] = { 0,0 };
+        inventorySlot[] = { };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek", "frame" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_saltwood_co.paa", "DZ\gear\consumables\data\pile_of_planks_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+    class IAT_PictureFrame_Portrait_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Picture Frame - Portrait";
+        descriptionShort = "A picture frame for an image in portrait dimensions.";
+        model = "iat_collectibles\camping\iat_pictureframe_portrait.p3d";
+        weight = 130;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 2, 3 };
+        itemsCargoSize[] = { 0,0 };
+        inventorySlot[] = { };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek", "frame" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_alientsattack_co.paa", "DZ\gear\consumables\data\pile_of_planks_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+    class IAT_PictureFrame_Square_ColorBase : Inventory_Base
+    {
+        scope = 0;
+        displayName = "Picture Frame - Square";
+        descriptionShort = "A picture frame for an image in square dimensions.";
+        model = "iat_collectibles\camping\iat_pictureframe_square.p3d";
+        weight = 130;
+        absorbency = 1;
+        rotationFlags = 16;
+        itemBehaviour = 1;
+        itemSize[] = { 2, 2 };
+        itemsCargoSize[] = { 0,0 };
+        inventorySlot[] = { };
+        soundImpactType = "textile";
+        hiddenSelections[] = { "zbytek", "frame" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframesquare_sunsetnearrome_co.paa", "DZ\gear\consumables\data\pile_of_planks_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 100;
+                    healthLevels[] =
+                    {
+                        {1, {"iat_collectibles\camping\data\pictureframe\iat_pictureframesquare.rvmat"}},
+                        {0.7, {"iat_collectibles\camping\data\pictureframe\iat_pictureframesquare.rvmat"}},
+                        {0.5, {"iat_collectibles\camping\data\pictureframe\iat_pictureframesquare_damage.rvmat"}},
+                        {0.3, {"iat_collectibles\camping\data\pictureframe\iat_pictureframesquare_damage.rvmat"}},
+                        {0, {"iat_collectibles\camping\data\pictureframe\iat_pictureframesquare_destruct.rvmat"}}
+                    };
+                };
+            };
+        };
+        class AnimEvents
+        {
+            class SoundWeapon
+            {
+                class pickUpItem
+                {
+                    soundSet = "pickUpPaper_SoundSet";
+                    id = 797;
+                };
+            };
+        };
+    };
+
+    //=================================== LANDSCAPE
+    class IAT_PictureFrame_Landscape_SaltWoodCastle : IAT_PictureFrame_Landscape_ColorBase { scope = 2; displayName = "Saltwood Castle"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframelandscape_saltwood_co.paa" }; };
+
+    //=================================== PORTRAIT
+    class IAT_PictureFrame_Portrait_AliensAttack : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "When Aliens Attack"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_alientsattack_co.paa" }; };
+    class IAT_PictureFrame_Portrait_BGroup : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "The B Group"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_bgroup_co.paa" }; };
+    class IAT_PictureFrame_Portrait_BitterRose : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "BitterRose"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_bitterrose_co.paa" }; };
+    class IAT_PictureFrame_Portrait_MilitaryMen : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "Military Men"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_militarymen_co.paa" }; };
+    class IAT_PictureFrame_Portrait_SettlerWarning : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "Settler Warning"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_settlerwarning_co.paa" }; };
+    class IAT_PictureFrame_Portrait_TheCenturion : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "The Centurion"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_thecenturion_co.paa" }; };
+    class IAT_PictureFrame_Portrait_UniverseFighters : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "Universe Fighters"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_universefighters_co.paa" }; };
+    class IAT_PictureFrame_Portrait_Unsinkable : IAT_PictureFrame_Portrait_ColorBase { scope = 2; displayName = "Unsinkable"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframeportrait_unsinkable_co.paa" }; };
+
+    //=================================== SQUARE
+    class IAT_PictureFrame_Square_RomeSunset : IAT_PictureFrame_Square_ColorBase { scope = 2; displayName = "Sunset Near Rome"; hiddenSelections[] = { "zbytek" }; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\pictureframe\iat_pictureframesquare_sunsetnearrome_co.paa" }; };
+
     //=================================== PLAYING CARDS
     class IAT_CardDeck_ColorBase : Inventory_Base
     {
@@ -857,6 +1110,28 @@ class CfgVehicles
         };
     };
 
+    class IAT_BoosterPack_PictureFrames : IAT_BoosterPack_ColorBase
+    {
+        scope = 2;
+        model = "\DZ\gear\camping\wooden_case.p3d";
+        displayName = "Box of Artwork";
+        color = "pictureframes";
+        rotationFlags = 2;
+        hiddenSelections[] = { "camoGround" };
+        hiddenSelectionsTextures[] = { "\dz\gear\camping\data\wooden_case_co.paa" };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 50;
+                    healthLevels[] = { {1, {"DZ\gear\camping\data\wooden_case.rvmat"}}, {0.7, {"DZ\gear\camping\data\wooden_case.rvmat"}}, {0.5, {"DZ\gear\camping\data\wooden_case_damage.rvmat"}}, {0.3, {"DZ\gear\camping\data\wooden_case_damage.rvmat"}}, {0, {"DZ\gear\camping\data\wooden_case_destruct.rvmat"}} };
+                };
+            };
+        };
+    };
+
     //=================================== VINYL COVERS
     class IAT_VinylCover_ColorBase : Inventory_Base
     {
@@ -1557,6 +1832,31 @@ class CfgVehicles
 };
 class CfgSlots
 {
+    class Slot_IAT_GunWall_Pistol1
+    {
+        name = "IAT_GunWall_Pistol1";
+        displayName = "Pistol Display";
+        ghostIcon = "set:dayz_inventory image:pistol";
+    };
+    class Slot_IAT_GunWall_Pistol2
+    {
+        name = "IAT_GunWall_Pistol2";
+        displayName = "Pistol Display";
+        ghostIcon = "set:dayz_inventory image:pistol";
+    };
+    class Slot_IAT_GunWall_Pistol3
+    {
+        name = "IAT_GunWall_Pistol3";
+        displayName = "Pistol Display";
+        ghostIcon = "set:dayz_inventory image:pistol";
+    };
+    class Slot_IAT_GunWall_Rifle1
+    {
+        name = "IAT_GunWall_Rifle1";
+        displayName = "Rifle Display";
+        ghostIcon = "set:dayz_inventory image:shoulderleft";
+    };
+
     // hearts
     class Slot_IAT_Card1
     {
@@ -2364,6 +2664,37 @@ class CfgSlots
         name = "IAT_TCard78";
         displayName = "Tarot Card";
         ghostIcon = "set:dayz_inventory image:paper";
+    };
+
+};
+
+class CfgNonAIVehicles
+{
+    class ProxyAttachment;
+    //====================== GUN WALL
+    class Proxyiat_gunwall_pistol1_proxy : ProxyAttachment
+    {
+        scope = 2;
+        inventorySlot[] = { "IAT_GunWall_Pistol1" };
+        model = "iat_collectibles\camping\proxy\iat_gunwall_pistol1_proxy.p3d";
+    };
+    class Proxyiat_gunwall_pistol2_proxy : ProxyAttachment
+    {
+        scope = 2;
+        inventorySlot[] = { "IAT_GunWall_Pistol2" };
+        model = "iat_collectibles\camping\proxy\iat_gunwall_pistol2_proxy.p3d";
+    };
+    class Proxyiat_gunwall_pistol3_proxy : ProxyAttachment
+    {
+        scope = 2;
+        inventorySlot[] = { "IAT_GunWall_Pistol3" };
+        model = "iat_collectibles\camping\proxy\iat_gunwall_pistol3_proxy.p3d";
+    };
+    class Proxyiat_gunwall_rifle1_proxy : ProxyAttachment
+    {
+        scope = 2;
+        inventorySlot[] = { "IAT_GunWall_Rifle1" };
+        model = "iat_collectibles\camping\proxy\iat_gunwall_rifle1_proxy.p3d";
     };
 
 };
