@@ -1,10 +1,10 @@
 modded class GameConstants
 {
-	const int 	STAMINA_DRAIN_STANDING_SPRINT_PER_SEC = 3; //in units (how much sprint depletes stamina)
-	const int 	STAMINA_DRAIN_CROUCHED_SPRINT_PER_SEC = 1; //in units (how much sprint in crouch depletes stamina)
-	const int 	STAMINA_DRAIN_PRONE_SPRINT_PER_SEC = 3; //in units (how much sprint in prone depletes stamina)
-	const int	STAMINA_DRAIN_SWIM_FAST_PER_SEC = 4; //in units (how much fast swimming depletes stamina)
-	const int	STAMINA_DRAIN_LADDER_FAST_PER_SEC = 5; //in units (how much fast ladder climb depletes stamina)
+	const int STAMINA_DRAIN_STANDING_SPRINT_PER_SEC = 3; //in units (how much sprint depletes stamina)
+	const int STAMINA_DRAIN_CROUCHED_SPRINT_PER_SEC = 1; //in units (how much sprint in crouch depletes stamina)
+	const int STAMINA_DRAIN_PRONE_SPRINT_PER_SEC = 3; //in units (how much sprint in prone depletes stamina)
+	const int STAMINA_DRAIN_SWIM_FAST_PER_SEC = 4; //in units (how much fast swimming depletes stamina)
+	const int STAMINA_DRAIN_LADDER_FAST_PER_SEC = 5; //in units (how much fast ladder climb depletes stamina)
 
 	const float	STAMINA_DRAIN_HOLD_BREATH_START = 0.1; //in units (how much holding breath depletes stamina at the start)
 	const float	STAMINA_DRAIN_HOLD_BREATH_END = 1.0; //in units (how much holding breath depletes stamina at the end)
@@ -12,8 +12,8 @@ modded class GameConstants
 	const float	STAMINA_DRAIN_VAULT = 10;		// in units (how much jumping depletes stamina)
 	const float	STAMINA_DRAIN_CLIMB = 15;		// in units (how much jumping depletes stamina)
 	const float	STAMINA_DRAIN_MELEE_LIGHT = 1; //in units (how much light melee punch depletes stamina)
-	const float	STAMINA_DRAIN_MELEE_HEAVY = 5; //in units (how much heavy melee punch depletes stamina)
-	const float	STAMINA_DRAIN_MELEE_EVADE = 2; // in units (how much evade depletes stamina)
+	const float	STAMINA_DRAIN_MELEE_HEAVY = 17; //in units (how much heavy melee punch depletes stamina)
+	const float	STAMINA_DRAIN_MELEE_EVADE = 4; // in units (how much evade depletes stamina)
 	const float	STAMINA_DRAIN_ROLL = 3; // in units (how much roll depletes stamina)
 
 	const float STAMINA_DRAIN_HOLD_BREATH_DURATION = 8.0; //in seconds, time it takes to increase stamina drain from STAMINA_DRAIN_HOLD_BREATH_START to STAMINA_DRAIN_HOLD_BREATH_END
