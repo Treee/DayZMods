@@ -381,6 +381,8 @@ class CfgVehicles
 		  "Woodland",
 		  "Mossy",
 		  "Winter",
+		  "White",
+		  "Black"
 		};
 	};
 	class LeatherHat_ColorBase : Clothing
