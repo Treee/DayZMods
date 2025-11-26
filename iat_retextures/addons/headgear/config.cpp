@@ -25,6 +25,7 @@ class CfgVehicles
     class PoliceCap;
     class HeadCover_Improvised;
     class CowboyHat_ColorBase;
+    class GhillieHood_ColorBase;
 
     //=============================================== Vanilla Override
     class BallisticHelmet_MTP : BallisticHelmet_ColorBase
@@ -1329,6 +1330,29 @@ class CfgVehicles
                     healthLevels[] = { {1, {"iat_retextures\headgear\data\iat_cowboyhat.rvmat"}}, {0.7, {"iat_retextures\headgear\data\iat_cowboyhat.rvmat"}}, {0.5, {"iat_retextures\headgear\data\iat_cowboyhat_damage.rvmat"}}, {0.3, {"iat_retextures\headgear\data\iat_cowboyhat_damage.rvmat"}}, {0, {"iat_retextures\headgear\data\iat_cowboyhat_destruct.rvmat"}} };
                 };
             };
+        };
+    };
+
+    class GhillieHood_Black : GhillieHood_ColorBase
+    {
+        scope = 2;
+        color = "Black";
+        hiddenSelectionsTextures[] =
+        {
+            "iat_retextures\backpacks\data\ghillie_black_co.paa",
+            "iat_retextures\backpacks\data\ghillie_black_co.paa",
+            "iat_retextures\backpacks\data\ghillie_black_co.paa"
+        };
+    };
+    class GhillieHood_White : GhillieHood_ColorBase
+    {
+        scope = 2;
+        color = "White";
+        hiddenSelectionsTextures[] =
+        {
+            "iat_retextures\backpacks\data\ghillie_winter_co.paa",
+            "iat_retextures\backpacks\data\ghillie_winter_co.paa",
+            "iat_retextures\backpacks\data\ghillie_winter_co.paa"
         };
     };
 };
