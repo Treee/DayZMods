@@ -11,7 +11,7 @@ class CfgVehicles
 
     class IAT_OccultTable_Colorbase : HouseNoDestruct
     {
-        scope = 1;
+        scope = 0;
         displayName = "Occult Table";
         model = "iat_prop_items\structures\furniture\iat_occulttable.p3d";
         hiddenSelections[] = { "zbytek" };
