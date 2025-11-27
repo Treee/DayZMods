@@ -67,89 +67,128 @@ class CfgVehicles
 	};
 
 
+	// ====================== WHITE MEAT
 	class HumanSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "White Meat";
+		descriptionShort = "A cut of white meat.";
+		model = "\dz\gear\food\meat_breast.p3d";
 		itemSize[] = { 1,2 };
-	};
-	class GoatSteakMeat : Edible_Base
-	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
-		itemSize[] = { 1,2 };
-	};
-	class MouflonSteakMeat : Edible_Base
-	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
-		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_breast_raw_CO.paa", "dz\gear\food\data\meat_breast_baked_CO.paa", "dz\gear\food\data\meat_breast_baked_CO.paa", "dz\gear\food\data\meat_breast_dried_CO.paa", "dz\gear\food\data\meat_breast_burnt_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_breast_raw.rvmat", "dz\gear\food\data\meat_breast_baked.rvmat", "dz\gear\food\data\meat_breast_boiled.rvmat", "dz\gear\food\data\meat_breast_dried.rvmat", "dz\gear\food\data\meat_breast_burnt.rvmat", "dz\gear\food\data\meat_breast_rotten.rvmat" };
 	};
 	class BoarSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "White Meat";
+		descriptionShort = "A cut of white meat.";
+		model = "\dz\gear\food\meat_breast.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_breast_raw_CO.paa", "dz\gear\food\data\meat_breast_baked_CO.paa", "dz\gear\food\data\meat_breast_baked_CO.paa", "dz\gear\food\data\meat_breast_dried_CO.paa", "dz\gear\food\data\meat_breast_burnt_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_breast_raw.rvmat", "dz\gear\food\data\meat_breast_baked.rvmat", "dz\gear\food\data\meat_breast_boiled.rvmat", "dz\gear\food\data\meat_breast_dried.rvmat", "dz\gear\food\data\meat_breast_burnt.rvmat", "dz\gear\food\data\meat_breast_rotten.rvmat" };
 	};
 	class PigSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "White Meat";
+		descriptionShort = "A cut of white meat.";
+		model = "\dz\gear\food\meat_breast.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_breast_raw_CO.paa", "dz\gear\food\data\meat_breast_baked_CO.paa", "dz\gear\food\data\meat_breast_baked_CO.paa", "dz\gear\food\data\meat_breast_dried_CO.paa", "dz\gear\food\data\meat_breast_burnt_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_breast_raw.rvmat", "dz\gear\food\data\meat_breast_baked.rvmat", "dz\gear\food\data\meat_breast_boiled.rvmat", "dz\gear\food\data\meat_breast_dried.rvmat", "dz\gear\food\data\meat_breast_burnt.rvmat", "dz\gear\food\data\meat_breast_rotten.rvmat" };
+	};
+
+	// ====================== RED MEAT
+	class GoatSteakMeat : Edible_Base
+	{
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
+		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
+	};
+	class MouflonSteakMeat : Edible_Base
+	{
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
+		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 	class DeerSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 	class ReindeerSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 	class WolfSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 	class BearSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 	class CowSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 	class SheepSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 	class FoxSteakMeat : Edible_Base
 	{
-		displayName = "Meat";
-		descriptionShort = "A cut of meat.";
-		model = "\dz\gear\food\human_meat.p3d";
+		displayName = "Red Meat";
+		descriptionShort = "A cut of red meat.";
+		model = "\dz\gear\food\meat_steak.p3d";
 		itemSize[] = { 1,2 };
+		hiddenSelections[] = { "cs_raw" };
+		hiddenSelectionsTextures[] = { "dz\gear\food\data\meat_steak_raw_CO.paa", "dz\gear\food\data\meat_steak_baked_CO.paa", "dz\gear\food\data\meat_steak_boiled_co.paa", "dz\gear\food\data\meat_steak_dried_CO.paa", "dz\gear\food\data\meat_steak_burned_CO.paa" };
+		hiddenSelectionsMaterials[] = { "dz\gear\food\data\meat_steak_raw.rvmat", "dz\gear\food\data\meat_steak_baked.rvmat", "dz\gear\food\data\meat_steak_boiled.rvmat", "dz\gear\food\data\meat_steak_dried.rvmat", "dz\gear\food\data\meat_steak_burnt.rvmat", "dz\gear\food\data\meat_steak_rotten.rvmat" };
 	};
 
 	class Banana : Edible_Base
