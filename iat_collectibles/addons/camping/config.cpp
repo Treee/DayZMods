@@ -1050,6 +1050,15 @@ class CfgVehicles
     class IAT_BoosterPack_Collectibles_SRP_BR : IAT_BoosterPack_ColorBase
     {
         scope = 2;
+        displayName = "Booster Pack - Bitterroot Cards";
+        color = "collectibles";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\boosterpacks\iat_boosterpack_collectibles_co.paa" };
+    };
+    class IAT_BoosterPack_Collectibles_SRP_PL : IAT_BoosterPack_ColorBase
+    {
+        scope = 2;
+        displayName = "Booster Pack - Player Cards";
         color = "collectibles";
         hiddenSelections[] = { "zbytek" };
         hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\boosterpacks\iat_boosterpack_collectibles_co.paa" };
