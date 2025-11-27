@@ -13,6 +13,7 @@ modded class ModItemRegisterCallbacks
         pType.AddItemInHandsProfileIK("IAT_TarotCard_Colorbase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/paper.anm");
         pType.AddItemInHandsProfileIK("IAT_CollectibleCard_Colorbase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/paper.anm");
 
+        pType.AddItemInHandsProfileIK("IAT_BoosterPack_Collectibles_SRP_PL", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/paper.anm");
         pType.AddItemInHandsProfileIK("IAT_BoosterPack_Collectibles_SRP_BR", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/paper.anm");
         pType.AddItemInHandsProfileIK("IAT_BoosterPack_PlayingCards", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/paper.anm");
         pType.AddItemInHandsProfileIK("IAT_BoosterPack_TarotCards", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/paper.anm");

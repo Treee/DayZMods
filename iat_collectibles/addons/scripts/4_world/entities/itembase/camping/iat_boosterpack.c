@@ -447,6 +447,39 @@ class IAT_BoosterPack_Collectibles_SRP_BR extends IAT_BoosterPack_ColorBase
 		};
 	}
 };
+class IAT_BoosterPack_Collectibles_SRP_PL extends IAT_BoosterPack_ColorBase
+{
+	void IAT_BoosterPack_Collectibles_SRP_PL()
+	{
+		m_TotalCardsToCreate = 1;
+	}
+	// just randomly pick one of the 54 cards (jokers included)
+	override TStringArray GetSetCards()
+	{
+		return {
+			"IAT_CollectibleCard_SRP_PL_1",
+			"IAT_CollectibleCard_SRP_PL_2",
+			"IAT_CollectibleCard_SRP_PL_3",
+			"IAT_CollectibleCard_SRP_PL_4",
+			"IAT_CollectibleCard_SRP_PL_5",
+			"IAT_CollectibleCard_SRP_PL_6",
+			"IAT_CollectibleCard_SRP_PL_7",
+			"IAT_CollectibleCard_SRP_PL_8",
+			"IAT_CollectibleCard_SRP_PL_9",
+			"IAT_CollectibleCard_SRP_PL_10",
+			"IAT_CollectibleCard_SRP_PL_11",
+			"IAT_CollectibleCard_SRP_PL_12",
+			"IAT_CollectibleCard_SRP_PL_13",
+			"IAT_CollectibleCard_SRP_PL_14",
+			"IAT_CollectibleCard_SRP_PL_15",
+			"IAT_CollectibleCard_SRP_PL_16",
+			"IAT_CollectibleCard_SRP_PL_17",
+			"IAT_CollectibleCard_SRP_PL_18",
+		};
+	}
+};
+
+
 
 
 class IAT_BoosterPack_VinylRecordArt extends IAT_BoosterPack_ColorBase
