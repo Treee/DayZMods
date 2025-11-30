@@ -470,6 +470,16 @@ class IAT_Codelock_Colorbase extends ItemBase
 	{
 		return m_Owner_SteamId == steamId;
 	}
+	bool HasOwner()
+	{
+		// these values indicate no owner
+		if (m_Owner_SteamId == "unowned")
+			return false;
+		if (m_Owner_SteamId == "")
+			return false;
+
+		return true;
+	}
 	bool IsWhitelisted(string steamId)
 	{
 		foreach(string id : m_Whitelist_SteamIds)
