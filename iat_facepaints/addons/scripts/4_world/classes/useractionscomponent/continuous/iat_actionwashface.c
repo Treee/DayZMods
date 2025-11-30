@@ -23,7 +23,12 @@ class IAT_ActionWashFace: ActionContinuousBase
 	}
  	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if (player && player.GetFacePaintIndex() > -1)
+		if (!player)
+			return false;
+		if (player.IsBleeding())
+			return false;
+
+		if (player.GetFacePaintIndex() > -1)
 			return true;
     	return false;
 	}
@@ -64,13 +69,7 @@ class IAT_ActionWashFaceTarget: ActionContinuousBase
 		if (man.GetFacePaintIndex() == -1)
 			return false;
 
-		int slot_id = InventorySlots.GetSlotIdFromString("Mask");
-		EntityAI equipedMask = man.GetInventory().FindPlaceholderForSlot( slot_id );
-
-		slot_id = InventorySlots.GetSlotIdFromString("Eyewear");
-		EntityAI equipedGlasses = man.GetInventory().FindPlaceholderForSlot( slot_id );
-		// cannot apply when wearing eyewear or masks
-		return !(equipedMask || equipedGlasses);
+		return true;
 	}
   	override void OnFinishProgressServer( ActionData action_data )
 	{
