@@ -1,0 +1,1 @@
+class IAT_Flaregun_Staff extends Flaregun{};

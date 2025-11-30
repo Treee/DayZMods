@@ -40,4 +40,10 @@ modded class ModItemRegisterCallbacks
         pType.AddItemInHandsProfileIK("IAT_Pumpkin_Wide_Large_ColorBase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/sea_chest.anm");
         pType.AddItemInHandsProfileIK("IAT_PumpkinCarved_Large_ColorBase", "dz/anims/workspaces/player/player_main/player_main_heavy.asi", pBehavior, "dz/anims/anm/player/ik/heavy/sea_chest.anm");
     }
+
+    override void RegisterPistol(DayZPlayerType pType, DayzPlayerItemBehaviorCfg pBehavior)
+    {
+        super.RegisterPistol(pType, pBehavior);
+        pType.AddItemInHandsProfileIK("IAT_Flaregun_Staff", "dz/anims/workspaces/player/player_main/weapons/player_main_flaregun.asi", pBehavior, "dz/anims/anm/player/ik/weapons/flaregun.anm", "dz/anims/anm/player/reloads/Flaregun/w_Flaregun_states.anm");
+    }
 };

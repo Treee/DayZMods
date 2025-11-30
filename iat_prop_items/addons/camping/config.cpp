@@ -2,7 +2,7 @@ class CfgPatches
 {
     class IAT_Prop_Items_Camping
     {
-        requiredAddons[] = { "DZ_Data", "DZ_Scripts", "DZ_Gear_Camping" };
+        requiredAddons[] = { "DZ_Data", "DZ_Scripts", "DZ_Gear_Camping", "DZ_Pistols_Flaregun" };
     };
 };
 class CfgVehicles
@@ -199,6 +199,94 @@ class CfgVehicles
     };
 
 };
+class CfgWeapons
+{
+    class Flaregun_Base;
+    class IAT_Flaregun_Staff : Flaregun_Base
+    {
+        scope = 2;
+        displayName = "Sun Staff";
+        descriptionShort = "A metal staff that praises the sun.";
+        model = "iat_prop_items\camping\iat_flaregunstaff.p3d";
+        attachments[] = {};
+        inventorySlot[] = { "Shoulder", "Melee" };
+        itemSize[] = { 1, 7 };
+        repairableWithKits[] = { 5,8 };
+        repairCosts[] = { 100,100 };
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\camping\data\iat_flaregunstaff_co.paa" };
+        class InventorySlotsOffsets
+        {
+            class Shoulder
+            {
+                position[] = { 0, 0, 0 };//FB,UD,LR
+                orientation[] = { 90, 90, 0 };//x,y,z
+            };
+            class Melee
+            {
+                position[] = { 0, 0, 0 };//FB,UD,LR
+                orientation[] = { 90, 90, 0 };//x,y,z
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints = 150;
+                    healthLevels[] = { {1, {"iat_prop_items\camping\data\iat_flaregunstaff.rvmat"}}, {0.7, {"iat_prop_items\camping\data\iat_flaregunstaff.rvmat"}}, {0.5, {"iat_prop_items\camping\data\iat_flaregunstaff_damage.rvmat"}}, {0.3, {"iat_prop_items\camping\data\iat_flaregunstaff_damage.rvmat"}}, {0, {"iat_prop_items\camping\data\iat_flaregunstaff_destruct.rvmat"}} };
+                };
+            };
+        };
+        class Particles
+        {
+            class OnFire
+            {
+                class SmokeCloud
+                {
+                    overrideParticle = "weapon_shot_winded_smoke";
+                };
+                class MuzzleFlash
+                {
+                    overrideParticle = "weapon_shot_fnx_01";
+                    ignoreIfSuppressed = 1;
+                    illuminateWorld = 1;
+                    positionOffset[] = { 0, 0, 0 };
+                };
+            };
+            class OnOverheating
+            {
+                maxOverheatingValue = 8;
+                shotsToStartOverheating = 8;
+                overheatingDecayInterval = 1;
+                class SmokingBarrel1
+                {
+                    overrideParticle = "smoking_barrel_small";
+                    onlyWithinOverheatLimits[] = { 0, 1 };
+                    positionOffset[] = { 0, 0, 0 };
+                    onlyWithinRainLimits[] = { 0, 1 };
+                };
+                class OpenChamberSmoke
+                {
+                    onlyIfBoltIsOpen = 1;
+                    overrideParticle = "smoking_barrel_small";
+                    overridePoint = "Nabojnicestart";
+                };
+            };
+            class OnBulletCasingEject
+            {
+                class ChamberSmokeRaise
+                {
+                    overrideParticle = "weapon_shot_chamber_smoke";
+                    overridePoint = "Nabojnicestart";
+                };
+            };
+        };
+    };
+};
+
+
 class CfgSlots
 {
     class Slot_IAT_VanillaFlag
