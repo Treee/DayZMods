@@ -102,23 +102,5 @@ class CfgVehicles
 	{
 		scope = 2;
 		hiddenSelectionsTextures[] = { "iat\alv_gear_overrides\characters\headgear\data\HeavyCover_autumn2187_co.paa" };
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints = 550;
-					healthLevels[] =
-					{
-						{1,{"iat\alv_gear_overrides\characters\headgear\data\HeavyCover_autumn2187.rvmat"}},
-						{0.69999999,{"iat\alv_gear_overrides\characters\headgear\data\HeavyCover_autumn2187.rvmat"}},
-						{0.5,{"iat\alv_gear_overrides\characters\headgear\data\HeavyCover_autumn2187_damage.rvmat"}},
-						{0.30000001,{"iat\alv_gear_overrides\characters\headgear\data\HeavyCover_autumn2187_damage.rvmat"}},
-						{0,{"iat\alv_gear_overrides\characters\headgear\data\HeavyCover_autumn2187_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
 };
