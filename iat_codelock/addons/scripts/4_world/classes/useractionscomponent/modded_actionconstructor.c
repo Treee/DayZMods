@@ -4,6 +4,7 @@ modded class ActionConstructor
 	{
 		super.RegisterActions(actions);
 
+		actions.Insert(IAT_ActionClaimCodelock);
 		actions.Insert(IAT_ActionManageCodelock);
 		actions.Insert(IAT_ActionInteractCodelock);
 		actions.Insert(IAT_ActionDestroyCodelock);

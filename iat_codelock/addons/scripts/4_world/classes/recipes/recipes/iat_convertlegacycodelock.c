@@ -8,7 +8,7 @@ class IAT_ConvertLegacyCodelock extends RecipeBase
 
 		//conditions
 		m_MinDamageIngredient[0]			= -1;				//-1 = disable check
-		m_MaxDamageIngredient[0]			= -1;				//-1 = disable check
+		m_MaxDamageIngredient[0]			= 3;				//-1 = disable check
 		m_MinQuantityIngredient[0]			= -1;				//-1 = disable check
 		m_MaxQuantityIngredient[0]			= -1;				//-1 = disable check
 
@@ -52,10 +52,10 @@ class IAT_ConvertLegacyCodelock extends RecipeBase
 	override bool CanDo(ItemBase ingredients[], PlayerBase player)//final check for recipe's validity
 	{
 		// only allow if this is not attached to anything
-		ItemBase ingredient2;
-		if (Class.CastTo(ingredient2, ingredients[1]))
+		CodeLock codelock;
+		if (Class.CastTo(codelock, ingredients[0]))
 		{
-			return ingredient2.GetHierarchyParent() == null;
+			return codelock.GetHierarchyParent() == null;
 		}
 		return false;
 	}

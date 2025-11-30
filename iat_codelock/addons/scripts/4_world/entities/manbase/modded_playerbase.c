@@ -16,6 +16,8 @@ modded class PlayerBase
 		AddAction(IAT_ActionManageCodelock, InputActionMap);
 		// player interact menu
 		AddAction(IAT_ActionInteractCodelock, InputActionMap);
+		// player claim codelock
+		AddAction(IAT_ActionClaimCodelock, InputActionMap);
 	}
 
 	// Sync failed passcode entry attempts for action checking

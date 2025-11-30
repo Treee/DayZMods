@@ -12,7 +12,7 @@ class IAT_ActionInteractCodelock extends ActionInteractBase
 
 	override void CreateConditionComponents()
 	{
-		m_ConditionItem = new CCINotPresent();
+		m_ConditionItem = new CCINone();
 		m_ConditionTarget = new CCTCursor(UAMaxDistances.DEFAULT);
 	}
 
@@ -117,6 +117,11 @@ class IAT_ActionInteractCodelock extends ActionInteractBase
 		// does the player NOT have access to the codelock?
 		if (iat_codelock && !iat_codelock.HasAccess(player.GetIdentity()))
 		{
+			// if the codelock has no owner, do not allow interacting
+			if (!iat_codelock.HasOwner())
+			{
+				return false;
+			}
 			// have they already tried to access it too many times?
 			if (player.HasFailedPasscodeEntryTooManyTimes())
 			{

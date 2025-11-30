@@ -12,7 +12,7 @@ class IAT_ActionManageCodelock extends ActionInteractBase
 
 	override void CreateConditionComponents()
 	{
-		m_ConditionItem = new CCINotPresent();
+		m_ConditionItem = new CCINone();
 		m_ConditionTarget = new CCTObject(UAMaxDistances.DEFAULT);
 	}
 
