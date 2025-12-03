@@ -7,7 +7,88 @@ class CfgPatches
 };
 class CfgVehicles
 {
+	class Inventory_Base;
 	class FireplaceBase;
+
+	class IAT_FurnaceKit_ColorBase : Inventory_Base
+	{
+		scope = 0;
+		displayName = "Furnace Kit";
+		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		model = "\DZ\gear\camping\wooden_case.p3d";
+		rotationFlags = 2;
+		itemBehaviour = 0;
+		itemSize[] = { 5, 4 };
+		weight = 3000;
+		soundImpactType = "wood";
+		hiddenSelections[] = { "camoGround" };
+		hiddenSelectionsTextures[] = { "\dz\gear\camping\data\wooden_case_co.paa" };
+		class DamageSystem
+		{
+			class GlobalHealth
+			{
+				class Health
+				{
+					hitpoints = 50;
+					healthLevels[] = { {1, {"DZ\gear\camping\data\wooden_case.rvmat"}}, {0.7, {"DZ\gear\camping\data\wooden_case.rvmat"}}, {0.5, {"DZ\gear\camping\data\wooden_case_damage.rvmat"}}, {0.3, {"DZ\gear\camping\data\wooden_case_damage.rvmat"}}, {0, {"DZ\gear\camping\data\wooden_case_destruct.rvmat"}} };
+				};
+			};
+		};
+		class AnimEvents
+		{
+			class SoundWeapon
+			{
+				class movement
+				{
+					soundSet = "seachest_movement_SoundSet";
+					id = 1;
+				};
+				class pickUpItem_Light
+				{
+					soundSet = "pickUpSeaChest_SoundSet";
+					id = 796;
+				};
+				class pickUpItem
+				{
+					soundSet = "pickUpSeaChest_SoundSet";
+					id = 797;
+				};
+				class drop
+				{
+					soundset = "seachest_drop_SoundSet";
+					id = 898;
+				};
+			};
+		};
+	};
+	class IAT_FurnaceKit_BasicStone : IAT_FurnaceKit_ColorBase
+	{
+		scope = 2;
+		displayName = "Basic Stone Furnace Kit";
+		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		projectionTypename = "IAT_SmeltingFurnace_BasicStone";
+	};
+	class IAT_FurnaceKit_BasicBrick : IAT_FurnaceKit_ColorBase
+	{
+		scope = 2;
+		displayName = "Basic Brick Furnace Kit";
+		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		projectionTypename = "IAT_SmeltingFurnace_BasicBrick";
+	};
+	class IAT_FurnaceKit_Advancedstone : IAT_FurnaceKit_ColorBase
+	{
+		scope = 2;
+		displayName = "Advanced Stone Furnace Kit";
+		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		projectionTypename = "IAT_SmeltingFurnace_AdvancedStone";
+	};
+	class IAT_FurnaceKit_Industrial : IAT_FurnaceKit_ColorBase
+	{
+		scope = 2;
+		displayName = "Industrial Furnace Kit";
+		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		projectionTypename = "IAT_SmeltingFurnace_Industrial";
+	};
 
 	class IAT_SmeltingFurnace_ColorBase : FireplaceBase
 	{
