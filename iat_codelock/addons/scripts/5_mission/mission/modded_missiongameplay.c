@@ -10,7 +10,7 @@ modded class MissionGameplay
 		if (!Class.CastTo(iat_codelock, item))
 			return;
 		// if there is a menu already open; short circuit
-		if (GetGame().GetUIManager().GetMenu() != null)
+		if (g_Game.GetUIManager().GetMenu() != null)
 			return;
 
 		IAT_MenuType menuType = iat_codelock.GetMenuType();
@@ -19,7 +19,7 @@ modded class MissionGameplay
 		if (menuType == IAT_MenuType.CODELOCK_MANAGER)
 		{
 			// create a new scripted menu instance for managing the codelock
-			if (Class.CastTo(codelockMenu, GetGame().GetUIManager().EnterScriptedMenu(IAT_MENU_CODELOCK_MANAGER, null)))
+			if (Class.CastTo(codelockMenu, g_Game.GetUIManager().EnterScriptedMenu(IAT_MENU_CODELOCK_MANAGER, null)))
 			{
 				// if the menu is created, send the codelock reference to it so we can update things like locked state or combination
 				codelockMenu.SetCodelock(iat_codelock);
@@ -28,7 +28,7 @@ modded class MissionGameplay
 		else if (menuType == IAT_MenuType.PASSCODE_ENTRY)
 		{
 			// create a new scripted menu instance for entering the password for the codelock
-			if (Class.CastTo(codelockMenu, GetGame().GetUIManager().EnterScriptedMenu(IAT_MENU_CODELOCK_ENTRY, null)))
+			if (Class.CastTo(codelockMenu, g_Game.GetUIManager().EnterScriptedMenu(IAT_MENU_CODELOCK_ENTRY, null)))
 			{
 				// if the menu is created, send the codelock reference to it so the menu can do password comparrison
 				codelockMenu.SetCodelock(iat_codelock);

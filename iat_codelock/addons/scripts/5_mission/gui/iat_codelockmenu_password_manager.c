@@ -21,7 +21,7 @@ class IAT_CodelockPasswordDialogMenu extends IAT_CodelockPassword_BaseMenu
 	// =========================================================== EVENTS
     override Widget Init()
     {
-        layoutRoot = GetGame().GetWorkspace().CreateWidgets("iat_codelock/scripts/5_mission/layouts/iat_codelock_password_dialog.layout");
+        layoutRoot = g_Game.GetWorkspace().CreateWidgets("iat_codelock/scripts/5_mission/layouts/iat_codelock_password_dialog.layout");
 
         m_WindowLabel = TextWidget.Cast(layoutRoot.FindAnyWidget("WindowLabel"));
         m_ButtonCancel = ButtonWidget.Cast(layoutRoot.FindAnyWidget("ButtonCancel"));

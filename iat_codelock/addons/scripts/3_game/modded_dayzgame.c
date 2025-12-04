@@ -12,7 +12,7 @@ modded class DayZGame
 	IAT_CodelockConfig GetIATCodelockConfig()
 	{
 		// server side check so we do not create a config on the client
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			if (!m_iatCodelockConfig)
 			{

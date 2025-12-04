@@ -56,7 +56,7 @@ modded class ItemBase
 						if (iat_codelock.IAT_IsLocked())
 						{
 							// if the player has access
-							if (iat_codelock.HasAccess(GetGame().GetPlayer().GetIdentity()))
+							if (iat_codelock.HasAccess(g_Game.GetPlayer().GetIdentity()))
 							{
 								return true;
 							}
@@ -86,7 +86,7 @@ modded class ItemBase
 				if (iat_codelock.IAT_IsLocked())
 				{
 					// if the player has access
-					if (iat_codelock.HasAccess(GetGame().GetPlayer().GetIdentity()))
+					if (iat_codelock.HasAccess(g_Game.GetPlayer().GetIdentity()))
 					{
 						return true;
 					}
@@ -144,7 +144,7 @@ modded class ItemBase
 					return;
 				}
 				// generic type matching for Colorbase
-				else if (GetGame().IsKindOf(GetType(), tool.GetItemName()))
+				else if (g_Game.IsKindOf(GetType(), tool.GetItemName()))
 				{
 					SetRaidToolProperties(tool);
 					return;
