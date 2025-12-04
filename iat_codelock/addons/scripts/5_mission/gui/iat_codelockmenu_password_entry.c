@@ -7,7 +7,7 @@ class IAT_CodelockPasswordEntryMenu extends IAT_CodelockPassword_BaseMenu
 
     override Widget Init()
     {
-        layoutRoot = GetGame().GetWorkspace().CreateWidgets("iat_codelock/scripts/5_mission/layouts/iat_codelock_password_entry.layout");
+        layoutRoot = g_Game.GetWorkspace().CreateWidgets("iat_codelock/scripts/5_mission/layouts/iat_codelock_password_entry.layout");
 
         m_ButtonCancel = ButtonWidget.Cast(layoutRoot.FindAnyWidget("ButtonCancel"));
         m_PrimaryPasswordEditBox = PasswordEditBoxWidget.Cast(layoutRoot.FindAnyWidget("PrimaryPasswordEditBox"));

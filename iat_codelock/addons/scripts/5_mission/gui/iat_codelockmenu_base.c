@@ -11,13 +11,13 @@ class IAT_CodelockPassword_BaseMenu extends UIScriptedMenu
     override void OnShow()
     {
         super.OnShow();
-        GetGame().GetMission().AddActiveInputExcludes({"menu"});
+        g_Game.GetMission().AddActiveInputExcludes({"menu"});
     }
 
     override void OnHide()
     {
         super.OnHide();
-        GetGame().GetMission().RemoveActiveInputExcludes({"menu"},true);
+        g_Game.GetMission().RemoveActiveInputExcludes({"menu"},true);
     }
     // cheap hook to let ESC close the widgets
     override void Update(float timeslice)
