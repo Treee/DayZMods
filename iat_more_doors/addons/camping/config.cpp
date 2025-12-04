@@ -554,6 +554,9 @@ class CfgVehicles
 			"Double - Wood - Small",
 			"Double - Metal - Small",
 			"Double - Iron - Small",
+			"Double - Wood - Medium Shed",
+			"Double - Metal - Medium Shed",
+			"Double - Iron - Medium Shed",
 		};
 		iat_KitOptionClassNames[] =
 		{
@@ -566,6 +569,9 @@ class CfgVehicles
 			"IAT_ConstructionDoor_Double_Wooden",
 			"IAT_ConstructionDoor_Double_Metal",
 			"IAT_ConstructionDoor_Double_Iron",
+			"IAT_ConstructionDoor_Double_WoodenMedium",
+			"IAT_ConstructionDoor_Double_MetalMedium",
+			"IAT_ConstructionDoor_Double_IronMedium",
 		};
 		class AnimationSources
 		{
@@ -1022,4 +1028,65 @@ class CfgVehicles
 			};
 		};
 	};
+
+	class IAT_ConstructionDoor_Double_WoodenMedium : IAT_ConstructionDoor_Double_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_wooden_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Wood - Medium Shed";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+	class IAT_ConstructionDoor_Double_MetalMedium : IAT_ConstructionDoor_Double_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_metal_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Metal - Medium Shed";
+		attachments[] = { "Att_CombinationLock" };
+		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
+		hiddenSelectionsTextures[] =
+		{
+			"DZ\gear\consumables\data\pile_of_planks_co.paa",
+			"DZ\structures\industrial\pipes\data\pipes_co.paa",
+			"DZ\gear\consumables\data\metalsheets_co.paa",
+		};
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+	class IAT_ConstructionDoor_Double_IronMedium : IAT_ConstructionDoor_Double_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_iron_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Iron - Medium Shed";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+
+
 };
