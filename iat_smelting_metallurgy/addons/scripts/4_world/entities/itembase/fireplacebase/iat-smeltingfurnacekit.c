@@ -20,10 +20,10 @@ class IAT_FurnaceKit_ColorBase extends ItemBase
 	{
 		super.OnPlacementComplete( player, position, orientation );
 
-		if ( GetGame().IsDedicatedServer() )
+		if ( g_Game.IsDedicatedServer() )
 		{
 			IAT_SmeltingFurnace_ColorBase newFurnace;
-			if (Class.CastTo(newFurnace, GetGame().CreateObjectEx(GetSmeltingKitName(), GetPosition(), ECE_PLACE_ON_SURFACE)))
+			if (Class.CastTo(newFurnace, g_Game.CreateObjectEx(GetSmeltingKitName(), GetPosition(), ECE_PLACE_ON_SURFACE)))
 			{
 				newFurnace.SetPosition( position );
 				newFurnace.SetOrientation( orientation );

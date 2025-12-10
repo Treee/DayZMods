@@ -729,7 +729,7 @@ class IAT_SmeltingFurnace_ColorBase extends FireplaceBase
 			}
 
 			ItemBase alloy;
-			if (Class.CastTo(alloy, GetGame().CreateObjectEx(newClassName, GetResultSpawnPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+			if (Class.CastTo(alloy, g_Game.CreateObjectEx(newClassName, GetResultSpawnPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 			{
 				// -1 means full hp
 				if (resultHp == -1)
@@ -754,7 +754,7 @@ class IAT_SmeltingFurnace_ColorBase extends FireplaceBase
 	}
 	void IAT_PlayCountDownSounds()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			if (m_CountDownSound)
 			{

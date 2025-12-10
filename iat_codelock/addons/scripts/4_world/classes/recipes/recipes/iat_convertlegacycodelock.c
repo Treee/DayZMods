@@ -52,7 +52,7 @@ class IAT_ConvertLegacyCodelock extends RecipeBase
 	override bool CanDo(ItemBase ingredients[], PlayerBase player)//final check for recipe's validity
 	{
 		// only allow if this is not attached to anything
-		CodeLock codelock;
+		ItemBase codelock;
 		if (Class.CastTo(codelock, ingredients[0]))
 		{
 			return codelock.GetHierarchyParent() == null;

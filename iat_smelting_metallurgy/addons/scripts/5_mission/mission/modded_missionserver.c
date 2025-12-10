@@ -31,7 +31,7 @@ modded class MissionServer
 			{
 				Param1<IAT_SmeltingScore> configParams = new Param1<IAT_SmeltingScore>(playerScore);
 				PrintFormat("[IAT_Smelting] Sending Score to Player: %1 RPC: %2", identity.GetName(), IAT_RPC_SMELTING.SERVER_SEND_CONFIG);
-				GetGame().RPCSingleParam(player, IAT_RPC_SMELTING.SERVER_SEND_CONFIG, configParams, true, identity);
+				g_Game.RPCSingleParam(player, IAT_RPC_SMELTING.SERVER_SEND_CONFIG, configParams, true, identity);
 				player.IAT_SetSmeltingDataFromStore(playerScore.GetWins(), playerScore.GetLoss(), playerScore.GetCurrentStreak());
 			}
 		}

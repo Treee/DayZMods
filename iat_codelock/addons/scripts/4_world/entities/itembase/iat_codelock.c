@@ -244,7 +244,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 	// meant to be used first time a lock is interacte with by a player
 	void HandleOnClientServerUpdateOwner(PlayerIdentity sender, ParamsReadContext ctx)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			ScriptRPC rpc = new ScriptRPC();
 			rpc.Write(GetOwnerId());
@@ -261,7 +261,7 @@ class IAT_Codelock_Colorbase extends ItemBase
     void HandleOnServerUpdateOwner(ParamsReadContext ctx)
     {
 		// client only
-        if (!GetGame().IsDedicatedServer())
+        if (!g_Game.IsDedicatedServer())
         {
 			// if we run into issues deserializing the data
 			if (!ctx.Read(m_Owner_SteamId))
@@ -290,7 +290,7 @@ class IAT_Codelock_Colorbase extends ItemBase
     void HandleOnServerUpdatePassword(ParamsReadContext ctx)
     {
 		// server only
-        if (GetGame().IsDedicatedServer())
+        if (g_Game.IsDedicatedServer())
         {
 			// if we run into issues deserializing the data
 			if (!ctx.Read(m_Combination))
@@ -308,7 +308,7 @@ class IAT_Codelock_Colorbase extends ItemBase
     void HandleOnServerEnterPasscode(PlayerIdentity sender, ParamsReadContext ctx)
     {
 		// server only
-        if (GetGame().IsDedicatedServer())
+        if (g_Game.IsDedicatedServer())
         {
 			string clientPasscode;
 			// if we run into issues deserializing the data
@@ -323,40 +323,40 @@ class IAT_Codelock_Colorbase extends ItemBase
 	// client side function to update the whitelist
 	void HandleOnServerUpdateWhitelist()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
-			AddNewWhitelistId(GetGame().GetPlayer().GetIdentity().GetPlainId());
+			AddNewWhitelistId(g_Game.GetPlayer().GetIdentity().GetPlainId());
 		}
 	}
 	// client UI function to toggle the loc
 	void ClientRPC_ToggleLock()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			// script rpc to server to toggle the lock
 			ScriptRPC rpc = new ScriptRPC();
-			rpc.Send(this, IAT_RPC_Codelock.UPDATE_LOCK_STATE_CLIENT, true, GetGame().GetPlayer().GetIdentity());
+			rpc.Send(this, IAT_RPC_Codelock.UPDATE_LOCK_STATE_CLIENT, true, g_Game.GetPlayer().GetIdentity());
 		}
 	}
 	// client UI function to change the passcode
 	void ClientRPC_ChangePasscode(string newPasscode)
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			// script rpc to server to change the passcode
 			ScriptRPC rpc = new ScriptRPC();
 			rpc.Write(newPasscode);
-			rpc.Send(this, IAT_RPC_Codelock.UPDATE_PASSCODE_CLIENT, true, GetGame().GetPlayer().GetIdentity());
+			rpc.Send(this, IAT_RPC_Codelock.UPDATE_PASSCODE_CLIENT, true, g_Game.GetPlayer().GetIdentity());
 		}
 	}
 	void ClientRPC_EnterPassword(string clientPasscode)
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			// script rpc to server to change the passcode
 			ScriptRPC rpc = new ScriptRPC();
 			rpc.Write(clientPasscode);
-			rpc.Send(this, IAT_RPC_Codelock.ENTER_PASSCODE_CLIENT, true, GetGame().GetPlayer().GetIdentity());
+			rpc.Send(this, IAT_RPC_Codelock.ENTER_PASSCODE_CLIENT, true, g_Game.GetPlayer().GetIdentity());
 		}
 	}
 	//========================================================== CUSTOM CODE
@@ -376,7 +376,7 @@ class IAT_Codelock_Colorbase extends ItemBase
     void PushOwnerIdToClients()
     {
 		// server side only
-        if (GetGame().IsDedicatedServer())
+        if (g_Game.IsDedicatedServer())
         {
 			// write the new owner id to the context
             ScriptRPC rpc = new ScriptRPC();
@@ -391,7 +391,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 	void TryFetchOwnerId(PlayerIdentity invokingPlayer)
 	{
 		// client only
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			// if we do not need to resync permissions, check if we can short circuit
 			// permissions need to be synced when changing password, and clearing whitelist
@@ -420,7 +420,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 	void TryAddWhiteList(PlayerIdentity invokingPlayer, string passcode)
 	{
 		// server side check!
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			if (IsCorrectPasscode(passcode))
 			{
@@ -500,10 +500,10 @@ class IAT_Codelock_Colorbase extends ItemBase
 	{
 		#ifdef VPPADMINTOOLS
 		// client side check (for the action server check is the real check)
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			MissionBaseWorld mission;
-			if (Class.CastTo(mission, GetGame().GetMission()))
+			if (Class.CastTo(mission, g_Game.GetMission()))
 			{
 				// if the vpp tools are toggled
 				if (mission.VPPAT_AdminToolsToggled())
@@ -545,7 +545,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 	void ToggleLock()
 	{
 		// server specific code
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// flip the bool each time this is called
 			SetIsLocked(!IAT_IsLocked());
@@ -577,19 +577,19 @@ class IAT_Codelock_Colorbase extends ItemBase
 	void OpenCodelockManagerMenu()
 	{
 		// client only;
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			m_MenuType = IAT_MenuType.CODELOCK_MANAGER;
-			GetGame().GetMission().OnItemUsed(this, GetGame().GetPlayer());
+			g_Game.GetMission().OnItemUsed(this, g_Game.GetPlayer());
 		}
 	}
 	void OpenPasscodeEntryMenu()
 	{
 		// client only;
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			m_MenuType = IAT_MenuType.PASSCODE_ENTRY;
-			GetGame().GetMission().OnItemUsed(this, GetGame().GetPlayer());
+			g_Game.GetMission().OnItemUsed(this, g_Game.GetPlayer());
 		}
 	}
 	void AddNewWhitelistId(string steamId)
@@ -603,7 +603,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 	void PerformRaidDamage(int toolDamage, bool deleteLock = false)
 	{
 		// server side only
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// remove hp
 			AddHealth(-toolDamage);
@@ -614,7 +614,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 				if (!deleteLock)
 				{
 					//spawn a new one on the ground, central economy setup but no lifetime or persistency until player brings to hands
-					GetGame().CreateObjectEx(GetType(), GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+					g_Game.CreateObjectEx(GetType(), GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 				}
 				DeleteSafe();
 			}
@@ -622,14 +622,14 @@ class IAT_Codelock_Colorbase extends ItemBase
 	}
 	void ServerUpdateSyncedCodelockHealth()
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_CodelockHealth = GetHealth();
 		}
 	}
 	void DamagePlayer(PlayerIdentity playerIdentity)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// if we have a config
 			if (GetDayZGame().GetIATCodelockConfig())
@@ -645,7 +645,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 						SetSynchDirty();
 
 						float time = 2 * 1000; // 2 second refresher
-						GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ResetParticlesAndSounds, time, false);
+						g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ResetParticlesAndSounds, time, false);
 
 						// send notification to player
 						NotificationSystem.SendNotificationToPlayerIdentityExtended(playerIdentity, NotificationSystem.DEFAULT_TIME_DISPLAYED, "Incorrect Passcode", "The code entered is not correct. Make sure caps lock is not on.", "set:ccgui_enforce image:Icon40Emergency");
@@ -670,14 +670,14 @@ class IAT_Codelock_Colorbase extends ItemBase
 	}
 	void PlayShockSound()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			PlaySoundSet(m_ShockSound, ELECTRICITY_SOUND, 0, 1);
 		}
 	}
 	void PlayShockParticle()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			if (m_ShockParticle)
 			{

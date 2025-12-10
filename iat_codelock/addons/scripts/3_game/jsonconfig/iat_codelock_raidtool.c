@@ -85,7 +85,7 @@ class IAT_CodelockRaidTool
 	}
 
 	// for some reason my approach to use item.IsInherited(toolConfig.GetItemNameType())
-	// isnt working so we are using GetGame().IsKindOf(type, parent) to check inheritance.
+	// isnt working so we are using g_Game.IsKindOf(type, parent) to check inheritance.
 	// figure out why
 	typename GetItemNameType()
 	{

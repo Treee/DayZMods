@@ -56,7 +56,7 @@ class IAT_ActionSearchForCharcoal: ActionContinuousBase
 		}
 
 		ItemBase fuel;
-		if (Class.CastTo(fuel, GetGame().CreateObjectEx(newItemName, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+		if (Class.CastTo(fuel, g_Game.CreateObjectEx(newItemName, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 		{
 			// 1 - max / 2
 			fuel.SetQuantity(1, (fuel.GetQuantityMax() / 2));
