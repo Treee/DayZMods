@@ -432,3 +432,19 @@ class IAT_ConstructionDoor_Double_Iron extends IAT_ConstructionDoor_Double_Color
 		return "IAT_Door_MetalContainerOpen_SoundSet";
 	}
 };
+
+class IAT_ConstructionDoor_Double_WoodenMedium extends IAT_ConstructionDoor_Double_Colorbase{};
+class IAT_ConstructionDoor_Double_MetalMedium extends IAT_ConstructionDoor_Double_Colorbase
+{
+	override string GetDoorOpenStartSoundSet()
+	{
+		return "IAT_Door_MetalSmallOpen_SoundSet";
+	}
+};
+class IAT_ConstructionDoor_Double_IronMedium extends IAT_ConstructionDoor_Double_Colorbase
+{
+	override string GetDoorOpenStartSoundSet()
+	{
+		return "IAT_Door_MetalContainerOpen_SoundSet";
+	}
+};

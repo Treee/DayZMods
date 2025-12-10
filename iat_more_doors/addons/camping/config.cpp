@@ -208,39 +208,6 @@ class CfgVehicles
 			};
 		};
 	};
-	class land_iat_singledoor_right_wooden : IAT_LandDoor_Single_Colorbase
-	{
-		scope = 1;
-		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_wooden.p3d";
-		attachments[] = { "Att_CombinationLock" };
-		class Doors
-		{
-			class Door1
-			{
-				displayName = "Door 1";
-				component = "Door1";
-				soundPos = "door1_action";
-				animPeriod = 1;
-				initPhase = 0;
-				initOpened = 0.5;
-				soundOpen = "doorWoodSmallOpen";
-				soundClose = "doorWoodSmallClose";
-				soundLocked = "doorWoodSmallRattle";
-				soundOpenABit = "doorWoodSmallOpenABit";
-			};
-		};
-		class GUIInventoryAttachmentsProps
-		{
-			class Attachments
-			{
-				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
-				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
-				icon = "set:dayz_inventory image:cat_bb_attachments";
-			};
-		};
-	};
-
 	class land_iat_singledoor_left_metal : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
@@ -280,6 +247,71 @@ class CfgVehicles
 			};
 		};
 	};
+	class land_iat_singledoor_left_iron : IAT_LandDoor_Single_Colorbase
+	{
+		scope = 1;
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_iron.p3d";
+		attachments[] = { "Att_CombinationLock" };
+		class Doors
+		{
+			class Door1
+			{
+				displayName = "Door 1";
+				component = "Door1";
+				soundPos = "door1_action";
+				animPeriod = 1;
+				initPhase = 0;
+				initOpened = 0.5;
+				soundOpen = "doorMetalContainerOpen";
+				soundClose = "doorMetalContainerClose";
+				soundLocked = "doorMetalContainerRattle";
+				soundOpenABit = "doorMetalContainerOpenABit";
+			};
+		};
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+
+	class land_iat_singledoor_right_wooden : IAT_LandDoor_Single_Colorbase
+	{
+		scope = 1;
+		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_wooden.p3d";
+		attachments[] = { "Att_CombinationLock" };
+		class Doors
+		{
+			class Door1
+			{
+				displayName = "Door 1";
+				component = "Door1";
+				soundPos = "door1_action";
+				animPeriod = 1;
+				initPhase = 0;
+				initOpened = 0.5;
+				soundOpen = "doorWoodSmallOpen";
+				soundClose = "doorWoodSmallClose";
+				soundLocked = "doorWoodSmallRattle";
+				soundOpenABit = "doorWoodSmallOpenABit";
+			};
+		};
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
 	class land_iat_singledoor_right_metal : IAT_LandDoor_Single_Colorbase
 	{
 		scope = 1;
@@ -306,39 +338,6 @@ class CfgVehicles
 				soundClose = "doorMetalSmallClose";
 				soundLocked = "doorMetalSmallRattle";
 				soundOpenABit = "doorMetalSmallOpenABit";
-			};
-		};
-		class GUIInventoryAttachmentsProps
-		{
-			class Attachments
-			{
-				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
-				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
-				icon = "set:dayz_inventory image:cat_bb_attachments";
-			};
-		};
-	};
-
-	class land_iat_singledoor_left_iron : IAT_LandDoor_Single_Colorbase
-	{
-		scope = 1;
-		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_iron.p3d";
-		attachments[] = { "Att_CombinationLock" };
-		class Doors
-		{
-			class Door1
-			{
-				displayName = "Door 1";
-				component = "Door1";
-				soundPos = "door1_action";
-				animPeriod = 1;
-				initPhase = 0;
-				initOpened = 0.5;
-				soundOpen = "doorMetalContainerOpen";
-				soundClose = "doorMetalContainerClose";
-				soundLocked = "doorMetalContainerRattle";
-				soundOpenABit = "doorMetalContainerOpenABit";
 			};
 		};
 		class GUIInventoryAttachmentsProps
@@ -546,26 +545,34 @@ class CfgVehicles
 		iat_KitOptionDisplayNames[] =
 		{
 			"Single - Left - Wood - Small",
-			"Single - Right - Wood - Small",
 			"Single - Left - Metal - Small",
-			"Single - Right - Metal - Small",
 			"Single - Left - Iron - Small",
+			"Single - LeftHatch - Wood - Large",
+			"Single - Right - Wood - Small",
+			"Single - Right - Metal - Small",
 			"Single - Right - Iron - Small",
 			"Double - Wood - Small",
 			"Double - Metal - Small",
 			"Double - Iron - Small",
+			"Double - Wood - Medium Shed",
+			"Double - Metal - Medium Shed",
+			"Double - Iron - Medium Shed",
 		};
 		iat_KitOptionClassNames[] =
 		{
 			"IAT_ConstructionDoor_Single_Left_Wooden",
-			"IAT_ConstructionDoor_Single_Right_Wooden",
 			"IAT_ConstructionDoor_Single_Left_Metal",
-			"IAT_ConstructionDoor_Single_Right_Metal",
 			"IAT_ConstructionDoor_Single_Left_Iron",
+			"IAT_ConstructionDoor_Single_Left_WoodenLargeHatch",
+			"IAT_ConstructionDoor_Single_Right_Wooden",
+			"IAT_ConstructionDoor_Single_Right_Metal",
 			"IAT_ConstructionDoor_Single_Right_Iron",
 			"IAT_ConstructionDoor_Double_Wooden",
 			"IAT_ConstructionDoor_Double_Metal",
 			"IAT_ConstructionDoor_Double_Iron",
+			"IAT_ConstructionDoor_Double_WoodenMedium",
+			"IAT_ConstructionDoor_Double_MetalMedium",
+			"IAT_ConstructionDoor_Double_IronMedium",
 		};
 		class AnimationSources
 		{
@@ -862,24 +869,6 @@ class CfgVehicles
 			};
 		};
 	};
-	class IAT_ConstructionDoor_Single_Right_Wooden : IAT_ConstructionDoor_Single_Colorbase
-	{
-		scope = 2;
-		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_wooden_c.p3d";
-		iat_RecipeDisplayName = "Single - Right Door - Wood - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
-		class GUIInventoryAttachmentsProps
-		{
-			class Attachments
-			{
-				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
-				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
-				icon = "set:dayz_inventory image:cat_bb_attachments";
-			};
-		};
-	};
-
 	class IAT_ConstructionDoor_Single_Left_Metal : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
@@ -904,6 +893,58 @@ class CfgVehicles
 			};
 		};
 	};
+	class IAT_ConstructionDoor_Single_Left_Iron : IAT_ConstructionDoor_Single_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_iron_c.p3d";
+		iat_RecipeDisplayName = "Single - Left Door - Iron - Small Shed";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+	class IAT_ConstructionDoor_Single_Left_WoodenLargeHatch : IAT_ConstructionDoor_Single_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\largehatch\iat_lhatchdoor_wooden_c.p3d";
+		iat_RecipeDisplayName = "Single - Left Hatch Door - Wooden - Large";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+
+	class IAT_ConstructionDoor_Single_Right_Wooden : IAT_ConstructionDoor_Single_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_wooden_c.p3d";
+		iat_RecipeDisplayName = "Single - Right Door - Wood - Small Shed";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
 	class IAT_ConstructionDoor_Single_Right_Metal : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
@@ -917,24 +958,6 @@ class CfgVehicles
 			"DZ\structures\industrial\pipes\data\pipes_co.paa",
 			"DZ\gear\consumables\data\metalsheets_co.paa",
 		};
-		class GUIInventoryAttachmentsProps
-		{
-			class Attachments
-			{
-				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
-				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
-				icon = "set:dayz_inventory image:cat_bb_attachments";
-			};
-		};
-	};
-
-	class IAT_ConstructionDoor_Single_Left_Iron : IAT_ConstructionDoor_Single_Colorbase
-	{
-		scope = 2;
-		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_iron_c.p3d";
-		iat_RecipeDisplayName = "Single - Left Door - Iron - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
@@ -1022,4 +1045,65 @@ class CfgVehicles
 			};
 		};
 	};
+
+	class IAT_ConstructionDoor_Double_WoodenMedium : IAT_ConstructionDoor_Double_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_mshed_wooden_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Wood - Medium Shed";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+	class IAT_ConstructionDoor_Double_MetalMedium : IAT_ConstructionDoor_Double_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_mshed_metal_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Metal - Medium Shed";
+		attachments[] = { "Att_CombinationLock" };
+		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
+		hiddenSelectionsTextures[] =
+		{
+			"DZ\gear\consumables\data\pile_of_planks_co.paa",
+			"DZ\structures\industrial\pipes\data\pipes_co.paa",
+			"DZ\gear\consumables\data\metalsheets_co.paa",
+		};
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+	class IAT_ConstructionDoor_Double_IronMedium : IAT_ConstructionDoor_Double_Colorbase
+	{
+		scope = 2;
+		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_mshed_iron_c.p3d";
+		iat_RecipeDisplayName = "Double Doors - Iron - Medium Shed";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+
+
 };
