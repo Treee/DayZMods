@@ -4,7 +4,7 @@ class IAT_ActionOpenSmeltingMenu extends ActionInteractBase
 	{
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
-		m_Text = "Start Smelting";
+		m_Text = "#STR_IAT_StartSmelting";
 	}
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
@@ -29,6 +29,15 @@ class IAT_ActionOpenSmeltingMenu extends ActionInteractBase
 		if (Class.CastTo(furnace, action_data.m_Target.GetObject()))
 		{
 			furnace.IAT_OpenMiniGameMenu();
+		}
+	}
+	override void OnExecuteServer( ActionData action_data )
+	{
+		super.OnExecuteServer(action_data);
+		PlayerBase player;
+		if (Class.CastTo(player, action_data.m_Player))
+		{
+			player.IAT_TrySyncedSmeltingScore(player.GetIdentity());
 		}
 	}
 };

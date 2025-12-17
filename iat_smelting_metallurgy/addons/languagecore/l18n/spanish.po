@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "STR_IAT_FurnaceKit_ColorBase"
+msgstr "Kit de horno"
+
+msgid "STR_IAT_FurnaceKit_ColorBase_Desc"
+msgstr "Un kit para construir una forja de fundición o un horno."
+
+msgid "STR_IAT_FurnaceKit_BasicStone"
+msgstr "Kit de horno de piedra básico"
+
+msgid "STR_IAT_FurnaceKit_BasicStone_Desc"
+msgstr "Un kit para construir una forja de fundición o un horno."
+
+msgid "STR_IAT_FurnaceKit_BasicBrick"
+msgstr "Kit de horno de ladrillo básico"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick_Desc"
+msgstr "Un kit para construir una forja de fundición o un horno."
+
+msgid "STR_IAT_FurnaceKit_Advancedstone"
+msgstr "Kit de horno de piedra avanzado"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone_Desc"
+msgstr "Un kit para construir una forja de fundición o un horno."
+
+msgid "STR_IAT_FurnaceKit_Industrial"
+msgstr "Kit de horno industrial"
+
+msgid "STR_IAT_FurnaceKit_Industrial_Desc"
+msgstr "Un kit para construir una forja de fundición o un horno."
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase"
+msgstr "Horno de fundición"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase_Desc"
+msgstr "Una gran estructura destinada a fundir minerales en lingotes."
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone"
+msgstr "Horno de fundición"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone_Desc"
+msgstr "Una gran estructura destinada a fundir minerales en lingotes."
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick"
+msgstr "Horno de fundición"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick_Desc"
+msgstr "Una gran estructura destinada a fundir minerales en lingotes."
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone"
+msgstr "Horno de fundición"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone_Desc"
+msgstr "Una gran estructura destinada a fundir minerales en lingotes."
+
+msgid "STR_IAT_SmeltingFurnace_Industrial"
+msgstr "Horno de fundición"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial_Desc"
+msgstr "Una gran estructura destinada a fundir minerales en lingotes."
+
+msgid "STR_IAT_SearchCharcoal"
+msgstr "Buscar carbón vegetal"
+
+msgid "STR_IAT_StartSmelting"
+msgstr "Iniciar fundición"
+
+msgid "STR_IAT_LockSmeltingSlots"
+msgstr "Bloquear ranuras"
+
+msgid "STR_IAT_UnLockSmeltingSlots"
+msgstr "Desbloquear ranuras"
+
+msgid "STR_UI_SmeltingWindowTitle"
+msgstr "MINIJUEGO DE FUNDICIÓN"
+
+msgid "STR_UI_AccelerantHp"
+msgstr "HP del acelerante"
+
+msgid "STR_UI_OreGroup1"
+msgstr "Grupo de mineral 1"
+
+msgid "STR_UI_OreGroup2"
+msgstr "Grupo de mineral 2"
+
+msgid "STR_UI_SmeltingStreak"
+msgstr "RACHA:"
+
+msgid "STR_UI_WinLossRatio"
+msgstr "W/L:"
+
+msgid "STR_UI_Wins"
+msgstr "W:"
+
+msgid "STR_UI_Loss"
+msgstr "L:"
+
+msgid "STR_UI_ButtonOver"
+msgstr "MAYOR"
+
+msgid "STR_UI_ButtonUnder"
+msgstr "MENOR"
+
+msgid "STR_UI_WagerPlacedCountDown"
+msgstr "APUESTA REALIZADA - Resultados en:"
+
+msgid "STR_UI_OverPerfectTempLabel"
+msgstr "POR ENCIMA DE LA TEMPERATURA PERFECTA"
+
+msgid "STR_UI_UnderPerfectTempLabel"
+msgstr "POR DEBAJO DE LA TEMPERATURA PERFECTA"
+
+msgid "STR_UI_PerfectTempLabel"
+msgstr "TEMPERATURA PERFECTA"

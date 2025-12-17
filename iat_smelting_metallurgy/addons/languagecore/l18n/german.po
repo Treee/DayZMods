@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "STR_IAT_FurnaceKit_ColorBase"
+msgstr "Ofen-Bausatz"
+
+msgid "STR_IAT_FurnaceKit_ColorBase_Desc"
+msgstr "Ein Bausatz zum Bau einer Schmelzesse oder eines Ofens."
+
+msgid "STR_IAT_FurnaceKit_BasicStone"
+msgstr "Einfacher Steinofen-Bausatz"
+
+msgid "STR_IAT_FurnaceKit_BasicStone_Desc"
+msgstr "Ein Bausatz zum Bau einer Schmelzesse oder eines Ofens."
+
+msgid "STR_IAT_FurnaceKit_BasicBrick"
+msgstr "Einfacher Ziegelofen-Bausatz"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick_Desc"
+msgstr "Ein Bausatz zum Bau einer Schmelzesse oder eines Ofens."
+
+msgid "STR_IAT_FurnaceKit_Advancedstone"
+msgstr "Erweiterter Steinofen-Bausatz"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone_Desc"
+msgstr "Ein Bausatz zum Bau einer Schmelzesse oder eines Ofens."
+
+msgid "STR_IAT_FurnaceKit_Industrial"
+msgstr "Industrieller Ofen-Bausatz"
+
+msgid "STR_IAT_FurnaceKit_Industrial_Desc"
+msgstr "Ein Bausatz zum Bau einer Schmelzesse oder eines Ofens."
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase"
+msgstr "Schmelzofen"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase_Desc"
+msgstr "Eine große Struktur zum Schmelzen von Roherzen zu Barren."
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone"
+msgstr "Schmelzofen"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone_Desc"
+msgstr "Eine große Struktur zum Schmelzen von Roherzen zu Barren."
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick"
+msgstr "Schmelzofen"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick_Desc"
+msgstr "Eine große Struktur zum Schmelzen von Roherzen zu Barren."
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone"
+msgstr "Schmelzofen"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone_Desc"
+msgstr "Eine große Struktur zum Schmelzen von Roherzen zu Barren."
+
+msgid "STR_IAT_SmeltingFurnace_Industrial"
+msgstr "Schmelzofen"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial_Desc"
+msgstr "Eine große Struktur zum Schmelzen von Roherzen zu Barren."
+
+msgid "STR_IAT_SearchCharcoal"
+msgstr "Nach Holzkohle suchen"
+
+msgid "STR_IAT_StartSmelting"
+msgstr "Schmelzen starten"
+
+msgid "STR_IAT_LockSmeltingSlots"
+msgstr "Slots sperren"
+
+msgid "STR_IAT_UnLockSmeltingSlots"
+msgstr "Slots entsperren"
+
+msgid "STR_UI_SmeltingWindowTitle"
+msgstr "SCHMELZ-MINISPIEL"
+
+msgid "STR_UI_AccelerantHp"
+msgstr "Beschleuniger-HP"
+
+msgid "STR_UI_OreGroup1"
+msgstr "Erzgruppe 1"
+
+msgid "STR_UI_OreGroup2"
+msgstr "Erzgruppe 2"
+
+msgid "STR_UI_SmeltingStreak"
+msgstr "SERIE:"
+
+msgid "STR_UI_WinLossRatio"
+msgstr "W/L:"
+
+msgid "STR_UI_Wins"
+msgstr "W:"
+
+msgid "STR_UI_Loss"
+msgstr "L:"
+
+msgid "STR_UI_ButtonOver"
+msgstr "ÜBER"
+
+msgid "STR_UI_ButtonUnder"
+msgstr "UNTER"
+
+msgid "STR_UI_WagerPlacedCountDown"
+msgstr "EINSATZ PLATZIERT – Ergebnis in:"
+
+msgid "STR_UI_OverPerfectTempLabel"
+msgstr "ÜBER PERFEKTER TEMPERATUR"
+
+msgid "STR_UI_UnderPerfectTempLabel"
+msgstr "UNTER PERFEKTER TEMPERATUR"
+
+msgid "STR_UI_PerfectTempLabel"
+msgstr "PERFEKTE TEMPERATUR"

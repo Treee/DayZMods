@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "STR_IAT_FurnaceKit_ColorBase"
+msgstr "Zestaw pieca"
+
+msgid "STR_IAT_FurnaceKit_ColorBase_Desc"
+msgstr "Zestaw do budowy kuźni do wytopu lub pieca."
+
+msgid "STR_IAT_FurnaceKit_BasicStone"
+msgstr "Podstawowy zestaw kamiennego pieca"
+
+msgid "STR_IAT_FurnaceKit_BasicStone_Desc"
+msgstr "Zestaw do budowy kuźni do wytopu lub pieca."
+
+msgid "STR_IAT_FurnaceKit_BasicBrick"
+msgstr "Podstawowy zestaw ceglanego pieca"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick_Desc"
+msgstr "Zestaw do budowy kuźni do wytopu lub pieca."
+
+msgid "STR_IAT_FurnaceKit_Advancedstone"
+msgstr "Zaawansowany zestaw kamiennego pieca"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone_Desc"
+msgstr "Zestaw do budowy kuźni do wytopu lub pieca."
+
+msgid "STR_IAT_FurnaceKit_Industrial"
+msgstr "Przemysłowy zestaw pieca"
+
+msgid "STR_IAT_FurnaceKit_Industrial_Desc"
+msgstr "Zestaw do budowy kuźni do wytopu lub pieca."
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase"
+msgstr "Piec do wytopu"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase_Desc"
+msgstr "Duża konstrukcja przeznaczona do topienia rud w sztabki."
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone"
+msgstr "Piec do wytopu"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone_Desc"
+msgstr "Duża konstrukcja przeznaczona do topienia rud w sztabki."
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick"
+msgstr "Piec do wytopu"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick_Desc"
+msgstr "Duża konstrukcja przeznaczona do topienia rud w sztabki."
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone"
+msgstr "Piec do wytopu"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone_Desc"
+msgstr "Duża konstrukcja przeznaczona do topienia rud w sztabki."
+
+msgid "STR_IAT_SmeltingFurnace_Industrial"
+msgstr "Piec do wytopu"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial_Desc"
+msgstr "Duża konstrukcja przeznaczona do topienia rud w sztabki."
+
+msgid "STR_IAT_SearchCharcoal"
+msgstr "Szukaj węgla drzewnego"
+
+msgid "STR_IAT_StartSmelting"
+msgstr "Rozpocznij wytapianie"
+
+msgid "STR_IAT_LockSmeltingSlots"
+msgstr "Zablokuj sloty"
+
+msgid "STR_IAT_UnLockSmeltingSlots"
+msgstr "Odblokuj sloty"
+
+msgid "STR_UI_SmeltingWindowTitle"
+msgstr "MINIGRA WYTAPIANIA"
+
+msgid "STR_UI_AccelerantHp"
+msgstr "HP akcelerantu"
+
+msgid "STR_UI_OreGroup1"
+msgstr "Grupa rud 1"
+
+msgid "STR_UI_OreGroup2"
+msgstr "Grupa rud 2"
+
+msgid "STR_UI_SmeltingStreak"
+msgstr "SERIA:"
+
+msgid "STR_UI_WinLossRatio"
+msgstr "W/L:"
+
+msgid "STR_UI_Wins"
+msgstr "W:"
+
+msgid "STR_UI_Loss"
+msgstr "L:"
+
+msgid "STR_UI_ButtonOver"
+msgstr "WYŻEJ"
+
+msgid "STR_UI_ButtonUnder"
+msgstr "NIŻEJ"
+
+msgid "STR_UI_WagerPlacedCountDown"
+msgstr "ZAKŁAD POSTAWIONY – Wynik za:"
+
+msgid "STR_UI_OverPerfectTempLabel"
+msgstr "POWYŻEJ IDEALNEJ TEMPERATURY"
+
+msgid "STR_UI_UnderPerfectTempLabel"
+msgstr "PONIŻEJ IDEALNEJ TEMPERATURY"
+
+msgid "STR_UI_PerfectTempLabel"
+msgstr "IDEALNA TEMPERATURA"

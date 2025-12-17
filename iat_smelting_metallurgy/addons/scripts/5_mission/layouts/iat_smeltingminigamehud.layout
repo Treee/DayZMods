@@ -34,7 +34,7 @@ PanelWidgetClass MainSmeltingPanel {
      hexactsize 0
      vexactsize 0
      style Bold
-     text "SMELTING MINI GAME"
+     text "#STR_UI_SmeltingWindowTitle"
      font "gui/fonts/sdf_MetronBook72"
      "exact text" 0
      text_proportion 0.8
@@ -127,7 +127,7 @@ PanelWidgetClass MainSmeltingPanel {
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           text "Accelerant HP"
+           text "#STR_UI_AccelerantHp"
            font "gui/fonts/MetronBlack22"
            "exact text" 0
            "size to text h" 0
@@ -188,7 +188,7 @@ PanelWidgetClass MainSmeltingPanel {
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           text "Ore Group 1"
+           text "#STR_UI_OreGroup1"
            font "gui/fonts/MetronBlack22"
            "size to text h" 0
            "size to text v" 1
@@ -248,7 +248,7 @@ PanelWidgetClass MainSmeltingPanel {
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           text "Ore Group 2"
+           text "#STR_UI_OreGroup2"
            font "gui/fonts/MetronBlack22"
            "size to text h" 0
            "size to text v" 1
@@ -323,7 +323,7 @@ PanelWidgetClass MainSmeltingPanel {
              vexactpos 0
              hexactsize 0
              vexactsize 0
-             text "STREAK: 0"
+             text "#STR_UI_SmeltingStreak"
              font "gui/fonts/MetronBlack22"
              "size to text h" 0
              "size to text v" 1
@@ -338,14 +338,14 @@ PanelWidgetClass MainSmeltingPanel {
              vexactpos 0
              hexactsize 0
              vexactsize 0
-             text "W/L: 0%"
+             text "#STR_UI_WinLossRatio"
              font "gui/fonts/MetronBlack22"
              "size to text h" 0
              "size to text v" 1
              "text halign" center
              "text valign" center
             }
-            TextWidgetClass TestWins {
+            TextWidgetClass TextWins {
              ignorepointer 1
              position 0.2 0
              size 0.2 1
@@ -355,7 +355,7 @@ PanelWidgetClass MainSmeltingPanel {
              vexactpos 0
              hexactsize 0
              vexactsize 0
-             text "W: 0"
+             text "#STR_UI_Wins"
              font "gui/fonts/MetronBlack22"
              "size to text h" 0
              "size to text v" 1
@@ -371,7 +371,7 @@ PanelWidgetClass MainSmeltingPanel {
              vexactpos 0
              hexactsize 0
              vexactsize 0
-             text "L: 0"
+             text "#STR_UI_Loss"
              font "gui/fonts/MetronBlack22"
              "size to text h" 0
              "size to text v" 1
@@ -401,7 +401,7 @@ PanelWidgetClass MainSmeltingPanel {
        "next right" ""
        "next up" ""
        "next down" ""
-       text "OVER"
+       text "#STR_UI_ButtonOver"
        text_proportion 0.3
        font "gui/fonts/sdf_MetronBook24"
        "disabled text color" 0.3412 0.3412 0.3412 1
@@ -425,7 +425,7 @@ PanelWidgetClass MainSmeltingPanel {
        "next right" ""
        "next up" ""
        "next down" ""
-       text "UNDER"
+       text "#STR_UI_ButtonUnder"
        text_proportion 0.3
        font "gui/fonts/sdf_MetronBook24"
        "disabled text color" 0.3412 0.3412 0.3412 1
@@ -463,7 +463,7 @@ PanelWidgetClass MainSmeltingPanel {
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       text "WAGER PLACED - Results In: "
+       text "#STR_UI_WagerPlacedCountDown"
        font "gui/fonts/Metron28"
        "exact text" 0
        "size to text h" 1
@@ -479,7 +479,7 @@ PanelWidgetClass MainSmeltingPanel {
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       text "OVER PERFECT TEMP"
+       text "#STR_UI_OverPerfectTempLabel"
        font "gui/fonts/Metron28"
        "text color" 0.0706 0.5608 0.1922 1
        "exact text" 0
@@ -497,7 +497,7 @@ PanelWidgetClass MainSmeltingPanel {
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       text "UNDER PERFECT TEMP"
+       text "#STR_UI_UnderPerfectTempLabel"
        font "gui/fonts/Metron28"
        "text color" 0.5608 0.0706 0.0706 1
        "exact text" 0
@@ -516,7 +516,7 @@ PanelWidgetClass MainSmeltingPanel {
        hexactsize 0
        vexactsize 0
        style None
-       text "PERFECT TEMP"
+       text "#STR_UI_PerfectTempLabel"
        font "gui/fonts/Metron28"
        "text color" 0.1569 0.2745 0.6235 1
        "exact text" 0

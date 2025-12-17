@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "STR_IAT_FurnaceKit_ColorBase"
+msgstr "Kemence készlet"
+
+msgid "STR_IAT_FurnaceKit_ColorBase_Desc"
+msgstr "Készlet olvasztókemence vagy kemence építéséhez."
+
+msgid "STR_IAT_FurnaceKit_BasicStone"
+msgstr "Alap kőkemence készlet"
+
+msgid "STR_IAT_FurnaceKit_BasicStone_Desc"
+msgstr "Készlet olvasztókemence vagy kemence építéséhez."
+
+msgid "STR_IAT_FurnaceKit_BasicBrick"
+msgstr "Alap téglakemence készlet"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick_Desc"
+msgstr "Készlet olvasztókemence vagy kemence építéséhez."
+
+msgid "STR_IAT_FurnaceKit_Advancedstone"
+msgstr "Fejlett kőkemence készlet"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone_Desc"
+msgstr "Készlet olvasztókemence vagy kemence építéséhez."
+
+msgid "STR_IAT_FurnaceKit_Industrial"
+msgstr "Ipari kemence készlet"
+
+msgid "STR_IAT_FurnaceKit_Industrial_Desc"
+msgstr "Készlet olvasztókemence vagy kemence építéséhez."
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase"
+msgstr "Olvasztókemence"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase_Desc"
+msgstr "Nagy szerkezet, amely nyers ércet olvaszt rudakká."
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone"
+msgstr "Olvasztókemence"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone_Desc"
+msgstr "Nagy szerkezet, amely nyers ércet olvaszt rudakká."
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick"
+msgstr "Olvasztókemence"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick_Desc"
+msgstr "Nagy szerkezet, amely nyers ércet olvaszt rudakká."
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone"
+msgstr "Olvasztókemence"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone_Desc"
+msgstr "Nagy szerkezet, amely nyers ércet olvaszt rudakká."
+
+msgid "STR_IAT_SmeltingFurnace_Industrial"
+msgstr "Olvasztókemence"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial_Desc"
+msgstr "Nagy szerkezet, amely nyers ércet olvaszt rudakká."
+
+msgid "STR_IAT_SearchCharcoal"
+msgstr "Faszén keresése"
+
+msgid "STR_IAT_StartSmelting"
+msgstr "Olvasztás indítása"
+
+msgid "STR_IAT_LockSmeltingSlots"
+msgstr "Helyek zárolása"
+
+msgid "STR_IAT_UnLockSmeltingSlots"
+msgstr "Helyek feloldása"
+
+msgid "STR_UI_SmeltingWindowTitle"
+msgstr "OLVASZTÁS MINIJÁTÉK"
+
+msgid "STR_UI_AccelerantHp"
+msgstr "Gyorsító HP"
+
+msgid "STR_UI_OreGroup1"
+msgstr "Érccsoport 1"
+
+msgid "STR_UI_OreGroup2"
+msgstr "Érccsoport 2"
+
+msgid "STR_UI_SmeltingStreak"
+msgstr "SOROZAT:"
+
+msgid "STR_UI_WinLossRatio"
+msgstr "W/L:"
+
+msgid "STR_UI_Wins"
+msgstr "W:"
+
+msgid "STR_UI_Loss"
+msgstr "L:"
+
+msgid "STR_UI_ButtonOver"
+msgstr "FELETTE"
+
+msgid "STR_UI_ButtonUnder"
+msgstr "ALATTA"
+
+msgid "STR_UI_WagerPlacedCountDown"
+msgstr "FOGADÁS LEADVA – Eredményig:"
+
+msgid "STR_UI_OverPerfectTempLabel"
+msgstr "A TÖKÉLETES HŐMÉRSÉKLET FELETT"
+
+msgid "STR_UI_UnderPerfectTempLabel"
+msgstr "A TÖKÉLETES HŐMÉRSÉKLET ALATT"
+
+msgid "STR_UI_PerfectTempLabel"
+msgstr "TÖKÉLETES HŐMÉRSÉKLET"

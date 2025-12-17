@@ -134,6 +134,26 @@ class IAT_SmeltingFurnace_ColorBase extends FireplaceBase
 	{
 		return false;
 	}
+	override bool DoPlacingHeightCheck()
+	{
+		return false;
+	}
+	override float HeightCheckOverride()
+	{
+		return -1;
+	}
+	override bool IsRoofAbove()
+	{
+		return false;
+	}
+	override bool IsOnInteriorSurface()
+	{
+		return false;
+	}
+	override bool IsCeilingHighEnoughForSmoke()
+	{
+		return true;
+	}
 	override bool CanBeIgnitedBy(EntityAI igniter = NULL)
 	{
 		return HasAnyKindling() && !IsBurning() && !GetHierarchyParent();
@@ -714,6 +734,7 @@ class IAT_SmeltingFurnace_ColorBase extends FireplaceBase
 			// default to a scrap bar, 100hp and 1 quantity
 			string newClassName = "IAT_SmeltingIngot_Scrap";
 			int resultHp = -1; // max hp
+			int itemMaxQuantity = 20;
 			int resultQuantity = numBars; // base bars
 			// get the config
 			IAT_SmeltingConfig smeltingConfig;
@@ -724,30 +745,45 @@ class IAT_SmeltingFurnace_ColorBase extends FireplaceBase
 				{
 					newClassName = recipe.GetResultClassName();
 					resultHp = recipe.GetResultHp();
-					resultQuantity += recipe.GetResultQuantity();
+					resultQuantity *= recipe.GetResultQuantity();
 				}
 			}
 
-			ItemBase alloy;
-			if (Class.CastTo(alloy, g_Game.CreateObjectEx(newClassName, GetResultSpawnPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+			// clamp to 50 results so we dont spam stuff
+			resultQuantity = Math.Clamp(resultQuantity, 1, 50);
+			// spawn stuff until we are empty
+			while (resultQuantity > 0)
 			{
-				// -1 means full hp
-				if (resultHp == -1)
+				ItemBase alloy;
+				if (Class.CastTo(alloy, g_Game.CreateObjectEx(newClassName, GetResultSpawnPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 				{
-					alloy.SetHealth(alloy.GetMaxHealth());
+					// -1 means full hp
+					if (resultHp == -1)
+					{
+						alloy.SetHealth(alloy.GetMaxHealth());
+					}
+					else
+					{
+						alloy.SetHealth(resultHp);
+					}
+					// -1 means full quantity
+					if (resultQuantity == -1)
+					{
+						alloy.SetQuantity(alloy.GetQuantityMax());
+					}
+					else
+					{
+						alloy.SetQuantity(resultQuantity);
+					}
+
+					itemMaxQuantity = alloy.GetQuantityMax();
+					// remove what we spawned and continue to spawn excess
+					resultQuantity -= itemMaxQuantity;
 				}
 				else
 				{
-					alloy.SetHealth(resultHp);
-				}
-				// -1 means full quantity
-				if (resultQuantity == -1)
-				{
-					alloy.SetQuantity(alloy.GetQuantityMax());
-				}
-				else
-				{
-					alloy.SetQuantity(resultQuantity);
+					// short circuit if the item fails
+					resultQuantity = -1;
 				}
 			}
 		}
