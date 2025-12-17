@@ -37,11 +37,11 @@ class IAT_ActionToggleFurnaceLock: ActionContinuousBase
 		{
 			if (furnace.IAT_AreSlotsLocked())
 			{
-				m_Text = "Unlock Slots";
+				m_Text = "#STR_IAT_UnLockSmeltingSlots";
 			}
 			else
 			{
-				m_Text = "Lock Slots";
+				m_Text = "#STR_IAT_LockSmeltingSlots";
 			}
 		}
 	}

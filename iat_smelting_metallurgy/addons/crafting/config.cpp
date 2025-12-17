@@ -13,8 +13,8 @@ class CfgVehicles
 	class IAT_FurnaceKit_ColorBase : Inventory_Base
 	{
 		scope = 0;
-		displayName = "Furnace Kit";
-		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		displayName = "$STR_CfgVehicles_IAT_FurnaceKit_ColorBase0";
+		descriptionShortShort = "$STR_CfgVehicles_IAT_FurnaceKit_ColorBase1";
 		model = "\DZ\gear\camping\wooden_case.p3d";
 		rotationFlags = 2;
 		itemBehaviour = 0;
@@ -64,37 +64,37 @@ class CfgVehicles
 	class IAT_FurnaceKit_BasicStone : IAT_FurnaceKit_ColorBase
 	{
 		scope = 2;
-		displayName = "Basic Stone Furnace Kit";
-		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		displayName = "$STR_CfgVehicles_IAT_FurnaceKit_BasicStone0";
+		descriptionShortShort = "$STR_CfgVehicles_IAT_FurnaceKit_BasicStone1";
 		projectionTypename = "IAT_SmeltingFurnace_BasicStone";
 	};
 	class IAT_FurnaceKit_BasicBrick : IAT_FurnaceKit_ColorBase
 	{
 		scope = 2;
-		displayName = "Basic Brick Furnace Kit";
-		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		displayName = "$STR_CfgVehicles_IAT_FurnaceKit_BasicBrick0";
+		descriptionShortShort = "$STR_CfgVehicles_IAT_FurnaceKit_BasicBrick1";
 		projectionTypename = "IAT_SmeltingFurnace_BasicBrick";
 	};
 	class IAT_FurnaceKit_Advancedstone : IAT_FurnaceKit_ColorBase
 	{
 		scope = 2;
-		displayName = "Advanced Stone Furnace Kit";
-		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		displayName = "$STR_CfgVehicles_IAT_FurnaceKit_Advancedstone0";
+		descriptionShortShort = "$STR_CfgVehicles_IAT_FurnaceKit_Advancedstone1";
 		projectionTypename = "IAT_SmeltingFurnace_AdvancedStone";
 	};
 	class IAT_FurnaceKit_Industrial : IAT_FurnaceKit_ColorBase
 	{
 		scope = 2;
-		displayName = "Industrial Furnace Kit";
-		descriptionShort = "A kit for constructing a smelting forge or furnace.";
+		displayName = "$STR_CfgVehicles_IAT_FurnaceKit_Industrial0";
+		descriptionShortShort = "$STR_CfgVehicles_IAT_FurnaceKit_Industrial1";
 		projectionTypename = "IAT_SmeltingFurnace_Industrial";
 	};
 
 	class IAT_SmeltingFurnace_ColorBase : FireplaceBase
 	{
 		scope = 0;
-		displayName = "Smelting Furnace";
-		descriptionShort = "A large structure meant for melting raw ores into ingots.";
+		displayName = "$STR_CfgVehicles_IAT_SmeltingFurnace_ColorBase0";
+		descriptionShortShort = "$STR_CfgVehicles_IAT_SmeltingFurnace_ColorBase1";
 		model = "iat_smelting_metallurgy\crafting\iat_stonefurnace.p3d";
 		overrideDrawArea = "8.0";
 		openable = 0;
@@ -113,21 +113,21 @@ class CfgVehicles
 			class Fuel
 			{
 				name = "$STR_attachment_Fuel0";
-				description = "";
+				descriptionShort = "";
 				attachmentSlots[] = { "Firewood", "WoodenStick" };
 				icon = "set:dayz_inventory image:cat_fp_fuel";
 			};
 			class Kindling
 			{
 				name = "$STR_attachment_Kindling0";
-				description = "";
+				descriptionShort = "";
 				attachmentSlots[] = { "Rags", "MedicalBandage", "Paper", "Bark" };
 				icon = "set:dayz_inventory image:cat_fp_kindling";
 			};
 			class Smelting
 			{
 				name = "Smelting";
-				description = "";
+				descriptionShort = "";
 				attachmentSlots[] =
 				{
 					"IAT_Accelerant",
@@ -153,6 +153,8 @@ class CfgVehicles
 	class IAT_SmeltingFurnace_BasicStone : IAT_SmeltingFurnace_ColorBase
 	{
 		scope = 2;
+		displayName = "$STR_CfgVehicles_IAT_SmeltingFurnace_BasicStone0";
+		descriptionShort = "$STR_CfgVehicles_IAT_SmeltingFurnace_BasicStone1";
 		class AnimationSources
 		{
 			class pour
@@ -172,6 +174,8 @@ class CfgVehicles
 	class IAT_SmeltingFurnace_BasicBrick : IAT_SmeltingFurnace_ColorBase
 	{
 		scope = 2;
+		displayName = "$STR_CfgVehicles_IAT_SmeltingFurnace_BasicBrick0";
+		descriptionShort = "$STR_CfgVehicles_IAT_SmeltingFurnace_BasicBrick1";
 		model = "iat_smelting_metallurgy\crafting\iat_stoneforge.p3d";
 		hiddenSelections[] = { "coal", "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_smelting_metallurgy\crafting\data\iat_stoneforge_co.paa", "iat_smelting_metallurgy\crafting\data\iat_stoneforge_co.paa" };
@@ -179,6 +183,8 @@ class CfgVehicles
 	class IAT_SmeltingFurnace_AdvancedStone : IAT_SmeltingFurnace_ColorBase
 	{
 		scope = 2;
+		displayName = "$STR_CfgVehicles_IAT_SmeltingFurnace_AdvancedStone0";
+		descriptionShort = "$STR_CfgVehicles_IAT_SmeltingFurnace_AdvancedStone1";
 		model = "iat_smelting_metallurgy\crafting\iat_advancedstonefurnace.p3d";
 		hiddenSelections[] = { "coal", "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_smelting_metallurgy\crafting\data\iat_forgeNbellows_co.paa", "iat_smelting_metallurgy\crafting\data\iat_forgeNbellows_co.paa" };
@@ -186,6 +192,8 @@ class CfgVehicles
 	class IAT_SmeltingFurnace_Industrial : IAT_SmeltingFurnace_ColorBase
 	{
 		scope = 2;
+		displayName = "$STR_CfgVehicles_IAT_SmeltingFurnace_Industrial0";
+		descriptionShort = "$STR_CfgVehicles_IAT_SmeltingFurnace_Industrial1";
 		model = "iat_smelting_metallurgy\crafting\iat_industrialfurnace.p3d";
 		hiddenSelections[] = { "coal", "zbytek", "table" };
 		hiddenSelectionsTextures[] = { "iat_smelting_metallurgy\crafting\data\iat_advancedfurnace_co.paa", "iat_smelting_metallurgy\crafting\data\iat_advancedfurnace_co.paa", "iat_smelting_metallurgy\crafting\data\iat_advancedfurnacetable_co.paa" };

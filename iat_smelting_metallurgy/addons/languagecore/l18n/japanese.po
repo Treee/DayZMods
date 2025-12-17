@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "STR_IAT_FurnaceKit_ColorBase"
+msgstr "炉の組立キット"
+
+msgid "STR_IAT_FurnaceKit_ColorBase_Desc"
+msgstr "製錬用の鍛冶炉または炉を建築するためのキット。"
+
+msgid "STR_IAT_FurnaceKit_BasicStone"
+msgstr "基本の石造炉キット"
+
+msgid "STR_IAT_FurnaceKit_BasicStone_Desc"
+msgstr "製錬用の鍛冶炉または炉を建築するためのキット。"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick"
+msgstr "基本のレンガ炉キット"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick_Desc"
+msgstr "製錬用の鍛冶炉または炉を建築するためのキット。"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone"
+msgstr "上級の石造炉キット"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone_Desc"
+msgstr "製錬用の鍛冶炉または炉を建築するためのキット。"
+
+msgid "STR_IAT_FurnaceKit_Industrial"
+msgstr "工業用炉キット"
+
+msgid "STR_IAT_FurnaceKit_Industrial_Desc"
+msgstr "製錬用の鍛冶炉または炉を建築するためのキット。"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase"
+msgstr "溶鉱炉"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase_Desc"
+msgstr "鉱石をインゴットに溶かすための大型構造物。"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone"
+msgstr "溶鉱炉"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone_Desc"
+msgstr "鉱石をインゴットに溶かすための大型構造物。"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick"
+msgstr "溶鉱炉"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick_Desc"
+msgstr "鉱石をインゴットに溶かすための大型構造物。"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone"
+msgstr "溶鉱炉"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone_Desc"
+msgstr "鉱石をインゴットに溶かすための大型構造物。"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial"
+msgstr "溶鉱炉"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial_Desc"
+msgstr "鉱石をインゴットに溶かすための大型構造物。"
+
+msgid "STR_IAT_SearchCharcoal"
+msgstr "木炭を探す"
+
+msgid "STR_IAT_StartSmelting"
+msgstr "製錬を開始"
+
+msgid "STR_IAT_LockSmeltingSlots"
+msgstr "スロットをロック"
+
+msgid "STR_IAT_UnLockSmeltingSlots"
+msgstr "スロットのロック解除"
+
+msgid "STR_UI_SmeltingWindowTitle"
+msgstr "製錬ミニゲーム"
+
+msgid "STR_UI_AccelerantHp"
+msgstr "促進剤HP"
+
+msgid "STR_UI_OreGroup1"
+msgstr "鉱石グループ 1"
+
+msgid "STR_UI_OreGroup2"
+msgstr "鉱石グループ 2"
+
+msgid "STR_UI_SmeltingStreak"
+msgstr "連続:"
+
+msgid "STR_UI_WinLossRatio"
+msgstr "W/L:"
+
+msgid "STR_UI_Wins"
+msgstr "W:"
+
+msgid "STR_UI_Loss"
+msgstr "L:"
+
+msgid "STR_UI_ButtonOver"
+msgstr "オーバー"
+
+msgid "STR_UI_ButtonUnder"
+msgstr "アンダー"
+
+msgid "STR_UI_WagerPlacedCountDown"
+msgstr "賭け完了 - 結果まで:"
+
+msgid "STR_UI_OverPerfectTempLabel"
+msgstr "最適温度より高い"
+
+msgid "STR_UI_UnderPerfectTempLabel"
+msgstr "最適温度より低い"
+
+msgid "STR_UI_PerfectTempLabel"
+msgstr "最適温度"

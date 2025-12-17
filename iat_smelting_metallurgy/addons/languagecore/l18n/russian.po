@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "STR_IAT_FurnaceKit_ColorBase"
+msgstr "Набор для печи"
+
+msgid "STR_IAT_FurnaceKit_ColorBase_Desc"
+msgstr "Набор для строительства плавильной кузницы или печи."
+
+msgid "STR_IAT_FurnaceKit_BasicStone"
+msgstr "Базовый набор каменной печи"
+
+msgid "STR_IAT_FurnaceKit_BasicStone_Desc"
+msgstr "Набор для строительства плавильной кузницы или печи."
+
+msgid "STR_IAT_FurnaceKit_BasicBrick"
+msgstr "Базовый набор кирпичной печи"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick_Desc"
+msgstr "Набор для строительства плавильной кузницы или печи."
+
+msgid "STR_IAT_FurnaceKit_Advancedstone"
+msgstr "Продвинутый набор каменной печи"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone_Desc"
+msgstr "Набор для строительства плавильной кузницы или печи."
+
+msgid "STR_IAT_FurnaceKit_Industrial"
+msgstr "Промышленный набор печи"
+
+msgid "STR_IAT_FurnaceKit_Industrial_Desc"
+msgstr "Набор для строительства плавильной кузницы или печи."
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase"
+msgstr "Плавильная печь"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase_Desc"
+msgstr "Большая конструкция, предназначенная для переплавки руды в слитки."
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone"
+msgstr "Плавильная печь"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone_Desc"
+msgstr "Большая конструкция, предназначенная для переплавки руды в слитки."
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick"
+msgstr "Плавильная печь"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick_Desc"
+msgstr "Большая конструкция, предназначенная для переплавки руды в слитки."
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone"
+msgstr "Плавильная печь"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone_Desc"
+msgstr "Большая конструкция, предназначенная для переплавки руды в слитки."
+
+msgid "STR_IAT_SmeltingFurnace_Industrial"
+msgstr "Плавильная печь"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial_Desc"
+msgstr "Большая конструкция, предназначенная для переплавки руды в слитки."
+
+msgid "STR_IAT_SearchCharcoal"
+msgstr "Искать древесный уголь"
+
+msgid "STR_IAT_StartSmelting"
+msgstr "Начать плавку"
+
+msgid "STR_IAT_LockSmeltingSlots"
+msgstr "Заблокировать слоты"
+
+msgid "STR_IAT_UnLockSmeltingSlots"
+msgstr "Разблокировать слоты"
+
+msgid "STR_UI_SmeltingWindowTitle"
+msgstr "МИНИ-ИГРА ПЛАВКИ"
+
+msgid "STR_UI_AccelerantHp"
+msgstr "HP ускорителя"
+
+msgid "STR_UI_OreGroup1"
+msgstr "Группа руды 1"
+
+msgid "STR_UI_OreGroup2"
+msgstr "Группа руды 2"
+
+msgid "STR_UI_SmeltingStreak"
+msgstr "СЕРИЯ:"
+
+msgid "STR_UI_WinLossRatio"
+msgstr "W/L:"
+
+msgid "STR_UI_Wins"
+msgstr "W:"
+
+msgid "STR_UI_Loss"
+msgstr "L:"
+
+msgid "STR_UI_ButtonOver"
+msgstr "БОЛЬШЕ"
+
+msgid "STR_UI_ButtonUnder"
+msgstr "МЕНЬШЕ"
+
+msgid "STR_UI_WagerPlacedCountDown"
+msgstr "СТАВКА СДЕЛАНА — Результат через:"
+
+msgid "STR_UI_OverPerfectTempLabel"
+msgstr "ВЫШЕ ИДЕАЛЬНОЙ ТЕМПЕРАТУРЫ"
+
+msgid "STR_UI_UnderPerfectTempLabel"
+msgstr "НИЖЕ ИДЕАЛЬНОЙ ТЕМПЕРАТУРЫ"
+
+msgid "STR_UI_PerfectTempLabel"
+msgstr "ИДЕАЛЬНАЯ ТЕМПЕРАТУРА"

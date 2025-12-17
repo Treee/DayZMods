@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "STR_IAT_FurnaceKit_ColorBase"
+msgstr "Furnace Kit"
+
+msgid "STR_IAT_FurnaceKit_ColorBase_Desc"
+msgstr "A kit for constructing a smelting forge or furnace."
+
+msgid "STR_IAT_FurnaceKit_BasicStone"
+msgstr "Basic Stone Furnace Kit"
+
+msgid "STR_IAT_FurnaceKit_BasicStone_Desc"
+msgstr "A kit for constructing a smelting forge or furnace."
+
+msgid "STR_IAT_FurnaceKit_BasicBrick"
+msgstr "Basic Brick Furnace Kit"
+
+msgid "STR_IAT_FurnaceKit_BasicBrick_Desc"
+msgstr "A kit for constructing a smelting forge or furnace."
+
+msgid "STR_IAT_FurnaceKit_Advancedstone"
+msgstr "Advanced Stone Furnace Kit"
+
+msgid "STR_IAT_FurnaceKit_Advancedstone_Desc"
+msgstr "A kit for constructing a smelting forge or furnace."
+
+msgid "STR_IAT_FurnaceKit_Industrial"
+msgstr "Industrial Furnace Kit"
+
+msgid "STR_IAT_FurnaceKit_Industrial_Desc"
+msgstr "A kit for constructing a smelting forge or furnace."
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase"
+msgstr "Smelting Furnace"
+
+msgid "STR_IAT_SmeltingFurnace_ColorBase_Desc"
+msgstr "A large structure meant for melting raw ores into ingots."
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone"
+msgstr "Smelting Furnace"
+
+msgid "STR_IAT_SmeltingFurnace_BasicStone_Desc"
+msgstr "A large structure meant for melting raw ores into ingots."
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick"
+msgstr "Smelting Furnace"
+
+msgid "STR_IAT_SmeltingFurnace_BasicBrick_Desc"
+msgstr "A large structure meant for melting raw ores into ingots."
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone"
+msgstr "Smelting Furnace"
+
+msgid "STR_IAT_SmeltingFurnace_AdvancedStone_Desc"
+msgstr "A large structure meant for melting raw ores into ingots."
+
+msgid "STR_IAT_SmeltingFurnace_Industrial"
+msgstr "Smelting Furnace"
+
+msgid "STR_IAT_SmeltingFurnace_Industrial_Desc"
+msgstr "A large structure meant for melting raw ores into ingots."
+
+msgid "STR_IAT_SearchCharcoal"
+msgstr "Search for Charcoal"
+
+msgid "STR_IAT_StartSmelting"
+msgstr "Start Smelting"
+
+msgid "STR_IAT_LockSmeltingSlots"
+msgstr "Lock Slots"
+
+msgid "STR_IAT_UnLockSmeltingSlots"
+msgstr "Unlock Slots"
+
+msgid "STR_UI_SmeltingWindowTitle"
+msgstr "SMELTING MINI GAME"
+
+msgid "STR_UI_AccelerantHp"
+msgstr "Accelerant HP"
+
+msgid "STR_UI_OreGroup1"
+msgstr "Ore Group 1"
+
+msgid "STR_UI_OreGroup2"
+msgstr "Ore Group 2"
+
+msgid "STR_UI_SmeltingStreak"
+msgstr "STREAK:"
+
+msgid "STR_UI_WinLossRatio"
+msgstr "W/L:"
+
+msgid "STR_UI_Wins"
+msgstr "W:"
+
+msgid "STR_UI_Loss"
+msgstr "L:"
+
+msgid "STR_UI_ButtonOver"
+msgstr "OVER"
+
+msgid "STR_UI_ButtonUnder"
+msgstr "UNDER"
+
+msgid "STR_UI_WagerPlacedCountDown"
+msgstr "WAGER PLACED - Results In:"
+
+msgid "STR_UI_OverPerfectTempLabel"
+msgstr "OVER PERFECT TEMP"
+
+msgid "STR_UI_UnderPerfectTempLabel"
+msgstr "UNDER PERFECT TEMP"
+
+msgid "STR_UI_PerfectTempLabel"
+msgstr "PERFECT TEMP"

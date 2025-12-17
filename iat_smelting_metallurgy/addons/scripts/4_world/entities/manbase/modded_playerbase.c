@@ -6,6 +6,7 @@ modded class PlayerBase
 	protected int m_IAT_SmeltingMiniGameStreak = 0;
 
 	protected bool m_IAT_SmeltingMiniGameLastGameWin = false;
+	protected bool m_IAT_SyncedSmeltingScore = false;
 
 	override void SetActions(out TInputActionMap InputActionMap)
     {
@@ -82,6 +83,38 @@ modded class PlayerBase
 	void IAT_ResetStreak()
 	{
 		m_IAT_SmeltingMiniGameStreak = 0;
+	}
+	// Quick hack to move score checking into the action of opening the client side menu.
+	// Prior all players that logged in were being added to the json. This attempts to clamp
+	// that behavior to only those who interact with the smelters resulting in MUCH smaller lists.
+	bool IAT_TrySyncedSmeltingScore(PlayerIdentity identity)
+	{
+		if (g_Game.IsDedicatedServer())
+		{
+			if (!m_IAT_SyncedSmeltingScore)
+			{
+				PlayerBase player;
+				if (Class.CastTo(player, identity.GetPlayer()))
+				{
+					m_IAT_SyncedSmeltingScore = true;
+					IAT_SmeltingConfig smeltingConfig;
+					if (Class.CastTo(smeltingConfig, GetDayZGame().GetIATSmeltingConfig()))
+					{
+						IAT_SmeltingScore playerScore;
+						if (Class.CastTo(playerScore, smeltingConfig.IAT_GetSmeltingScore(identity.GetName(), identity.GetPlainId())))
+						{
+							Param1<IAT_SmeltingScore> configParams = new Param1<IAT_SmeltingScore>(playerScore);
+							PrintFormat("[IAT_Smelting] Sending Score to Player: %1 RPC: %2", identity.GetName(), IAT_RPC_SMELTING.SERVER_SEND_CONFIG);
+							g_Game.RPCSingleParam(player, IAT_RPC_SMELTING.SERVER_SEND_CONFIG, configParams, true, identity);
+							player.IAT_SetSmeltingDataFromStore(playerScore.GetWins(), playerScore.GetLoss(), playerScore.GetCurrentStreak());
+
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 	bool IAT_IsOnStreak()
 	{

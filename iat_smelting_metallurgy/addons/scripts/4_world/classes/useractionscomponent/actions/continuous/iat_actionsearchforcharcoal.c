@@ -15,7 +15,7 @@ class IAT_ActionSearchForCharcoal: ActionContinuousBase
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
 		m_SpecialtyWeight = UASoftSkillsWeight.ROUGH_HIGH;
-		m_Text = "Search for Charcoal";
+		m_Text = "#STR_IAT_SearchCharcoal";
 	}
 
 	override void CreateConditionComponents()
@@ -33,14 +33,15 @@ class IAT_ActionSearchForCharcoal: ActionContinuousBase
 	}
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		FireplaceBase targetIB;
-		if (Class.CastTo(targetIB, target.GetObject()))
+		FireplaceBase targetFireplace;
+		if (Class.CastTo(targetFireplace, target.GetObject()))
 		{
-			if (targetIB.IsFireplace())
+			// disallow ovens
+			if (targetFireplace.IsFireplace() && !targetFireplace.IsOven())
 			{
-				if (!targetIB.IsDamageDestroyed())
+				if (!targetFireplace.IsDamageDestroyed())
 				{
-      				return targetIB.HasAshes();
+      				return targetFireplace.HasAshes();
 				}
 			}
 		}
@@ -50,7 +51,7 @@ class IAT_ActionSearchForCharcoal: ActionContinuousBase
     {
 		super.OnFinishProgressServer(action_data);
 		string newItemName = "IAT_MiningOre_Charcoal";
-		if (Math.RandomFloat01() > 0.9)
+		if (Math.RandomFloat01() > 0.8)
     	{
 			newItemName = "IAT_MiningOre_Coke";
 		}

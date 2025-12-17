@@ -78,7 +78,7 @@ class IAT_SmeltingMinigameHUD extends UIScriptedMenu
 
         // Streak text
         m_TextStreak = TextWidget.Cast(layoutRoot.FindAnyWidget("TextStreak"));
-        m_TextWins = TextWidget.Cast(layoutRoot.FindAnyWidget("TestWins"));
+        m_TextWins = TextWidget.Cast(layoutRoot.FindAnyWidget("TextWins"));
         m_TextLoss = TextWidget.Cast(layoutRoot.FindAnyWidget("TextLoss"));
         m_TextWnL = TextWidget.Cast(layoutRoot.FindAnyWidget("TextWnL"));
 
@@ -228,21 +228,22 @@ class IAT_SmeltingMinigameHUD extends UIScriptedMenu
     {
         if (m_TextStreak)
         {
-            m_TextStreak.SetText(string.Format("STREAK: %1", streak));
+            // m_TextStreak.SetText(string.Format("STREAK: %1", streak));
+            m_TextStreak.SetText(string.Format("#STR_UI_SmeltingStreak %1", streak));
         }
     }
     void SetWinCount(int wins)
     {
         if (m_TextWins)
         {
-            m_TextWins.SetText(string.Format("W: %1", wins));
+            m_TextWins.SetText(string.Format("#STR_UI_Wins %1", wins));
         }
     }
     void SetLossCount(int loss)
     {
         if (m_TextLoss)
         {
-            m_TextLoss.SetText(string.Format("L: %1", loss));
+            m_TextLoss.SetText(string.Format("#STR_UI_Loss %1", loss));
         }
     }
     void SetWinLossRatio(int win, int loss)
@@ -256,7 +257,7 @@ class IAT_SmeltingMinigameHUD extends UIScriptedMenu
         }
         if (m_TextWnL)
         {
-            m_TextWnL.SetText(string.Format("W/L: %1%2",  MiscGameplayFunctions.TruncateToS(rawWnL), "%"));
+            m_TextWnL.SetText(string.Format("#STR_UI_WinLossRatio %1%2",  MiscGameplayFunctions.TruncateToS(rawWnL), "%"));
         }
     }
 	void SetFurnaceInputValues(int accelHp, int minTemp, int maxTemp, int maxOre1, int maxOre2)
@@ -509,7 +510,7 @@ class IAT_SmeltingMinigameHUD extends UIScriptedMenu
     {
         if (m_WagerCountDownText)
         {
-            m_WagerCountDownText.SetText(string.Format("WAGER PLACED - Results In: %1", m_IAT_WagerCountDown));
+            m_WagerCountDownText.SetText(string.Format("#STR_UI_WagerPlacedCountDown %1", m_IAT_WagerCountDown));
         }
         m_WagerCountDownText.Show(true);
 
@@ -525,7 +526,7 @@ class IAT_SmeltingMinigameHUD extends UIScriptedMenu
         {
             if (m_WagerCountDownText)
             {
-                m_WagerCountDownText.SetText(string.Format("WAGER PLACED - Results In: %1", m_IAT_WagerCountDown));
+                m_WagerCountDownText.SetText(string.Format("#STR_UI_WagerPlacedCountDown %1", m_IAT_WagerCountDown));
             }
             m_IAT_WagerCountDown -= 1;
             g_Game.GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(WagerCountDown, 1000, false);
