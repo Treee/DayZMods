@@ -8,7 +8,7 @@ PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
 {
-	texture="SRP\Metallurgy\gear\consumables\data\srp_forge_ingot_nohq.paa";
+	texture="iat_smelting_metallurgy\consumables\data\iat_ingot_nohq.paa";
 	uvSource="tex";
 	class uvTransform
 	{
@@ -56,7 +56,7 @@ class Stage4
 };
 class Stage5
 {
-	texture="SRP\Metallurgy\gear\consumables\data\srp_forge_ingot_smdi.paa";
+	texture="iat_smelting_metallurgy\consumables\data\iat_ingot_smdi.paa";
 	uvSource="tex";
 	class uvTransform
 	{
