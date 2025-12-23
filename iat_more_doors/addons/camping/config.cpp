@@ -551,12 +551,14 @@ class CfgVehicles
 			"Single - Right - Wood - Small",
 			"Single - Right - Metal - Small",
 			"Single - Right - Iron - Small",
+			"Single - RightHatch - Wood - Large",
 			"Double - Wood - Small",
 			"Double - Metal - Small",
 			"Double - Iron - Small",
 			"Double - Wood - Medium Shed",
 			"Double - Metal - Medium Shed",
 			"Double - Iron - Medium Shed",
+			"Double - Wood - Hatch",
 		};
 		iat_KitOptionClassNames[] =
 		{
@@ -567,12 +569,14 @@ class CfgVehicles
 			"IAT_ConstructionDoor_Single_Right_Wooden",
 			"IAT_ConstructionDoor_Single_Right_Metal",
 			"IAT_ConstructionDoor_Single_Right_Iron",
+			"IAT_ConstructionDoor_Single_Right_WoodenLargeHatch",
 			"IAT_ConstructionDoor_Double_Wooden",
 			"IAT_ConstructionDoor_Double_Metal",
 			"IAT_ConstructionDoor_Double_Iron",
 			"IAT_ConstructionDoor_Double_WoodenMedium",
 			"IAT_ConstructionDoor_Double_MetalMedium",
 			"IAT_ConstructionDoor_Double_IronMedium",
+			"IAT_ConstructionDoor_Double_WoodenHatch",
 		};
 		class AnimationSources
 		{
@@ -913,6 +917,7 @@ class CfgVehicles
 	class IAT_ConstructionDoor_Single_Left_WoodenLargeHatch : IAT_ConstructionDoor_Single_Colorbase
 	{
 		scope = 2;
+		displayName = "Hatch";
 		model = "iat_more_doors\camping\construction\largehatch\iat_lhatchdoor_wooden_c.p3d";
 		iat_RecipeDisplayName = "Single - Left Hatch Door - Wooden - Large";
 		attachments[] = { "Att_CombinationLock" };
@@ -986,6 +991,24 @@ class CfgVehicles
 			};
 		};
 	};
+	class IAT_ConstructionDoor_Single_Right_WoodenLargeHatch : IAT_ConstructionDoor_Single_Colorbase
+	{
+		scope = 2;
+		displayName = "Hatch";
+		model = "iat_more_doors\camping\construction\largehatch\iat_rhatchdoor_wooden_c.p3d";
+		iat_RecipeDisplayName = "Single - Right Hatch Door - Wooden - Large";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
 
 	class IAT_ConstructionDoor_Double_Wooden : IAT_ConstructionDoor_Double_Colorbase
 	{
@@ -1045,6 +1068,25 @@ class CfgVehicles
 			};
 		};
 	};
+	class IAT_ConstructionDoor_Double_WoodenHatch : IAT_ConstructionDoor_Double_Colorbase
+	{
+		scope = 2;
+		displayName = "Hatch";
+		model = "iat_more_doors\camping\construction\largehatch\iat_dhatchdoor_wooden_c.p3d";
+		iat_RecipeDisplayName = "Hatch Doors - Wood - Small Shed";
+		attachments[] = { "Att_CombinationLock" };
+		class GUIInventoryAttachmentsProps
+		{
+			class Attachments
+			{
+				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
+				description = "";
+				attachmentSlots[] = { "Att_CombinationLock" };
+				icon = "set:dayz_inventory image:cat_bb_attachments";
+			};
+		};
+	};
+
 
 	class IAT_ConstructionDoor_Double_WoodenMedium : IAT_ConstructionDoor_Double_Colorbase
 	{

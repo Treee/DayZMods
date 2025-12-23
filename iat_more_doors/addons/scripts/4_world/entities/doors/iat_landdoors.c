@@ -19,6 +19,7 @@ class IAT_LandDoor_Colorbase extends House
 	//======================================================= CUSTOM CODE
 	bool HasCodelockAttached()
 	{
+		// IAT CODELOCK COMPATIBILITY
 		#ifdef IAT_Codelock
 		IAT_Codelock_Colorbase iatCodelock;
 		if (Class.CastTo(iatCodelock, GetCombinationLock_IAT()))
@@ -26,6 +27,17 @@ class IAT_LandDoor_Colorbase extends House
 			return true;
 		}
 		#endif
+
+		// EXPANSION COMPATIBILITY
+		// #ifdef EXPANSIONMODBASEBUILDING
+		// ExpansionCodeLock expansionCodelock;
+		// if (Class.CastTo(expansionCodelock, GetCombinationLock_Expansion()))
+		// {
+		// 	return true;
+		// }
+		// #endif
+
+		// VANILLA CODELOCK
 		CombinationLock combination_lock;
 		if (Class.CastTo(combination_lock, GetCombinationLock_Vanilla()))
 		{
