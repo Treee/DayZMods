@@ -1,7 +1,7 @@
 //========================= CONSTRUCTION DOORS
 class IAT_ConstructionDoor_Colorbase extends ItemBase
 {
-	protected const float DOOR_ROTATION_TIME_APPROX			= 2000;		//ms
+	protected const int DOOR_ROTATION_TIME_APPROX			= 2000;		//ms
 
 	protected const string ATTACHMENT_SLOT_COMBINATION_LOCK 	= "Att_CombinationLock";
 	protected const string FIRST_DOOR_ANIMATION               = "DoorRotate1";
@@ -26,7 +26,9 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	override void SetActions()
 	{
 		super.SetActions();
+		// enscript-suppress
 		AddAction(IAT_ActionOpenConstructionDoor);
+		// enscript-suppress
 		AddAction(IAT_ActionCloseConstructionDoor);
 	}
 	override void OnVariablesSynchronized()
@@ -77,6 +79,10 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	{
 		return false;
 	}
+	// override int GetMeleeTargetType()
+	// {
+	// 	return EMeleeTargetType.NONALIGNABLE;
+	// }
 	protected void UpdateNavmesh()
 	{
 		// update door path graph for AI
@@ -260,6 +266,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	}
 	bool IsLocked(PlayerIdentity invokingPlayer)
 	{
+		// IAT CODELOCK COMPATIBILITY
 		#ifdef IAT_Codelock
 		IAT_Codelock_Colorbase iatCodelock;
 		if (Class.CastTo(iatCodelock, GetCombinationLock_IAT()))
@@ -276,6 +283,24 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 			}
 		}
 		#endif
+
+		// EXPANSION COMPATIBILITY
+		#ifdef EXPANSIONMODBASEBUILDING
+		ExpansionCodeLock expansionCodelock;
+		if (Class.CastTo(expansionCodelock, ExpansionGetCodeLock()))
+		{
+			if (ExpansionIsLocked())
+			{
+				if (IsKnownUser(invokingPlayer.GetPlayer()))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+		#endif
+
+		// VANILLA CODELOCK
 		CombinationLock combination_lock;
 		if (Class.CastTo(combination_lock, GetCombinationLock_Vanilla()))
 		{
@@ -334,6 +359,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		return null;
 	}
 	#endif
+
 	bool IsDoor1Open()
 	{
 		return m_IsDoor1Open;
@@ -389,6 +415,10 @@ class IAT_ConstructionDoor_Double_Colorbase extends IAT_ConstructionDoor_Colorba
 
 class IAT_ConstructionDoor_Single_Left_Wooden extends IAT_ConstructionDoor_Single_Colorbase{};
 class IAT_ConstructionDoor_Single_Right_Wooden extends IAT_ConstructionDoor_Single_Colorbase{};
+
+class IAT_ConstructionDoor_Single_Left_WoodenLargeHatch extends IAT_ConstructionDoor_Single_Colorbase{};
+class IAT_ConstructionDoor_Single_Right_WoodenLargeHatch extends IAT_ConstructionDoor_Single_Colorbase{};
+
 class IAT_ConstructionDoor_Single_Left_Metal extends IAT_ConstructionDoor_Single_Colorbase
 {
 	override string GetDoorOpenStartSoundSet()
@@ -418,6 +448,7 @@ class IAT_ConstructionDoor_Single_Right_Iron extends IAT_ConstructionDoor_Single
 	}
 };
 class IAT_ConstructionDoor_Double_Wooden extends IAT_ConstructionDoor_Double_Colorbase{};
+class IAT_ConstructionDoor_Double_WoodenHatch extends IAT_ConstructionDoor_Double_Colorbase{};
 class IAT_ConstructionDoor_Double_Metal extends IAT_ConstructionDoor_Double_Colorbase
 {
 	override string GetDoorOpenStartSoundSet()
