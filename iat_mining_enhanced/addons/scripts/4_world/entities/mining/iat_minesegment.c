@@ -83,7 +83,7 @@ class IAT_MiningSegment_Colorbase extends House
 		}
 		// check if this junction gets near the boundaries of the map
 		World world;
-		if (Class.CastTo(world, GetGame().GetWorld()))
+		if (Class.CastTo(world, g_Game.GetWorld()))
 		{
 			// how far down can this mining system go
 			int surfaceYMin = surfaceY - maxDepth;
@@ -131,7 +131,7 @@ class IAT_MiningSegment_Colorbase extends House
 		// update the in game object
 		array<Object> nearest_objects = new array<Object>;
 		array<CargoBase> proxy_cargos = new array<CargoBase>;
-		GetGame().GetObjectsAtPosition3D(entranceTeleportPosition, radius, nearest_objects, proxy_cargos);
+		g_Game.GetObjectsAtPosition3D(entranceTeleportPosition, radius, nearest_objects, proxy_cargos);
 
 		// there should only be 1 object
 		IAT_MiningSegment_Colorbase nearbyJunction;
@@ -275,7 +275,7 @@ class IAT_MiningSegment_Colorbase extends House
 	{
 		land_iat_miningsegment_junction iat_junction;
 		// create a junction at the location underneath the action target
-		if (Class.CastTo(iat_junction, GetGame().CreateObjectEx("land_iat_miningsegment_junction", segmentPosition, ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
+		if (Class.CastTo(iat_junction, g_Game.CreateObjectEx("land_iat_miningsegment_junction", segmentPosition, ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
 		{
 			// get the mining config
 			IAT_MiningConfig miningConfig;
@@ -344,7 +344,7 @@ class IAT_MiningSegment_Colorbase extends House
 	{
 		// PrintFormat("setting play particles to: %1", value);
 		m_PlaySmokeParticles = value;
-		GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( ResetSmokeParticles, GetResetTimerMS(), false);
+		g_Game.GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( ResetSmokeParticles, GetResetTimerMS(), false);
 	}
 	bool GetPlaySmokeParticles()
 	{
@@ -535,7 +535,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 							oreClassName = "Stone";
 						}
 						// create the ore object
-						GetGame().CreateObjectEx(oreClassName, playerPosition, ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+						g_Game.CreateObjectEx(oreClassName, playerPosition, ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 					}
 				}
 			}
@@ -644,7 +644,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 
 	override void PlaySmokeParticles()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			StopParticles();
 			m_WallDestructParticle = ParticleManager.GetInstance().PlayOnObject(ParticleList.PLASTIC_EXPLOSION, this, GetWallDestructParticlePosition());
@@ -656,7 +656,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 	vector GetWallDestructParticlePosition()
 	{
 		PlayerBase player;
-		if (Class.CastTo(player, GetGame().GetPlayer()))
+		if (Class.CastTo(player, g_Game.GetPlayer()))
 		{
 			vector headingDirection = MiscGameplayFunctions.GetHeadingVector(player);
 			// PrintFormat("wall particle position: %1", headingDirection);
@@ -667,7 +667,7 @@ class land_iat_miningsegment_junction extends IAT_MiningSegment_Colorbase
 	vector GetWallCloudParticlePosition()
 	{
 		PlayerBase player;
-		if (Class.CastTo(player, GetGame().GetPlayer()))
+		if (Class.CastTo(player, g_Game.GetPlayer()))
 		{
 			vector headingDirection = MiscGameplayFunctions.GetHeadingVector(player);
 			// PrintFormat("cloud particle position: %1", headingDirection);

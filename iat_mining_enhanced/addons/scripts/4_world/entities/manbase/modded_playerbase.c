@@ -10,7 +10,7 @@ modded class PlayerBase
 	override void OnPlayerLoaded()
 	{
 		super.OnPlayerLoaded();
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			if (IAT_IsInMiningTunnel())
 			{
@@ -85,7 +85,7 @@ modded class PlayerBase
 	}
 	void StartTeleportTransitionEffects()
 	{
-        if(!GetGame().IsDedicatedServer())
+        if(!g_Game.IsDedicatedServer())
 		{
             if(IsControlledPlayer())
 		    {
@@ -95,12 +95,12 @@ modded class PlayerBase
                     ppeRequester.Start();
 				}
             }
-            GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(StopTeleportTransitionEffects,15000,false);
+            g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(StopTeleportTransitionEffects,15000,false);
         }
 	}
 	void StopTeleportTransitionEffects()
 	{
-		if(!GetGame().IsDedicatedServer())
+		if(!g_Game.IsDedicatedServer())
 		{
             if(IsControlledPlayer())
 		    {
@@ -122,11 +122,11 @@ modded class PlayerBase
 		{
 			bool repeat = false;
 			// freeze the player after a bit of time after they teleport so stuff can load in
-			GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(FreezePlayerOnDescend, 2000, repeat);
+			g_Game.GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(FreezePlayerOnDescend, 2000, repeat);
 
 			// unfreeze the player after load
 			int time = delay * 1000;
-			GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(UnFreezePlayerOnDescend, time, repeat);
+			g_Game.GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(UnFreezePlayerOnDescend, time, repeat);
 		}
 	}
 	void FreezePlayerOnDescend()
@@ -141,7 +141,7 @@ modded class PlayerBase
 	{
 		int time = 1000 * 10; // 1000ms x 10 seconds
 		bool repeat = false;
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetInteractMineTrue, time, repeat);
+		g_Game.GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetInteractMineTrue, time, repeat);
 	}
 	void SetInteractMineTrue()
 	{
