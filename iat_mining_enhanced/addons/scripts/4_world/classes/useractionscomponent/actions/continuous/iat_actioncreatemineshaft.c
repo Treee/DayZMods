@@ -39,25 +39,26 @@ class IAT_ActionCreateMineShaft extends ActionContinuousBase
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
+		// if the player is placing anything
 		if (player.IsPlacingLocal())
-			return false;
-
-		if (!IsTargetFertile(target))
-			return false;
-
-		if (!IsPlayerOnGround(player))
-			return false;
-
-		// check to see if the cursor is in a good spot for an entrance (center of an 8x8 grid)
-		vector cursor = target.GetCursorHitPos();
-		cursor[0] = Math.Round(cursor[0]);
-		cursor[2] = Math.Round(cursor[2]);
-		if (Math.ModFloat(cursor[0], 8) == 4 && Math.ModFloat(cursor[2], 8) == 4)
 		{
-			// PrintFormat("cursor is in a good spot: %1", cursor);
+			return false;
+		}
+		// if the player is not on the ground
+		if (!IsPlayerOnGround(player))
+		{
+			return false;
+		}
+		// if the target surface is not correct
+		if (!IAT_IsTargetSurfaceCorrect(target))
+		{
+			return false;
+		}
+		// check to see if the cursor is in a good spot for an entrance (center of an 8x8 grid)
+		if (IAT_IsTargetInDiggableGrid(target.GetCursorHitPos()))
+		{
 			return true;
 		}
-		// Print("cursor is not in a good position to spawn");
 		return false;
 	}
 
@@ -86,7 +87,7 @@ class IAT_ActionCreateMineShaft extends ActionContinuousBase
 			{
 				// spawn the entrance
 				IAT_MiningSegment_Colorbase miningEntrance;
-				if (Class.CastTo(miningEntrance, GetGame().CreateObjectEx("land_iat_miningsegment_entrance", truncatedPos, ECE_SETUP|ECE_PLACE_ON_SURFACE)))
+				if (Class.CastTo(miningEntrance, g_Game.CreateObjectEx("land_iat_miningsegment_entrance", truncatedPos, ECE_SETUP|ECE_PLACE_ON_SURFACE)))
 				{
 					miningEntrance.OnServerMineEntranceCreated(action_data.m_Player.GetPosition(), miningEntrance.GetPosition());
 					MiscGameplayFunctions.DealEvinronmentAdjustedDmg(action_data.m_MainItem, action_data.m_Player, 35);
@@ -100,6 +101,25 @@ class IAT_ActionCreateMineShaft extends ActionContinuousBase
 		}
 	}
 
+	bool IAT_IsTargetSurfaceCorrect(ActionTarget target)
+	{
+		if (IsTargetFertile(target))
+		{
+			return true;
+		}
+		return false;
+	}
+	bool IAT_IsTargetInDiggableGrid(vector cursor)
+	{
+		cursor[0] = Math.Round(cursor[0]);
+		cursor[2] = Math.Round(cursor[2]);
+		if (Math.ModFloat(cursor[0], 8) == 4 && Math.ModFloat(cursor[2], 8) == 4)
+		{
+			// PrintFormat("cursor is in a good spot: %1", cursor);
+			return true;
+		}
+		return false;
+	}
 	bool IsTargetFertile(ActionTarget target)
 	{
 		if (target)
@@ -108,9 +128,9 @@ class IAT_ActionCreateMineShaft extends ActionContinuousBase
 			vector position;
 			position = target.GetCursorHitPos();
 
-			GetGame().SurfaceGetType(position[0], position[2], surface_type);
+			g_Game.SurfaceGetType(position[0], position[2], surface_type);
 
-			if (GetGame().IsSurfaceFertile(surface_type))
+			if (g_Game.IsSurfaceFertile(surface_type))
 			{
 				return true;
 			}
@@ -118,11 +138,27 @@ class IAT_ActionCreateMineShaft extends ActionContinuousBase
 
 		return false;
 	}
+	bool IsTargetDiggable(ActionTarget target)
+	{
+		if (target)
+		{
+			string surface_type;
+			vector position;
+			position = target.GetCursorHitPos();
 
+			g_Game.SurfaceGetType(position[0], position[2], surface_type);
+
+			if (g_Game.IsSurfaceDigable(surface_type))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 	bool IsPlayerOnGround(PlayerBase player)
 	{
 		vector position = player.GetPosition();
-		float heightDiff = GetGame().SurfaceY(position[0], position[2]);
+		float heightDiff = g_Game.SurfaceY(position[0], position[2]);
 		heightDiff = position[1] - heightDiff;
 
 		return heightDiff <= 0.4; // Player is considered on ground

@@ -22,7 +22,7 @@ modded class MissionServer
 				segmentClassName = "land_iat_miningsegment_junction";
 
 			// create a junction at the location underneath the action target
-			if (Class.CastTo(m_MiningSegment, GetGame().CreateObjectEx(segmentClassName, miningSegmentConfig.GetSegmentPosition(), ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
+			if (Class.CastTo(m_MiningSegment, g_Game.CreateObjectEx(segmentClassName, miningSegmentConfig.GetSegmentPosition(), ECE_SETUP|ECE_CREATEPHYSICS|ECE_KEEPHEIGHT)))
 			{
 				string selectionName = "";
 				TIntArray doorStates = miningSegmentConfig.GetMineableComponentDoorStates();
@@ -68,6 +68,6 @@ modded class MissionServer
 
 	// 	auto configParams = new Param1<IAT_MiningConfig>(GetDayZGame().GetIATMiningConfig());
 	// 	PrintFormat("Sending IAT_Codelock Mod Config to Player: %1 RPC: %2", identity.GetName(), IAT_RPC_Codelock.CHECK_CODELOCK_CONFIG);
-	// 	GetGame().RPCSingleParam(player, IAT_RPC_Codelock.CHECK_CODELOCK_CONFIG, configParams, true, identity);
+	// 	g_Game.RPCSingleParam(player, IAT_RPC_Codelock.CHECK_CODELOCK_CONFIG, configParams, true, identity);
 	// }
 };
