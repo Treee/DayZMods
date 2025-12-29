@@ -35,6 +35,11 @@ class IAT_ActionClaimCodelock extends ActionInteractBase
 		// is the target a codelock?
 		if (Class.CastTo(targetCodelock, target.GetObject()))
 		{
+			// if the codelock is not attached to anything or is being held by the player
+			if (!targetCodelock.GetParent() || targetCodelock.GetHierarchyRootPlayer())
+			{
+				return false; // no claim action
+			}
 			// if the lock has no owner
 			if (!targetCodelock.HasOwner())
 			{
