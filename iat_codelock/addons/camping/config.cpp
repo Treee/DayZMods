@@ -158,7 +158,7 @@ class CfgVehicles
 	// out of scope for this iteration of the mod
 	class IAT_LockableSeaChest : SeaChest
 	{
-		scope = 2;
+		scope = 0; // making sure this is removed from servers before i delete it completely
 		attachments[] += { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
@@ -172,6 +172,20 @@ class CfgVehicles
 			};
 		};
 	};
+
+	// class ShelterBase;
+	// class ShelterFabric : ShelterBase
+	// {
+	// 	attachments[] += { "Att_CombinationLock" };
+	// };
+	// class ShelterLeather : ShelterBase
+	// {
+	// 	attachments[] += { "Att_CombinationLock" };
+	// };
+	// class ShelterStick : ShelterBase
+	// {
+	// 	attachments[] += { "Att_CombinationLock" };
+	// };
 
 };
 
