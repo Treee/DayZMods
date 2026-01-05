@@ -12,7 +12,7 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "DZ Basic Script Override";
-		dependencies[] = { "Game", "World" };
+		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{
 			class gameScriptModule
@@ -24,6 +24,11 @@ class CfgMods
 			{
 				value = "";
 				files[] = { "IAT/dz_config_overrides/scripts/4_world" };
+			};
+			class missionScriptModule
+			{
+				value = "";
+				files[] = { "IAT/dz_config_overrides/scripts/5_mission" };
 			};
 		};
 	};
