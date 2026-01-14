@@ -108,7 +108,7 @@ class IAT_DecraftBook_Paper extends RecipeBase
 		int randomDamage = 0;
 		for (int i = 0; i < numPapers; i++)
 		{
-      		if (Class.CastTo(newItem, GetGame().CreateObjectEx("Paper", player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+      		if (Class.CastTo(newItem, g_Game.CreateObjectEx("Paper", player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 			{
 				// 0 pristine, 4 ruined
 				randomDamage = Math.RandomIntInclusive(0,4);

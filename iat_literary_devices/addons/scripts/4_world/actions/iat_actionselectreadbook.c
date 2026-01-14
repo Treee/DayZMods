@@ -5,7 +5,7 @@ class IAT_ActionSelectReadBook extends ActionSingleUseBase
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_DROPITEM_HANDS;
 		m_FullBody = false;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_PRONE;
-        if (!GetGame().IsDedicatedServer())
+        if (!g_Game.IsDedicatedServer())
         {
             GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
         }
@@ -46,13 +46,13 @@ class IAT_ActionSelectReadBook extends ActionSingleUseBase
         // sanity check
         if (Class.CastTo(player, action_data.m_Player) && Class.CastTo(book, action_data.m_MainItem))
         {
-            if (GetGame().GetMission())
+            if (g_Game.GetMission())
             {
                 book.SetBookByIndex(m_VariantID);
 
                 // disable input and do vanilla dance
-                GetGame().GetMission().AddActiveInputExcludes({"menu"});
-                GetGame().GetMission().OnItemUsed(book, player);
+                g_Game.GetMission().AddActiveInputExcludes({"menu"});
+                g_Game.GetMission().OnItemUsed(book, player);
             }
         }
 	}

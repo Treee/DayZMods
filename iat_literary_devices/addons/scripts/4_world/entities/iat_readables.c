@@ -84,7 +84,7 @@ class IAT_LiteraryDevices_MultiBook_Colorbase extends ItemBook
             string bookName = m_BooksInArchive.Get(index);
             // scrape the config
             string title = "";
-            GetGame().ConfigGetText(string.Format("CfgVehicles %1 %2", bookName, "title"), title);
+            g_Game.ConfigGetText(string.Format("CfgVehicles %1 %2", bookName, "title"), title);
             // m_LastIndex = index;
             // m_LastBookTitle = title;
             // Print("Scraping the config for book title: " + m_LastBookTitle + " index: " + index);
@@ -106,15 +106,15 @@ class IAT_LiteraryDevices_MultiBook_Colorbase extends ItemBook
         string bookName = GetBookClassByIndex(index);
 
         string title = "";
-        GetGame().ConfigGetText(string.Format("CfgVehicles %1 title", bookName), title);
+        g_Game.ConfigGetText(string.Format("CfgVehicles %1 title", bookName), title);
         SetBookTitle(title);
 
         string author = "";
-        GetGame().ConfigGetText(string.Format("CfgVehicles %1 author", bookName), author);
+        g_Game.ConfigGetText(string.Format("CfgVehicles %1 author", bookName), author);
         SetBookAuthor(author);
 
         string file = "";
-        GetGame().ConfigGetText(string.Format("CfgVehicles %1 file", bookName), file);
+        g_Game.ConfigGetText(string.Format("CfgVehicles %1 file", bookName), file);
         SetBookFilePath(file);
         // Print(string.Format("Title: %1 Author: %2 File: %3 Book: %4", title, author, file, bookName))
     }

@@ -20,12 +20,12 @@ class IAT_ActionSelectReadNoteCB : ActionContinuousBaseCB
 
 	override void OnStateChange(int pOldState, int pCurrentState)
 	{
-		if (pCurrentState == STATE_NONE && (!GetGame().IsDedicatedServer()))
+		if (pCurrentState == STATE_NONE && (!g_Game.IsDedicatedServer()))
 		{
-			if (GetGame().GetUIManager() && GetGame().GetUIManager().IsMenuOpen(MENU_NOTE))
-				GetGame().GetUIManager().FindMenu(MENU_NOTE).Close();
+			if (g_Game.GetUIManager() && g_Game.GetUIManager().IsMenuOpen(MENU_NOTE))
+				g_Game.GetUIManager().FindMenu(MENU_NOTE).Close();
 		}
-		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && (!GetGame().IsMultiplayer() || GetGame().IsServer()))
+		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && (!g_Game.IsMultiplayer() || g_Game.IsServer()))
 		{
             IAT_LiteraryDevices_Notebook_ColorBase multiSelectNote;
             if (Class.CastTo(multiSelectNote, m_ActionData.m_MainItem))
@@ -57,7 +57,7 @@ class IAT_ActionSelectReadNote extends ActionContinuousBase
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_PRONE;
 		m_Text = "#read";
-        if (!GetGame().IsDedicatedServer())
+        if (!g_Game.IsDedicatedServer())
         {
             GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
         }
@@ -109,9 +109,9 @@ class IAT_ActionSelectReadNote extends ActionContinuousBase
 	{
 		super.OnUpdate(action_data);
 
-		if(!GetGame().IsDedicatedServer())
+		if(!g_Game.IsDedicatedServer())
 		{
-			if (action_data.m_State == UA_FINISHED && GetGame().GetUIManager() && !GetGame().GetUIManager().IsMenuOpen(MENU_NOTE))
+			if (action_data.m_State == UA_FINISHED && g_Game.GetUIManager() && !g_Game.GetUIManager().IsMenuOpen(MENU_NOTE))
 			{
 				ActionManagerClient.Cast(action_data.m_Player.GetActionManager()).RequestEndAction();
 			}
@@ -134,7 +134,7 @@ class IAT_ActionSelectReadNote extends ActionContinuousBase
 	{
 		if ( super.SetupAction( player, target, item, action_data, extra_data ) )
 		{
-			if ( !GetGame().IsDedicatedServer() )
+			if ( !g_Game.IsDedicatedServer() )
 			{
 				IAT_NoteVariantActionData.Cast(action_data).m_IATNoteVariant = m_VariantID;
 			}

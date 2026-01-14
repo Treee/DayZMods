@@ -332,6 +332,16 @@ class CfgVehicles
         descriptionShort = "A guide to administering CPR.";
         hiddenSelectionsTextures[] = { "iat_literary_devices\books\data\book_tccc_medicalguide_co.paa" };
     };
+    class IAT_LiteraryDevices_Book_BitterrootFieldGuideV1 : IAT_LiteraryDevices_Book_Colorbase
+    {
+        scope = 2;
+        title = "Bitterroot Welcome Guide - Volume I";
+        author = "Unknown";
+        file = "iat_literary_devices\books\data\book_brwelcomeguidev1.html";
+        displayName = "Bitterroot Welcome Guide - Volume I";
+        descriptionShort = "A guide to the valley of Bitterroot.";
+        hiddenSelectionsTextures[] = { "iat_literary_devices\books\data\book_brwelcomeguidev1_co.paa" };
+    };
 
     //===================== VANILLA OVERRIDE
     class IAT_LiteraryDevices_Book_Bible : IAT_LiteraryDevices_Book_Colorbase

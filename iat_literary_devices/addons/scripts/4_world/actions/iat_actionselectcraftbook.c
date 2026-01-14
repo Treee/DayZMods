@@ -28,7 +28,7 @@ class IAT_ActionCraftBookOptions: ActionContinuousBase
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
 		m_Text = "#craft";
 
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
         {
             GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
         }
@@ -253,7 +253,7 @@ class IAT_ActionCraftBookOptions: ActionContinuousBase
 			if (m_bookOptions.IsValidIndex(newItemIndex))
 			{
 				string newItem = string.Format("%1",  m_bookOptions.Get(newItemIndex));
-				GetGame().CreateObjectEx(newItem, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+				g_Game.CreateObjectEx(newItem, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 				IAT_LiteraryDevices_Notebook_ColorBase notebook;
 				if (Class.CastTo(notebook, action_data.m_Target.GetObject()))
 				{
@@ -278,7 +278,7 @@ class IAT_ActionCraftBookOptions: ActionContinuousBase
 	{
 		if ( super.SetupAction( player, target, item, action_data, extra_data ) )
 		{
-			if ( !GetGame().IsDedicatedServer() )
+			if ( !g_Game.IsDedicatedServer() )
 			{
 				IAT_BookVariantActionData.Cast(action_data).m_IATBookVariant = m_VariantID;
 			}

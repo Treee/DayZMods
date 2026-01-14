@@ -26,10 +26,10 @@ class IAT_ActionReadBook extends ActionSingleUseBase
         // sanity check
         if (Class.CastTo(player, action_data.m_Player) && Class.CastTo(book, action_data.m_MainItem))
         {
-            if (GetGame().GetMission())
+            if (g_Game.GetMission())
             {
                 // do vanilla dance
-                GetGame().GetMission().OnItemUsed(book, player);
+                g_Game.GetMission().OnItemUsed(book, player);
             }
         }
 	}
