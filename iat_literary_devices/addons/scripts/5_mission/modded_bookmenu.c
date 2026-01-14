@@ -3,7 +3,7 @@ modded class BookMenu
     void ~BookMenu()
     {
         MissionGameplay mission;
-        if(Class.CastTo(mission, GetGame().GetMission()))
+        if(Class.CastTo(mission, g_Game.GetMission()))
         {
             mission.RemoveActiveInputExcludes({"menu"}, true);
             mission.GetHud().ShowQuickbarUI(true);
@@ -23,7 +23,7 @@ modded class BookMenu
             NextPrevPage(false);
 
             MissionGameplay mission;
-            if(Class.CastTo(mission, GetGame().GetMission()))
+            if(Class.CastTo(mission, g_Game.GetMission()))
             {
                 mission.AddActiveInputExcludes({"menu"});
                 mission.GetHud().ShowQuickbarUI(false);
@@ -33,7 +33,7 @@ modded class BookMenu
 
     override Widget Init()
 	{
-		layoutRoot = GetGame().GetWorkspace().CreateWidgets("iat_literary_devices/gui/iat_bookmenu.layout");
+		layoutRoot = g_Game.GetWorkspace().CreateWidgets("iat_literary_devices/gui/iat_bookmenu.layout");
 		Class.CastTo(m_content, layoutRoot.FindAnyWidget("HtmlWidget"));
 		Class.CastTo(m_author, layoutRoot.FindAnyWidget("Author"));
 		Class.CastTo(m_title, layoutRoot.FindAnyWidget("Title"));
