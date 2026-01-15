@@ -27,7 +27,7 @@ class IAT_SmeltingConfig
 		if (!FileExist(jsonConfig))
 		{
 			// DEFAULT ALLOY BARS
-			iat_SMConfig.IAT_InsertNewRecipe(new IAT_SmeltingRecipe("IAT_SmeltingIngot_BlackPowder", "saltpeter", "sulfer", -1, 1, 1300));
+			iat_SMConfig.IAT_InsertNewRecipe(new IAT_SmeltingRecipe("IAT_SmeltingIngot_BlackPowder", "saltpeter", "sulfur", -1, 1, 1300));
 			iat_SMConfig.IAT_InsertNewRecipe(new IAT_SmeltingRecipe("IAT_SmeltingIngot_Lead", "lead", "lead", -1, 1, 1330));
 			iat_SMConfig.IAT_InsertNewRecipe(new IAT_SmeltingRecipe("IAT_SmeltingIngot_Solder", "lead", "tin", -1, 1, 1360));
 			iat_SMConfig.IAT_InsertNewRecipe(new IAT_SmeltingRecipe("IAT_SmeltingIngot_Glass", "quartz", "quartz", -1, 1, 1390));
