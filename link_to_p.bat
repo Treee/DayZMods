@@ -31,6 +31,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_smoke_signals" Z:\DayZ\Modd
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_structures" Z:\DayZ\Modding\iat_structures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_treasure_hunts" Z:\DayZ\Modding\iat_treasure_hunts\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_dye" Z:\DayZ\Modding\iat_universal_dye\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons
