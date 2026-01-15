@@ -30,14 +30,25 @@ modded class ActionDismantlePart
 		return text;
 	}
 
+	/*
+	* Function to override what kit spawns. In one server owners case they wanted
+	* to have a more expensive iron door kit. This function lets this server owner
+	* return only the iron kit when iron door is the target and default to a kit without
+	* iron door options
+	*/
+	string IAT_GetKitToSpawn(ActionData action_data)
+	{
+		return "IAT_MoreDoor_Kit";
+	}
+
 	override void OnFinishProgressServer( ActionData action_data )
 	{
 		// is the target our doors?
 		IAT_ConstructionDoor_Colorbase targetIATDoor;
 		if (Class.CastTo(targetIATDoor, action_data.m_Target.GetObject()))
 		{
-			IAT_MoreDoor_Kit iat_doorkit;
-      		if (Class.CastTo(iat_doorkit, GetGame().CreateObjectEx("IAT_MoreDoor_Kit", action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+			IAT_MoreDoorKit_ColorBase iat_doorkit;
+      		if (Class.CastTo(iat_doorkit, GetGame().CreateObjectEx(IAT_GetKitToSpawn(action_data), action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 			{
 				action_data.m_MainItem.DecreaseHealth( UADamageApplied.DISMANTLE, false );
 
@@ -81,4 +92,4 @@ modded class ActionDismantlePart
 		}
 		return super.GetAdminLogMessage(action_data);
 	}
-}
+};

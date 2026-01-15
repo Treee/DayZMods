@@ -5,7 +5,7 @@ modded class ActionTogglePlaceObject
 		if (super.ActionCondition(player, target, item))
 		{
 			// only show toggle action if we actually have a kit option selected
-			IAT_MoreDoor_Kit doorKit;
+			IAT_MoreDoorKit_ColorBase doorKit;
 			if (Class.CastTo(doorKit, item))
 			{
 				// only if it has an actual selection
