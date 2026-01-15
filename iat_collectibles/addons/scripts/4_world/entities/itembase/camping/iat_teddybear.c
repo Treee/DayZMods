@@ -11,3 +11,7 @@ class IAT_Bear_TigerCamo extends IAT_Bear_ColorBase{};
 class IAT_Bear_Liam extends IAT_Bear_ColorBase{};
 class IAT_Bear_Deadpool extends IAT_Bear_ColorBase{};
 class IAT_Bear_BlueBeary extends IAT_Bear_ColorBase{};
+class IAT_Bear_LegionSanctuary extends IAT_Bear_ColorBase{};
+class IAT_Bear_MinervaLegion extends IAT_Bear_ColorBase{};
+class IAT_Bear_Survivalists extends IAT_Bear_ColorBase{};
+class IAT_Bear_Madhatter extends IAT_Bear_ColorBase{};

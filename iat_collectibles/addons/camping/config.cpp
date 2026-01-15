@@ -67,6 +67,7 @@ class CfgVehicles
     class IAT_Bear_LegionSanctuary : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_legionsanctuary_co.paa" }; };
     class IAT_Bear_MinervaLegion : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_minervalegion_co.paa" }; };
     class IAT_Bear_Survivalists : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_survivalists_co.paa" }; };
+    class IAT_Bear_Madhatter : IAT_Bear_ColorBase { scope = 2; hiddenSelectionsTextures[] = { "iat_collectibles\camping\data\teddies\teddybear_madhatter_co.paa" }; };
 
     //=================================== GUN FRAMES
     class IAT_GunFrame_Rifle_ColorBase : Inventory_Base
