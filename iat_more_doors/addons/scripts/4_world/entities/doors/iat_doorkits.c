@@ -1,4 +1,4 @@
-class IAT_MoreDoor_Kit extends ItemBase
+class IAT_MoreDoorKit_ColorBase extends ItemBase
 {
 	protected int m_IAT_SelectedDoorOption = -1;
 
@@ -134,3 +134,7 @@ class IAT_MoreDoor_Kit extends ItemBase
 		return m_IAT_SelectedDoorOption > -1;
 	}
 };
+class IAT_MoreDoor_Kit extends IAT_MoreDoorKit_ColorBase{};
+class IAT_MoreDoorKit_WoodOnly extends IAT_MoreDoorKit_ColorBase{};
+class IAT_MoreDoorKit_MetalOnly extends IAT_MoreDoorKit_ColorBase{};
+class IAT_MoreDoorKit_IronOnly extends IAT_MoreDoorKit_ColorBase{};

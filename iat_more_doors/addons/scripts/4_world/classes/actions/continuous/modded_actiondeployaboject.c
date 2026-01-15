@@ -5,7 +5,7 @@ modded class ActionDeployObject
 		if (super.ActionCondition(player, target, item))
 		{
 			// only deploy selected options.
-			IAT_MoreDoor_Kit doorKit;
+			IAT_MoreDoorKit_ColorBase doorKit;
 			if (Class.CastTo(doorKit, item))
 			{
 				// if they actually have a selection

@@ -48,7 +48,7 @@ class IAT_ActionSelectDoorOption extends ActionContinuousBase
 	override void OnActionInfoUpdate( PlayerBase player, ActionTarget target, ItemBase item )
 	{
 		// update action info for frames that have our item in hand
-		IAT_MoreDoor_Kit doorKit;
+		IAT_MoreDoorKit_ColorBase doorKit;
 		if (Class.CastTo(doorKit, item))
 		{
 			// get the display name based on local selection
@@ -72,7 +72,7 @@ class IAT_ActionSelectDoorOption extends ActionContinuousBase
 			return false;
 
 		// otherwise if we are holding our door kit, let us select the option
-		IAT_MoreDoor_Kit doorKit;
+		IAT_MoreDoorKit_ColorBase doorKit;
 		if (Class.CastTo(doorKit, item))
 		{
 			return true;
@@ -85,7 +85,7 @@ class IAT_ActionSelectDoorOption extends ActionContinuousBase
 		super.OnFinishProgressServer(action_data);
 
 		// if the main item in hands is our door kit
-		IAT_MoreDoor_Kit doorKit;
+		IAT_MoreDoorKit_ColorBase doorKit;
 		if (Class.CastTo(doorKit, action_data.m_MainItem))
 		{
 			// pump the variant id into our action data
@@ -100,7 +100,7 @@ class IAT_ActionSelectDoorOption extends ActionContinuousBase
 		super.OnFinishProgressClient(action_data);
 
 		//if the main item in hand is our door kit
-		IAT_MoreDoor_Kit doorKit;
+		IAT_MoreDoorKit_ColorBase doorKit;
 		if (Class.CastTo(doorKit, action_data.m_MainItem))
 		{
 			// set the client side kit selection for later use
@@ -111,7 +111,7 @@ class IAT_ActionSelectDoorOption extends ActionContinuousBase
 	void OnUpdateActions(Object item, Object target, int component_index)
 	{
 		// fill the variant manager list with our count of options
-        IAT_MoreDoor_Kit doorKit;
+        IAT_MoreDoorKit_ColorBase doorKit;
 		if (Class.CastTo(doorKit, item))
 		{
 			GetVariantManager().SetActionVariantCount(doorKit.GetDoorOptions().Count());

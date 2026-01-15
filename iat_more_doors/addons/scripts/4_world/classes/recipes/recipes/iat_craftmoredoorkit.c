@@ -1,4 +1,4 @@
-class IAT_CraftMoreDoorKit extends RecipeBase
+class IAT_CraftMoreDoorKit_Base extends RecipeBase
 {
 	override void Init()
 	{
@@ -38,7 +38,7 @@ class IAT_CraftMoreDoorKit extends RecipeBase
 		//----------------------------------------------------------------------------------------------------------------------
 		//RESULTS
 		//result1
-		AddResult("IAT_MoreDoor_Kit");									// add results here
+		// AddResult("IAT_MoreDoor_Kit");									// add results here
 
 		m_ResultSetFullQuantity[0]			= false;			// true = set full quantity, false = do nothing
 		m_ResultSetQuantity[0]				= -1;				// -1 = do nothing
@@ -47,5 +47,46 @@ class IAT_CraftMoreDoorKit extends RecipeBase
 		m_ResultInheritsColor[0]			= -1;				// (value) == -1 means do nothing; a (value) >= 0 means this result classname will be a composite of the name provided in AddResult method and config value "color" of ingredient (value)
 		m_ResultToInventory[0]				= -2;				// (value) == -2 spawn result on the ground;(value) == -1 place anywhere in the players inventory, (value) >= 0 means switch position with ingredient number(value)
 		m_ResultReplacesIngredient[0]		= -1;				// (value) == -1 means do nothing; a value >= 0 means this result will transfer item propertiesvariables, attachments etc.. from an ingredient value
+	}
+};
+
+class IAT_CraftMoreDoorKit_AllOptions extends IAT_CraftMoreDoorKit_Base
+{
+	override void Init()
+	{
+		super.Init();
+		m_Name = "Craft More Door Kit - All Options";
+		//result1
+		AddResult("IAT_MoreDoor_Kit");									// add results here
+	}
+};
+class IAT_CraftMoreDoorKit_WoodOnly extends IAT_CraftMoreDoorKit_Base
+{
+	override void Init()
+	{
+		super.Init();
+		m_Name = "Craft More Door Kit - Wood Only";
+		//result1
+		AddResult("IAT_MoreDoorKit_WoodOnly");									// add results here
+	}
+};
+class IAT_CraftMoreDoorKit_MetalOnly extends IAT_CraftMoreDoorKit_Base
+{
+	override void Init()
+	{
+		super.Init();
+		m_Name = "Craft More Door Kit - Metal Only";
+		//result1
+		AddResult("IAT_MoreDoorKit_MetalOnly");									// add results here
+	}
+};
+class IAT_CraftMoreDoorKit_IronOnly extends IAT_CraftMoreDoorKit_Base
+{
+	override void Init()
+	{
+		super.Init();
+		m_Name = "Craft More Door Kit - IronOnly";
+		//result1
+		AddResult("IAT_MoreDoorKit_IronOnly");									// add results here
 	}
 };

@@ -530,9 +530,9 @@ class CfgVehicles
 	/*====================== CONSTRUCTION DOORS ==================================
 	* These doors are for player construction. Their animations are always "closed" by default.
 	*=============================================================================*/
-	class IAT_MoreDoor_Kit : Inventory_Base
+	class IAT_MoreDoorKit_ColorBase : Inventory_Base
 	{
-		scope = 2;
+		scope = 0;
 		displayName = "Door Kit";
 		descriptionShort = "A kit that has several options for placing a door.";
 		model = "\DZ\gear\camping\fence_kit.p3d";
@@ -667,6 +667,71 @@ class CfgVehicles
 					id = 1115;
 				};
 			};
+		};
+	};
+
+	class IAT_MoreDoor_Kit : IAT_MoreDoorKit_ColorBase
+	{
+		scope = 2;
+	};
+	class IAT_MoreDoorKit_WoodOnly : IAT_MoreDoorKit_ColorBase
+	{
+		scope = 2;
+		iat_KitOptionDisplayNames[] =
+		{
+			"Single - Left - Wood - Small",
+			"Single - LeftHatch - Wood - Large",
+			"Single - Right - Wood - Small",
+			"Single - RightHatch - Wood - Large",
+			"Double - Wood - Small",
+			"Double - Wood - Medium Shed",
+			"Double - Wood - Hatch",
+		};
+		iat_KitOptionClassNames[] =
+		{
+			"IAT_ConstructionDoor_Single_Left_Wooden",
+			"IAT_ConstructionDoor_Single_Left_WoodenLargeHatch",
+			"IAT_ConstructionDoor_Single_Right_Wooden",
+			"IAT_ConstructionDoor_Single_Right_WoodenLargeHatch",
+			"IAT_ConstructionDoor_Double_Wooden",
+			"IAT_ConstructionDoor_Double_WoodenMedium",
+			"IAT_ConstructionDoor_Double_WoodenHatch",
+		};
+	};
+	class IAT_MoreDoorKit_MetalOnly : IAT_MoreDoorKit_ColorBase
+	{
+		scope = 2;
+		iat_KitOptionDisplayNames[] =
+		{
+			"Single - Left - Metal - Small",
+			"Single - Right - Metal - Small",
+			"Double - Metal - Small",
+			"Double - Metal - Medium Shed",
+		};
+		iat_KitOptionClassNames[] =
+		{
+			"IAT_ConstructionDoor_Single_Left_Metal",
+			"IAT_ConstructionDoor_Single_Right_Metal",
+			"IAT_ConstructionDoor_Double_Metal",
+			"IAT_ConstructionDoor_Double_MetalMedium",
+		};
+	};
+	class IAT_MoreDoorKit_IronOnly : IAT_MoreDoorKit_ColorBase
+	{
+		scope = 2;
+		iat_KitOptionDisplayNames[] =
+		{
+			"Single - Left - Iron - Small",
+			"Single - Right - Iron - Small",
+			"Double - Iron - Small",
+			"Double - Iron - Medium Shed",
+		};
+		iat_KitOptionClassNames[] =
+		{
+			"IAT_ConstructionDoor_Single_Left_Iron",
+			"IAT_ConstructionDoor_Single_Right_Iron",
+			"IAT_ConstructionDoor_Double_Iron",
+			"IAT_ConstructionDoor_Double_IronMedium",
 		};
 	};
 
