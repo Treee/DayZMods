@@ -2,7 +2,7 @@ class CfgPatches
 {
 	class IAT_Treasure_Hunts_Scripts
 	{
-		requiredAddons[] = { "DZ_Data", "DZ_Scripts" };
+		requiredAddons[] = { "DZ_Data", "DZ_Scripts", "IAT_Roll_Tables_Scripts" };
 	};
 };
 class CfgMods

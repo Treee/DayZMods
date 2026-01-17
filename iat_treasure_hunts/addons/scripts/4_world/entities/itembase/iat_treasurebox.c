@@ -1,0 +1,1 @@
+class GiftBox_IAT_TreasureHunt : GiftBox_Base{};
