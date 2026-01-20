@@ -3,6 +3,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_codelock" Z:\DayZ\Modding\i
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_collectibles" Z:\DayZ\Modding\iat_collectibles\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_crafting_plus" Z:\DayZ\Modding\iat_crafting_plus\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dayz_codex" Z:\DayZ\Modding\iat_dayz_codex\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_display_case" Z:\DayZ\Modding\iat_display_case\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_double_armbands" Z:\DayZ\Modding\iat_double_armbands\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
