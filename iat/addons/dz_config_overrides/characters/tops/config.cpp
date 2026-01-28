@@ -16,6 +16,7 @@ class CfgPatches
 class CfgVehicles
 {
 	class Clothing;
+	class Sweater_ChristmasColorbase;
 	//------------------------------------- BASE GAME OVERRIDE
 	class NBCJacketBase : Clothing
 	{
@@ -24,4 +25,7 @@ class CfgVehicles
 			biological = 1;
 		};
 	};
+	class Sweater_ChristmasBlue : Sweater_ChristmasColorbase { scope = 0; };
+	class Sweater_ChristmasGreen : Sweater_ChristmasColorbase { scope = 0; };
+	class Sweater_ChristmasRed : Sweater_ChristmasColorbase { scope = 0; };
 };
