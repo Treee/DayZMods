@@ -11,6 +11,10 @@ class CfgVehicles
 	class Box_Base;
 
 	//==================================================== VANILLA OVERRIDE
+	class EasterEgg : Inventory_Base
+    {
+		scope = 0;
+	};
 	class DuctTape : Inventory_Base
 	{
 		canBeSplit = 1;

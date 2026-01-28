@@ -3,6 +3,7 @@ mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_codelock" Z:\DayZ\Modding\i
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_collectibles" Z:\DayZ\Modding\iat_collectibles\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_crafting_plus" Z:\DayZ\Modding\iat_crafting_plus\addons
+mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_dayz_codex" Z:\DayZ\Modding\iat_dayz_codex\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_display_case" Z:\DayZ\Modding\iat_display_case\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_double_armbands" Z:\DayZ\Modding\iat_double_armbands\addons
 mklink /J "Y:\SteamLibrary\steamapps\common\DayZ\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
