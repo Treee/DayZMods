@@ -42,16 +42,16 @@ class CfgSoundShaders
 	class IAT_PI_Vinyl_SoundShader_VortexOfTheDamned : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\aislop\vortex_of_the_damned.ogg",1} }; };
 
 	// ======================================================= RUBYS
-	class IAT_PI_Vinyl_SoundShader_BlackLagoonLove : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\black_lagoon_love.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_DaggerInTheDark : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\dagger_in_the_dark.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_DownByTheGraveyardRiver : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\down_by_the_graveyard_river.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_GraveyardStrut : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\graveyard_strut.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_GraveyardTwist : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\graveyard_twist.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_LeatherDollsAndSwitchBlades : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\leatherdolls_and_switchblades.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_MidnightHowl : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\midnight_howl.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_BlackTopVoodooQueen : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\my_blacktop_voodooqueen.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_MySwampThingBaby : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\my_swamp_thing_baby.ogg",1} }; };
-	class IAT_PI_Vinyl_SoundShader_ShesMyPoison : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\rubys\shes_my_poison.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_BlackLagoonLove : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\black_lagoon_love.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_DaggerInTheDark : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\dagger_in_the_dark.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_DownByTheGraveyardRiver : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\down_by_the_graveyard_river.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_GraveyardStrut : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\graveyard_strut.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_GraveyardTwist : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\graveyard_twist.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_LeatherDollsAndSwitchBlades : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\leatherdolls_and_switchblades.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_MidnightHowl : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\midnight_howl.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_BlackTopVoodooQueen : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\my_blacktop_voodooqueen.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_MySwampThingBaby : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\my_swamp_thing_baby.ogg",1} }; };
+	class IAT_PI_Vinyl_SoundShader_ShesMyPoison : IAT_PI_Vinyl_SoundShader_Base { samples[] = { {"iat_prop_items\sounds\vinyls\rubys\shes_my_poison.ogg",1} }; };
 
 };
 class CfgSoundSets
