@@ -4,7 +4,7 @@ class IAT_DisplayCaseKit_ColorBase extends ItemBase
 	{
 		super.SetActions();
 		AddAction(ActionTogglePlaceObject);
-		AddAction(ActionPlaceObject);
+		AddAction(ActionDeployObject);
 	}
 	override void OnPlacementComplete( Man player, vector position = "0 0 0", vector orientation = "0 0 0" )
 	{

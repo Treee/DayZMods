@@ -105,6 +105,12 @@ class IAT_DisplayCase_ColorBase extends Container_Base
 		IAT_DeleteDisplayObject();
 		IAT_UpdateBaseVisuals(false);
 	}
+	override void OnPlacementComplete( Man player, vector position = "0 0 0", vector orientation = "0 0 0" )
+	{
+		super.OnPlacementComplete( player, position, orientation );
+
+		SetOrientation(orientation);
+	}
 	//=============================================================== CUSTOM CODE
 	void IAT_SetConfigValues()
 	{
