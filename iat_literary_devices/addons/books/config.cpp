@@ -18,6 +18,8 @@ class CfgVehicles
         displayName = "Worn Book";
         descriptionShort = "A worn book.";
         rotationFlags = 16;
+        repairableWithKits[] = { 8 };
+        repairCosts[] = { 25 };
         inventorySlot[] +=
         {
             "IAT_Book_0",
@@ -82,6 +84,8 @@ class CfgVehicles
         displayName = "Worn Book";
         descriptionShort = "A worn book with space for multiple short stories.";
         rotationFlags = 16;
+        repairableWithKits[] = { 8 };
+        repairCosts[] = { 25 };
         attachments[] =
         {
             "IAT_Book_0",
@@ -226,6 +230,8 @@ class CfgVehicles
         canBeDigged = 1;
         allowOwnedCargoManipulation = 1;
         isMeleeWeapon = 1;
+        repairableWithKits[] = { 8 };
+        repairCosts[] = { 25 };
         class GUIInventoryAttachmentsProps
         {
             class IAT_Pen
