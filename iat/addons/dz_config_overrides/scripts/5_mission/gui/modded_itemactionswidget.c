@@ -88,16 +88,28 @@ modded class ItemActionsWidget
 			// progressBar.Show(false);
             float value;
             if (mag_quantity_max == 0)
+			{
                 value = 0;
+			}
             else
+			{
                 value = Math.Round((mag_quantity / mag_quantity_max) * 100);
+			}
 
-            // PrintFormat("mag: %1 magMax: %2", mag_quantity, mag_quantity_max);
-            progressBar.SetCurrent(value);
-            progressBar.Show(true);
-			// textWidget.SetText(wpn_qty);
-			// textWidget.Show(true);
-			textWidget.Show(false);
+			// PrintFormat("mag: %1 max: %2 wepQuantity: %3 value: %4", mag_quantity, mag_quantity_max, wpn_qty, value);
+
+			if (mag_quantity == -1 && mag_quantity_max == -1 || mag_quantity == 0) // no mag, single chambered OR mag with 0
+			{
+				textWidget.SetText(wpn_qty);
+				textWidget.Show(true);
+				progressBar.Show(false);
+			}
+			else
+			{
+				progressBar.SetCurrent(value);
+				progressBar.Show(true);
+				textWidget.Show(false);
+			}
 			textWidget.GetParent().Show(true);
 		}
 		else
