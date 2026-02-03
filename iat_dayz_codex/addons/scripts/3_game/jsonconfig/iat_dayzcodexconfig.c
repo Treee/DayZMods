@@ -27,7 +27,7 @@ class IAT_DayZCodexConfig
 			// new config object
 			iat_DzCConfig = new IAT_DayZCodexConfig();
 			// set some default values
-			m_Codex = new IAT_CodexDictionary();
+			iat_DzCConfig.m_Codex = new IAT_CodexDictionary();
 
 			IAT_CodexCategory rootCategory = new IAT_CodexCategory("All", "", -1);
 
@@ -93,6 +93,7 @@ class IAT_DayZCodexConfig
 			rootCategory.InsertNewSubCategory(weaponsCategory);
 			rootCategory.InsertNewSubCategory(baseBuildingCategory);
 
+			iat_DzCConfig.m_Codex.SetCategories(rootCategory);
 			// write the file to "create it"
 			if (!JsonFileLoader<ref IAT_DayZCodexConfig>.SaveFile(jsonConfig, iat_DzCConfig, errorMessage))
 				ErrorEx(errorMessage);
@@ -113,7 +114,26 @@ class IAT_DayZCodexConfig
 
 
 	// ================================================================================== HELPERS
-
+	void IAT_Codex_ParseCfgItems(string cfg_path)
+	{
+		// PrintFormat("Config Path: %1", cfg_path);
+		if (g_Game.ConfigIsExisting(cfg_path))
+		{
+			string className;
+			string classPathScope;
+			int numRootChildren = g_Game.ConfigGetChildrenCount(cfg_path);
+			for(int rootIndex = 0; rootIndex < numRootChildren; rootIndex++)
+			{
+				g_Game.ConfigGetChildName(cfg_path, rootIndex, className);
+				classPathScope = string.Format("%1 %2 scope", cfg_path, className);
+				// only scope 2 objects pass this check
+				if (g_Game.ConfigGetInt(classPathScope) == 2)
+				{
+					m_Codex.TryAddType(className);
+				}
+			}
+		}
+	}
 
 	void PrettyPrint()
 	{
