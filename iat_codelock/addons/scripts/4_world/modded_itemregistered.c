@@ -4,6 +4,8 @@ modded class ModItemRegisterCallbacks
     {
         super.RegisterOneHanded( pType, pBehavior );
 
+        pType.AddItemInHandsProfileIK("IAT_Codelock_CombinationLock3", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/camping/combinationlock.anm");
+        pType.AddItemInHandsProfileIK("IAT_Codelock_CombinationLock4", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/camping/combinationlock.anm");
         pType.AddItemInHandsProfileIK("IAT_RaidHacksaw_Colorbase", "dz/anims/workspaces/player/player_main/props/player_main_1h_hacksaw.asi", pBehavior, "dz/anims/anm/player/ik/gear/hacksaw.anm");
         pType.AddItemInHandsProfileIK("IAT_Codelock_Colorbase", "dz/anims/workspaces/player/player_main/player_main_1h.asi", pBehavior, "dz/anims/anm/player/ik/gear/book.anm");
     }
