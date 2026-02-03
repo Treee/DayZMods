@@ -81,6 +81,184 @@ class CfgVehicles
 		hiddenSelections[] = { "zbytek" };
 		hiddenSelectionsTextures[] = { "iat_codelock\camping\data\iat_codelock_painted_co.paa" };
 	};
+	class IAT_Codelock_CombinationLock3 : IAT_Codelock_Colorbase
+	{
+		scope = 2;
+        displayName="$STR_CfgVehicles_CombinationLock0";
+        descriptionShort="$STR_CfgVehicles_CombinationLock1";
+        model="\DZ\gear\camping\combination_lock3.p3d";
+		inventorySlot[]={"Att_CombinationLock"};
+        rotationFlags=34;
+        itemSize[]={3, 3};
+        weight=350;
+        soundImpactType="metal";
+        class AnimationSources
+        {
+            class AnimSourceHidden
+            {
+                source="user";
+                animPeriod=0.01;
+                initPhase=1;
+            };
+			class AnimSourceShown
+            {
+                source="user";
+                animPeriod=0.01;
+                initPhase=0;
+            };
+            class Combination_Lock_Item : AnimSourceHidden
+            {
+            };
+            class Lock_Item_1 : AnimSourceHidden
+            {
+            };
+            class Lock_Item_2 : AnimSourceHidden
+            {
+            };
+            class Combination_Lock_Attached : AnimSourceShown
+            {
+            };
+            class Lock_Attached_1 : AnimSourceShown
+            {
+            };
+            class Lock_Attached_2 : AnimSourceShown
+            {
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=1500;
+                    healthLevels[]={{1, {"DZ\gear\camping\data\combilock3_metal.rvmat", "DZ\gear\camping\data\combination_lock_chain.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1.rvmat"}}, {0.7, {"DZ\gear\camping\data\combilock3_metal.rvmat", "DZ\gear\camping\data\combination_lock_chain.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1.rvmat"}}, {0.5, {"DZ\gear\camping\data\combilock3_metal_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1_damage.rvmat"}}, {0.3, {"DZ\gear\camping\data\combilock3_metal_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1_damage.rvmat"}}, {0, {"DZ\gear\camping\data\combilock3_metal_destruct.rvmat", "DZ\gear\camping\data\combination_lock_chain_destruct.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber_destruct.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1_destruct.rvmat"}}};
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=0;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=0;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
+        };
+	};
+	class IAT_Codelock_CombinationLock4 : IAT_Codelock_Colorbase
+	{
+		scope = 2;
+        displayName="$STR_CfgVehicles_4digitcombinationlock0";
+        descriptionShort="$STR_CfgVehicles_4digitcombinationlock1";
+        model="\DZ\gear\camping\combination_lock4.p3d";
+		inventorySlot[]={"Att_CombinationLock"};
+        rotationFlags=34;
+        itemSize[]={3, 3};
+        weight=350;
+        soundImpactType="metal";
+        class AnimationSources
+        {
+            class AnimSourceHidden
+            {
+                source="user";
+                animPeriod=0.01;
+                initPhase=1;
+            };
+			class AnimSourceShown
+            {
+                source="user";
+                animPeriod=0.01;
+                initPhase=0;
+            };
+            class Combination_Lock_Item : AnimSourceHidden
+            {
+            };
+            class Lock_Item_1 : AnimSourceHidden
+            {
+            };
+            class Lock_Item_2 : AnimSourceHidden
+            {
+            };
+            class Combination_Lock_Attached : AnimSourceShown
+            {
+            };
+            class Lock_Attached_1 : AnimSourceShown
+            {
+            };
+            class Lock_Attached_2 : AnimSourceShown
+            {
+            };
+        };
+        class DamageSystem
+        {
+            class GlobalHealth
+            {
+                class Health
+                {
+                    hitpoints=1500;
+                    healthLevels[]={{1, {"DZ\gear\camping\data\combilock4_metal.rvmat", "DZ\gear\camping\data\combination_lock_chain.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1.rvmat"}}, {0.7, {"DZ\gear\camping\data\combilock4_metal.rvmat", "DZ\gear\camping\data\combination_lock_chain.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1.rvmat"}}, {0.5, {"DZ\gear\camping\data\combilock4_metal_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1_damage.rvmat"}}, {0.3, {"DZ\gear\camping\data\combilock4_metal_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber_damage.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1_damage.rvmat"}}, {0, {"DZ\gear\camping\data\combilock4_metal_destruct.rvmat", "DZ\gear\camping\data\combination_lock_chain_destruct.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber_destruct.rvmat", "DZ\gear\camping\data\combination_lock_chain_rubber1_destruct.rvmat"}}};
+                };
+            };
+            class GlobalArmor
+            {
+                class Projectile
+                {
+                    class Health
+                    {
+                        damage=0;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+                class FragGrenade
+                {
+                    class Health
+                    {
+                        damage=0;
+                    };
+                    class Blood
+                    {
+                        damage=0;
+                    };
+                    class Shock
+                    {
+                        damage=0;
+                    };
+                };
+            };
+        };
+	};
 	// this codelock is meant to be hard overridden in the scripts to provide
 	// a codelock in solo testing that is not owned by me and has a default password
 	class IAT_Codelock_DebugNoOwner : IAT_Codelock_Colorbase

@@ -737,6 +737,94 @@ class IAT_Codelock_Colorbase extends ItemBase
 };
 class IAT_Codelock_Basic extends IAT_Codelock_Colorbase{};
 class IAT_Codelock_Painted extends IAT_Codelock_Colorbase{};
+
+class IAT_Codelock_CombinationLock3 extends IAT_Codelock_Colorbase
+{
+	override void OnVariablesSynchronized()
+	{
+		if (IAT_IsLocked())
+		{
+			HideItem();
+			ShowAttached();
+		}
+		else
+		{
+			ShowItem();
+			HideAttached();
+		}
+	}
+	protected void ShowItem()
+	{
+		SetAnimationPhase( "Combination_Lock_Item", 0 );
+		SetAnimationPhase( "Lock_Item_1", 			0 );
+		SetAnimationPhase( "Lock_Item_2", 			0 );
+	}
+
+	protected void HideItem()
+	{
+		SetAnimationPhase( "Combination_Lock_Item", 1 );
+		SetAnimationPhase( "Lock_Item_1", 			1 );
+		SetAnimationPhase( "Lock_Item_2", 			1 );
+	}
+
+	protected void ShowAttached()
+	{
+		SetAnimationPhase( "Combination_Lock_Attached", 0 );
+		SetAnimationPhase( "Lock_Attached_1", 			0 );
+		SetAnimationPhase( "Lock_Attached_2", 			0 );
+	}
+
+	protected void HideAttached()
+	{
+		SetAnimationPhase( "Combination_Lock_Attached", 1 );
+		SetAnimationPhase( "Lock_Attached_1", 			1 );
+		SetAnimationPhase( "Lock_Attached_2", 			1 );
+	}
+};
+class IAT_Codelock_CombinationLock4 extends IAT_Codelock_Colorbase
+{
+	override void OnVariablesSynchronized()
+	{
+		if (IAT_IsLocked())
+		{
+			HideItem();
+			ShowAttached();
+		}
+		else
+		{
+			ShowItem();
+			HideAttached();
+		}
+	}
+	protected void ShowItem()
+	{
+		SetAnimationPhase( "Combination_Lock_Item", 0 );
+		SetAnimationPhase( "Lock_Item_1", 			0 );
+		SetAnimationPhase( "Lock_Item_2", 			0 );
+	}
+
+	protected void HideItem()
+	{
+		SetAnimationPhase( "Combination_Lock_Item", 1 );
+		SetAnimationPhase( "Lock_Item_1", 			1 );
+		SetAnimationPhase( "Lock_Item_2", 			1 );
+	}
+
+	protected void ShowAttached()
+	{
+		SetAnimationPhase( "Combination_Lock_Attached", 0 );
+		SetAnimationPhase( "Lock_Attached_1", 			0 );
+		SetAnimationPhase( "Lock_Attached_2", 			0 );
+	}
+
+	protected void HideAttached()
+	{
+		SetAnimationPhase( "Combination_Lock_Attached", 1 );
+		SetAnimationPhase( "Lock_Attached_1", 			1 );
+		SetAnimationPhase( "Lock_Attached_2", 			1 );
+	}
+};
+
 class IAT_Codelock_DebugNoOwner extends IAT_Codelock_Colorbase
 {
 	override void AssignLockTo(string playerIdentity)
