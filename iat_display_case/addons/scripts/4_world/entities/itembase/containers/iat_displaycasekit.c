@@ -12,17 +12,25 @@ class IAT_DisplayCaseKit_ColorBase extends ItemBase
 
 		if ( g_Game.IsDedicatedServer() )
 		{
-			DeleteSafe();
+			string displayCaseName = GetType();
+			displayCaseName.Replace("IAT_DisplayCaseKit_", "IAT_DisplayCase_");
+
+			IAT_DisplayCase_ColorBase displayCase;
+			if (Class.CastTo(displayCase, g_Game.CreateObjectEx(displayCaseName, GetPosition(), ECE_SETUP|ECE_KEEPHEIGHT)))
+			{
+				displayCase.SetPosition( position );
+				displayCase.SetOrientation( orientation );
+			}
 		}
 	}
-	override string GetPlaceSoundset()
-	{
-		return "placeBarrel_SoundSet";
-	};
     override bool IsDeployable()
     {
         return true;
     };
+	override bool IsBasebuildingKit()
+	{
+		return true;
+	}
 };
 
 class IAT_DisplayCaseKit_Coaster : IAT_DisplayCaseKit_ColorBase{};

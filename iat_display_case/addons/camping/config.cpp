@@ -18,6 +18,7 @@ class CfgVehicles
         model="iat_display_case\camping\iat_displaycase_coaster.p3d";
         physLayer = "item_large";
         weight = 10000;
+        itemBehaviour=0;
         itemSize[] = { 10,15 };
         itemsCargoSize[] = { 12,12 };
         allowOwnedCargoManipulation = "true";

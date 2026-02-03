@@ -17,10 +17,11 @@ class IAT_CodexCategory
 	// this is really convenience for me to set up a "default" json for starters
 	void InsertNewSubCategory(IAT_CodexCategory newCategory)
 	{
-		if (m_SubCategories) // null/sanity check
+		if (!m_SubCategories)
 		{
-			m_SubCategories.Insert(newCategory);
+			m_SubCategories = new array<ref IAT_CodexCategory>;
 		}
+		m_SubCategories.Insert(newCategory);
 	}
 
 	bool HasSubCategories()
@@ -62,6 +63,13 @@ class IAT_CodexCategory
 		else
 		{
 			if (classType == categoryType)
+			{
+				return true;
+			}
+			else if (classType.IsInherited(categoryType))
+			{
+				return true;
+			}
 		}
 		// no classname or type match
 		return false;
@@ -69,13 +77,48 @@ class IAT_CodexCategory
 
 	string GetApplicableCategory(string className)
 	{
+		// PrintFormat("===================Find Applicable category: %1", className);
+		string bestCategory = "";
+		int bestDepth = -1;
+		FindMostSpecificMatch(className, 0, bestCategory, bestDepth);
+		return bestCategory;
 	}
 
-	string RecurseSubCategories(IAT_CodexCategory parentCategory)
+	protected void FindMostSpecificMatch(string className, int depth, out string bestCategory, out int bestDepth)
 	{
 		if (IsInheritedOrKindOf(className))
 		{
+			bestCategory = GetCategoryName();
+			bestDepth = depth;
+			// PrintFormat("found match: %1 depth: %2", bestCategory, bestDepth);
+		}
 
+		if (!HasSubCategories())
+		{
+			// Print("has no more sub categories and hasnt matched. dead end");
+			return;
+		}
+
+		foreach (IAT_CodexCategory subCategory : m_SubCategories)
+		{
+			// PrintFormat("check category: %1", subCategory.GetCategoryName());
+			if (!subCategory)
+			{
+				// Print("no category... how did we get here, short circuit..")
+				continue;
+			}
+
+			string subBestCategory = bestCategory;
+			int subBestDepth = bestDepth;
+			// recurse into the next set of sub categories
+			subCategory.FindMostSpecificMatch(className, depth + 1, subBestCategory, subBestDepth);
+
+			if (subBestDepth > bestDepth)
+			{
+				bestDepth = subBestDepth;
+				bestCategory = subBestCategory;
+				// PrintFormat("found better match: %1 better Depth: %2", bestCategory, bestDepth);
+			}
 		}
 	}
 
