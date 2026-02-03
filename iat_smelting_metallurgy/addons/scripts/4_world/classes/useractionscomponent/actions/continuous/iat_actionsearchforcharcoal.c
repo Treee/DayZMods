@@ -39,9 +39,25 @@ class IAT_ActionSearchForCharcoal: ActionContinuousBase
 			// disallow ovens
 			if (targetFireplace.IsFireplace() && !targetFireplace.IsOven())
 			{
+				// dissallow stone circles
+				if (targetFireplace.HasStoneCircle())
+				{
+					return false;
+				}
+				// make sure we are not burning
+				if (targetFireplace.IsBurning())
+				{
+					return false;
+				}
+				// cannot be destroyed (previously harvested)
 				if (!targetFireplace.IsDamageDestroyed())
 				{
-      				return targetFireplace.HasAshes();
+					// if there is nothing attached
+					if (targetFireplace.GetInventory().AttachmentCount() == 0)
+					{
+						// and it was burned at some point
+      					return targetFireplace.HasAshes();
+					}
 				}
 			}
 		}
@@ -66,7 +82,7 @@ class IAT_ActionSearchForCharcoal: ActionContinuousBase
 			FireplaceBase targetIB;
 			if (Class.CastTo(targetIB, action_data.m_Target.GetObject()))
 			{
-				targetIB.DeleteSafe();
+				targetIB.SetHealth(-1);
 			}
 		}
     };
