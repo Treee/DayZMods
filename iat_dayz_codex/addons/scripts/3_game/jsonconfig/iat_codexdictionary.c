@@ -1,5 +1,10 @@
 class IAT_CodexDictionary
 {
+	// controls if we log to the console. useful for setting up the codex items
+	protected bool m_DebugLogEnabled;
+	protected ref TStringArray m_IgnoredClassNames; // explicit 1:1 ignores
+	protected ref TStringArray m_IgnoredClassKinds; // config.cpp isKindOf inheritence
+	protected ref TStringArray m_IgnoredClassContains; // className contains this string
 	// holds the real values of all things the codex tracks (not meant to be sent over the wire)
 	protected ref map<string, ref TStringArray> m_CodexDictionary;
 	// holds the categories the codex should track. nested behavior here. (meant to be sent over the wire)
@@ -8,23 +13,36 @@ class IAT_CodexDictionary
 	void IAT_CodexDictionary()	{}
 	// ====================================================== HELPERS
 
-	void TryAddType(string className)
+	void TryAddType(string cfgPath, string className)
 	{
 		if (!m_CodexCategories)
 		{
 			return;
 		}
+		if (IsIgnoredClass(className))
+		{
+			return;
+		}
 
 		// start at the root
-		string applicableCategory = m_CodexCategories.GetApplicableCategory(className);
-		if (applicableCategory != "")
+		string applicableCategory = m_CodexCategories.GetApplicableCategory(cfgPath, className);
+		if (applicableCategory == "Ignored")
+		{
+			if (m_DebugLogEnabled)
+			{
+				// PrintFormat("Ignored Class determined within the category (probly opened food): %1", className);
+			}
+		}
+		else if (applicableCategory != "")
 		{
 			AddType(applicableCategory, className);
 		}
 		else
 		{
-			// Debug print for finding missing categories
-			// PrintFormat("No category found for: %1", className);
+			if (m_DebugLogEnabled)
+			{
+				// PrintFormat("ClassName: %1 has not found any category: %2", className, applicableCategory);
+			}
 		}
 	}
 
@@ -47,6 +65,76 @@ class IAT_CodexDictionary
 	}
 
 	// ====================================================== GETTERS
+	bool IsIgnoredClass(string className)
+	{
+		// things like HouseNoDestruct, AreaEffect
+		if (m_IgnoredClassKinds)
+		{
+			foreach(string ignoredClassKind : m_IgnoredClassKinds)
+			{
+				if (g_Game.IsKindOf(className, ignoredClassKind))
+				{
+					if (m_DebugLogEnabled)
+					{
+						// PrintFormat("ClassName: %1 is ignored by Kind Of: %2", className, ignoredClassKind);
+					}
+					return true;
+				}
+			}
+		}
+		// things like TestObject
+		if (m_IgnoredClassNames)
+		{
+			foreach(string ignoredClassName : m_IgnoredClassNames)
+			{
+				if (className == ignoredClassName)
+				{
+					if (m_DebugLogEnabled)
+					{
+						// PrintFormat("ClassName: %1 is ignored class: %2", className, ignoredClassName);
+					}
+					return true;
+				}
+			}
+		}
+		// things like underground stashes and garden plots
+		if (m_IgnoredClassContains)
+		{
+			foreach(string ignoredClassContain : m_IgnoredClassContains)
+			{
+				if (className.Contains(ignoredClassContain))
+				{
+					if (m_DebugLogEnabled)
+					{
+						// PrintFormat("ClassName: %1 contains ignored characters: %2", className, ignoredClassContain);
+					}
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	void SetIgnoredClasses(TStringArray ignoredClasses)
+	{
+		m_IgnoredClassNames = ignoredClasses;
+	}
+	void SetIgnoredClassKinds(TStringArray ignoredClasses)
+	{
+		m_IgnoredClassKinds = ignoredClasses;
+	}
+	void SetIgnoredClassContains(TStringArray ignoredClasses)
+	{
+		m_IgnoredClassContains = ignoredClasses;
+	}
+	bool IsDebugMode()
+	{
+		return m_DebugLogEnabled;
+	}
+	void SetIsDebugMode(bool newState)
+	{
+		m_DebugLogEnabled = newState;
+	}
+
 	void SetCategories(IAT_CodexCategory categories)
 	{
 		m_CodexCategories = categories;
@@ -62,18 +150,22 @@ class IAT_CodexDictionary
 
 	void PrettyPrint()
 	{
-		Print("[IAT_CodexDictionary BEGIN]");
-
-		if (!m_CodexCategories)
+		if (m_DebugLogEnabled)
 		{
-			Print("[IAT_CodexDictionary] No categories set");
+
+			Print("[IAT_CodexDictionary BEGIN]");
+
+			if (!m_CodexCategories)
+			{
+				Print("[IAT_CodexDictionary] No categories set");
+				Print("[IAT_CodexDictionary END]");
+				return;
+			}
+
+			PrettyPrintCategory(m_CodexCategories, 0);
+
 			Print("[IAT_CodexDictionary END]");
-			return;
 		}
-
-		PrettyPrintCategory(m_CodexCategories, 0);
-
-		Print("[IAT_CodexDictionary END]");
 	}
 
 	protected void PrettyPrintCategory(IAT_CodexCategory category, int depth)
@@ -105,13 +197,20 @@ class IAT_CodexDictionary
 		}
 
 		PrintFormat("%1%2: %3 (items: %4)", indent, nodeType, categoryName, itemCount);
-		// if (itemCount > 0)
-		// {
-		// 	foreach (string item : items)
-		// 	{
-		// 		PrintFormat("%1  - %2", indent, item);
-		// 	}
-		// }
+		if (m_DebugLogEnabled)
+		{
+			if (itemCount > 0)
+			{
+				if (category.ShouldSortItems())
+				{
+					items.Sort();
+				}
+				foreach (string item : items)
+				{
+					PrintFormat("%1  - %2", indent, item);
+				}
+			}
+		}
 
 		if (!hasSubCategories)
 		{

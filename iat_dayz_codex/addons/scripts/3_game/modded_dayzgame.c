@@ -5,7 +5,6 @@ modded class DayZGame
 	void SetIATDayZCodexConfig(IAT_DayZCodexConfig config)
 	{
 		Print("IAT_DayZCodex Settings Initialized On Server");
-		config.PrettyPrint();
 		m_iatDayZCodexConfig = config;
 	}
 

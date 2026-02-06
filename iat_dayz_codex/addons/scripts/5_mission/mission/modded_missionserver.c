@@ -11,7 +11,6 @@ modded class MissionServer
 		m_Codex.IAT_Codex_ParseCfgItems(CFG_WEAPONSPATH);
 		m_Codex.IAT_Codex_ParseCfgItems(CFG_MAGAZINESPATH);
 		m_Codex.PrettyPrint();
-
 	}
 
 	override void OnClientReadyEvent(PlayerIdentity identity, PlayerBase player)
