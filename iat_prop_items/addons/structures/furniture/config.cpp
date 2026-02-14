@@ -9,7 +9,7 @@ class CfgVehicles
 {
     class HouseNoDestruct;
 
-    class IAT_OccultTable_Colorbase : HouseNoDestruct
+    class IAT_OccultTable_ColorBase : HouseNoDestruct
     {
         scope = 0;
         displayName = "Occult Table";
@@ -18,11 +18,11 @@ class CfgVehicles
         hiddenSelectionsTextures[] = { "iat_prop_items\structures\furniture\data\iat_occulttable_co.paa" };
         attachments[] = { "IAT_OccultCard1", "IAT_OccultCard2", "IAT_OccultCard3", "IAT_OccultCard4", "IAT_OccultCard5", "IAT_OccultCard6", "IAT_OccultCard7", "IAT_OccultCard8" };
     };
-    class IAT_OccultTable_basic : IAT_OccultTable_Colorbase
+    class IAT_OccultTable_basic : IAT_OccultTable_ColorBase
     {
         scope = 1;
     };
-    class IAT_OccultTable_essesentiendum : IAT_OccultTable_Colorbase
+    class IAT_OccultTable_essesentiendum : IAT_OccultTable_ColorBase
     {
         scope = 1;
         hiddenSelections[] = { "zbytek" };
@@ -33,6 +33,25 @@ class CfgVehicles
     {
         scope = 1;
         model = "iat_prop_items\structures\furniture\iat_neonsign_thestash.p3d";
+    };
+
+    class IAT_MedievelFlag_ColorBase : HouseNoDestruct
+    {
+        scope = 0;
+        displayName = "Flag";
+        model = "iat_prop_items\structures\furniture\iat_medievelflag.p3d";
+        hiddenSelections[] = { "zbytek", "pole" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\structures\furniture\data\medievelflag_flag_co.paa", "iat_prop_items\structures\furniture\data\medievelflag_pole_co.paa" };
+    };
+    class IAT_MedievelFlag_Default : IAT_MedievelFlag_ColorBase
+    {
+        scope = 1;
+    };
+    class IAT_MedievelFlag_emmers1074 : IAT_MedievelFlag_ColorBase
+    {
+        scope = 1;
+        hiddenSelections[] = { "zbytek", "pole"};
+        hiddenSelectionsTextures[] = { "iat_prop_items\structures\furniture\data\medievelflag_flag_emmers1074_co.paa", "iat_prop_items\structures\furniture\data\medievelflag_pole_emmers1074_co.paa"};
     };
 };
 
