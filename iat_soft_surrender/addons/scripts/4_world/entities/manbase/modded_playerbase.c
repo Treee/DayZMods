@@ -6,9 +6,15 @@ modded class PlayerBase
 	override void Init()
     {
         super.Init();
-        IAT_SetSoftSurrendered(false);
         RegisterNetSyncVariableBool("m_IAT_IsSoftSurrendered");
+
+        IAT_SetSoftSurrendered(false);
     }
+
+	override void OnVariablesSynchronized()
+	{
+		super.OnVariablesSynchronized();
+	}
 
 	override bool CanManipulateInventory()
     {
@@ -49,6 +55,7 @@ modded class PlayerBase
 	{
 		// PrintFormat("player is soft surrendered: %1", state);
 		m_IAT_IsSoftSurrendered = state;
+		SetSynchDirty();
 	}
 	// nice wrapper for our class JUST in case
 	bool IAT_IsSoftSurrendered()
@@ -61,8 +68,4 @@ modded class PlayerBase
 		// prod version
 		return m_IAT_IsSoftSurrendered;
 	}
-	void AutoCloseSoftSurrender()
-    {
-        GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(IAT_SetSoftSurrendered, 15000, false, false);
-    }
 };
