@@ -1,0 +1,6 @@
+class IAT_BuildingStage_ExampleShack_0 extends IAT_BuildingStage_ColorBase{};
+class IAT_BuildingStage_ExampleShack_1 extends IAT_BuildingStage_ColorBase{};
+class IAT_BuildingStage_ExampleShack_2 extends IAT_BuildingStage_ColorBase{};
+class IAT_BuildingStage_ExampleShack_3 extends IAT_BuildingStage_ColorBase{};
+class IAT_BuildingStage_ExampleShack_4 extends IAT_BuildingStage_ColorBase{};
+class IAT_BuildingStage_ExampleShack_5 extends IAT_BuildingStage_ColorBase{};
