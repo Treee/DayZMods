@@ -12,7 +12,7 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Soft Surrender";
-		dependencies[] = { "World","Mission" };
+		dependencies[] = { "World", "Mission" };
 		class defs
 		{
 			class worldScriptModule
