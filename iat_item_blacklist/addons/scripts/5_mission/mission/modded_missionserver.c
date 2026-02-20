@@ -18,7 +18,7 @@ modded class MissionServer
 	{
 		// do stuff before the player object is wrecked by vanilla
 		IAT_RemoveBlacklistedItems(player);
-		super.OnClientDisconnectedEvent(identity, player, logoutTime, authFailed)
+		super.OnClientDisconnectedEvent(identity, player, logoutTime, authFailed);
 	}
 
 	// missionServer is only called on server side so i am safe to have no client/server checks here
