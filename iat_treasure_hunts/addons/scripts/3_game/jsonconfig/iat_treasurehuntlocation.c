@@ -77,7 +77,7 @@ class IAT_TreasureHuntLocation
 
 	string FormatVectorToMapCoords()
 	{
-		int maxSize = GetGame().GetWorld().GetWorldSize();
+		int maxSize = g_Game.GetWorld().GetWorldSize();
 
 		string a = GetVectorPrettyString(ConvertToMapCoordinate(m_IAT_Edge1, maxSize));
 		string b = GetVectorPrettyString(ConvertToMapCoordinate(m_IAT_Edge2, maxSize));

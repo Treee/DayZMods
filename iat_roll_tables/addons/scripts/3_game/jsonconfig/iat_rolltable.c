@@ -9,7 +9,7 @@ class IAT_RollTable
 {
 	protected string m_TableName;
 	protected int m_MaxRoll; // this number is inclusive. ex a value of 100 would success if the dice rolled 100 as well
-	protected ref array<ref IAT_RollTableProbability> m_ListOfProbabilities;
+	protected ref array<ref IAT_RollTableResult> m_ListOfProbabilities;
 
 	void IAT_RollTable(string tableName, int maxRoll)
 	{
@@ -26,8 +26,24 @@ class IAT_RollTable
 	TStringArray GetResults()
 	{
 		int chance = GetRandomRoll();
-
-		foreach(IAT_RollTableProbability prob : m_ListOfProbabilities)
+		// PrintFormat("GetResults");
+		foreach(IAT_RollTableResult prob : m_ListOfProbabilities)
+		{
+			if (prob.IsRollWithinRange(chance))
+			{
+				return prob.GetProbabilityResults();
+			}
+		}
+		return {};
+	}
+	TStringArray GetResults(int chance)
+	{
+		if (chance == 0)
+		{
+			chance = GetRandomRoll();
+		}
+		// PrintFormat("GetResults chance: %1", chance);
+		foreach(IAT_RollTableResult prob : m_ListOfProbabilities)
 		{
 			if (prob.IsRollWithinRange(chance))
 			{
@@ -37,11 +53,11 @@ class IAT_RollTable
 		return {};
 	}
 
-	void RegisterProbability(IAT_RollTableProbability probability)
+	void RegisterProbability(IAT_RollTableResult probability)
 	{
 		if (!m_ListOfProbabilities)
 		{
-			m_ListOfProbabilities = new array<ref IAT_RollTableProbability>();
+			m_ListOfProbabilities = new array<ref IAT_RollTableResult>();
 		}
 		m_ListOfProbabilities.Insert(probability);
 	}
@@ -55,10 +71,19 @@ class IAT_RollTable
 		return m_TableName;
 	}
 
+	string ToPrettyString()
+	{
+		string s = string.Format("----[IAT_RollTable]: %1 -- MaxRoll: %2", m_TableName, m_MaxRoll);
+		foreach(IAT_RollTableResult rollProb : m_ListOfProbabilities)
+		{
+			s = string.Format("%1\n%2", s, rollProb.ToPrettyString());
+		}
+		return s;
+	}
 	void PrettyPrint()
 	{
 		PrintFormat("----[IAT_RollTable]: %1 -- MaxRoll: %2", m_TableName, m_MaxRoll);
-		foreach(IAT_RollTableProbability rollProb : m_ListOfProbabilities)
+		foreach(IAT_RollTableResult rollProb : m_ListOfProbabilities)
 		{
 			rollProb.PrettyPrint();
 		}

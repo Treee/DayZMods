@@ -8,6 +8,7 @@ class IAT_TreasureHuntConfig
     protected string m_JsonFile = "TreasureHuntConfig.json";
 
 	protected bool m_IsEnabled;
+	protected bool m_IsDebugPrintEnabled;
 	protected ref array<ref IAT_TreasureHuntTier> m_TreasureTiers;
 	protected ref array<ref IAT_TreasureHuntLocation> m_TreasureLocations; // the raid tools that can be used on codelocks
 
@@ -432,20 +433,23 @@ class IAT_TreasureHuntConfig
 	// ================================================================================== HELPERS
 	void PrettyPrint()
 	{
-		Print("--[IAT_TreasureHuntConfig BEGIN]");
-		PrintFormat("----m_IsEnabled: %1", m_IsEnabled);
-		Print("--[IAT_TreasureHuntLocation BEGIN]");
-		foreach (IAT_TreasureHuntLocation location : m_TreasureLocations)
+		if (m_IsDebugPrintEnabled)
 		{
-			location.PrettyPrint();
+			Print("--[IAT_TreasureHuntConfig BEGIN]");
+			PrintFormat("----m_IsEnabled: %1", m_IsEnabled);
+			Print("--[IAT_TreasureHuntLocation BEGIN]");
+			foreach (IAT_TreasureHuntLocation location : m_TreasureLocations)
+			{
+				location.PrettyPrint();
+			}
+			Print("--[IAT_TreasureHuntLocation END]");
+			Print("--[IAT_TreasureHuntTier BEGIN]");
+			foreach (IAT_TreasureHuntTier tier : m_TreasureTiers)
+			{
+				tier.PrettyPrint();
+			}
+			Print("--[IAT_TreasureHuntTier END]");
+			Print("--[IAT_TreasureHuntConfig BEGIN]");
 		}
-		Print("--[IAT_TreasureHuntLocation END]");
-		Print("--[IAT_TreasureHuntTier BEGIN]");
-		foreach (IAT_TreasureHuntTier tier : m_TreasureTiers)
-		{
-			tier.PrettyPrint();
-		}
-		Print("--[IAT_TreasureHuntTier END]");
-		Print("--[IAT_TreasureHuntConfig BEGIN]");
 	}
 };

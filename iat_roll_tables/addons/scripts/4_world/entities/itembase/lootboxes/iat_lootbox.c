@@ -24,41 +24,17 @@ class IAT_LootBox_ColorBase extends ItemBase
 		else
 			return; // short circuit on no results found found
 
+		string potentialItem = "";
+		float randomQuantity = 0.0;
 		// get the loot table from the dayz game
 		IAT_RollTableConfig rollConfig;
 		if (Class.CastTo(rollConfig, GetDayZGame().GetIATRollTableConfig()))
 		{
-			string potentialItem = "";
-			// loot table should roll until results are found
-			TStringArray initialResults = rollConfig.GetResultsForItem(lootTable);
-			TStringArray innerResults = {};
 			for (int i = 0; i < numResults; i++)
 			{
-				// get some random result
-				potentialItem = initialResults.GetRandomElement();
-				// PrintFormat("===================================================Index: %1 Potential: %2", i, potentialItem);
-				// recursively check for a loot table until we find a result that is just items
-				while (rollConfig.RollTableExists(potentialItem))
-				{
-					// get the next level down results
-					innerResults = rollConfig.GetResultsForItem(potentialItem);
-					// get some random result
-					potentialItem = innerResults.GetRandomElement();
-					// PrintFormat("result was a roll table, new result is: %1", potentialItem);
-				}
-				// at this point we know we have a result that is just an item
-				EntityAI entityResult;
-				if (Class.CastTo(entityResult, GetGame().CreateObjectEx(potentialItem, GetPosition(), ECE_SETUP|ECE_PLACE_ON_SURFACE|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
-				{
-					Magazine ammo;
-					ItemBase resultBase;
-					// treat ammo special
-					if (Class.CastTo(ammo, entityResult))
-						ammo.ServerSetAmmoCount(entityResult.GetQuantityMax());
-					// else normal quantity set
-					else if (Class.CastTo(resultBase, entityResult))
-						resultBase.SetQuantity(entityResult.GetQuantityMax());
-				}
+				potentialItem = rollConfig.GetRollTableResult(lootTable);
+				randomQuantity = Math.RandomFloatInclusive(0.3, 0.7);
+				rollConfig.SpawnRollTableResult(potentialItem, GetPosition(), randomQuantity);
 			}
 		}
 	}

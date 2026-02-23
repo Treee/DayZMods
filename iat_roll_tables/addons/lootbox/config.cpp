@@ -23,7 +23,7 @@ class CfgVehicles
         absorbency = 0;
         reversed = 1;
         IAT_NumberOfResults = 0;
-        IAT_LootTable = "";
+        IAT_LootTable = "lootbox_";
         hiddenSelections[] = { "ChristmasBox1", "ChristmasBox1_ribbon" };
         hiddenSelectionsTextures[] = { "\dz\gear\containers\data\christmas_paper1_CO.paa", "\dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         class DamageSystem
@@ -71,7 +71,7 @@ class CfgVehicles
     class IAT_LootBox_Small_1 : IAT_LootBox_Small_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Small1";
+        IAT_LootTable = "lootbox_small_1";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper1_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD.rvmat" };
         class DamageSystem : DamageSystem
@@ -89,7 +89,7 @@ class CfgVehicles
     class IAT_LootBox_Small_2 : IAT_LootBox_Small_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Small2";
+        IAT_LootTable = "lootbox_small_2";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper2_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GREEN.rvmat" };
         class DamageSystem : DamageSystem
@@ -107,7 +107,7 @@ class CfgVehicles
     class IAT_LootBox_Small_3 : IAT_LootBox_Small_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Small3";
+        IAT_LootTable = "lootbox_small_3";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper3_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_RED.rvmat" };
         class DamageSystem : DamageSystem
@@ -125,7 +125,7 @@ class CfgVehicles
     class IAT_LootBox_Small_4 : IAT_LootBox_Small_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Small4";
+        IAT_LootTable = "lootbox_small_4";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper4_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_SILVER.rvmat" };
         class DamageSystem : DamageSystem
@@ -145,7 +145,7 @@ class CfgVehicles
     class IAT_LootBox_Medium_1 : IAT_LootBox_Medium_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Medium1";
+        IAT_LootTable = "lootbox_medium_1";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper1_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GREEN.rvmat" };
         class DamageSystem : DamageSystem
@@ -163,7 +163,7 @@ class CfgVehicles
     class IAT_LootBox_Medium_2 : IAT_LootBox_Medium_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Medium2";
+        IAT_LootTable = "lootbox_medium_2";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper2_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_RED.rvmat" };
         class DamageSystem : DamageSystem
@@ -181,7 +181,7 @@ class CfgVehicles
     class IAT_LootBox_Medium_3 : IAT_LootBox_Medium_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Medium3";
+        IAT_LootTable = "lootbox_medium_3";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper3_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_SILVER.rvmat" };
         class DamageSystem : DamageSystem
@@ -199,7 +199,7 @@ class CfgVehicles
     class IAT_LootBox_Medium_4 : IAT_LootBox_Medium_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Medium4";
+        IAT_LootTable = "lootbox_medium_4";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper4_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD.rvmat" };
         class DamageSystem : DamageSystem
@@ -219,7 +219,7 @@ class CfgVehicles
     class IAT_LootBox_Large_1 : IAT_LootBox_Large_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Large1";
+        IAT_LootTable = "lootbox_large_1";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper1_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_RED.rvmat" };
         class DamageSystem : DamageSystem
@@ -237,7 +237,7 @@ class CfgVehicles
     class IAT_LootBox_Large_2 : IAT_LootBox_Large_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Large2";
+        IAT_LootTable = "lootbox_large_2";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper2_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_SILVER.rvmat" };
         class DamageSystem : DamageSystem
@@ -255,7 +255,7 @@ class CfgVehicles
     class IAT_LootBox_Large_3 : IAT_LootBox_Large_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Large3";
+        IAT_LootTable = "lootbox_large_3";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper3_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD.rvmat" };
         class DamageSystem : DamageSystem
@@ -273,7 +273,7 @@ class CfgVehicles
     class IAT_LootBox_Large_4 : IAT_LootBox_Large_ColorBase
     {
         scope = 2;
-        IAT_LootTable = "Large4";
+        IAT_LootTable = "lootbox_large_4";
         hiddenSelectionsTextures[] = { "dz\gear\containers\data\christmas_paper4_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa" };
         hiddenSelectionsMaterials[] = { "DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GREEN.rvmat" };
         class DamageSystem : DamageSystem

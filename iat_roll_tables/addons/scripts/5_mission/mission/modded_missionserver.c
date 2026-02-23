@@ -11,6 +11,6 @@ modded class MissionServer
 
 		auto configParams = new Param1<IAT_RollTableConfig>(GetDayZGame().GetIATRollTableConfig());
 		PrintFormat("Sending IAT_RollTable Mod Config to Player: %1 RPC: %2", identity.GetName(), IAT_RPC_RollTables.CHECK_ROLLTABLE_CONFIG);
-		GetGame().RPCSingleParam(player, IAT_RPC_RollTables.CHECK_ROLLTABLE_CONFIG, configParams, true, identity);
+		g_Game.RPCSingleParam(player, IAT_RPC_RollTables.CHECK_ROLLTABLE_CONFIG, configParams, true, identity);
 	}
 };
