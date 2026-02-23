@@ -65,50 +65,18 @@ modded class ActionUnpackGift
         {
 			// make the container fairly worn
 			containerToBury.SetHealthLevel(GameConstants.STATE_BADLY_DAMAGED);
+
+			string potentialItem = "";
 			// get the loot table from the dayz game
 			IAT_RollTableConfig rollConfig;
 			if (Class.CastTo(rollConfig, GetDayZGame().GetIATRollTableConfig()))
 			{
 				// get the max number of items to spawn in the container
 				int maxItems = treasureTier.GetNumItemsToSpawn();
-				// hold the name of the item to spawn right now
-				string potentialItem = "";
-				// hold the results of any sub loot tables if exists
-				TStringArray innerResults = {};
-				// first set of results for this loot table
-				TStringArray initialResults = rollConfig.GetResultsForItem(treasureTier.GetRollTable());
-
-				EntityAI treasureItem;
 				for (int i = 0; i < maxItems; i++)
 				{
-					// get some random result
-					potentialItem = initialResults.GetRandomElement();
-					// PrintFormat("===================================================Index: %1 Potential: %2", i, potentialItem);
-					// recursively check for a loot table until we find a result that is just items
-					while (rollConfig.RollTableExists(potentialItem))
-					{
-						// get the next level down results
-						innerResults = rollConfig.GetResultsForItem(potentialItem);
-						// get some random result
-						potentialItem = innerResults.GetRandomElement();
-						// PrintFormat("result was a roll table, new result is: %1", potentialItem);
-					}
-					if (Class.CastTo(treasureItem, containerToBury.GetInventory().CreateInInventory(potentialItem)))
-					{
-						int half = treasureItem.GetQuantityMax() / 2;
-						Magazine ammo;
-						ItemBase resultBase;
-						// treat ammo special
-						if (Class.CastTo(ammo, treasureItem))
-						{
-							ammo.ServerSetAmmoCount(Math.RandomIntInclusive(half, treasureItem.GetQuantityMax()));
-						}
-						// else normal quantity set
-						else if (Class.CastTo(resultBase, treasureItem))
-						{
-							resultBase.SetQuantity(Math.RandomIntInclusive(half, treasureItem.GetQuantityMax()));
-						}
-					}
+					potentialItem = rollConfig.GetRollTableResult(treasureTier.GetRollTable());
+					containerToBury.GetInventory().CreateInInventory(potentialItem);
 				}
 			}
 
