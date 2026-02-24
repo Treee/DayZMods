@@ -23,4 +23,13 @@ class CfgVehicles
 			"Brown",
 		};
 	};
+
+	//------------------------------------- RETEXTURES
+    class ALV_SkullMask_Kalli : ALV_SkullMask_Colorbase
+    {
+        scope = 2;
+        // color = "Kalli";
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat\alv_gear_overrides\characters\masks\data\skullMask_kalli_CO.paa" };
+    };
 };
