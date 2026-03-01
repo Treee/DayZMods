@@ -9,6 +9,7 @@ class IAT_FacePaintsConfig
 	[NonSerialized()]
 	protected ref IAT_FacePaintOptions m_FacePaintOptions;
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected float m_PaintStickDamagePerUse;
 	protected bool m_SavePlayerPaintsToDatabase;
 	protected bool m_EnableEatGlowStickAction;
@@ -95,11 +96,14 @@ class IAT_FacePaintsConfig
 	// ==================================================================================
 	void PrettyPrint()
 	{
-		Print("--[FACE PAINT CONFIG BEGIN]");
-		PrintFormat("--m_PaintStickDamagePerUse: %1", GetPaintStickDamagerPerUse());
-		PrintFormat("--m_SavePlayerPaintsToDatabase: %1", GetSavePlayerPaintsToDatabase());
-		PrintFormat("--m_EnableEatGlowStickAction: %1", IsEnableEatGlowStickAction());
-		GetFacePaintOptions().PrettyPrint();
-		Print("--[END]");
+		if (m_DebugLogEnabled)
+		{
+			Print("--[FACE PAINT CONFIG BEGIN]");
+			PrintFormat("--m_PaintStickDamagePerUse: %1", GetPaintStickDamagerPerUse());
+			PrintFormat("--m_SavePlayerPaintsToDatabase: %1", GetSavePlayerPaintsToDatabase());
+			PrintFormat("--m_EnableEatGlowStickAction: %1", IsEnableEatGlowStickAction());
+			GetFacePaintOptions().PrettyPrint();
+			Print("--[END]");
+		}
 	}
 };

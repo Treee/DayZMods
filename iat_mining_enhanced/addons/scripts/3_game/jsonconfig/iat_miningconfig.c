@@ -7,6 +7,7 @@ class IAT_MiningConfig
 	[NonSerialized()]
     protected string m_JsonFile = "MiningConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected int m_SkySurfaceY = 2500; // the highest the mining system can be. simulates the surface level
 	protected int m_MaxDepth = 500; // the depth of the mining area in meters (default junctions are 4m cubed so 1 level is 4m)
 	protected int m_EdgeBuffer = 20; // the buffer around the edge of the map
@@ -402,16 +403,16 @@ class IAT_MiningConfig
 	}
 	void PrettyPrint()
 	{
-		Print("--[IAT MINING CONFIG BEGIN]");
-		PrintFormat("----m_SkySurfaceY: %1", GetSkySurfaceY());
-		PrintFormat("----m_MaxDepth: %1", GetMaxDepth());
-		PrintFormat("----m_EdgeBuffer: %1", GetMapEdgeBuffer());
-		PrintFormat("----m_MinimumDistanceBetweenEntrances: %1", GetMinDistanceBetweenEntrances());
-		PrintFormat("----m_MaxWallSupportCount: %1", GetMaxWallSupportCount());
-		m_IAT_OreYieldManager.PrettyPrint();
-		Print("--[END]");
+		if (m_DebugLogEnabled)
+		{
+			Print("--[IAT MINING CONFIG BEGIN]");
+			PrintFormat("----m_SkySurfaceY: %1", GetSkySurfaceY());
+			PrintFormat("----m_MaxDepth: %1", GetMaxDepth());
+			PrintFormat("----m_EdgeBuffer: %1", GetMapEdgeBuffer());
+			PrintFormat("----m_MinimumDistanceBetweenEntrances: %1", GetMinDistanceBetweenEntrances());
+			PrintFormat("----m_MaxWallSupportCount: %1", GetMaxWallSupportCount());
+			m_IAT_OreYieldManager.PrettyPrint();
+			Print("--[END]");
+		}
 	}
 };
-
-
-	protected ref IAT_OreYieldManager m_IAT_OreYieldManager;
