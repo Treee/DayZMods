@@ -7,6 +7,7 @@ class IAT_TeleportLinkConfig
 	[NonSerialized()]
     protected string m_JsonFile = "TeleportLinkerConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected ref array<ref IAT_TeleportLinkData> m_TeleportLinks;
 
 	IAT_TeleportLinkConfig TryGetTeleportLinkConfig()
@@ -15,7 +16,7 @@ class IAT_TeleportLinkConfig
 		// if the folder doesnt exist (we probably just loaded this for the first time)
 		if (!FileExist(rootFilePath))
 		{
-			PrintFormat("[IAT_Teleport_Linker] Create new directory: %1", rootFilePath);
+			IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Create new directory: %1", rootFilePath));
 			MakeDirectory(rootFilePath);
 		}
 
@@ -27,7 +28,7 @@ class IAT_TeleportLinkConfig
 		// if the actual config file doesnt exist
 		if (!FileExist(jsonConfig))
 		{
-			PrintFormat("[IAT_Teleport_Linker] Create new json file: %1", jsonConfig);
+			IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Create new json file: %1", jsonConfig));
 			// set some default values
 			m_TeleportLinks = new array<ref IAT_TeleportLinkData>;
 			// write the file to "create it"
@@ -36,7 +37,7 @@ class IAT_TeleportLinkConfig
 		}
 		else
 		{
-			PrintFormat("[IAT_Teleport_Linker] Load config from: %1", jsonConfig);
+			IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Load config from: %1", jsonConfig));
 			// file exists, just load it from disk
 			if (!JsonFileLoader<ref IAT_TeleportLinkConfig>.LoadFile(jsonConfig, iat_TLConfig, errorMessage))
 				ErrorEx(errorMessage);
@@ -52,13 +53,13 @@ class IAT_TeleportLinkConfig
 			if (teleportLink.TeleportExists(teleportClassName, teleportPosition))
 			{
 				// found an existing record here, cannot add duplicates
-				PrintFormat("[IAT_Teleport_Linker] Unable to Add New Teleport Anchor since it already exists: %1 %2", teleportClassName, teleportPosition);
+				IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Unable to Add New Teleport Anchor since it already exists: %1 %2", teleportClassName, teleportPosition));
 				return false;
 			}
 		}
 		// we have checked all prior teleports, none exist with this object at this position
 		m_TeleportLinks.Insert(new IAT_TeleportLinkData(teleportClassName, teleportPosition));
-		PrintFormat("[IAT_Teleport_Linker] Add New Teleport Anchor: %1 %2", teleportClassName, teleportPosition);
+		IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Add New Teleport Anchor: %1 %2", teleportClassName, teleportPosition));
 		return true;
 	}
 
@@ -70,13 +71,13 @@ class IAT_TeleportLinkConfig
 			{
 				// found an existing record here, add to the array
 				teleportLink.AddDestination(teleportDestination);
-				PrintFormat("[IAT_Teleport_Linker] Add New Teleport Destination: %1 From: %2 To: %3", teleportClassName, teleportPosition, teleportDestination);
+				IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Add New Teleport Destination: %1 From: %2 To: %3", teleportClassName, teleportPosition, teleportDestination));
 				return true;
 			}
 		}
 		// we have checked all prior teleports, none exist with this object at this position
 		// cant add a destination to a teleporter that doesnt exist
-		PrintFormat("[IAT_Teleport_Linker] Unable to Add New Teleport Destination: %1 From: %2 To: %3 since this record does not exists", teleportClassName, teleportPosition, teleportDestination);
+		IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Unable to Add New Teleport Destination: %1 From: %2 To: %3 since this record does not exists", teleportClassName, teleportPosition, teleportDestination));
 		return false;
 	}
 
@@ -88,13 +89,13 @@ class IAT_TeleportLinkConfig
 			{
 				// found an existing record here, add to the array
 				teleportLink.ClearDestinations();
-				PrintFormat("[IAT_Teleport_Linker] Clear Teleport Destinations: %1 %2", teleportClassName, teleportPosition);
+				IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Clear Teleport Destinations: %1 %2", teleportClassName, teleportPosition));
 				return true;
 			}
 		}
 		// we have checked all prior teleports, none exist with this object at this position
 		// cant add a destination to a teleporter that doesnt exist
-		PrintFormat("[IAT_Teleport_Linker] Unable to Clear Teleport Destinations: %1 %2 since this record does not exist.", teleportClassName, teleportPosition);
+		IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Unable to Clear Teleport Destinations: %1 %2 since this record does not exist.", teleportClassName, teleportPosition));
 		return false;
 	}
 
@@ -117,10 +118,16 @@ class IAT_TeleportLinkConfig
 		string rootFilePath = string.Format("%1\\%2\\%3", m_DayZFolder, m_RootConfigFolder, m_JsonFile);
 		if (!JsonFileLoader<IAT_TeleportLinkConfig>.SaveFile(rootFilePath, this, errorMessage))
 			ErrorEx(errorMessage);
-		PrintFormat("[IAT_Teleport_Linker] Config Saved: %1", rootFilePath);
+		IAT_DebugLog(string.Format("[IAT_Teleport_Linker] Config Saved: %1", rootFilePath));
 	}
 
-
+	void IAT_DebugLog(string s)
+	{
+		if (m_DebugLogEnabled)
+		{
+			IAT_DebugLog(string.Format("%1", s));
+		}
+	}
 	// ==================================================================================
 	// Getters & Setters
 	// ==================================================================================

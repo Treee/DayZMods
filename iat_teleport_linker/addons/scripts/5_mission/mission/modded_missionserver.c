@@ -2,18 +2,10 @@ modded class MissionServer
 {
 	protected ref TStringIntMap m_IAT_TL_LoggedInPlayers = new TStringIntMap();
 
-	override void OnInit()
+	void MissionServer()
     {
-        super.OnInit();
 		GetDayZGame().SetIATTeleportLinkConfig(GetDayZGame().GetIATTeleportLinkConfig());
-		Print("[IAT_Teleport_Linker] Config Initialized");
     }
-
-	override void OnMissionStart()
-	{
-		super.OnMissionStart();
-		Print("[IAT_Teleport_Linker] Setup Teleports");
-	}
 
 	override void OnMissionFinish()
 	{
