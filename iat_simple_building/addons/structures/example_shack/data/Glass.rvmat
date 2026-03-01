@@ -60,7 +60,7 @@ class Stage4
 };
 class Stage5
 {
-	texture="iat_simple_building\addons\structures\example_shack\data\Building_Glass_SMDI.paa";
+	texture="iat_simple_building\structures\example_shack\data\Glass_SMDI.paa";
 	uvSource="tex";
 	class uvTransform
 	{

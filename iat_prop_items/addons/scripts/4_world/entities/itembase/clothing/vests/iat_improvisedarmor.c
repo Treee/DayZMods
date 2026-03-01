@@ -5,7 +5,7 @@ class IAT_ImprovisedArmor_Colorbase: Vest_Base
 	{
 		super.OnWasAttached( parent, slot_id );
 
-		if ( GetGame().IsServer() && parent.IsInherited( DayZInfected ) )
+		if ( g_Game.IsServer() && parent.IsInherited( DayZInfected ) )
 		{
 			float coef = Math.RandomFloatInclusive( 0.2, 0.4 );
 			SetHealth01( "", "", coef);

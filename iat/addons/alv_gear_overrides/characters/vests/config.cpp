@@ -73,4 +73,16 @@ class CfgVehicles
 			"Brown",
 		};
 	};
+
+	//------------------------------------- RETEXTURES
+    class ALV_6B25Vest_nekomaid_chan : ALV_6B25Vest_Colorbase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] = { "iat\alv_gear_overrides\characters\vests\data\StagVest_nekomain_chan_CO.paa" };
+    };
+    class ALV_6B25Vest_grimstif : ALV_6B25Vest_Colorbase
+    {
+        scope = 2;
+        hiddenSelectionsTextures[] = { "iat\alv_gear_overrides\characters\vests\data\StagVest_grimstif_CO.paa" };
+    };
 };

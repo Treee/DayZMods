@@ -21,7 +21,7 @@ class IAT_BoosterPack_ColorBase extends ItemBase
 	void CreateCard(string cardName)
 	{
 		EntityAI newCard;
-		if (Class.CastTo(newCard, GetGame().CreateObjectEx(cardName, GetPosition(), ECE_SETUP|ECE_PLACE_ON_SURFACE|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+		if (Class.CastTo(newCard, g_Game.CreateObjectEx(cardName, GetPosition(), ECE_SETUP|ECE_PLACE_ON_SURFACE|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 		{
 			// PrintFormat("================================================== CREATED NEW CARD: %1", cardName);
 		}

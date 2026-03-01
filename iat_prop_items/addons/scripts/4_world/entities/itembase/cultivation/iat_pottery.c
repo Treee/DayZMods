@@ -86,7 +86,7 @@ class IAT_Pot_ColorBase extends ItemBase
 	void CreatePottedPlant(string className, string slotName)
 	{
 		// intercept the initial slot and turn it into an actual plant
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			slotName.Replace("IAT_PottedSeed", "");
 			int slotIndex = slotName.ToInt();
@@ -102,7 +102,7 @@ class IAT_Pot_ColorBase extends ItemBase
 	void RemovePottedPlant()
 	{
 		// intercept removing a growth stage seed
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// remove IAT_PottedPlant
 			EntityAI attachedPlant;

@@ -262,4 +262,15 @@ class CfgVehicles
 			"White",
 		};
 	};
+
+	//------------------------------------- RETEXTURES
+	class ALV_FlannelShirt_Nekomain_chan : ALV_FlannelShirt_Colorbase
+    {
+        scope = 2;
+        TradeClassName = "ALV_FlannelShirt_Colorbase";
+        hiddenSelectionsTextures[] =
+        {
+            "iat\alv_gear_overrides\characters\tops\data\FlannelShirt_nekomaid_chan_co.paa"
+        };
+    };
 };

@@ -17,7 +17,7 @@ class IAT_ActionCraftArmbandOptions: ActionContinuousBase
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
 		m_Text = "#craft";
 
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
         {
             GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
         }
@@ -141,7 +141,7 @@ class IAT_ActionCraftArmbandOptions: ActionContinuousBase
 			if (m_ArmbandOptions.IsValidIndex(newItemIndex))
 			{
 				string newItem = string.Format("Armband_%1", m_ArmbandOptions.Get(newItemIndex));
-				GetGame().CreateObjectEx(newItem, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+				g_Game.CreateObjectEx(newItem, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 				Rag rags;
 				if (Class.CastTo(rags, action_data.m_Target.GetObject()))
 				{
@@ -166,7 +166,7 @@ class IAT_ActionCraftArmbandOptions: ActionContinuousBase
 	{
 		if ( super.SetupAction( player, target, item, action_data, extra_data ) )
 		{
-			if ( !GetGame().IsDedicatedServer() )
+			if ( !g_Game.IsDedicatedServer() )
 			{
 				IAT_FlagArmbandVariantActionData.Cast(action_data).m_IATFlagArmbandVariant = m_VariantID;
 			}

@@ -7,6 +7,7 @@ class IAT_SimpleBuildingConfig
 	[NonSerialized()]
     protected string m_JsonFile = "SimpleBuildingConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	// map of all the building stages
 	protected ref map<string, ref IAT_BuildingRequirements> m_BuildingStages;
 
@@ -28,6 +29,7 @@ class IAT_SimpleBuildingConfig
 			// new config object
 			iat_SBConfig = new IAT_SimpleBuildingConfig();
 			// set some default values
+			iat_SBConfig.m_DebugLogEnabled = false;
 			iat_SBConfig.m_BuildingStages = new map<string, ref IAT_BuildingRequirements>;
 
 			IAT_BuildingRequirements requirements = new IAT_BuildingRequirements();
@@ -113,15 +115,18 @@ class IAT_SimpleBuildingConfig
 
 	void PrettyPrint()
 	{
-		Print("--[IAT_SimpleBuildingConfig BEGIN]");
-		IAT_BuildingRequirements buildingRequirement;
-		TStringArray buildingKeys = m_BuildingStages.GetKeyArray();
-		foreach(string buildingKey : buildingKeys)
+		if (m_DebugLogEnabled)
 		{
-			PrintFormat("----Building Stage: %1", buildingKey);
-			buildingRequirement = m_BuildingStages.Get(buildingKey);
-			buildingRequirement.PrettyPrint();
+			Print("--[IAT_SimpleBuildingConfig BEGIN]");
+			IAT_BuildingRequirements buildingRequirement;
+			TStringArray buildingKeys = m_BuildingStages.GetKeyArray();
+			foreach(string buildingKey : buildingKeys)
+			{
+				PrintFormat("----Building Stage: %1", buildingKey);
+				buildingRequirement = m_BuildingStages.Get(buildingKey);
+				buildingRequirement.PrettyPrint();
+			}
+			Print("--[IAT_SimpleBuildingConfig END]");
 		}
-		Print("--[IAT_SimpleBuildingConfig END]");
 	}
 };

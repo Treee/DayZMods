@@ -23,9 +23,9 @@ class IAT_Incendiary_Base extends Grenade_Base
 	{
 		m_IAT_Exploded = true;
 
-		if (GetGame().IsServer())
+		if (g_Game.IsServer())
 		{
-			GetGame().CreateObject("IAT_IncendiaryArea_Local", GetPosition());
+			g_Game.CreateObject("IAT_IncendiaryArea_Local", GetPosition());
 		}
 	}
 
@@ -36,7 +36,7 @@ class IAT_Incendiary_Base extends Grenade_Base
 
 	override void EOnContact(IEntity other, Contact extra)
 	{
-		if (GetGame().IsServer())
+		if (g_Game.IsServer())
 		{
 			if (!m_IAT_Exploded)
 			{
@@ -52,9 +52,9 @@ class IAT_Incendiary_Base extends Grenade_Base
 
 	override void OnDamageDestroyed(int oldLevel)
 	{
-		if (GetGame().IsServer() || !GetGame().IsMultiplayer())
+		if (g_Game.IsServer() || !g_Game.IsMultiplayer())
 		{
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(Delete, 1000);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(Delete, 1000);
 		}
 
 		// why not else here? to fully remove code on server? preference?

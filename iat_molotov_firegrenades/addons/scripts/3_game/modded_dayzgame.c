@@ -20,7 +20,7 @@ modded class DayZGame
 				return;
 
 			// if there is no player, short circuit
-			if (!GetGame().GetPlayer())
+			if (!g_Game.GetPlayer())
 				return;
 
 			// play the close artillery sound
@@ -28,11 +28,11 @@ modded class DayZGame
 			closeArtySound.SetAutodestroy(true);
 
 			// We add camera shake upon shell detonation
-			float distance_to_player = vector.DistanceSq(soundPos, GetGame().GetPlayer().GetPosition());
+			float distance_to_player = vector.DistanceSq(soundPos, g_Game.GetPlayer().GetPosition());
 			if (distance_to_player <= GameConstants.CAMERA_SHAKE_ARTILLERY_DISTANCE2)
 			{
 				float strength_factor = Math.InverseLerp(GameConstants.CAMERA_SHAKE_ARTILLERY_DISTANCE, 0, Math.Sqrt(distance_to_player));
-				DayZPlayerCamera camera = GetGame().GetPlayer().GetCurrentCamera();
+				DayZPlayerCamera camera = g_Game.GetPlayer().GetCurrentCamera();
 				if (camera)
 					camera.SpawnCameraShake(strength_factor * 4);
 			}

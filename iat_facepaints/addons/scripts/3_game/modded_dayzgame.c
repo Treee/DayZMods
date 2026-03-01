@@ -6,7 +6,7 @@ modded class DayZGame
 	{
 		Print("IAT_FacePaintsConfig Settings Initialized");
 		// client side only because options are non serialzied so rpc's ignore
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			// these are dynamically generated and update at will
 			IAT_FacePaintOptions fpOptions = new IAT_FacePaintOptions();
@@ -19,7 +19,7 @@ modded class DayZGame
 	IAT_FacePaintsConfig GetIATFacePaintConfig()
 	{
 		// server side check so we do not create a config on the client
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			if (!m_iatFacePaintConfig)
 			{

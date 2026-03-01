@@ -7,6 +7,7 @@ class IAT_SmeltingConfig
 	[NonSerialized()]
     protected string m_JsonFile = "SmeltingConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected ref array<ref IAT_SmeltingRecipe> m_IAT_Recipes;
 	protected ref array<ref IAT_SmeltingScore> m_IAT_Scores;
 
@@ -26,6 +27,7 @@ class IAT_SmeltingConfig
 		// if the actual config file doesnt exist
 		if (!FileExist(jsonConfig))
 		{
+			iat_SMConfig.m_DebugLogEnabled = false;
 			// DEFAULT ALLOY BARS
 			iat_SMConfig.IAT_InsertNewRecipe(new IAT_SmeltingRecipe("IAT_SmeltingIngot_BlackPowder", "saltpeter", "sulfur", -1, 1, 1300));
 			iat_SMConfig.IAT_InsertNewRecipe(new IAT_SmeltingRecipe("IAT_SmeltingIngot_Lead", "lead", "lead", -1, 1, 1330));
@@ -148,19 +150,22 @@ class IAT_SmeltingConfig
 
 	void PrettyPrint()
 	{
-		Print("--[IAT_SmeltingConfig BEGIN]");
-		Print("----[IAT_SmeltingRecipe BEGIN]");
-		foreach(IAT_SmeltingRecipe recipe : m_IAT_Recipes)
+		if (m_DebugLogEnabled)
 		{
-			recipe.PrettyPrint();
+			Print("--[IAT_SmeltingConfig BEGIN]");
+			Print("----[IAT_SmeltingRecipe BEGIN]");
+			foreach(IAT_SmeltingRecipe recipe : m_IAT_Recipes)
+			{
+				Print(recipe.PrettyPrint());
+			}
+			Print("----[IAT_SmeltingRecipe END]");
+			Print("----[IAT_SmeltingScore BEGIN]");
+			foreach(IAT_SmeltingScore score : m_IAT_Scores)
+			{
+				Print(score.PrettyPrint());
+			}
+			Print("----[IAT_SmeltingScore END]");
+			Print("--[IAT_SmeltingConfig END]");
 		}
-		Print("----[IAT_SmeltingRecipe END]");
-		Print("----[IAT_SmeltingScore BEGIN]");
-		foreach(IAT_SmeltingScore score : m_IAT_Scores)
-		{
-			score.PrettyPrint();
-		}
-		Print("----[IAT_SmeltingScore END]");
-		Print("--[IAT_SmeltingConfig END]");
 	}
 };

@@ -2,7 +2,7 @@ modded class WorldData
 {
 	array<vector> IAT_GetArtyFiringPos_Incendiary()
 	{
-		if (GetGame().GetWorldName() == "bitterroot")
+		if (g_Game.GetWorldName() == "bitterroot")
 		{
 			return IAT_GetBitterrootPositions();
 		}

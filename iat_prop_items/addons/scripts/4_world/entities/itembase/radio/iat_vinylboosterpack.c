@@ -20,7 +20,7 @@ class IAT_VinylBoosterPack_ColorBase extends ItemBase
 	}
 	void CreateCard(string cardName)
 	{
-		GetGame().CreateObjectEx(cardName, GetPosition(), ECE_SETUP|ECE_PLACE_ON_SURFACE|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+		g_Game.CreateObjectEx(cardName, GetPosition(), ECE_SETUP|ECE_PLACE_ON_SURFACE|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 	}
 	string GetRandomCardFromBoosterSet()
 	{

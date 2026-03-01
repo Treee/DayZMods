@@ -7,6 +7,7 @@ class IAT_PoweredRadioTowerConfig
 	[NonSerialized()]
     protected string m_JsonFile = "PoweredRadioTowerConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected ref array<ref IAT_PoweredTowerConsoleData> m_TowerConsoleData;
 
 	IAT_PoweredRadioTowerConfig TryGetPoweredRadioTowerConfig()
@@ -27,7 +28,7 @@ class IAT_PoweredRadioTowerConfig
 		{
 			// new config object
 			// iat_PRTConfig = new IAT_PoweredRadioTowerConfig();
-
+			iat_PRTConfig.m_DebugLogEnabled = false;
 			// set some default values
 			iat_PRTConfig.m_TowerConsoleData = new array<ref IAT_PoweredTowerConsoleData>;
 
@@ -182,13 +183,20 @@ class IAT_PoweredRadioTowerConfig
 	{
 		return m_TowerConsoleData;
 	}
+	bool IsDebugEnabled()
+	{
+		return m_DebugLogEnabled;
+	}
 	// ==================================================================================
 	// Helpers
 	// ==================================================================================
 	void PrettyPrint()
 	{
-		Print("--[POWERED RADIO TOWER CONFIG BEGIN]");
-		// PrintFormat("--m_RangeDefault: %1", GetDefaultRange());
-		Print("--[END]");
+		if (m_DebugLogEnabled)
+		{
+			Print("--[POWERED RADIO TOWER CONFIG BEGIN]");
+			// PrintFormat("--m_RangeDefault: %1", GetDefaultRange());
+			Print("--[END]");
+		}
 	}
 };

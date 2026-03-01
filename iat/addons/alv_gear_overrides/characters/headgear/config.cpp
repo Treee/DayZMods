@@ -16,6 +16,9 @@ class CfgVehicles
 	class Clothing;
 	class ALV_Hat_Base;
 	class ALV_Heavy_Cover_Colorbase;
+
+    class ALV_AssaultHelmet_Colorbase;
+
 	//------------------------------------- BASE GAME OVERRIDE
 	class ALV_Comtacs_Colorbase : Clothing
 	{
@@ -97,6 +100,13 @@ class CfgVehicles
 		};
 	};
 
+	//------------------------------------- RETEXTURES
+    class ALV_AssaultHelmet_nekomaid_chan : ALV_AssaultHelmet_Colorbase
+    {
+        scope = 2;
+        hiddenSelections[] = { "zbytek" };
+        hiddenSelectionsTextures[] = { "iat\alv_gear_overrides\characters\headgear\data\AssaultHelmet_nekomaid_chan_CO.paa" };
+    };
 	// Bug Bounty Reward
 	class ALV_Heavy_Cover_autumn2187 : ALV_Heavy_Cover_Colorbase
 	{

@@ -10,16 +10,16 @@ class IAT_ActionOpenDayZCodexCB extends ActionContinuousBaseCB
 	}
   	override void OnStateChange(int pOldState, int pCurrentState)
 	{
-		if (pCurrentState == STATE_NONE && !GetGame().IsDedicatedServer())
+		if (pCurrentState == STATE_NONE && !g_Game.IsDedicatedServer())
 		{
-			if (GetGame().GetUIManager() && GetGame().GetUIManager().IsMenuOpen(IAT_MENU_COLLECTOR_CODEX))
+			if (g_Game.GetUIManager() && g_Game.GetUIManager().IsMenuOpen(IAT_MENU_COLLECTOR_CODEX))
 			{
-				GetGame().GetUIManager().FindMenu(IAT_MENU_COLLECTOR_CODEX).Close();
+				g_Game.GetUIManager().FindMenu(IAT_MENU_COLLECTOR_CODEX).Close();
 			}
 		}
-		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && !GetGame().IsDedicatedServer())
+		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && !g_Game.IsDedicatedServer())
 		{
-      		GetGame().GetUIManager().EnterScriptedMenu(IAT_MENU_COLLECTOR_CODEX, GetGame().GetUIManager().GetMenu());
+      		g_Game.GetUIManager().EnterScriptedMenu(IAT_MENU_COLLECTOR_CODEX, g_Game.GetUIManager().GetMenu());
 		}
 	}
 };

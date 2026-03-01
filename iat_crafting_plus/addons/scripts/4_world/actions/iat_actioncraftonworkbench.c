@@ -23,7 +23,7 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_ASSEMBLE;
 		m_FullBody = true;
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
 		}
@@ -130,7 +130,7 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 		{
 			// Print(string.Format("Creating %1 from inded %2",selectedRecipe.GetDisplayName(), variantId));
 			// make a new object with some default stuff
-			Object newObject = GetGame().CreateObjectEx(result.GetResultClassName(), position, ECE_SETUP|ECE_NOSURFACEALIGN|ECE_KEEPHEIGHT|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+			Object newObject = g_Game.CreateObjectEx(result.GetResultClassName(), position, ECE_SETUP|ECE_NOSURFACEALIGN|ECE_KEEPHEIGHT|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 			if (Class.CastTo(entityResult, newObject))
 			{
 				newQuantity = result.GetExpectedQuantity(entityResult.GetQuantityMax());
@@ -164,7 +164,7 @@ class IAT_ActionCraftOnWorkbench extends ActionContinuousBase
 		if (super.SetupAction(player, target, item, action_data, extra_data))
 		{
 			// if we are on the client
-			if (!GetGame().IsDedicatedServer())
+			if (!g_Game.IsDedicatedServer())
 			{
 				// if there is no target or target object; short circuit (sanity check guard rail)
 				if (!target || !target.GetObject())

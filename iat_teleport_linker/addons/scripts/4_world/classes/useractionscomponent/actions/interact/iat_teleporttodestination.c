@@ -106,7 +106,7 @@ class IAT_ActionTeleportToDestination: ActionInteractBase
 					// get the players in a radius around the teleporter
 					PlayerBase nearbyPlayer;
 					array<Man> nearbyMans = new array<Man>;
-					GetGame().GetPlayers(nearbyMans);
+					g_Game.GetPlayers(nearbyMans);
 					foreach (Man nearbyMan : nearbyMans)
 					{
 						if (Class.CastTo(nearbyPlayer, nearbyMan))

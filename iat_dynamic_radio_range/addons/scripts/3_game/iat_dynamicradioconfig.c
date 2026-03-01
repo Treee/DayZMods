@@ -7,6 +7,7 @@ class IAT_DynamicRadioConfig
 	[NonSerialized()]
     protected string m_JsonFile = "DynamicRadioConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected int m_RangeDefault; // Default: 5000meters (vanilla)
 	protected int m_RangeMin; // Default: 50 meters (shortest config defined radio range in this mod)
 	protected int m_RangeMax; // Default: 17000 meters (longest config defined radio range in this mod)
@@ -43,6 +44,7 @@ class IAT_DynamicRadioConfig
 			// new config object
 			iat_DRConfig = new IAT_DynamicRadioConfig();
 			// set some default values
+			iat_DRConfig.m_DebugLogEnabled = false;
 			iat_DRConfig.SetDefaultRange(5000);
 			iat_DRConfig.SetMinRange(50);
 			iat_DRConfig.SetMaxRange(17000);
@@ -194,15 +196,18 @@ class IAT_DynamicRadioConfig
 
 	void PrettyPrint()
 	{
-		Print("--[DYNAMIC RADIO CONFIG BEGIN]");
-		PrintFormat("--m_RangeDefault: %1", GetDefaultRange());
-		PrintFormat("--m_RangeMin: %1", GetMinRange());
-		PrintFormat("--m_RangeMax: %1", GetMaxRange());
-		PrintFormat("--m_ExponentialScale: %1", GetExponentialScale());
-		PrintFormat("--m_EnergyConsumptionTimeMin: %1", GetMinConsumptionTime());
-		PrintFormat("--m_EnergyConsumptionTimeMax: %1", GetMaxConsumptionTime());
-		PrintFormat("--m_DefaultEnergyUsage: %1", GetDefaultEnergyUsage());
-		PrintFormat("--m_DefaultTotalEnergy: %1", GetDefaultTotalEnergy());
-		Print("--[END]");
+		if (m_DebugLogEnabled)
+		{
+			Print("--[DYNAMIC RADIO CONFIG BEGIN]");
+			PrintFormat("--m_RangeDefault: %1", GetDefaultRange());
+			PrintFormat("--m_RangeMin: %1", GetMinRange());
+			PrintFormat("--m_RangeMax: %1", GetMaxRange());
+			PrintFormat("--m_ExponentialScale: %1", GetExponentialScale());
+			PrintFormat("--m_EnergyConsumptionTimeMin: %1", GetMinConsumptionTime());
+			PrintFormat("--m_EnergyConsumptionTimeMax: %1", GetMaxConsumptionTime());
+			PrintFormat("--m_DefaultEnergyUsage: %1", GetDefaultEnergyUsage());
+			PrintFormat("--m_DefaultTotalEnergy: %1", GetDefaultTotalEnergy());
+			Print("--[END]");
+		}
 	}
 };

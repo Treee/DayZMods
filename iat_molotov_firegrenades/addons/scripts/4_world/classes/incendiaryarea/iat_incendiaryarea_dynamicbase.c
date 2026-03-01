@@ -161,7 +161,7 @@ class IAT_IncendiaryArea_DynamicBase extends IncendiaryArea_Base
 	// override void EEOnCECreate()
 	// {
 	// 	// We get the PPE index for future usage and synchronization ( we must do it here for dynamic as it is not read through file )
-	// 	if ( GetGame().IsServer() )
+	// 	if ( g_Game.IsServer() )
 	// 		m_PPERequesterIdx = GetRequesterIndex(m_PPERequesterType);
 
 	// 	SetSynchDirty();
@@ -174,7 +174,7 @@ class IAT_IncendiaryArea_DynamicBase extends IncendiaryArea_Base
 	// 		m_OffsetPos[1] = m_OffsetPos[1] + AIRBORNE_FX_OFFSET;
 
 	// 		// play artillery sound, sent to be played for everyone on server
-	// 		array<vector> artilleryPoints = GetGame().GetMission().GetWorldData().IAT_GetBitterrootPositions();
+	// 		array<vector> artilleryPoints = g_Game.GetMission().GetWorldData().IAT_GetBitterrootPositions();
 	// 		vector closestPoint = areaPos;
 	// 		int dist = 0;
 	// 		int temp;
@@ -205,7 +205,7 @@ class IAT_IncendiaryArea_DynamicBase extends IncendiaryArea_Base
 
 	// 		// We send the message with this set of coords
 	// 		params.Insert( pos );
-	// 		GetGame().RPC( null, ERPCs.RPC_SOUND_ARTILLERY_SINGLE, params, true );
+	// 		g_Game.RPC( null, ERPCs.RPC_SOUND_ARTILLERY_SINGLE, params, true );
 
 	// 		m_FXTimer = new Timer( CALL_CATEGORY_GAMEPLAY );
 	// 		m_FXTimer.Run( delay, this, "PlayFX" );
@@ -265,7 +265,7 @@ class IAT_IncendiaryArea_DynamicBase extends IncendiaryArea_Base
 
 	// 	if ( m_DecayState == eAreaDecayStage.LIVE )
 	// 		InitZone(); // If it has already been created, we simply do the normal setup, no cool effects, force the LIVE state
-	// 	else if ( GetGame().IsClient() && m_DecayState > eAreaDecayStage.LIVE )
+	// 	else if ( g_Game.IsClient() && m_DecayState > eAreaDecayStage.LIVE )
 	// 		InitZoneClient(); // Same as before but without state forcing
 
 	// 	super.EEInit();
@@ -288,14 +288,14 @@ class IAT_IncendiaryArea_DynamicBase extends IncendiaryArea_Base
 	// 			mat[3] = spawnPos;
 	// 			il.SetGround(NULL, mat);
 	// 			//Print("Spawning item:"+ type + " at position:" + il.GetPos());
-	// 			GetGame().CreateObjectEx(type, il.GetPos(), ECE_PLACE_ON_SURFACE);
+	// 			g_Game.CreateObjectEx(type, il.GetPos(), ECE_PLACE_ON_SURFACE);
 	// 		}
 	// 	}
 	// }
 
 	// void PlayFX()
 	// {
-	// 	if ( GetGame().IsServer() )
+	// 	if ( g_Game.IsServer() )
 	// 	{
 	// 		Param1<vector> pos; // The value to be sent through RPC
 	// 		array<ref Param> params; // The RPC params
@@ -307,7 +307,7 @@ class IAT_IncendiaryArea_DynamicBase extends IncendiaryArea_Base
 	// 		// We send the message with this set of coords
 	// 		pos.param1 = m_OffsetPos;
 	// 		params.Insert( pos );
-	// 		GetGame().RPC( null, IAT_MOLOTOV_ERPCs.RPC_SOUND_INCENDIARY, params, true );
+	// 		g_Game.RPC( null, IAT_MOLOTOV_ERPCs.RPC_SOUND_INCENDIARY, params, true );
 
 	// 		// We go to the next stage
 	// 		m_DecayState = eAreaDecayStage.START;
@@ -322,10 +322,10 @@ class IAT_IncendiaryArea_DynamicBase extends IncendiaryArea_Base
 
 	// void PlayFlareVFX()
 	// {
-	// 	if ( GetGame().IsClient() || ( GetGame().IsServer() && !GetGame().IsMultiplayer() ) )
+	// 	if ( g_Game.IsClient() || ( g_Game.IsServer() && !g_Game.IsMultiplayer() ) )
 	// 	{
 	// 		// We spawn locally the dummy object which will be used to move and manage the particle
-	// 		DynamicArea_Flare dummy = DynamicArea_Flare.Cast( GetGame().CreateObjectEx( "DynamicArea_Flare", m_OffsetPos, ECE_SETUP | ECE_LOCAL ) );
+	// 		DynamicArea_Flare dummy = DynamicArea_Flare.Cast( g_Game.CreateObjectEx( "DynamicArea_Flare", m_OffsetPos, ECE_SETUP | ECE_LOCAL ) );
 
 	// 		// We add some light to reinforce the effect
 	// 		m_FlareLight = FlareLightContamination.Cast(ScriptedLightBase.CreateLight( FlareLightContamination, m_OffsetPos ));

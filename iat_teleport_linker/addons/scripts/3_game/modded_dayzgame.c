@@ -11,7 +11,6 @@ modded class DayZGame
 	{
 		if (!m_iatTeleportLinkConfig)
 		{
-			Print("[IAT_Teleport_Linker] No config exist. Create New.");
 			IAT_TeleportLinkConfig tempConfig = new IAT_TeleportLinkConfig();
 			m_iatTeleportLinkConfig = tempConfig.TryGetTeleportLinkConfig();
 		}

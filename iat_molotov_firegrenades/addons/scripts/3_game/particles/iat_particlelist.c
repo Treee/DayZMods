@@ -15,7 +15,7 @@ modded class ParticleList
 	//! Preloads all particles
 	override static void PreloadParticles()
 	{
-		if ( !GetGame().IsServer() || !GetGame().IsMultiplayer() ) // client side
+		if ( !g_Game.IsServer() || !g_Game.IsMultiplayer() ) // client side
 		{
 			int count = m_ParticlePaths.Count();
 			PrintFormat("count of particles: %1", count);

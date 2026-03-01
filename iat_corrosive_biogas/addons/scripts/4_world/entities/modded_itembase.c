@@ -8,7 +8,7 @@ modded class ItemBase
 		super.InitItemVariables();
 
 		string entry = string.Format("CfgVehicles %1 Protection corrosion", GetType());
-		m_HasCorrosionCargoProtection = (GetGame().ConfigGetInt(entry) == 1);
+		m_HasCorrosionCargoProtection = (g_Game.ConfigGetInt(entry) == 1);
 	}
 	// ============================================ EVENTS
 
@@ -24,7 +24,7 @@ modded class ItemBase
 			return superBool;
 
 		// only touch agents on the server
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// get the min quantity for this item
 			float min = GetQuantityMin();

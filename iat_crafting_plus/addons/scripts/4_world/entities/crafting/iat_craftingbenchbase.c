@@ -48,9 +48,9 @@ class IAT_CraftingPlus_CraftingBench_Base extends ItemBase
 	//=================================================== CUSTOM
 	void TryCheckRecipes()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(CheckRecipes, 500, false);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(CheckRecipes, 500, false);
 		}
 	}
 	// function to invoke parsing attachments and checking recipes

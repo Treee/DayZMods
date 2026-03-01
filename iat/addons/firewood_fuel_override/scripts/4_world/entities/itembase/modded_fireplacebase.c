@@ -2,7 +2,7 @@ modded class FireplaceBase
 {
 	override protected void CalcAndSetTotalEnergy()
 	{
-		if (GetGame() && GetGame().IsDedicatedServer())
+		if (g_Game && g_Game.IsDedicatedServer())
 		{
 			foreach (FireConsumableType fireConsumableType : m_FireConsumableTypes)
 			{

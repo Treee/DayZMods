@@ -10,14 +10,14 @@ class IAT_ActionSwitchRadioRangeCB extends ActionContinuousBaseCB
 	}
   	override void OnStateChange(int pOldState, int pCurrentState)
 	{
-		if (pCurrentState == STATE_NONE && (!GetGame().IsDedicatedServer()))
+		if (pCurrentState == STATE_NONE && (!g_Game.IsDedicatedServer()))
 		{
-			if (GetGame().GetUIManager() && GetGame().GetUIManager().IsMenuOpen(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI))
-				GetGame().GetUIManager().FindMenu(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI).Close();
+			if (g_Game.GetUIManager() && g_Game.GetUIManager().IsMenuOpen(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI))
+				g_Game.GetUIManager().FindMenu(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI).Close();
 		}
-		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && (!GetGame().IsDedicatedServer()))
+		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && (!g_Game.IsDedicatedServer()))
 		{
-      		GetGame().GetUIManager().EnterScriptedMenu(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI, GetGame().GetUIManager().GetMenu());
+      		g_Game.GetUIManager().EnterScriptedMenu(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI, g_Game.GetUIManager().GetMenu());
 		}
 	}
 };
@@ -71,8 +71,8 @@ class IAT_ActionSwitchRadioRange extends ActionContinuousBase
 		super.OnUpdate(action_data);
 
 		// end the action when the menu closes
-		if(!GetGame().IsDedicatedServer())
-			if (action_data.m_State == UA_FINISHED && GetGame().GetUIManager() && !GetGame().GetUIManager().IsMenuOpen(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI))
+		if(!g_Game.IsDedicatedServer())
+			if (action_data.m_State == UA_FINISHED && g_Game.GetUIManager() && !g_Game.GetUIManager().IsMenuOpen(IAT_DYNAMICRADIO_MENU_RADIAL_MULTI))
 				ActionManagerClient.Cast(action_data.m_Player.GetActionManager()).RequestEndAction();
 	}
 	override void OnEndRequest(ActionData action_data)

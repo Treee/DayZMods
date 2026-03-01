@@ -87,12 +87,12 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	{
 		// update door path graph for AI
 		SetAffectPathgraph( true, false );
-		GetGame().GetCallQueue( CALL_CATEGORY_SYSTEM ).CallLater( GetGame().UpdatePathgraphRegionByObject, 100, false, this );
+		g_Game.GetCallQueue( CALL_CATEGORY_SYSTEM ).CallLater( g_Game.UpdatePathgraphRegionByObject, 100, false, this );
 	}
 	protected void SoundDoorOpenStart()
 	{
 		//client or single player
-		if ( !GetGame().IsDedicatedServer() )
+		if ( !g_Game.IsDedicatedServer() )
 		{
 			PlaySoundSet( m_SoundDoor_Start, GetDoorOpenStartSoundSet(), 0.1, 0.1 );
 		}
@@ -100,16 +100,16 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	protected void SoundDoorCloseStart()
 	{
 		//client or single player
-		if ( !GetGame().IsDedicatedServer() )
+		if ( !g_Game.IsDedicatedServer() )
 		{
 			PlaySoundSet( m_SoundDoor_Start, GetDoorCloseStartSoundSet(), 0.1, 0.1 );
-			GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( SoundDoorCloseEnd, DOOR_ROTATION_TIME_APPROX, false );
+			g_Game.GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( SoundDoorCloseEnd, DOOR_ROTATION_TIME_APPROX, false );
 		}
 	}
 	protected void SoundDoorCloseEnd()
 	{
 		//client or single player
-		if ( !GetGame().IsDedicatedServer() )
+		if ( !g_Game.IsDedicatedServer() )
 		{
 			PlaySoundSet( m_SoundDoor_End, GetDoorCloseEndSoundSet(), 0.1, 0.1 );
 		}
@@ -126,7 +126,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	}
 	void OpenDoor(string componentName) // server only
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			if (componentName == SELECTION_INTERACT_DOOR1)
 			{
@@ -136,7 +136,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 			{
 				OpenDoor2();
 			}
-			GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( UpdateNavmesh, DOOR_ROTATION_TIME_APPROX, false );
+			g_Game.GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( UpdateNavmesh, DOOR_ROTATION_TIME_APPROX, false );
 		}
 	}
 	void OpenDoor1() // client/server
@@ -146,7 +146,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		SetSynchDirty();
 
 		// client only
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			SoundDoorOpenStart();
 		}
@@ -158,14 +158,14 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		SetSynchDirty();
 
 		// client only
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			SoundDoorOpenStart();
 		}
 	}
 	void CloseDoor(string componentName)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			if (componentName == SELECTION_INTERACT_DOOR1)
 			{
@@ -175,7 +175,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 			{
 				CloseDoor2();
 			}
-			GetGame().GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( UpdateNavmesh, DOOR_ROTATION_TIME_APPROX, false );
+			g_Game.GetCallQueue( CALL_CATEGORY_GAMEPLAY ).CallLater( UpdateNavmesh, DOOR_ROTATION_TIME_APPROX, false );
 		}
 	}
 	void CloseDoor1()
@@ -185,7 +185,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		SetSynchDirty();
 
 		// client only
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			SoundDoorCloseStart();
 		}
@@ -197,7 +197,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		SetSynchDirty();
 
 		// client only
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			SoundDoorCloseStart();
 		}

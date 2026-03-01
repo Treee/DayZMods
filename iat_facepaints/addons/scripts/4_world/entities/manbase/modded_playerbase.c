@@ -44,7 +44,7 @@ modded class PlayerBase
 			// server side action context sync from menu option selection
 			case IAT_FACEPAINT_RPC.IAT_RPC_FP_RADIAL_MENU:
 			{
-				if (GetGame().IsDedicatedServer())
+				if (g_Game.IsDedicatedServer())
 				{
 					// read serially the value as an integer
 					if (!ctx.Read(m_TempFacePaintCategory))

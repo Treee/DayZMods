@@ -14,6 +14,7 @@ class IAT_SmokeSignalsConfig
 
 	protected bool m_IAT_SmokeGrenadesEnabled;
 	protected bool m_IAT_SmokeSignalsEnabled;
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 
 	IAT_SmokeSignalsConfig TryGetSmokeSignalsConfig()
 	{
@@ -32,6 +33,7 @@ class IAT_SmokeSignalsConfig
 		{
 			// new config object
 			iat_SSConfig = new IAT_SmokeSignalsConfig();
+			iat_SSConfig.m_DebugLogEnabled = false;
 			// set some default values
 			iat_SSConfig.m_IAT_SmokeSignalsEnabled = true;
 			iat_SSConfig.m_IAT_GrenadeParticleScaleMin = 2.5;
@@ -82,13 +84,16 @@ class IAT_SmokeSignalsConfig
 
 	void PrettyPrint()
 	{
-		Print("--[IAT_SmokeSignalsConfig BEGIN]");
-		PrintFormat("----m_IAT_SignalParticleScaleMin: %1", GetSmokeSignalParticleScaleMin());
-		PrintFormat("----m_IAT_GrenadeParticleScaleMin: %1", GetSmokeGrenadeParticleScaleMin());
-		PrintFormat("----m_IAT_SignalParticleScaleMax: %1", GetSmokeSignalParticleScaleMax());
-		PrintFormat("----m_IAT_GrenadeParticleScaleMax: %1", GetSmokeGrenadeParticleScaleMax());
-		PrintFormat("----m_IAT_SmokeSignalsEnabled: %1", IsSmokeSignalsEnabled());
-		PrintFormat("----m_IAT_SmokeGrenadesEnabled: %1", IsSmokeGrenadesEnabled());
-		Print("--[IAT_SmokeSignalsConfig END]");
+		if (m_DebugLogEnabled)
+		{
+			Print("--[IAT_SmokeSignalsConfig BEGIN]");
+			PrintFormat("----m_IAT_SignalParticleScaleMin: %1", GetSmokeSignalParticleScaleMin());
+			PrintFormat("----m_IAT_GrenadeParticleScaleMin: %1", GetSmokeGrenadeParticleScaleMin());
+			PrintFormat("----m_IAT_SignalParticleScaleMax: %1", GetSmokeSignalParticleScaleMax());
+			PrintFormat("----m_IAT_GrenadeParticleScaleMax: %1", GetSmokeGrenadeParticleScaleMax());
+			PrintFormat("----m_IAT_SmokeSignalsEnabled: %1", IsSmokeSignalsEnabled());
+			PrintFormat("----m_IAT_SmokeGrenadesEnabled: %1", IsSmokeGrenadesEnabled());
+			Print("--[IAT_SmokeSignalsConfig END]");
+		}
 	}
 };

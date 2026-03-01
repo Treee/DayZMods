@@ -10,14 +10,14 @@ class IAT_MoreDoorKit_ColorBase extends ItemBase
 	{
 		super.OnPlacementComplete( player, position, orientation );
 
-		if ( GetGame().IsServer() )
+		if ( g_Game.IsServer() )
 		{
 			string selectedDoorName = GetDoorClassNameFromSelection();
 			if (selectedDoorName == "")
 				return; // short circuit if we have a bad option for some reason
 
 			IAT_ConstructionDoor_Colorbase newDoor;
-			if (Class.CastTo(newDoor, GetGame().CreateObjectEx(selectedDoorName, GetPosition(), ECE_PLACE_ON_SURFACE)))
+			if (Class.CastTo(newDoor, g_Game.CreateObjectEx(selectedDoorName, GetPosition(), ECE_PLACE_ON_SURFACE)))
 			{
 				newDoor.SetPosition( position );
 				newDoor.SetOrientation( orientation );

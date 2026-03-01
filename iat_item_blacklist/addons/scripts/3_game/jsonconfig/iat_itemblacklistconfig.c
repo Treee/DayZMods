@@ -7,6 +7,7 @@ class IAT_ItemBlacklistConfig
 	[NonSerialized()]
     protected string m_JsonFile = "ItemBlacklistConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected ref TStringArray m_BlacklistedItems;
 
 	IAT_ItemBlacklistConfig TryGetItemBlacklistConfig()
@@ -27,6 +28,7 @@ class IAT_ItemBlacklistConfig
 			// new config object
 			iat_BIConfig = new IAT_ItemBlacklistConfig();
 			// set some default values
+			iat_BIConfig.m_DebugLogEnabled = false;
 			iat_BIConfig.m_BlacklistedItems = {};
 
 			// write the file to "create it"
@@ -61,11 +63,14 @@ class IAT_ItemBlacklistConfig
 	// ================================================================================== HELPERS
 	void PrettyPrint()
 	{
-		Print("--[IAT_ItemBlacklistConfig BEGIN]");
-		foreach(string s1 : m_BlacklistedItems)
+		if (m_DebugLogEnabled)
 		{
-			PrintFormat("---- Blacklisted Item: %1", s1);
+			Print("--[IAT_ItemBlacklistConfig BEGIN]");
+			foreach(string s1 : m_BlacklistedItems)
+			{
+				PrintFormat("---- Blacklisted Item: %1", s1);
+			}
+			Print("--[IAT_ItemBlacklistConfig END]");
 		}
-		Print("--[IAT_ItemBlacklistConfig END]");
 	}
 };

@@ -53,7 +53,7 @@ class IAT_TeleportLinker_Basic extends ItemBase
 	// ======================================= SETTERS & GETTERS
 	void SetBaseTeleporterAnchor(Object anchor)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_HasAnchor = true;
 			m_AnchorTypeName = anchor.GetType();

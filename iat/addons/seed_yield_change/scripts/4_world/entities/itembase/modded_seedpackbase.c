@@ -5,9 +5,9 @@ modded class SeedPackBase
 		string pack_type = GetType();
 		string seeds_type = "";
 
-		GetGame().ConfigGetText( "cfgVehicles " + pack_type + " Horticulture ContainsSeedsType", seeds_type );
+		g_Game.ConfigGetText( "cfgVehicles " + pack_type + " Horticulture ContainsSeedsType", seeds_type );
 
-		int seeds_quantity_max = GetGame().ConfigGetInt( "cfgVehicles " + pack_type + " Horticulture ContainsSeedsQuantity" );
+		int seeds_quantity_max = g_Game.ConfigGetInt( "cfgVehicles " + pack_type + " Horticulture ContainsSeedsQuantity" );
 		int seeds_quantity = seeds_quantity_max;
 
 		// normalize quantity based on pack health
@@ -28,7 +28,7 @@ modded class SeedPackBase
 		{
 			EntityAI seeds;
 			vector pos = GetPosition();
-			if (Class.CastTo(seeds, GetGame().CreateObjectEx(seeds_type, pos, ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+			if (Class.CastTo(seeds, g_Game.CreateObjectEx(seeds_type, pos, ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 			{
 				int randomCount = Math.RandomIntInclusive(0, seeds_quantity_max);
 				if (randomCount == 0)
@@ -37,7 +37,7 @@ modded class SeedPackBase
 				}
 			}
 
-			GetGame().ObjectDelete( this );
+			g_Game.ObjectDelete( this );
 		}
 	}
 };
@@ -72,6 +72,6 @@ class IAT_EmptySeedsPackLambda : ReplaceItemWithNewLambdaBase
 		super.OnSuccess(new_item);
 
 		//spawns wrapping Paper
-		ItemBase paper = ItemBase.Cast( GetGame().CreateObjectEx("Paper", new_item.GetHierarchyRoot().GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY) );
+		ItemBase paper = ItemBase.Cast( g_Game.CreateObjectEx("Paper", new_item.GetHierarchyRoot().GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY) );
 	}
 };

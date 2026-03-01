@@ -31,8 +31,8 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 
 	void ~IAT_DR_RadialMenuDisplay()
 	{
-		if (GetGame() && GetGame().GetMission())
-			GetGame().GetMission().RemoveActiveInputExcludes({"radialmenu"},false);
+		if (g_Game && g_Game.GetMission())
+			g_Game.GetMission().RemoveActiveInputExcludes({"radialmenu"},false);
 	}
 
 	//============================================
@@ -40,13 +40,13 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 	//============================================
 	static void OpenMenu()
 	{
-		GetGame().GetUIManager().EnterScriptedMenu( IAT_DYNAMICRADIO_MENU_RADIAL_MULTI, NULL );
+		g_Game.GetUIManager().EnterScriptedMenu( IAT_DYNAMICRADIO_MENU_RADIAL_MULTI, NULL );
 	}
 
 	static void CloseMenu()
 	{
 		//execute on menu release
-		GetGame().GetUIManager().Back();
+		g_Game.GetUIManager().Back();
 	}
 
 	//============================================
@@ -56,7 +56,7 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 	{
 		m_CurrentCategory = -1;
 
-		layoutRoot = GetGame().GetWorkspace().CreateWidgets( "gui/layouts/radial_menu/radial_gestures/day_z_gestures.layout" );
+		layoutRoot = g_Game.GetWorkspace().CreateWidgets( "gui/layouts/radial_menu/radial_gestures/day_z_gestures.layout" );
 		m_ItemCardPanel = layoutRoot.FindAnyWidget( RadialMenu.RADIAL_ITEM_CARD_CONTAINER );
 
 		//register radial menu
@@ -84,7 +84,7 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 	{
 		super.OnShow();
 
-		Mission mission = GetGame().GetMission();
+		Mission mission = g_Game.GetMission();
 		if (mission)
 		{
 			IngameHud hud = IngameHud.Cast(mission.GetHud());
@@ -102,7 +102,7 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 	{
 		super.OnHide();
 
-		Mission mission = GetGame().GetMission();
+		Mission mission = g_Game.GetMission();
 		if (mission)
 		{
 			IngameHud hud = IngameHud.Cast(mission.GetHud());
@@ -147,7 +147,7 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 	{
 		super.Update(timeslice);
 
-		PlayerBase player = PlayerBase.Cast( GetGame().GetPlayer() );
+		PlayerBase player = PlayerBase.Cast( g_Game.GetPlayer() );
 		// if the category has changed AND is not the root AND player exists
 		if (m_CurrentCategory != IAT_DR_RadialMenuCategories.CATEGORIES && m_CurrentCategory != -1 && player)
 		{
@@ -235,7 +235,7 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 			IAT_DR_RadialMenuItem iat_radialmenu_item = m_RadialItems.Get( i );
 
 			//create item card
-			Widget iat_menuitem_card_widget = Widget.Cast( GetGame().GetWorkspace().CreateWidgets( "gui/layouts/radial_menu/radial_gestures/day_z_gesture_item_card.layout", m_ItemCardPanel ) );
+			Widget iat_menuitem_card_widget = Widget.Cast( g_Game.GetWorkspace().CreateWidgets( "gui/layouts/radial_menu/radial_gestures/day_z_gesture_item_card.layout", m_ItemCardPanel ) );
 			iat_radialmenu_item.SetRadialItemCard( iat_menuitem_card_widget );
 
 			//update item card widget
@@ -420,9 +420,9 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 		if ( instance.m_IsCategorySelected && instance.m_SelectedItem )
 		{
 			// client side script rpc to sync data from client -> server -> clients
-			if ( !GetGame().IsDedicatedServer() )
+			if ( !g_Game.IsDedicatedServer() )
 			{
-				PlayerBase player = PlayerBase.Cast( GetGame().GetPlayer() );
+				PlayerBase player = PlayerBase.Cast( g_Game.GetPlayer() );
 
 				IAT_DR_RadialMenuItem iat_radialmenu_item;
 				instance.m_SelectedItem.GetUserData( iat_radialmenu_item );
@@ -468,7 +468,7 @@ class IAT_DR_RadialMenuDisplay extends UIScriptedMenu
 		string backAction;
 		int controllerID;
 
-		if (GetGame().GetInput().IsEnabledMouseAndKeyboardEvenOnServer())
+		if (g_Game.GetInput().IsEnabledMouseAndKeyboardEvenOnServer())
 		{
 			selectAction = "UAMenuSelect";
 			backAction = "UAMenuBack";

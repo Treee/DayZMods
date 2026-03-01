@@ -10,7 +10,7 @@ modded class ItemBase
 	override void OnVariablesSynchronized()
 	{
 		// make sure it is client side
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			if (m_VarQuantity != m_VarQuantityPrev)
 			{
