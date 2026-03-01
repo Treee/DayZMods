@@ -21,10 +21,10 @@ modded class IngameHud
 	{
 		super.Init(hud_panel_widget);
 		// if the root widget doesnt already exist AND we are on the client
-		if (!m_CompassHeadingRootWidget && !GetGame().IsDedicatedServer())
+		if (!m_CompassHeadingRootWidget && !g_Game.IsDedicatedServer())
 		{
 			// initialize the layout and set the widgets to their references
-			m_CompassHeadingRootWidget = GetGame().GetWorkspace().CreateWidgets("iat/compass_ui/gui/layouts/compass.layout");
+			m_CompassHeadingRootWidget = g_Game.GetWorkspace().CreateWidgets("iat/compass_ui/gui/layouts/compass.layout");
 			m_CompassHeadingText = TextWidget.Cast(m_CompassHeadingRootWidget.FindAnyWidget("TextHeading"));
 			m_CompassFrameWidget = m_CompassHeadingRootWidget.FindAnyWidget("FrameCompass");
 			m_CompassImageWidget = ImageWidget.Cast(m_CompassHeadingRootWidget.FindAnyWidget("ImageCompass"));
@@ -44,7 +44,7 @@ modded class IngameHud
 	override void Update( float timeslice )
 	{
 		super.Update( timeslice );
-		if( debouncer > 0.15 && GetGame() && GetGame().GetInput() && GetGame().GetInput().LocalPress("UACompassToggle", false) )
+		if( debouncer > 0.15 && g_Game && g_Game.GetInput() && g_Game.GetInput().LocalPress("UACompassToggle", false) )
 		{
 			CompassToggleHeading();
       		debouncer = 0.0;
@@ -111,7 +111,7 @@ modded class IngameHud
 
 	float CompassGetAngle()
 	{
-		vector direction = GetGame().GetCurrentCameraDirection();
+		vector direction = g_Game.GetCurrentCameraDirection();
 		float angle = direction.VectorToAngles()[0];
 		return angle;
 	}
@@ -132,7 +132,7 @@ modded class IngameHud
 	bool HasCompass()
 	{
 		PlayerBase pb;
-		if(Class.CastTo(pb, GetGame().GetPlayer()))
+		if(Class.CastTo(pb, g_Game.GetPlayer()))
 		{
 			MapNavigationBehaviour navigationBehavior;
 			if (Class.CastTo(navigationBehavior, pb.GetMapNavigationBehaviour()))

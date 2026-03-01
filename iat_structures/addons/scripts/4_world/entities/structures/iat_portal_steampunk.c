@@ -83,7 +83,7 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 	override void OnWorkStart()
 	{
 		// if its the server
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// start powering up
 			m_PortalState = 1;
@@ -93,7 +93,7 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 	override void OnWorkStop()
 	{
 		// if its the server
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// energy manager is off, power down
 			m_PortalState = 0;
@@ -102,7 +102,7 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 	}
 	override void OnWork( float consumed_energy )
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// if the portal is powering up
 			if (m_PortalState == 1)
@@ -216,7 +216,7 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 	{
 		StopParticles();
 		// if we are not on the server
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			PlayParticle1Loop();
 			PlayParticle2Loop();
@@ -237,7 +237,7 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 		if (GetCompEM().IsWorking())
 		{
 			float time = Math.RandomIntInclusive(1, 3) * 1000;
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PlayParticle1Loop, time, false);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PlayParticle1Loop, time, false);
 		}
 	}
 	void PlayParticle2Loop()
@@ -254,7 +254,7 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 		if (GetCompEM().IsWorking())
 		{
 			float time = Math.RandomIntInclusive(2, 4) * 1000;
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PlayParticle2Loop, time, false);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PlayParticle2Loop, time, false);
 		}
 	}
 	void PlayParticle3Loop()
@@ -271,19 +271,19 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 		if (GetCompEM().IsWorking())
 		{
 			float time = Math.RandomIntInclusive(2, 5) * 1000;
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PlayParticle3Loop, time, false);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PlayParticle3Loop, time, false);
 		}
 	}
 	void PlayPowerUpSound()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			PlaySoundSet(m_PowerUpSound, POWERUP_SOUND, 1, 1);
 		}
 	}
 	void PlayPowerDownSound()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			PlaySoundSet(m_PowerUpSound, POWERDOWN_SOUND, 1, 1);
 		}
@@ -291,7 +291,7 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 	void DoMaxPowerThing()
 	{
 		// play big sound and particle
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			PlaySoundSet(m_PowerUpSound, POWERFULL_SOUND, 1, 1);
 		}
@@ -299,9 +299,9 @@ class StaticObj_Furniture_UniqueItem_Portal_Steampunk_chunkyhedgehog extends Hou
 	void BeginShutDown()
 	{
 		// in 2 seconds begin to turn off the machine
-		GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PreShutDown, 2000, false);
+		g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PreShutDown, 2000, false);
 		// in 30 seconds turn off the machine
-		GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ShutDown, 28000, false);
+		g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ShutDown, 28000, false);
 	}
 	void PreShutDown()
 	{

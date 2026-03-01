@@ -11,6 +11,6 @@ modded class MissionServer
 
 		auto configParams = new Param1<IAT_SmokeSignalsConfig>(GetDayZGame().GetIATSmokeSignalsConfig());
 		PrintFormat("Sending IAT_SmokeSignals Mod Config to Player: %1 RPC: %2", identity.GetName(), IAT_RPC_SMOKESIGNALS.CHECK_CONFIG);
-		GetGame().RPCSingleParam(player, IAT_RPC_SMOKESIGNALS.CHECK_CONFIG, configParams, true, identity);
+		g_Game.RPCSingleParam(player, IAT_RPC_SMOKESIGNALS.CHECK_CONFIG, configParams, true, identity);
 	}
 };

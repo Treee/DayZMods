@@ -41,7 +41,7 @@ class IAT_BellTower_ColorBase extends House
 	}
 	void PlayBellSound()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			PlaySoundSet(m_BellSound, BELL_SOUND, 0.3, 0.3, true);
 		}
@@ -52,7 +52,7 @@ class IAT_BellTower_ColorBase extends House
 		SetSynchDirty();
 
 		float time = 30 * 1000;
-		GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(AutoTurnOffRinging, time, false);
+		g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(AutoTurnOffRinging, time, false);
 	}
 
 	void AutoTurnOffRinging()

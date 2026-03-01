@@ -27,7 +27,7 @@ class IAT_ActionSelectDoorOption extends ActionContinuousBase
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT;
 		m_Text = "Select Door Option";
 		// only hook up the variant manager on client
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
 		}
@@ -139,7 +139,7 @@ class IAT_ActionSelectDoorOption extends ActionContinuousBase
 		if (super.SetupAction(player, target, item, action_data, extra_data))
 		{
 			// if we are on the client
-			if (!GetGame().IsDedicatedServer())
+			if (!g_Game.IsDedicatedServer())
 			{
 				// cast action data to our action data with variant info included
 				IAT_MD_VariantIdActionData.Cast(action_data).m_IATVariantId = m_VariantID;

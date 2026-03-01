@@ -5,7 +5,7 @@ modded class Horse_Base
 	{
 		super.EEKilled(killer);
 
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			PluginAdminLog m_AdminLog;
 			if (Class.CastTo(m_AdminLog, GetPlugin(PluginAdminLog)))
@@ -19,7 +19,7 @@ modded class Horse_Base
 	{
 		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
 
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			PluginAdminLog m_AdminLog;
 			if (Class.CastTo(m_AdminLog, GetPlugin(PluginAdminLog)))

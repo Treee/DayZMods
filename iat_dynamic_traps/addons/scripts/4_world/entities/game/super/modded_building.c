@@ -36,7 +36,7 @@ modded class House
 					// signal this building has done an event
 					IAT_SetHasRandomEventPerformed(true);
 					// reset that status after some time
-					GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ResetEventStatus, 15000, false);
+					g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ResetEventStatus, 15000, false);
 					trapActivated = true;
 				}
 				// reset checked if applicable
@@ -45,7 +45,7 @@ modded class House
 					IAT_SetIsInCooldown(true);
 					int cooldown = dynamicTrap.GetTrapCooldown() * 1000;
 					// PrintFormat("Resetting %1 trap with cooldown: %2", GetType(), cooldown);
-					GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ResetCheckedStatus, cooldown, false);
+					g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ResetCheckedStatus, cooldown, false);
 				}
 			}
 			// signal this building has been checked
@@ -109,7 +109,7 @@ modded class House
 			}
 			// PrintFormat("Creating new item: %1 at position %2", randomResult, position);
 			// create them
-			if (Class.CastTo(item, GetGame().CreateObjectEx(randomResult, position, trapResult.GetResultSpawnFlag())))
+			if (Class.CastTo(item, g_Game.CreateObjectEx(randomResult, position, trapResult.GetResultSpawnFlag())))
 			{
 				// random quantity (capped at 1/3rd max)
 				if (item.HasQuantity())

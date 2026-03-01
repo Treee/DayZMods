@@ -19,7 +19,7 @@ modded class PlayerBase
 
 		// eventually look at the surface and modify how bleeds should be applied
 		// string surface;	int liquid;
-		// GetGame().SurfaceUnderObject(this, surface, liquid);
+		// g_Game.SurfaceUnderObject(this, surface, liquid);
 
 
 		float modifier;

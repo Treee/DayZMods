@@ -30,7 +30,7 @@ modded class MissionServer
 			// send them the config
 			Param1<IAT_TeleportLinkConfig> configParams = new Param1<IAT_TeleportLinkConfig>(GetDayZGame().GetIATTeleportLinkConfig());
 			PrintFormat("[IAT_Teleport_Linker] Sending Config to Player: %1 RPC: %2", identity.GetName(), IAT_RPC_TELEPORTLINK.SEND_CONFIG);
-			GetGame().RPCSingleParam(player, IAT_RPC_TELEPORTLINK.SEND_CONFIG, configParams, true, identity);
+			g_Game.RPCSingleParam(player, IAT_RPC_TELEPORTLINK.SEND_CONFIG, configParams, true, identity);
 			// add them to the list for next time
 			IAT_TL_AddToMap(identity.GetPlainId());
 		}

@@ -6,7 +6,6 @@ modded class MissionServer
 
 		GetDayZGame().SetIATDayZCodexConfig(m_Codex);
 
-		Print("================================================================= FILL ITEM SCHEMA");
 		m_Codex.IAT_Codex_ParseCfgItems(CFG_VEHICLESPATH);
 		m_Codex.IAT_Codex_ParseCfgItems(CFG_WEAPONSPATH);
 		m_Codex.IAT_Codex_ParseCfgItems(CFG_MAGAZINESPATH);

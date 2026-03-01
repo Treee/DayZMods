@@ -14,7 +14,7 @@ class IAT_AdvancedMedical_PlayerBaseTests : TestFramework
 		string s = "";
 		// arrange
 		array<Man> players = new array<Man>;
-		GetGame().GetWorld().GetPlayerList(players);
+		g_Game.GetWorld().GetPlayerList(players);
 
 		PlayerBase m_Player = PlayerBase.Cast(players.Get(0));
 

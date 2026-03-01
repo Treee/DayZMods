@@ -141,7 +141,7 @@ class IAT_OneOfEverythingHelper
 
     vector SpawnSingleObject(vector position, string objectPath)
     {
-        if (!GetGame())
+        if (!g_Game)
         {
             PrintDebugLog("DayZ Game Not Initialized Yet");
             return "0 0 0";
@@ -149,11 +149,11 @@ class IAT_OneOfEverythingHelper
 
         if (m_IsFloating)
         {
-            float height = GetGame().SurfaceY(position[0], position[2]);
+            float height = g_Game.SurfaceY(position[0], position[2]);
             position[1] = height;
         }
 
-        Object singleObject = GetGame().CreateStaticObjectUsingP3D(objectPath, position, "0 0 0");
+        Object singleObject = g_Game.CreateStaticObjectUsingP3D(objectPath, position, "0 0 0");
 
         if (!singleObject)
         {

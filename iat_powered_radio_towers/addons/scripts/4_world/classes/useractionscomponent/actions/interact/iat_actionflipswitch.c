@@ -48,7 +48,7 @@ class IAT_ActionInteractWallConsoleSwitch: ActionInteractBase
 		if (Class.CastTo(wallConsole, target.GetObject()))
 		{
 			// at this point the server wont know what the player is looking at but we know we are looking at the right thing
-			if (GetGame().IsDedicatedServer())
+			if (g_Game.IsDedicatedServer())
 				return true;
 
 			if (wallConsole.IsActionComponentPartOfSelection(target.GetComponentIndex(), "relay", "view"))

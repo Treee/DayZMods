@@ -32,7 +32,7 @@ modded class EmoteManager
 		{
 			if (m_ItemToBeCreated)
 			{
-				if (GetGame().IsServer() && m_Callback && !m_Player.GetItemInHands())
+				if (g_Game.IsServer() && m_Callback && !m_Player.GetItemInHands())
 				{
 					m_Player.GetHumanInventory().CreateInHands("SurrenderDummyItem");
 				}
@@ -45,7 +45,7 @@ modded class EmoteManager
 			#endif
 
 			//nuclear solution to inventory question
-			if (GetGame().IsClient() && GetGame().GetUIManager().FindMenu(MENU_INVENTORY) && IsEmotePlaying())
+			if (g_Game.IsClient() && g_Game.GetUIManager().FindMenu(MENU_INVENTORY) && IsEmotePlaying())
 				m_Player.CloseInventoryMenu();
 
 			//deferred emote cancel
@@ -92,7 +92,7 @@ modded class EmoteManager
 				}
 			}
 
-			bool forcedEmoteQueuedClient = m_MenuEmote && !m_MenuEmote.WasSynced() && m_MenuEmote.GetForced() > EmoteLauncher.FORCE_NONE && !GetGame().IsDedicatedServer();
+			bool forcedEmoteQueuedClient = m_MenuEmote && !m_MenuEmote.WasSynced() && m_MenuEmote.GetForced() > EmoteLauncher.FORCE_NONE && !g_Game.IsDedicatedServer();
 			if (forcedEmoteQueuedClient) //regular forced emote playing
 			{
 				SendEmoteRequestSyncEx(m_MenuEmote);
@@ -100,9 +100,9 @@ modded class EmoteManager
 			else if (m_Callback)
 			{
 				bool uiGesture = false;
-				if (!GetGame().IsDedicatedServer())
+				if (!g_Game.IsDedicatedServer())
 				{
-					uiGesture = GetGame().GetUIManager().IsMenuOpen(MENU_GESTURES);
+					uiGesture = g_Game.GetUIManager().IsMenuOpen(MENU_GESTURES);
 
 					if (InterruptGestureCheck())
 					{
@@ -227,7 +227,7 @@ modded class EmoteManager
 					m_DeferredGuaranteedEmoteId = CALLBACK_CMD_INVALID;
 				}
 				//client-side emote launcher
-				else if (!m_bEmoteIsPlaying && m_MenuEmote && !m_MenuEmote.WasSynced() && !GetGame().IsDedicatedServer())
+				else if (!m_bEmoteIsPlaying && m_MenuEmote && !m_MenuEmote.WasSynced() && !g_Game.IsDedicatedServer())
 				{
 					SendEmoteRequestSyncEx(m_MenuEmote);
 				}

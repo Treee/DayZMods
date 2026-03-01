@@ -65,7 +65,7 @@ class IAT_IncendiaryArea_Local extends IAT_IncendiaryArea_DynamicBase
 	}
 	override void EEInit()
 	{
-		if (GetGame().IsServer() || !GetGame().IsMultiplayer())
+		if (g_Game.IsServer() || !g_Game.IsMultiplayer())
 			m_Timer1.Run(TICK_RATE, this, "Tick", NULL, true);
 	}
 	override void DeferredInit()
@@ -77,7 +77,7 @@ class IAT_IncendiaryArea_Local extends IAT_IncendiaryArea_DynamicBase
 
 		SetupZoneData(new EffectAreaParams);
 
-		// should we just !GetGame().IsDedicatedServer() instead?
+		// should we just !g_Game.IsDedicatedServer() instead?
 		#ifndef SERVER
 
 		m_IAT_ParticleExploded_Puff = ParticleManager.GetInstance().PlayInWorld(ParticleList.IAT_GRENADE_INCENDIARY_PUFF, GetPosition());
@@ -93,13 +93,13 @@ class IAT_IncendiaryArea_Local extends IAT_IncendiaryArea_DynamicBase
 	}
 	override void SpawnParticles(ParticlePropertiesArray props, vector centerPos, vector partPos, inout int count)
 	{
-		partPos[1] = GetGame().SurfaceRoadY(partPos[0], partPos[2]);	// Snap particles to ground
+		partPos[1] = g_Game.SurfaceRoadY(partPos[0], partPos[2]);	// Snap particles to ground
 
 		// We make sure that spawned particle is inside the trigger
 		if (!Math.IsInRange(partPos[1], centerPos[1] - m_NegativeHeight, centerPos[1] + m_PositiveHeight))
 			partPos[1] = centerPos[1];
 
-		props.Insert(ParticleProperties(partPos, ParticlePropertiesFlags.PLAY_ON_CREATION, null, GetGame().GetSurfaceOrientation( partPos[0], partPos[2] ), this));
+		props.Insert(ParticleProperties(partPos, ParticlePropertiesFlags.PLAY_ON_CREATION, null, g_Game.GetSurfaceOrientation( partPos[0], partPos[2] ), this));
 		++count;
 	}
 	override float GetStartDecayLifetime()

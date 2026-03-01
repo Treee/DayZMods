@@ -2,7 +2,7 @@ modded class ItemBase
 {
 	override void OnRightClick()
     {
-        if (CanBeSplit() && !GetDayZGame().IsLeftCtrlDown() && GetDayZGame().IAT_SIS_IsLeftShiftDown() && !GetGame().GetPlayer().GetInventory().HasInventoryReservation(this,null))
+        if (CanBeSplit() && !GetDayZGame().IsLeftCtrlDown() && GetDayZGame().IAT_SIS_IsLeftShiftDown() && !g_Game.GetPlayer().GetInventory().HasInventoryReservation(this,null))
         {
             SplitIntoSingleItemClient();
         }
@@ -13,7 +13,7 @@ modded class ItemBase
     }
     void SplitIntoSingleItemClient()
     {
-        if (GetGame().IsClient())
+        if (g_Game.IsClient())
         {
 			if (ScriptInputUserData.CanStoreInputUserData())
 			{
@@ -32,7 +32,7 @@ modded class ItemBase
 					GetInventory().GetCurrentInventoryLocation(dst);
 					if (!dst.GetParent() || dst.GetParent() && !dst.GetParent().GetInventory().FindFreeLocationFor(this, FindInventoryLocationType.CARGO, dst))
 					{
-						PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
+						PlayerBase player = PlayerBase.Cast(g_Game.GetPlayer());
 						if (!player.GetInventory().FindFreeLocationFor(this, FindInventoryLocationType.CARGO, dst) || !playerOwner)
 						{
 							SetInventoryLocationToVicinityOrCurrent(root, dst);
@@ -42,13 +42,13 @@ modded class ItemBase
 							dst.SetCargo(dst.GetParent(), this, dst.GetIdx(), dst.GetRow(), dst.GetCol(), dst.GetFlip());
 							/*	hacky solution to check reservation of "this" item instead of null since the gamecode is checking null against null and returning reservation=true incorrectly
 								this shouldnt cause issues within this scope*/
-							if (GetGame().GetPlayer().GetInventory().HasInventoryReservation(this, dst))
+							if (g_Game.GetPlayer().GetInventory().HasInventoryReservation(this, dst))
 							{
 								SetInventoryLocationToVicinityOrCurrent(root, dst);
 							}
 							else
 							{
-								GetGame().GetPlayer().GetInventory().AddInventoryReservationEx(null, dst, GameInventory.c_InventoryReservationTimeoutShortMS);
+								g_Game.GetPlayer().GetInventory().AddInventoryReservationEx(null, dst, GameInventory.c_InventoryReservationTimeoutShortMS);
 							}
 						}
 					}
@@ -64,9 +64,9 @@ modded class ItemBase
 				ctx.Send();
 			}
         }
-        else if (!GetGame().IsMultiplayer())
+        else if (!g_Game.IsMultiplayer())
         {
-            SplitItemSingle(PlayerBase.Cast(GetGame().GetPlayer()));
+            SplitItemSingle(PlayerBase.Cast(g_Game.GetPlayer()));
         }
     }
     void SplitSingleItemToInventoryLocation(notnull InventoryLocation dst)

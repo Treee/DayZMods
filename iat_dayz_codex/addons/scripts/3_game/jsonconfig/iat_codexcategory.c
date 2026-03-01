@@ -13,7 +13,7 @@ class IAT_CodexCategory
 		m_ClassNameMatch = classNameMatch;
 		m_DisplayOrder = displayOrder;
 		m_SortItems = sortItems;
-		m_AllowAutoGrouping = allowAutoGroup
+		m_AllowAutoGrouping = allowAutoGroup;
 	}
 
 	// simple implementation with no real guard rails because i dont really think anyone

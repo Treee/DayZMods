@@ -11,6 +11,6 @@ modded class MissionServer
 
 		Param1<IAT_CraftingPlusConfig> configParams = new Param1<IAT_CraftingPlusConfig>(GetDayZGame().GetIATCraftingPlusConfig());
 		PrintFormat("[IAT_CraftingPlusConfig] Sending Config to Player: %1 RPC: %2", identity.GetName(), IAT_CRAFTINGPLUS_RPC.CHECK_CRAFTINGPLUS_CONFIG);
-		GetGame().RPCSingleParam(player, IAT_CRAFTINGPLUS_RPC.CHECK_CRAFTINGPLUS_CONFIG, configParams, true, identity);
+		g_Game.RPCSingleParam(player, IAT_CRAFTINGPLUS_RPC.CHECK_CRAFTINGPLUS_CONFIG, configParams, true, identity);
 	}
 };

@@ -196,8 +196,6 @@ class IAT_DayZCodexConfig
 
 	void PrettyPrint()
 	{
-		Print("--[IAT_DayZCodexConfig BEGIN]");
 		m_Codex.PrettyPrint();
-		Print("--[IAT_DayZCodexConfig END]");
 	}
 };

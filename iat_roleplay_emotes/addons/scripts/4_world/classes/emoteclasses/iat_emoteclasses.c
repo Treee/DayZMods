@@ -18,7 +18,7 @@ class IAT_EmoteCoughing extends EmoteBase
 
   	override void OnBeforeStandardCallbackCreated(int callback_ID, int stancemask, bool is_fullbody)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_Player.GetSymptomManager().QueueUpPrimarySymptom( SymptomIDs.SYMPTOM_COUGH );
 		}
@@ -72,7 +72,7 @@ class IAT_EmoteBulletHit extends EmoteBase
 
 	override void OnBeforeStandardCallbackCreated(int callback_ID, int stancemask, bool is_fullbody)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_Player.AddHealth("", "Blood", -350); //do blood dmg
 			// try add bleed to specific bone for visual effects
@@ -122,7 +122,7 @@ class IAT_EmoteBleedingSource extends EmoteBase
 
   	override void OnBeforeStandardCallbackCreated(int callback_ID, int stancemask, bool is_fullbody)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_Player.GetBleedingManagerServer().AttemptAddBleedingSourceBySelection(IAT_GetDamageZones_Light().GetRandomElement());
 		}
@@ -169,7 +169,7 @@ class IAT_EmoteBloodloss extends EmoteBase
 
   	override void OnBeforeStandardCallbackCreated(int callback_ID, int stancemask, bool is_fullbody)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_Player.AddHealth("", "Blood", -500); //do 250 blood dmg
 		}
@@ -272,7 +272,7 @@ class IAT_EmoteUnconscious extends EmoteBase
 
   	override void OnBeforeStandardCallbackCreated(int callback_ID, int stancemask, bool is_fullbody)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_Player.SetHealth("", "Shock", 0);
 			m_Player.GetModifiersManager().ActivateModifier(eModifiers.MDF_UNCONSCIOUSNESS);
@@ -374,7 +374,7 @@ class IAT_EmoteLegBreak extends EmoteBase
 
   	override void OnBeforeStandardCallbackCreated(int callback_ID, int stancemask, bool is_fullbody)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			m_Player.GetModifiersManager().ActivateModifier(eModifiers.MDF_BROKEN_LEGS);
 		}

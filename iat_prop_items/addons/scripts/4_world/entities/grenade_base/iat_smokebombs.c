@@ -26,7 +26,7 @@ class IAT_SmokeBomb_ColorBase extends Grenade_Base
 	}
 	override void EOnContact(IEntity other, Contact extra)
 	{
-		if (GetGame().IsServer())
+		if (g_Game.IsServer())
 		{
 			if (!m_Exploded)
 			{
@@ -40,9 +40,9 @@ class IAT_SmokeBomb_ColorBase extends Grenade_Base
 	}
 	override void OnDamageDestroyed(int oldLevel)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(DeleteSafe, 5000);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(DeleteSafe, 5000);
 		}
 		#ifndef SERVER
 		ClearFlags(EntityFlags.VISIBLE, false);

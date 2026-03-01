@@ -4,7 +4,7 @@ modded class DayZPlayerImplement
 	{
 		super.OnStepEvent(pEventType, pUserString, pUserInt);
 
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			TryTeleportOutOfBoundsPlayer(m_StepCounter);
 		}

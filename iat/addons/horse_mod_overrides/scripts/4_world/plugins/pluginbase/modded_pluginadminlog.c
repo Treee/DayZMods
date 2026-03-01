@@ -132,7 +132,7 @@ modded class PluginAdminLog
 	protected PlayerBase IAT_GetPlayerByEntityID(int entityID)
 	{
 		array<Man> players = new array<Man>;
-		GetGame().GetPlayers(players);
+		g_Game.GetPlayers(players);
 		for(int i = 0; i < players.Count(); i++)
 		{
 			if(players.Get(i).GetID() == entityID)

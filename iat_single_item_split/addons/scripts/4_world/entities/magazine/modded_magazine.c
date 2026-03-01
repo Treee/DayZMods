@@ -2,7 +2,7 @@ modded class Ammunition_Base
 {
 	override void SplitItemToInventoryLocation( notnull InventoryLocation dst )
 	{
-		if (CanBeSplit() && !GetDayZGame().IsLeftCtrlDown() && GetDayZGame().IAT_SIS_IsLeftShiftDown() && !GetGame().GetPlayer().GetInventory().HasInventoryReservation(this,null))
+		if (CanBeSplit() && !GetDayZGame().IsLeftCtrlDown() && GetDayZGame().IAT_SIS_IsLeftShiftDown() && !g_Game.GetPlayer().GetInventory().HasInventoryReservation(this,null))
 		{
 			SplitSingleItemToInventoryLocation(dst);
 		}
@@ -14,7 +14,7 @@ modded class Ammunition_Base
 
 	override void SplitItem(PlayerBase player)
 	{
-		if (CanBeSplit() && !GetDayZGame().IsLeftCtrlDown() && GetDayZGame().IAT_SIS_IsLeftShiftDown() && !GetGame().GetPlayer().GetInventory().HasInventoryReservation(this,null))
+		if (CanBeSplit() && !GetDayZGame().IsLeftCtrlDown() && GetDayZGame().IAT_SIS_IsLeftShiftDown() && !g_Game.GetPlayer().GetInventory().HasInventoryReservation(this,null))
 		{
 			SplitSingleItem(player);
 		}

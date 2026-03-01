@@ -28,7 +28,7 @@ class IAT_DyeObject: ActionContinuousBase
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
 		m_Text = "Dye Object";
 
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
         {
             GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
         }
@@ -123,7 +123,7 @@ class IAT_DyeObject: ActionContinuousBase
 					newItemName = string.Format("%1_%2", newItemName, target_clothing.GetDyeOption(variantId));
 					// spawn it
 					ItemBase newItemSpawn;
-					if (Class.CastTo(newItemSpawn, GetGame().CreateObjectEx(newItemName, target_clothing.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+					if (Class.CastTo(newItemSpawn, g_Game.CreateObjectEx(newItemName, target_clothing.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 					{
 						// set the hp
 						newItemSpawn.SetHealth(old_hp);
@@ -147,7 +147,7 @@ class IAT_DyeObject: ActionContinuousBase
 	{
 		if ( super.SetupAction( player, target, item, action_data, extra_data ) )
 		{
-			if ( !GetGame().IsDedicatedServer() )
+			if ( !g_Game.IsDedicatedServer() )
 			{
 				IAT_DyeVariantActionData.Cast(action_data).m_IATDyeVariant = m_VariantID;
 			}

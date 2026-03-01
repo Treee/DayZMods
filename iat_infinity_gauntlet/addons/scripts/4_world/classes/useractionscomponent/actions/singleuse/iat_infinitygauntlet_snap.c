@@ -45,7 +45,7 @@ class IAT_InfinityGauntlet_SnapAction: ActionSingleUseBase
 				infinityGauntlet.PlaySnapSound();
 				infinityGauntlet.DeleteAllStones();
 				infinityGauntlet.RuinGlove();
-				GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(infinityGauntlet.BalanceTheUniverse, 5000);
+				g_Game.GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(infinityGauntlet.BalanceTheUniverse, 5000);
 			}
 		}
 	}

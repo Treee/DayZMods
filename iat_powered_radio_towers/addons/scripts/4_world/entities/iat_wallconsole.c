@@ -21,10 +21,10 @@ class StaticObj_iat_wallconsole extends House
 	override void DeferredInit()
 	{
 		super.DeferredInit();
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			// we need to sync that first load of data to the client. lazy loading felt the best approach to minimize rpc's
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(HardSyncServerData, 1000, false);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(HardSyncServerData, 1000, false);
 		}
 	}
 
@@ -46,7 +46,7 @@ class StaticObj_iat_wallconsole extends House
 	// ============================================ CUSTOM
 	void HandleClientServerRPC(PlayerIdentity sender, ParamsReadContext ctx)
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			ScriptRPC rpc = new ScriptRPC();
 			rpc.Write(IsPoweredOn());
@@ -84,11 +84,11 @@ class StaticObj_iat_wallconsole extends House
 
 	void HardSyncServerData()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			ScriptRPC rpc = new ScriptRPC();
 			PlayerBase player;
-			if (Class.CastTo(player, GetGame().GetPlayer()))
+			if (Class.CastTo(player, g_Game.GetPlayer()))
 			{
 				rpc.Send(this, RPC_HARD_SYNC_DATA, true, player.GetIdentity());
 			}
@@ -184,7 +184,7 @@ class StaticObj_iat_wallconsole extends House
 	{
 		// World Power Override
 		#ifdef AdmiralsTerminalsMod
-        if(GetGame().IsDedicatedServer())
+        if(g_Game.IsDedicatedServer())
         {
 			IAT_PoweredRadioTowerConfig radioConsoleConfig = GetDayZGame().GetIATPoweredRadioTowerConfig();
 			float requiredPower = radioConsoleConfig.GetRequiredTowerPower();

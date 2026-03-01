@@ -7,7 +7,7 @@ class IAT_CodelockConfig
 	[NonSerialized()]
     protected string m_JsonFile = "CodelockConfig.json";
 
-
+	protected bool m_DebugLogEnabled; // toggle debug log prints
 	protected bool m_SaveToDatabase; // save codelock data to the database
 	protected bool m_ShowHpOnCodelock; // show codelock health on the codelock item
 	protected bool m_CanAttachCodelockToBaseBuilding; // can codelocks be attached to base building items
@@ -39,6 +39,7 @@ class IAT_CodelockConfig
 			// new config object
 			iat_CLConfig = new IAT_CodelockConfig();
 			// set some default values
+			iat_CLConfig.m_DebugLogEnabled = false;
 			iat_CLConfig.m_SaveToDatabase = true;
 			iat_CLConfig.m_ShowHpOnCodelock = true;
 			iat_CLConfig.m_CanAttachCodelockToBaseBuilding = true;
@@ -164,21 +165,24 @@ class IAT_CodelockConfig
 	// ================================================================================== HELPERS
 	void PrettyPrint()
 	{
-		Print("--[IAT_CodelockConfig BEGIN]");
-		PrintFormat("--m_SaveToDatabase: %1", m_SaveToDatabase);
-		PrintFormat("--m_ShowHpOnCodelock: %1", m_ShowHpOnCodelock);
-		PrintFormat("--m_CanAttachCodelockToBaseBuilding: %1", m_CanAttachCodelockToBaseBuilding);
-		PrintFormat("--m_CanAttachCodelockToTents: %1", m_CanAttachCodelockToTents);
-		PrintFormat("--m_CanAttachCodelockToContainers: %1", m_CanAttachCodelockToContainers);
-		PrintFormat("--m_DamagePlayerOnFailedPasscodeEntry: %1", m_DamagePlayerOnFailedPasscodeEntry);
-		PrintFormat("--m_ClearAllPasscodeEntriesOnInterval: %1", m_ClearAllPasscodeEntriesOnInterval);
-		PrintFormat("--m_DamagePerFailedPasscodeEntry: %1", m_DamagePerFailedPasscodeEntry);
-		PrintFormat("--m_MaxPasscodeEntriesPerInterval: %1", m_MaxPasscodeEntriesPerInterval);
-		PrintFormat("--m_MaxPasscodeEntriesCooldown: %1", m_MaxPasscodeEntriesCooldown);
-		foreach (IAT_CodelockRaidTool tool : m_RaidTools)
+		if (m_DebugLogEnabled)
 		{
-			tool.PrettyPrint();
+			Print("--[IAT_CodelockConfig BEGIN]");
+			PrintFormat("--m_SaveToDatabase: %1", m_SaveToDatabase);
+			PrintFormat("--m_ShowHpOnCodelock: %1", m_ShowHpOnCodelock);
+			PrintFormat("--m_CanAttachCodelockToBaseBuilding: %1", m_CanAttachCodelockToBaseBuilding);
+			PrintFormat("--m_CanAttachCodelockToTents: %1", m_CanAttachCodelockToTents);
+			PrintFormat("--m_CanAttachCodelockToContainers: %1", m_CanAttachCodelockToContainers);
+			PrintFormat("--m_DamagePlayerOnFailedPasscodeEntry: %1", m_DamagePlayerOnFailedPasscodeEntry);
+			PrintFormat("--m_ClearAllPasscodeEntriesOnInterval: %1", m_ClearAllPasscodeEntriesOnInterval);
+			PrintFormat("--m_DamagePerFailedPasscodeEntry: %1", m_DamagePerFailedPasscodeEntry);
+			PrintFormat("--m_MaxPasscodeEntriesPerInterval: %1", m_MaxPasscodeEntriesPerInterval);
+			PrintFormat("--m_MaxPasscodeEntriesCooldown: %1", m_MaxPasscodeEntriesCooldown);
+			foreach (IAT_CodelockRaidTool tool : m_RaidTools)
+			{
+				tool.PrettyPrint();
+			}
+			Print("--[IAT_CodelockConfig END]");
 		}
-		Print("--[IAT_CodelockConfig END]");
 	}
 };

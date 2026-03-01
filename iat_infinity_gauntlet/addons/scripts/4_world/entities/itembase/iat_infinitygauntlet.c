@@ -16,7 +16,7 @@ class IAT_InfinityGauntlet_ColorBase extends Gloves_Base
 	void BalanceTheUniverse()
 	{
 		array<Man> players = new array<Man>();
-		GetGame().GetPlayers(players);
+		g_Game.GetPlayers(players);
 
 		players.ShuffleArray();
 
@@ -34,7 +34,7 @@ class IAT_InfinityGauntlet_ColorBase extends Gloves_Base
 			if (Class.CastTo(player, p))
 			{
 				// tell them thanos has claimed their soul
-				GetGame().RPCSingleParam(player, ERPCs.RPC_WARNING_TELEPORT, null, true, player.GetIdentity());
+				g_Game.RPCSingleParam(player, ERPCs.RPC_WARNING_TELEPORT, null, true, player.GetIdentity());
 				// kill the player
 				player.SetHealth(0);
 			}
@@ -67,7 +67,7 @@ class IAT_InfinityGauntlet_ColorBase extends Gloves_Base
 	void PlayParticleEffect()
 	{
 		// client only
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			if (m_GloveParticle)
 				m_GloveParticle.StopParticle();

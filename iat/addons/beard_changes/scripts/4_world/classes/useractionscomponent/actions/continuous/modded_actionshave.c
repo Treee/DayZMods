@@ -12,7 +12,7 @@ modded class ActionShave
 {
 	void ActionShave()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
         {
             GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
         }
@@ -36,7 +36,7 @@ modded class ActionShave
 	void OnUpdateActions( Object item, Object target, int component_index )
 	{
 		PlayerBase player;
-		if (Class.CastTo(player, GetGame().GetPlayer()))
+		if (Class.CastTo(player, g_Game.GetPlayer()))
 		{
 			TStringArray m_BeardTypes = player.GetFacialHairOptions();
 			if (m_BeardTypes && m_BeardTypes.Count() > 0)
@@ -67,7 +67,7 @@ modded class ActionShave
 		if (action_data.m_Player)
 		{
 			string newItem = IAT_BeardVariantActionData.Cast(action_data).m_IATBeardVariant;
-			GetGame().CreateObjectEx(newItem, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+			g_Game.CreateObjectEx(newItem, action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 		}
 	}
 
@@ -81,7 +81,7 @@ modded class ActionShave
 	{
 		if ( super.SetupAction( player, target, item, action_data, extra_data ) )
 		{
-			if ( !GetGame().IsDedicatedServer() )
+			if ( !g_Game.IsDedicatedServer() )
 			{
 				TStringArray  m_BeardTypes = player.GetFacialHairClassNames();
 				string itemName = m_BeardTypes.Get(m_VariantID);
@@ -127,7 +127,7 @@ modded class ActionShaveTarget
 {
 	void ActionShaveTarget()
 	{
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
         {
             GetVariantManager().GetOnUpdateInvoker().Insert(OnUpdateActions);
         }
@@ -188,7 +188,7 @@ modded class ActionShaveTarget
 		if ( action_data.m_Target && Class.CastTo(man, action_data.m_Target.GetObject()) )
 		{
 			string newItem = IAT_BeardVariantActionData.Cast(action_data).m_IATBeardVariant;
-			GetGame().CreateObjectEx(newItem, man.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
+			g_Game.CreateObjectEx(newItem, man.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY);
 		}
 	}
 
@@ -205,7 +205,7 @@ modded class ActionShaveTarget
 			PlayerBase targetPlayer;
 			if (Class.CastTo(targetPlayer,  target.GetObject()))
 			{
-				if ( !GetGame().IsDedicatedServer() )
+				if ( !g_Game.IsDedicatedServer() )
 				{
 					TStringArray  m_BeardTypes = targetPlayer.GetFacialHairClassNames();
 					string itemName = m_BeardTypes.Get(m_VariantID);

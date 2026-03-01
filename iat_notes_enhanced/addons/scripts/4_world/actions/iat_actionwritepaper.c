@@ -10,12 +10,12 @@ class IAT_ActionWritePaperCB : ActionContinuousBaseCB
 
 	override void OnStateChange(int pOldState, int pCurrentState)
 	{
-		if (pCurrentState == STATE_NONE && (!GetGame().IsDedicatedServer()))
+		if (pCurrentState == STATE_NONE && (!g_Game.IsDedicatedServer()))
 		{
-			if (GetGame().GetUIManager() && GetGame().GetUIManager().IsMenuOpen(MENU_NOTE))
-				GetGame().GetUIManager().FindMenu(MENU_NOTE).Close();
+			if (g_Game.GetUIManager() && g_Game.GetUIManager().IsMenuOpen(MENU_NOTE))
+				g_Game.GetUIManager().FindMenu(MENU_NOTE).Close();
 		}
-		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && (!GetGame().IsMultiplayer() || GetGame().IsServer()))
+		else if (pCurrentState == STATE_LOOP_LOOP && pOldState != STATE_LOOP_LOOP && (!g_Game.IsMultiplayer() || g_Game.IsServer()))
 		{
 			ItemBase paper_item;
 			if (m_ActionData.m_MainItem.ConfigIsExisting("writingColor"))
@@ -98,9 +98,9 @@ class IAT_ActionWritePaper: ActionContinuousBase
 	{
 		super.OnUpdate(action_data);
 
-		if(!GetGame().IsDedicatedServer())
+		if(!g_Game.IsDedicatedServer())
 		{
-			if (action_data.m_State == UA_FINISHED && GetGame().GetUIManager() && !GetGame().GetUIManager().IsMenuOpen(MENU_NOTE))
+			if (action_data.m_State == UA_FINISHED && g_Game.GetUIManager() && !g_Game.GetUIManager().IsMenuOpen(MENU_NOTE))
 			{
 				ActionManagerClient.Cast(action_data.m_Player.GetActionManager()).RequestEndAction();
 			}

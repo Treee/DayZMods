@@ -45,7 +45,7 @@ modded class TransmitterBase
 		if (Class.CastTo(player_PB, player))
 		{
 			// is server, player has a radio in hands, is not muted
-			if(GetGame().IsDedicatedServer() && player_PB.GetItemInHands() == this)
+			if(g_Game.IsDedicatedServer() && player_PB.GetItemInHands() == this)
 			{
 				string messageText;
 				if ( IAT_IsMuted())
@@ -73,7 +73,7 @@ modded class TransmitterBase
 	// ========================================== GETTERS & SETTERS & HELPERS
 	void IAT_MuteTransmitter()
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// mute helper
 			IAT_SetMuted(true);
@@ -88,7 +88,7 @@ modded class TransmitterBase
 
 	void IAT_UnMuteTransmitter()
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// mute helper
 			IAT_SetMuted(false);

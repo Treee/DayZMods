@@ -12,7 +12,7 @@ modded class MissionServer
 
 	// 	Param1<IAT_PoweredRadioTowerConfig> configParams = new Param1<IAT_PoweredRadioTowerConfig>(GetDayZGame().GetIATPoweredRadioTowerConfig());
 	// 	PrintFormat("[IAT_PoweredRadioTowerConfig] Sending Config to Player: %1 RPC: %2", identity.GetName(), IAT_POWEREDRADIOTOWER_RPC.CHECK_POWEREDRADIOTOWER_CONFIG);
-	// 	GetGame().RPCSingleParam(player, IAT_POWEREDRADIOTOWER_RPC.CHECK_POWEREDRADIOTOWER_CONFIG, configParams, true, identity);
+	// 	g_Game.RPCSingleParam(player, IAT_POWEREDRADIOTOWER_RPC.CHECK_POWEREDRADIOTOWER_CONFIG, configParams, true, identity);
 	// }
 
 	void InitializeRadioTowerConsoles()
@@ -27,7 +27,7 @@ modded class MissionServer
 			// decrement restart counter
 			data.ConsumeRestartToken();
 
-			object = GetGame().CreateObjectEx("StaticObj_iat_wallconsole", data.GetConsolePosition(), flags, RF_IGNORE);
+			object = g_Game.CreateObjectEx("StaticObj_iat_wallconsole", data.GetConsolePosition(), flags, RF_IGNORE);
 			if (Class.CastTo(wallConsole, object))
 			{
 				wallConsole.SetOrientation(data.GetConsoleOrientation());

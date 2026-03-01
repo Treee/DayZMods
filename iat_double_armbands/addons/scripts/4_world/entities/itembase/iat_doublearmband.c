@@ -24,7 +24,7 @@ class IAT_DoubleArmband_Event extends IAT_DoubleArmband_ColorBase
     {
 		super.OnWasDetached(parent, slot_id);
 		// server side call
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			// only delete from the player
 			PlayerBase player;
@@ -38,7 +38,7 @@ class IAT_DoubleArmband_Event extends IAT_DoubleArmband_ColorBase
 	override void OnWasAttached( EntityAI parent, int slot_id )
 	{
 		super.OnWasAttached( parent, slot_id );
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			PlayerBase player;
 			if (Class.CastTo(player, parent.GetHierarchyRootPlayer()))

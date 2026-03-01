@@ -21,7 +21,7 @@ modded class PlayerBase
 				{
 					SetPosition(m_IAT_LastPlayerPosition);
 					// teleport
-					GetGame().RPCSingleParam(this, ERPCs.RPC_WARNING_TELEPORT, null, true, GetIdentity());
+					g_Game.RPCSingleParam(this, ERPCs.RPC_WARNING_TELEPORT, null, true, GetIdentity());
 
 					PluginAdminLog adminLog = PluginAdminLog.Cast(GetPlugin(PluginAdminLog));
 					if (adminLog)
@@ -66,7 +66,7 @@ modded class PlayerBase
 		vector playerPosition = GetPosition();
 
 		// add some buffer to the check so we can inform the player BEFORE they are out of bounds
-		int worldSizeOffset = GetGame().GetWorld().GetWorldSize() - offset;
+		int worldSizeOffset = g_Game.GetWorld().GetWorldSize() - offset;
 
 		// add some buffer to the check so we can inform the player BEFORE they are out of bounds
 		int zeroOffset = 0 + offset;

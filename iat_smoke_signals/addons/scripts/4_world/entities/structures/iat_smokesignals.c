@@ -4,7 +4,7 @@ class IAT_SmokeSignalHouse_Base extends House
 
 	void IAT_SmokeSignalHouse_Base()
 	{
-		if ( !GetGame().IsDedicatedServer() )
+		if ( !g_Game.IsDedicatedServer() )
 		{
 			m_ParticleEfx = ParticleManager.GetInstance().PlayOnObject(GetSmokeParticle(), this, GetPosition());
 
@@ -23,7 +23,7 @@ class IAT_SmokeSignalHouse_Base extends House
 	}
     override void EEDelete(EntityAI parent)
 	{
-		if ( !GetGame().IsDedicatedServer() )
+		if ( !g_Game.IsDedicatedServer() )
 		{
 			if ( m_ParticleEfx )
 			{

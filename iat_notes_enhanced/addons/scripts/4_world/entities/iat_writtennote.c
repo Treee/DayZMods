@@ -11,7 +11,7 @@ modded class WrittenNoteData
             paper.SetSynchDirty();
         }
 
-        if (GetGame().IsDedicatedServer())
+        if (g_Game.IsDedicatedServer())
         {
             PluginAdminLog m_AdminLog = PluginAdminLog.Cast( GetPlugin(PluginAdminLog) );
 			if (m_AdminLog)
@@ -49,7 +49,7 @@ modded class Paper
 	{
 		super.OnVariablesSynchronized();
 
-        if (!GetGame().IsDedicatedServer())
+        if (!g_Game.IsDedicatedServer())
         {
             // update client side texture
             UpdateVisualState();
@@ -70,7 +70,7 @@ modded class Paper
 	{
 		super.AfterStoreLoad();
 
-        if (GetGame().IsDedicatedServer())
+        if (g_Game.IsDedicatedServer())
         {
             if (GetWrittenNoteData() && GetWrittenNoteData().GetNoteText() != "")
             {

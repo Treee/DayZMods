@@ -15,7 +15,7 @@ class IAT_Ladder_Closed_ColorBase extends ItemBase
 	override void OnPlacementComplete( Man player, vector position = "0 0 0", vector orientation = "0 0 0" )
 	{
 		super.OnPlacementComplete(player, position, orientation);
-		if( GetGame().IsDedicatedServer() )
+		if( g_Game.IsDedicatedServer() )
 		{
 			DeleteSafe();
 		}
@@ -50,7 +50,7 @@ class IAT_Ladder_Opened_ColorBase extends ItemBase
 	override void OnPlacementComplete( Man player, vector position = "0 0 0", vector orientation = "0 0 0" )
 	{
 		super.OnPlacementComplete(player, position, orientation);
-		if( GetGame().IsDedicatedServer() )
+		if( g_Game.IsDedicatedServer() )
 		{
 			if (m_AdminLog)
 			{

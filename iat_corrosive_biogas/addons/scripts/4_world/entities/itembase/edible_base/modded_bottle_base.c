@@ -4,7 +4,7 @@ modded class Bottle_Base
 	{
 		super.AfterStoreLoad();
 		// if is empty and has cholera, remove the agents
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			if (GetQuantity() < 0.01)
 			{

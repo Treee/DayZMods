@@ -48,7 +48,7 @@ modded class ActionDismantlePart
 		if (Class.CastTo(targetIATDoor, action_data.m_Target.GetObject()))
 		{
 			IAT_MoreDoorKit_ColorBase iat_doorkit;
-      		if (Class.CastTo(iat_doorkit, GetGame().CreateObjectEx(IAT_GetKitToSpawn(action_data), action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
+      		if (Class.CastTo(iat_doorkit, g_Game.CreateObjectEx(IAT_GetKitToSpawn(action_data), action_data.m_Player.GetPosition(), ECE_SETUP|ECE_NOLIFETIME|ECE_DYNAMIC_PERSISTENCY)))
 			{
 				action_data.m_MainItem.DecreaseHealth( UADamageApplied.DISMANTLE, false );
 

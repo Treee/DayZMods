@@ -62,9 +62,9 @@ class IAT_Gramaphone_Colorbase extends ItemBase
         if (slot_name == SLOT_NAME)
 		{
 			string cfgPath = string.Format("CfgVehicles %1 CfgCassette soundSet", item.GetType());
-			if(GetGame().ConfigIsExisting(cfgPath))
+			if(g_Game.ConfigIsExisting(cfgPath))
 			{
-				m_SoundSetName = GetGame().ConfigGetTextOut(cfgPath);
+				m_SoundSetName = g_Game.ConfigGetTextOut(cfgPath);
 			}
             SetAnimationPhase("vinyl", 0.0); // show when attached
 		}
@@ -115,7 +115,7 @@ class IAT_Gramaphone_Colorbase extends ItemBase
 		}
 
 		// client side sound
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			StopRecordSound();
 
@@ -135,7 +135,7 @@ class IAT_Gramaphone_Colorbase extends ItemBase
 	protected void Stop()
 	{
 		// client side
-		if (!GetGame().IsDedicatedServer())
+		if (!g_Game.IsDedicatedServer())
 		{
 			StopRecordSound();
 			SetAnimationPhaseNow("vinyl_rotate", 0); // stop rotation

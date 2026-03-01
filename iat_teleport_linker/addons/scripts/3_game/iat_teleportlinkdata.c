@@ -139,7 +139,7 @@ class IAT_TeleportLinkData
 		if (HasTimerToStayOpen())
 		{
 			int miliseconds = GetTeleportTimerToStayOpen() * 1000;
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SetTeleportInActive, miliseconds, true);
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SetTeleportInActive, miliseconds, true);
 		}
 	}
 	void SetTeleportInActive()

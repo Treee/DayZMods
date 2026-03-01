@@ -26,7 +26,7 @@ modded class Hologram
 		m_ContactDir = vector.Zero;
 		vector minMax[2];
 		float projectionRadius = GetProjectionRadius();
-		float cameraToPlayerDistance = vector.Distance(GetGame().GetCurrentCameraPosition(), player.GetPosition());
+		float cameraToPlayerDistance = vector.Distance(g_Game.GetCurrentCameraPosition(), player.GetPosition());
 
 		if (projectionRadius < SMALL_PROJECTION_RADIUS) // objects with radius smaller than 1m
 		{
@@ -40,8 +40,8 @@ modded class Hologram
 			maxProjectionDistance = Math.Clamp(maxProjectionDistance, SMALL_PROJECTION_RADIUS, LARGE_PROJECTION_DISTANCE_LIMIT);
 		}
 
-		vector from = GetGame().GetCurrentCameraPosition();
-		vector to = from + (GetGame().GetCurrentCameraDirection() * (maxProjectionDistance + cameraToPlayerDistance));
+		vector from = g_Game.GetCurrentCameraPosition();
+		vector to = from + (g_Game.GetCurrentCameraDirection() * (maxProjectionDistance + cameraToPlayerDistance));
 		vector contactPosition;
 		set<Object> hitObjects = new set<Object>();
 
@@ -69,7 +69,7 @@ modded class Hologram
 		// Camera isn't correctly positioned in some cases, leading to raycasts hitting the object directly behind the camera
 		if ((hitObjects.Count() > 0) && (vector.DistanceSq(from, contactPosition) < minDistFromStart))
 		{
-			from = contactPosition + GetGame().GetCurrentCameraDirection() * raycastOriginOffsetOnFail;
+			from = contactPosition + g_Game.GetCurrentCameraDirection() * raycastOriginOffsetOnFail;
 			DayZPhysics.RaycastRV(from, to, contactPosition, m_ContactDir, m_ContactComponent, hitObjects, player, m_Projection, false, false, ObjIntersectFire);
 		}
 
