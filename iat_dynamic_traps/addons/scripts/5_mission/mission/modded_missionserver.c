@@ -1,10 +1,8 @@
 modded class MissionServer
 {
-	override void OnInit()
+	void MissionServer()
     {
-        super.OnInit();
 		GetDayZGame().SetIATDynamicTrapsConfig(GetDayZGame().GetIATDynamicTrapsConfig());
-		Print("[IAT_Dynamic_Traps] Config Initialized");
     }
 	// no need to send to client. (yet?)
 	// override void OnClientReadyEvent(PlayerIdentity identity, PlayerBase player)

@@ -7,6 +7,7 @@ class IAT_DynamicTrapsConfig
 	[NonSerialized()]
     protected string m_JsonFile = "DynamicTrapsConfig.json";
 
+	protected bool m_DebugLogEnabled; // toggles printing logs to script file
 	protected bool m_IsEnabled;
 	protected int m_MaxRoll;
 	protected int m_MinRoll;
@@ -34,6 +35,7 @@ class IAT_DynamicTrapsConfig
 			bool placeOnSurface = true;
 			bool keepHeight = true;
 			// set some default values
+			iat_DTConfig.m_DebugLogEnabled = false;
 			iat_DTConfig.SetIsEnabled(true);
 			iat_DTConfig.SetMinRoll(0);
 			iat_DTConfig.SetMaxRoll(100);
@@ -194,11 +196,14 @@ class IAT_DynamicTrapsConfig
 
 	void PrettyPrint()
 	{
-		Print("--[DYNAMIC TRAPS CONFIG BEGIN]");
-		PrintFormat("--m_IsEnabled: %1", IsTrapsEnabled());
-		PrintFormat("--m_MinRoll: %1", GetMinRoll());
-		PrintFormat("--m_MaxRoll: %1", GetMaxRoll());
-		Print("--[END]");
+		if (m_DebugLogEnabled)
+		{
+			Print("--[DYNAMIC TRAPS CONFIG BEGIN]");
+			PrintFormat("--m_IsEnabled: %1", IsTrapsEnabled());
+			PrintFormat("--m_MinRoll: %1", GetMinRoll());
+			PrintFormat("--m_MaxRoll: %1", GetMaxRoll());
+			Print("--[END]");
+		}
 	}
 	// ==================================================================================
 	// Getters & Setters
