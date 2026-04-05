@@ -127,9 +127,14 @@ class IAT_FacePaintOptions
 		category2_options.Insert("glowstick_yellow");
 		category2_options.Insert("juggalo_mudvayne");
 		category2_options.Insert("skullface");
+		category2_options.Insert("skullface2");
 		category2_options.Insert("spaceman");
 		category2_options.Insert("starchild");
 		category2_options.Insert("tattoo_teardrop");
+		category2_options.Insert("tribal1");
+		category2_options.Insert("tribal1_red");
+		category2_options.Insert("tribal2");
+		category2_options.Insert("tribal3");
 		s_FacePaintOptionsMap.Insert("masks_&_tattoos", category2_options);
 
 		array<string> category3_options = new array<string>;
