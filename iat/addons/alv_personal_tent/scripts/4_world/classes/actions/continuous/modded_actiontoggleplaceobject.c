@@ -6,7 +6,7 @@ modded class ActionTogglePlaceObject
 		if (super.ActionCondition(player, target, item))
 		{
 			// check if our item is in hands
-			if (item.IsInherited(ALV_Deployable_Base))
+			if (item.IsInherited(IAT_PersonalTent_Kit))
 			{
 				// if the player CAN place a personal tent
 				if (player.IAT_CanDeployPersonalTent())

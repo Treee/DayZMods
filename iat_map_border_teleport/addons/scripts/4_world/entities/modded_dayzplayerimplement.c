@@ -4,11 +4,16 @@ modded class DayZPlayerImplement
 	{
 		super.OnStepEvent(pEventType, pUserString, pUserInt);
 
-		if (g_Game.IsDedicatedServer())
+		if (g_Game.IsDedicatedServer()) // Handle server side state
 		{
-			TryTeleportOutOfBoundsPlayer(m_StepCounter);
+			IAT_MBT_TryTeleportOutOfBoundsPlayer(m_StepCounter);
+		}
+		else // Handle client side stuff
+		{
+			IAT_MBT_TryVisualEffects();
 		}
 	}
 
-	void TryTeleportOutOfBoundsPlayer(int stepCounter);
+	void IAT_MBT_TryTeleportOutOfBoundsPlayer(int stepCounter);
+	void IAT_MBT_TryVisualEffects();
 };

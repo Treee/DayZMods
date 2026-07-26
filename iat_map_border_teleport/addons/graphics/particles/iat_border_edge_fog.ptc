@@ -1,0 +1,49 @@
+EffectDef {
+ Emitors {
+  EmitorDef smoke_middle_normal_01 {
+   ShapeType Ellipse
+   ShapeSize 20 1 20
+   ConeAngle 0 0 0
+   MaxNum 10
+   BirthRate 7
+   BirthRateRND 0
+   BirthRateVel 2
+   Offset 0 0 0
+   Material "{17F1336FEF157B35}graphics/Particles/materials/smoke/smoke_dust_01_em_Spooky.emat"
+   ScaleX 1
+   ScaleY 0.2
+   SizeMultiplier 50
+   SizeRND 5
+   RandomRotDir 1
+   RotMultiplier 1
+   VelAngle 0
+   RandomAngle 0
+   Sort 1
+   Velocity 5
+   VelocityRND 5
+   AirResistance 5
+   AirResistanceRND 0
+   GravityMultiply 0.1
+   Spring 0
+   Wind 0
+   AnimOnce 0
+   AnimFPS 30
+   LifetimeByAnim 0
+   RandomFrame 1
+   LifeTime 1
+   LifeTimeRND 3
+   Color {
+    0 1 1 1 1 1 1 1
+   }
+   Alpha {
+    0 0 0.054 0.431 0.199 0.494 0.348 0.694 0.505 0.819 0.678 0.775 0.848 0.65 0.964 0.375 1 0
+   }
+   RotationSpeed {
+    0 0 0.609 0.196 0.899 0.158 1 0.044
+   }
+   Size {
+    0 1 1 1
+   }
+  }
+ }
+}

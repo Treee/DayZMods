@@ -13,22 +13,23 @@ class CfgMods
 		author = "ItsATreee";
 		name = "ALV Personal Tent";
 		dependencies[] = { "Game", "World", "Mission" };
+		storageVersion = 1; // CF Storage version
 		class defs
 		{
 			class gameScriptModule
 			{
 				value = "";
-				files[] = { "iat/alv_personal_tent/scripts/3_game" };
+				files[] = { "alv_personal_tent/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
 				value = "";
-				files[] = { "iat/alv_personal_tent/scripts/4_world" };
+				files[] = { "alv_personal_tent/scripts/4_world" };
 			};
 			class missionScriptModule
 			{
 				value = "";
-				files[] = { "iat/alv_personal_tent/scripts/5_mission" };
+				files[] = { "alv_personal_tent/scripts/5_mission" };
 			};
 		};
 	};

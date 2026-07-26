@@ -3,11 +3,15 @@ class IAT_PersonalTent_ColorBase extends ALV_Deployable_Base
 	protected string m_IAT_OwnerId = "";
 	protected bool m_IAT_HasFetchedId = false;
 
+	override bool CanBeOpened()
+	{
+		return true;
+	};
+
 	// set the tent owner when this thing is placed
 	override void OnPlacementComplete( Man player, vector position = "0 0 0", vector orientation = "0 0 0" )
 	{
 		super.OnPlacementComplete( player, position, orientation );
-
 		// Cast to player base to get access to the identity
 		PlayerBase pb_Player;
 		if (Class.CastTo(pb_Player, player))
@@ -21,7 +25,7 @@ class IAT_PersonalTent_ColorBase extends ALV_Deployable_Base
 	bool IAT_CanOpenPersonalTent(PlayerIdentity invokingPlayer)
 	{
 		// if we can open this tent
-		if (super.CanBeOpened())
+		if (CanBeOpened())
 		{
 			// check if this tent is owned by invoking player
 			if (IAT_IsPersonalTentOwner(invokingPlayer))
@@ -173,7 +177,6 @@ class IAT_PersonalTent_ColorBase extends ALV_Deployable_Base
 
 		auto ctx = storage[IAT_ALV_PersonalTent_Scripts];
 		if (!ctx) return;
-
 		// write my value
 		ctx.Write(m_IAT_OwnerId);
 
