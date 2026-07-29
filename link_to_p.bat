@@ -22,6 +22,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_notes_enhanced" Z:\DayZ\Mod
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_powered_radio_towers" Z:\DayZ\Modding\iat_powered_radio_towers\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_prop_items" Z:\DayZ\Modding\iat_prop_items\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_radio_mute" Z:\DayZ\Modding\iat_radio_mute\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_report_tool" Z:\DayZ\Modding\iat_report_tool
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_roleplay_emotes" Z:\DayZ\Modding\iat_roleplay_emotes\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_roll_tables" Z:\DayZ\Modding\iat_roll_tables\addons
