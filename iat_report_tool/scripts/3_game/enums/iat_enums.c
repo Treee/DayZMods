@@ -1,0 +1,14 @@
+enum IAT_RPC_REPORTTOOL
+{
+	CLIENT_SEND_REPORT = -8548731
+};
+
+enum IAT_ReportType
+{
+    TERRAIN,
+    BUG,
+    SUGGESTION,
+    PLAYER,
+    EXPLOIT,
+    NO_SELECTION
+};

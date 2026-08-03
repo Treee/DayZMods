@@ -1,0 +1,301 @@
+FrameWidgetClass rootFrame {
+ size 0.5 0.7
+ halign center_ref
+ valign center_ref
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass rootPanel {
+   ignorepointer 1
+   position 0 0
+   size 1 1
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style Outline
+   "no focus" 0
+   {
+    PanelWidgetClass pnlHeader {
+     ignorepointer 1
+     color 0.796 0 0 1
+     position 0 0.01
+     size 0.95 0.07
+     halign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanel
+     "no focus" 1
+     {
+      TextWidgetClass txtHeaderTitle {
+       ignorepointer 1
+       position 0 0
+       size 1 1
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Bold
+       text "#STR_IAT_ReportMenu_MenuTitle"
+       "size to text h" 1
+       "size to text v" 1
+       "text halign" center
+       "text valign" center
+      }
+     }
+    }
+    PanelWidgetClass pnlReportForm {
+     ignorepointer 1
+     position 0 0.09
+     size 0.95 0.64
+     halign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style rover_sim_black
+     "no focus" 0
+     {
+      GridSpacerWidgetClass settings_content {
+       ignorepointer 1
+       color 0 0 0 0.549
+       size 1 1
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style DayZDefaultPanel
+       "no focus" 1
+       Padding 0
+       Margin 0
+       "Size To Content H" 1
+       "Size To Content V" 1
+       Columns 1
+       {
+        GridSpacerWidgetClass spcrReportTypeOptions {
+         ignorepointer 1
+         position 0 0
+         size 1 1
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         "Size To Content V" 1
+         content_halign center
+         content_valign center
+         Columns 2
+         Rows 1
+         {
+          CheckBoxWidgetClass chkBoxTerrainReport {
+           size 0.33 0.1
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Default
+           text "#STR_IAT_ReportMenu_ReportType_Terrain"
+           checked 1
+          }
+          CheckBoxWidgetClass chkBoxBugReport {
+           position 0 0
+           size 1 0.1
+           halign center_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "#STR_IAT_ReportMenu_ReportType_Bug"
+          }
+          CheckBoxWidgetClass chkBoxPlayerReport {
+           visible 0
+           position 0 0
+           size 1 0.1
+           halign right_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "#STR_IAT_ReportMenu_ReportType_Player"
+          }
+         }
+        }
+        FrameWidgetClass reportDescriptionContainer {
+         ignorepointer 0
+         size 1 0.9
+         halign center_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          PanelWidgetClass pnlDescriptionTitle {
+           ignorepointer 1
+           color 0.796 0 0 1
+           size 1 0.08
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style DayZDefaultPanel
+           {
+            TextWidgetClass txtDescriptionTitle {
+             ignorepointer 1
+             position 0 0
+             size 1 1
+             halign center_ref
+             valign center_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#STR_IAT_ReportMenu_ReportDescriptionLabel"
+             "size to text h" 1
+             "size to text v" 1
+             "text halign" center
+             "text valign" center
+            }
+           }
+          }
+          FrameWidgetClass frmDescription {
+           ignorepointer 1
+           position 0 0.09
+           size 1 0.9
+           halign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           {
+            MultilineEditBoxWidgetClass editTxtReportDescription {
+             size 1 1
+             halign center_ref
+             valign bottom_ref
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             text "#STR_IAT_ReportMenu_ReportDescriptionText"
+             font "gui/fonts/MetronBook16"
+             lines 10
+             "limit visible" 1
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    PanelWidgetClass pnlButtons {
+     ignorepointer 1
+     position 0 0.01
+     size 0.95 0.25
+     halign center_ref
+     valign bottom_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     scaled 1
+     style rover_sim_black
+     {
+      GridSpacerWidgetClass spcrBotPanel {
+       ignorepointer 1
+       size 1 1
+       halign center_ref
+       valign bottom_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       Columns 1
+       Rows 2
+       {
+        PanelWidgetClass pnlSubmitInfo {
+         ignorepointer 1
+         position 0 0
+         size 1 0.5
+         halign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         {
+          MultilineTextWidgetClass txtSubmitInfo0 {
+           ignorepointer 1
+           size 1 1
+           halign center_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           text "#STR_IAT_ReportMenu_AdditionalSubmitInfo"
+           "size to text h" 1
+           "size to text v" 1
+           "text halign" center
+           "text valign" center
+           wrap 1
+          }
+         }
+        }
+        GridSpacerWidgetClass spcrButtons {
+         ignorepointer 1
+         size 1 0.35
+         halign center_ref
+         valign bottom_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style outline
+         Columns 2
+         Rows 1
+         {
+          ButtonWidgetClass btnCancel {
+           position 0 0
+           size 0.08 1
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Editor
+           text "#STR_IAT_ReportMenu_CancelReport"
+          }
+          ButtonWidgetClass btnSubmit {
+           size 0.08 1
+           halign right_ref
+           valign center_ref
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Editor
+           text "#STR_IAT_ReportMenu_SubmitReport"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

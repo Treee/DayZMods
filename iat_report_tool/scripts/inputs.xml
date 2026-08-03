@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<modded_inputs>
+	<inputs>
+		<actions>
+			<input name="IAT_UA_ToggleReportMenu" loc="STR_UA_IAT_ToggleReportMenu" />
+		</actions>
+		<sorting name="IAT_Mods" loc="STR_UA_IAT_SettingsTabName">
+			<input name="IAT_UA_ToggleReportMenu"/>
+		</sorting>
+	</inputs>
+	<preset>
+		<input name="IAT_UA_ToggleReportMenu">
+			<btn name="kF7" />
+		</input>
+	</preset>
+</modded_inputs>

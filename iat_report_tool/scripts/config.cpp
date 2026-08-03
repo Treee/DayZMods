@@ -12,9 +12,15 @@ class CfgMods
 		type = "mod";
 		author = "ItsATreee";
 		name = "ItsATreee Report Tool";
-		dependencies[] = { "World","Mission" };
+		inputs = "iat_report_tool/scripts/inputs.xml";
+		dependencies[] = { "Game", "World", "Mission" };
 		class defs
 		{
+			class gameScriptModule
+			{
+				value = "";
+				files[] = { "iat_report_tool/scripts/3_game" };
+			};
 			class worldScriptModule
 			{
 				value = "";

@@ -1,0 +1,46 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"MIME-Version: 1.0\n"
+"POT-Creation-Date: 2026-07-30 23:02+0000\n"
+"X-CSV-Hash: d91d2c1f8cd4f4e1\n"
+"X-Content-Hash: 68b047f3af073c721807b8e996bde2e6ad60bd6a5f32e3a7cb12ef4ec16b0848\n"
+"X-Generator: dayz-stringtable v0.4.0\n"
+
+msgctxt "STR_UA_IAT_SettingsTabName"
+msgid "ItsATreeMods"
+msgstr ""
+
+msgctxt "STR_UA_IAT_ToggleReportMenu"
+msgid "Report Menu Toggle"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_MenuTitle"
+msgid "Report Menu"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportTypeLabel"
+msgid "Report Type"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportDescriptionLabel"
+msgid "Detailed Description"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportDescriptionText"
+msgid "Hint"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_AdditionalSubmitInfo"
+msgid "Your current location, heading, and SteamdID will automatically be included when the report is submitted. If you are ok with us potentially contacting you in Discord, please provide your Discord username."
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_CancelReport"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_SubmitReport"
+msgid "Submit"
+msgstr ""
+

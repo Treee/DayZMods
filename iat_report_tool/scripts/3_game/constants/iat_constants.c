@@ -1,0 +1,1 @@
+const int IAT_MENU_REPORTTOOL_MENU = 712;

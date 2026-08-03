@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: japanese\n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2026-07-30 19:26-0600\n"
+"X-Content-Hash: 3e0d36c2e711781db43fdd4498e0cd6376a3a95c0169fa76ea70eef272f2e852\n"
+"X-Generator: dayz-stringtable v0.4.0\n"
+
+msgctxt "STR_UA_IAT_SettingsTabName"
+msgid "ItsATreeMods"
+msgstr ""
+
+msgctxt "STR_UA_IAT_ToggleReportMenu"
+msgid "Report Menu Toggle"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_MenuTitle"
+msgid "Report Menu"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportTypeLabel"
+msgid "Report Type"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportDescriptionLabel"
+msgid "Detailed Description"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportDescriptionText"
+msgid "Hint"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_AdditionalSubmitInfo"
+msgid "Your current location, heading, and SteamdID will automatically be included when the report is submitted. If you are ok with us potentially contacting you in Discord, please provide your Discord username."
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_CancelReport"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_SubmitReport"
+msgid "Submit"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportType_Terrain"
+msgid "Terrain Report"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportType_Bug"
+msgid "Bug Report"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportType_Player"
+msgid "Player Report"
+msgstr ""
+
