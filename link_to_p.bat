@@ -9,6 +9,7 @@ mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_double_armbands" Z:\DayZ\Mo
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_traps" Z:\DayZ\Modding\iat_dynamic_traps\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_enhanced_bioprotection" Z:\DayZ\Modding\iat_enhanced_bioprotection\addons
+mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_enhanced_medical" Z:\DayZ\Modding\iat_enhanced_medical
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_facepaints" Z:\DayZ\Modding\iat_facepaints\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_infinity_gauntlet" Z:\DayZ\Modding\iat_infinity_gauntlet\addons
 mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_item_blacklist" Z:\DayZ\Modding\iat_item_blacklist\addons
