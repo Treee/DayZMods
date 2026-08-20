@@ -1,7 +1,7 @@
 class IAT_ReportToolConfig
 {
 	[NonSerialized()]
-	protected string m_DayZFolder = "$profile:";
+	protected string m_DayZFolder = "$mission:";
 	[NonSerialized()]
     protected string m_RootConfigFolder = "ItsATreeMods";
 	[NonSerialized()]
@@ -9,6 +9,9 @@ class IAT_ReportToolConfig
 
 	protected string m_DiscordWebhookUrl = "";
 	protected bool m_CanSendReports = 0;
+
+	protected bool m_AddTerrainReportsToTeleportList = 0;
+	protected string m_TeleportEntryNamePrefix = "TRPT";
 
 	IAT_ReportToolConfig TryGetReportToolConfig()
 	{
@@ -28,6 +31,9 @@ class IAT_ReportToolConfig
 			// set some default values
 			iat_RTConfig.m_DiscordWebhookUrl = "Replace With Your Discord Webhook";
 			iat_RTConfig.m_CanSendReports = 0;
+
+			iat_RTConfig.m_AddTerrainReportsToTeleportList = 1;
+			iat_RTConfig.m_TeleportEntryNamePrefix = "TRPT";
 
 			// write the file to "create it"
 			if (!JsonFileLoader<ref IAT_ReportToolConfig>.SaveFile(jsonConfig, iat_RTConfig, errorMessage))
@@ -54,6 +60,16 @@ class IAT_ReportToolConfig
 	bool CanSendReports()
 	{
 		return m_CanSendReports;
+	}
+
+	bool CanAddLocationsToVPPTeleportList()
+	{
+		return m_AddTerrainReportsToTeleportList;
+	}
+
+	string GetTeleportEntryNamePrefix()
+	{
+		return m_TeleportEntryNamePrefix;
 	}
 
 	// ==================================================================================

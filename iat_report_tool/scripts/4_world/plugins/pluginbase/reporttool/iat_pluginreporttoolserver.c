@@ -1,7 +1,7 @@
 class IAT_PluginReportToolServer extends PluginBase
 {
 	protected int m_LastReportTime;
-	protected const float REPORT_COOLDOWN_MS = 60000;
+	protected const float REPORT_COOLDOWN_MS = 10000;
 	// Initialize variables
 	override void OnInit()
 	{
@@ -57,6 +57,29 @@ class IAT_PluginReportToolServer extends PluginBase
 		m_LastReportTime = g_Game.GetTime();
 		// Send webhook thingy
 		GetWebHooksManager().PostData(IAT_ReportWebHookMessage, new IAT_ReportWebHookMessage(reportData));
+
+		// if the report is a terrain report
+		if (reportData.IsTerrainReport())
+		{
+			// if the config exists
+			IAT_ReportToolConfig config;
+			if (Class.CastTo(config, GetDayZGame().GetIATReportToolConfig()))
+			{
+				// if the config is allowed to write teleport locations
+				if (config.CanAddLocationsToVPPTeleportList())
+				{
+					string entryName = string.Format("%1 [%2] - [%3]", config.GetTeleportEntryNamePrefix(), reportData.GetPlayerName(), reportData.GetTimestamp());
+
+					// VPP Teleport Manager
+					TeleportManager tpm;
+					if (Class.CastTo(tpm, GetTeleportManager()))
+					{
+						tpm.AddLocation(entryName, reportData.GetReportPosition());
+						tpm.Save();
+					}
+				}
+			}
+		}
 	}
 
 	protected string GetUTCTimestamp()

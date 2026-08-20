@@ -38,4 +38,28 @@ class IAT_ReportData
             return "Exploit Report";
         return "No Report Type";
     }
+
+    string GetPlayerName()
+    {
+        return m_PlayerName;
+    }
+
+    vector GetReportPosition()
+    {
+        return m_Position;
+    }
+
+    string GetTimestamp()
+    {
+        return m_Timestamp;
+    }
+
+    bool IsTerrainReport()
+    {
+        if (m_ReportType == IAT_ReportType.TERRAIN)
+        {
+            return true;
+        }
+        return false;
+    }
 };
