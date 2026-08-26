@@ -154,9 +154,16 @@ modded class PlayerBase
 	}
 	protected void IAT_MBT_UpdateFogEffect(float intensity = 0.0)
 	{
-		if (!m_IAT_MapBorderFog)
+		/*
+		* This line helps distinguish the player near the edge vs a player nearby
+		* and keeps the nearby player from seeing the fog effects.
+		*/
+		if (GetInstanceType() == DayZPlayerInstanceType.INSTANCETYPE_CLIENT)
 		{
-			m_IAT_MapBorderFog = ParticleManager.GetInstance().PlayOnObject(ParticleList.IAT_MBT_MAP_BORDER_FOG, this);
+			if (!m_IAT_MapBorderFog)
+			{
+				m_IAT_MapBorderFog = ParticleManager.GetInstance().PlayOnObject(ParticleList.IAT_MBT_MAP_BORDER_FOG, this);
+			}
 		}
 	}
 	protected void IAT_MBT_StopFogEffect()
