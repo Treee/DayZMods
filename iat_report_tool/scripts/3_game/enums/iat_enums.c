@@ -10,5 +10,6 @@ enum IAT_ReportType
     SUGGESTION,
     PLAYER,
     EXPLOIT,
+    BAD_WORD,
     NO_SELECTION
 };

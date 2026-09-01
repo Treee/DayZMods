@@ -35,5 +35,8 @@ class IAT_ReportWebHookMessage extends WebHookMessageBase
         field.SetValue(report.m_Description);
 
         embeds.Insert(embed);
+
+        content = string.Format("**[IAT %1 Report]:** [%2](<https://steamcommunity.com/profiles/%3>) Position: %4 Details: %5", report.GetReportTypeDisplayName(), report.m_PlayerName, report.m_SteamID, report.m_Position, report.m_Description);
+
     }
-}
+};

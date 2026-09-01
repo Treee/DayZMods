@@ -2,7 +2,7 @@ class CfgPatches
 {
 	class IAT_Report_Tool_Scripts
 	{
-		requiredAddons[] = { "DZ_Data", "DZ_Scripts" };
+		requiredAddons[] = { "DZ_Data", "DZ_Scripts", "ADM_Chat_Filter_Mod" };
 	};
 };
 class CfgMods

@@ -14,19 +14,17 @@ modded class WebHook
 			{
 				case IAT_ReportWebHookMessage:
 				{
-					if (!config.CanSendReports())
-					break;
-
-					IAT_PostMessage(config.GetDiscordWebhookUrl(), dataClass);
-					break;
+					if (config.CanSendReports())
+					{
+						IAT_ReportWebHookMessage rwhm;
+						if (Class.CastTo(rwhm, dataClass))
+						{
+							GetWebHooksManager().GetConnectionManager().Post(GetURL(), rwhm.BuildMessage(SimplifyMessages()));
+						}
+					}
 				}
+				break;
 			}
 		}
-	}
-
-	// Simple wrapper to cut down on duplicate code.
-	protected void IAT_PostMessage(string url, WebHookMessageBase msg)
-	{
-		GetWebHooksManager().GetConnectionManager().Post(url, msg.BuildMessage(SimplifyMessages()));
 	}
 };

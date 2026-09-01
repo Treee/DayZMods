@@ -16,14 +16,14 @@ class CfgVehicles
         hiddenSelectionsTextures[]={"dz\gear\containers\data\christmas_paper1_CO.paa", "dz\gear\containers\data\christmas_paper_ribbon_CO.paa"};
         hiddenSelectionsMaterials[]={"DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD.rvmat"};
         itemsCargoSize[]={10, 10};
-        class DamageSystem : DamageSystem
+        class DamageSystem
         {
-            class GlobalHealth : GlobalHealth
+            class GlobalHealth
             {
                 class Health
                 {
                     hitpoints=30;
-                    healthLevels[]={{1, {"DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GREEN.rvmat"}}, {0.7, {"DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD.rvmat"}}, {0.5, {"DZ\gear\containers\data\christmas_paper1_damage.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD_damage.rvmat"}}, {0.3, {}}, {0, {"DZ\gear\containers\data\christmas_paper1_destruct.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD_destruct.rvmat"}}};
+                    healthLevels[]={{1, {"DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GREEN.rvmat"}}, {0.7, {"DZ\gear\containers\data\christmas_paper1.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD.rvmat"}}, {0.5, {"DZ\gear\containers\data\christmas_paper1_damage.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD_damage.rvmat"}}, {0.3, {"DZ\gear\containers\data\christmas_paper1_destruct.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD_destruct.rvmat"}}, {0, {"DZ\gear\containers\data\christmas_paper1_destruct.rvmat", "DZ\gear\containers\data\christmas_ribbon_GOLD_destruct.rvmat"}}};
                 };
             };
         };

@@ -48,6 +48,10 @@ class IAT_PluginReportToolServer extends PluginBase
 			pos = player.GetPosition();
 			orientation = player.GetOrientation();
 		}
+		if (reportType == IAT_ReportType.BAD_WORD)
+		{
+			description = string.Format("Player wrote [%1] which is considered a bad word.", description);
+		}
 		return new IAT_ReportData(reportType, description, steamId, playerName, pos, orientation, timestamp);
 	}
 
