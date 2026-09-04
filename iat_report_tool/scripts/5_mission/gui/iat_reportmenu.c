@@ -25,7 +25,6 @@ class IAT_ReportMenu extends UIScriptedMenu
 
         m_ChkBoxTerrainReport.SetChecked(true);
         m_ChkBoxBugReport.SetChecked(false);
-        PopulateDescriptionHint(m_ChkBoxTerrainReport);
 
         return layoutRoot;
     }
@@ -79,9 +78,8 @@ class IAT_ReportMenu extends UIScriptedMenu
         if (w == m_ChkBoxTerrainReport || w == m_ChkBoxBugReport)
         {
             EnsureOnlyOneCheckboxIsSelected(w);
-            PopulateDescriptionHint(w);
+            return true;
         }
-
         return super.OnClick(w, x, y, button);
     }
 
@@ -119,27 +117,6 @@ class IAT_ReportMenu extends UIScriptedMenu
         return descriptionText;
     }
 
-    void PopulateDescriptionHint(Widget w)
-    {
-        // If the widget clicked is the terrain box
-        if (w == m_ChkBoxTerrainReport)
-        {
-            // if the other bug box is checked
-            if (!m_ChkBoxBugReport.IsChecked())
-            {
-                m_EditDescription.SetText(Widget.TranslateString("#STR_IAT_ReportMenu_ReportDescriptionText_Terrain"));
-            }
-        }
-        if (w == m_ChkBoxBugReport)
-        {
-            // if the other terrain box is checked
-            if (!m_ChkBoxTerrainReport.IsChecked())
-            {
-                m_EditDescription.SetText(Widget.TranslateString("#STR_IAT_ReportMenu_ReportDescriptionText_Bug"));
-            }
-        }
-    }
-
     void EnsureOnlyOneCheckboxIsSelected(Widget w)
     {
         // If the widget clicked is the terrain box
@@ -162,4 +139,5 @@ class IAT_ReportMenu extends UIScriptedMenu
             }
         }
     }
+
 };

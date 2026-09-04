@@ -8,7 +8,7 @@ enum IAT_ReportType
     TERRAIN,
     BUG,
     SUGGESTION,
-    PLAYER,
+    PLAYER_MUTE,
     EXPLOIT,
     BAD_WORD,
     NO_SELECTION

@@ -8,7 +8,7 @@ FrameWidgetClass rootFrame {
  vexactsize 0
  {
   PanelWidgetClass rootPanel {
-   ignorepointer 1
+   ignorepointer 0
    position 0 0
    size 1 1
    halign center_ref
@@ -17,12 +17,11 @@ FrameWidgetClass rootFrame {
    vexactpos 0
    hexactsize 0
    vexactsize 0
-   style Outline
+   style WZ_Paper_Ripped
    "no focus" 0
    {
     PanelWidgetClass pnlHeader {
      ignorepointer 1
-     color 0.796 0 0 1
      position 0 0.01
      size 0.95 0.07
      halign center_ref
@@ -30,7 +29,7 @@ FrameWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style DayZDefaultPanel
+     style WZ_Title_Plate
      "no focus" 1
      {
       TextWidgetClass txtHeaderTitle {
@@ -52,7 +51,7 @@ FrameWidgetClass rootFrame {
      }
     }
     PanelWidgetClass pnlReportForm {
-     ignorepointer 1
+     ignorepointer 0
      position 0 0.09
      size 0.95 0.64
      halign center_ref
@@ -60,11 +59,11 @@ FrameWidgetClass rootFrame {
      vexactpos 0
      hexactsize 0
      vexactsize 0
-     style rover_sim_black
+     style blank
      "no focus" 0
      {
       GridSpacerWidgetClass settings_content {
-       ignorepointer 1
+       ignorepointer 0
        color 0 0 0 0.549
        size 1 1
        halign center_ref
@@ -72,7 +71,7 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       style DayZDefaultPanel
+       style Empty
        "no focus" 1
        Padding 0
        Margin 0
@@ -89,6 +88,7 @@ FrameWidgetClass rootFrame {
          vexactpos 0
          hexactsize 0
          vexactsize 0
+         style Empty
          "Size To Content V" 1
          content_halign center
          content_valign center
@@ -102,8 +102,9 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           style Default
+           style WZ_CheckBox
            text "#STR_IAT_ReportMenu_ReportType_Terrain"
+           "text color" 0 0 0 1
            checked 1
           }
           CheckBoxWidgetClass chkBoxBugReport {
@@ -115,7 +116,9 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
+           style WZ_CheckBox
            text "#STR_IAT_ReportMenu_ReportType_Bug"
+           "text color" 0 0 0 1
           }
           CheckBoxWidgetClass chkBoxPlayerReport {
            visible 0
@@ -127,11 +130,12 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
+           style WZ_CheckBox
            text "#STR_IAT_ReportMenu_ReportType_Player"
           }
          }
         }
-        FrameWidgetClass reportDescriptionContainer {
+        PanelWidgetClass reportDescriptionContainer {
          ignorepointer 0
          size 1 0.9
          halign center_ref
@@ -143,14 +147,13 @@ FrameWidgetClass rootFrame {
          {
           PanelWidgetClass pnlDescriptionTitle {
            ignorepointer 1
-           color 0.796 0 0 1
            size 1 0.08
            halign center_ref
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           style DayZDefaultPanel
+           style WZ_Title_Plate
            {
             TextWidgetClass txtDescriptionTitle {
              ignorepointer 1
@@ -170,8 +173,8 @@ FrameWidgetClass rootFrame {
             }
            }
           }
-          FrameWidgetClass frmDescription {
-           ignorepointer 1
+          PanelWidgetClass frmDescription {
+           ignorepointer 0
            position 0 0.09
            size 1 0.9
            halign center_ref
@@ -179,8 +182,10 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
+           style blank
            {
             MultilineEditBoxWidgetClass editTxtReportDescription {
+             color 0 0 0 1
              size 1 1
              halign center_ref
              valign bottom_ref
@@ -188,7 +193,8 @@ FrameWidgetClass rootFrame {
              vexactpos 0
              hexactsize 0
              vexactsize 0
-             text "#STR_IAT_ReportMenu_ReportDescriptionText"
+             style WZ
+             text ""
              font "gui/fonts/MetronBook16"
              lines 10
              "limit visible" 1
@@ -212,7 +218,7 @@ FrameWidgetClass rootFrame {
      hexactsize 0
      vexactsize 0
      scaled 1
-     style rover_sim_black
+     style blank
      {
       GridSpacerWidgetClass spcrBotPanel {
        ignorepointer 1
@@ -223,6 +229,7 @@ FrameWidgetClass rootFrame {
        vexactpos 0
        hexactsize 0
        vexactsize 0
+       style Empty
        Columns 1
        Rows 2
        {
@@ -235,9 +242,11 @@ FrameWidgetClass rootFrame {
          vexactpos 0
          hexactsize 0
          vexactsize 0
+         style blank
          {
           MultilineTextWidgetClass txtSubmitInfo0 {
            ignorepointer 1
+           color 0 0 0 1
            size 1 1
            halign center_ref
            valign center_ref
@@ -245,6 +254,7 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
+           style WZ
            text "#STR_IAT_ReportMenu_AdditionalSubmitInfo"
            "size to text h" 1
            "size to text v" 1
@@ -275,7 +285,7 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           style Editor
+           style Title_Plate
            text "#STR_IAT_ReportMenu_CancelReport"
           }
           ButtonWidgetClass btnSubmit {
@@ -286,7 +296,7 @@ FrameWidgetClass rootFrame {
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           style Editor
+           style Title_Plate
            text "#STR_IAT_ReportMenu_SubmitReport"
           }
          }
