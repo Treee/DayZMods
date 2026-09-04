@@ -155,14 +155,14 @@ class IAT_PluginMapBoundary extends PluginBase
 			}
 			if(stepCounter % GameConstants.IAT_MDT_STEP_MOD_COUNT == 0)
 			{
-				NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), NotificationSystem.DEFAULT_TIME_DISPLAYED, "Map Boundary", "You are VERY close to the edge of the map. Turn around now or you will be teleported back.", "set:ccgui_enforce image:Icon40Emergency");
+				NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), NotificationSystem.DEFAULT_TIME_DISPLAYED, "Map Boundary", "You are VERY close to the edge of the map. Turn around now or you will be forced back.", "set:ccgui_enforce image:Icon40Emergency");
 			}
 		}
 		else if(distance < GameConstants.IAT_MDT_WARNING_DISTANCE) // We are at the first warning point
 		{
 			if(stepCounter % GameConstants.IAT_MDT_STEP_MOD_COUNT == 0)
 			{
-				NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), NotificationSystem.DEFAULT_TIME_DISPLAYED, "Map Boundary", "You are close to the edge of the map. Turn around now or you will be teleported back.", "set:ccgui_enforce image:Icon40Emergency");
+				NotificationSystem.SendNotificationToPlayerIdentityExtended(player.GetIdentity(), NotificationSystem.DEFAULT_TIME_DISPLAYED, "Map Boundary", "You are close to the edge of the map. Please turn around now.", "set:ccgui_enforce image:Icon40Emergency");
 			}
 		}
 	}

@@ -132,6 +132,7 @@ modded class PlayerBase
 		GetUApi().GetInputByID(UAMoveBack).ForceDisable(true);
 		GetUApi().GetInputByID(UAMoveLeft).ForceDisable(true);
 		GetUApi().GetInputByID(UAMoveRight).ForceDisable(true);
+		g_Game.GetMission().AddActiveInputExcludes({"aiming"});
 
 		// Make the restriction stronger near the edge
 		float restrictionStrength = Math.Pow(intensity, 2);
@@ -151,6 +152,7 @@ modded class PlayerBase
 		GetUApi().GetInputByID(UAMoveBack).ForceDisable(false);
 		GetUApi().GetInputByID(UAMoveLeft).ForceDisable(false);
 		GetUApi().GetInputByID(UAMoveRight).ForceDisable(false);
+		g_Game.GetMission().RemoveActiveInputExcludes({"aiming"});
 	}
 	protected void IAT_MBT_UpdateFogEffect(float intensity = 0.0)
 	{
