@@ -19,7 +19,16 @@ modded class Weapon_Base
             PlayerBase playerParent;
             // main shoulder slots on player
             if (Class.CastTo(playerParent, GetHierarchyParent()))
+            {
+                // check a very specific case for player offhands;
+                EntityAI offhand;
+                if (Class.CastTo(offhand, playerParent.FindAttachmentBySlotName("OffHand")))
+                {
+                    return true;
+                }
                 return true;
+            }
+
             // no guns in cargo can go on quickbar
             if (GetInventory() && GetInventory().IsInCargo())
                 return false;
