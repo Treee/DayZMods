@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>IAT Enhanced Medical — Bleeding Damage Tuner</title>
+        <!-- Chart.js from CDN (requires internet on first load) -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+        <style>
+            :root {
+                --bg: #12151a;
+                --panel: #1b2028;
+                --panel2: #222935;
+                --border: #2e3745;
+                --text: #d7dee8;
+                --muted: #8a94a6;
+                --accent: #e05656;
+                --accent2: #4da3ff;
+                --good: #57c785;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--text);
+                font:
+                    14px/1.45 "Segoe UI",
+                    system-ui,
+                    sans-serif;
+            }
+            header {
+                padding: 14px 22px;
+                border-bottom: 1px solid var(--border);
+                display: flex;
+                align-items: baseline;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            header h1 {
+                margin: 0;
+                font-size: 18px;
+            }
+            header .sub {
+                color: var(--muted);
+                font-size: 12px;
+            }
+            .layout {
+                display: flex;
+                gap: 16px;
+                padding: 16px 22px;
+                align-items: flex-start;
+            }
+            aside {
+                width: 330px;
+                flex: none;
+                background: var(--panel);
+                border: 1px solid var(--border);
+                border-radius: 10px;
+                padding: 14px;
+            }
+            main {
+                flex: 1;
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+            .panel {
+                background: var(--panel);
+                border: 1px solid var(--border);
+                border-radius: 10px;
+                padding: 14px;
+            }
+            .panel h2 {
+                margin: 0 0 10px;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--muted);
+            }
+            .ctrl {
+                margin-bottom: 12px;
+            }
+            .ctrl-head {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 4px;
+                gap: 8px;
+            }
+            .ctrl-head label {
+                font-size: 13px;
+            }
+            .ctrl-head .hint {
+                color: var(--muted);
+                font-size: 11px;
+            }
+            .ctrl-head input[type="number"] {
+                width: 88px;
+                background: var(--panel2);
+                border: 1px solid var(--border);
+                color: var(--text);
+                border-radius: 6px;
+                padding: 3px 6px;
+                font-size: 13px;
+            }
+            input[type="range"] {
+                width: 100%;
+                accent-color: var(--accent);
+            }
+            .presets {
+                display: flex;
+                gap: 6px;
+                margin: -6px 0 12px;
+            }
+            .presets button {
+                flex: 1;
+                background: var(--panel2);
+                border: 1px solid var(--border);
+                color: var(--text);
+                border-radius: 6px;
+                padding: 4px 0;
+                font-size: 12px;
+                cursor: pointer;
+            }
+            .presets button:hover {
+                border-color: var(--accent);
+            }
+            .metrics {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 10px;
+            }
+            .metric {
+                background: var(--panel2);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 10px;
+            }
+            .metric .v {
+                font-size: 17px;
+                font-weight: 600;
+                color: var(--accent2);
+                word-break: break-word;
+            }
+            .metric .l {
+                font-size: 11px;
+                color: var(--muted);
+                margin-top: 2px;
+            }
+            .chart-box {
+                position: relative;
+                height: 340px;
+            }
+            .row2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            @media (max-width: 1150px) {
+                .row2 {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .bottom {
+                display: grid;
+                grid-template-columns: minmax(300px, 430px) 1fr;
+                gap: 16px;
+            }
+            @media (max-width: 1150px) {
+                .bottom {
+                    grid-template-columns: 1fr;
+                }
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 12.5px;
+            }
+            th,
+            td {
+                text-align: left;
+                padding: 5px 8px;
+                border-bottom: 1px solid var(--border);
+            }
+            th {
+                color: var(--muted);
+                font-weight: 600;
+            }
+            td.zone {
+                color: var(--accent2);
+                font-weight: 600;
+                white-space: nowrap;
+            }
+            td.bones {
+                color: var(--muted);
+            }
+            textarea {
+                width: 100%;
+                height: 200px;
+                background: #10141a;
+                border: 1px solid var(--border);
+                color: #cfe3cf;
+                border-radius: 8px;
+                padding: 10px;
+                font:
+                    12px/1.5 Consolas,
+                    "Courier New",
+                    monospace;
+                resize: vertical;
+            }
+            .copybtn {
+                margin-top: 8px;
+                background: var(--panel2);
+                border: 1px solid var(--border);
+                color: var(--text);
+                border-radius: 6px;
+                padding: 6px 14px;
+                cursor: pointer;
+            }
+            .copybtn:hover {
+                border-color: var(--good);
+            }
+            .note {
+                font-size: 12px;
+                color: var(--muted);
+                background: var(--panel2);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 10px;
+                margin-top: 10px;
+            }
+            .note b {
+                color: var(--text);
+            }
+            #chartError {
+                display: none;
+                color: var(--accent);
+                padding: 10px;
+                font-size: 13px;
+            }
+            footer {
+                padding: 10px 22px;
+                color: var(--muted);
+                font-size: 11px;
+                border-top: 1px solid var(--border);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>IAT Enhanced Medical — Bleeding Damage Tuner</h1>
+            <span class="sub">models BleedingSource::OnUpdateServer — tune constants, watch the curves, paste the results back</span>
+        </header>
+
+        <div class="layout">
+            <!-- ======================= CONTROLS ======================= -->
+            <aside>
+                <div class="ctrl">
+                    <div class="ctrl-head">
+                        <label for="bl">Blood loss / sec <span class="hint">(BLEEDING_SOURCE_BLOODLOSS_PER_SEC)</span></label
+                        ><input type="number" id="blNum" step="0.1" />
+                    </div>
+                    <input type="range" id="bl" min="-20" max="0" step="0.1" value="-7" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head">
+                        <label for="fm">Flow modifier <span class="hint">(m_FlowModifier)</span></label
+                        ><input type="number" id="fmNum" step="0.01" />
+                    </div>
+                    <input type="range" id="fm" min="0" max="1.5" step="0.01" value="0.47" />
+                    <div class="presets">
+                        <button data-fm="0.25">Low 0.25</button>
+                        <button data-fm="0.47">Med 0.47</button>
+                        <button data-fm="0.70">High 0.70</button>
+                    </div>
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head">
+                        <label for="cf">Conversion factor <span class="hint">(hardcoded multiplier)</span></label
+                        ><input type="number" id="cfNum" step="0.001" />
+                    </div>
+                    <input type="range" id="cf" min="0" max="0.2" step="0.001" value="0.057" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head">
+                        <label for="iv">Update interval (s) <span class="hint">(tick rate)</span></label
+                        ><input type="number" id="ivNum" step="0.5" />
+                    </div>
+                    <input type="range" id="iv" min="1" max="10" step="0.5" value="3" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head">
+                        <label for="du">Bleed duration (s) <span class="hint">(BLEEDING_SOURCE_DURATION_NORMAL)</span></label
+                        ><input type="number" id="duNum" step="5" />
+                    </div>
+                    <input type="range" id="du" min="10" max="300" step="5" value="45" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head"><label for="zm">Zone max Blood HP</label><input type="number" id="zmNum" step="5" /></div>
+                    <input type="range" id="zm" min="10" max="500" step="5" value="100" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head"><label for="rg">Zone blood regen / sec</label><input type="number" id="rgNum" step="0.01" /></div>
+                    <input type="range" id="rg" min="0" max="1" step="0.01" value="0.05" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head"><label for="sp">Starting HP %</label><input type="number" id="spNum" step="1" /></div>
+                    <input type="range" id="sp" min="0" max="100" step="1" value="100" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head">
+                        <label for="bs">blood_scale <span class="hint">(passed into OnUpdateServer)</span></label
+                        ><input type="number" id="bsNum" step="0.05" />
+                    </div>
+                    <input type="range" id="bs" min="0.1" max="2" step="0.05" value="1" />
+                </div>
+
+                <div class="ctrl">
+                    <div class="ctrl-head"><label for="ks">Concurrent sources (max plotted)</label><input type="number" id="ksNum" step="1" /></div>
+                    <input type="range" id="ks" min="1" max="10" step="1" value="5" />
+                </div>
+
+                <div class="note">
+                    <b>Formula modeled:</b><br />
+                    <code>dmg = BLOODLOSS_PER_SEC × blood_scale × deltatime × flowModifier × factor</code><br />
+                    applied every <em>update interval</em> seconds per active source, offset by zone regen:<br />
+                    <code>net = Σ(dmg per source) + regen × deltatime</code>
+                </div>
+            </aside>
+
+            <!-- ======================= MAIN ======================= -->
+            <main>
+                <div id="chartError">Chart.js failed to load (no internet?). Metrics and code output below still work.</div>
+
+                <section class="panel">
+                    <h2>Key numbers</h2>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="v" id="mDpt">–</div>
+                            <div class="l">dmg / tick / source</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mSec">–</div>
+                            <div class="l">dmg / sec / source</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mLife">–</div>
+                            <div class="l">total dmg per bleed lifetime (1 src)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mTicks">–</div>
+                            <div class="l">ticks per lifetime</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mT50">–</div>
+                            <div class="l">time to 50% (all sources)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mT0">–</div>
+                            <div class="l">time to 0% (persistent)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mMin">–</div>
+                            <div class="l">lowest HP reached (all src)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mNet">–</div>
+                            <div class="l">net HP/sec while bleeding (all src)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mRec">–</div>
+                            <div class="l">recover 50→100%, no bleeds</div>
+                        </div>
+                        <div class="metric">
+                            <div class="v" id="mBleeds">–</div>
+                            <div class="l">bleed cycles to empty zone (w/ recovery)</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>Zone Blood HP over time</h2>
+                    <div class="chart-box"><canvas id="deplChart"></canvas></div>
+                    <div class="note">
+                        Solid = <b>bandaged scenario</b>: bleeds expire after <em>duration</em>, then the zone regenerates back (sawtooth).<br />
+                        Dashed = <b>persistent scenario</b>: zone below 50% with no bandage pauses the bleed timer (per your mod's comment), so bleeding continues until the zone empties (sim capped at 900&nbsp;s). Regen
+                        applies every tick. Click legend entries to hide/show individual curves.
+                    </div>
+                </section>
+
+                <div class="row2">
+                    <section class="panel">
+                        <h2>|dmg| per tick vs flow modifier</h2>
+                        <div class="chart-box"><canvas id="flowChart"></canvas></div>
+                    </section>
+                    <section class="panel">
+                        <h2>Minutes to drain zone vs blood loss/sec</h2>
+                        <div class="chart-box"><canvas id="sensChart"></canvas></div>
+                    </section>
+                </div>
+
+                <div class="bottom">
+                    <section class="panel">
+                        <h2>Bone → damage zone map (30 bones)</h2>
+                        <table>
+                            <tr>
+                                <th>Damage zone</th>
+                                <th>Bones</th>
+                            </tr>
+                            <tr>
+                                <td class="zone">Head</td>
+                                <td class="bones">head</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">Brain</td>
+                                <td class="bones">brain</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">Torso</td>
+                                <td class="bones">neck, pelvis, spine, spine1, spine2, spine3</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">LeftArm</td>
+                                <td class="bones">leftshoulder, leftarm, leftarmroll, leftforearm</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">RightArm</td>
+                                <td class="bones">rightshoulder, rightarm, rightarmroll, rightforearm</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">LeftHand</td>
+                                <td class="bones">leftforearmroll</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">RightHand</td>
+                                <td class="bones">rightforearmroll</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">LeftLeg</td>
+                                <td class="bones">leftleg, leftlegroll, leftupleg, leftuplegroll</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">RightLeg</td>
+                                <td class="bones">rightleg, rightlegroll, rightupleg, rightuplegroll</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">LeftFoot</td>
+                                <td class="bones">leftfoot, lefttoebase</td>
+                            </tr>
+                            <tr>
+                                <td class="zone">RightFoot</td>
+                                <td class="bones">rightfoot, righttoebase</td>
+                            </tr>
+                        </table>
+                        <div class="note">Unmapped bones fall through to the global zone (<code>""</code>) and log “needs a mapping”.</div>
+                    </section>
+
+                    <section class="panel">
+                        <h2>Generated EnforceScript</h2>
+                        <textarea id="codeOut" readonly spellcheck="false"></textarea>
+                        <button class="copybtn" id="copyBtn">Copy to clipboard</button>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <footer>Assumes damage is applied instantaneously per tick (stepped curves). Vanilla reference: interval ≈ 3 s, duration 45 s, flow modifiers Low/Med/High ≈ 0.25 / 0.47 / 0.70.</footer>
+
+        <script>
+            "use strict";
+            const $ = (id) => document.getElementById(id);
+
+            /* ---------------- parameters ---------------- */
+            const P = { bl: -7, fm: 0.47, cf: 0.057, iv: 3, du: 45, zm: 100, sp: 100, bs: 1, ks: 5, rg: 0.05 };
+            const BIND = [
+                ["bl", "blNum"],
+                ["fm", "fmNum"],
+                ["cf", "cfNum"],
+                ["iv", "ivNum"],
+                ["du", "duNum"],
+                ["zm", "zmNum"],
+                ["sp", "spNum"],
+                ["bs", "bsNum"],
+                ["ks", "ksNum"],
+                ["rg", "rgNum"],
+            ];
+            const SIM_CAP = 900; // seconds, caps the persistent scenario
+
+            function syncFromUI() {
+                BIND.forEach(([r]) => (P[r] = parseFloat($(r).value)));
+            }
+
+            function bindPair(rangeId, numId) {
+                const r = $(rangeId),
+                    n = $(numId);
+                r.addEventListener("input", () => {
+                    n.value = r.value;
+                    render();
+                });
+                n.addEventListener("change", () => {
+                    let v = parseFloat(n.value);
+                    if (isNaN(v)) v = parseFloat(r.value);
+                    v = Math.min(parseFloat(r.max), Math.max(parseFloat(r.min), v));
+                    r.value = v;
+                    n.value = v;
+                    render();
+                });
+            }
+
+            document.querySelectorAll(".presets button").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    $("fm").value = btn.dataset.fm;
+                    $("fmNum").value = btn.dataset.fm;
+                    render();
+                });
+            });
+
+            /* ---------------- math ---------------- */
+            function dmgPerTick() {
+                return P.bl * P.bs * P.iv * P.fm * P.cf;
+            } // negative = damage
+            function startHP() {
+                return (P.zm * P.sp) / 100;
+            }
+
+            function simulate(k, bandaged) {
+                const d = dmgPerTick();
+                const rgTick = P.rg * P.iv;
+                let hp = startHP();
+                const pts = [{ x: 0, y: hp }];
+                let t50 = null,
+                    t0 = null,
+                    minHp = hp;
+                const maxTicks = Math.floor(SIM_CAP / P.iv);
+                for (let i = 1; i <= maxTicks; i++) {
+                    const t = i * P.iv;
+                    const active = !bandaged || t <= P.du;
+                    let delta = rgTick;
+                    if (active) delta += d * k;
+                    hp = Math.min(P.zm, Math.max(0, hp + delta));
+                    pts.push({ x: t, y: hp });
+                    if (hp < minHp) minHp = hp;
+                    if (t50 === null && hp <= P.zm * 0.5) t50 = t;
+                    if (hp <= 0) {
+                        t0 = t;
+                        break;
+                    }
+                    if (bandaged && t > P.du && hp >= startHP()) break; // fully recovered
+                }
+                return { pts, t50, t0, end: hp, minHp };
+            }
+
+            function cycleSim() {
+                // repeated bleed lifetimes with recovery pauses in between
+                const d = dmgPerTick(),
+                    rgTick = P.rg * P.iv,
+                    lifeTicks = Math.round(P.du / P.iv);
+                let hp = startHP(),
+                    cycles = 0;
+                while (cycles < 200) {
+                    for (let i = 0; i < lifeTicks; i++) {
+                        hp = Math.min(P.zm, Math.max(0, hp + d + rgTick));
+                        if (hp <= 0) return { cycles: cycles + 1, forever: false };
+                    }
+                    cycles++;
+                    if (rgTick > 0) {
+                        let guard = 0;
+                        while (hp < startHP() && guard < 800) {
+                            hp = Math.min(P.zm, hp + rgTick);
+                            guard++;
+                        }
+                        if (guard >= 800) return { cycles, forever: true };
+                    }
+                }
+                return { cycles, forever: true };
+            }
+
+            function hue(k) {
+                return `hsl(${Math.round((k * 137.508) % 360)},65%,62%)`;
+            }
+
+            /* ---------------- charts ---------------- */
+            let deplChart, flowChart, sensChart;
+
+            function baseOpts(xTitle, yTitle) {
+                return {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: "nearest", intersect: false },
+                    plugins: {
+                        legend: { labels: { boxWidth: 14, boxHeight: 2, font: { size: 10 } } },
+                        tooltip: { callbacks: { title: (items) => items[0].parsed.x + " s" } },
+                    },
+                    scales: {
+                        x: { type: "linear", title: { display: true, text: xTitle } },
+                        y: { beginAtZero: true, title: { display: true, text: yTitle } },
+                    },
+                };
+            }
+
+            function initCharts() {
+                if (typeof Chart === "undefined") {
+                    $("chartError").style.display = "block";
+                    return;
+                }
+                Chart.defaults.color = "#8a94a6";
+                Chart.defaults.borderColor = "#242b36";
+
+                deplChart = new Chart($("deplChart"), { type: "line", data: { datasets: [] }, options: baseOpts("time (seconds)", "zone Blood HP") });
+                flowChart = new Chart($("flowChart"), { type: "line", data: { datasets: [] }, options: baseOpts("flow modifier", "|dmg| per tick") });
+                sensChart = new Chart($("sensChart"), { type: "line", data: { datasets: [] }, options: baseOpts("BLEEDING_SOURCE_BLOODLOSS_PER_SEC", "minutes to drain") });
+            }
+
+            function buildDepletion() {
+                const ds = [];
+                for (let k = 1; k <= P.ks; k++) {
+                    const c = hue(k);
+                    const b = simulate(k, true);
+                    ds.push({ label: k + " src · expires", data: b.pts, borderColor: c, backgroundColor: c, stepped: true, pointRadius: 0, borderWidth: 1.5 });
+                    const u = simulate(k, false);
+                    ds.push({ label: k + " src · persistent", data: u.pts, borderColor: c, backgroundColor: c, stepped: true, pointRadius: 0, borderWidth: 1.5, borderDash: [5, 4] });
+                }
+                ds.push({
+                    label: "50% bandage threshold",
+                    data: [
+                        { x: 0, y: P.zm * 0.5 },
+                        { x: SIM_CAP, y: P.zm * 0.5 },
+                    ],
+                    borderColor: "#ff5252",
+                    borderDash: [8, 5],
+                    pointRadius: 0,
+                    borderWidth: 1.5,
+                });
+
+                let maxX = P.du;
+                ds.forEach((d) => {
+                    if (d.data.length) maxX = Math.max(maxX, d.data[d.data.length - 1].x);
+                });
+                maxX = Math.min(maxX, SIM_CAP);
+
+                deplChart.data.datasets = ds;
+                deplChart.options.scales.x.max = maxX;
+                deplChart.options.scales.y.suggestedMax = P.zm;
+                deplChart.update();
+            }
+
+            function buildFlow() {
+                const pts = [];
+                for (let f = 0; f <= 1.5001; f += 0.01) {
+                    pts.push({ x: +f.toFixed(2), y: Math.abs(P.bl * P.bs * P.iv * f * P.cf) });
+                }
+                flowChart.data.datasets = [
+                    { label: "|dmg| per tick per source", data: pts, pointRadius: 0, borderWidth: 2, borderColor: "#4da3ff" },
+                    { label: "current", data: [{ x: P.fm, y: Math.abs(dmgPerTick()) }], pointRadius: 6, pointBackgroundColor: "#e05656", showLine: false },
+                    {
+                        label: "regen per tick",
+                        data: [
+                            { x: 0, y: P.rg * P.iv },
+                            { x: 1.5, y: P.rg * P.iv },
+                        ],
+                        borderColor: "#57c785",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 1.5,
+                    },
+                ];
+                flowChart.options.scales.x.max = 1.5;
+                flowChart.update();
+            }
+
+            function buildSens() {
+                const pts = [];
+                const rgTick = P.rg * P.iv;
+                for (let b = -20; b <= 0.0001; b += 0.25) {
+                    const netTick = Math.abs(b) * P.bs * P.iv * P.fm * P.cf * P.ks - rgTick;
+                    if (netTick <= 0) {
+                        pts.push({ x: +b.toFixed(2), y: null });
+                        continue;
+                    }
+                    const secs = Math.ceil(startHP() / netTick) * P.iv;
+                    pts.push({ x: +b.toFixed(2), y: secs > SIM_CAP ? null : +(secs / 60).toFixed(2) });
+                }
+                const curNetTick = Math.abs(dmgPerTick()) * P.ks - rgTick;
+                const curY = curNetTick > 0 ? +((Math.ceil(startHP() / curNetTick) * P.iv) / 60).toFixed(2) : null;
+                sensChart.data.datasets = [
+                    { label: "minutes to drain (" + P.ks + " src, persistent)", data: pts, pointRadius: 0, borderWidth: 2, borderColor: "#57c785" },
+                    { label: "current", data: [{ x: P.bl, y: curY }], pointRadius: 6, pointBackgroundColor: "#e05656", showLine: false },
+                ];
+                sensChart.update();
+            }
+
+            /* ---------------- metrics ---------------- */
+            function set(id, txt) {
+                $(id).textContent = txt;
+            }
+
+            function renderMetrics() {
+                const d = dmgPerTick();
+                const lifeTicks = Math.round(P.du / P.iv);
+                const perLife = Math.abs(d) * lifeTicks;
+                const b = simulate(P.ks, true);
+                const u = simulate(P.ks, false);
+                const cyc = cycleSim();
+                const netSec = (d * P.ks) / P.iv + P.rg;
+
+                set("mDpt", d.toFixed(4));
+                set("mSec", (d / P.iv).toFixed(4));
+                set("mLife", perLife.toFixed(2));
+                set("mTicks", lifeTicks);
+                set("mT50", b.t50 === null ? "never" : b.t50 + " s");
+                set("mT0", u.t0 === null ? "> " + SIM_CAP + " s" : u.t0 + " s");
+                set("mMin", b.minHp.toFixed(1) + " HP");
+                set("mNet", (netSec >= 0 ? "+" : "") + netSec.toFixed(4));
+                set("mRec", P.rg > 0 ? Math.ceil((P.zm * 0.5) / P.rg) + " s" : "∞");
+                set("mBleeds", !cyc.forever ? cyc.cycles : cyc.cycles >= 200 ? "never (recovers)" : ">" + cyc.cycles + " (stalled)");
+            }
+
+            /* ---------------- code generator ---------------- */
+            function fmtC(v) {
+                let s = (Math.round(v * 10000) / 10000).toFixed(4);
+                s = s.replace(/0+$/, "");
+                if (s.endsWith(".")) s += "0";
+                return s;
+            }
+
+            function genCode() {
+                return `// scripts/3_game/constants/modded_playerconstants.c
+static const float BLEEDING_SOURCE_BLOODLOSS_PER_SEC = ${fmtC(P.bl)};
+static const int   BLEEDING_SOURCE_DURATION_NORMAL = ${Math.round(P.du)};
+static const float BLEEDING_SOURCE_FLOW_MODIFIER_MEDIUM = ${fmtC(P.fm)};
+
+// scripts/4_world/classes/bleedingsources/modded_bleedingsourcesmanagerbase.c
+// -> BleedingSource::OnUpdateServer()
+float constantBloodDmg = (PlayerConstants.BLEEDING_SOURCE_BLOODLOSS_PER_SEC * blood_scale * deltatime * m_FlowModifier) * ${fmtC(P.cf)};`;
+            }
+
+            $("copyBtn").addEventListener("click", () => {
+                const ta = $("codeOut");
+                ta.select();
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(ta.value);
+                } else {
+                    document.execCommand("copy");
+                }
+            });
+
+            /* ---------------- render loop ---------------- */
+            function render() {
+                syncFromUI();
+                renderMetrics();
+                $("codeOut").value = genCode();
+                if (window.Chart) {
+                    buildDepletion();
+                    buildFlow();
+                    buildSens();
+                }
+            }
+
+            /* init */
+            BIND.forEach(([r, n]) => {
+                $(n).value = $(r).value;
+                bindPair(r, n);
+            });
+            initCharts();
+            render();
+        </script>
+    </body>
+</html>
