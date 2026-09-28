@@ -2,7 +2,7 @@ class CfgPatches
 {
 	class IAT_Enhanced_Medical_Scripts
 	{
-		requiredAddons[] = { "DZ_Data", "DZ_Scripts" };
+		requiredAddons[] = { "DZ_Data", "DZ_Scripts", "DZ_Characters", "DZ_Gear_Medical", "DZ_Gear_Tools", "WesternZClothingMisc" };
 	};
 };
 class CfgMods
@@ -33,3 +33,4 @@ class CfgMods
 		};
 	};
 };
+

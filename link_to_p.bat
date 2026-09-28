@@ -1,42 +1,48 @@
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat" Z:\DayZ\Modding\iat\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_codelock" Z:\DayZ\Modding\iat_codelock\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_collectibles" Z:\DayZ\Modding\iat_collectibles\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_corrosive_biogas" Z:\DayZ\Modding\iat_corrosive_biogas\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_crafting_plus" Z:\DayZ\Modding\iat_crafting_plus\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dayz_codex" Z:\DayZ\Modding\iat_dayz_codex\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_display_case" Z:\DayZ\Modding\iat_display_case\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_double_armbands" Z:\DayZ\Modding\iat_double_armbands\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_radio_range" Z:\DayZ\Modding\iat_dynamic_radio_range\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_dynamic_traps" Z:\DayZ\Modding\iat_dynamic_traps\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_enhanced_bioprotection" Z:\DayZ\Modding\iat_enhanced_bioprotection\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_enhanced_medical" Z:\DayZ\Modding\iat_enhanced_medical
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_facepaints" Z:\DayZ\Modding\iat_facepaints\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_infinity_gauntlet" Z:\DayZ\Modding\iat_infinity_gauntlet\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_item_blacklist" Z:\DayZ\Modding\iat_item_blacklist\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_literary_devices" Z:\DayZ\Modding\iat_literary_devices\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_map_border_teleport" Z:\DayZ\Modding\iat_map_border_teleport\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_melee_weapons" Z:\DayZ\Modding\iat_melee_weapons\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_mining_enhanced" Z:\DayZ\Modding\iat_mining_enhanced\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_molotov_firegrenades" Z:\DayZ\Modding\iat_molotov_firegrenades\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_more_doors" Z:\DayZ\Modding\iat_more_doors\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_notes_enhanced" Z:\DayZ\Modding\iat_notes_enhanced\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_powered_radio_towers" Z:\DayZ\Modding\iat_powered_radio_towers\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_prop_items" Z:\DayZ\Modding\iat_prop_items\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_radio_mute" Z:\DayZ\Modding\iat_radio_mute\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_report_tool" Z:\DayZ\Modding\iat_report_tool
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_retextures" Z:\DayZ\Modding\iat_retextures\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_roleplay_emotes" Z:\DayZ\Modding\iat_roleplay_emotes\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_roll_tables" Z:\DayZ\Modding\iat_roll_tables\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_simple_building" Z:\DayZ\Modding\iat_simple_building\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_simple_carpentry" Z:\DayZ\Modding\iat_simple_carpentry\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_simple_territories" Z:\DayZ\Modding\iat_simple_territories\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_single_item_split" Z:\DayZ\Modding\iat_single_item_split\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_smelting_metallurgy" Z:\DayZ\Modding\iat_smelting_metallurgy\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_smoke_signals" Z:\DayZ\Modding\iat_smoke_signals\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_soft_surrender" Z:\DayZ\Modding\iat_soft_surrender\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_structures" Z:\DayZ\Modding\iat_structures\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_teleport_linker" Z:\DayZ\Modding\iat_teleport_linker\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_treasure_hunts" Z:\DayZ\Modding\iat_treasure_hunts\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_repair" Z:\DayZ\Modding\iat_universal_repair\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_universal_dye" Z:\DayZ\Modding\iat_universal_dye\addons
-mklink /J "C:\Users\Tree\Documents\DayZ Projects\iat_weapon_quickbar" Z:\DayZ\Modding\iat_weapon_quickbar\addons
+@echo off
+setlocal EnableExtensions EnableDelayedExpansion
+
+set "SOURCE_ROOT=%~dp0"
+set "TARGET_ROOT=C:\Users\Tree\Documents\DayZ Projects"
+set "IGNORED_FOLDERS=.git .github"
+
+rem Add more ignored folder names here by separating them with spaces.
+
+if not exist "%TARGET_ROOT%" (
+    mkdir "%TARGET_ROOT%" >nul 2>&1
+)
+
+echo Linking folders from %SOURCE_ROOT% to %TARGET_ROOT%...
+
+for /d %%D in ("%SOURCE_ROOT%*") do (
+    if exist "%%~fD" (
+        set "folderName=%%~nxD"
+        set "linkPath=%TARGET_ROOT%\!folderName!"
+
+        call :IsIgnoredFolder "!folderName!"
+        if not errorlevel 1 (
+            echo Skipping ignored folder: !folderName!
+        ) else (
+            if exist "!linkPath!" (
+                echo Skipping existing path: !linkPath!
+            ) else (
+                echo Linking !folderName!...
+                mklink /J "!linkPath!" "%%~fD" >nul 2>&1
+                if errorlevel 1 (
+                    echo Failed to link !folderName!.
+                ) else (
+                    echo Created junction: !linkPath!
+                )
+            )
+        )
+    )
+)
+
+endlocal
+exit /b 0
+
+:IsIgnoredFolder
+set "folderName=%~1"
+for %%I in (%IGNORED_FOLDERS%) do (
+    if /I "%%~I"=="!folderName!" exit /b 0
+)
+exit /b 1

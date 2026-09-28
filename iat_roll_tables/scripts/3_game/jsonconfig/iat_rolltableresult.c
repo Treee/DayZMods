@@ -25,7 +25,7 @@ class IAT_RollTableResult
 	}
 	bool IsRollWithinRange(int chance)
 	{
-		PrintFormat("IsRollWithinRange-- chance: %1 min: %2 max: %3", chance, m_MinRollRange, m_MaxRollRange);
+		// PrintFormat("IsRollWithinRange-- chance: %1 min: %2 max: %3", chance, m_MinRollRange, m_MaxRollRange);
 		if (chance >= m_MinRollRange && chance <= m_MaxRollRange)
 		{
 			return true;
