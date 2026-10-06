@@ -99,37 +99,6 @@ class IAT_PluginMapBoundary extends PluginBase
 		return steer;
 	}
 
-	// vector GetInwardNormal(vector position)
-	// {
-	// 	float left   = position[0];
-	// 	float right  = m_WorldSizeX - position[0];
-
-	// 	float bottom = position[2];
-	// 	float top    = m_WorldSizeY - position[2];
-
-	// 	float nearest = left;
-	// 	vector normal = "1 0 0"; // Left edge -> push East
-
-	// 	if (right < nearest)
-	// 	{
-	// 		nearest = right;
-	// 		normal = "-1 0 0"; // Right edge -> push West
-	// 	}
-
-	// 	if (bottom < nearest)
-	// 	{
-	// 		nearest = bottom;
-	// 		normal = "0 0 1"; // Bottom edge -> push North
-	// 	}
-
-	// 	if (top < nearest)
-	// 	{
-	// 		nearest = top;
-	// 		normal = "0 0 -1"; // Top edge -> push South
-	// 	}
-
-	// 	return normal;
-	// }
 	/*
 	* Return a bool indicating if the player should be teleported.
 	* Distance must be less than 0 from the edge to yield a true falue.
@@ -141,6 +110,10 @@ class IAT_PluginMapBoundary extends PluginBase
 
 	void CheckPlayer(PlayerBase player, int stepCounter)
 	{
+		// null guard in case of a player crashing prior to being notified; will message very player
+		if (!player)
+			return;
+
 		float distance = GetDistanceToEdge(player.GetPosition());
 
 		if(distance < 0) // We are at true map edge
