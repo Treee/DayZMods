@@ -16,4 +16,13 @@ modded class WZ_Melee_Knife_Base
 		AddAction(IAT_ActionRemoveBandageSelf);
 		AddAction(IAT_ActionRemoveBandageTarget);
 	}
+
+	override bool IAT_CanExtractBullet()
+	{
+		return true;
+	}
+	override float IAT_BulletExtractionHpDmg()
+	{
+		return 15;
+	}
 }

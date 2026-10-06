@@ -16,4 +16,12 @@ modded class FangeKnife
 		AddAction(IAT_ActionRemoveBandageSelf);
 		AddAction(IAT_ActionRemoveBandageTarget);
 	}
+	override bool IAT_CanExtractBullet()
+	{
+		return true;
+	}
+	override float IAT_BulletExtractionHpDmg()
+	{
+		return 12;
+	}
 };
