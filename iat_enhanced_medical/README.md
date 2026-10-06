@@ -14,7 +14,23 @@
 
 Each vanilla bandaging cycle treats one bleeding source and consumes one use. The regional dressing is created once and reused by subsequent treatments; each treated bone is recorded separately. Manually attaching a dressing does not close active bleeds. Arms cover hands; legs cover feet. Removing or ruining a dressing reopens covered wounds until their zone Blood has fully recovered. The blood-regeneration modifier automatically deletes a dressing once all covered zones are fully healed, with no retained bullets or active bleeding, like an applied splint. Shared arm/hand and leg/foot dressings wait for both zones. Below 50% zone Blood, natural bleed expiry is blocked and zone regeneration requires a usable covering dressing. At 50% or above, vanilla natural bleed expiry is allowed. Retained bullets prevent regeneration only in their zone; pliers extract one retained-bullet location per completed action, allowing regeneration once that zone has no remaining bullets.
 
-Bullet presence is one bit per bone, not a count of repeated hits on the same bone. Extraction takes 10 seconds and is offered without a client-side bullet check; an empty treatment reports no retained bullet. Bolts, flares, 40 mm rounds, rubber slugs, and beanbags are excluded from bullet retention. Ordinary bullets, solid slugs, and buckshot are included.
+Each positive eligible bullet hit has a 45% chance to retain a bullet at its resolved bone, independent of power or previous hits. Bullet presence is one bit per bone, so repeated hits cannot add a second bullet at that bone. A failed retention roll never clears an existing bullet. Bolts, flares, 40 mm rounds, rubber slugs, and beanbags are excluded; ordinary bullets, solid slugs, and buckshot are eligible.
+
+Each zone with at least one retained bullet loses 10 mL of global Blood every 10 seconds, even through a usable dressing. Its regional Blood loses the proportionate amount using the existing zone scale (0.5 points per interval for a 100-point zone). Multiple retained bones in one zone share that zone's loss; separate affected zones each contribute. This exceeds normal well-fed global regeneration of 0.3 mL/second for even one retained zone. The loss does not create an active bleeding-source icon or reopen a bandaged source. Extraction stops this additional loss once the zone's last retained bullet is removed. The interval is maintained by the server bleeding manager, respects disabled blood loss and invulnerability, and restarts after load; bullet state remains in the existing version-1 save record.
+
+Extraction takes 10 seconds and is offered without a client-side bullet check; an empty treatment reports no retained bullet. A successful extraction opens a bleeding source at the extracted bone, even with a dressing attached. Normal bandaging closes it again and records the new dressed wound. Automatic dressing cleanup waits for full recovery of all covered zones with no bullets or active bleeds. Manual cutting remains allowed before recovery and reopens the treated wound. Empty and cancelled attempts open no extraction wound. Extraction adds no fixed percentage of regional Blood damage; the new bleeding source causes normal regional/global loss on its ticks.
+
+## Illness treatment window
+
+The tuning goal for untreated cholera, salmonella, and wound infection is approximately 45-60 minutes under comparable starting conditions. This is not a fixed death timer: initial Health, nutrition, immunity, stomach contents, other injuries, and random vomiting affect survival.
+
+- Cholera and salmonella vomiting now drain 135 Water and 93 Energy instead of 450 and 310.
+- Cholera's continuous Water drain is 0.15/second at maximum agent load instead of 0.5.
+- Salmonella invasibility is 0.225 instead of 0.75; immunity, maximum agent count, and medicine resistance retain vanilla behavior.
+- Parameterized vomiting while cholera or salmonella is active loses 30% of the requested stomach percentage: vanilla cholera's 65% becomes 19.5%, salmonella's 50% becomes 15%. Ordinary vomiting and contamination vomiting keep their original stomach loss. The shared symptom parameter is not modified.
+- Stage-two wound infection's net damage is 0.033333333 Health/second, projecting to 50 minutes from 100 Health. Vanilla still compensates for natural Health regeneration and suppresses infection damage during antibiotics.
+
+Engine-backed tests verify these component effects. Full cholera/salmonella survival windows require the timed gameplay benchmark in the in-game checklist; they have not been established by the component tests.
 
 See [the in-game verification checklist](tools/IN_GAME_CHECKLIST.md) for setup, expected behavior, and persistence checks. Source-level checks have passed; DayZ compilation, attachment rendering, and runtime persistence still require in-game verification.
 

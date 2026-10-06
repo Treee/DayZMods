@@ -29,7 +29,7 @@ class IAT_EM_ExtractionCase : IAT_EM_PlayerCase
 			Check(!m_Medical.HasBulletInZone(m_Player, "LeftArm"), "Cleared arm can regenerate", "false", "checked");
 			m_Medical.ExtractBullet(m_Player, zone);
 			Check(zone == "RightLeg", "Extraction follows registration order across zones", "RightLeg", zone);
-			EqualInt(m_State.m_DressedWounds, arm | leg, "Extraction preserves dressed history");
+			EqualInt(m_State.m_DressedWounds, 0, "Fresh extraction bleeds clear previous treatment at extracted bones");
 			zone = "old";
 			Check(!m_Medical.ExtractBullet(m_Player, zone) && zone == "", "Empty extraction resets output and fails", "false/empty", zone);
 			zone = "old";

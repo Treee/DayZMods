@@ -7,7 +7,12 @@
 #ifdef IAT_TestHarness
 modded class BleedingSourcesManagerServer
 {
-	void IAT_EM_TestResetClock() { m_Tick = 0; m_IAT_HealingTick = 0; m_DeleteList.Clear(); m_ProcessSourcesRemoval = false; }
+	float m_IAT_EM_RetentionRoll = 0.2;
+	override protected float IAT_GetRetentionRoll()
+	{
+		return m_IAT_EM_RetentionRoll;
+	}
+	void IAT_EM_TestResetClock() { m_Tick = 0; m_IAT_HealingTick = 0; m_IAT_RetainedBleedingTick = 0; m_DeleteList.Clear(); m_ProcessSourcesRemoval = false; }
 }
 #endif
 #endif

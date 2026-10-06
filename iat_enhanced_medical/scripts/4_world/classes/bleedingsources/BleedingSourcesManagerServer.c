@@ -6,6 +6,12 @@
 modded class BleedingSourcesManagerServer
 {
 	protected float m_IAT_HealingTick;
+	protected float m_IAT_RetainedBleedingTick;
+
+	protected float IAT_GetRetentionRoll()
+	{
+		return Math.RandomFloat(0, 1);
+	}
 
 	// Prepare the attachment for the same source vanilla will bandage next.
 	// Multiple bones/zones can share one regional attachment.
@@ -81,6 +87,8 @@ modded class BleedingSourcesManagerServer
 		IAT_PluginMedical medical;
 		if (!Class.CastTo(medical, GetPlugin(IAT_PluginMedical)) || damage <= 0 || !medical.IsBulletAmmo(ammo))
 			return;
+		if (IAT_GetRetentionRoll() >= IAT_PluginMedical.IAT_BULLET_RETENTION_CHANCE)
+			return;
 		BleedingSourceZone meta = GetBleedingSourceMeta(GetBitFromSelectionID(component));
 		if (meta)
 			medical.RecordBullet(m_Player, meta.GetSelectionName());
@@ -100,6 +108,15 @@ modded class BleedingSourcesManagerServer
 	override void OnTick(float delta_time)
 	{
 		super.OnTick(delta_time);
+		m_IAT_RetainedBleedingTick += delta_time;
+		if (m_IAT_RetainedBleedingTick >= IAT_PluginMedical.IAT_RETAINED_BULLET_LOSS_INTERVAL)
+		{
+			int intervals = Math.Floor(m_IAT_RetainedBleedingTick / IAT_PluginMedical.IAT_RETAINED_BULLET_LOSS_INTERVAL);
+			m_IAT_RetainedBleedingTick -= intervals * IAT_PluginMedical.IAT_RETAINED_BULLET_LOSS_INTERVAL;
+			IAT_PluginMedical retainedMedical;
+			if (!m_DisableBloodLoss && Class.CastTo(retainedMedical, GetPlugin(IAT_PluginMedical)))
+				retainedMedical.IAT_ApplyRetainedBulletBloodLoss(m_Player, intervals);
+		}
 		m_IAT_HealingTick += delta_time;
 		if (m_IAT_HealingTick < TICK_INTERVAL_SEC)
 			return;

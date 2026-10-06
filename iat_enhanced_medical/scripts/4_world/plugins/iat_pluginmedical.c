@@ -10,6 +10,9 @@ class IAT_PluginMedical : PluginBase
 	static const float IAT_ZONE_BLOODLOSS_MULTIPLIER = 1.0;
 	static const float IAT_BULLET_EXTRACTION_SECONDS = 10;
 	static const float IAT_BANDAGE_REMOVAL_SECONDS = 5;
+	static const float IAT_RETAINED_BULLET_LOSS_INTERVAL = 10;
+	static const float IAT_RETAINED_BULLET_BLOOD_LOSS = 10;
+	static const float IAT_BULLET_RETENTION_CHANCE = 0.45;
 
 	// Keys are vanilla bleeding selection names, not particle attachment bones.
 	// Keep registration order for extraction; IDs are vanilla bleeding bits.
@@ -83,6 +86,23 @@ class IAT_PluginMedical : PluginBase
 		LogEvent(player, "BULLET_RECORDED", "bone=" + bone + " zone=" + IAT_MapBoneNameToDamageZone(bone));
 	}
 
+	//! Apply one slow-loss pulse per affected zone, regardless of dressing or bone count.
+	void IAT_ApplyRetainedBulletBloodLoss(PlayerBase player, int intervals)
+	{
+		if (!g_Game.IsServer() || !player || !player.IsAlive() || !player.GetAllowDamage() || intervals <= 0)
+			return;
+		map<string, ref IAT_MedicalZoneDefinition> zones = IAT_GetDamageZones();
+		float loss = IAT_RETAINED_BULLET_BLOOD_LOSS * intervals;
+		foreach (string zone, IAT_MedicalZoneDefinition definition : zones)
+		{
+			if (!HasBulletInZone(player, zone))
+				continue;
+			player.AddHealth(zone, "Blood", -loss * IAT_GetZoneBloodScale(player, player.GetMaxHealth(zone, "Blood")));
+			player.AddHealth("", "Blood", -loss);
+			LogEvent(player, "RETAINED_BULLET_BLOOD_LOSS", "zone=" + zone + " loss=" + loss.ToString());
+		}
+	}
+
 	bool PrepareDressing(PlayerBase player, ItemBase material)
 	{
 		BleedingSourcesManagerServer manager = player.GetBleedingManagerServer();
@@ -140,6 +160,8 @@ class IAT_PluginMedical : PluginBase
 			// Clear only the extracted bone's bullet bit.
 			state.m_Bullets &= ~bit;
 			zone = IAT_MapBoneNameToDamageZone(bone);
+			// Extraction creates a fresh wound even through an existing dressing.
+			patient.GetBleedingManagerServer().AttemptAddBleedingSourceBySelection(bone);
 			LogEvent(patient, "BULLET_EXTRACTED", "bone=" + bone + " zone=" + zone);
 			return true;
 		}

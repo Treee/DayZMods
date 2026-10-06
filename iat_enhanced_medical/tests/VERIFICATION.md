@@ -71,3 +71,56 @@ supported knife classes enables it and explicitly registers both removal actions
 The removal tests invoke our `IAT_Remove` directly with the actor or patient.
 Protected DayZ `OnFinishProgressServer` callbacks are unchanged and not exposed
 or invoked by these tests. Their dispatch and patient routing remain manual checks.
+
+## Illness and gunshot rework, 2026-10-06
+
+The original source passed all 194 cases in `023ecd8bea08454c8cab7bdc88bcb78a`.
+Changes were developed and tested in the ordinary workspace directory
+`medical-change-work`, using the mod's existing addon identities, dependencies,
+and packed output. Production files were then copied only after hash validation;
+the existing version-1 bullet/dressed-wound save format remains unchanged.
+
+| Requirement | Component evidence | Remaining checks |
+| --- | --- | --- |
+| R-001: illness treatment window | `IAT_EM_IllnessCase`: measured stage-two net damage projects to 50 minutes from 100 Health; actual cholera Water drain, registered salmonella growth, illness vomiting resource/stomach effects, ordinary/default/contamination preservation | Full 45-60-minute cholera/salmonella survival measurement with recorded nutrition, immunity, stomach contents, and repeated random vomiting |
+| R-002: 45% independent retention | `IAT_EM_HitCase`: controlled rolls immediately below, at, and above 0.45 through real `ProcessHit`, with existing eligibility/anatomy cases | Actual projectile dispatch and multiplayer role/replication checks |
+| R-003: one retained bullet per bone | Existing repeated-hit, multi-bone extraction, independent-zone, and storage roundtrip cases remain green | Dedicated persistence/reconnect lifecycle |
+| R-004: slow loss only in retained areas | `IAT_EM_RetainedBleedingCase`: bandaged/no-bullet control, interval boundary, one pulse per zone with several bones, multiple affected zones, delayed interval remainder, stopping after extraction | Natural wall-clock scheduling, UI feedback, and dedicated multiplayer |
+| R-005: extraction bleed, full-healing cleanup, manual reopening | `IAT_EM_ExtractionBleedCase`: active wound under dressing, actual regional damage, rebandaging and history, delayed cleanup, manual cutting/reopening, fully healed eligibility, empty extraction | Protected completion dispatch, animation, cancellation and dedicated detach callbacks |
+
+Observed red evidence:
+
+- `c4886baab82640c1966801c40fd92312`: retention roll at 0.45 incorrectly retained
+  a bullet (`expected=0`, `actual=128`). The boundary test passed after the roll
+  gate in `433ab6f64609465d8314e8f5f96b4d1d`.
+- `6e715ee8b75344b5951b0bc574877297`: a bandaged retained-bullet zone lost no
+  global or regional Blood after the interval.
+- `e4975336c611446e92c5769f7f6b3d38`: extraction opened no bleeding source and
+  the full zone still qualified for healed dressing cleanup.
+- `e8c1321609db46b587b5bd3e0609ce81`: five illness cases failed against vanilla
+  tuning, including a 2,499.99-second stage-two projection, Water loss of 5
+  instead of 1.5 per ten seconds, salmonella growth 0.75 instead of 0.225,
+  and unreduced vomiting effects. The other 208 cases passed.
+
+Run `619cc1596f6a4069ad5c70fe58f93a9a` was rejected as RUN_ERROR: the engine's
+boolean bleeding-source query preserved the source bit (256) in an assertion
+result. Test-author correction normalized the actual bleeding mask comparison;
+the harness/verifier was not changed. This run is not red/green evidence.
+
+Run `4f83e17d2d6e4b04819541d23fec24e6` passed 213 cases / 2,249 assertions.
+Final staged run `113f12a0d1b742478a3f128bf315d28f` passed all 214 cases / 2,255 assertions after
+adding contamination preservation and completing fixture restoration.
+Both used `-HashArtifacts`; cleanup, termination, and loaded addon identity were
+verified. Final invocation:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\dayz-test-harness\run.ps1 -Mod .\medical-change-work -HashArtifacts
+```
+
+Random retention rolls are controlled only by the guarded diagnostic addon;
+normal gameplay uses `Math.RandomFloat(0, 1)`. Illness tests invoke public
+`ModifierBase.Tick` and symptom effects without widening production callbacks.
+The vomit event seed is replayed immediately before the public tick, and fixture
+stomach/agent/symptom systems, disease flags, toxicity, exhaustion effects and
+player Blood/Health/resources are restored. These are component observations,
+not full elapsed gameplay or multiplayer survival trials.

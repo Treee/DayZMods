@@ -17,6 +17,10 @@ class IAT_EM_HitCase : IAT_EM_PlayerCase
 		string ammo = "Bullet_556x45";
 		float damage = 1;
 		string zone = "LeftArm";
+		m_Manager.m_IAT_EM_RetentionRoll = 0.2;
+		if (m_Mode == 6) m_Manager.m_IAT_EM_RetentionRoll = 0.44999;
+		if (m_Mode == 7) { m_Manager.m_IAT_EM_RetentionRoll = 0.45; expected = 0; }
+		if (m_Mode == 8) { m_Manager.m_IAT_EM_RetentionRoll = 0.99999; expected = 0; }
 		if (m_Mode == 0) damage = 0;
 		if (m_Mode == 1) damage = -1;
 		if (m_Mode == 2) ammo = "Bullet_12GaugeRubberSlug";
@@ -33,7 +37,7 @@ class IAT_EM_HitCase : IAT_EM_PlayerCase
 		if (m_Mode == 5) { zone = ""; expected = 0; }
 		if (m_Mode <= 2) expected = 0;
 		m_Manager.ProcessHit(damage, null, component, zone, ammo, "0 0 0");
-		EqualInt(m_State.m_Bullets, expected, "Only positive qualifying hits retain a bullet in resolved anatomy");
+		EqualInt(m_State.m_Bullets, expected, "Positive eligible hit retains only when roll is below 45 percent");
 		if (m_Mode == 3 || m_Mode == 4)
 		{
 			m_Manager.ProcessHit(damage, null, component, zone, ammo, "0 0 0");
@@ -41,6 +45,11 @@ class IAT_EM_HitCase : IAT_EM_PlayerCase
 		}
 		// No assertion on vanilla's random bleeding roll: retention is independent.
 		return true;
+	}
+	override bool Cleanup()
+	{
+		if (m_Manager) m_Manager.m_IAT_EM_RetentionRoll = 0.2;
+		return super.Cleanup();
 	}
 }
 #endif
