@@ -5,11 +5,24 @@ enum IAT_RPC_REPORTTOOL
 
 enum IAT_ReportType
 {
-    TERRAIN,
-    BUG,
-    SUGGESTION,
-    PLAYER_MUTE,
-    EXPLOIT,
-    BAD_WORD,
-    NO_SELECTION
+	TERRAIN,
+	BUG,
+	SUGGESTION,
+	PLAYER_MUTE,
+	BAD_WORD,
+	EXPLOIT,
+	PLAYER,
+	NO_SELECTION,
 };
+
+enum IAT_COTObjectRPC
+{
+	INVALID = -731540,
+	Load,
+	Catalog,
+	Save,
+	DeleteGroup,
+	Result,
+	COUNT
+}
+

@@ -1,0 +1,110 @@
+PanelWidgetClass IAT_COTObjectManagerForm {
+ color 0 0 0 0
+ position 0 0
+ size 760 630
+ hexactpos 0
+ vexactpos 0
+ hexactsize 1
+ vexactsize 1
+ scriptclass "IAT_COTObjectManagerForm"
+ style DayZDefaultPanel
+ {
+  GridSpacerWidgetClass search_actions {
+   position 5 5
+   size 360 30
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   "Size To Content V" 1
+   Columns 1
+   Rows 1
+  }
+  TextListboxWidgetClass classes {
+   position 5 40
+   size 360 220
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   style Editor
+   lines 12
+   font "gui/fonts/sdf_MetronLight24"
+   "exact text" 1
+   "exact text size" 15
+  }
+  TextWidgetClass group_title {
+   position 5 265
+   size 360 20
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   text "#STR_IAT_COTObjectManager_SavedGroups"
+   font "gui/fonts/sdf_MetronLight24"
+   "exact text" 1
+   "exact text size" 16
+  }
+  TextListboxWidgetClass groups {
+   position 5 290
+   size 360 100
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   style Editor
+   lines 5
+   font "gui/fonts/sdf_MetronLight24"
+   "exact text" 1
+   "exact text size" 15
+  }
+  GridSpacerWidgetClass group_actions {
+   position 5 395
+   size 360 90
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   "Size To Content V" 1
+   Columns 1
+   Rows 3
+  }
+  TextListboxWidgetClass objects {
+   position 5 495
+   size 360 125
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   style Editor
+   lines 6
+   font "gui/fonts/sdf_MetronLight24"
+   "exact text" 1
+   "exact text size" 15
+  }
+  GridSpacerWidgetClass edit_actions {
+   position 380 5
+   size 375 600
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   "Size To Content V" 1
+   Columns 1
+   Rows 13
+  }
+  MultilineTextWidgetClass status {
+   ignorepointer 1
+   position 390 460
+   size 355 150
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   font "gui/fonts/sdf_MetronLight24"
+   "exact text" 1
+   "exact text size" 16
+   text "#STR_IAT_COTObjectManager_LoadingGroups"
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+    "mod": "IAT_ReportTool",
+    "output": "P:/Mods/@IAT_ReportTool",
+    "addons": ["scripts", "languagecore", "tests"],
+    "dependencies": {
+        "local": ["P:/Mods/@WesternZVOIPMute"],
+        "workshop": ["@CF", "@Community-Online-Tools", "@Admirals Chat Filter"]
+    }
+}

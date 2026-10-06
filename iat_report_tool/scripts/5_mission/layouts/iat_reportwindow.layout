@@ -1,305 +1,632 @@
 FrameWidgetClass rootFrame {
- size 0.5 0.7
+ position 0 0
+ size 0.38 0.92
  halign center_ref
  valign center_ref
  hexactpos 0
  vexactpos 0
  hexactsize 0
  vexactsize 0
+ priority 1000
  {
   PanelWidgetClass rootPanel {
    ignorepointer 0
    position 0 0
    size 1 1
-   halign center_ref
-   valign center_ref
    hexactpos 0
    vexactpos 0
    hexactsize 0
    vexactsize 0
    style WZ_Paper_Ripped
-   "no focus" 0
    {
-    PanelWidgetClass pnlHeader {
-     ignorepointer 1
-     position 0 0.01
-     size 0.95 0.07
-     halign center_ref
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
-     vexactsize 0
-     style WZ_Title_Plate
-     "no focus" 1
-     {
-      TextWidgetClass txtHeaderTitle {
-       ignorepointer 1
-       position 0 0
-       size 1 1
-       halign center_ref
-       hexactpos 0
-       vexactpos 0
-       hexactsize 0
-       vexactsize 0
-       style Bold
-       text "#STR_IAT_ReportMenu_MenuTitle"
-       "size to text h" 1
-       "size to text v" 1
-       "text halign" center
-       "text valign" center
-      }
-     }
-    }
     PanelWidgetClass pnlReportForm {
      ignorepointer 0
-     position 0 0.09
-     size 0.95 0.64
-     halign center_ref
+     position 0.047 0.018
+     size 0.906 0.96
      hexactpos 0
      vexactpos 0
      hexactsize 0
      vexactsize 0
      style blank
-     "no focus" 0
      {
-      GridSpacerWidgetClass settings_content {
+      PanelWidgetClass spcrReportTypeOptions {
        ignorepointer 0
-       color 0 0 0 0.549
-       size 1 1
-       halign center_ref
+       position 0 0.085
+       size 1 0.305
        hexactpos 0
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       style Empty
-       "no focus" 1
-       Padding 0
-       Margin 0
-       "Size To Content H" 1
-       "Size To Content V" 1
-       Columns 1
+       style blank
        {
-        GridSpacerWidgetClass spcrReportTypeOptions {
-         ignorepointer 1
+        PanelWidgetClass pnlTerrainOption {
+         ignorepointer 0
+         color 0.57 0.46 0.32 0.65
          position 0 0
-         size 1 1
-         halign center_ref
+         size 0.493 0.31
          hexactpos 0
          vexactpos 0
          hexactsize 0
          vexactsize 0
-         style Empty
-         "Size To Content V" 1
-         content_halign center
-         content_valign center
-         Columns 2
-         Rows 1
+         style Outline
          {
           CheckBoxWidgetClass chkBoxTerrainReport {
-           size 0.33 0.1
-           valign center_ref
+           position 0.04 0.06
+           size 0.92 0.42
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
            style WZ_CheckBox
            text "#STR_IAT_ReportMenu_ReportType_Terrain"
-           "text color" 0 0 0 1
+           "text color" 0.2 0.16 0.12 1
            checked 1
           }
+          TextWidgetClass txtTerrainHelp {
+           ignorepointer 1
+           color 0.18 0.14 0.1 1
+           position 0.06 0.51
+           size 0.9 0.45
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 1
+           style WZ
+           text "#STR_IAT_ReportMenu_TerrainHelp"
+           "exact text" 1
+           "exact text size" 18
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+        PanelWidgetClass pnlBugOption {
+         ignorepointer 0
+         color 0.57 0.46 0.32 0.65
+         position 0.507 0
+         size 0.493 0.31
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style Outline
+         {
           CheckBoxWidgetClass chkBoxBugReport {
-           position 0 0
-           size 1 0.1
-           halign center_ref
-           valign center_ref
+           position 0.04 0.06
+           size 0.92 0.42
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
            style WZ_CheckBox
            text "#STR_IAT_ReportMenu_ReportType_Bug"
-           "text color" 0 0 0 1
+           "text color" 0.2 0.16 0.12 1
+           checked 0
           }
+          TextWidgetClass txtBugHelp {
+           ignorepointer 1
+           color 0.18 0.14 0.1 1
+           position 0.055 0.51
+           size 0.9 0.45
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 1
+           style WZ
+           text "#STR_IAT_ReportMenu_BugHelp"
+           "exact text" 1
+           "exact text size" 18
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+        PanelWidgetClass pnlPlayerOption {
+         ignorepointer 0
+         color 0.57 0.46 0.32 0.65
+         position 0 0.345
+         size 0.493 0.31
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style Outline
+         {
           CheckBoxWidgetClass chkBoxPlayerReport {
-           visible 0
-           position 0 0
-           size 1 0.1
-           halign right_ref
-           valign center_ref
+           position 0.04 0.06
+           size 0.92 0.42
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
            style WZ_CheckBox
            text "#STR_IAT_ReportMenu_ReportType_Player"
+           "text color" 0.2 0.16 0.12 1
+           checked 0
+          }
+          TextWidgetClass txtPlayerHelp {
+           ignorepointer 1
+           color 0.18 0.14 0.1 1
+           position 0.06 0.51
+           size 0.9 0.45
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 1
+           style WZ
+           text "#STR_IAT_ReportMenu_PlayerHelp"
+           "exact text" 1
+           "exact text size" 18
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
           }
          }
         }
-        PanelWidgetClass reportDescriptionContainer {
+        PanelWidgetClass pnlSuggestionOption {
          ignorepointer 0
-         size 1 0.9
-         halign center_ref
-         valign center_ref
+         color 0.57 0.46 0.32 0.65
+         position 0.507 0.345
+         size 0.493 0.31
          hexactpos 0
          vexactpos 0
          hexactsize 0
          vexactsize 0
+         style Outline
          {
-          PanelWidgetClass pnlDescriptionTitle {
-           ignorepointer 1
-           size 1 0.08
-           halign center_ref
+          CheckBoxWidgetClass chkBoxSuggestionReport {
+           position 0.04 0.06
+           size 0.92 0.42
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           style WZ_Title_Plate
-           {
-            TextWidgetClass txtDescriptionTitle {
-             ignorepointer 1
-             position 0 0
-             size 1 1
-             halign center_ref
-             valign center_ref
-             hexactpos 0
-             vexactpos 0
-             hexactsize 0
-             vexactsize 0
-             text "#STR_IAT_ReportMenu_ReportDescriptionLabel"
-             "size to text h" 1
-             "size to text v" 1
-             "text halign" center
-             "text valign" center
-            }
-           }
+           style WZ_CheckBox
+           text "#STR_IAT_ReportMenu_ReportType_Suggestion"
+           "text color" 0.2 0.16 0.12 1
+           checked 0
           }
-          PanelWidgetClass frmDescription {
-           ignorepointer 0
-           position 0 0.09
-           size 1 0.9
-           halign center_ref
+          TextWidgetClass txtSuggestionHelp {
+           ignorepointer 1
+           color 0.18 0.14 0.1 1
+           position 0.06 0.51
+           size 0.9 0.45
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           style blank
-           {
-            MultilineEditBoxWidgetClass editTxtReportDescription {
-             color 0 0 0 1
-             size 1 1
-             halign center_ref
-             valign bottom_ref
-             hexactpos 0
-             vexactpos 0
-             hexactsize 0
-             vexactsize 0
-             style WZ
-             text ""
-             font "gui/fonts/MetronBook16"
-             lines 10
-             "limit visible" 1
-            }
-           }
+           scaled 1
+           style WZ
+           text "#STR_IAT_ReportMenu_SuggestionHelp"
+           "exact text" 1
+           "exact text size" 18
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
+          }
+         }
+        }
+        PanelWidgetClass pnlExploitOption {
+         ignorepointer 0
+         color 0.57 0.46 0.32 0.65
+         position 0 0.69
+         size 0.493 0.31
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style Outline
+         {
+          CheckBoxWidgetClass chkBoxExploitReport {
+           position 0.04 0.06
+           size 0.92 0.42
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style WZ_CheckBox
+           text "#STR_IAT_ReportMenu_ReportType_Exploit"
+           "text color" 0.2 0.16 0.12 1
+           checked 0
+          }
+          TextWidgetClass txtExploitHelp {
+           ignorepointer 1
+           color 0.18 0.14 0.1 1
+           position 0.06 0.51
+           size 0.9 0.45
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 1
+           style WZ
+           text "#STR_IAT_ReportMenu_ExploitHelp"
+           "exact text" 1
+           "exact text size" 18
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
           }
          }
         }
        }
       }
-     }
-    }
-    PanelWidgetClass pnlButtons {
-     ignorepointer 1
-     position 0 0.01
-     size 0.95 0.25
-     halign center_ref
-     valign bottom_ref
-     hexactpos 0
-     vexactpos 0
-     hexactsize 0
-     vexactsize 0
-     scaled 1
-     style blank
-     {
-      GridSpacerWidgetClass spcrBotPanel {
-       ignorepointer 1
-       size 1 1
-       halign center_ref
-       valign bottom_ref
+      PanelWidgetClass reportDescriptionContainer {
+       ignorepointer 0
+       position 0 0.405
+       size 1 0.322
        hexactpos 0
        vexactpos 0
        hexactsize 0
        vexactsize 0
-       style Empty
-       Columns 1
-       Rows 2
+       style blank
        {
-        PanelWidgetClass pnlSubmitInfo {
+        MultilineTextWidgetClass txtDescriptionHelp {
+         ignorepointer 1
+         color 0.18 0.14 0.1 1
+         position 0.015 0.175
+         size 0.97 0.091
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ
+         text "#STR_IAT_ReportMenu_DescriptionHelp"
+         "exact text" 1
+         "exact text size" 18
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" left
+         "text valign" center
+         wrap 1
+        }
+        PanelWidgetClass frmDescription {
+         ignorepointer 0
+         color 0.57 0.46 0.32 0.85
+         position 0 0.286
+         size 1 0.714
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style Outline
+         {
+          MultilineEditBoxWidgetClass editTxtReportDescription {
+           color 0 0 0 1
+           position 0.025 0.04
+           size 0.95 0.92
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style WZ
+           "text color" 0 0 0 1
+           "exact text" 1
+           "exact text size" 18
+           "size to text h" 0
+           "size to text v" 0
+           lines 8
+           "limit visible" 1
+          }
+         }
+        }
+        PanelWidgetClass pnlDescriptionTitle {
          ignorepointer 1
          position 0 0
-         size 1 0.5
-         halign center_ref
+         size 1 0.155
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ_Title_Plate
+         {
+          TextWidgetClass txtDescriptionTitleNumber {
+           ignorepointer 1
+           color 1 0.961 0.882 1
+           position 0.045 0.15
+           size 0.07 0.7
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style WZ
+           text "02"
+           "exact text" 0
+           "exact text size" 16
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
+          }
+          TextWidgetClass txtDescriptionTitle {
+           ignorepointer 1
+           color 1 0.961 0.882 1
+           position 0.13 0.15
+           size 0.63 0.7
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style WZ
+           text "#STR_IAT_ReportMenu_ReportDescriptionLabel"
+           "exact text" 0
+           "exact text size" 20
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" left
+           "text valign" center
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass pnlDiscordContact {
+       ignorepointer 0
+       position 0 0.742
+       size 1 0.123
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style blank
+       {
+        EditBoxWidgetClass editTxtDiscordName {
+         position 0 0.47
+         size 1 0.3
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ_Metal_Edge
+         "Default text color" 0 0 0 1
+         "exact text" 1
+         "text color" 0.2 0.16 0.12 1
+         "text sharpness" 2
+         "text valign" center
+        }
+        TextWidgetClass txtDiscordContactHint {
+         ignorepointer 1
+         color 0.18 0.14 0.1 1
+         position 0.015 0.79
+         size 0.97 0.21
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ
+         text "#STR_IAT_ReportMenu_DiscordContactHint"
+         "exact text" 0
+         "exact text size" 16
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" left
+         "text valign" center
+        }
+        PanelWidgetClass pnlDiscordNameLabel {
+         ignorepointer 1
+         position 0 0
+         size 1 0.407
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ_Title_Plate
+         {
+          TextWidgetClass txtDiscordNameTextNumber {
+           ignorepointer 1
+           color 1 0.961 0.882 1
+           position 0.045 0.15
+           size 0.07 0.7
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style WZ
+           text "03"
+           "exact text" 0
+           "exact text size" 16
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" center
+           "text valign" center
+          }
+          TextWidgetClass txtDiscordNameText {
+           ignorepointer 1
+           color 1 0.961 0.882 1
+           position 0.13 0.15
+           size 0.63 0.7
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style WZ
+           text "#STR_IAT_ReportMenu_DiscordName"
+           "exact text" 0
+           "exact text size" 20
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" left
+           "text valign" center
+          }
+          TextWidgetClass txtDiscordNameTextHint {
+           ignorepointer 1
+           color 1 0.961 0.882 1
+           position 0.77 0.15
+           size 0.18 0.7
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style WZ
+           text "#STR_IAT_ReportMenu_DiscordNameOptional"
+           "exact text" 0
+           "exact text size" 14
+           "size to text h" 0
+           "size to text v" 0
+           "text halign" right
+           "text valign" center
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass pnlButtons {
+       ignorepointer 0
+       position 0 0.876
+       size 1 0.108
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style blank
+       {
+        TextWidgetClass txtSubmitInfo0 {
+         ignorepointer 1
+         color 0.18 0.14 0.1 1
+         position 0.015 0
+         size 0.97 0.46
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ
+         text "#STR_IAT_ReportMenu_AdditionalSubmitInfo"
+         "exact text" 1
+         "exact text size" 18
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" center
+         "text valign" center
+        }
+        PanelWidgetClass spcrButtons {
+         ignorepointer 0
+         position 0 0.54
+         size 1 0.46
          hexactpos 0
          vexactpos 0
          hexactsize 0
          vexactsize 0
          style blank
          {
-          MultilineTextWidgetClass txtSubmitInfo0 {
-           ignorepointer 1
-           color 0 0 0 1
-           size 1 1
-           halign center_ref
-           valign center_ref
+          ButtonWidgetClass btnCancel {
+           position 0 0
+           size 0.36 1
            hexactpos 0
            vexactpos 0
            hexactsize 0
            vexactsize 0
-           style WZ
-           text "#STR_IAT_ReportMenu_AdditionalSubmitInfo"
-           "size to text h" 1
-           "size to text v" 1
-           "text halign" center
-           "text valign" center
-           wrap 1
+           style EmptyHighlight
+           "next right" "btnSubmit"
+           "next up" "editTxtDiscordName"
+           text "#STR_IAT_ReportMenu_CancelReport"
+           font "gui/fonts/MetronBook16"
+           "text color" 0.2 0.16 0.12 1
+           {
+            PanelWidgetClass pnlCancelOutline {
+             ignorepointer 1
+             color 0.57 0.46 0.32 0.85
+             position 0 0
+             size 1 1
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             style Outline
+            }
+           }
+          }
+          ButtonWidgetClass btnSubmit {
+           position 0.41 0
+           size 0.59 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           style Title_Plate
+           "next left" "btnCancel"
+           "next up" "editTxtDiscordName"
+           text "#STR_IAT_ReportMenu_SubmitReport"
+           font "WesternZTheme/GUI/fonts/WesternZ/WesternZ-Regular"
+           "text color" 1 0.96 0.88 1
           }
          }
         }
-        GridSpacerWidgetClass spcrButtons {
+       }
+      }
+      PanelWidgetClass pnlReportTypeHeader {
+       ignorepointer 1
+       position 0 0.022
+       size 1 0.05
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style WZ_Title_Plate
+       {
+        TextWidgetClass txtReportTypeLabelNumber {
          ignorepointer 1
-         size 1 0.35
-         halign center_ref
-         valign bottom_ref
+         color 1 0.961 0.882 1
+         position 0.045 0.15
+         size 0.07 0.7
          hexactpos 0
          vexactpos 0
          hexactsize 0
          vexactsize 0
-         style outline
-         Columns 2
-         Rows 1
-         {
-          ButtonWidgetClass btnCancel {
-           position 0 0
-           size 0.08 1
-           valign center_ref
-           hexactpos 0
-           vexactpos 0
-           hexactsize 0
-           vexactsize 0
-           style Title_Plate
-           text "#STR_IAT_ReportMenu_CancelReport"
-          }
-          ButtonWidgetClass btnSubmit {
-           size 0.08 1
-           halign right_ref
-           valign center_ref
-           hexactpos 0
-           vexactpos 0
-           hexactsize 0
-           vexactsize 0
-           style Title_Plate
-           text "#STR_IAT_ReportMenu_SubmitReport"
-          }
-         }
+         style WZ
+         text "01"
+         "exact text" 0
+         "exact text size" 16
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" center
+         "text valign" center
+        }
+        TextWidgetClass txtReportTypeLabel {
+         ignorepointer 1
+         color 1 0.961 0.882 1
+         position 0.13 0.15
+         size 0.63 0.7
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ
+         text "#STR_IAT_ReportMenu_ReportTypeLabel"
+         "exact text" 0
+         "exact text size" 20
+         "size to text h" 0
+         "size to text v" 0
+         "text valign" center
+        }
+        TextWidgetClass txtReportTypeLabelHint {
+         ignorepointer 1
+         color 1 0.961 0.882 1
+         position 0.05 0
+         size 0.25 0.7
+         halign right_ref
+         valign center_ref
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         style WZ
+         text "#STR_IAT_ReportMenu_ReportTypeHint"
+         "exact text" 0
+         "exact text size" 14
+         "size to text h" 0
+         "size to text v" 0
+         "text halign" right
+         "text valign" center
         }
        }
       }

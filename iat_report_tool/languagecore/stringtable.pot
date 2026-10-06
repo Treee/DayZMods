@@ -3,37 +3,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "MIME-Version: 1.0\n"
-"POT-Creation-Date: 2026-07-30 23:02+0000\n"
-"X-CSV-Hash: d91d2c1f8cd4f4e1\n"
-"X-Content-Hash: 68b047f3af073c721807b8e996bde2e6ad60bd6a5f32e3a7cb12ef4ec16b0848\n"
+"POT-Creation-Date: 2026-10-06 16:27+0000\n"
+"X-CSV-Hash: db7eaceb5ed31111\n"
+"X-Content-Hash: 08d050c65eb0a08fce7400accdc955af948cff682edf64272ccc80f3aead30c7\n"
 "X-Generator: dayz-stringtable v0.4.0\n"
 
-msgctxt "STR_UA_IAT_SettingsTabName"
-msgid "ItsATreeMods"
+msgctxt "STR_IAT_COTObjectManager_SavedGroups"
+msgid "Saved groups"
 msgstr ""
 
-msgctxt "STR_UA_IAT_ToggleReportMenu"
-msgid "Report Menu Toggle"
+msgctxt "STR_IAT_COTObjectManager_LoadingGroups"
+msgid "Loading groups..."
 msgstr ""
 
-msgctxt "STR_IAT_ReportMenu_MenuTitle"
-msgid "Report Menu"
+msgctxt "STR_IAT_ReportMenu_ReportType_Terrain"
+msgid "Terrain"
 msgstr ""
 
-msgctxt "STR_IAT_ReportMenu_ReportTypeLabel"
-msgid "Report Type"
+msgctxt "STR_IAT_ReportMenu_TerrainHelp"
+msgid "Map Issues"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportType_Bug"
+msgid "Bug"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_BugHelp"
+msgid "Something is not working"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportType_Player"
+msgid "Player"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_PlayerHelp"
+msgid "Report player behavior"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportType_Suggestion"
+msgid "Suggestion"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_SuggestionHelp"
+msgid "An idea for the server"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportType_Exploit"
+msgid "Exploit"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ExploitHelp"
+msgid "A loophole or unfair advantage"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_DescriptionHelp"
+msgid "Describe what happened and what you expected to see."
 msgstr ""
 
 msgctxt "STR_IAT_ReportMenu_ReportDescriptionLabel"
-msgid "Detailed Description"
+msgid "Detailed description"
 msgstr ""
 
-msgctxt "STR_IAT_ReportMenu_ReportDescriptionText"
-msgid "Hint"
+msgctxt "STR_IAT_ReportMenu_DiscordContactHint"
+msgid "Add your username if you are ok for staff to contact you."
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_DiscordName"
+msgid "Discord Username"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_DiscordNameOptional"
+msgid "Optional"
 msgstr ""
 
 msgctxt "STR_IAT_ReportMenu_AdditionalSubmitInfo"
-msgid "Your current location, heading, and SteamdID will automatically be included when the report is submitted. If you are ok with us potentially contacting you in Discord, please provide your Discord username."
+msgid "Your current location, heading, and Steam ID are automatically included with your report."
 msgstr ""
 
 msgctxt "STR_IAT_ReportMenu_CancelReport"
@@ -41,6 +85,14 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "STR_IAT_ReportMenu_SubmitReport"
-msgid "Submit"
+msgid "Submit report"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportTypeLabel"
+msgid "Report type"
+msgstr ""
+
+msgctxt "STR_IAT_ReportMenu_ReportTypeHint"
+msgid "Choose one"
 msgstr ""
 
