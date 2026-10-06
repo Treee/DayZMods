@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: czech\n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2026-10-06 11:56-0600\n"
+"X-Content-Hash: 824fbb45b30fc80b5012e50ba4e5d6b6e3ce658dfb23102662010df6471a2d3f\n"
+"X-Generator: dayz-stringtable v0.4.0\n"
+
+msgctxt "IAT_EM_ACTION_EXTRACT_BULLET_SELF"
+msgid "Extract bullet"
+msgstr "Vyjmout kulku"
+
+msgctxt "IAT_EM_ACTION_EXTRACT_BULLET_TARGET"
+msgid "Extract person's bullet"
+msgstr "Vyjmout kulku jiné osobě"
+
+msgctxt "IAT_EM_ACTION_REMOVE_BANDAGE_SELF"
+msgid "Cut off bandage"
+msgstr "Odstřihnout obvaz"
+
+msgctxt "IAT_EM_ACTION_REMOVE_BANDAGE_TARGET"
+msgid "Cut off person's bandage"
+msgstr "Odstřihnout obvaz jiné osobě"
+
+msgctxt "IAT_EM_REMOVE_INCOMPATIBLE_DRESSING"
+msgid "Remove the damaged or incompatible dressing before applying a new one."
+msgstr "Před přiložením nového krytí odstraňte poškozené nebo nevhodné krytí."
+
+msgctxt "IAT_EM_DRESSING_ATTACHMENT_FAILED"
+msgid "The dressing could not be attached."
+msgstr "Krytí se nepodařilo připevnit."
+
+msgctxt "IAT_EM_BANDAGE_REMOVED"
+msgid "Cut off a bandage."
+msgstr "Obvaz byl odstřižen."
+
+msgctxt "IAT_EM_PATIENT_BANDAGE_REMOVED"
+msgid "Your bandage was cut off."
+msgstr "Váš obvaz byl odstřižen."
+
+msgctxt "IAT_EM_NO_RETAINED_BULLET"
+msgid "No retained bullet was found."
+msgstr "Nebyla nalezena žádná uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_Head"
+msgid "Removed a retained bullet from head."
+msgstr "Uvízlá kulka byla vyjmuta z hlavy."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_Head"
+msgid "A retained bullet was removed from head."
+msgstr "Z hlavy vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_Torso"
+msgid "Removed a retained bullet from torso."
+msgstr "Uvízlá kulka byla vyjmuta z trupu."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_Torso"
+msgid "A retained bullet was removed from torso."
+msgstr "Z trupu vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftArm"
+msgid "Removed a retained bullet from left arm."
+msgstr "Uvízlá kulka byla vyjmuta z levé paže."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftArm"
+msgid "A retained bullet was removed from left arm."
+msgstr "Z levé paže vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightArm"
+msgid "Removed a retained bullet from right arm."
+msgstr "Uvízlá kulka byla vyjmuta z pravé paže."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightArm"
+msgid "A retained bullet was removed from right arm."
+msgstr "Z pravé paže vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightHand"
+msgid "Removed a retained bullet from right hand."
+msgstr "Uvízlá kulka byla vyjmuta z pravé ruky."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightHand"
+msgid "A retained bullet was removed from right hand."
+msgstr "Z pravé ruky vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftHand"
+msgid "Removed a retained bullet from left hand."
+msgstr "Uvízlá kulka byla vyjmuta z levé ruky."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftHand"
+msgid "A retained bullet was removed from left hand."
+msgstr "Z levé ruky vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftLeg"
+msgid "Removed a retained bullet from left leg."
+msgstr "Uvízlá kulka byla vyjmuta z levé nohy."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftLeg"
+msgid "A retained bullet was removed from left leg."
+msgstr "Z levé nohy vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightLeg"
+msgid "Removed a retained bullet from right leg."
+msgstr "Uvízlá kulka byla vyjmuta z pravé nohy."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightLeg"
+msgid "A retained bullet was removed from right leg."
+msgstr "Z pravé nohy vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftFoot"
+msgid "Removed a retained bullet from left foot."
+msgstr "Uvízlá kulka byla vyjmuta z levého chodidla."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftFoot"
+msgid "A retained bullet was removed from left foot."
+msgstr "Z levého chodidla vám byla vyjmuta uvízlá kulka."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightFoot"
+msgid "Removed a retained bullet from right foot."
+msgstr "Uvízlá kulka byla vyjmuta z pravého chodidla."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightFoot"
+msgid "A retained bullet was removed from right foot."
+msgstr "Z pravého chodidla vám byla vyjmuta uvízlá kulka."
+

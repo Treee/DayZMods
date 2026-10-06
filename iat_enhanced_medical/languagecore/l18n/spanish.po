@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: spanish\n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2026-10-06 11:56-0600\n"
+"X-Content-Hash: 0bca546b59a00d8871d470fc11d471cd002cd220f008d9eb711f0603d48f7fda\n"
+"X-Generator: dayz-stringtable v0.4.0\n"
+
+msgctxt "IAT_EM_ACTION_EXTRACT_BULLET_SELF"
+msgid "Extract bullet"
+msgstr "Extraer bala"
+
+msgctxt "IAT_EM_ACTION_EXTRACT_BULLET_TARGET"
+msgid "Extract person's bullet"
+msgstr "Extraer bala a otra persona"
+
+msgctxt "IAT_EM_ACTION_REMOVE_BANDAGE_SELF"
+msgid "Cut off bandage"
+msgstr "Cortar vendaje"
+
+msgctxt "IAT_EM_ACTION_REMOVE_BANDAGE_TARGET"
+msgid "Cut off person's bandage"
+msgstr "Cortar el vendaje de otra persona"
+
+msgctxt "IAT_EM_REMOVE_INCOMPATIBLE_DRESSING"
+msgid "Remove the damaged or incompatible dressing before applying a new one."
+msgstr "Retira el apósito dañado o inadecuado antes de colocar uno nuevo."
+
+msgctxt "IAT_EM_DRESSING_ATTACHMENT_FAILED"
+msgid "The dressing could not be attached."
+msgstr "No se pudo colocar el apósito."
+
+msgctxt "IAT_EM_BANDAGE_REMOVED"
+msgid "Cut off a bandage."
+msgstr "Se cortó un vendaje."
+
+msgctxt "IAT_EM_PATIENT_BANDAGE_REMOVED"
+msgid "Your bandage was cut off."
+msgstr "Te han cortado el vendaje."
+
+msgctxt "IAT_EM_NO_RETAINED_BULLET"
+msgid "No retained bullet was found."
+msgstr "No se encontró ninguna bala alojada."
+
+msgctxt "IAT_EM_BULLET_REMOVED_Head"
+msgid "Removed a retained bullet from head."
+msgstr "Se extrajo una bala alojada en la cabeza."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_Head"
+msgid "A retained bullet was removed from head."
+msgstr "Te han extraído una bala alojada en la cabeza."
+
+msgctxt "IAT_EM_BULLET_REMOVED_Torso"
+msgid "Removed a retained bullet from torso."
+msgstr "Se extrajo una bala alojada en el torso."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_Torso"
+msgid "A retained bullet was removed from torso."
+msgstr "Te han extraído una bala alojada en el torso."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftArm"
+msgid "Removed a retained bullet from left arm."
+msgstr "Se extrajo una bala alojada en el brazo izquierdo."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftArm"
+msgid "A retained bullet was removed from left arm."
+msgstr "Te han extraído una bala alojada en el brazo izquierdo."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightArm"
+msgid "Removed a retained bullet from right arm."
+msgstr "Se extrajo una bala alojada en el brazo derecho."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightArm"
+msgid "A retained bullet was removed from right arm."
+msgstr "Te han extraído una bala alojada en el brazo derecho."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightHand"
+msgid "Removed a retained bullet from right hand."
+msgstr "Se extrajo una bala alojada en la mano derecha."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightHand"
+msgid "A retained bullet was removed from right hand."
+msgstr "Te han extraído una bala alojada en la mano derecha."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftHand"
+msgid "Removed a retained bullet from left hand."
+msgstr "Se extrajo una bala alojada en la mano izquierda."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftHand"
+msgid "A retained bullet was removed from left hand."
+msgstr "Te han extraído una bala alojada en la mano izquierda."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftLeg"
+msgid "Removed a retained bullet from left leg."
+msgstr "Se extrajo una bala alojada en la pierna izquierda."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftLeg"
+msgid "A retained bullet was removed from left leg."
+msgstr "Te han extraído una bala alojada en la pierna izquierda."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightLeg"
+msgid "Removed a retained bullet from right leg."
+msgstr "Se extrajo una bala alojada en la pierna derecha."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightLeg"
+msgid "A retained bullet was removed from right leg."
+msgstr "Te han extraído una bala alojada en la pierna derecha."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftFoot"
+msgid "Removed a retained bullet from left foot."
+msgstr "Se extrajo una bala alojada en el pie izquierdo."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftFoot"
+msgid "A retained bullet was removed from left foot."
+msgstr "Te han extraído una bala alojada en el pie izquierdo."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightFoot"
+msgid "Removed a retained bullet from right foot."
+msgstr "Se extrajo una bala alojada en el pie derecho."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightFoot"
+msgid "A retained bullet was removed from right foot."
+msgstr "Te han extraído una bala alojada en el pie derecho."
+

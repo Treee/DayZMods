@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: english\n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2026-10-06 11:56-0600\n"
+"X-Content-Hash: cb2e7d52d443f62b566a40475a0a219d30013873c5575f06263944a1ffd35dfd\n"
+"X-Generator: dayz-stringtable v0.4.0\n"
+
+msgctxt "IAT_EM_ACTION_EXTRACT_BULLET_SELF"
+msgid "Extract bullet"
+msgstr "Extract bullet"
+
+msgctxt "IAT_EM_ACTION_EXTRACT_BULLET_TARGET"
+msgid "Extract person's bullet"
+msgstr "Extract person's bullet"
+
+msgctxt "IAT_EM_ACTION_REMOVE_BANDAGE_SELF"
+msgid "Cut off bandage"
+msgstr "Cut off bandage"
+
+msgctxt "IAT_EM_ACTION_REMOVE_BANDAGE_TARGET"
+msgid "Cut off person's bandage"
+msgstr "Cut off person's bandage"
+
+msgctxt "IAT_EM_REMOVE_INCOMPATIBLE_DRESSING"
+msgid "Remove the damaged or incompatible dressing before applying a new one."
+msgstr "Remove the damaged or incompatible dressing before applying a new one."
+
+msgctxt "IAT_EM_DRESSING_ATTACHMENT_FAILED"
+msgid "The dressing could not be attached."
+msgstr "The dressing could not be attached."
+
+msgctxt "IAT_EM_BANDAGE_REMOVED"
+msgid "Cut off a bandage."
+msgstr "Cut off a bandage."
+
+msgctxt "IAT_EM_PATIENT_BANDAGE_REMOVED"
+msgid "Your bandage was cut off."
+msgstr "Your bandage was cut off."
+
+msgctxt "IAT_EM_NO_RETAINED_BULLET"
+msgid "No retained bullet was found."
+msgstr "No retained bullet was found."
+
+msgctxt "IAT_EM_BULLET_REMOVED_Head"
+msgid "Removed a retained bullet from head."
+msgstr "Removed a retained bullet from head."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_Head"
+msgid "A retained bullet was removed from head."
+msgstr "A retained bullet was removed from head."
+
+msgctxt "IAT_EM_BULLET_REMOVED_Torso"
+msgid "Removed a retained bullet from torso."
+msgstr "Removed a retained bullet from torso."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_Torso"
+msgid "A retained bullet was removed from torso."
+msgstr "A retained bullet was removed from torso."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftArm"
+msgid "Removed a retained bullet from left arm."
+msgstr "Removed a retained bullet from left arm."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftArm"
+msgid "A retained bullet was removed from left arm."
+msgstr "A retained bullet was removed from left arm."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightArm"
+msgid "Removed a retained bullet from right arm."
+msgstr "Removed a retained bullet from right arm."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightArm"
+msgid "A retained bullet was removed from right arm."
+msgstr "A retained bullet was removed from right arm."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightHand"
+msgid "Removed a retained bullet from right hand."
+msgstr "Removed a retained bullet from right hand."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightHand"
+msgid "A retained bullet was removed from right hand."
+msgstr "A retained bullet was removed from right hand."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftHand"
+msgid "Removed a retained bullet from left hand."
+msgstr "Removed a retained bullet from left hand."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftHand"
+msgid "A retained bullet was removed from left hand."
+msgstr "A retained bullet was removed from left hand."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftLeg"
+msgid "Removed a retained bullet from left leg."
+msgstr "Removed a retained bullet from left leg."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftLeg"
+msgid "A retained bullet was removed from left leg."
+msgstr "A retained bullet was removed from left leg."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightLeg"
+msgid "Removed a retained bullet from right leg."
+msgstr "Removed a retained bullet from right leg."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightLeg"
+msgid "A retained bullet was removed from right leg."
+msgstr "A retained bullet was removed from right leg."
+
+msgctxt "IAT_EM_BULLET_REMOVED_LeftFoot"
+msgid "Removed a retained bullet from left foot."
+msgstr "Removed a retained bullet from left foot."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_LeftFoot"
+msgid "A retained bullet was removed from left foot."
+msgstr "A retained bullet was removed from left foot."
+
+msgctxt "IAT_EM_BULLET_REMOVED_RightFoot"
+msgid "Removed a retained bullet from right foot."
+msgstr "Removed a retained bullet from right foot."
+
+msgctxt "IAT_EM_PATIENT_BULLET_REMOVED_RightFoot"
+msgid "A retained bullet was removed from right foot."
+msgstr "A retained bullet was removed from right foot."
+

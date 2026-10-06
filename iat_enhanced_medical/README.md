@@ -10,9 +10,9 @@
 
 ## Current medical implementation
 
-`PluginIATMedical` handles server-side medical rules. `IAT_MedicalState` stores wounds, retained bullets, and dressed wounds on each player through `OnStoreSave` / `OnStoreLoad`. Bandages use the existing WesternZ classes and slots with normal inventory replication; this mod does not define replacement bandage classes or synchronize custom medical masks.
+`IAT_PluginMedical` handles server-side medical rules. `IAT_MedicalState` stores retained bullets and dressed wounds on each player through `OnStoreSave` / `OnStoreLoad`. Bandages use the existing WesternZ classes and slots with normal inventory replication; this mod does not define replacement bandage classes or synchronize custom medical masks.
 
-Rags and bandage dressings treat all active bleeding sources covered by the selected region. Arms cover hands; legs cover feet. Removing or ruining a dressing reopens covered wounds until their zone Blood has fully recovered. The blood-regeneration modifier automatically deletes a dressing once all covered zones are fully healed, with no retained bullets or active bleeding, like an applied splint. Shared arm/hand and leg/foot dressings wait for both zones. Active bleeding below 50% zone Blood cannot expire naturally. Retained bullets prevent regeneration only in their zone; pliers extract one retained-bullet location per completed action, allowing regeneration once that zone has no remaining bullets.
+Each vanilla bandaging cycle treats one bleeding source and consumes one use. The regional dressing is created once and reused by subsequent treatments; each treated bone is recorded separately. Manually attaching a dressing does not close active bleeds. Arms cover hands; legs cover feet. Removing or ruining a dressing reopens covered wounds until their zone Blood has fully recovered. The blood-regeneration modifier automatically deletes a dressing once all covered zones are fully healed, with no retained bullets or active bleeding, like an applied splint. Shared arm/hand and leg/foot dressings wait for both zones. Below 50% zone Blood, natural bleed expiry is blocked and zone regeneration requires a usable covering dressing. At 50% or above, vanilla natural bleed expiry is allowed. Retained bullets prevent regeneration only in their zone; pliers extract one retained-bullet location per completed action, allowing regeneration once that zone has no remaining bullets.
 
 Bullet presence is one bit per bone, not a count of repeated hits on the same bone. Extraction takes 10 seconds and is offered without a client-side bullet check; an empty treatment reports no retained bullet. Bolts, flares, 40 mm rounds, rubber slugs, and beanbags are excluded from bullet retention. Ordinary bullets, solid slugs, and buckshot are included.
 
@@ -20,25 +20,24 @@ See [the in-game verification checklist](tools/IN_GAME_CHECKLIST.md) for setup, 
 
 Server diagnostic logging is enabled by default with the `[IAT MEDICAL]` prefix. See the [diagnostic logging walkthrough](tools/IN_GAME_CHECKLIST.md#diagnostic-logs) for comparing save/load snapshots and confirming regeneration behavior.
 
-Zone regeneration scales the vanilla global regeneration rate by `zone maximum Blood / global maximum Blood`. With 100-point zones and 5,000 global Blood, the multiplier is 0.02: a global rate of 0.3 gives each eligible zone 0.006 points/second. This matches percentage recovery rates, not absolute levels or completion times. Zone damage still uses its separate bleeding multiplier, and zone healing continues when global Blood is full. Retained bullets still block their zone.
+Zone loss and regeneration use `zone maximum Blood / (global maximum Blood - (fatal Blood threshold + 500))`. With 100-point zones, 5,000 maximum Blood, and a 2,500 fatal threshold, the scale is 0.05: a global regeneration rate of 0.3 gives each eligible zone 0.015 points/second. The comparison range is 3,000?5,000 Blood; 4,000 corresponds to 50% zone recovery. Loss has an additional severity multiplier of 1.0. This does not change vanilla death, global Blood regeneration, or low-pressure bleeding rules. Zones can still recover when global Blood is full, subject to the bullet and dressing rules. Nonpositive recovery ranges disable this scaling to avoid division by zero.
 
 
 ## Code organization
 
 - `scripts/3_game/constants/modded_playerconstants.c`: only overrides of vanilla bleeding constants. Current blood-loss and duration values are -13 and 25 seconds.
-- `scripts/4_world/plugins/pluginiatmedical.c`: medical tuning, ordered bone/zone definitions, bandage coverage, static mapping helpers, and server treatment/healing rules. Static members can be used by client action callbacks without obtaining a plugin instance; the plugin instance is registered server-side.
+- `scripts/4_world/plugins/iat_pluginmedical.c`: medical tuning, bone, zone, and bandage definitions, bandage coverage, instance mapping helpers, diagnostic logging, and server treatment/healing rules. Constants remain available to client action callbacks; the plugin instance is registered server-side.
 - `IAT_MedicalState`: per-player records and versioned serialization. Bone ordering and bit assignments are part of the save format and must remain stable.
-- `IAT_MedicalLog`: diagnostic output and manual snapshots.
-- `PlayerBase`: owns medical state, save/load hooks, and protected loading/application flags. Attachment callbacks forward medical decisions to the plugin.
-- `BloodRegenMdfr`: schedules proportional regeneration and calls the plugin for healed-dressing cleanup. Its activation/deactivation checks retain a cleanup tick even when global Blood is full.
+- `PlayerBase`: owns medical state, attachment notifications, and save/load hooks. Attachment callbacks forward medical decisions to the plugin.
+- `BloodRegenMdfr`: retains vanilla rate calculation and bridges modifier scheduling to the plugin. `IAT_PluginMedical` owns regional regeneration, the medical-tick decision, and healed-dressing cleanup. Its activation/deactivation checks retain a cleanup tick even when global Blood is full.
 - Bleeding and action overrides connect vanilla events to medical behavior. WesternZ supplies the actual bandage classes and assets.
 
-The unreleased storage format starts at version 1 and stores wound, bullet, and dressed-wound bone masks. Pre-release formats are not migrated. Log event names, tuning values, and attachment timing remain unchanged. No custom medical-state replication or plugin-owned player registry is introduced.
+The unreleased storage format starts at version 1 and stores the version, retained-bullet mask, and dressed-wound mask. Pre-release formats are not migrated. Log event names, tuning values, and attachment timing remain unchanged. No custom medical-state replication or plugin-owned player registry is introduced.
 
 
 ## Extraction tools
 
-ItemBase provides `IAT_CanExtractBullet()` (default false) and `IAT_BulletExtractionHpDmg()` (default 0). Pliers opts into extraction and currently inherits zero patient damage. Other tool classes can override both methods; self/target extraction actions are registered automatically through ItemBase.SetActions. The capability should be constant per item class because DayZ caches action lists per type, and custom SetActions overrides must call super.
+ItemBase provides `IAT_CanExtractBullet()` (default false) and `IAT_BulletExtractionHpDmg()` (default 0). Pliers overrides the capability and damage methods, causes 10 Health damage per successful extraction, and explicitly registers both actions in Pliers.SetActions. Other eligible tool classes must override the capability and explicitly register their actions. The capability should be constant per item class because DayZ caches action lists per type, and custom SetActions overrides must call super.
 
 A successful extraction subtracts the tool's nonnegative damage value from the patient's global Health. Cancelled actions and attempts with no retained bullet do no damage. Negative values cannot heal the patient. `EXTRACTION_HP_DAMAGE` logs the tool, configured damage, and patient Health before/after.
 
@@ -54,8 +53,38 @@ override float IAT_BulletExtractionHpDmg()
 
 ## Medical lookup definitions
 
-The plugin registers each bandage region, damage zone, and bone once in `IAT_InitDefinitions`. Maps and ordered processing arrays are derived lazily from those registrations, including on clients without a plugin instance. Bone/zone bit indices are explicit save-format IDs; keep them stable. Registration order also preserves the existing extraction order and default bone chosen for a zone.
+The plugin initializes WesternZ bandage regions and damage-zone coverage in its constructor. A `BleedingSourcesManagerBase.RegisterBleedingZoneEx` override observes successful vanilla registrations and derives selection names, bit IDs, and registration order. An explicit anatomy resolver maps known bleeding selections to medical damage zones; skeleton names are not reliably present in DamageZones.componentNames. Unknown modded selections fall back to the player config component lookup and report an error if unresolved. Repeated registrations from additional players are deduplicated. Three maps hold the resulting definitions, and one ordered selection array controls extraction priority. Internally, existing bone-named getters now refer to bleeding selections, which may differ from particle bones.
 
-Bone-to-zone, bone-to-bit, zone-to-slot, and slot-to-item lookups use maps. Each zone has a precomputed bone mask, so checking retained bullets uses one mask intersection. Bandage removal/reopening checks visit only the bones and zones assigned to that region. Remaining loops process multiple wounds, zones, or log entries rather than searching the full lists for a mapping. Getter arrays are shared read-only views by convention; callers must not modify them.
+Bone-to-zone, bone-to-bit, zone-to-slot, and slot-to-item lookups use maps. Each zone has a precomputed bone mask, so checking retained bullets uses one mask intersection. Bandage removal/reopening checks visit only the bones and zones assigned to that region. Remaining loops process multiple wounds, zones, or log entries rather than searching the full lists for a mapping. Definition maps and coverage arrays are shared read-only views by convention; callers must not modify them. The three small definition classes live in the plugin file.
 
-Version 1 storage and gameplay tuning are unchanged. Source-level validation compared every bone/zone assignment and bandage class with the previous definitions and checked the zone masks against the old scan logic.
+Version 1 still stores the version and two masks. Mask IDs now follow vanilla bleeding registration; use fresh saves after this change or any registration reorder. New selections are discovered automatically; names without a known anatomy mapping or a matching config component require a resolver entry. New damage zones require a bandage coverage entry; missing mappings and conflicting bits report explicit errors. The engine bleeding-source bit limit still applies.
+
+## Zone-based injury and dressed-wound history
+
+There is no general wound mask. Zone Blood below 50% requires a usable covering bandage for zone regeneration; at exactly 50% or above, no bandage is required. Retained bullets always block their zone. Vanilla global Blood regeneration is unchanged. `DressedWounds` retains the original treated bone locations for reopening when a dressing is missing or ruined, and clears as zones fully heal.
+
+The unreleased version-1 record contains only the version, bullets, and dressed wounds. Both masks are validated against the supported bone mask independently. Use fresh player saves when testing this layout.
+
+
+## Manual bandage removal
+
+Hold a non-ruined knife and complete **Cut off bandage** on yourself (crouched),
+or **Cut off person's bandage** on another living player within normal action
+reach. Both actions take five seconds and require an attached WesternZ dressing.
+Each completion destroys one dressing, including dirty or ruined dressings,
+in this order: head, chest, left arm, right arm, left leg, right leg.
+Cancellation does not remove anything. Supported vanilla knife classes and their
+subclasses are HuntingKnife, CombatKnife, KitchenKnife, SteakKnife, StoneKnife,
+BoneKnife, FangeKnife and KukriKnife. WesternZ knives inheriting WZ_Melee_Knife_Base also opt in and register both actions through that base.
+
+Manual removal is allowed before healing finishes. Every recorded dressed wound
+covered by the removed dressing reopens together unless its zone has full Blood
+and no retained bullet. Other regional dressings remain attached. Above or at
+50% zone Blood, reopened bleeding follows the existing natural-expiry rule;
+below 50%, natural expiry is blocked. Safe healing remains full zone Blood with
+no retained bullet; manual removal does not change automatic healed cleanup.
+Cutting adds no direct patient Health damage or new infection mechanic.
+
+## Source organization
+
+Runtime script files match their primary class name; closely related callback classes stay in the owning action file, while widely reused callbacks can be separate. Small medical lookup definitions live under classes/wounds; item opt-ins are separate files under entities/itembase. Engine completion callbacks remain protected; diagnostic cases test IAT_Extract and IAT_Remove directly. Source changes follow the workspace AGENTS.md and repository .github/dayz.instructions.md, with DayZ semantics taking precedence over illustrative Reforger syntax.

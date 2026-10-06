@@ -86,7 +86,7 @@ applyTo: "iat_*/**/*.c"
 
 ## 6) Files, Organization & Review
 
-- **One class per file** (exceptions: small DTOs/params). File name = class name (with tag prefix).
+- **One primary class per file** (exceptions: small DTOs/params and closely related callback classes). Keep a callback beside its owning caller; self/target variants of one feature can share it there. Callbacks reused across several independent features or many callers may use a separate class-named file. File name = primary class name (with tag prefix).
 - **Group by feature** under your mod root (`Scripts/3_Game/IAT/Smelting/`), mirroring DayZ load tiers.
 - **Code reviews**: enforce tag usage, member prefixes, error handling, RPC throttling, and docs presence. (Generalized from BI Reforger guidance.) ([community.bistudio.com][2])
 

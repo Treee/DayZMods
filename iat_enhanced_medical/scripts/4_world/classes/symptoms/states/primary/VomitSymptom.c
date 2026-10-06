@@ -1,3 +1,8 @@
+// IAT Enhanced Medical | Owner: ItsATreee | Layer: 4_World
+//! Preserve the existing additional symptom activation condition.
+// Integration: config dependencies and vanilla behavior.
+// Documentation: iat_enhanced_medical/README.md
+
 modded class VomitSymptom
 {
 	override bool CanActivate()

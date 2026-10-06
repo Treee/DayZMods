@@ -1,3 +1,8 @@
+// IAT Enhanced Medical | Owner: ItsATreee | Layer: 3_Game
+//! Shared tuning consumed by vanilla bleeding systems.
+// Integration: config dependencies and vanilla behavior.
+// Documentation: iat_enhanced_medical/README.md
+
 modded class PlayerConstants
 {
 	// Overrides consumed by vanilla bleeding code.
