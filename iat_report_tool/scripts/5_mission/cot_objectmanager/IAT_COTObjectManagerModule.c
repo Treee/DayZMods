@@ -13,6 +13,15 @@ class IAT_COTObjectManagerModule : JMRenderableModuleBase
 	{
 		return GetPermissionsManager().HasPermission("Entity.View");
 	}
+	override bool ImageIsIcon()
+	{
+		return true;
+	}
+
+	override bool ImageHasPath()
+	{
+		return true;
+	}
 
 	override string GetTitle()
 	{
@@ -21,7 +30,7 @@ class IAT_COTObjectManagerModule : JMRenderableModuleBase
 
 	override string GetIconName()
 	{
-		return "JM/COT/GUI/textures/modules/Object.paa";
+		return "JM\\COT\\GUI\\textures\\modules\\Object.paa";
 	}
 
 	override string GetLayoutRoot()

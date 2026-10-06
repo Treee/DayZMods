@@ -22,7 +22,7 @@ class IAT_PluginMedical : PluginBase
 	protected ref map<string, ref IAT_MedicalZoneDefinition> m_ZoneDefinitions;
 	protected ref map<string, ref IAT_MedicalBandageDefinition> m_BandageDefinitions;
 
-	bool m_LoggingEnabled = true;
+	bool m_LoggingEnabled = false;
 
 	void IAT_PluginMedical()
 	{
