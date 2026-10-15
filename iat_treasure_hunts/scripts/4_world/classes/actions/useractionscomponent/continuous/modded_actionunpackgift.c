@@ -89,7 +89,6 @@ modded class ActionUnpackGift
             UndergroundStash stash;
 			if (Class.CastTo(stash, g_Game.CreateObjectEx("UndergroundStash", stashLocation, ECE_PLACE_ON_SURFACE)))
             {
-                stash.PlaceOnGround();
                 if (GameInventory.LocationCanRemoveEntity(targetIL))
                 {
                     containerToBury.ServerTakeEntityToTargetCargo(stash, containerToBury);
