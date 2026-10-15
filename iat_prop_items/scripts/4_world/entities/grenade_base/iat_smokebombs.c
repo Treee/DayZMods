@@ -7,7 +7,7 @@ class IAT_SmokeBomb_ColorBase extends Grenade_Base
 
 	void IAT_SmokeBomb_ColorBase()
 	{
-		SetParticleExplosion(ParticleList.RGD5);
+		SetAmmoType("RGD5Grenade_Ammo");
 		SetGrenadeType(EGrenadeType.CHEMICAL);
 		m_Pinned = false;
 		SetPinnable(false);
