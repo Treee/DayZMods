@@ -1,0 +1,50 @@
+modded class MiscGameplayFunctions
+{
+	static TStringArray IAT_GetCodelockSlots()
+	{
+		return {
+			"Att_CodeLock",
+            "Att_CodeLock1_Wood",
+            "Att_CodeLock1_Metal",
+            "Att_CodeLock2_Wood",
+            "Att_CodeLock2_Metal",
+            "Att_CodeLock3_Wood",
+            "Att_CodeLock3_Metal",
+            "Att_CodeLock4_Wood",
+            "Att_CodeLock4_Metal",
+            "Att_CodeLock5_Wood",
+            "Att_CodeLock5_Metal",
+            "Att_CodeLock6_Wood",
+            "Att_CodeLock6_Metal",
+            "Att_CodeLock7_Wood",
+            "Att_CodeLock7_Metal",
+            "Att_CodeLock8_Wood",
+            "Att_CodeLock8_Metal",
+            "Att_CodeLock9_Wood",
+            "Att_CodeLock9_Metal",
+            "Att_CodeLock10_Wood",
+            "Att_CodeLock10_Metal",
+			"Att_CombinationLock",
+            "Att_CombinationLock1_Wood",
+            "Att_CombinationLock1_Metal",
+            "Att_CombinationLock2_Wood",
+            "Att_CombinationLock2_Metal",
+            "Att_CombinationLock3_Wood",
+            "Att_CombinationLock3_Metal",
+            "Att_CombinationLock4_Wood",
+            "Att_CombinationLock4_Metal",
+            "Att_CombinationLock5_Wood",
+            "Att_CombinationLock5_Metal",
+            "Att_CombinationLock6_Wood",
+            "Att_CombinationLock6_Metal",
+            "Att_CombinationLock7_Wood",
+            "Att_CombinationLock7_Metal",
+            "Att_CombinationLock8_Wood",
+            "Att_CombinationLock8_Metal",
+            "Att_CombinationLock9_Wood",
+            "Att_CombinationLock9_Metal",
+            "Att_CombinationLock10_Wood",
+            "Att_CombinationLock10_Metal"
+		};
+	}
+}

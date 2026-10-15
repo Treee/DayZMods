@@ -1,34 +1,8 @@
-class IAT_ActionManageCodelock extends ActionInteractBase
+class IAT_ActionManageCodelock extends IAT_CodelockActionBase
 {
-	ref NoiseParams m_NoisePar;
-
 	void IAT_ActionManageCodelock()
 	{
-		m_CommandUID        = DayZPlayerConstants.CMD_ACTIONMOD_PICKUP_HANDS;
-		m_CommandUIDProne	= DayZPlayerConstants.CMD_ACTIONFB_PICKUP_HANDS;
-
 		m_Text = "Manage Codelock";
-	}
-
-	override void CreateConditionComponents()
-	{
-		m_ConditionItem = new CCINone();
-		m_ConditionTarget = new CCTObject(UAMaxDistances.DEFAULT);
-	}
-
-	override bool HasProneException()
-	{
-		return true;
-	}
-
-	override typename GetInputType()
-	{
-		return ContinuousInteractActionInput;
-	}
-
-	override bool HasProgress()
-	{
-		return false;
 	}
 
 	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
@@ -51,22 +25,17 @@ class IAT_ActionManageCodelock extends ActionInteractBase
 		// is the target something that has the codelock attached but not a visible proxy
 		if (Class.CastTo(targetEntity, target.GetObject()))
 		{
-			// does it have an inventory
-			if (targetEntity.GetInventory())
+			IAT_Codelock_Colorbase iat_codelock;
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
 			{
-				IAT_Codelock_Colorbase iat_codelock;
-				// is our codelock attached?
-				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+				// if the player performing the action has access
+				if (iat_codelock.HasAccess(player.GetIdentity()))
 				{
 					// if the player performing the action has access
-					if (iat_codelock.HasAccess(player.GetIdentity()))
+					if (iat_codelock.IsOwner(player.GetIdentity().GetPlainId()))
 					{
-						// if the player performing the action has access
-						if (iat_codelock.IsOwner(player.GetIdentity().GetPlainId()))
-						{
-							// return true
-							return true;
-						}
+						// return true
+						return true;
 					}
 				}
 			}
@@ -82,43 +51,29 @@ class IAT_ActionManageCodelock extends ActionInteractBase
         if (Class.CastTo(player, action_data.m_Player))
         {
 			// sanity check direct codelock target
-        	IAT_Codelock_Colorbase codelock;
-			if (!Class.CastTo(codelock, action_data.m_Target.GetObject()))
+        	IAT_Codelock_Colorbase iat_codelock;
+			if (!Class.CastTo(iat_codelock, action_data.m_Target.GetObject()))
 			{
-				// sanity check indirect codelock target
+				// sanity check indirect iat_codelock target
 				EntityAI targetEntity;
 				if (Class.CastTo(targetEntity, action_data.m_Target.GetObject()))
 				{
 					if (targetEntity.GetInventory())
 					{
-						if (!Class.CastTo(codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+						if (!Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
 						{
-							// if we still don't have a codelock, return
+							// if we still don't have a iat_codelock, return
 							return;
 						}
 					}
 				}
 			}
-			if (codelock)
+			if (iat_codelock)
 			{
 				// do client side dance
-				codelock.OpenCodelockManagerMenu();
+				iat_codelock.OpenCodelockManagerMenu();
 			}
         }
-	}
-
-	override void OnEndServer( ActionData action_data )
-	{
-		super.OnEndServer(action_data);
-
-		m_NoisePar = new NoiseParams();
-		m_NoisePar.LoadFromPath("CfgVehicles SurvivorBase NoiseActionDefault");
-		NoiseSystem noise = g_Game.GetNoiseSystem();
-		if ( noise )
-		{
-			if ( action_data.m_Player )
-				noise.AddNoisePos(action_data.m_Player, action_data.m_Target.GetObject().GetPosition(), m_NoisePar, NoiseAIEvaluate.GetNoiseReduction(g_Game.GetWeather()));
-		}
 	}
 
 	override string GetAdminLogMessage(ActionData action_data)

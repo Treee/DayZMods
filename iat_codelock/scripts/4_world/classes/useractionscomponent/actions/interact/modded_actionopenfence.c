@@ -13,7 +13,7 @@ modded class ActionOpenFence
 				{
 					IAT_Codelock_Colorbase iat_codelock;
 					// is our codelock attached?
-					if (Class.CastTo(iat_codelock, targetFence.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+					if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetFence)))
 					{
 						// if the codelock is actually locked
 						if (iat_codelock.IAT_IsLocked())
@@ -40,5 +40,23 @@ modded class ActionOpenFence
 		}
 		// vanilla says no so we also say no
 		return false;
+	}
+
+	// Duplicate of IAT_CodelockActionBase. Might be better to put this in some static function somewhere.
+	IAT_Codelock_Colorbase IAT_FindAttachedCodelockByAttachmentName(EntityAI targetEntity)
+	{
+		IAT_Codelock_Colorbase iat_codelock;
+		if (targetEntity.GetInventory())
+		{
+			TStringArray lockSlots = MiscGameplayFunctions.IAT_GetCodelockSlots();
+			foreach (string slot : lockSlots)
+			{
+				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName(slot)))
+				{
+					return iat_codelock;
+				}
+			}
+		}
+		return null;
 	}
 };

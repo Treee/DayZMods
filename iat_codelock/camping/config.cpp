@@ -18,7 +18,30 @@ class CfgVehicles
 		displayName = "Codelock";
 		descriptionShort = "A lock that normally attaches to a fence gate, tent, and sometimes a cargo container. Default password is 1234. Make sure you change it after attaching to an object. Unlock to detach from object. Use the attach action, do not click and drag it onto the slot.";
 		model = "iat_codelock\camping\iat_codelock.p3d";
-		inventorySlot[] = { "Att_CombinationLock" };
+		inventorySlot[] =
+        {
+            "Att_CodeLock",
+            "Att_CodeLock1_Wood",
+            "Att_CodeLock1_Metal",
+            "Att_CodeLock2_Wood",
+            "Att_CodeLock2_Metal",
+            "Att_CodeLock3_Wood",
+            "Att_CodeLock3_Metal",
+            "Att_CodeLock4_Wood",
+            "Att_CodeLock4_Metal",
+            "Att_CodeLock5_Wood",
+            "Att_CodeLock5_Metal",
+            "Att_CodeLock6_Wood",
+            "Att_CodeLock6_Metal",
+            "Att_CodeLock7_Wood",
+            "Att_CodeLock7_Metal",
+            "Att_CodeLock8_Wood",
+            "Att_CodeLock8_Metal",
+            "Att_CodeLock9_Wood",
+            "Att_CodeLock9_Metal",
+            "Att_CodeLock10_Wood",
+            "Att_CodeLock10_Metal"
+        };
 		rotationFlags = 16;
 		itemSize[] = { 3, 3 };
 		weight = 350;
@@ -87,7 +110,30 @@ class CfgVehicles
         displayName="$STR_CfgVehicles_CombinationLock0";
         descriptionShort="$STR_CfgVehicles_CombinationLock1";
         model="\DZ\gear\camping\combination_lock3.p3d";
-		inventorySlot[]={"Att_CombinationLock"};
+		inventorySlot[] =
+        {
+            "Att_CombinationLock",
+            "Att_CombinationLock1_Wood",
+            "Att_CombinationLock1_Metal",
+            "Att_CombinationLock2_Wood",
+            "Att_CombinationLock2_Metal",
+            "Att_CombinationLock3_Wood",
+            "Att_CombinationLock3_Metal",
+            "Att_CombinationLock4_Wood",
+            "Att_CombinationLock4_Metal",
+            "Att_CombinationLock5_Wood",
+            "Att_CombinationLock5_Metal",
+            "Att_CombinationLock6_Wood",
+            "Att_CombinationLock6_Metal",
+            "Att_CombinationLock7_Wood",
+            "Att_CombinationLock7_Metal",
+            "Att_CombinationLock8_Wood",
+            "Att_CombinationLock8_Metal",
+            "Att_CombinationLock9_Wood",
+            "Att_CombinationLock9_Metal",
+            "Att_CombinationLock10_Wood",
+            "Att_CombinationLock10_Metal"
+        };
         rotationFlags=34;
         itemSize[]={3, 3};
         weight=350;
@@ -96,15 +142,48 @@ class CfgVehicles
         {
             class AnimSourceHidden
             {
-                source="user";
-                animPeriod=0.01;
-                initPhase=1;
+                source = "user";
+                animPeriod = 0.01;
+                initPhase = 1;
             };
-			class AnimSourceShown
+            class Lock_Attached_1_Digit1
             {
-                source="user";
-                animPeriod=0.01;
-                initPhase=0;
+                source = "user";
+                animPeriod = 0.4;
+                initPhase = 0;
+            };
+            class Lock_Attached_1_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_1_Digit3 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_2_Digit1 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_2_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_2_Digit3 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_1_Digit1 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_1_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_1_Digit3 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_2_Digit1 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_2_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_2_Digit3 : Lock_Attached_1_Digit1
+            {
             };
             class Combination_Lock_Item : AnimSourceHidden
             {
@@ -115,13 +194,13 @@ class CfgVehicles
             class Lock_Item_2 : AnimSourceHidden
             {
             };
-            class Combination_Lock_Attached : AnimSourceShown
+            class Combination_Lock_Attached : AnimSourceHidden
             {
             };
-            class Lock_Attached_1 : AnimSourceShown
+            class Lock_Attached_1 : AnimSourceHidden
             {
             };
-            class Lock_Attached_2 : AnimSourceShown
+            class Lock_Attached_2 : AnimSourceHidden
             {
             };
         };
@@ -176,7 +255,30 @@ class CfgVehicles
         displayName="$STR_CfgVehicles_4digitcombinationlock0";
         descriptionShort="$STR_CfgVehicles_4digitcombinationlock1";
         model="\DZ\gear\camping\combination_lock4.p3d";
-		inventorySlot[]={"Att_CombinationLock"};
+		inventorySlot[] =
+        {
+            "Att_CombinationLock",
+            "Att_CombinationLock1_Wood",
+            "Att_CombinationLock1_Metal",
+            "Att_CombinationLock2_Wood",
+            "Att_CombinationLock2_Metal",
+            "Att_CombinationLock3_Wood",
+            "Att_CombinationLock3_Metal",
+            "Att_CombinationLock4_Wood",
+            "Att_CombinationLock4_Metal",
+            "Att_CombinationLock5_Wood",
+            "Att_CombinationLock5_Metal",
+            "Att_CombinationLock6_Wood",
+            "Att_CombinationLock6_Metal",
+            "Att_CombinationLock7_Wood",
+            "Att_CombinationLock7_Metal",
+            "Att_CombinationLock8_Wood",
+            "Att_CombinationLock8_Metal",
+            "Att_CombinationLock9_Wood",
+            "Att_CombinationLock9_Metal",
+            "Att_CombinationLock10_Wood",
+            "Att_CombinationLock10_Metal"
+        };
         rotationFlags=34;
         itemSize[]={3, 3};
         weight=350;
@@ -185,15 +287,60 @@ class CfgVehicles
         {
             class AnimSourceHidden
             {
-                source="user";
-                animPeriod=0.01;
-                initPhase=1;
+                source = "user";
+                animPeriod = 0.01;
+                initPhase = 1;
             };
-			class AnimSourceShown
+            class Lock_Attached_1_Digit1
             {
-                source="user";
-                animPeriod=0.01;
-                initPhase=0;
+                source = "user";
+                animPeriod = 0.4;
+                initPhase = 0;
+            };
+            class Lock_Attached_1_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_1_Digit3 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_1_Digit4 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_2_Digit1 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_2_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_2_Digit3 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Attached_2_Digit4 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_1_Digit1 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_1_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_1_Digit3 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_1_Digit4 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_2_Digit1 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_2_Digit2 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_2_Digit3 : Lock_Attached_1_Digit1
+            {
+            };
+            class Lock_Item_2_Digit4 : Lock_Attached_1_Digit1
+            {
             };
             class Combination_Lock_Item : AnimSourceHidden
             {
@@ -204,13 +351,13 @@ class CfgVehicles
             class Lock_Item_2 : AnimSourceHidden
             {
             };
-            class Combination_Lock_Attached : AnimSourceShown
+            class Combination_Lock_Attached : AnimSourceHidden
             {
             };
-            class Lock_Attached_1 : AnimSourceShown
+            class Lock_Attached_1 : AnimSourceHidden
             {
             };
-            class Lock_Attached_2 : AnimSourceShown
+            class Lock_Attached_2 : AnimSourceHidden
             {
             };
         };
