@@ -12,7 +12,7 @@ class IAT_Incendiary_Base extends Grenade_Base
 
 	void IAT_Init()
 	{
-		SetParticleExplosion(ParticleList.RGD5);
+		SetAmmoType("RGD5Grenade_Ammo");
 		SetGrenadeType(EGrenadeType.CHEMICAL);
 		m_Pinned = false;
 		SetPinnable(false);
