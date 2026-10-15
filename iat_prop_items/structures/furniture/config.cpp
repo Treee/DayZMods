@@ -15,7 +15,7 @@ class CfgVehicles
         displayName = "Occult Table";
         model = "iat_prop_items\structures\furniture\iat_occulttable.p3d";
         hiddenSelections[] = { "zbytek" };
-        hiddenSelectionsTextures[] = { "iat_prop_items\structures\furniture\data\iat_occulttable_co.paa" };
+        hiddenSelectionsTextures[] = { "iat_prop_items\structures\furniture\iat_occulttable_co.paa" };
         attachments[] = { "IAT_OccultCard1", "IAT_OccultCard2", "IAT_OccultCard3", "IAT_OccultCard4", "IAT_OccultCard5", "IAT_OccultCard6", "IAT_OccultCard7", "IAT_OccultCard8" };
     };
     class IAT_OccultTable_basic : IAT_OccultTable_ColorBase
