@@ -19,7 +19,7 @@ class IAT_ActionInteractCodelock extends IAT_CodelockActionBase
 		EntityAI targetEntity;
 		if (Class.CastTo(targetEntity, target.GetObject()))
 		{
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				return IAT_CanPlayerInteractWithCodelockedObject(iat_codelock, player);
 			}
@@ -27,7 +27,7 @@ class IAT_ActionInteractCodelock extends IAT_CodelockActionBase
 		// check the target objects parent to see if it has a codelock
 		if (Class.CastTo(targetEntity, target.GetParent()))
 		{
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				return IAT_CanPlayerInteractWithCodelockedObject(iat_codelock, player);
 			}
@@ -44,7 +44,7 @@ class IAT_ActionInteractCodelock extends IAT_CodelockActionBase
 		EntityAI targetEntity;
 		if (Class.CastTo(targetEntity, action_data.m_Target.GetObject()))
 		{
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				iat_codelock.OpenPasscodeEntryMenu();
 				return; // short circuit
@@ -53,7 +53,7 @@ class IAT_ActionInteractCodelock extends IAT_CodelockActionBase
 		// check the target objects parent to see if it has a codelock
 		if (Class.CastTo(targetEntity, action_data.m_Target.GetParent()))
 		{
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				iat_codelock.OpenPasscodeEntryMenu();
 				return; // short circuit

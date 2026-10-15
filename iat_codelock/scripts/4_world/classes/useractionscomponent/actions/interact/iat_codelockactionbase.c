@@ -48,7 +48,7 @@ class IAT_CodelockActionBase extends ActionInteractBase
 		return false;
 	}
 
-	IAT_Codelock_Colorbase IAT_FindAttachedCodelockByAttachmentName(EntityAI targetEntity)
+	IAT_Codelock_Colorbase IAT_FindAttachedCodelock(EntityAI targetEntity)
 	{
 		IAT_Codelock_Colorbase iat_codelock;
 		if (targetEntity.GetInventory())

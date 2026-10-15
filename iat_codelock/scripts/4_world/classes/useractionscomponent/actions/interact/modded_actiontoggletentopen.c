@@ -14,7 +14,7 @@ modded class ActionToggleTentOpen
 					IAT_Codelock_Colorbase iat_codelock;
 					// is our codelock attached?
 					// if (Class.CastTo(iat_codelock, targetTent.GetInventory().FindAttachmentByName("Att_CombinationLock")))
-					if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetTent)))
+					if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetTent)))
 					{
 						// if the codelock is actually locked
 						if (iat_codelock.IAT_IsLocked())
@@ -44,7 +44,7 @@ modded class ActionToggleTentOpen
 	}
 
 	// Duplicate of IAT_CodelockActionBase. Might be better to put this in some static function somewhere.
-	IAT_Codelock_Colorbase IAT_FindAttachedCodelockByAttachmentName(EntityAI targetEntity)
+	IAT_Codelock_Colorbase IAT_FindAttachedCodelock(EntityAI targetEntity)
 	{
 		IAT_Codelock_Colorbase iat_codelock;
 		if (targetEntity.GetInventory())

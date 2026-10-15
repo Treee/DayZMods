@@ -26,7 +26,7 @@ class IAT_ActionManageCodelock extends IAT_CodelockActionBase
 		if (Class.CastTo(targetEntity, target.GetObject()))
 		{
 			IAT_Codelock_Colorbase iat_codelock;
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				// if the player performing the action has access
 				if (iat_codelock.HasAccess(player.GetIdentity()))
@@ -60,7 +60,7 @@ class IAT_ActionManageCodelock extends IAT_CodelockActionBase
 				{
 					if (targetEntity.GetInventory())
 					{
-						if (!Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+						if (!Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 						{
 							// if we still don't have a iat_codelock, return
 							return;

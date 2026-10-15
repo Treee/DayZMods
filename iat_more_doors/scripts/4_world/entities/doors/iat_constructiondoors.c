@@ -3,7 +3,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 {
 	protected const int DOOR_ROTATION_TIME_APPROX			= 2000;		//ms
 
-	protected const string ATTACHMENT_SLOT_COMBINATION_LOCK 	= "Att_CombinationLock";
+	protected const string IAT_CODELOCK_ATTACMENT 	= "Att_CodeLock";
 	protected const string FIRST_DOOR_ANIMATION               = "DoorRotate1";
 	protected const string SECOND_DOOR_ANIMATION              = "DoorRotate2";
 	protected const string SELECTION_INTERACT_DOOR1 = "door1";
@@ -342,7 +342,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	CombinationLock GetCombinationLock_Vanilla()
 	{
 		CombinationLock combination_lock;
-		if (Class.CastTo(combination_lock, FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK)))
+		if (Class.CastTo(combination_lock, FindAttachmentBySlotName(IAT_CODELOCK_ATTACMENT)))
 		{
 			return combination_lock;
 		}
@@ -352,7 +352,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	IAT_Codelock_Colorbase GetCombinationLock_IAT()
 	{
 		IAT_Codelock_Colorbase combination_lock;
-		if (Class.CastTo(combination_lock, FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK)))
+		if (Class.CastTo(combination_lock, FindAttachmentBySlotName(IAT_CODELOCK_ATTACMENT)))
 		{
 			return combination_lock;
 		}

@@ -49,7 +49,7 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 				{
 					if (targetEntity.GetInventory())
 					{
-						if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+						if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 						{
 							m_Text = string.Format("Destroy Codelock (HP: %1%)", iat_codelock.GetSyncedCodelockHealth());
 							return; // short circuit
@@ -61,7 +61,7 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 				{
 					if (targetEntity.GetInventory())
 					{
-						if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+						if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 						{
 							m_Text = string.Format("Destroy Codelock (HP: %1%)", iat_codelock.GetSyncedCodelockHealth());
 							return; // short circuit
@@ -85,7 +85,7 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 		{
 			if (targetEntity.GetInventory())
 			{
-				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 				{
 					return true;
 				}
@@ -96,7 +96,7 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 		{
 			if (targetEntity.GetInventory())
 			{
-				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 				{
 					return true;
 				}
@@ -105,7 +105,7 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 		return false;
 	}
 
-	override void OnFinishProgressServer( ActionData action_data )
+	override protected void OnFinishProgressServer( ActionData action_data )
 	{
 		IAT_Codelock_Colorbase iat_codelock;
 		// check the target objects inventory to see if there is a codelock present
@@ -114,7 +114,7 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 		{
 			if (targetEntity.GetInventory())
 			{
-				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 				{
 					PerformDestroyAction(iat_codelock, action_data.m_MainItem);
 					return; // short circuit
@@ -126,7 +126,7 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 		{
 			if (targetEntity.GetInventory())
 			{
-				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName("Att_CombinationLock")))
+				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 				{
 					PerformDestroyAction(iat_codelock, action_data.m_MainItem);
 					return; // short circuit
@@ -157,5 +157,22 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 				}
 			}
 		}
+	}
+
+	IAT_Codelock_Colorbase IAT_FindAttachedCodelock(EntityAI targetEntity)
+	{
+		IAT_Codelock_Colorbase iat_codelock;
+		if (targetEntity.GetInventory())
+		{
+			TStringArray lockSlots = MiscGameplayFunctions.IAT_GetCodelockSlots();
+			foreach (string slot : lockSlots)
+			{
+				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName(slot)))
+				{
+					return iat_codelock;
+				}
+			}
+		}
+		return null;
 	}
 };

@@ -30,6 +30,7 @@ class CfgVehicles
 		forceFarBubble = "true";
 		handheld = "false";
 		lootCategory = "Crafted";
+		attachments[] = { "Att_CodeLock" };
 		hiddenSelections[] = { "zbytek", "metal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -180,7 +181,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_wooden.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
 			class Door1
@@ -203,7 +203,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -212,7 +212,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_metal.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -242,7 +241,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -251,7 +250,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_left_iron.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
 			class Door1
@@ -274,7 +272,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -284,7 +282,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_wooden.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
 			class Door1
@@ -307,7 +304,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -316,7 +313,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_metal.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -346,7 +342,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -355,7 +351,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_singledoor_right_iron.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
 			class Door1
@@ -378,7 +373,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -388,7 +383,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_doubledoor_wooden.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
 			class Door1
@@ -424,7 +418,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -433,7 +427,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_doubledoor_metal.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -476,7 +469,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -485,7 +478,6 @@ class CfgVehicles
 	{
 		scope = 1;
 		model = "iat_more_doors\camping\land\smallshed\iat_doubledoor_iron.p3d";
-		attachments[] = { "Att_CombinationLock" };
 		class Doors
 		{
 			class Door1
@@ -521,7 +513,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -752,6 +744,7 @@ class CfgVehicles
 		weight = 100000;
 		itemSize[] = { 50, 50 };
 		itemsCargoSize[] = { 0 , 0 };
+		attachments[] = { "Att_CodeLock" };
 		hiddenSelections[] = { "zbytek", "metal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -926,14 +919,13 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_wooden_c.p3d";
 		iat_RecipeDisplayName = "Single - Left Door - Wood - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -943,7 +935,6 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_metal_c.p3d";
 		iat_RecipeDisplayName = "Single - Left Door - Metal - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -957,7 +948,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -967,14 +958,13 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_left_iron_c.p3d";
 		iat_RecipeDisplayName = "Single - Left Door - Iron - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -985,14 +975,13 @@ class CfgVehicles
 		displayName = "Hatch";
 		model = "iat_more_doors\camping\construction\largehatch\iat_lhatchdoor_wooden_c.p3d";
 		iat_RecipeDisplayName = "Single - Left Hatch Door - Wooden - Large";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1003,14 +992,13 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_wooden_c.p3d";
 		iat_RecipeDisplayName = "Single - Right Door - Wood - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1020,7 +1008,6 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_metal_c.p3d";
 		iat_RecipeDisplayName = "Single - Right Door - Metal - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -1034,7 +1021,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1044,14 +1031,13 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_singledoor_right_iron_c.p3d";
 		iat_RecipeDisplayName = "Single - Right Door - Iron - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1062,14 +1048,13 @@ class CfgVehicles
 		displayName = "Hatch";
 		model = "iat_more_doors\camping\construction\largehatch\iat_rhatchdoor_wooden_c.p3d";
 		iat_RecipeDisplayName = "Single - Right Hatch Door - Wooden - Large";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1080,14 +1065,13 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_doubledoor_wooden_c.p3d";
 		iat_RecipeDisplayName = "Double Doors - Wood - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1097,7 +1081,6 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_doubledoor_metal_c.p3d";
 		iat_RecipeDisplayName = "Double Doors - Metal - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -1111,7 +1094,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1121,14 +1104,13 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\smallshed\iat_doubledoor_iron_c.p3d";
 		iat_RecipeDisplayName = "Double Doors - Iron - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1139,14 +1121,13 @@ class CfgVehicles
 		displayName = "Hatch";
 		model = "iat_more_doors\camping\construction\largehatch\iat_dhatchdoor_wooden_c.p3d";
 		iat_RecipeDisplayName = "Hatch Doors - Wood - Small Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1158,14 +1139,13 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_mshed_wooden_c.p3d";
 		iat_RecipeDisplayName = "Double Doors - Wood - Medium Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1175,7 +1155,6 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_mshed_metal_c.p3d";
 		iat_RecipeDisplayName = "Double Doors - Metal - Medium Shed";
-		attachments[] = { "Att_CombinationLock" };
 		hiddenSelections[] = { "zbytek", "metal", "sheetmetal" };
 		hiddenSelectionsTextures[] =
 		{
@@ -1189,7 +1168,7 @@ class CfgVehicles
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
@@ -1199,18 +1178,15 @@ class CfgVehicles
 		scope = 2;
 		model = "iat_more_doors\camping\construction\mediumshed\iat_doubledoor_mshed_iron_c.p3d";
 		iat_RecipeDisplayName = "Double Doors - Iron - Medium Shed";
-		attachments[] = { "Att_CombinationLock" };
 		class GUIInventoryAttachmentsProps
 		{
 			class Attachments
 			{
 				name = "$STR_CfgVehicles_Fence_Att_Category_Attachments";
 				description = "";
-				attachmentSlots[] = { "Att_CombinationLock" };
+				attachmentSlots[] = { "Att_CodeLock" };
 				icon = "set:dayz_inventory image:cat_bb_attachments";
 			};
 		};
 	};
-
-
 };

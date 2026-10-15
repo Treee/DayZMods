@@ -27,7 +27,7 @@ class IAT_ActionClaimCodelock extends IAT_CodelockActionBase
 		if (Class.CastTo(targetEntity, target.GetObject()))
 		{
 			IAT_Codelock_Colorbase iat_codelock;
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				// if the lock has no owner
 				if (!iat_codelock.HasOwner())
@@ -49,7 +49,7 @@ class IAT_ActionClaimCodelock extends IAT_CodelockActionBase
 		EntityAI targetEntity;
 		if (Class.CastTo(targetEntity, action_data.m_Target.GetObject()))
 		{
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				iat_codelock.AssignLockTo(action_data.m_Player.GetIdentity().GetPlainId());
 				return; // short circuit
@@ -58,7 +58,7 @@ class IAT_ActionClaimCodelock extends IAT_CodelockActionBase
 		// check the target objects parent to see if it has a codelock
 		if (Class.CastTo(targetEntity, action_data.m_Target.GetParent()))
 		{
-			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelockByAttachmentName(targetEntity)))
+			if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
 			{
 				iat_codelock.AssignLockTo(action_data.m_Player.GetIdentity().GetPlainId());
 				return; // short circuit

@@ -2,7 +2,7 @@
 // these doors are land doors for map baking and scope 1
 class IAT_LandDoor_Colorbase extends House
 {
-	protected const string ATTACHMENT_SLOT_COMBINATION_LOCK 	= "Att_CombinationLock";
+	protected const string IAT_CODELOCK_ATTACMENT 	= "Att_CodeLock";
 
 	override bool IsInventoryVisible()
 	{
@@ -50,7 +50,7 @@ class IAT_LandDoor_Colorbase extends House
 	CombinationLock GetCombinationLock_Vanilla()
 	{
 		CombinationLock combination_lock;
-		if (FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK))
+		if (FindAttachmentBySlotName(IAT_CODELOCK_ATTACMENT))
 		{
 			return combination_lock;
 		}
@@ -60,7 +60,7 @@ class IAT_LandDoor_Colorbase extends House
 	IAT_Codelock_Colorbase GetCombinationLock_IAT()
 	{
 		IAT_Codelock_Colorbase combination_lock;
-		if (FindAttachmentBySlotName(ATTACHMENT_SLOT_COMBINATION_LOCK))
+		if (FindAttachmentBySlotName(IAT_CODELOCK_ATTACMENT))
 		{
 			return combination_lock;
 		}
