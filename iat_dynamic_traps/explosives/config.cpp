@@ -16,6 +16,7 @@ class CfgAmmo
 		typicalSpeed = 3;
 		initSpeed = 3;
 		simulation = "shotShell";
+		particle = "explosion_landmine_01";
 		simulationStep = 0.15000001;
 		soundSetExplosion[] = { "ClaymoreMine_explosion_SoundSet", "Grenade_Tail_SoundSet" };
 		class DamageApplied
@@ -49,6 +50,7 @@ class CfgAmmo
 		typicalSpeed = 3;
 		initSpeed = 3;
 		simulation = "shotShell";
+		particle = "explosion_landmine_01";
 		simulationStep = 0.15000001;
 		soundSetExplosion[] = { "GasStation_Explosion_SoundSet", "GasStation_Explosion_Tail_SoundSet" };
 		class DamageApplied
