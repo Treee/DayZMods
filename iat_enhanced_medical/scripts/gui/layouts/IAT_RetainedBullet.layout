@@ -1,0 +1,21 @@
+ImageWidgetClass IAT_RetainedBullet {
+ visible 0
+ clipchildren 1
+ ignorepointer 1
+ color 0.8627 0.8627 0.8627 1
+ position 0 0
+ size 35 35
+ halign right_ref
+ valign bottom_ref
+ hexactpos 0
+ vexactpos 1
+ hexactsize 1
+ vexactsize 1
+ fixaspect fixwidth
+ image0 "set:dayz_gui image:icon_bullet"
+ mode blend
+ "src alpha" 1
+ "clamp mode" clamp
+ filter 1
+ nocache 0
+}

@@ -1,5 +1,5 @@
 // IAT Enhanced Medical | Owner: ItsATreee | Layer: 4_World
-//! Dedicated-server medical records, attachments, and persistence.
+//! Server medical records, replicated bullet presence, attachments, and persistence.
 // Integration: server authority and save compatibility.
 // Documentation: iat_enhanced_medical/README.md
 
@@ -7,6 +7,35 @@ modded class PlayerBase
 {
 	protected ref IAT_MedicalState m_IAT_MedicalState;
 	protected IAT_PluginMedical m_IAT_MedicalPlugin;
+	protected bool m_IAT_HasRetainedBullet;
+
+	void PlayerBase()
+	{
+		RegisterNetSyncVariableBool("m_IAT_HasRetainedBullet");
+	}
+
+	//! Actions use authoritative records on the server and replicated presence on clients.
+	bool IAT_HasRetainedBullet()
+	{
+		if (g_Game.IsServer())
+		{
+			IAT_MedicalState state = IAT_GetMedicalState();
+			return state && state.m_Bullets != 0;
+		}
+		return m_IAT_HasRetainedBullet;
+	}
+
+	//! Publish the derived summary after recording, extracting, or restoring bullets.
+	void IAT_SyncBulletPresence()
+	{
+		if (!g_Game.IsServer())
+			return;
+		bool hasBullet = IAT_HasRetainedBullet();
+		if (m_IAT_HasRetainedBullet == hasBullet)
+			return;
+		m_IAT_HasRetainedBullet = hasBullet;
+		SetSynchDirty();
+	}
 
 	IAT_MedicalState IAT_GetMedicalState()
 	{
@@ -65,6 +94,8 @@ modded class PlayerBase
 		if (super.OnStoreLoad(ctx, version))
 		{
 			bool loaded = IAT_GetMedicalState().Load(ctx);
+			if (loaded)
+				IAT_SyncBulletPresence();
 			if (Class.CastTo(m_IAT_MedicalPlugin, GetPlugin(IAT_PluginMedical)))
 			{
 				m_IAT_MedicalPlugin.LogEvent(this, "LOAD_RESULT", string.Format("success=%1 %2", loaded, m_IAT_MedicalState.m_LoadResult));
@@ -86,6 +117,7 @@ modded class PlayerBase
 	override void AfterStoreLoad()
 	{
 		super.AfterStoreLoad();
+		IAT_SyncBulletPresence();
 		if (Class.CastTo(m_IAT_MedicalPlugin, GetPlugin(IAT_PluginMedical)))
 		{
 			m_IAT_MedicalPlugin.LogSnapshot(this, "AFTER_STORE_LOAD");

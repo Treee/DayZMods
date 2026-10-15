@@ -129,3 +129,11 @@ Extraction component tests now invoke IAT_Extract directly. Both extraction comp
 Manual-removal fixtures process the vanilla inventory deletion queue before checking attachment absence, then invoke custom UpdateHealing reconciliation. DeleteSafe is deferred; all removal and wound-mask assertions remain. Dedicated detach dispatch and inventory junctures remain manual integration checks.
 
 Ammo classification uses DayZ IsKindOf for bullet/shotgun families and excluded projectile descendants. OnlyFirearmRoundsAreRetained also checks a six-class inheritance chain to cover removal of the old four-level limit.
+
+## Retained-bullet presence and action availability
+
+- HUD R-001: one local-player bullet badge whenever any retained location remains. Server publication evidence is `BulletPresenceTracksRemainingLocationsAndIgnoresDressing`, covering empty state, dressing alone, repeated hits, partial extraction in the same zone and across zones, final extraction, and a new retained hit. Actual client delivery, badge rendering/placement and normal HUD visibility remain multiplayer/manual checks.
+- Actions R-002: self availability checks the actor; target availability checks the other patient independently. Evidence: `ExtractionAvailabilityAndRegistration` and `TargetExtractionAffectsPatientOnly`. The target case also checks that an actor's bullet cannot enable an empty patient and that a stale completion adds no damage or bleeding.
+- Publication after restoration: `PlayerMedicalPersistenceHooksRoundtrip` checks published presence after nonempty load and AfterStoreLoad, then clears prior published presence by loading an empty record. Save field ordering and version remain unchanged.
+
+The offline authoritative harness opts fixture players into medical records and inspects the server's published boolean through the test addon. It does not simulate a remote client or establish network delivery. No production callbacks or internal fields are made public for these checks.

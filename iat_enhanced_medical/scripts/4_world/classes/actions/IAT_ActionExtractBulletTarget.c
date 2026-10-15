@@ -25,10 +25,10 @@ class IAT_ActionExtractBulletTarget : IAT_ActionExtractBulletSelf
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if (!target || !super.ActionCondition(player, target, item))
+		if (!target || !IAT_CanUseExtractionTool(player, item))
 			return false;
 		PlayerBase patient = PlayerBase.Cast(target.GetObject());
-		return patient && patient != player && patient.IsAlive() && !patient.IsInVehicle();
+		return patient && patient != player && patient.IsAlive() && !patient.IsInVehicle() && patient.IAT_HasRetainedBullet();
 	}
 
 	override protected void OnFinishProgressServer(ActionData action_data)

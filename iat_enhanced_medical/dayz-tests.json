@@ -3,7 +3,7 @@
     "output": "P:/mods/@IAT_EnhancedMedical",
     "addons": ["scripts", "languagecore", "tests"],
     "dependencies": {
-        "workshop": ["@CF", "@IAT_Crafting_Plus", "@IAT_RollTables_And_LootBoxes"],
-        "local": ["P:/Mods/@WesternZ - Server Mod", "P:/Mods/@WesternZContainers"]
+        "workshop": ["@CF", "@WesternZ - Server Mod", "@IAT_Crafting_Plus", "@IAT_RollTables_And_LootBoxes"],
+        "local": []
     }
 }

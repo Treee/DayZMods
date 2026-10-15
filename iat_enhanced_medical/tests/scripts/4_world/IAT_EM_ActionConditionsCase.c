@@ -18,9 +18,14 @@ class IAT_EM_ActionConditionsCase : IAT_EM_PlayerCase
 		IAT_ActionExtractBulletTarget target = new IAT_ActionExtractBulletTarget;
 		self.CreateConditionComponents(); target.CreateConditionComponents();
 		Check(!self.HasTarget() && target.HasTarget(), "Self and target action identities", "false/true", "checked");
-		Check(self.ActionCondition(m_Player, null, tool), "Self action offered without retained-bullet client check", "true", "checked");
+		Check(!self.ActionCondition(m_Player, null, tool), "Self extraction hidden without bullets", "false", "checked");
+		m_Medical.RecordBullet(m_Player, "leftarm");
+		Check(self.ActionCondition(m_Player, null, tool), "Self extraction offered with bullet and capable tool", "true", "checked");
 		Check(!self.ActionCondition(m_Player, null, material), "Ordinary item cannot extract", "false", "checked");
 		Check(!self.ActionCondition(m_Player, null, null), "Missing item cannot extract", "false", "checked");
+		string extractedZone;
+		m_Medical.ExtractBullet(m_Player, extractedZone);
+		Check(!self.ActionCondition(m_Player, null, tool), "Self extraction hidden after final bullet removal", "false", "checked");
 		Check(!target.ActionCondition(m_Player, null, tool), "Missing target rejected", "false", "checked");
 		ActionTarget same = new ActionTarget(m_Player, null, -1, "0 0 0", 0);
 		Check(!target.ActionCondition(m_Player, same, tool), "Target action cannot target self", "false", "checked");

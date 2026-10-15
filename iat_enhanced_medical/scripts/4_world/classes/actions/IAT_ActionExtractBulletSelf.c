@@ -35,7 +35,11 @@ class IAT_ActionExtractBulletSelf : ActionContinuousBase
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		// No client medical-state mirror: availability is deliberately generic.
+		return IAT_CanUseExtractionTool(player, item) && player.IAT_HasRetainedBullet();
+	}
+
+	protected bool IAT_CanUseExtractionTool(PlayerBase player, ItemBase item)
+	{
 		return player.IsAlive() && !player.IsInVehicle() && item && item.IAT_CanExtractBullet();
 	}
 

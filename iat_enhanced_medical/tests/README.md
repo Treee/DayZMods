@@ -1,6 +1,6 @@
 # Enhanced Medical tests
 
-194 registered DayZDiag component cases exercise this mod's own code. Vanilla
+215 registered DayZDiag component cases exercise this mod's own code. Vanilla
 systems are assumed functional and serve as fixtures for Enhanced Medical's rules
 and overrides; this suite does not attempt to retest the vanilla game.
 
@@ -45,3 +45,5 @@ shutdown. Attachment rendering remains outside this suite's scope.
 See [COVERAGE.md](COVERAGE.md) for the requirement/function map and precise gaps,
 and [VERIFICATION.md](VERIFICATION.md) for executed evidence. This harness has no
 line/branch instrumentation, so test counts do not imply a measured percentage.
+
+Bullet presence coverage checks publication after retained hits, partial/final extraction, dressing independence, restored nonempty/empty player records, and both patient-specific action conditions. Component tests inspect the published server summary; they do not establish client delivery or HUD rendering.

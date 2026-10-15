@@ -50,6 +50,7 @@ class IAT_EM_PlayerCase : IAT_ScenarioCase
 		m_OldDressed = m_State.m_DressedWounds;
 		m_State.m_Bullets = 0;
 		m_State.m_DressedWounds = 0;
+		m_Player.IAT_SyncBulletPresence();
 		m_Logging = m_Medical.m_LoggingEnabled;
 		m_Medical.m_LoggingEnabled = false;
 		m_Health = m_Player.GetHealth("", "Health");
@@ -127,6 +128,7 @@ class IAT_EM_PlayerCase : IAT_ScenarioCase
 		m_Player.SetAllowDamage(m_AllowDamage);
 		m_State.m_Bullets = m_OldBullets;
 		m_State.m_DressedWounds = m_OldDressed;
+		m_Player.IAT_SyncBulletPresence();
 		m_Medical.m_LoggingEnabled = m_Logging;
 		m_Player.m_IAT_EM_TestStateEnabled = m_OldEnabled;
 		EqualInt(m_Player.GetBleedingBits(), 0, "Cleanup removes all fixture bleeds");

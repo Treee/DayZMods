@@ -192,3 +192,17 @@ Retained bullets and missing required dressings both block zone regeneration. Ve
 - [ ] Repeat below 50%, exactly 50%, above 50%, fully healed without a bullet, and full zone Blood with a retained bullet. Unhealed/bullet wounds reopen; fully healed bullet-free wounds stay closed. Existing natural expiry is permitted at or above 50%.
 - [ ] Interrupt before completion; the dressing remains. Repeat with a ruined knife or a non-knife; no removal action is available. Dirty and ruined dressings can be cut off and replaced through normal treatment.
 - [ ] Confirm no action appears without a dressing, or on a corpse, and no removal is possible in a vehicle.
+
+## Retained-bullet synchronization and HUD
+
+Use updated client and dedicated-server builds, with two players and usable pliers.
+
+- Confirm no bullet icon and no self extraction on a bullet-free player, including one wearing a regional bandage.
+- Retain a bullet: confirm one icon in the status badge row and self extraction availability after synchronization, with and without a dressing.
+- Retain multiple locations in one zone and across zones. Partial extraction keeps one icon; the last extraction hides it and the self action.
+- With a bullet-free treating player, confirm target extraction is available on a patient with bullets. With bullets only in the treating player, confirm extraction is hidden on a bullet-free patient. Repeat after another player extracts the patient's last bullet.
+- Save/reconnect and restart the server with a retained bullet: confirm restored icon and self/target availability. A newly arriving observer must receive the patient's presence. Confirm clean respawn has no stale badge or action.
+- Hide/show the HUD and open/close inventory and menus. Check normal badge visibility, placement, wrapping, the badge divider, and coexistence with fracture/bleeding badges at different UI scales.
+- If the last bullet disappears while another extraction is running, confirm completion adds no Health damage or wound.
+
+Network delivery, dedicated-server lifecycle, HUD rendering, protected action dispatch, timing, and cancellation require these in-game checks.

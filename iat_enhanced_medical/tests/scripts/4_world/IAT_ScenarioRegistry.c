@@ -10,6 +10,7 @@ modded class IAT_ScenarioRegistry
 	void IAT_ScenarioRegistry()
 	{
 		m_Cases.Insert(new IAT_EM_DefinitionsCase);
+		m_Cases.Insert(new IAT_EM_BulletPresenceCase);
 		m_Cases.Insert(new IAT_EM_ManualRemovalCase("BelowHalfReopensEveryCoveredWound", 0));
 		m_Cases.Insert(new IAT_EM_ManualRemovalCase("AtHalfReopensEveryCoveredWound", 1));
 		m_Cases.Insert(new IAT_EM_ManualRemovalCase("AboveHalfReopensEveryCoveredWound", 2));

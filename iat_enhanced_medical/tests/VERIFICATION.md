@@ -124,3 +124,20 @@ The vomit event seed is replayed immediately before the public tick, and fixture
 stomach/agent/symptom systems, disease flags, toxicity, exhaustion effects and
 player Blood/Health/resources are restored. These are component observations,
 not full elapsed gameplay or multiplayer survival trials.
+
+## Retained-bullet HUD and extraction availability (2026-10-14)
+
+- Initial run `e2b0e071e0904b72a7e13848463bd06f`: RUN_ERROR before discovery because the configured dependency set could not resolve `WZ_Bandage_Base`. The user corrected `dayz-tests.json` to use the Workshop WesternZ dependency; that user change is preserved.
+- Targeted run `7a2f2f90a79744e6b74e346571fd995e`: PASS, `BulletPresenceTracksRemainingLocationsAndIgnoresDressing`; cleanup and engine termination verified.
+- Full run `40df2a3641cb4d41aad8123d2bdac14b`: PASS, 215 cases and 2,280 assertions; cleanup and engine termination verified, with loaded artifact hashes recorded. `ExtractionAvailabilityAndRegistration`, `TargetExtractionAffectsPatientOnly`, and `PlayerMedicalPersistenceHooksRoundtrip` passed with the new availability/publication assertions.
+
+Commands from the workspace:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\dayz-test-harness\run.ps1 -Mod P:\iat_enhanced_medical -Test BulletPresenceTracksRemainingLocationsAndIgnoresDressing
+powershell -NoProfile -ExecutionPolicy Bypass -File .\dayz-test-harness\run.ps1 -Mod P:\iat_enhanced_medical -HashArtifacts
+```
+
+Both passing runs used the normal mod source/output and the corrected dependencies. The maintained verifier accepted only its existing vanilla PluginItemDiagnostic diagnostic; no verifier exceptions were added. The full run exercised the rebuilt scripts/tests packed for the targeted run, and the engine compiled the mission-layer HUD addition. The save version and field ordering remain unchanged.
+
+This evidence establishes server summary publication, authoritative self/target conditions, persistence-hook reconstruction, and unchanged medical component behavior. It does not establish remote-client delivery, dedicated-server persistence lifecycle, HUD rendering/placement/visibility, or interactive action dispatch/timing/cancellation. Follow the retained-bullet section in `tools/IN_GAME_CHECKLIST.md` for those checks.

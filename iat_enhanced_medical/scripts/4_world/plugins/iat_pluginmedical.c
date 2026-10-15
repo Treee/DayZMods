@@ -83,6 +83,7 @@ class IAT_PluginMedical : PluginBase
 		IAT_MedicalState state = player.IAT_GetMedicalState();
 		// Mark a retained bullet at this bone; repeated hits share the same bit.
 		state.m_Bullets |= IAT_GetBulletBoneBit(bone);
+		player.IAT_SyncBulletPresence();
 		LogEvent(player, "BULLET_RECORDED", "bone=" + bone + " zone=" + IAT_MapBoneNameToDamageZone(bone));
 	}
 
@@ -159,6 +160,7 @@ class IAT_PluginMedical : PluginBase
 				continue;
 			// Clear only the extracted bone's bullet bit.
 			state.m_Bullets &= ~bit;
+			patient.IAT_SyncBulletPresence();
 			zone = IAT_MapBoneNameToDamageZone(bone);
 			// Extraction creates a fresh wound even through an existing dressing.
 			patient.GetBleedingManagerServer().AttemptAddBleedingSourceBySelection(bone);

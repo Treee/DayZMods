@@ -11,6 +11,7 @@
 modded class PlayerBase
 {
 	bool m_IAT_EM_TestStateEnabled;
+	bool IAT_EM_TestBulletPresence() { return m_IAT_HasRetainedBullet; }
 	IAT_MedicalState IAT_EM_TestOriginalState() { return super.IAT_GetMedicalState(); }
 	override IAT_MedicalState IAT_GetMedicalState()
 	{

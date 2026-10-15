@@ -10,7 +10,7 @@
 
 ## Current medical implementation
 
-`IAT_PluginMedical` handles server-side medical rules. `IAT_MedicalState` stores retained bullets and dressed wounds on each player through `OnStoreSave` / `OnStoreLoad`. Bandages use the existing WesternZ classes and slots with normal inventory replication; this mod does not define replacement bandage classes or synchronize custom medical masks.
+`IAT_PluginMedical` handles server-side medical rules. `IAT_MedicalState` stores retained bullets and dressed wounds on each player through `OnStoreSave` / `OnStoreLoad`. Bandages use the existing WesternZ classes and slots with normal inventory replication; this mod does not define replacement bandage classes. PlayerBase synchronizes a derived retained-bullet presence boolean; the full medical masks remain server-only.
 
 Each vanilla bandaging cycle treats one bleeding source and consumes one use. The regional dressing is created once and reused by subsequent treatments; each treated bone is recorded separately. Manually attaching a dressing does not close active bleeds. Arms cover hands; legs cover feet. Removing or ruining a dressing reopens covered wounds until their zone Blood has fully recovered. The blood-regeneration modifier automatically deletes a dressing once all covered zones are fully healed, with no retained bullets or active bleeding, like an applied splint. Shared arm/hand and leg/foot dressings wait for both zones. Below 50% zone Blood, natural bleed expiry is blocked and zone regeneration requires a usable covering dressing. At 50% or above, vanilla natural bleed expiry is allowed. Retained bullets prevent regeneration only in their zone; pliers extract one retained-bullet location per completed action, allowing regeneration once that zone has no remaining bullets.
 
@@ -18,7 +18,7 @@ Each positive eligible bullet hit has a 45% chance to retain a bullet at its res
 
 Each zone with at least one retained bullet loses 10 mL of global Blood every 10 seconds, even through a usable dressing. Its regional Blood loses the proportionate amount using the existing zone scale (0.5 points per interval for a 100-point zone). Multiple retained bones in one zone share that zone's loss; separate affected zones each contribute. This exceeds normal well-fed global regeneration of 0.3 mL/second for even one retained zone. The loss does not create an active bleeding-source icon or reopen a bandaged source. Extraction stops this additional loss once the zone's last retained bullet is removed. The interval is maintained by the server bleeding manager, respects disabled blood loss and invulnerability, and restarts after load; bullet state remains in the existing version-1 save record.
 
-Extraction takes 10 seconds and is offered without a client-side bullet check; an empty treatment reports no retained bullet. A successful extraction opens a bleeding source at the extracted bone, even with a dressing attached. Normal bandaging closes it again and records the new dressed wound. Automatic dressing cleanup waits for full recovery of all covered zones with no bullets or active bleeds. Manual cutting remains allowed before recovery and reopens the treated wound. Empty and cancelled attempts open no extraction wound. Extraction adds no fixed percentage of regional Blood damage; the new bleeding source causes normal regional/global loss on its ticks.
+Extraction takes 10 seconds. Self extraction is offered only when the actor has a retained bullet; target extraction checks the patient independently of the actor. Clients use the replicated presence boolean, while server conditions and completion use authoritative records. An attempt whose last bullet was already removed causes no damage or wound and reports no retained bullet. A successful extraction opens a bleeding source at the extracted bone, even with a dressing attached. Normal bandaging closes it again and records the new dressed wound. Automatic dressing cleanup waits for full recovery of all covered zones with no bullets or active bleeds. Manual cutting remains allowed before recovery and reopens the treated wound. Empty and cancelled attempts open no extraction wound. Extraction adds no fixed percentage of regional Blood damage; the new bleeding source causes normal regional/global loss on its ticks.
 
 ## Illness treatment window
 
@@ -48,7 +48,7 @@ Zone loss and regeneration use `zone maximum Blood / (global maximum Blood - (fa
 - `BloodRegenMdfr`: retains vanilla rate calculation and bridges modifier scheduling to the plugin. `IAT_PluginMedical` owns regional regeneration, the medical-tick decision, and healed-dressing cleanup. Its activation/deactivation checks retain a cleanup tick even when global Blood is full.
 - Bleeding and action overrides connect vanilla events to medical behavior. WesternZ supplies the actual bandage classes and assets.
 
-The unreleased storage format starts at version 1 and stores the version, retained-bullet mask, and dressed-wound mask. Pre-release formats are not migrated. Log event names, tuning values, and attachment timing remain unchanged. No custom medical-state replication or plugin-owned player registry is introduced.
+The unreleased storage format starts at version 1 and stores the version, retained-bullet mask, and dressed-wound mask. Pre-release formats are not migrated. Log event names, tuning values, and attachment timing remain unchanged. Only derived bullet presence is replicated, after a retained hit, extraction, and successful player-state restoration. The version-1 save layout remains unchanged; the boolean is reconstructed rather than saved separately. No plugin-owned player registry is introduced.
 
 
 ## Extraction tools
@@ -104,3 +104,9 @@ Cutting adds no direct patient Health damage or new infection mechanic.
 ## Source organization
 
 Runtime script files match their primary class name; closely related callback classes stay in the owning action file, while widely reused callbacks can be separate. Small medical lookup definitions live under classes/wounds; item opt-ins are separate files under entities/itembase. Engine completion callbacks remain protected; diagnostic cases test IAT_Extract and IAT_Remove directly. Source changes follow the workspace AGENTS.md and repository .github/dayz.instructions.md, with DayZ semantics taking precedence over illustrative Reforger syntax.
+
+## Retained-bullet HUD badge
+
+The local client displays one bullet icon in the normal status badge row whenever any retained bullet remains. It uses the vanilla `dayz_gui` bullet image and shares the normal HUD visibility settings. Multiple affected bones or zones still show one icon. Bandage presence, removal, and condition do not determine bullet presence. The medical plugin remains server-side; no client medical plugin or custom RPC is needed. Both client and server must load the updated mod.
+
+`PlayerBase.IAT_HasRetainedBullet()` supplies authoritative presence on the server and synchronized presence on clients. `IAT_SyncBulletPresence()` republishes the derived summary only when it changes. Any future production operation that changes the retained-bullet mask must also publish the summary. `scripts/5_mission/DayZ/GUI/IngameHud.c` adds the badge from the small layout in `scripts/gui/layouts`, without replacing the complete vanilla HUD layout.

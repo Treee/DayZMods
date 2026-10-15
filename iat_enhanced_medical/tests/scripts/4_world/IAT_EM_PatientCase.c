@@ -40,10 +40,19 @@ class IAT_EM_PatientCase : IAT_EM_PlayerCase
 			data.m_Target = new ActionTarget(m_Patient, null, -1, "0 0 0", 0);
 			IAT_ActionExtractBulletTarget action = new IAT_ActionExtractBulletTarget;
 			Check(action.ActionCondition(m_Player, data.m_Target, pliers), "Live other patient is offered target extraction", "true", "checked");
+			Check(!m_Player.IAT_HasRetainedBullet(), "Bullet-free actor can treat injured patient", "false", "checked");
 			action.IAT_Extract(data, m_Patient);
 			EqualInt(state.m_Bullets, 0, "Target completion removes patient's bullet");
+			Check(!m_Patient.IAT_EM_TestBulletPresence(), "Final target extraction publishes absent bullet", "false", "checked");
+			Check(!action.ActionCondition(m_Player, data.m_Target, pliers), "Target extraction hidden after patient's last bullet", "false", "checked");
+			m_Medical.RecordBullet(m_Player, "leftarm");
+			Check(!action.ActionCondition(m_Player, data.m_Target, pliers), "Actor bullet cannot enable extraction on empty patient", "false", "checked");
 			Near(m_Patient.GetHealth("", "Health"), 80, "Target extraction damages patient");
 			Near(m_Player.GetHealth("", "Health"), 90, "Target extraction does not damage actor");
+			int patientBleeds = m_Patient.GetBleedingBits();
+			action.IAT_Extract(data, m_Patient);
+			Near(m_Patient.GetHealth("", "Health"), 80, "Stale target attempt causes no additional damage");
+			EqualInt(m_Patient.GetBleedingBits(), patientBleeds, "Stale target attempt creates no new wound");
 		}
 		if (m_Mode == 1)
 		{
@@ -76,6 +85,7 @@ class IAT_EM_PatientCase : IAT_EM_PlayerCase
 			state.m_Bullets = 0; state.m_DressedWounds = 0;
 			ParamsReadContext reader = buffer.GetReadContext();
 			bool loaded = m_Patient.OnStoreLoad(reader, g_Game.SaveVersion());
+			Check(m_Patient.IAT_EM_TestBulletPresence(), "Load publishes restored bullet presence", "true", "checked");
 			Check(loaded, "Player save/load hooks accept complete current record", "true", loaded.ToString());
 			EqualInt(state.m_Bullets, arm, "Player hooks restore appended bullet mask");
 			EqualInt(state.m_DressedWounds, 65540, "Player hooks restore appended dressed mask");
@@ -83,7 +93,15 @@ class IAT_EM_PatientCase : IAT_EM_PlayerCase
 			reader.Read(sentinel);
 			EqualInt(sentinel, 9876, "Player hook reads exactly the appended medical record");
 			m_Patient.AfterStoreLoad();
+			Check(m_Patient.IAT_EM_TestBulletPresence(), "AfterStoreLoad retains published presence", "true", "checked");
 			EqualInt(state.m_Bullets, arm, "AfterStoreLoad preserves medical state");
+			state.m_Bullets = 0;
+			ScriptReadWriteContext emptyBuffer = new ScriptReadWriteContext;
+			m_Patient.OnStoreSave(emptyBuffer.GetWriteContext());
+			m_Medical.RecordBullet(m_Patient, "rightleg");
+			Check(m_Patient.IAT_EM_TestBulletPresence(), "Patient has published bullet before empty restore", "true", "checked");
+			Check(m_Patient.OnStoreLoad(emptyBuffer.GetReadContext(), g_Game.SaveVersion()), "Empty medical player record loads", "true", "checked");
+			Check(!m_Patient.IAT_EM_TestBulletPresence(), "Loading empty state clears previous published presence", "false", "checked");
 		}
 		if (m_Mode == 3)
 		{
