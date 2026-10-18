@@ -64,18 +64,4 @@ class IAT_ActionCloseConstructionDoor extends ActionInteractBase
 			iat_door.CloseDoor(componentName);
 		}
 	}
-
-	// override void OnEndServer( ActionData action_data )
-	// {
-	// 	super.OnEndServer(action_data);
-	// 	// paly sounds
-	// 	m_NoisePar = new NoiseParams();
-	// 	m_NoisePar.LoadFromPath("CfgVehicles SurvivorBase NoiseActionDefault");
-	// 	NoiseSystem noise = g_Game.GetNoiseSystem();
-	// 	if ( noise )
-	// 	{
-	// 		if ( action_data.m_Player )
-	// 			noise.AddNoisePos(action_data.m_Player, action_data.m_Target.GetObject().GetPosition(), m_NoisePar, NoiseAIEvaluate.GetNoiseReduction(g_Game.GetWeather()));
-	// 	}
-	// }
 }

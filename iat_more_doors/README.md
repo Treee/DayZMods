@@ -126,3 +126,33 @@ IAT_ConstructionDoor_Double_Wooden
 IAT_ConstructionDoor_Double_Metal
 IAT_ConstructionDoor_Double_Iron
 ```
+
+### Vanilla digital code lock (DayZ 1.30)
+
+Construction and land doors support `DigitalCodeLock` in `Att_CodeLock`.
+Insert a charged 9V battery before or after attaching the lock. Look at the
+panel or frame from the keypad side to use **Set Code** or **Enter Code**.
+With a PIN configured and the lock unlocked, use **Reset Code** to choose a
+replacement PIN, or **Lock** to lock it again. The physical back side offers
+release when the lock is locked; it does not offer PIN setting or reset.
+
+`IAT_ActionInteractDoorCodeLock` and `IAT_ActionResetDoorCodeLock` are separate
+IAT actions, explicitly registered in each door family's `SetActions()`.
+They keep the door as the action target and resolve its attached lock inside
+their own callbacks. The lock and operation captured during setup are checked
+again on the server, including physical side, power and current lock state.
+The existing vanilla PIN UI and lock component handle code entry and storage.
+
+Vanilla lock actions, including their `Can` and `SetupAction` methods, are not
+modified. Direct lock targeting continues to use vanilla actions. A mod that
+changes the digital lock's methods can still affect the underlying lock;
+changes made only to vanilla action callbacks do not automatically apply to
+these separate IAT door actions. Door subclasses inherit the registrations
+when they retain `super.SetActions()`.
+
+A locked digital lock prevents either construction-door leaf from opening.
+An attached digital lock also prevents dismantling the construction door.
+Existing IAT and older combination-lock support remains in place.
+
+See [digital lock test notes](tests/README.md) for component coverage and the
+remaining in-game checks.

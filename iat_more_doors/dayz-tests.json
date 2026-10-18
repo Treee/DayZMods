@@ -1,0 +1,5 @@
+{
+  "mod": "IAT_MoreDoors",
+  "addons": ["camping", "sounds", "scripts", "tests"],
+  "dependencies": { "local": [], "workshop": [] }
+}

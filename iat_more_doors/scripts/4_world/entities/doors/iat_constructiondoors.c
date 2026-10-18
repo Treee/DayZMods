@@ -26,9 +26,7 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 	override void SetActions()
 	{
 		super.SetActions();
-		// enscript-suppress
 		AddAction(IAT_ActionOpenConstructionDoor);
-		// enscript-suppress
 		AddAction(IAT_ActionCloseConstructionDoor);
 	}
 	override void OnVariablesSynchronized()
@@ -264,8 +262,15 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		}
 		return true;
 	}
+
 	bool IsLocked(PlayerIdentity invokingPlayer)
 	{
+		DigitalCodeLock digitalCodeLock = IAT_GetDigitalCodeLock();
+		if (digitalCodeLock && digitalCodeLock.IsLocked())
+		{
+			return true;
+		}
+
 		// IAT CODELOCK COMPATIBILITY
 		#ifdef IAT_Codelock
 		IAT_Codelock_Colorbase iatCodelock;
@@ -323,6 +328,10 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 
 	bool CanDismantleDoor()
 	{
+		if (IAT_GetDigitalCodeLock())
+		{
+			return false;
+		}
 		// if anything is attached to the door, cannot dismantle
 		if (GetCombinationLock_Vanilla())
 		{
@@ -338,7 +347,17 @@ class IAT_ConstructionDoor_Colorbase extends ItemBase
 		return true;
 	}
 
+
 	//======================================================= SETTERS & GETTERS
+	DigitalCodeLock IAT_GetDigitalCodeLock()
+	{
+		DigitalCodeLock codelock;
+		if (Class.CastTo(codelock, FindAttachmentBySlotName(IAT_CODELOCK_ATTACMENT)))
+		{
+			return codelock;
+		}
+		return null;
+	}
 	CombinationLock GetCombinationLock_Vanilla()
 	{
 		CombinationLock combination_lock;

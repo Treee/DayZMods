@@ -37,6 +37,12 @@ class IAT_LandDoor_Colorbase extends House
 		// }
 		// #endif
 
+		DigitalCodeLock digitalCodeLock = IAT_GetDigitalCodeLock();
+		if (digitalCodeLock && digitalCodeLock.IsLocked())
+		{
+			return true;
+		}
+
 		// VANILLA CODELOCK
 		CombinationLock combination_lock;
 		if (Class.CastTo(combination_lock, GetCombinationLock_Vanilla()))
@@ -47,6 +53,15 @@ class IAT_LandDoor_Colorbase extends House
 	}
 
 	//======================================================= SETTERS & GETTERS
+	DigitalCodeLock IAT_GetDigitalCodeLock()
+	{
+		DigitalCodeLock codelock;
+		if (Class.CastTo(codelock, FindAttachmentBySlotName(IAT_CODELOCK_ATTACMENT)))
+		{
+			return codelock;
+		}
+		return null;
+	}
 	CombinationLock GetCombinationLock_Vanilla()
 	{
 		CombinationLock combination_lock;
