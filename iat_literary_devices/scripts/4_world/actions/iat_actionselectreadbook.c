@@ -39,7 +39,7 @@ class IAT_ActionSelectReadBook extends ActionSingleUseBase
         else
             GetVariantManager().Clear();
 	}
-    override void OnExecuteClient( ActionData action_data )
+    override protected void OnExecuteClient( ActionData action_data )
 	{
         PlayerBase player;
         IAT_LiteraryDevices_MultiBook_Colorbase book;

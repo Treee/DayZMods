@@ -19,7 +19,7 @@ class IAT_ActionReadBook extends ActionSingleUseBase
 	{
 		return "#read";
 	}
-	override void OnExecuteClient( ActionData action_data )
+	override protected void OnExecuteClient( ActionData action_data )
 	{
         PlayerBase player;
         ItemBook book;

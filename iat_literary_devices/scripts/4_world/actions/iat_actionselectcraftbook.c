@@ -242,7 +242,7 @@ class IAT_ActionCraftBookOptions: ActionContinuousBase
 		};
 	}
 
-	override void OnFinishProgressServer( ActionData action_data )
+	override protected void OnFinishProgressServer( ActionData action_data )
 	{
 		super.OnFinishProgressServer(action_data);
 

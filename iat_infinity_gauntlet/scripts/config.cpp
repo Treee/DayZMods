@@ -18,17 +18,17 @@ class CfgMods
             class gameScriptModule
             {
                 value = "";
-                files[] = { "iat_infinity_gauntlet\scripts\3_game" };
+                files[] = { "iat_infinity_gauntlet/scripts/3_game" };
             };
             class worldScriptModule
             {
                 value = "";
-                files[] = { "iat_infinity_gauntlet\scripts\4_world" };
+                files[] = { "iat_infinity_gauntlet/scripts/4_world" };
             };
             class missionScriptModule
             {
                 value = "";
-                files[] = { "iat_infinity_gauntlet\scripts\5_mission" };
+                files[] = { "iat_infinity_gauntlet/scripts/5_mission" };
             };
         };
     };

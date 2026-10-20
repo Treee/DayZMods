@@ -19,7 +19,7 @@ class CfgMods
 			class worldScriptModule
 			{
 				value = "";
-				files[] = { "iat\survivor_animations_overrides\scripts\4_world" };
+				files[] = { "iat/survivor_animations_overrides/scripts/4_world" };
 			};
 		};
 	};

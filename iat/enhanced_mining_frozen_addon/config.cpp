@@ -18,7 +18,7 @@ class CfgMods
 			class worldScriptModule
 			{
 				value = "";
-				files[] = { "iat\enhanced_mining_frozen_addon\scripts" };
+				files[] = { "iat/enhanced_mining_frozen_addon/scripts" };
 			};
 		};
 	};
