@@ -1,9 +1,9 @@
-name = "ItsATreee Thanos Glove";
+name = "ItsATreee Infinity Gauntlet";
 picture = "thumbnail_template_co.paa";
 logoSmall = "thumbnail_template_co.paa";
 logo = "thumbnail_template_co.paa";
 logoOver = "thumbnail_template_co.paa";
-tooltip = "ItsATreee Thanos Glove";
+tooltip = "ItsATreee Infinity Gauntlet";
 overview = "Mods Created by ItsATreee";
 action = "https://github.com/Treee/DayZMods";
 author = "ItsATreee";

@@ -10,11 +10,13 @@ modded class MissionBase
 		{
 			// create a new codelock dialog menu instance
 			menu = new IAT_CodelockPasswordDialogMenu();
+			menu.SetID(id);
 		}
 		else if (id == IAT_MENU_CODELOCK_ENTRY)
 		{
 			// create a new codelock password entry menu instance
 			menu = new IAT_CodelockPasswordEntryMenu();
+			menu.SetID(id);
 		}
 		// return the menu instanc
 		return menu;

@@ -1,9 +1,9 @@
-name = "ItsATreee Weapon Quickbar";
+name = "ItsATreee Custom Map";
 picture = "thumbnail_template_co.paa";
 logoSmall = "thumbnail_template_co.paa";
 logo = "thumbnail_template_co.paa";
 logoOver = "thumbnail_template_co.paa";
-tooltip = "ItsATreee Weapon Quickbar";
+tooltip = "ItsATreee Custom Map";
 overview = "Mods Created by ItsATreee";
 action = "https://github.com/Treee/DayZMods";
 author = "ItsATreee";

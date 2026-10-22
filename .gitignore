@@ -5,6 +5,13 @@ hemtt.exe
 *.biprivatekey
 releases
 
+# Ignore Game Launcher Harness Files
+dayz-launch/profiles/*
+dayz-launch/missions/*
+dayz-launch/configs/*
+dayz-launch/tests/*
+__pycache__/
+
 # Ignore all generated rvmat content
 iat_facepaints/addons/facepaints/**/*.rvmat
 # Include templates
