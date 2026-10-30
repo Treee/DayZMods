@@ -66,6 +66,11 @@ class IAT_Codelock_Colorbase extends ItemBase
 		m_LastPlayDamageParticles = m_PlayDamageParticles;
 	}
 
+	override bool IsExternalLockType()
+	{
+		return true;
+	}
+
 	// can only grab the codelock if it is unlocked
 	override bool IsTakeable()
 	{
@@ -210,6 +215,7 @@ class IAT_Codelock_Colorbase extends ItemBase
 
 		AddAction(IAT_ActionAttachToBaseBuilding); // basebuildings with a codelock attachment
 		AddAction(IAT_ActionAttachToTent); // tents with a codelock attachment
+		AddAction(IAT_ActionAttachToBuilding);
 	}
 
 	//================================================== RPC'S
@@ -446,6 +452,9 @@ class IAT_Codelock_Colorbase extends ItemBase
 	}
 	bool HasAccess(PlayerIdentity playerIdentity)
 	{
+		if (!playerIdentity)
+			return false;
+
 		string steamId = playerIdentity.GetPlainId();
 		TryFetchOwnerId(playerIdentity);
 		if (IsTempOpen())

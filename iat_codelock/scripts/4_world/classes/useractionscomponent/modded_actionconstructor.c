@@ -10,5 +10,6 @@ modded class ActionConstructor
 		actions.Insert(IAT_ActionDestroyCodelock);
 		actions.Insert(IAT_ActionAttachToTent);
 		actions.Insert(IAT_ActionAttachToBaseBuilding);
+		actions.Insert(IAT_ActionAttachToBuilding);
     }
 };

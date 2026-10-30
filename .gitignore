@@ -5,6 +5,9 @@ hemtt.exe
 *.biprivatekey
 releases
 
+# Ignore temp files
+.tmp
+
 # Ignore Game Launcher Harness Files
 dayz-launch/profiles/*
 dayz-launch/missions/*

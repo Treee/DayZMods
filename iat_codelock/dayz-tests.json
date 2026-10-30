@@ -1,0 +1,5 @@
+{
+  "mod": "IAT_Codelock",
+  "addons": ["camping", "sounds", "tools", "scripts", "tests"],
+  "dependencies": { "local": [], "workshop": [] }
+}

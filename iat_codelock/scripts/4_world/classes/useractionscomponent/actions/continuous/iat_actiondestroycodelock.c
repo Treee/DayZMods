@@ -35,104 +35,25 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 		m_ConditionItem = new CCINonRuined;
 	}
 
-	override void OnActionInfoUpdate( PlayerBase player, ActionTarget target, ItemBase item )
+	override void OnActionInfoUpdate(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		// if we have a config
-		if (GetDayZGame().GetIATCodelockConfig())
-		{
-			if (GetDayZGame().GetIATCodelockConfig().CanShowCodelockHealth())
-			{
-				IAT_Codelock_Colorbase iat_codelock;
-				// check the target objects inventory to see if there is a codelock present
-				EntityAI targetEntity;
-				if (Class.CastTo(targetEntity, target.GetObject()))
-				{
-					if (targetEntity.GetInventory())
-					{
-						if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
-						{
-							m_Text = string.Format("Destroy Codelock (HP: %1%)", iat_codelock.GetSyncedCodelockHealth());
-							return; // short circuit
-						}
-					}
-				}
-				// check the target objects parent to see if it has a codelock
-				if (Class.CastTo(targetEntity, target.GetParent()))
-				{
-					if (targetEntity.GetInventory())
-					{
-						if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
-						{
-							m_Text = string.Format("Destroy Codelock (HP: %1%)", iat_codelock.GetSyncedCodelockHealth());
-							return; // short circuit
-						}
-					}
-				}
-			}
-		}
+		m_Text = "Destroy Codelock";
+		IAT_CodelockConfig config = GetDayZGame().GetIATCodelockConfig();
+		IAT_Codelock_Colorbase codelock = MiscGameplayFunctions.IAT_GetTargetCodelock(target);
+		if (config && config.CanShowCodelockHealth() && codelock)
+			m_Text = string.Format("Destroy Codelock (HP: %1%)", codelock.GetSyncedCodelockHealth());
 	}
 
-	override bool ActionCondition( PlayerBase player, ActionTarget target, ItemBase item )
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if (!item.IAT_IsRaidItem())
-			return false;
-
-		// this action path goes from most specific to most generic (reverse funnel)
-		IAT_Codelock_Colorbase iat_codelock;
-		// check the target objects inventory to see if there is a codelock present
-		EntityAI targetEntity;
-		if (Class.CastTo(targetEntity, target.GetObject()))
-		{
-			if (targetEntity.GetInventory())
-			{
-				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
-				{
-					return true;
-				}
-			}
-		}
-		// check the target objects parent to see if it has a codelock
-		if (Class.CastTo(targetEntity, target.GetParent()))
-		{
-			if (targetEntity.GetInventory())
-			{
-				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
-				{
-					return true;
-				}
-			}
-		}
-		return false;
+		return item && item.IAT_IsRaidItem() && MiscGameplayFunctions.IAT_GetTargetCodelock(target) != null;
 	}
 
-	override protected void OnFinishProgressServer( ActionData action_data )
+	override protected void OnFinishProgressServer(ActionData action_data)
 	{
-		IAT_Codelock_Colorbase iat_codelock;
-		// check the target objects inventory to see if there is a codelock present
-		EntityAI targetEntity;
-		if (Class.CastTo(targetEntity, action_data.m_Target.GetObject()))
-		{
-			if (targetEntity.GetInventory())
-			{
-				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
-				{
-					PerformDestroyAction(iat_codelock, action_data.m_MainItem);
-					return; // short circuit
-				}
-			}
-		}
-		// check the target objects parent to see if it has a codelock
-		if (Class.CastTo(targetEntity, action_data.m_Target.GetParent()))
-		{
-			if (targetEntity.GetInventory())
-			{
-				if (Class.CastTo(iat_codelock, IAT_FindAttachedCodelock(targetEntity)))
-				{
-					PerformDestroyAction(iat_codelock, action_data.m_MainItem);
-					return; // short circuit
-				}
-			}
-		}
+		IAT_Codelock_Colorbase codelock = MiscGameplayFunctions.IAT_GetTargetCodelock(action_data.m_Target);
+		if (codelock)
+			PerformDestroyAction(codelock, action_data.m_MainItem);
 	}
 
 	void PerformDestroyAction(IAT_Codelock_Colorbase iat_codelock, ItemBase itemInHands)
@@ -157,22 +78,5 @@ class IAT_ActionDestroyCodelock: ActionContinuousBase
 				}
 			}
 		}
-	}
-
-	IAT_Codelock_Colorbase IAT_FindAttachedCodelock(EntityAI targetEntity)
-	{
-		IAT_Codelock_Colorbase iat_codelock;
-		if (targetEntity.GetInventory())
-		{
-			TStringArray lockSlots = MiscGameplayFunctions.IAT_GetCodelockSlots();
-			foreach (string slot : lockSlots)
-			{
-				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName(slot)))
-				{
-					return iat_codelock;
-				}
-			}
-		}
-		return null;
 	}
 };

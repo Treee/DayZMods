@@ -229,6 +229,8 @@ This is to help limit spamming codelocks by method of brute forcing which should
 
 ## Compatibility
 
+-   **Nasdara rebuilt doors**: Aim at the completed door or its lock to claim, manage, enter a passcode, or raid that door's lock. Locks on other doors in the same house are handled independently. Locked doors require IAT access; unlocked locks allow public entry.
+-   **One lock per door**: IAT locks participate in DayZ's external-lock attachment checks, which prevent occupying both the keypad and combination-lock slots on the same door.
 -   **Server/Client**: Full multiplayer support
 -   **Other Mods**: Compatible with any container/tent/basebuilding mod that adds the `Att_CombinationLock` attachment
 -   **CF ModStorage**: Optional integration available

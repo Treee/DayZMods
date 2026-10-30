@@ -9,7 +9,7 @@ class IAT_CodelockActionBase extends ActionInteractBase
 	override void CreateConditionComponents()
 	{
 		m_ConditionItem = new CCINone();
-		m_ConditionTarget = new CCTObject(UAMaxDistances.DEFAULT);
+		m_ConditionTarget = new CCTCursor(UAMaxDistances.DEFAULT);
 	}
 
 	override bool HasProneException()
@@ -46,22 +46,5 @@ class IAT_CodelockActionBase extends ActionInteractBase
 			return true;
 		}
 		return false;
-	}
-
-	IAT_Codelock_Colorbase IAT_FindAttachedCodelock(EntityAI targetEntity)
-	{
-		IAT_Codelock_Colorbase iat_codelock;
-		if (targetEntity.GetInventory())
-		{
-			TStringArray lockSlots = MiscGameplayFunctions.IAT_GetCodelockSlots();
-			foreach (string slot : lockSlots)
-			{
-				if (Class.CastTo(iat_codelock, targetEntity.GetInventory().FindAttachmentByName(slot)))
-				{
-					return iat_codelock;
-				}
-			}
-		}
-		return null;
 	}
 };
