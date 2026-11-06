@@ -17,12 +17,10 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "IAT/more_fireplaces/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/more_fireplaces/scripts/4_world" };
 			};
 		};

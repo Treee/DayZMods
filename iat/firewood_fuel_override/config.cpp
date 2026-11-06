@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/firewood_fuel_override/scripts/4_world" };
 			};
 		};

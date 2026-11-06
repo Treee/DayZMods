@@ -18,7 +18,6 @@ class CfgMods
 		{
 			class missionScriptModule
 			{
-				value = "";
 				files[] = { "iat/compass_ui/scripts/5_mission" };
 			};
 		};

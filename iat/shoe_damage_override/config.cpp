@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "IAT/shoe_damage_override/scripts/3_game" };
 			};
 		};

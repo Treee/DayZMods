@@ -18,7 +18,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_corrosive_biogas/scripts/4_world" };
 			};
 		};

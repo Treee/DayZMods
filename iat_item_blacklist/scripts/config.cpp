@@ -18,12 +18,10 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = {"iat_item_blacklist/scripts/3_game"};
 			};
 			class missionScriptModule
 			{
-				value = "";
 				files[] = { "iat_item_blacklist/scripts/5_mission" };
 			};
 		};

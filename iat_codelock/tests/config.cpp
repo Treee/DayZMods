@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_codelock/tests/scripts/4_world" };
 			};
 		};

@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat/gas_station_changes/scripts/4_world" };
 			};
 		};

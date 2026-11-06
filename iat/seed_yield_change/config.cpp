@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/seed_yield_change/scripts/4_world" };
 			};
 		};

@@ -17,17 +17,14 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "iat_dynamic_radio_range/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_dynamic_radio_range/scripts/4_world" };
 			};
 			class missionScriptModule
 			{
-				value = "";
 				files[] = { "iat_dynamic_radio_range/scripts/5_mission" };
 			};
 		};

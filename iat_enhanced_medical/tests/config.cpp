@@ -18,7 +18,6 @@ class CfgMods
         {
             class worldScriptModule
             {
-                value = "";
                 files[] = { "iat_enhanced_medical/tests/scripts/4_world" };
             };
         };

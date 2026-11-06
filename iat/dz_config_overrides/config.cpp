@@ -17,17 +17,14 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "IAT/dz_config_overrides/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/dz_config_overrides/scripts/4_world" };
 			};
 			class missionScriptModule
 			{
-				value = "";
 				files[] = { "IAT/dz_config_overrides/scripts/5_mission" };
 			};
 		};

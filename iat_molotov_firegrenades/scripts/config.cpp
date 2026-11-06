@@ -17,12 +17,10 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "iat_molotov_firegrenades/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_molotov_firegrenades/scripts/4_world" };
 			};
 		};

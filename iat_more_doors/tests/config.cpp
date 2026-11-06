@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_more_doors/tests/scripts/4_world" };
 			};
 		};

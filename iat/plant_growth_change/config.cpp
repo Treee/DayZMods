@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/plant_growth_change/scripts/4_world" };
 			};
 		};

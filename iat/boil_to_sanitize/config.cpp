@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/boil_to_sanitize/scripts/4_world" };
 			};
 		};

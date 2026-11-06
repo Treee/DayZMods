@@ -18,7 +18,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat/horse_mod_overrides/scripts/4_world" };
 			};
 		};

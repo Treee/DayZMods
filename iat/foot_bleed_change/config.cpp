@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat/foot_bleed_change/scripts/4_world" };
 			};
 		};

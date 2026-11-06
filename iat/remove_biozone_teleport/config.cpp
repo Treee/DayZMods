@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/remove_biozone_teleport/scripts/4_world" };
 			};
 		};

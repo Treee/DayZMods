@@ -1,0 +1,5 @@
+{
+  "mod": "IAT_MapAnnotations",
+  "addons": ["scripts", "tests"],
+  "dependencies": { "local": [], "workshop": [] }
+}

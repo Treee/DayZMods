@@ -18,12 +18,10 @@ class CfgMods
         {
             class worldScriptModule
             {
-                value = "";
                 files[] = { "iat_literary_devices/scripts/4_world" };
             };
             class missionScriptModule
             {
-                value = "";
                 files[] = { "iat_literary_devices/scripts/5_mission" };
             };
         };

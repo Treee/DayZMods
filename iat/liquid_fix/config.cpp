@@ -17,12 +17,10 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "iat/liquid_fix/scripts/3_game" };
 			};
 			class missionScriptModule
 			{
-				value = "";
 				files[] = { "iat/liquid_fix/scripts/5_mission" };
 			};
 		};

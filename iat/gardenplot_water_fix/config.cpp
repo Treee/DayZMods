@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat/gardenplot_water_fix/scripts/4_world" };
 			};
 		};

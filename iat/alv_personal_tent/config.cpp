@@ -18,17 +18,14 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "alv_personal_tent/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "alv_personal_tent/scripts/4_world" };
 			};
 			class missionScriptModule
 			{
-				value = "";
 				files[] = { "alv_personal_tent/scripts/5_mission" };
 			};
 		};

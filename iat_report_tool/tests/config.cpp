@@ -18,7 +18,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_report_tool/tests/scripts/4_world" };
 			};
 		};

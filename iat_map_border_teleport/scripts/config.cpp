@@ -17,12 +17,10 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "iat_map_border_teleport/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_map_border_teleport/scripts/4_world" };
 			};
 		};

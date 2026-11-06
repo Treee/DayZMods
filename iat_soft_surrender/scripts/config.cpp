@@ -17,12 +17,10 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_soft_surrender/scripts/4_world" };
 			};
 			class missionScriptModule
 			{
-				value = "";
 				files[] = { "iat_soft_surrender/scripts/5_mission" };
 			};
 		};

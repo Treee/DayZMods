@@ -17,12 +17,10 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] = { "IAT/advanced_medical/scripts/3_game" };
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/advanced_medical/scripts/4_world" };
 			};
 		};

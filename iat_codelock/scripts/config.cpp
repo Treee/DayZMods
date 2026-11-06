@@ -18,7 +18,6 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				value = "";
 				files[] =
 				{
 					"iat_codelock/scripts/3_game"
@@ -26,7 +25,6 @@ class CfgMods
 			};
 			class worldScriptModule
 			{
-				value = "";
 				files[] =
 				{
 					"JM/COT/Scripts/Common",
@@ -36,7 +34,6 @@ class CfgMods
 			};
 			class missionScriptModule
 			{
-				value = "";
 				files[] =
 				{
 					"iat_codelock/scripts/5_mission"

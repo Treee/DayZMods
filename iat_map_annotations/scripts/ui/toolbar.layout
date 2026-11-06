@@ -1,0 +1,109 @@
+PanelWidgetClass IAT_MA_Toolbar {
+ color 0.08 0.08 0.08 0.94
+ position 0.03 0.04
+ size 0.94 104
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 1
+ priority 1000
+ style rover_sim_colorable
+ {
+  ButtonWidgetClass IAT_MA_Mode {
+   position 0.005 5
+   size 0.135 30
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Default
+   text "Mode: Pan"
+  }
+  ButtonWidgetClass IAT_MA_Color {
+   position 0.145 5
+   size 0.135 30
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Default
+   text "Ink: Black"
+  }
+  ButtonWidgetClass IAT_MA_Width {
+   position 0.285 5
+   size 0.135 30
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Default
+   text "Width: 2"
+  }
+  ButtonWidgetClass IAT_MA_Undo {
+   position 0.425 5
+   size 0.135 30
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Default
+   text "Undo last"
+  }
+  ButtonWidgetClass IAT_MA_Clear {
+   position 0.565 5
+   size 0.135 30
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Default
+   text "Clear map"
+  }
+  ButtonWidgetClass IAT_MA_Reload {
+   position 0.705 5
+   size 0.135 30
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Default
+   text "Reload"
+  }
+  ButtonWidgetClass IAT_MA_Visibility {
+   position 0.845 5
+   size 0.15 30
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   style Default
+   text "Hide ink"
+  }
+  TextWidgetClass IAT_MA_Status {
+   ignorepointer 1
+   position 0.01 42
+   size 0.98 24
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   font "gui/fonts/sdf_MetronBook24"
+   "exact text" 1
+   "exact text size" 18
+   text "Loading annotations..."
+  }
+  TextWidgetClass IAT_MA_Help {
+   ignorepointer 1
+   position 0.01 72
+   size 0.98 24
+   hexactpos 0
+   vexactpos 1
+   hexactsize 0
+   vexactsize 1
+   font "gui/fonts/sdf_MetronBook24"
+   "exact text" 1
+   "exact text size" 16
+   text "Draw: hold left mouse. Pan: normal map controls. Each finished stroke saves automatically."
+  }
+ }
+}

@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat/alv_script_overrides/scripts/4_world" };
 			};
 		};

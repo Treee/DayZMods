@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "iat_enhanced_bioprotection/scripts/4_world" };
 			};
 		};

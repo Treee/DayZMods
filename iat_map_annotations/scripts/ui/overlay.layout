@@ -1,0 +1,24 @@
+FrameWidgetClass IAT_MA_Overlay {
+ ignorepointer 1
+ clipchildren 1
+ size 1 1
+ hexactsize 0
+ vexactsize 0
+ priority 200
+ {
+  CanvasWidgetClass IAT_MA_Canvas {
+   ignorepointer 1
+   size 1 1
+   hexactsize 0
+   vexactsize 0
+  }
+  PanelWidgetClass IAT_MA_Capture {
+   visible 0
+   color 0 0 0 0
+   size 1 1
+   hexactsize 0
+   vexactsize 0
+   style rover_sim_colorable
+  }
+ }
+}

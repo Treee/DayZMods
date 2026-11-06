@@ -17,7 +17,6 @@ class CfgMods
 		{
 			class worldScriptModule
 			{
-				value = "";
 				files[] = { "IAT/armbands_and_flags/scripts/4_world" };
 			};
 		};
