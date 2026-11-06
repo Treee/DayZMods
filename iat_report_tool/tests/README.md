@@ -1,11 +1,17 @@
 # Report Tool behavior tests
 
-The tests addon contains 33 cases using the workspace's frame-driven DayZ harness. Assertions call real packed classes. Added cases cover Discord serialization, object rules/storage, the m_-named object JSON contract and report RPC behavior. See [review evidence](../REVIEW.md) for the green refactor checkpoints, mutation detection and red-green cycles.
+The tests addon contains 40 cases using the workspace's frame-driven DayZ harness. Assertions call real packed classes. Added cases cover Discord serialization, zombie damage filtering, object rules/storage, the m_-named object JSON contract and report RPC behavior. See [review evidence](../REVIEW.md) for the green refactor checkpoints, mutation detection and red-green cycles.
 
-Run from the workspace root in the Windows context that can access P: and the configured tools:
+Run from the workspace root in the Windows context that can access P: and the configured tools. These component tests use the bundled player-free mission, avoiding an unrelated DayZ 1.30 offline-player action error with the installed COT build. Generate a temporary machine config from the harness's resolved settings; the shared harness config and mission stay unchanged:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\dayz-test-harness\run.ps1 -Mod 'P:\iat_report_tool' -HashArtifacts
+$harness = 'P:\dayz-test-harness\run.ps1'
+$resolved = powershell -NoProfile -ExecutionPolicy Bypass -File $harness -Mod '.\iat_report_tool' -Describe | ConvertFrom-Json
+$settings = $resolved.Settings
+$settings.MissionDirectory = (Resolve-Path '.\iat_report_tool\tests\fixtures\mission.chernarusplus').Path
+New-Item -ItemType Directory -Path '.tmp' -Force | Out-Null
+$settings | ConvertTo-Json -Depth 10 | Set-Content '.tmp\report-components.json' -Encoding UTF8
+powershell -NoProfile -ExecutionPolicy Bypass -File $harness -Config '.tmp\report-components.json' -Mod '.\iat_report_tool' -HashArtifacts
 ```
 
 For one case, add `-Test TerrainSubmissionEmitsLocation` (or another registered name). The runner builds `scripts`, `languagecore`, and `tests` from this mod into `P:/Mods/@IAT_ReportTool`, then loads it with local WesternZ VOIP Mute and Workshop CF, COT, and Admirals Chat Filter dependencies. It uses the builder's saved build options, including signing. Dependency paths are in `dayz-tests.json`; machine paths remain in the harness configuration. Both diagnostic and harness defines guard test scripts; the harness is not a mandatory addon dependency.
@@ -22,6 +28,9 @@ For one case, add `-Test TerrainSubmissionEmitsLocation` (or another registered 
 | Non-terrain categories emit no location | `BugSubmissionHasNoTerrainLocation`, `UnknownSubmissionHasNoTerrainLocation` | Same boundary with category alternatives |
 | The legacy Report Tool config class is no longer loaded | `LegacyConfigTypeRemoved` | Runtime typename lookup in the packed mod |
 | Plain Discord JSON escapes text, disables automatic mentions and suppresses previews | `DiscordTextJSONEscaping` | Real `JMWebhookDiscordMessage.Prepare`; short payload decoded independently |
+| WesternZ zombie damage matches the suppression policy | `ZombieDamageSuppressed`, `ZombieDamageAfterNullEntriesSuppressed` | Real filter policy and COT message objects; actual title/attacker-field layout, null entries and later embeds |
+| The policy preserves player damage, including players named after the zombie | `PlayerDamagePreserved`, `ZombieNamedPlayerDamagePreserved` | Attacker identity distinguished from a Steam-linked name or zombie text elsewhere in the embed |
+| The policy preserves zombie deaths, deaths without positions and killfeed reports | `ZombieDeathPreserved`, `ZombieDeathNoPosPreserved`, `ZombieKillfeedPreserved` | Connection guard exercised with identical zombie embed content |
 | Multiple embeds/fields flatten in order; null and empty entries are skipped | `DiscordEmbedFlattening` | Exact resulting text, including newline normalization and spacing |
 | 1900 characters remain intact; 1901 characters trigger the existing suffix | `DiscordExactTruncationBoundary`, `DiscordAboveTruncationBoundary` | Exact serialized ASCII wire value; native decoding clipped long fixture strings at 1023 characters in the installed build |
 | Names, numeric and object-count boundaries are enforced; clones isolate changes | `ObjectValidationAndClone` | Real public rules and DTOs; 80/81-character names, minimum/maximum scale, position/orientation limits, 2000/2001 entries, null/missing classes |
@@ -37,6 +46,14 @@ Empty identities and negative Unix-time cases record current formatting behavior
 ## Isolation and limits
 
 Submission cases use a recording server and remove their location event listener in cleanup. Tests do not expose protected production helpers or replace game configuration. The config-removal case verifies that the obsolete class is absent from the loaded scripts; it does not establish live webhook delivery.
+
+Zombie filtering cases call the shared policy with real COT message objects. They reproduce the supplied WesternZ hit payload and do not simulate zombie combat. COT skips its server queue in offline mode, so these tests do not establish server queue forwarding through `Post` or `PostAs`. A diagnostic-only fixture registers the vanilla `PluginConfigDebugProfile` dependency required by `PluginItemDiagnostic`; its settings remain in the isolated run profile.
+
+## Zombie filter verification, 2026-11-03
+
+Command: `powershell -NoProfile -ExecutionPolicy Bypass -File P:\dayz-test-harness\run.ps1 -Config Z:\DayZ\Modding\.tmp\iat-report-component-config.json -Mod Z:\DayZ\Modding\iat_report_tool -HashArtifacts`. The temporary config selects the component mission above and retains the configured tools, dependencies, packing paths and run root.
+
+Evidence: `P:\dayz-test-harness\runs\4ce7fa4abfb04d5cb3038ed736f5c610`. Packing succeeded with zero failed targets. `profile/iat-result.json` recorded all 40 cases as PASS with cleanup complete, including all seven filter-policy cases. Overall `result.json` is **RUN_ERROR**, because DayZ 1.30 reported `Leaked 'BunkerBroadcastManager' script instance (1x)!` during shutdown. This is not a verified green harness run. Raw logs and artifact hashes remain in that run directory; live server queue forwarding and webhook delivery remain unverified.
 
 These tests prove in-process RPC decoding/normalization, but not multiplayer transport or connected identity enrichment. They do not prove live webhook delivery, COT connection enablement, teleport persistence, UI/input routing, multiplayer or dedicated-server behavior. Object rules and disabled-group JSON storage are covered; live spawning, collision, previews and replication require separate checks. Menu fixture attempts hit compiler/native failures and were excluded rather than weakening harness verification. No production callbacks or helpers were made public for tests.
 

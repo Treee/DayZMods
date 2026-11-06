@@ -6,7 +6,7 @@ The mod requires Community Framework, Community Online Tools, Admirals Chat Filt
 
 ## Tests
 
-The mod includes 33 engine-backed behavior cases in its tests addon. See [test coverage and run instructions](tests/README.md) and the [comprehensive review and evidence](REVIEW.md).
+The mod includes 40 engine-backed behavior cases in its tests addon. See [test coverage and run instructions](tests/README.md) and the [comprehensive review and evidence](REVIEW.md).
 
 ## COT integration
 
@@ -15,6 +15,8 @@ Configure report webhook destinations and enabled connections in Community Onlin
 Terrain reports automatically add a TRPT entry to COT's IAT Terrain Reports category when its teleport module is available and loaded.
 
 All COT Discord messages retain this mod's plain-text conversion, disabled automatic mentions and suppressed link previews. Webhook destinations remain managed by COT.
+
+WesternZ zombie hits identified by `#WZ_Zombie_GibZmb_DisplayName` in COT's attacker field are suppressed on the `PlayerDamage` connection through both `Post` overloads and `PostAs`. Zombie death and killfeed reports remain enabled through their separate connections. Steam-linked players using that display name still produce damage reports.
 
 The bundled [COT object manager](cot_OBJECT_MANAGER.md) stores and edits groups of scope 1 objects. Its remaining interactive, network and restart checks are listed in the review.
 

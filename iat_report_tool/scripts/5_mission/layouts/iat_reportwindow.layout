@@ -1,4 +1,5 @@
-FrameWidgetClass rootFrame {
+FrameWidgetClass {
+ Name "rootFrame"
  position 0 0
  size 0.38 0.92
  halign center_ref
@@ -9,7 +10,8 @@ FrameWidgetClass rootFrame {
  vexactsize 0
  priority 1000
  {
-  PanelWidgetClass rootPanel {
+  PanelWidgetClass "{00000000D4445F73}" {
+   Name "rootPanel"
    ignorepointer 0
    position 0 0
    size 1 1
@@ -19,7 +21,8 @@ FrameWidgetClass rootFrame {
    vexactsize 0
    style WZ_Paper_Ripped
    {
-    PanelWidgetClass pnlReportForm {
+    PanelWidgetClass "{000000005868A82F}" {
+     Name "pnlReportForm"
      ignorepointer 0
      position 0.047 0.018
      size 0.906 0.96
@@ -29,7 +32,8 @@ FrameWidgetClass rootFrame {
      vexactsize 0
      style blank
      {
-      PanelWidgetClass spcrReportTypeOptions {
+      PanelWidgetClass "{0000000069D2F67F}" {
+       Name "spcrReportTypeOptions"
        ignorepointer 0
        position 0 0.085
        size 1 0.305
@@ -39,7 +43,8 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style blank
        {
-        PanelWidgetClass pnlTerrainOption {
+        PanelWidgetClass "{000000005F1750DA}" {
+         Name "pnlTerrainOption"
          ignorepointer 0
          color 0.57 0.46 0.32 0.65
          position 0 0
@@ -50,7 +55,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style Outline
          {
-          CheckBoxWidgetClass chkBoxTerrainReport {
+          CheckBoxWidgetClass "{000000001DE45819}" {
+           Name "chkBoxTerrainReport"
            position 0.04 0.06
            size 0.92 0.42
            hexactpos 0
@@ -62,7 +68,8 @@ FrameWidgetClass rootFrame {
            "text color" 0.2 0.16 0.12 1
            checked 1
           }
-          TextWidgetClass txtTerrainHelp {
+          TextWidgetClass "{000000009EB055A5}" {
+           Name "txtTerrainHelp"
            ignorepointer 1
            color 0.18 0.14 0.1 1
            position 0.06 0.51
@@ -83,7 +90,8 @@ FrameWidgetClass rootFrame {
           }
          }
         }
-        PanelWidgetClass pnlBugOption {
+        PanelWidgetClass "{00000000E94C5A58}" {
+         Name "pnlBugOption"
          ignorepointer 0
          color 0.57 0.46 0.32 0.65
          position 0.507 0
@@ -94,7 +102,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style Outline
          {
-          CheckBoxWidgetClass chkBoxBugReport {
+          CheckBoxWidgetClass "{000000002D379E04}" {
+           Name "chkBoxBugReport"
            position 0.04 0.06
            size 0.92 0.42
            hexactpos 0
@@ -106,7 +115,8 @@ FrameWidgetClass rootFrame {
            "text color" 0.2 0.16 0.12 1
            checked 0
           }
-          TextWidgetClass txtBugHelp {
+          TextWidgetClass "{00000000D7C7BA4C}" {
+           Name "txtBugHelp"
            ignorepointer 1
            color 0.18 0.14 0.1 1
            position 0.055 0.51
@@ -127,7 +137,8 @@ FrameWidgetClass rootFrame {
           }
          }
         }
-        PanelWidgetClass pnlPlayerOption {
+        PanelWidgetClass "{000000004B874D8D}" {
+         Name "pnlPlayerOption"
          ignorepointer 0
          color 0.57 0.46 0.32 0.65
          position 0 0.345
@@ -138,7 +149,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style Outline
          {
-          CheckBoxWidgetClass chkBoxPlayerReport {
+          CheckBoxWidgetClass "{00000000D322F86D}" {
+           Name "chkBoxPlayerReport"
            position 0.04 0.06
            size 0.92 0.42
            hexactpos 0
@@ -150,7 +162,8 @@ FrameWidgetClass rootFrame {
            "text color" 0.2 0.16 0.12 1
            checked 0
           }
-          TextWidgetClass txtPlayerHelp {
+          TextWidgetClass "{00000000F9332487}" {
+           Name "txtPlayerHelp"
            ignorepointer 1
            color 0.18 0.14 0.1 1
            position 0.06 0.51
@@ -171,7 +184,8 @@ FrameWidgetClass rootFrame {
           }
          }
         }
-        PanelWidgetClass pnlSuggestionOption {
+        PanelWidgetClass "{00000000175503A8}" {
+         Name "pnlSuggestionOption"
          ignorepointer 0
          color 0.57 0.46 0.32 0.65
          position 0.507 0.345
@@ -182,7 +196,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style Outline
          {
-          CheckBoxWidgetClass chkBoxSuggestionReport {
+          CheckBoxWidgetClass "{00000000E50E4E18}" {
+           Name "chkBoxSuggestionReport"
            position 0.04 0.06
            size 0.92 0.42
            hexactpos 0
@@ -194,7 +209,8 @@ FrameWidgetClass rootFrame {
            "text color" 0.2 0.16 0.12 1
            checked 0
           }
-          TextWidgetClass txtSuggestionHelp {
+          TextWidgetClass "{00000000E578D4DE}" {
+           Name "txtSuggestionHelp"
            ignorepointer 1
            color 0.18 0.14 0.1 1
            position 0.06 0.51
@@ -215,7 +231,8 @@ FrameWidgetClass rootFrame {
           }
          }
         }
-        PanelWidgetClass pnlExploitOption {
+        PanelWidgetClass "{000000001BEEF348}" {
+         Name "pnlExploitOption"
          ignorepointer 0
          color 0.57 0.46 0.32 0.65
          position 0 0.69
@@ -226,7 +243,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style Outline
          {
-          CheckBoxWidgetClass chkBoxExploitReport {
+          CheckBoxWidgetClass "{000000000BE53AC6}" {
+           Name "chkBoxExploitReport"
            position 0.04 0.06
            size 0.92 0.42
            hexactpos 0
@@ -238,7 +256,8 @@ FrameWidgetClass rootFrame {
            "text color" 0.2 0.16 0.12 1
            checked 0
           }
-          TextWidgetClass txtExploitHelp {
+          TextWidgetClass "{000000003D0F5E69}" {
+           Name "txtExploitHelp"
            ignorepointer 1
            color 0.18 0.14 0.1 1
            position 0.06 0.51
@@ -261,7 +280,8 @@ FrameWidgetClass rootFrame {
         }
        }
       }
-      PanelWidgetClass reportDescriptionContainer {
+      PanelWidgetClass "{00000000DC3D435D}" {
+       Name "reportDescriptionContainer"
        ignorepointer 0
        position 0 0.405
        size 1 0.322
@@ -271,7 +291,8 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style blank
        {
-        MultilineTextWidgetClass txtDescriptionHelp {
+        MultilineTextWidgetClass "{00000000952D690B}" {
+         Name "txtDescriptionHelp"
          ignorepointer 1
          color 0.18 0.14 0.1 1
          position 0.015 0.175
@@ -290,7 +311,8 @@ FrameWidgetClass rootFrame {
          "text valign" center
          wrap 1
         }
-        PanelWidgetClass frmDescription {
+        PanelWidgetClass "{0000000070AED752}" {
+         Name "frmDescription"
          ignorepointer 0
          color 0.57 0.46 0.32 0.85
          position 0 0.286
@@ -301,7 +323,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style Outline
          {
-          MultilineEditBoxWidgetClass editTxtReportDescription {
+          MultilineEditBoxWidgetClass "{00000000A9469AD8}" {
+           Name "editTxtReportDescription"
            color 0 0 0 1
            position 0.025 0.04
            size 0.95 0.92
@@ -311,8 +334,7 @@ FrameWidgetClass rootFrame {
            vexactsize 0
            style WZ
            "text color" 0 0 0 1
-           "exact text" 1
-           "exact text size" 18
+           "exact text" 0
            "size to text h" 0
            "size to text v" 0
            lines 8
@@ -320,7 +342,8 @@ FrameWidgetClass rootFrame {
           }
          }
         }
-        PanelWidgetClass pnlDescriptionTitle {
+        PanelWidgetClass "{00000000BFC9BD07}" {
+         Name "pnlDescriptionTitle"
          ignorepointer 1
          position 0 0
          size 1 0.155
@@ -330,7 +353,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style WZ_Title_Plate
          {
-          TextWidgetClass txtDescriptionTitleNumber {
+          TextWidgetClass "{00000000D3AAE8B7}" {
+           Name "txtDescriptionTitleNumber"
            ignorepointer 1
            color 1 0.961 0.882 1
            position 0.045 0.15
@@ -348,7 +372,8 @@ FrameWidgetClass rootFrame {
            "text halign" center
            "text valign" center
           }
-          TextWidgetClass txtDescriptionTitle {
+          TextWidgetClass "{00000000538313DA}" {
+           Name "txtDescriptionTitle"
            ignorepointer 1
            color 1 0.961 0.882 1
            position 0.13 0.15
@@ -370,7 +395,8 @@ FrameWidgetClass rootFrame {
         }
        }
       }
-      PanelWidgetClass pnlDiscordContact {
+      PanelWidgetClass "{00000000FBC70CC9}" {
+       Name "pnlDiscordContact"
        ignorepointer 0
        position 0 0.742
        size 1 0.123
@@ -380,7 +406,8 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style blank
        {
-        EditBoxWidgetClass editTxtDiscordName {
+        EditBoxWidgetClass "{00000000A4CC6DBC}" {
+         Name "editTxtDiscordName"
          position 0 0.47
          size 1 0.3
          hexactpos 0
@@ -394,7 +421,8 @@ FrameWidgetClass rootFrame {
          "text sharpness" 2
          "text valign" center
         }
-        TextWidgetClass txtDiscordContactHint {
+        TextWidgetClass "{00000000828884CA}" {
+         Name "txtDiscordContactHint"
          ignorepointer 1
          color 0.18 0.14 0.1 1
          position 0.015 0.79
@@ -412,7 +440,8 @@ FrameWidgetClass rootFrame {
          "text halign" left
          "text valign" center
         }
-        PanelWidgetClass pnlDiscordNameLabel {
+        PanelWidgetClass "{00000000000FFAE5}" {
+         Name "pnlDiscordNameLabel"
          ignorepointer 1
          position 0 0
          size 1 0.407
@@ -422,7 +451,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style WZ_Title_Plate
          {
-          TextWidgetClass txtDiscordNameTextNumber {
+          TextWidgetClass "{00000000B52F427C}" {
+           Name "txtDiscordNameTextNumber"
            ignorepointer 1
            color 1 0.961 0.882 1
            position 0.045 0.15
@@ -440,7 +470,8 @@ FrameWidgetClass rootFrame {
            "text halign" center
            "text valign" center
           }
-          TextWidgetClass txtDiscordNameText {
+          TextWidgetClass "{00000000005498D5}" {
+           Name "txtDiscordNameText"
            ignorepointer 1
            color 1 0.961 0.882 1
            position 0.13 0.15
@@ -458,7 +489,8 @@ FrameWidgetClass rootFrame {
            "text halign" left
            "text valign" center
           }
-          TextWidgetClass txtDiscordNameTextHint {
+          TextWidgetClass "{00000000CEF9B2F1}" {
+           Name "txtDiscordNameTextHint"
            ignorepointer 1
            color 1 0.961 0.882 1
            position 0.77 0.15
@@ -480,7 +512,8 @@ FrameWidgetClass rootFrame {
         }
        }
       }
-      PanelWidgetClass pnlButtons {
+      PanelWidgetClass "{000000005B244E98}" {
+       Name "pnlButtons"
        ignorepointer 0
        position 0 0.876
        size 1 0.108
@@ -490,7 +523,8 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style blank
        {
-        TextWidgetClass txtSubmitInfo0 {
+        TextWidgetClass "{000000003BAE5C16}" {
+         Name "txtSubmitInfo0"
          ignorepointer 1
          color 0.18 0.14 0.1 1
          position 0.015 0
@@ -508,7 +542,8 @@ FrameWidgetClass rootFrame {
          "text halign" center
          "text valign" center
         }
-        PanelWidgetClass spcrButtons {
+        PanelWidgetClass "{000000008BB86149}" {
+         Name "spcrButtons"
          ignorepointer 0
          position 0 0.54
          size 1 0.46
@@ -518,7 +553,8 @@ FrameWidgetClass rootFrame {
          vexactsize 0
          style blank
          {
-          ButtonWidgetClass btnCancel {
+          ButtonWidgetClass "{000000005DE7D978}" {
+           Name "btnCancel"
            position 0 0
            size 0.36 1
            hexactpos 0
@@ -532,7 +568,8 @@ FrameWidgetClass rootFrame {
            font "gui/fonts/MetronBook16"
            "text color" 0.2 0.16 0.12 1
            {
-            PanelWidgetClass pnlCancelOutline {
+            PanelWidgetClass "{00000000EA9EB1E4}" {
+             Name "pnlCancelOutline"
              ignorepointer 1
              color 0.57 0.46 0.32 0.85
              position 0 0
@@ -545,7 +582,8 @@ FrameWidgetClass rootFrame {
             }
            }
           }
-          ButtonWidgetClass btnSubmit {
+          ButtonWidgetClass "{00000000CF0CC20F}" {
+           Name "btnSubmit"
            position 0.41 0
            size 0.59 1
            hexactpos 0
@@ -563,7 +601,8 @@ FrameWidgetClass rootFrame {
         }
        }
       }
-      PanelWidgetClass pnlReportTypeHeader {
+      PanelWidgetClass "{000000005F90977A}" {
+       Name "pnlReportTypeHeader"
        ignorepointer 1
        position 0 0.022
        size 1 0.05
@@ -573,7 +612,8 @@ FrameWidgetClass rootFrame {
        vexactsize 0
        style WZ_Title_Plate
        {
-        TextWidgetClass txtReportTypeLabelNumber {
+        TextWidgetClass "{000000002CED8778}" {
+         Name "txtReportTypeLabelNumber"
          ignorepointer 1
          color 1 0.961 0.882 1
          position 0.045 0.15
@@ -591,7 +631,8 @@ FrameWidgetClass rootFrame {
          "text halign" center
          "text valign" center
         }
-        TextWidgetClass txtReportTypeLabel {
+        TextWidgetClass "{000000003C9FD969}" {
+         Name "txtReportTypeLabel"
          ignorepointer 1
          color 1 0.961 0.882 1
          position 0.13 0.15
@@ -608,7 +649,8 @@ FrameWidgetClass rootFrame {
          "size to text v" 0
          "text valign" center
         }
-        TextWidgetClass txtReportTypeLabelHint {
+        TextWidgetClass "{00000000F879791B}" {
+         Name "txtReportTypeLabelHint"
          ignorepointer 1
          color 1 0.961 0.882 1
          position 0.05 0

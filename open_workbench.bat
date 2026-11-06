@@ -1,4 +1,4 @@
-start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod="
+start /D "D:\Steam\steamapps\common\DayZ Tools\Bin\Workbench" workbenchApp.exe "-mod=Z:\DayZ\Modding\iat_report_tool;Z:\DayZ\Modding_3rdParty\WesternZTheme"
 
 
 

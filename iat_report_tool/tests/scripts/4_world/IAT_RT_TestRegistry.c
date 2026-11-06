@@ -4,6 +4,13 @@ modded class IAT_ScenarioRegistry
 {
 	void IAT_ScenarioRegistry()
 	{
+		m_Cases.Insert(new IAT_RT_ZombieDamageFilterTest("ZombieDamageSuppressed", 0));
+		m_Cases.Insert(new IAT_RT_ZombieDamageFilterTest("PlayerDamagePreserved", 1));
+		m_Cases.Insert(new IAT_RT_ZombieDamageFilterTest("ZombieDeathPreserved", 2));
+		m_Cases.Insert(new IAT_RT_ZombieDamageFilterTest("ZombieDeathNoPosPreserved", 3));
+		m_Cases.Insert(new IAT_RT_ZombieDamageFilterTest("ZombieKillfeedPreserved", 4));
+		m_Cases.Insert(new IAT_RT_ZombieDamageFilterTest("ZombieNamedPlayerDamagePreserved", 5));
+		m_Cases.Insert(new IAT_RT_ZombieDamageFilterTest("ZombieDamageAfterNullEntriesSuppressed", 6));
 		m_Cases.Insert(new IAT_RT_ObjectPayloadTest());
 		m_Cases.Insert(new IAT_RT_ReportAbsenceTest());
 		m_Cases.Insert(new IAT_RT_RPCReportTest("RPCConsecutiveReportsWithoutCooldown", 0));
